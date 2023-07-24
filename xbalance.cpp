@@ -5,10 +5,10 @@
 
 void print_help() {
 	printf("Usage: ./run.exe <int|difficulty>\n");
-	printf("  difficulty: Range 1-3 [Easy-Hard]");
+	printf("  difficulty: Range 1-3 [Easy-Hard]\n");
 }
 
-double print_value(double base, int level) {
+double balance_value(double base, int level) {
 	// y = C^(x/(pi^pi))
 	double x = level * 1.0;
 	return pow(base, (x / pow(M_PI, M_PI)));
@@ -42,7 +42,7 @@ int main(int argc, char const *argv[]) {
 
 	printf(" %*s :: %*s :: %*s \n", 4, "Lvl", SPN, "Attack", SPN, "Defense");
 	for(int x = 20; x < 40; x++) {
-		double scalar = print_value(base, x);
+		double scalar = balance_value(base, x);
 		printf(" %*d :: %0.5f :: %0.5f\n", 4, x, scalar*ATK, scalar*DEF);
 	}
 
