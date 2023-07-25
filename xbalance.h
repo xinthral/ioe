@@ -6,14 +6,24 @@
 #include <stdio.h>
 #include <iostream>
 
-enum Hardness { Easy, Norm, Hard };
-const double levels[] = {1.3, 1.6, 1.9, 2.2};
+enum Hardness { Vesy, Easy, Norm, Hard, Vard };
+const double LEVELS[] = {1, 3, 5, 8, 13, 21};
+const int MAXLVL = 80;
 
 class BalanceController {
 private:
+	double base = 0.0;
+    const int SPN = 8;
+	const int ATK = 24;
+	const int DEF = 32;
+	const int SKP = 1;
+    Hardness  DIF;
 public:
-    BalanceController();
-    double scalar(double, int);
+    BalanceController(Hardness);
+    double scalar(int);
+    void display_state();
+    double get_base();
+    Hardness get_difficulty();
     ~BalanceController();
 };
 
