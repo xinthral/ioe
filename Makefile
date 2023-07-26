@@ -33,7 +33,7 @@ CXXFLAGS = $(CXFLAGS) -Wall -pedantic -O3
 # Build targets
 UTIL = utilz
 TEST = test
-EXEC = run
+EXEC = nuevo 
 MAIN = launcher
 MOD1 = generator
 MOD2 = node

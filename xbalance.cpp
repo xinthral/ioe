@@ -1,15 +1,32 @@
 /* Like in life, so to in games do we need balance */
 #include "xbalance.h"
 
-BalanceController::BalanceController(Hardness difficulty) : DIF(difficulty)  {
-	switch(DIF) {
-		case Vesy: { base = LEVELS[1]; break; }
-		case Easy: { base = LEVELS[2]; break; }
-		case Norm: { base = LEVELS[3]; break; }
-		case Hard: { base = LEVELS[4]; break; } 
-		case Vard: { base = LEVELS[5]; break; } 
+// Singleton Instance
+BalanceController* BalanceController::_singleton = NULL;
+std::mutex BalanceController::_mutex;
+
+BalanceController::BalanceController(int difficulty) {
+	if (difficulty < 0 || difficulty > 5) {
+		printf("level %d. Please Enter a value between 0 and 5\n", difficulty);
+		printf("Error: Instatiating Balance Controller with invalid difficulty\n");
+		exit(-1);
+	}
+	switch(difficulty) {
+		case 1: { DIF = Vesy; base = LEVELS[1]; break; }
+		case 2: { DIF = Easy; base = LEVELS[2]; break; }
+		case 3: { DIF = Norm; base = LEVELS[3]; break; }
+		case 4: { DIF = Hard; base = LEVELS[4]; break; } 
+		case 5: { DIF = Vard; base = LEVELS[5]; break; } 
 		default  : { base = LEVELS[0]; break; }
 	}
+}
+
+BalanceController *BalanceController::GetInstance(int difficulty) {
+    // Acquire Instance Mutex
+    std::lock_guard<std::mutex> lock(_mutex);
+    // If singleton already exists, return instance
+    if (_singleton == NULL) { _singleton = new BalanceController(difficulty); }
+    return _singleton;
 }
 
 double BalanceController::scalar(int level) {
@@ -34,29 +51,8 @@ double BalanceController::get_base() { return this->base; }
 
 Hardness BalanceController::get_difficulty() { return this->DIF; }
 
+void BalanceController::_help() {
+	// Establish a helper function
+}
+
 BalanceController::~BalanceController() {}
-
-void print_help() {
-	printf("Usage: ./run.exe <int|difficulty>\n");
-	printf("  difficulty: Range 1-3 [Easy-Hard]\n");
-}
-
-int main(int argc, char const *argv[]) {
-	if (argc < 2) {
-		print_help();
-		return -1;
-	}
-
-	Hardness diff = Norm;
-	int lvl = atoi(argv[1]);
-	if (lvl == 1) { diff = Vesy; }
-	if (lvl == 2) { diff = Easy; }
-	if (lvl == 3) { diff = Norm; }
-	if (lvl == 4) { diff = Hard; }
-	if (lvl == 5) { diff = Vard; }
-	BalanceController bc(diff);
-
-	bc.display_state();
-
-	return 0;
-}
