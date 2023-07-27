@@ -33,7 +33,7 @@ CXXFLAGS = $(CXFLAGS) -Wall -pedantic -O3
 # Build targets
 UTIL = utilz
 TEST = test
-EXEC = nuevo 
+EXEC = gengine 
 
 # GNU Make Compilation Macros: 
 # https://stackoverflow.com/questions/3220277/what-do-the-makefile-symbols-and-mean#3220288

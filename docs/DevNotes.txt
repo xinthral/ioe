@@ -1,0 +1,28 @@
+TODO: 
+_ Add Logging
+_ Configure Debug
+_ Add Helper System
+_ Update modules to implement Helper system
+_ Docstrings motherfucker, do you use them!?
+
+: ConfigManager
+_ Parse Sections, and Keys into an object
+_ <---Do More
+
+: StageManager
+_ <---Do More
+
+: BalanceController
+_ <---Do More
+
+: Actors
+_ <---Do More
+
+: Players
+_ <---Do More
+
+: Toons
+_ <---Do More
+
+: Engine
+_ <---Do More
