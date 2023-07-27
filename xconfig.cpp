@@ -18,9 +18,10 @@ bool ConfigManager::load_config() {
     std::string sec;
     std::string div;
     std::string key;
-    conf.open(_CONF_);
+    conf.open("engine.ini");
     while (getline(conf, sec)) {
         printf("%s\n", sec);
     }
+    conf.close();
     return true;
 }

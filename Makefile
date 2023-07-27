@@ -34,9 +34,6 @@ CXXFLAGS = $(CXFLAGS) -Wall -pedantic -O3
 UTIL = utilz
 TEST = test
 EXEC = nuevo 
-MAIN = launcher
-MOD1 = generator
-MOD2 = node
 
 # GNU Make Compilation Macros: 
 # https://stackoverflow.com/questions/3220277/what-do-the-makefile-symbols-and-mean#3220288
@@ -57,6 +54,10 @@ $(EXEC): $(patsubst %.cpp, %.o, $(wildcard *.cpp))
 # Dynamically assign *.o to be compiled from its source counterpart
 %.o: %.cpp %.h
 	$(CC) $(CFLAGS) -c -o $@ $< 
+
+# xengine.o: xengine.cpp
+# 	$(CC) $(CFLAGS) -c -o $@ $< 
+
 
 clean:
 	$(RM) *.o *.so *.a *.i *.exe *.stackdump $(UTIL) $(TEST) $(EXEC) 

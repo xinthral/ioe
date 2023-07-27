@@ -5,7 +5,7 @@
 #include <mutex>
 #include <string>
 
-std::string _CONF_ = "config.ini";
+extern std::string _CNF_;
 
 class ConfigManager {
 protected:

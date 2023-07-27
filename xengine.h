@@ -12,7 +12,4 @@
 #include "xstage.h"
 #include "xtoon.h"
 
-std::string _VERSION_ = "0.0.1";
-std::string _STAGE_ = "preAlpha";
-
 #endif // XENGINE_H //
