@@ -3,7 +3,10 @@
 ConfigManager* ConfigManager::_singleton = NULL;
 std::mutex ConfigManager::_mutex;
 
-ConfigManager::ConfigManager() { load_config(); }
+ConfigManager::ConfigManager() { 
+    printf("ConfigManager Established.\n");
+    load_config(); 
+}
 
 ConfigManager* ConfigManager::GetInstance() {
     // Acquire Instance Mutex
@@ -18,9 +21,10 @@ bool ConfigManager::load_config() {
     std::string sec;
     std::string div;
     std::string key;
+    printf("Loading Config...\n");
     conf.open("engine.ini");
     while (getline(conf, sec)) {
-        printf("%s\n", sec);
+        printf("%s\n", sec.c_str());
     }
     conf.close();
     return true;
