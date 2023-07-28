@@ -20,11 +20,11 @@ private:
     static std::mutex _mutex;
 
     Hardness  DIF;
-	double base = 0.0;
+    double base = 0.0;
     const int SPN = 8;
-	const int ATK = 24;
-	const int DEF = 32;
-	const int SKP = 1;
+    const int ATK = 24;
+    const int DEF = 32;
+    const int SKP = 1;
 
 public:
     // Singletons should not be cloneable

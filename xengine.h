@@ -3,13 +3,13 @@
 
 #include <stdio.h>
 #include <string>
-#include "actors/xactor.h"
+#include "xactor.h"
 #include "xbalance.h"
-#include "combat/xbattle.h"
-#include "combat/xcombat.h"
+#include "xbattle.h"
+#include "xcombat.h"
 #include "xconfig.h"
-#include "actors/xplayer.h"
+#include "xplayer.h"
 #include "xstage.h"
-#include "actors/xtoon.h"
+#include "xtoon.h"
 
 #endif // XENGINE_H //
