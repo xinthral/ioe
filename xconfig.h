@@ -6,6 +6,7 @@
 #include <regex>
 #include <string>
 #include <unordered_map>
+#include "xutilz.h"
 
 /* External Varables */
 extern std::string _CNF_;
@@ -26,10 +27,15 @@ public:
     // Singletons should not be assignable
     void operator=(const ConfigManager&) = delete;
     static ConfigManager* GetInstance();
+    bool load_config(bool);
+    void reload_state();
     size_t add_setting(const std::string&, const std::string&);
     size_t rem_setting(const std::string&);
-    void display_state();
-    bool load_config(bool);
+    std::string raw_config(const std::string&);
+    std::string get_version();
+    int get_difficulty();
+    int get_attack();
+    int get_defense();
     ~ConfigManager();
 };
 #endif // XCONFIG_H //
