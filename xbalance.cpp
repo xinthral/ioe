@@ -1,16 +1,28 @@
-/* Like in life, so to in games do we need balance */
+/* Like in life, so to in games do we need balance
+ * In order to maintain consistency in a game, you need a universal scale
+ * in which you operate from. This module creates a mathematical scalar
+ * curve that all statistics can be derived from. y = c^[x/(π^π)]
+ */
 #include "xbalance.h"
 
 // Singleton Instance
 BalanceController* BalanceController::_singleton = NULL;
 std::mutex BalanceController::_mutex;
 
-BalanceController::BalanceController(int difficulty) {
+BalanceController::BalanceController() {
+	/* Protected Constructor */
+	// Load Configurations
+	cm = ConfigManager::GetInstance();
+
+	int difficulty = cm->get_difficulty();
+
 	if (difficulty < 0 || difficulty > 5) {
 		printf("level %d. Please Enter a value between 0 and 5\n", difficulty);
 		printf("Error: Instatiating Balance Controller with invalid difficulty\n");
 		exit(-1);
 	}
+
+
 	switch(difficulty) {
 		case 1: { DIF = Vesy; base = LEVELS[1]; break; }
 		case 2: { DIF = Easy; base = LEVELS[2]; break; }
@@ -19,13 +31,15 @@ BalanceController::BalanceController(int difficulty) {
 		case 5: { DIF = Vard; base = LEVELS[5]; break; } 
 		default  : { base = LEVELS[0]; break; }
 	}
+
 }
 
-BalanceController *BalanceController::GetInstance(int difficulty) {
+BalanceController *BalanceController::GetInstance() {
+	/* Singleton Constructor */
     // Acquire Instance Mutex
     std::lock_guard<std::mutex> lock(_mutex);
     // If singleton already exists, return instance
-    if (_singleton == NULL) { _singleton = new BalanceController(difficulty); }
+    if (_singleton == NULL) { _singleton = new BalanceController(); }
     return _singleton;
 }
 
@@ -47,7 +61,7 @@ void BalanceController::display_state() {
 	}
 }
 
-double BalanceController::get_base() { return this->base; }
+double BalanceController::get_base() { return base; }
 
 Hardness BalanceController::get_difficulty() { return this->DIF; }
 

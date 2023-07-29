@@ -4,17 +4,24 @@
 std::string _CNF_ = "docs/engine.ini";
 
 void print_helper() {
-	printf("Requires Hardness Level [1-5].\n");
+	// Get File Name
+	std::string fileName = Utilz::FileName(__FILE__);
+
+	// Display Help Data
+	printf("Usage:\n");
+	printf("  ./%s <bool|debug>:\n", fileName.c_str()); 
+	printf("  Param:\n");
+	printf("    <bool|debug> - Debugging Flag:\n");
 	exit(-1);
 }
 
 int main(int argc, char const *argv[]) {
 	if (argc < 2) { print_helper(); }
+
+	/* Establish Controlers */
 	ConfigManager* cm = ConfigManager::GetInstance();
-	BalanceController* bc = BalanceController::GetInstance(atoi(argv[1]));
+	BalanceController* bc = BalanceController::GetInstance();
 	StageManager* sm = StageManager::GetInstance("Jugo");
 
-	// bc->display_state();
-	// cm->display_state();
     return 0;
 }
