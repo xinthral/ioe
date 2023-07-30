@@ -34,12 +34,8 @@ int main(int argc, char const *argv[]) {
 		t = new Toon(i);
 		team.push_back(t);
 	}
-
 	char temp[10];
-	for (auto e : team) {
-		sprintf(temp, "%d", e->get_id());
-		lg->formed_log(temp);
-	}
+	Combat cc(*team[0], *team[1]);
 	
     return 0;
 }
