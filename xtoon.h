@@ -1,7 +1,7 @@
 #ifndef XTOON_H
 #define XTOON_H
 
-#include "xactor.h"
+#include "xactors.h"
 
 class Toon : public Actor {
 protected:

@@ -6,7 +6,7 @@ std::mutex ConfigManager::_mutex;
 
 ConfigManager::ConfigManager() { 
     log = Logger::GetInstance();
-    log->named_log(__FILE__, "ConfigManager Established.");
+    log->named_log(Utilz::FileName(__FILE__), "ConfigManager Established.");
     load_config(false); 
 }
 

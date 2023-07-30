@@ -1,5 +1,5 @@
 /* */
-#include "xactor.h"
+#include "xactors.h"
 
 Actor::Actor() {
     /* Constructor */
@@ -9,6 +9,8 @@ Actor::Actor() {
     this->baseAttack = cm->get_attack();
     this->baseDefense = cm->get_defense();
     this->baseHealth = cm->get_health();
+    this->name = "Actor_" + Utilz::TailString(2, Utilz::TimeStamp());
+    // sleep(1);
 }
 
 bool Actor::isFighting() { return (this->aiState == FIGHT); }

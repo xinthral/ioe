@@ -1,10 +1,14 @@
 #ifndef XENGINE_H
 #define XENGINE_H
 
+// #include <windows.h> Both needed for sleep()
+// #include <unistd.h>  Both needed for sleep()
+
 #include <stdio.h>
 #include <string>
+// #include <thread>
 #include <vector>
-#include "xactor.h"
+#include "xactors.h"
 #include "xbalance.h"
 #include "xbattle.h"
 #include "xcombat.h"
@@ -12,7 +16,7 @@
 #include "xhelper.h"
 #include "xlogger.h"
 #include "xplayer.h"
-#include "xstage.h"
+#include "xstager.h"
 #include "xtoon.h"
 
 const double LEVELS[] = {1, 3, 5, 8, 13, 21};

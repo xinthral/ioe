@@ -9,6 +9,11 @@ std::string Utilz::FileName(const char* file) {
 	return fileName.substr(0, pos);
 }
 
+std::string Utilz::FileName(int length, const char* file) {
+	std::string output = Utilz::FileName(file);
+	return Utilz::HeadString(length, output);
+}
+
 std::string Utilz::TimeStamp() {
 	std::time_t time = std::time({});
 	char output[std::size("ddd mmm dd hh:mm:ss")];
@@ -19,6 +24,18 @@ std::string Utilz::TimeStamp() {
 		fmtString.c_str(), 
 		std::localtime(&time)
 	);
+	return output;
+}
+
+std::string Utilz::HeadString(int length, std::string input) {
+	std::string output = input;
+	output.resize(length);
+	return output;
+}
+std::string Utilz::TailString(int length, std::string input) {
+	std::string output;
+	size_t l = input.size() - length;
+	for (size_t i = l; i < input.size(); i++) { output += input[i]; }
 	return output;
 }
 

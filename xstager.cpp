@@ -1,4 +1,4 @@
-#include "xstage.h"
+#include "xstager.h"
 
 // Singleton Instance
 StageManager* StageManager::_singleton = NULL;
@@ -6,7 +6,7 @@ std::mutex StageManager::_mutex;
 
 StageManager::StageManager(const std::string _name) : name(_name) {
     log = Logger::GetInstance();
-    log->formed_log(("StageManager Established: %s", this->name));
+    log->named_log(Utilz::FileName(__FILE__), ("StageManager Established: %s", this->name));
 }
 
 StageManager* StageManager::GetInstance(const std::string& name) {

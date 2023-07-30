@@ -11,12 +11,13 @@ std::mutex BalanceController::_mutex;
 
 BalanceController::BalanceController() {
 	/* Protected Constructor */
+	// Load Logger
 	log = Logger::GetInstance();
-	log->formed_log(("BalanceContoller Loaded!"));
+	log->named_log(Utilz::FileName(7, __FILE__), ("BalanceContoller Loaded!"));
+
 	// Load Configurations
 	cm = ConfigManager::GetInstance();
 	log = Logger::GetInstance();
-
 	int difficulty = cm->get_difficulty();
 
 	if (difficulty < 0 || difficulty > 5) {

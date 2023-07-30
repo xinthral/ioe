@@ -29,13 +29,23 @@ int main(int argc, char const *argv[]) {
 	// lg->formed_log("Hello, World!");
 	std::vector<Toon*> team;
 	Toon* t;
+	Toon* v;
 
 	for (int i = 0; i < 10; i++) {
 		t = new Toon(i);
 		team.push_back(t);
 	}
+	// std::vector<std::threads *> threads;
 	char temp[10];
-	Combat cc(*team[0], *team[1]);
+	Combat* cc;
+	while (team.size() > 1) {
+		t = team[team.size() - 1];
+		team.pop_back();
+		v = team[team.size() - 1];
+		team.pop_back();
+		cc = new Combat(*t, *v);
+		// team.push_back(cc);
+	}
 	
     return 0;
 }

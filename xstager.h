@@ -1,5 +1,5 @@
-#ifndef XSTAGE_H
-#define XSTAGE_H
+#ifndef XSTAGER_H
+#define XSTAGER_H
 
 #include <mutex>
 #include <stdio.h>
@@ -25,4 +25,4 @@ public:
     void casting_call();
 };
 
-#endif // XSTAGE_H //
+#endif // XSTAGER_H //

@@ -1,8 +1,12 @@
-#ifndef XACTOR_H
-#define XACTOR_H
+#ifndef XACTORS_H
+#define XACTORS_H
+
+#include <windows.h>
+#include <unistd.h>
 
 #include <string>
 #include "xconfig.h"
+#include "xutilz.h"
 
 // Actor States
 enum CombatState { IDLE, PATROL, FIGHT, FLEE, FOLLOW };
@@ -18,6 +22,7 @@ protected:
     int baseAttack;
     int baseDefense;
     int baseHealth;
+
 public:
     // Constructors
     Actor();
@@ -59,4 +64,4 @@ public:
     ~Actor();
 };
 
-#endif // XACTOR_H //
+#endif // XACTORS_H //
