@@ -5,8 +5,8 @@ ConfigManager* ConfigManager::_singleton = NULL;
 std::mutex ConfigManager::_mutex;
 
 ConfigManager::ConfigManager() { 
-    printf("ConfigManager Established.\n");
-    printf("Loading Config...\n");
+    log = Logger::GetInstance();
+    log->named_log(__FILE__, "ConfigManager Established.");
     load_config(false); 
 }
 
@@ -58,6 +58,10 @@ int ConfigManager::get_defense() {
     return atoi(this->raw_config("DEF").c_str());
 }
 
+int ConfigManager::get_health() {
+    return atoi(this->raw_config("HLT").c_str());
+}
+
 bool ConfigManager::load_config(bool _debug) {
     /* Reads in Config File and Parses Options
      * Param:
@@ -71,14 +75,16 @@ bool ConfigManager::load_config(bool _debug) {
     int cnt = 0;
     conf.open("engine.ini");                        // Open INI file for reading
     while (std::getline(conf, row)) {
-        // printf("%d: %s\n", cnt++, row.c_str());
+        // DEBUG Line
+        if (_debug) { log->formed_log(("%d: %s\n", cnt++, row.c_str())); }
         pos = row.find(delim);                      // Locate Delimiter
         if (pos != std::string::npos){
             opt = row.substr(0, pos);               // Grab Option Name
+            Utilz::Strip(opt);
             val = row.substr(pos+1, row.size()-1);  // Grab Option Value
+            Utilz::Strip(val);
             qsize = this->add_setting(opt, val);    // Load Setting
             cnt++;                                  // Increment Settings counter
-            if (_debug) { printf("%10s%s%s\n", opt.c_str(), delim.c_str(), val.c_str()); }
         }
     }
     conf.close();                                   // Close INI file descriptor

@@ -2,17 +2,30 @@
 #define XACTOR_H
 
 #include <string>
+#include "xconfig.h"
+
+// Actor States
+enum COMBSTATE { IDLE, PATROL, FIGHT, FLEE, FOLLOW };
+enum LIFESTATE { HEALTHY, HURTING, CRITICAL, SICK, DEAD };
 
 class Actor {
-private:
-    int id;
+protected:
+    ConfigManager* cm;
+    COMBSTATE aiState;
+    LIFESTATE condition;
     std::string name;
+    int id;
+    int baseAttack;
+    int baseDefense;
+    int baseHealth;
 public:
     Actor();
-    int get_id();
     void set_id(int);
-    std::string get_name();
     void set_name(std::string);
+    int get_id();
+    std::string get_name();
+    int get_attack();
+    int get_defense();
     ~Actor();
 };
 

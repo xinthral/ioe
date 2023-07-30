@@ -6,6 +6,7 @@
 #include <regex>
 #include <string>
 #include <unordered_map>
+#include "xlogger.h"
 #include "xutilz.h"
 
 /* External Varables */
@@ -20,6 +21,7 @@ private:
     std::string delim = "=";
     static ConfigManager* _singleton;
     static std::mutex _mutex;
+    Logger* log;
 public:
     std::ifstream conf;
     // Singletons should not be cloneable
@@ -36,6 +38,7 @@ public:
     int get_difficulty();
     int get_attack();
     int get_defense();
+    int get_health();
     ~ConfigManager();
 };
 #endif // XCONFIG_H //

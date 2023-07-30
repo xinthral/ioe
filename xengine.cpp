@@ -22,6 +22,24 @@ int main(int argc, char const *argv[]) {
 	ConfigManager* cm = ConfigManager::GetInstance();
 	BalanceController* bc = BalanceController::GetInstance();
 	StageManager* sm = StageManager::GetInstance("Jugo");
+	Logger* lg = Logger::GetInstance();
 
+	// cm->reload_state();
+	// bc->display_state();
+	// lg->formed_log("Hello, World!");
+	std::vector<Toon*> team;
+	Toon* t;
+
+	for (int i = 0; i < 10; i++) {
+		t = new Toon(i);
+		team.push_back(t);
+	}
+
+	char temp[10];
+	for (auto e : team) {
+		sprintf(temp, "%d", e->get_id());
+		lg->formed_log(temp);
+	}
+	
     return 0;
 }

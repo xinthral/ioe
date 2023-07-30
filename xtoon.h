@@ -3,8 +3,15 @@
 
 #include "xactor.h"
 
-class Toon : private Actor {
+class Toon : public Actor {
+protected:
+    int attack;
+    int defense;
+public:
     Toon();
+    Toon(int);
+    int get_attack();
+    int get_defense();
     ~Toon();
 };
 

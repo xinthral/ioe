@@ -4,6 +4,7 @@
 #include <mutex>
 #include <stdio.h>
 #include <string>
+#include "xlogger.h"
 
 class StageManager {
 protected:
@@ -11,6 +12,7 @@ protected:
 private:
     static StageManager* _singleton;
     static std::mutex _mutex;
+    Logger* log;
     std::string name;
     int maxCrew = 10;
 public:

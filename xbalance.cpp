@@ -11,8 +11,11 @@ std::mutex BalanceController::_mutex;
 
 BalanceController::BalanceController() {
 	/* Protected Constructor */
+	log = Logger::GetInstance();
+	log->formed_log(("BalanceContoller Loaded!"));
 	// Load Configurations
 	cm = ConfigManager::GetInstance();
+	log = Logger::GetInstance();
 
 	int difficulty = cm->get_difficulty();
 
@@ -22,16 +25,14 @@ BalanceController::BalanceController() {
 		exit(-1);
 	}
 
-
 	switch(difficulty) {
-		case 1: { DIF = Vesy; base = LEVELS[1]; break; }
-		case 2: { DIF = Easy; base = LEVELS[2]; break; }
-		case 3: { DIF = Norm; base = LEVELS[3]; break; }
-		case 4: { DIF = Hard; base = LEVELS[4]; break; } 
-		case 5: { DIF = Vard; base = LEVELS[5]; break; } 
-		default  : { base = LEVELS[0]; break; }
+		case 1: { DIF = Vesy; BAS = LEVELS[1]; break; }
+		case 2: { DIF = Easy; BAS = LEVELS[2]; break; }
+		case 3: { DIF = Norm; BAS = LEVELS[3]; break; }
+		case 4: { DIF = Hard; BAS = LEVELS[4]; break; } 
+		case 5: { DIF = Vard; BAS = LEVELS[5]; break; } 
+		default  : { BAS = LEVELS[0]; break; }
 	}
-
 }
 
 BalanceController *BalanceController::GetInstance() {
@@ -49,24 +50,25 @@ double BalanceController::scalar(int level) {
 	 * y = C^(x/(pi^pi))
 	 */
 	double x = level * 1.0;
-	return pow(base, (x / pow(M_PI, M_PI)));
+	return pow(BAS, (x / pow(M_PI, M_PI)));
 }
 
 void BalanceController::display_state() {
 	double scl = 0.0;
-	printf("%*s :: %*s :: %*s \n", 4, "Lvl", SPN, "Attack", SPN, "Defense");
+	char tmsg[2048];
+	sprintf(tmsg, "%*s :: %*s :: %*s", 4, "Lvl", SPN, "Attack", SPN, "Defense");
+	log->formed_log(tmsg);
 	for (int i = 0; i < MAXLVL; i++) {
 		scl = this->scalar(i);
-		printf("%*d :: %*.4f :: %*.4f\n", 4, i, SPN, scl*ATK, SPN, scl*DEF);
+		sprintf(tmsg, "%*d :: %*.4f :: %*.4f", 4, i, SPN, (scl*ATK), SPN, (scl*DEF));
+		log->formed_log(tmsg);
 	}
 }
 
-double BalanceController::get_base() { return base; }
+double BalanceController::get_base() { return BAS; }
 
 Hardness BalanceController::get_difficulty() { return this->DIF; }
 
-void BalanceController::_help() {
-	// Establish a helper function
-}
+void BalanceController::_help() { /* Establish a helper function */ }
 
 BalanceController::~BalanceController() {}

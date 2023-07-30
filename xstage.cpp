@@ -5,7 +5,8 @@ StageManager* StageManager::_singleton = NULL;
 std::mutex StageManager::_mutex;
 
 StageManager::StageManager(const std::string _name) : name(_name) {
-    printf("StageManager Established: %s\n", this->name.c_str());
+    log = Logger::GetInstance();
+    log->formed_log(("StageManager Established: %s", this->name));
 }
 
 StageManager* StageManager::GetInstance(const std::string& name) {
