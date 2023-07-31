@@ -2,8 +2,9 @@
 #define XUTILZ_H
 
 #include <algorithm>
-#include <string>
 #include <ctime>
+#include <iterator>
+#include <string>
 
 namespace Utilz {
 

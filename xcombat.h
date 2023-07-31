@@ -1,7 +1,7 @@
 #ifndef XCOMBAT_H
 #define XCOMBAT_H
 
-#include <windows.h>
+// #include <windows.h>
 #include <unistd.h>
 // #include <thread>
 #include "xbalance.h"

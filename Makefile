@@ -9,6 +9,7 @@ CC = g++
 
 # Windows Variants
 ifeq ($(OS), Windows_NT)
+CC = c++
 RM = del
 endif
 
@@ -25,7 +26,7 @@ endif
 CFLAGS = -g -Wno-format -Wno-sign-compare
 
 # Extended Compiler Options
-CXFLAGS = $(CFLAGS) -std=c++2a 
+CXFLAGS = $(CFLAGS) -std=c++17
 
 # Extra Compiler Options
 CXXFLAGS = $(CXFLAGS) -Wall -pedantic -O3
@@ -53,7 +54,7 @@ $(EXEC): $(patsubst %.cpp, %.o, $(wildcard *.cpp))
 # Template function to compile defined objects files
 # Dynamically assign *.o to be compiled from its source counterpart
 %.o: %.cpp %.h
-	$(CC) $(CFLAGS) -c -o $@ $< 
+	$(CC) $(CXFLAGS) -c -o $@ $< 
 
 # xengine.o: xengine.cpp
 # 	$(CC) $(CFLAGS) -c -o $@ $< 
