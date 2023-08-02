@@ -2,6 +2,7 @@
 #include "test.h"
 
 TestSuite::TestSuite() {
+    cm = ConfigManager::GetInstance();
     log = Logger::GetInstance();
     log->named_log(__FILE__, "Tester Loaded!");
 }

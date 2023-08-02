@@ -10,7 +10,7 @@
 #include "utilz.h"
 
 /* External Varables */
-extern std::string _CNF_;
+// extern std::string _CNF_;
 
 /* Class Declarations */
 class ConfigManager {

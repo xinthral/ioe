@@ -7,7 +7,7 @@
 #include <stdio.h>
 #include "config.h"
 #include "logger.h"
-// #include "xstager.h"
+// #include "stage.h"
 
 enum Hardness { Vesy, Easy, Norm, Hard, Vard };
 extern const double LEVELS[]; // = {1, 3, 5, 8, 13, 21};
