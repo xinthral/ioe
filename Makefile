@@ -32,9 +32,10 @@ CXFLAGS = $(CFLAGS) -std=c++17
 CXXFLAGS = $(CXFLAGS) -Wall -pedantic -O3
 
 # Build targets
-TEST = testsuite
+TEST = tester
+HELP = helper
 EXEC = maji
-LIBRARIES := $(TEST)
+LIBRARIES := helpsuite testsuite
 
 # GNU Make Compilation Macros: 
 # https://stackoverflow.com/questions/3220277/what-do-the-makefile-symbols-and-mean#3220288
@@ -47,15 +48,19 @@ LIBRARIES := $(TEST)
 # SRCFILES := $(patsubst %.cpp, %.o, $(wildcard *.cpp))
 
 # Compile Engine
-engine: $(patsubst %.cpp, %.o, $(wildcard *.cpp))
+$(EXEC): $(patsubst %.cpp, %.o, $(wildcard *.cpp))
 	$(CC) $(CXXFLAGS) -o $@ $^
 
 # Compile TestSuite
-test:
-	make -C ./testsuite
+$(TEST):
+	$(MAKE) -C ./testsuite
+
+# Compilie HelpSuite
+$(HELP):
+	$(MAKE) -C ./helpsuite
 
 # Compile Full porgram
-all: test engine 
+all: $(EXEC) $(TEST) $(HELP) 
 
 # Template function to compile defined objects files
 # Dynamically assign *.o to be compiled from its source counterpart
@@ -63,5 +68,7 @@ all: test engine
 	$(CC) $(CXFLAGS) -c -o $@ $< 
 
 clean:
-	make clean -C $(LIBRARIES) 
 	$(RM) *.o *.so *.a *.i *.exe *.stackdump $(EXEC) 
+	$(foreach d, $(LIBRARIES), $(MAKE) clean -C $d &&) true 2>&1 >/dev/null
+
+.PHONY: clean

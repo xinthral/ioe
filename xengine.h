@@ -12,7 +12,6 @@
 #include "xbattle.h"
 #include "xcombat.h"
 #include "xconfig.h"
-#include "xhelper.h"
 #include "xlogger.h"
 #include "xplayer.h"
 #include "xstage.h"
