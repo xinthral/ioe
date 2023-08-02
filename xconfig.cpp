@@ -6,7 +6,7 @@ std::mutex ConfigManager::_mutex;
 
 ConfigManager::ConfigManager() { 
     log = Logger::GetInstance();
-    log->named_log(Utilz::FileName(__FILE__), "ConfigManager Established.");
+    log->named_log(__FILE__, "ConfigManager Established.");
     load_config(false); 
 }
 
@@ -76,7 +76,7 @@ bool ConfigManager::load_config(bool _debug) {
     conf.open("engine.ini");                        // Open INI file for reading
     while (std::getline(conf, row)) {
         // DEBUG Line
-        if (_debug) { log->formed_log(("%d: %s\n", cnt++, row.c_str())); }
+        if (_debug) { log->named_log(__FILE__, ("%d: %s\n", cnt++, row.c_str())); }
         pos = row.find(delim);                      // Locate Delimiter
         if (pos != std::string::npos){
             opt = row.substr(0, pos);               // Grab Option Name
