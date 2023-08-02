@@ -30,7 +30,7 @@ void Logger::formed_log(std::string message) {
 void Logger::named_log(std::string fileName, std::string message) {
     std::string time = Utilz::TimeStamp();
     char tmp[1024];
-    std::sprintf(tmp, "%s :: _%s_ :: %s", time.c_str(), fileName.c_str(), message.c_str());
+    std::sprintf(tmp, "%s :: _%s_ :: %s", time.c_str(), Utilz::FileName(fileName.c_str()).c_str(), message.c_str());
     this->raw_log(tmp);
 }
 
