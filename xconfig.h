@@ -39,6 +39,7 @@ public:
     int get_attack();
     int get_defense();
     int get_health();
+    void _help();
     ~ConfigManager();
 };
 #endif // XCONFIG_H //

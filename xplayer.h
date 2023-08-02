@@ -1,7 +1,7 @@
 #ifndef XPLAYER_H
 #define XPLAYER_H
 
-#include "xactors.h"
+#include "xactor.h"
 
 class Player : private Actor {
 private:

@@ -1,5 +1,5 @@
-#ifndef XACTORS_H
-#define XACTORS_H
+#ifndef XACTOR_H
+#define XACTOR_H
 
 // #include <windows.h>
 #include <unistd.h>
@@ -64,4 +64,4 @@ public:
     ~Actor();
 };
 
-#endif // XACTORS_H //
+#endif // XACTOR_H //

@@ -1,4 +1,4 @@
-#include "xstager.h"
+#include "xstage.h"
 
 // Singleton Instance
 StageManager* StageManager::_singleton = NULL;
@@ -22,3 +22,5 @@ std::string StageManager::get_name() { return this->name; }
 void StageManager::casting_call() {
     
 }
+
+void StageManager::_help() { /* Establish a helper function */ }

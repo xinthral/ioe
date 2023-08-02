@@ -6,9 +6,8 @@
 
 #include <stdio.h>
 #include <string>
-// #include <thread>
 #include <vector>
-#include "xactors.h"
+#include "xactor.h"
 #include "xbalance.h"
 #include "xbattle.h"
 #include "xcombat.h"
@@ -16,7 +15,7 @@
 #include "xhelper.h"
 #include "xlogger.h"
 #include "xplayer.h"
-#include "xstager.h"
+#include "xstage.h"
 #include "xtoon.h"
 
 const double LEVELS[] = {1, 3, 5, 8, 13, 21};

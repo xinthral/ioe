@@ -1,5 +1,5 @@
-#ifndef XSTAGER_H
-#define XSTAGER_H
+#ifndef XSTAGE_H
+#define XSTAGE_H
 
 #include <mutex>
 #include <stdio.h>
@@ -23,6 +23,7 @@ public:
     static StageManager *GetInstance(const std::string&);
     std::string get_name();
     void casting_call();
+    void _help();
 };
 
-#endif // XSTAGER_H //
+#endif // XSTAGE_H //

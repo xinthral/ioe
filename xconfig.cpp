@@ -91,4 +91,6 @@ bool ConfigManager::load_config(bool _debug) {
     return cnt == qsize;
 }
 
+void ConfigManager::_help() { /* */ }
+
 ConfigManager::~ConfigManager() {}

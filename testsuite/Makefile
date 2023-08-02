@@ -32,9 +32,7 @@ CXFLAGS = $(CFLAGS) -std=c++17
 CXXFLAGS = $(CXFLAGS) -Wall -pedantic -O3
 
 # Build targets
-TEST = testsuite
-EXEC = maji
-LIBRARIES := $(TEST)
+EXEC = tester 
 
 # GNU Make Compilation Macros: 
 # https://stackoverflow.com/questions/3220277/what-do-the-makefile-symbols-and-mean#3220288
@@ -44,18 +42,14 @@ LIBRARIES := $(TEST)
 # $^ evaluates to library.cpp main.cpp
 
 # Ask gnuMake to return a list of *.o files from their source counterpart
-# SRCFILES := $(patsubst %.cpp, %.o, $(wildcard *.cpp))
+SRCFILES := $(patsubst %.cpp, %.o, $(wildcard *.cpp))
 
-# Compile Engine
-engine: $(patsubst %.cpp, %.o, $(wildcard *.cpp))
+# Compile Full TestSuite 
+all: $(EXEC) 
+
+# using pattern substitution and the wildcard macro
+$(EXEC): $(SRCFILES) 
 	$(CC) $(CXXFLAGS) -o $@ $^
-
-# Compile TestSuite
-test:
-	make -C ./testsuite
-
-# Compile Full porgram
-all: test engine 
 
 # Template function to compile defined objects files
 # Dynamically assign *.o to be compiled from its source counterpart
@@ -63,5 +57,4 @@ all: test engine
 	$(CC) $(CXFLAGS) -c -o $@ $< 
 
 clean:
-	make clean -C $(LIBRARIES) 
 	$(RM) *.o *.so *.a *.i *.exe *.stackdump $(EXEC) 

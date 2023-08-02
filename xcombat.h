@@ -1,9 +1,7 @@
 #ifndef XCOMBAT_H
 #define XCOMBAT_H
 
-// #include <windows.h>
 #include <unistd.h>
-// #include <thread>
 #include "xbalance.h"
 #include "xconfig.h"
 #include "xlogger.h"
