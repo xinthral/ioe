@@ -33,6 +33,7 @@ CXXFLAGS = $(CXFLAGS) -Wall -pedantic -O3
 
 # Build targets
 EXEC = tester 
+UTIL := xconfig xlogger xutilz
 
 # GNU Make Compilation Macros: 
 # https://stackoverflow.com/questions/3220277/what-do-the-makefile-symbols-and-mean#3220288
@@ -43,6 +44,7 @@ EXEC = tester
 
 # Ask gnuMake to return a list of *.o files from their source counterpart
 SRCFILES := $(patsubst %.cpp, %.o, $(wildcard *.cpp))
+SRCFILES += $(foreach d, $(UTIL), ../$d.o)
 
 # Compile Full TestSuite 
 testsuite: $(EXEC) 

@@ -32,9 +32,10 @@ CXFLAGS = $(CFLAGS) -std=c++17
 CXXFLAGS = $(CXFLAGS) -Wall -pedantic -O3
 
 # Build targets
-TEST = tester
-HELP = helper
+TEST = test
+HELP = help
 EXEC = maji
+UTIL := xconfig xlogger xutilz
 LIBRARIES := helpsuite testsuite
 
 # GNU Make Compilation Macros: 
@@ -52,11 +53,11 @@ $(EXEC): $(patsubst %.cpp, %.o, $(wildcard *.cpp))
 	$(CC) $(CXXFLAGS) -o $@ $^
 
 # Compile TestSuite
-$(TEST):
+$(TEST): $(patsubst %.cpp, %.o, $(UTIL *.cpp)) 
 	$(MAKE) -C ./testsuite
 
 # Compilie HelpSuite
-$(HELP):
+$(HELP): $(patsubst %.cpp, %.o, $(UTIL *.cpp))
 	$(MAKE) -C ./helpsuite
 
 # Compile Full porgram
@@ -71,4 +72,4 @@ clean:
 	$(RM) *.o *.so *.a *.i *.exe *.stackdump $(EXEC) 
 	$(foreach d, $(LIBRARIES), $(MAKE) clean -C $d &&) true 2>&1 >/dev/null
 
-.PHONY: clean
+.PHONY: clean helper tester maji

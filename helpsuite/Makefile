@@ -33,6 +33,7 @@ CXXFLAGS = $(CXFLAGS) -Wall -pedantic -O3
 
 # Build targets
 EXEC = helper 
+UTIL := xconfig xlogger xutilz
 
 # GNU Make Compilation Macros: 
 # https://stackoverflow.com/questions/3220277/what-do-the-makefile-symbols-and-mean#3220288
@@ -43,12 +44,13 @@ EXEC = helper
 
 # Ask gnuMake to return a list of *.o files from their source counterpart
 SRCFILES := $(patsubst %.cpp, %.o, $(wildcard *.cpp))
+SRCFILES += $(foreach d, $(UTIL), ../$d.o)
 
 # Compile Full HelpSuite 
 helpsuite: $(EXEC) 
 
 # using pattern substitution and the wildcard macro
-$(EXEC): $(SRCFILES) 
+$(EXEC): $(SRCFILES)  
 	$(CC) $(CXXFLAGS) -o $@ $^
 
 # Template function to compile defined objects files

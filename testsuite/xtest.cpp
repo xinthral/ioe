@@ -1,7 +1,14 @@
 
 #include "xtest.h"
 
+TestSuite::TestSuite() {
+    log = Logger::GetInstance();
+    log->named_log(__FILE__, "Tester Loaded!");
+}
+
+TestSuite::~TestSuite() {}
+
 int main(int argc, char const *argv[]) {
-    printf("Hello, Testers!\n");
+    TestSuite ts;
     return 0;
 }
