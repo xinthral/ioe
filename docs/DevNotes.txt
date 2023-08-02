@@ -1,10 +1,12 @@
 TODO: 
-_ Docstrings motherfucker, do you use them!?
-_ See previous
-_ Add Logging
 _ Configure Debug
 _ Add Helper System
 _ Update modules to implement Helper system
+
+x Docstrings motherfucker, do you use them!?
+: Doxygen
+* doxygen docs/conf.dox
+_ Add docstrings for doxygen
 
 : ConfigManager
 _ Parse Sections, and Keys into an object
@@ -29,10 +31,15 @@ _ <---Do More
 _ <---Do More
 
 : Logger
+x Add Logging
 _ <---Do More
 
+: Utilz
 : LeaderBoard
 _ <---Do More
 
 : TestSuite
+_ <---Do More
+
+: HelpSuite
 _ <---Do More

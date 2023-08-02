@@ -1,3 +1,6 @@
+/*! \class ConfigManager config.h config.h
+ * ConfigManager Docstring
+ */
 #include "config.h"
 
 /* Singleton Instance */

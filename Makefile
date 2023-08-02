@@ -6,11 +6,15 @@
 
 # the compiler: gcc for C programs, g++ for C++ programs
 CC = g++
+DOXYGEN := doxygen
+RRM := rm -rf
 
 # Windows Variants
 ifeq ($(OS), Windows_NT)
 CC = c++
+DOXYGEN := doxygen.exe
 RM = del
+RRM := rmdir /s /q
 endif
 
 # https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html
@@ -31,10 +35,14 @@ CXFLAGS = $(CFLAGS) -std=c++17
 # Extra Compiler Options
 CXXFLAGS = $(CXFLAGS) -Wall -pedantic -O3
 
+# Set GNU Shell
+SHELL := /bin/bash
+
 # Build targets
 TEST = test
 HELP = help
 EXEC = maji
+DOCS = doc
 UTIL := config logger utilz
 LIBRARIES := helpsuite testsuite
 
@@ -56,12 +64,16 @@ $(EXEC): $(patsubst %.cpp, %.o, $(wildcard *.cpp))
 $(TEST): $(patsubst %.cpp, %.o, $(UTIL *.cpp)) 
 	$(MAKE) -C ./testsuite
 
-# Compilie HelpSuite
+# Compile HelpSuite
 $(HELP): $(patsubst %.cpp, %.o, $(UTIL *.cpp))
 	$(MAKE) -C ./helpsuite
 
+# Compile Documents 
+$(DOCS): docs/conf.dox 
+	$(DOXYGEN) $<
+	
 # Compile Full porgram
-all: $(EXEC) $(TEST) $(HELP) 
+all: $(EXEC) $(TEST) $(HELP) $(DOCS) 
 
 # Template function to compile defined objects files
 # Dynamically assign *.o to be compiled from its source counterpart
@@ -72,4 +84,7 @@ clean:
 	$(RM) *.o *.so *.a *.i *.exe *.stackdump $(EXEC) 
 	$(foreach d, $(LIBRARIES), $(MAKE) clean -C $d &&) true 2>&1 >/dev/null
 
+cleanall:
+	$(RRM) html latex
+	$(MAKE) clean
 .PHONY: clean helper tester maji
