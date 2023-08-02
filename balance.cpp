@@ -70,6 +70,4 @@ double BalanceController::get_base() { return BAS; }
 
 Hardness BalanceController::get_difficulty() { return this->DIF; }
 
-void BalanceController::_help() { /* Establish a helper function */ }
-
 BalanceController::~BalanceController() {}

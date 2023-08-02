@@ -33,7 +33,7 @@ public:
     // Singletons should not be cloneable
     BalanceController(BalanceController&) = delete;
     // Singletons should not be assignable
-    void operator=(const BalanceController&) = delete;
+    void operator = (const BalanceController&) = delete;
     // Singleton Constructor
     static BalanceController *GetInstance();
     
@@ -41,7 +41,6 @@ public:
     void display_state();
     double get_base();
     Hardness get_difficulty();
-    void _help();
     ~BalanceController();
 };
 

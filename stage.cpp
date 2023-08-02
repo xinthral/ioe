@@ -19,8 +19,4 @@ StageManager* StageManager::GetInstance(const std::string& name) {
 
 std::string StageManager::get_name() { return this->name; }
 
-void StageManager::casting_call() {
-    
-}
-
-void StageManager::_help() { /* Establish a helper function */ }
+void StageManager::casting_call() { }

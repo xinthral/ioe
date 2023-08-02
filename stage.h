@@ -19,11 +19,10 @@ public:
     // Singletons should not be cloneable
     StageManager(StageManager&) = delete;
     // Singletons should not be assignable
-    void operator=(const StageManager&) = delete;
+    void operator = (const StageManager&) = delete;
     static StageManager *GetInstance(const std::string&);
     std::string get_name();
     void casting_call();
-    void _help();
 };
 
 #endif // STAGE_H //
