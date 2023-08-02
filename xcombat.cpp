@@ -47,13 +47,13 @@ void Combat::begin_combat() {
     sleep(r);
     switch(this->matchup) {
         case Condition::EvE: {
-            log->named_log(Utilz::FileName(__FILE__), "EvE Combat!");
+            log->named_log(__FILE__, "EvE Combat!");
         } break;
         case Condition::PvE: {
-            log->named_log(Utilz::FileName(__FILE__), "PvE Combat!");
+            log->named_log(__FILE__, "PvE Combat!");
         } break;
         case Condition::PvP: {
-            log->named_log(Utilz::FileName(__FILE__), "PvP Combat!");
+            log->named_log(__FILE__, "PvP Combat!");
         } break;
         default: break;
     } 
