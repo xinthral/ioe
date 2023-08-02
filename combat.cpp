@@ -1,4 +1,4 @@
-#include "xcombat.h"
+#include "combat.h"
 
 Combat::Combat() {
     // Establish Singletons 

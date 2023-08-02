@@ -1,7 +1,7 @@
-#ifndef XTOON_H
-#define XTOON_H
+#ifndef TOON_H
+#define TOON_H
 
-#include "xactor.h"
+#include "actor.h"
 
 class Toon : public Actor {
 protected:
@@ -15,4 +15,4 @@ public:
     ~Toon();
 };
 
-#endif // XTOON_H //
+#endif // TOON_H //

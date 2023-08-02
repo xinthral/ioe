@@ -1,4 +1,4 @@
 /*
  * Interweaving combat events
  */
-#include "xbattle.h"
+#include "battle.h"

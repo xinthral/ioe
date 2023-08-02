@@ -1,5 +1,5 @@
-#ifndef XUTILZ_H
-#define XUTILZ_H
+#ifndef UTILZ_H
+#define UTILZ_H
 
 #include <algorithm>
 #include <ctime>
@@ -17,4 +17,4 @@ namespace Utilz {
 
 }; // namespace Utilz
 
-#endif // XUTILZ_H //
+#endif // UTILZ_H //

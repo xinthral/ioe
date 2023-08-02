@@ -3,7 +3,7 @@
  * in which you operate from. This module creates a mathematical scalar
  * curve that all statistics can be derived from. y = c^[x/(π^π)]
  */
-#include "xbalance.h"
+#include "balance.h"
 
 // Singleton Instance
 BalanceController* BalanceController::_singleton = NULL;
@@ -13,7 +13,7 @@ BalanceController::BalanceController() {
 	/* Protected Constructor */
 	// Load Logger
 	log = Logger::GetInstance();
-	log->named_log(Utilz::FileName(7, __FILE__), ("BalanceContoller Loaded!"));
+	log->named_log(__FILE__, ("BalanceContoller Loaded!"));
 
 	// Load Configurations
 	cm = ConfigManager::GetInstance();

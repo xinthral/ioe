@@ -1,12 +1,12 @@
-#ifndef XBALANCE_H
-#define XBALANCE_H
+#ifndef BALANCE_H
+#define BALANCE_H
 #define _USE_MATH_DEFINES
 
 #include <cmath>
 #include <iostream>
 #include <stdio.h>
-#include "xconfig.h"
-#include "xlogger.h"
+#include "config.h"
+#include "logger.h"
 // #include "xstager.h"
 
 enum Hardness { Vesy, Easy, Norm, Hard, Vard };
@@ -45,4 +45,4 @@ public:
     ~BalanceController();
 };
 
-#endif // XBALANCE_H //
+#endif // BALANCE_H //

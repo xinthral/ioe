@@ -1,7 +1,7 @@
-#ifndef XPLAYER_H
-#define XPLAYER_H
+#ifndef PLAYER_H
+#define PLAYER_H
 
-#include "xactor.h"
+#include "actor.h"
 
 class Player : private Actor {
 private:
@@ -13,4 +13,4 @@ public:
     ~Player();
 };
 
-#endif // XPLAYER_H //
+#endif // PLAYER_H //

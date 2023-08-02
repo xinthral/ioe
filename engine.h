@@ -7,15 +7,15 @@
 #include <stdio.h>
 #include <string>
 #include <vector>
-#include "xactor.h"
-#include "xbalance.h"
-#include "xbattle.h"
-#include "xcombat.h"
-#include "xconfig.h"
-#include "xlogger.h"
-#include "xplayer.h"
-#include "xstage.h"
-#include "xtoon.h"
+#include "actor.h"
+#include "balance.h"
+#include "battle.h"
+#include "combat.h"
+#include "config.h"
+#include "logger.h"
+#include "player.h"
+#include "stage.h"
+#include "toon.h"
 
 const double LEVELS[] = {1, 3, 5, 8, 13, 21};
 const int MAXLVL = 80;

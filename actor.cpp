@@ -1,5 +1,5 @@
 /* */
-#include "xactor.h"
+#include "actor.h"
 
 Actor::Actor() {
     /* Constructor */

@@ -1,4 +1,4 @@
-#include "xconfig.h"
+#include "config.h"
 
 /* Singleton Instance */
 ConfigManager* ConfigManager::_singleton = NULL;

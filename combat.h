@@ -1,12 +1,12 @@
-#ifndef XCOMBAT_H
-#define XCOMBAT_H
+#ifndef COMBAT_H
+#define COMBAT_H
 
 #include <unistd.h>
-#include "xbalance.h"
-#include "xconfig.h"
-#include "xlogger.h"
-#include "xplayer.h"
-#include "xtoon.h"
+#include "balance.h"
+#include "config.h"
+#include "logger.h"
+#include "player.h"
+#include "toon.h"
 
 enum Condition { EvE, PvE, PvP };
 
@@ -25,4 +25,4 @@ public:
     ~Combat();
 };
 
-#endif // XCOMBAT_H //
+#endif // COMBAT_H //

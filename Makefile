@@ -35,7 +35,7 @@ CXXFLAGS = $(CXFLAGS) -Wall -pedantic -O3
 TEST = test
 HELP = help
 EXEC = maji
-UTIL := xconfig xlogger xutilz
+UTIL := config logger utilz
 LIBRARIES := helpsuite testsuite
 
 # GNU Make Compilation Macros: 

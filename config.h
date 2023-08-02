@@ -1,13 +1,13 @@
-#ifndef XCONFIG_H
-#define XCONFIG_H
+#ifndef CONFIG_H
+#define CONFIG_H
 
 #include <fstream>
 #include <mutex>
 #include <regex>
 #include <string>
 #include <unordered_map>
-#include "xlogger.h"
-#include "xutilz.h"
+#include "logger.h"
+#include "utilz.h"
 
 /* External Varables */
 extern std::string _CNF_;
@@ -42,4 +42,4 @@ public:
     void _help();
     ~ConfigManager();
 };
-#endif // XCONFIG_H //
+#endif // CONFIG_H //

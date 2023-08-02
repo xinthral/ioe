@@ -1,10 +1,10 @@
-#ifndef XSTAGE_H
-#define XSTAGE_H
+#ifndef STAGE_H
+#define STAGE_H
 
 #include <mutex>
 #include <stdio.h>
 #include <string>
-#include "xlogger.h"
+#include "logger.h"
 
 class StageManager {
 protected:
@@ -26,4 +26,4 @@ public:
     void _help();
 };
 
-#endif // XSTAGE_H //
+#endif // STAGE_H //

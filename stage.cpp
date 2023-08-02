@@ -1,4 +1,4 @@
-#include "xstage.h"
+#include "stage.h"
 
 // Singleton Instance
 StageManager* StageManager::_singleton = NULL;

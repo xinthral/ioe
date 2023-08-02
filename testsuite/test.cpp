@@ -1,5 +1,5 @@
 
-#include "xtest.h"
+#include "test.h"
 
 TestSuite::TestSuite() {
     log = Logger::GetInstance();
