@@ -33,7 +33,7 @@ CXXFLAGS = $(CXFLAGS) -Wall -pedantic -O3
 
 # Build targets
 EXEC = tester 
-UTIL := config logger utilz
+UTIL := actor config logger utilz
 
 # GNU Make Compilation Macros: 
 # https://stackoverflow.com/questions/3220277/what-do-the-makefile-symbols-and-mean#3220288
