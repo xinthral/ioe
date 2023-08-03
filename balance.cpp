@@ -18,9 +18,9 @@ BalanceController::BalanceController() {
 	log->named_log(__FILE__, ("BalanceContoller Loaded!"));
 
 	// Load Configurations
-	cm = ConfigManager::GetInstance();
+	cnf = ConfigManager::GetInstance();
 	log = Logger::GetInstance();
-	int difficulty = cm->get_difficulty();
+	int difficulty = cnf->get_difficulty();
 
 	if (difficulty < 0 || difficulty > 5) {
 		printf("level %d. Please Enter a value between 0 and 5\n", difficulty);

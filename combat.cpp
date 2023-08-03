@@ -2,8 +2,8 @@
 
 Combat::Combat() {
     // Establish Singletons 
-    balance = BalanceController::GetInstance();
-    cm = ConfigManager::GetInstance();
+    bal = BalanceController::GetInstance();
+    cnf = ConfigManager::GetInstance();
     log = Logger::GetInstance();
     log->named_log(Utilz::FileName(__FILE__), "Combat has been initiated!");
 }

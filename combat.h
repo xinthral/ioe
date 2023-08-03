@@ -12,9 +12,9 @@ enum Condition { EvE, PvE, PvP };
 
 class Combat {
 private:
-    BalanceController* balance;
-    ConfigManager* cm;
-    Logger* log;
+    BalanceController*  bal;
+    ConfigManager*      cnf;
+    Logger*             log;
     Condition matchup;
 public:
     Combat();

@@ -19,14 +19,14 @@ int main(int argc, char const *argv[]) {
 	if (argc < 2) { print_helper(); }
 
 	/* Establish Controlers */
-	ConfigManager* cm = ConfigManager::GetInstance();
-	BalanceController* bc = BalanceController::GetInstance();
-	StageManager* sm = StageManager::GetInstance("Jugo");
-	Logger* lg = Logger::GetInstance();
+	ConfigManager* cnf = ConfigManager::GetInstance();
+	BalanceController* bal = BalanceController::GetInstance();
+	StageManager* mgr = StageManager::GetInstance("Jugo");
+	Logger* log = Logger::GetInstance();
 
-	// cm->reload_state();
-	// bc->display_state();
-	// lg->formed_log("Hello, World!");
+	// cnf->reload_state();
+	// bal->display_state();
+	// log->formed_log("Hello, World!");
 	std::vector<Toon*> team;
 	Toon* t;
 	Toon* v;
@@ -35,7 +35,7 @@ int main(int argc, char const *argv[]) {
 		t = new Toon(i);
 		team.push_back(t);
 	}
-	// std::vector<std::threads *> threads;
+	
 	char temp[10];
 	Combat* cc;
 	while (team.size() > 1) {

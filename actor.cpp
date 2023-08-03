@@ -7,12 +7,12 @@
  * Default Constructor 
 */
 Actor::Actor() {
-    cm = ConfigManager::GetInstance();
+    cnf = ConfigManager::GetInstance();
     this->aiState = IDLE;
     this->condition = HEALTHY;
-    this->baseAttack = cm->get_attack();
-    this->baseDefense = cm->get_defense();
-    this->baseHealth = cm->get_health();
+    this->baseAttack = cnf->get_attack();
+    this->baseDefense = cnf->get_defense();
+    this->baseHealth = cnf->get_health();
     // DEBUG: line
     this->name = "Actor_" + Utilz::TailString(2, Utilz::TimeStamp());
     // sleep(1);

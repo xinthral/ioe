@@ -14,7 +14,7 @@ enum HealthState { HEALTHY, HURTING, CRITICAL, SICK, DEAD };
 
 class Actor {
 protected:
-    ConfigManager* cm;
+    ConfigManager* cnf;
     CombatState aiState;
     HealthState condition;
     std::string name;

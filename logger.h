@@ -19,7 +19,7 @@ public:
     // Singletons should not be cloneable
     Logger(Logger&) = delete;
     // Singletons should not be assignable
-    void operator=(const Logger&) = delete;
+    void operator =(const Logger&) = delete;
     // Singleton Constructor
     static Logger* GetInstance();
     void raw_log(std::string);

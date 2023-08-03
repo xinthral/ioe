@@ -21,7 +21,7 @@ extern const int DEF;
 class BalanceController {
 protected:
     BalanceController();
-	ConfigManager* cm;
+	ConfigManager* cnf;
     Logger* log;
 
 private:
