@@ -78,4 +78,9 @@ double BalanceController::get_base() { return BAS; }
 
 Hardness BalanceController::get_difficulty() { return this->DIF; }
 
+/**
+ * Helper Hook used in CLI Help System
+*/
+void BalanceController::_help() { }
+
 BalanceController::~BalanceController() {}

@@ -25,6 +25,7 @@ public:
     void raw_log(std::string);
     void formed_log(std::string);
     void named_log(std::string, std::string); 
+    void _help();
     ~Logger();
 };
 

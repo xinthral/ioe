@@ -12,6 +12,7 @@ public:
     Toon(int);
     int get_attack();
     int get_defense();
+    void _help();
     ~Toon();
 };
 

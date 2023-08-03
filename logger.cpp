@@ -39,4 +39,9 @@ void Logger::named_log(std::string fileName, std::string message) {
     this->raw_log(tmp);
 }
 
+/**
+ * Helper Hook used in CLI Help System
+*/
+void Logger::_help() { }
+
 Logger::~Logger() {}

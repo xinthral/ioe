@@ -41,6 +41,7 @@ public:
     void display_state();
     double get_base();
     Hardness get_difficulty();
+    void _help();
     ~BalanceController();
 };
 

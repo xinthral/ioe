@@ -107,6 +107,9 @@ bool ConfigManager::load_config(bool _debug) {
     return cnt == qsize;
 }
 
-void ConfigManager::_help() { /* */ }
+/**
+ * Helper Hook used in CLI Help System
+*/
+void ConfigManager::_help() { }
 
 ConfigManager::~ConfigManager() {}

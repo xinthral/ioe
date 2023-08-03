@@ -12,6 +12,11 @@ Player::Player(int level, int power, int block) :
 }
 
 /**
+ * Helper Hook used in CLI Help System
+*/
+void Player::_help() {}
+
+/**
  * Default Deconstructor
 */
 Player::~Player() {}

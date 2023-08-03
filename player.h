@@ -12,6 +12,7 @@ private:
     int block;
 public:
     Player(int, int, int);
+    void _help();
     ~Player();
 };
 

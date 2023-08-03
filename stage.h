@@ -23,6 +23,8 @@ public:
     static StageManager *GetInstance(const std::string&);
     std::string get_name();
     void casting_call();
+    void _help();
+    ~StageManager();
 };
 
 #endif // STAGE_H //
