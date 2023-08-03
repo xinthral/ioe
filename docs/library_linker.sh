@@ -5,9 +5,9 @@
 
 sudo -k
 set -eou pipefail
-declare -a sharedf;
 
-locate_shared_objects() {
+#/ Find and Link Compiled Libraries against shared objects
+link_shared_objects() {
     cd lib/;
     for dir in `find ./ -type f -iname "*.so.*"`; do
         echo -e "Linking $dir";
@@ -16,4 +16,4 @@ locate_shared_objects() {
     cd -;
 }
 
-locate_shared_objects;
+link_shared_objects;
