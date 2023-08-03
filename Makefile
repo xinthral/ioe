@@ -73,6 +73,7 @@ $(HELP): $(patsubst %.cpp, %.o, $(UTIL *.cpp))
 $(DOCS): docs/conf.dox 
 	$(DOXYGEN) $<
 	
+# Build Object files
 build: $(OBJ)
 
 # Compile Full porgram
