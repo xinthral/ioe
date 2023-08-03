@@ -30,6 +30,7 @@ int main(int argc, char const *argv[]) {
 	std::vector<Toon*> team;
 	Toon* t;
 	Toon* v;
+	Player p(1, 1, 1);
 
 	for (int i = 0; i < 10; i++) {
 		t = new Toon(i);
@@ -46,6 +47,8 @@ int main(int argc, char const *argv[]) {
 		cc = new Combat(*t, *v);
 		// team.push_back(cc);
 	}
+
+	cc = new Combat(p, *t);
 	
     return 0;
 }
