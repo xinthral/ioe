@@ -1,5 +1,8 @@
 #include "combat.h"
 
+/**
+ * Default Constructor
+*/
 Combat::Combat() {
     // Establish Singletons 
     bal = BalanceController::GetInstance();
@@ -8,6 +11,10 @@ Combat::Combat() {
     log->named_log(__FILE__, "Combat has been initiated!");
 }
 
+/**
+ * @overload
+ * EvE Constructor
+*/
 Combat::Combat(Toon& combatant1, Toon& combatant2) : Combat() { 
     // Check Health State
     if (combatant1.get_health() < 1 && combatant2.get_health() < 1) {
@@ -30,14 +37,21 @@ Combat::Combat(Toon& combatant1, Toon& combatant2) : Combat() {
     log->named_log(__FILE__, buf);
 }
 
-Combat::Combat(Player& combatant1, Toon& combatant2) : Combat() {
-    this->matchup = Condition::PvE; 
-}
+/**
+ * @overload
+ * PvE Constructor
+*/
+Combat::Combat(Player& combatant1, Toon& combatant2) : Combat() { this->matchup = Condition::PvE; }
 
-Combat::Combat(Player& combatant1, Player& combatant2) : Combat() { 
-    this->matchup = Condition::PvP; 
-}
+/**
+ * @overload
+ * PvP Constructor
+*/
+Combat::Combat(Player& combatant1, Player& combatant2) : Combat() { this->matchup = Condition::PvP; }
 
+/**
+ * Initiates Combat
+*/
 void Combat::begin_combat() {
     std::srand(std::time(NULL));
     char buf[1024];
@@ -59,4 +73,7 @@ void Combat::begin_combat() {
     } 
 }
 
+/**
+ * Default Deconstructor
+*/
 Combat::~Combat() { }

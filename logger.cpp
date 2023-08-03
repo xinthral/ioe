@@ -1,13 +1,20 @@
 #include "logger.h"
 
+/* Global Variables */
 const std::string Logger::DELIM = " :=: ";
 
 /* Singleton Instance */
 Logger* Logger::_singleton = NULL;
 std::mutex Logger::_mutex;
 
+/**
+ * Protected Constructor
+*/
 Logger::Logger() {}
 
+/**
+ * Singleton Constructor
+*/
 Logger* Logger::GetInstance() {
     // Acquire Instance Mutex
     std::lock_guard<std::mutex> lock(_mutex);
@@ -16,10 +23,16 @@ Logger* Logger::GetInstance() {
     return _singleton;
 }
 
+/**
+ * Raw Unformatted Logging
+*/
 void Logger::raw_log(std::string message) {
     printf("%s\n", message.c_str());
 }
 
+/**
+ * TimeStamped Logging
+*/
 void Logger::formed_log(std::string message) {
     std::string time = Utilz::TimeStamp();
     char tmp[1024];
@@ -27,6 +40,9 @@ void Logger::formed_log(std::string message) {
     this->raw_log(tmp);
 }
 
+/**
+ * Labeled and Stamped Logging
+*/
 void Logger::named_log(std::string fileName, std::string message) {
     std::string time = Utilz::TimeStamp();
     char tmp[1024];
@@ -44,4 +60,7 @@ void Logger::named_log(std::string fileName, std::string message) {
 */
 void Logger::_help() { }
 
+/**
+ * Default Deconstructor
+*/
 Logger::~Logger() {}
