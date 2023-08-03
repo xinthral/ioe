@@ -1,9 +1,7 @@
 #ifndef ACTOR_H
 #define ACTOR_H
 
-// #include <windows.h>
 #include <unistd.h>
-
 #include <string>
 #include "config.h"
 #include "utilz.h"
@@ -14,9 +12,12 @@ enum HealthState { HEALTHY, HURTING, CRITICAL, SICK, DEAD };
 
 class Actor {
 protected:
+    // Protected Objects
     ConfigManager* cnf;
     CombatState aiState;
     HealthState condition;
+
+    // Protected Attributes
     std::string name;
     int id;
     int baseAttack;

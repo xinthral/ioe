@@ -1,7 +1,9 @@
 #/**************************************
-# Author: Xinthral 
-# This was meant to be a modular make file which can compile any number of components
-# in a directory dynamically.
+# Modulated Makefile
+# This particular makefile is meant to work on Windows and Linux
+# and designed to compile libraries
+# @author 	Xinthral
+# @date		3 Aug 2023
 #**************************************/
 
 # the compiler: gcc for C programs, g++ for C++ programs
@@ -23,16 +25,16 @@ endif
 #  	-no-pie 								- do not produce a position-independent executable
 #	-fPIC									- Format position-independent code
 # Standard Compiler Options
-CFLAGS = -g -Wno-format -Wno-sign-compare
+CFLAGS = -g -Wno-format -Wno-sign-compare -std=c++17 
 
 # Extended Compiler Options
-CXFLAGS = $(CFLAGS) -std=c++17
+CXFLAGS = -Wall -pedantic -O3 -fPIC
 
 # Extra Compiler Options
-CXXFLAGS = $(CXFLAGS) -Wall -pedantic -O3
+CXXFLAGS = -shared -Wl,-soname,
 
 # Build targets
-EXEC = tester 
+EXEC = tester
 UTIL := actor config logger utilz
 
 # GNU Make Compilation Macros: 
@@ -45,18 +47,19 @@ UTIL := actor config logger utilz
 # Ask gnuMake to return a list of *.o files from their source counterpart
 SRCFILES := $(patsubst %.cpp, %.o, $(wildcard *.cpp))
 SRCFILES += $(foreach d, $(UTIL), ../$d.o)
+SHAREDFL := lib$(EXEC).so.1
 
 # Compile Full TestSuite 
 testsuite: $(EXEC) 
 
 # using pattern substitution and the wildcard macro
 $(EXEC): $(SRCFILES) 
-	$(CC) $(CXXFLAGS) -o $@ $^
+	$(CC) $(CFLAGS) -o ../lib/$(SHAREDFL).1 $^ $(CXXFLAGS)$(SHAREDFL)
 
 # Template function to compile defined objects files
 # Dynamically assign *.o to be compiled from its source counterpart
 %.o: %.cpp %.h
-	$(CC) $(CXFLAGS) -c -o $@ $< 
+	$(CC) $(CFLAGS) $(CXFLAGS) -c -o $@ $< 
 
 clean:
-	$(RM) *.o *.so *.a *.i *.exe *.stackdump $(EXEC) 
+	$(RM) *.o *.so* *.a *.i *.exe *.stackdump $(EXEC) 

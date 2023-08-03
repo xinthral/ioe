@@ -85,6 +85,7 @@ clean:
 	$(foreach d, $(LIBRARIES), $(MAKE) clean -C $d &&) true 2>&1 >/dev/null
 
 cleanall:
+	$(RM) lib/*
 	$(RRM) html latex
 	$(MAKE) clean
 
