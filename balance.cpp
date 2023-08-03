@@ -9,8 +9,10 @@
 BalanceController* BalanceController::_singleton = NULL;
 std::mutex BalanceController::_mutex;
 
+/**
+ *  Protected Constructor 
+*/
 BalanceController::BalanceController() {
-	/* Protected Constructor */
 	// Load Logger
 	log = Logger::GetInstance();
 	log->named_log(__FILE__, ("BalanceContoller Loaded!"));
@@ -36,8 +38,10 @@ BalanceController::BalanceController() {
 	}
 }
 
+/**
+ *  Singleton Constructor 
+*/
 BalanceController *BalanceController::GetInstance() {
-	/* Singleton Constructor */
     // Acquire Instance Mutex
     std::lock_guard<std::mutex> lock(_mutex);
     // If singleton already exists, return instance
@@ -45,15 +49,19 @@ BalanceController *BalanceController::GetInstance() {
     return _singleton;
 }
 
+/**
+ * Scalar Function to keep the entire universe in balance
+ * y = δ(χ/[π^π])
+ * @return :<double|scalar> - Scaled value based on level
+*/
 double BalanceController::scalar(int level) {
-	/* Scalar Function 
-	 * The crux of the games balance scaling
-	 * y = C^(x/(pi^pi))
-	 */
 	double x = level * 1.0;
 	return pow(BAS, (x / pow(M_PI, M_PI)));
 }
 
+/**
+ * Display the current state of the base game attributes
+*/
 void BalanceController::display_state() {
 	double scl = 0.0;
 	char tmsg[2048];
