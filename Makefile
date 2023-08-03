@@ -43,7 +43,7 @@ TEST = test
 HELP = help
 EXEC = maji
 DOCS = doc
-UTIL := config logger utilz
+UTIL := actor config logger utilz
 LIBRARIES := helpsuite testsuite
 
 # GNU Make Compilation Macros: 
