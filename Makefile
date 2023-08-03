@@ -87,4 +87,5 @@ clean:
 cleanall:
 	$(RRM) html latex
 	$(MAKE) clean
-.PHONY: clean helper tester maji
+
+.PHONY: cleanall clean all helper tester maji
