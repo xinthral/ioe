@@ -7,6 +7,9 @@
 #include "../config.h"
 #include "../logger.h"
 
+// Compiler/Linter hint
+#define assertm(exp, msg) assert(((void)msg, exp))
+
 class TestSuite {
 protected:
     ConfigManager* conf;

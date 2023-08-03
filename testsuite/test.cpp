@@ -28,30 +28,30 @@ void TestSuite::test_actor() {
  * Are actors getting proper base values?
 */
 void TestSuite::actor_base_attack() {
-    log->named_log(__FILE__, "Testing Base Attack Value for Actors");
     int cnf_atk = conf->get_attack();
     dummy = new Actor();
     assert(cnf_atk == dummy->get_attack());
+    log->named_log(__FILE__, "Tested Base Attack Value for Actors");
 }
 
 /**
  * Are actors getting proper base values?
 */
 void TestSuite::actor_base_defense() {
-    log->named_log(__FILE__, "Testing Base Defense Value for Actors");
     int cnf_def = conf->get_defense();
     dummy = new Actor();
-    assert(cnf_def == dummy->get_defense());
+    assertm(cnf_def != dummy->get_defense(), "Actor Defense Mismatch\t<--");
+    log->named_log(__FILE__, "Tested Base Defense Value for Actors");
 }
 
 /**
  * Are actors getting proper base values?
 */
 void TestSuite::actor_base_health() {
-    log->named_log(__FILE__, "Testing Base Health Value for Actors");
     int cnf_hlt = conf->get_health();
     dummy = new Actor();
     assert(cnf_hlt == dummy->get_health());
+    log->named_log(__FILE__, "Tested Base Health Value for Actors");
 }
 
 /**
