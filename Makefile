@@ -45,6 +45,7 @@ EXEC = maji
 DOCS = doc
 UTIL := actor config logger utilz
 LIBRARIES := helpsuite testsuite
+OBJ := $(patsubst %.cpp, %.o, $(wildcard *.cpp))
 
 # GNU Make Compilation Macros: 
 # https://stackoverflow.com/questions/3220277/what-do-the-makefile-symbols-and-mean#3220288
@@ -57,7 +58,7 @@ LIBRARIES := helpsuite testsuite
 # SRCFILES := $(patsubst %.cpp, %.o, $(wildcard *.cpp))
 
 # Compile Engine
-$(EXEC): $(patsubst %.cpp, %.o, $(wildcard *.cpp))
+$(EXEC): $(OBJ)
 	$(CC) $(CXXFLAGS) -o $@ $^
 
 # Compile TestSuite
@@ -72,6 +73,8 @@ $(HELP): $(patsubst %.cpp, %.o, $(UTIL *.cpp))
 $(DOCS): docs/conf.dox 
 	$(DOXYGEN) $<
 	
+build: $(OBJ)
+
 # Compile Full porgram
 all: $(EXEC) $(TEST) $(HELP) $(DOCS) 
 
@@ -81,12 +84,14 @@ all: $(EXEC) $(TEST) $(HELP) $(DOCS)
 	$(CC) $(CXFLAGS) -c -o $@ $< 
 
 clean:
-	$(RM) *.o *.so *.a *.i *.exe *.stackdump $(EXEC) 
+	$(RM) *.exe *.stackdump $(EXEC) 
+	$(RM) *.o *.so *.a *.i 
 	$(foreach d, $(LIBRARIES), $(MAKE) clean -C $d &&) true 2>&1 >/dev/null
 
 cleanall:
 	$(RM) lib/*
+	$(RM) build/*
 	$(RRM) html latex
 	$(MAKE) clean
 
-.PHONY: cleanall clean all helper tester maji
+.PHONY: all build cleanall clean helper tester maji
