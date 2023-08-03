@@ -5,7 +5,7 @@ Combat::Combat() {
     bal = BalanceController::GetInstance();
     cnf = ConfigManager::GetInstance();
     log = Logger::GetInstance();
-    log->named_log(Utilz::FileName(__FILE__), "Combat has been initiated!");
+    log->named_log(__FILE__, "Combat has been initiated!");
 }
 
 Combat::Combat(Toon& combatant1, Toon& combatant2) : Combat() { 
@@ -27,7 +27,7 @@ Combat::Combat(Toon& combatant1, Toon& combatant2) : Combat() {
         combatant1.get_name().c_str(), 
         combatant2.get_name().c_str()
     );
-    log->named_log(Utilz::FileName(__FILE__), buf);
+    log->named_log(__FILE__, buf);
 }
 
 Combat::Combat(Player& combatant1, Toon& combatant2) : Combat() {
