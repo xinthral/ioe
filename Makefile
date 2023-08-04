@@ -65,11 +65,11 @@ $(EXEC): $(OBJ)
 
 # Compile TestSuite
 $(TEST): $(patsubst %.cpp, %.o, $(UTIL *.cpp)) 
-	$(MAKE) -C ./suitetest
+	$(MAKE) -C ./testsuite
 
 # Compile HelpSuite
 $(HELP): $(patsubst %.cpp, %.o, $(UTIL *.cpp))
-	$(MAKE) -C ./suitehelp
+	$(MAKE) -C ./helpsuite
 
 # Compile Documents 
 $(DOCS): docs/conf.dox 
@@ -98,10 +98,16 @@ clean:
 	$(foreach d, $(LIBRARIES), $(MAKE) clean -C $d &&) true 2>&1 >/dev/null
 
 cleanall:
-	$(MAKE) clean
+ifeq ($(OS), Windows_NT)
 	$(RRM) html
 	$(RRM) latex
-# $(RRM) lib
+	$(RRM) lib
+else
+	$(RRM) html/*
+	$(RRM) latex/*
+	$(RRM) lib/*
+endif
+	$(MAKE) clean
 # $(delink)
 
 .PHONY: all build cleanall clean delink helper maji tester 
