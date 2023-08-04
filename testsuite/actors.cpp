@@ -2,18 +2,24 @@
 
 TestActors::TestActors() {
     BaseCase::log->named_log(__FILE__, "Testing Actors!");
-    this->test_actor();
+    sprintf(this->msgHead, "Tested");
+    sprintf(this->msgTail, "for Actors!");
+    test_actor();
 }
 
 /**
  * Run full set of test on Actor
 */
 void TestActors::test_actor() {
-    this->base_attack();
-    this->base_defense();
-    this->base_health();
+    base_attack();
+    base_defense();
+    base_health();
 
-    this->combatstate_idle();
+    combatstate_idle();
+    combatstate_patrol();
+    combatstate_fight();
+    combatstate_flee();
+    combatstate_follow();
 }
 
 /**
@@ -21,9 +27,10 @@ void TestActors::test_actor() {
 */
 void TestActors::base_attack() {
     int cnf_atk = cnf->get_attack();
-    this->dummy = new Actor();
-    assert(cnf_atk == this->dummy->get_attack());
-    BaseCase::log->named_log(__FILE__, "Tested Base Attack Value for Actors");
+    sprintf(output, "%s %s %s", msgHead, "Base Attack Value", msgTail);
+    dummy = new Actor();
+    assert(cnf_atk == dummy->get_attack());
+    BaseCase::log->named_log(__FILE__, output);
 }
 
 /**
@@ -31,9 +38,10 @@ void TestActors::base_attack() {
 */
 void TestActors::base_defense() {
     int cnf_def = cnf->get_defense();
-    this->dummy = new Actor();
-    assertm(cnf_def == this->dummy->get_defense(), "Actor Defense Mismatch\t<--");
-    BaseCase::log->named_log(__FILE__, "Tested Base Defense Value for Actors");
+    dummy = new Actor();
+    sprintf(output, "%s %s %s", msgHead, "Base Defense Value", msgTail);
+    assertm(cnf_def == dummy->get_defense(), "Actor Defense Mismatch\t<--");
+    BaseCase::log->named_log(__FILE__, output);
 }
 
 /**
@@ -41,50 +49,79 @@ void TestActors::base_defense() {
 */
 void TestActors::base_health() {
     int cnf_hlt = cnf->get_health();
-    this->dummy = new Actor();
-    assert(cnf_hlt == this->dummy->get_health());
-    BaseCase::log->named_log(__FILE__, "Tested Base Health Value for Actors");
+    sprintf(output, "%s %s %s", msgHead, "Base Health Value", msgTail);
+    dummy = new Actor();
+    assert(cnf_hlt == dummy->get_health());
+    BaseCase::log->named_log(__FILE__, output);
 }
 
 /**
  * Are actors states getting set properly?
 */
 void TestActors::combatstate_idle() { 
-    this->dummy->set_combat_idle();
-    assert(0 == this->dummy->get_combatstate());
-    BaseCase::log->named_log(__FILE__, "Tested Idle Combatstate for Actors");
+    dummy->set_combat_idle();
+    sprintf(output, "%s %s %s", msgHead, "Idle Combatstate", msgTail);
+    assert(IDLE == dummy->get_combatstate());
+    BaseCase::log->named_log(__FILE__, output);
 }
 
 /**
  * Are actors states getting set properly?
 */
-void TestActors::combatstate_patrol() { }
+void TestActors::combatstate_patrol() { 
+    dummy->set_combat_patrol();
+    sprintf(output, "%s %s %s", msgHead, "Patrol Combatstate", msgTail);
+    assert(PATROL == dummy->get_combatstate());
+    BaseCase::log->named_log(__FILE__, output);
+}
 
 /**
  * Are actors states getting set properly?
 */
-void TestActors::combatstate_fight() { }
+void TestActors::combatstate_fight() { 
+    dummy->set_combat_fight();
+    sprintf(output, "%s %s %s", msgHead, "Fight Combatstate", msgTail);
+    assert(FIGHT == dummy->get_combatstate());
+    BaseCase::log->named_log(__FILE__, output);
+}
 
 /**
  * Are actors states getting set properly?
 */
-void TestActors::combatstate_flee() { }
+void TestActors::combatstate_flee() { 
+    dummy->set_combat_flee();
+    sprintf(output, "%s %s %s", msgHead, "Flee Combatstate", msgTail);
+    assert(FLEE == dummy->get_combatstate());
+    BaseCase::log->named_log(__FILE__, output);
+}
 
 /**
  * Are actors states getting set properly?
 */
-void TestActors::combatstate_follow() { }
+void TestActors::combatstate_follow() { 
+    dummy->set_combat_follow();
+    sprintf(output, "%s %s %s", msgHead, "Follow Combatstate", msgTail);
+    assert(FOLLOW == dummy->get_combatstate());
+    BaseCase::log->named_log(__FILE__, output);
+}
 
 
 /**
  * Are actors states getting set properly?
 */
-void TestActors::healthstate_healthy() { }
+void TestActors::healthstate_healthy() { 
+    dummy->set_health_healthy();
+    sprintf(output, "%s %s %s", msgHead, "Healthy Healthstate", msgTail);
+    assert(HEALTHY == dummy->get_healthstate());
+    BaseCase::log->named_log(__FILE__, output);
+}
 
 /**
  * Are actors states getting set properly?
 */
-void TestActors::healthstate_hurting() { }
+void TestActors::healthstate_hurting() { 
+
+}
 
 /**
  * Are actors states getting set properly?

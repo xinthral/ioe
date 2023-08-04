@@ -7,6 +7,10 @@
 class TestActors : public BaseCase {
 protected:
     Actor* dummy;
+    char msgHead[128];
+    char msgTail[128];
+    char output[1024];
+
 public:
     TestActors();
 
