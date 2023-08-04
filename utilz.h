@@ -13,6 +13,6 @@ namespace Utilz {
     std::string HeadString(int, std::string);
     std::string TailString(int, std::string);
     void Strip(std::string&);
-}; // namespace Utilz
+} // namespace Utilz
 
 #endif // UTILZ_H //
