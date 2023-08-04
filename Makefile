@@ -45,7 +45,7 @@ TEST = test
 HELP = help
 EXEC = maji
 DOCS = doc
-UTIL := actor config logger utilz
+UTIL := actor balance combat config logger stage utilz
 LIBRARIES := helpsuite testsuite
 OBJ := $(patsubst %.cpp, %.o, $(wildcard *.cpp))
 

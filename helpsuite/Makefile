@@ -35,7 +35,7 @@ CXXFLAGS = -shared -Wl,-soname,
 
 # Build targets
 EXEC = helper
-UTIL := actor config logger utilz
+UTIL := actor balance combat config logger stage utilz
 
 # GNU Make Compilation Macros: 
 # https://stackoverflow.com/questions/3220277/what-do-the-makefile-symbols-and-mean#3220288

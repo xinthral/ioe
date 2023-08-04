@@ -1,5 +1,5 @@
-#ifndef TESTACTORS_H
-#define TESTACTORS_H
+#ifndef TESTACTOR_H
+#define TESTACTOR_H
 
 #include "basecase.h"
 #include "../actor.h"
@@ -16,4 +16,4 @@ public:
     ~TestActors();
 };
 
-#endif // TESTACTORS_H //
+#endif // TESTACTOR_H //

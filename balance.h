@@ -10,19 +10,20 @@
 // #include "stage.h"
 
 enum Hardness { Vesy, Easy, Norm, Hard, Vard };
-extern const double LEVELS[]; // = {1, 3, 5, 8, 13, 21};
-extern const int MAXLVL; // = 80;
-extern double    BAS;
-extern const int SPN;
-extern const int ATK;
-extern const int DEF;
-// extern const int SKP;
+
+const double LEVELS[] = {1, 3, 5, 8, 13, 21};
 
 class BalanceController {
 protected:
     BalanceController();
 	ConfigManager* cnf;
     Logger* log;
+    const int MAXLVL = 80;
+    double    BAS = 5.0;
+    const int SPN = 8;
+    const int ATK = 24;
+    const int DEF = 32;
+    const int SKP = 1;
 
 private:
     static BalanceController* _singleton;

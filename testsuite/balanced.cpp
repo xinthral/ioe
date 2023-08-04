@@ -1,4 +1,4 @@
-#include "balance.h"
+#include "balanced.h"
 
 TestBalance::TestBalance() {
     BaseCase::log->named_log(__FILE__, "Testing Actors!");
@@ -10,8 +10,6 @@ TestBalance::TestBalance() {
 
 void TestBalance::test_balance() { this->def_atk_ratio(); }
 
-void TestBalance::def_atk_ratio() {
-
-}
+void TestBalance::def_atk_ratio() { }
 
 TestBalance::~TestBalance() {}

@@ -21,8 +21,8 @@ int main(int argc, char const *argv[]) {
 	/* Establish Controlers */
 	ConfigManager* cnf = ConfigManager::GetInstance();
 	BalanceController* bal = BalanceController::GetInstance();
-	StageManager* mgr = StageManager::GetInstance("Jugo");
 	Logger* log = Logger::GetInstance();
+	StageManager* mgr = StageManager::GetInstance("Jugo");
 
 	// cnf->reload_state();
 	// bal->display_state();

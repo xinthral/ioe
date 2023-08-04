@@ -15,6 +15,7 @@ protected:
     BalanceController* bal;
     ConfigManager* cnf;
     Logger* log;
+
 public:
     BaseCase();
     ~BaseCase();
