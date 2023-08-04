@@ -1,8 +1,6 @@
 #include "actors.h"
 
 TestActors::TestActors() {
-    // conf = ConfigManager::GetInstance();
-    // log  = Logger::GetInstance();
     BaseCase::log->named_log(__FILE__, "Testing Actors!");
     this->test_actor();
 }
