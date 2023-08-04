@@ -1,4 +1,5 @@
-/* Like in life, so to in games do we need balance
+/**
+ * Like in life, so to in games do we need balance
  * In order to maintain consistency in a game, you need a universal scale
  * in which you operate from. This module creates a mathematical scalar
  * curve that all statistics can be derived from. y = c^[x/(π^π)]
@@ -15,7 +16,7 @@ std::mutex BalanceController::_mutex;
 BalanceController::BalanceController() {
 	// Load Logger
 	log = Logger::GetInstance();
-	log->named_log(__FILE__, ("BalanceContoller Loaded!"));
+	log->named_log(__FILE__, "BalanceContoller Loaded!");
 
 	// Load Configurations
 	cnf = ConfigManager::GetInstance();
@@ -24,8 +25,9 @@ BalanceController::BalanceController() {
 	int difficulty = cnf->get_difficulty();
 
 	if (difficulty < 0 || difficulty > 5) {
-		printf("level %d. Please Enter a value between 0 and 5\n", difficulty);
-		printf("Error: Instatiating Balance Controller with invalid difficulty\n");
+		sprintf(buf, "level %d. Please Enter a value between 0 and 5\n", difficulty);
+		log->formed_log(buf);
+		log->raw_log(": Instatiating Balance Controller with invalid difficulty\n");
 		exit(-1);
 	}
 
@@ -53,7 +55,7 @@ BalanceController *BalanceController::GetInstance() {
 /**
  * Scalar Function to keep the entire universe in balance
  * y = δ^(χ/[π^π])
- * @return :<double|scalar> - Scaled value based on level
+ * @return Scaled value based on level
 */
 double BalanceController::scalar(int level) {
 	double x = level * 1.0;
@@ -71,23 +73,23 @@ void BalanceController::display_state() {
 	int defense = this->def;
 	
 	sprintf(tmsg, "%*s :: %*s :: %*s", 4, "Lvl", spn, "Attack", spn, "Defense");
-	log->formed_log(tmsg);
+	log->named_log(__FILE__, tmsg);
 	for (int i = 0; i < MAXLVL; i++) {
 		scl = this->scalar(i);
 		sprintf(tmsg, "%*d :: %*.4f :: %*.4f", 4, i, spn, (scl*attack), spn, (scl*defense));
-		log->formed_log(tmsg);
+		log->named_log(__FILE__, tmsg);
 	}
 }
 
 /**
- * Return the Base Scalar Attribute
- * @return :<dbl|base>
+ * Helper Function: Base Scalar Value 
+ * @return Returns Base Scalar Value
 */
 double BalanceController::get_base() { return base; }
 
 /**
- * Return Difficulty Attribute
- * @return :<Hardness||difficulty>
+ * Helper Function: Game Difficulty 
+ * @return Returns difficulty level
 */
 Hardness BalanceController::get_difficulty() { return this->DIF; }
 

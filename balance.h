@@ -7,7 +7,6 @@
 #include <stdio.h>
 #include "config.h"
 #include "logger.h"
-// #include "stage.h"
 
 enum Hardness { Vesy, Easy, Norm, Hard, Vard };
 
@@ -29,6 +28,7 @@ private:
     static BalanceController* _singleton;
     static std::mutex _mutex;
     Hardness  DIF;
+    char buf[256];
 
 public:
     // Singletons should not be cloneable
