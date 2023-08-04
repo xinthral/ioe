@@ -47,14 +47,11 @@ UTIL := actor config logger utilz
 # Ask gnuMake to return a list of *.o files from their source counterpart
 SRCFILES := $(patsubst %.cpp, %.o, $(wildcard *.cpp))
 SRCFILES += $(foreach d, $(UTIL), ../$d.o)
-SHAREDFL := lib$(EXEC).so.1
+SHAREDFL := libtestsuite.so.1
 
 # Compile Full TestSuite 
-testsuite: $(EXEC) 
-
-# using pattern substitution and the wildcard macro
-tester: $(SRCFILES) 
-	$(CC) $(CFLAGS) $(CXFLAGS) -o $@ $^
+testsuite: $(SRCFILES) 
+	$(CC) $(CFLAGS) $(CXFLAGS) $^ -o $(EXEC) 
 
 library: $(SRCFILES)
 	$(CC) $(CFLAGS) -o $(SHAREDFL).1 $^ $(CXXFLAGS)$(SHAREDFL)

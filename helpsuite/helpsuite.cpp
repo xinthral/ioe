@@ -3,7 +3,7 @@
  * a commandline utility for quick reference while developing 
  * or debugging.
 */
-#include "helper.h"
+#include "helpsuite.h"
 
 /**
  * Default Constructor
