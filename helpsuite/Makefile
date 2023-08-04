@@ -51,7 +51,7 @@ SHAREDFL := libhelpsuite.so.1
 
 # Compile Full HelpSuite 
 helpsuite: $(SRCFILES) 
-	$(CC) $(CFLAGS) $(CXFLAGS) $^ -o $(EXEC)
+	$(CC) $(CFLAGS) $(CXFLAGS) $^ -o ../$(EXEC)
 
 library: $(SRCFILES)
 	$(CC) $(CFLAGS) -o $(SHAREDFL).1 $^ $(CXXFLAGS)$(SHAREDFL)

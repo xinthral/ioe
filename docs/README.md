@@ -12,8 +12,8 @@ detailing the entirety of the project.
 
 #### TestSuite and debuggers delight:
  > make test;
- > ./testsuite/tester;
+ > ./tester;
 
 #### HelpSuite, thar be treasure: 
  > make help;
- > ./helpsuite/helper;
+ > ./helper;
