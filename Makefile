@@ -65,11 +65,11 @@ $(EXEC): $(OBJ)
 
 # Compile TestSuite
 $(TEST): $(patsubst %.cpp, %.o, $(UTIL *.cpp)) 
-	$(MAKE) -C ./testsuite
+	$(MAKE) -C ./suitetest
 
 # Compile HelpSuite
 $(HELP): $(patsubst %.cpp, %.o, $(UTIL *.cpp))
-	$(MAKE) -C ./helpsuite
+	$(MAKE) -C ./suitehelp
 
 # Compile Documents 
 $(DOCS): docs/conf.dox 
