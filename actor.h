@@ -7,8 +7,24 @@
 #include "utilz.h"
 
 // Actor States
-enum CombatState { IDLE, PATROL, FIGHT, FLEE, FOLLOW };
-enum HealthState { HEALTHY, HURTING, CRITICAL, SICK, DEAD };
+enum CombatState { 
+    IDLE, 
+    PATROL, 
+    FIGHT, 
+    FLEE, 
+    HIDE, 
+    FOLLOW 
+};
+extern enum CombatState combatState;
+
+enum HealthState { 
+    HEALTHY, 
+    HURTING, 
+    CRITICAL, 
+    SICK, 
+    DEAD 
+};
+extern enum HealthState healthState;
 
 class Actor {
 protected:
