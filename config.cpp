@@ -29,9 +29,9 @@ ConfigManager* ConfigManager::GetInstance() {
 
 /**
  * Injest Setting into struct, and return struct size.
- * @param :<str|option> - The Key value for lookup
- * @param :<str|value> - The data value associated with the key
- * @return :<int|size>
+ * @param[in] option The Key value for lookup
+ * @param[in] value  The data value associated with the key
+ * @return Returns current config queue size 
 */
 size_t ConfigManager::add_setting(const std::string& option, const std::string& value) {
     settings[option] = value;
@@ -56,8 +56,8 @@ void ConfigManager::reload_state() {
 
 /**
  * Return the Value of a Configuration Option 
- * @param :<str|option> - The name of the Configuration Option
- * @return :<str|value> - The value related to input key
+ * @param[in] option The name of the Configuration Option
+ * @return The value related to input key
  */
 std::string ConfigManager::raw_config(const std::string& option) {
     return settings[option];
@@ -65,7 +65,7 @@ std::string ConfigManager::raw_config(const std::string& option) {
 
 /**
  * Helper Function: Version
- * @return :<str|version> - Return game version
+ * @return Return game version
 */
 std::string ConfigManager::get_version() {
 return this->raw_config("VERSION");
@@ -73,7 +73,7 @@ return this->raw_config("VERSION");
 
 /**
  * Helper Function: Base Scalar
- * @return :<int|scalar> - Return base scalar value 
+ * @return Return base scalar value 
 */
 int ConfigManager::get_base() {
     return atoi(this->raw_config("BAS").c_str());
@@ -81,7 +81,7 @@ int ConfigManager::get_base() {
 
 /**
  * Helper Function: Attack 
- * @return :<int|value> - Return base attack value 
+ * @return Return base attack value 
  */
 int ConfigManager::get_attack() {
     return atoi(this->raw_config("ATK").c_str());
@@ -89,7 +89,7 @@ int ConfigManager::get_attack() {
 
 /**
  * Helper Function: Defense 
- * @return :<int|value> - Return base defense value 
+ * @return Return base defense value 
  */
 int ConfigManager::get_defense() {
     return atoi(this->raw_config("DEF").c_str());
@@ -97,7 +97,7 @@ int ConfigManager::get_defense() {
 
 /**
  * Helper Function: Difficulty
- * @return :<int|value> - Return base difficulty value
+ * @return Return base difficulty value
 */
 int ConfigManager::get_difficulty() {
     return atoi(this->raw_config("DIF").c_str());
@@ -105,7 +105,7 @@ int ConfigManager::get_difficulty() {
 
 /**
  * Helper Function: Health
- * @return :<int|value> - Return base health value 
+ * @return Return base health value 
  */
 int ConfigManager::get_health() {
     return atoi(this->raw_config("HLT").c_str());
@@ -113,8 +113,8 @@ int ConfigManager::get_health() {
 
 /**
  * Reads in Config File and Parses Options
- * @param :<bool|flag> - Debugging Option
- * @return :<bool|value> - confirming count
+ * @param[in] _debug Debugging Option
+ * @return Confirmation that all values were loaded
  */
 bool ConfigManager::load_config(bool _debug) {
     char* buf;
