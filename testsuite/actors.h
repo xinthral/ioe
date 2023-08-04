@@ -10,9 +10,26 @@ protected:
 public:
     TestActors();
     void test_actor();
+
+    // Test Stats
     void base_attack();
     void base_defense(); 
     void base_health();
+
+    // Test Combat States
+    void combatstate_idle();
+    void combatstate_patrol();
+    void combatstate_fight();
+    void combatstate_flee();
+    void combatstate_follow();
+
+    // Test Health States
+    void healthstate_healthy();
+    void healthstate_hurting();
+    void healthstate_critical();
+    void healthstate_sick();
+    void healthstate_dead();
+
     ~TestActors();
 };
 

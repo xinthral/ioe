@@ -44,4 +44,55 @@ void TestActors::base_health() {
     BaseCase::log->named_log(__FILE__, "Tested Base Health Value for Actors");
 }
 
+/**
+ * FIXME
+*/
+void TestActors::combatstate_idle() { }
+
+/**
+ * FIXME
+*/
+void TestActors::combatstate_patrol() { }
+
+/**
+ * FIXME
+*/
+void TestActors::combatstate_fight() { }
+
+/**
+ * FIXME
+*/
+void TestActors::combatstate_flee() { }
+
+/**
+ * FIXME
+*/
+void TestActors::combatstate_follow() { }
+
+
+/**
+ * FIXME
+*/
+void TestActors::healthstate_healthy() { }
+
+/**
+ * FIXME
+*/
+void TestActors::healthstate_hurting() { }
+
+/**
+ * FIXME
+*/
+void TestActors::healthstate_critical() { }
+
+/**
+ * FIXME
+*/
+void TestActors::healthstate_sick() { }
+
+/**
+ * FIXME
+*/
+void TestActors::healthstate_dead() { }
+
 TestActors::~TestActors() {}
