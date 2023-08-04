@@ -81,8 +81,9 @@ build: $(OBJ)
 
 # Compile Full porgram
 all: $(EXEC) $(TEST) $(HELP) $(DOCS) 
-	$(call ./docs/library_linker.bat)
-	$(shell ./docs/library_linker.sh)
+
+# $(call ./docs/library_linker.bat)
+# $(shell ./docs/library_linker.sh)
 
 # Template function to compile defined objects files
 # Dynamically assign *.o to be compiled from its source counterpart
