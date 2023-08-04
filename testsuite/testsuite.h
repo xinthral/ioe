@@ -12,6 +12,7 @@ public:
     TestSuite();
     void CaseActor();
     void CaseBalance();
+    void CaseCombat();
     ~TestSuite();
 };
 
