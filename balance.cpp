@@ -20,6 +20,7 @@ BalanceController::BalanceController() {
 	// Load Configurations
 	cnf = ConfigManager::GetInstance();
 	log = Logger::GetInstance();
+	base = cnf->get_base();
 	int difficulty = cnf->get_difficulty();
 
 	if (difficulty < 0 || difficulty > 5) {
@@ -29,12 +30,12 @@ BalanceController::BalanceController() {
 	}
 
 	switch(difficulty) {
-		case 1: { DIF = Vesy; BAS = LEVELS[1]; break; }
-		case 2: { DIF = Easy; BAS = LEVELS[2]; break; }
-		case 3: { DIF = Norm; BAS = LEVELS[3]; break; }
-		case 4: { DIF = Hard; BAS = LEVELS[4]; break; } 
-		case 5: { DIF = Vard; BAS = LEVELS[5]; break; } 
-		default  : { BAS = LEVELS[0]; break; }
+		case 1: { DIF = Vesy; base = LEVELS[1]; break; }
+		case 2: { DIF = Easy; base = LEVELS[2]; break; }
+		case 3: { DIF = Norm; base = LEVELS[3]; break; }
+		case 4: { DIF = Hard; base = LEVELS[4]; break; } 
+		case 5: { DIF = Vard; base = LEVELS[5]; break; } 
+		default  : { base = LEVELS[0]; break; }
 	}
 }
 
@@ -56,7 +57,7 @@ BalanceController *BalanceController::GetInstance() {
 */
 double BalanceController::scalar(int level) {
 	double x = level * 1.0;
-	return pow(BAS, (x / pow(M_PI, M_PI)));
+	return pow(base, (x / pow(M_PI, M_PI)));
 }
 
 /**
@@ -65,16 +66,16 @@ double BalanceController::scalar(int level) {
 void BalanceController::display_state() {
 	double scl = 0.0;
 	char tmsg[2048];
-	sprintf(tmsg, "%*s :: %*s :: %*s", 4, "Lvl", SPN, "Attack", SPN, "Defense");
+	sprintf(tmsg, "%*s :: %*s :: %*s", 4, "Lvl", span, "Attack", span, "Defense");
 	log->formed_log(tmsg);
 	for (int i = 0; i < MAXLVL; i++) {
 		scl = this->scalar(i);
-		sprintf(tmsg, "%*d :: %*.4f :: %*.4f", 4, i, SPN, (scl*ATK), SPN, (scl*DEF));
+		sprintf(tmsg, "%*d :: %*.4f :: %*.4f", 4, i, span, (scl*atk), span, (scl*def));
 		log->formed_log(tmsg);
 	}
 }
 
-double BalanceController::get_base() { return BAS; }
+double BalanceController::get_base() { return base; }
 
 Hardness BalanceController::get_difficulty() { return this->DIF; }
 

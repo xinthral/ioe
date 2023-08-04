@@ -18,12 +18,12 @@ protected:
     BalanceController();
 	ConfigManager* cnf;
     Logger* log;
-    const int MAXLVL = 80;
-    double    BAS = 5.0;
-    const int SPN = 8;
-    const int ATK = 24;
-    const int DEF = 32;
-    const int SKP = 1;
+    int MAXLVL = 80;
+    double base = 5.0;
+    int span = 8;
+    int atk = 24;
+    int def = 32;
+    int hlt = 100;
 
 private:
     static BalanceController* _singleton;
