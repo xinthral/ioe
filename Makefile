@@ -100,9 +100,15 @@ clean:
 	$(foreach d, $(LIBRARIES), $(MAKE) clean -C $d &&) true 2>&1 >/dev/null
 
 cleanall:
+ifeq ($(OS), Windows_NT)
 	$(RRM) html
 	$(RRM) latex
 	$(RRM) lib
+else
+	$(RRM) html/*
+	$(RRM) latex/*
+	$(RRM) lib/*
+endif
 	$(MAKE) clean
 # $(delink)
 
