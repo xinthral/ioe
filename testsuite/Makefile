@@ -25,7 +25,7 @@ endif
 #  	-no-pie 								- do not produce a position-independent executable
 #	-fPIC									- Format position-independent code
 # Standard Compiler Options
-CFLAGS = -g -Wno-format -Wno-sign-compare -std=c++17 
+CFLAGS = -g -Wno-format -Wno-sign-compare -Wno-maybe-uninitialized -std=c++17 
 
 # Extended Compiler Options
 CXFLAGS = -Wall -pedantic -O3 -fPIC
@@ -53,13 +53,16 @@ SHAREDFL := lib$(EXEC).so.1
 testsuite: $(EXEC) 
 
 # using pattern substitution and the wildcard macro
-$(EXEC): $(SRCFILES) 
-	$(CC) $(CFLAGS) -o ../lib/$(SHAREDFL).1 $^ $(CXXFLAGS)$(SHAREDFL)
+tester: $(SRCFILES) 
+	$(CC) $(CFLAGS) $(CXFLAGS) -o $@ $^
+
+library: $(SRCFILES)
+	$(CC) $(CFLAGS) -o $(SHAREDFL).1 $^ $(CXXFLAGS)$(SHAREDFL)
 
 # Template function to compile defined objects files
 # Dynamically assign *.o to be compiled from its source counterpart
 %.o: %.cpp %.h
-	$(CC) $(CFLAGS) $(CXFLAGS) -c -o $@ $< 
+	$(CC) $(CFLAGS) $(CXFLAGS) -c -o $@ $<
 
 clean:
 	$(RM) *.o *.so* *.a *.i *.exe *.stackdump $(EXEC) 

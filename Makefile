@@ -4,6 +4,8 @@
 # in a directory dynamically.
 #**************************************/
 
+#pragma GCC diagnostic ignored "-Wmaybe-uniitialized"
+
 # the compiler: gcc for C programs, g++ for C++ programs
 CC = g++
 DOXYGEN := doxygen
@@ -27,10 +29,10 @@ endif
 #  	-no-pie 								- do not produce a position-independent executable
 #	-fPIC									- Format position-independent code
 # Standard Compiler Options
-CFLAGS = -g -Wno-format -Wno-sign-compare
+CFLAGS = -g -Wno-format -Wno-sign-compare -Wno-maybe-uninitialized
 
 # Extended Compiler Options
-CXFLAGS = $(CFLAGS) -std=c++17
+CXFLAGS = $(CFLAGS) -std=c++17 
 
 # Extra Compiler Options
 CXXFLAGS = $(CXFLAGS) -Wall -pedantic -O3
@@ -78,11 +80,17 @@ build: $(OBJ)
 
 # Compile Full porgram
 all: $(EXEC) $(TEST) $(HELP) $(DOCS) 
+	$(call ./docs/library_linker.bat)
+	$(shell ./docs/library_linker.sh)
 
 # Template function to compile defined objects files
 # Dynamically assign *.o to be compiled from its source counterpart
 %.o: %.cpp %.h
 	$(CC) $(CXFLAGS) -c -o $@ $< 
+
+delink:
+	$(shell unlink lib/*)
+	$(call rmdir lib/*)
 
 clean:
 	$(RM) *.exe *.stackdump $(EXEC) 
@@ -90,9 +98,10 @@ clean:
 	$(foreach d, $(LIBRARIES), $(MAKE) clean -C $d &&) true 2>&1 >/dev/null
 
 cleanall:
-	$(RM) lib/*
-	$(RM) build/*
-	$(RRM) html latex
 	$(MAKE) clean
+	$(RRM) html
+	$(RRM) latex
+# $(RRM) lib
+# $(delink)
 
-.PHONY: all build cleanall clean helper tester maji
+.PHONY: all build cleanall clean delink helper maji tester 

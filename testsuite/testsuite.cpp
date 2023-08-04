@@ -4,7 +4,7 @@
  * providing a command line utility for reference when
  * developing or debugging.
 */
-#include "test.h"
+#include "testsuite.h"
 
 /**
  * Default Constructor
@@ -40,7 +40,7 @@ void TestSuite::actor_base_attack() {
 void TestSuite::actor_base_defense() {
     int cnf_def = conf->get_defense();
     dummy = new Actor();
-    assertm(cnf_def != dummy->get_defense(), "Actor Defense Mismatch\t<--");
+    assertm(cnf_def == dummy->get_defense(), "Actor Defense Mismatch\t<--");
     log->named_log(__FILE__, "Tested Base Defense Value for Actors");
 }
 

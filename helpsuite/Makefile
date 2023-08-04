@@ -25,7 +25,7 @@ endif
 #  	-no-pie 								- do not produce a position-independent executable
 #	-fPIC									- Format position-independent code
 # Standard Compiler Options
-CFLAGS = -g -Wno-format -Wno-sign-compare -std=c++17 
+CFLAGS = -g -Wno-format -Wno-sign-compare -Wno-maybe-uninitialized -std=c++17 
 
 # Extended Compiler Options
 CXFLAGS = -Wall -pedantic -O3 -fPIC
@@ -54,7 +54,10 @@ helpsuite: $(EXEC)
 
 # using pattern substitution and the wildcard macro
 $(EXEC): $(SRCFILES) 
-	$(CC) $(CFLAGS) -o ../lib/$(SHAREDFL).1 $^ $(CXXFLAGS)$(SHAREDFL)
+	$(CC) $(CFLAGS) $(CXFLAGS) -o $@ $^
+
+library: $(SRCFILES)
+	$(CC) $(CFLAGS) -o $(SHAREDFL).1 $^ $(CXXFLAGS)$(SHAREDFL)
 
 # Template function to compile defined objects files
 # Dynamically assign *.o to be compiled from its source counterpart

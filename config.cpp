@@ -83,16 +83,20 @@ int ConfigManager::get_health() {
  * @return: <bool|value> - confirming count
  */
 bool ConfigManager::load_config(bool _debug) {
+    char* buf;
     std::size_t pos;                                // Positional Pointer for delimeter
     std::string row;                                // Temporary File Row Storage
     std::string opt;                                // Settings Option
     std::string val;                                // Settings Value
-    std::size_t qsize;                              // Current Size of Queue
+    std::size_t qsize = 0;                          // Current Size of Queue
     int cnt = 0;
     conf.open("engine.ini");                        // Open INI file for reading
     while (std::getline(conf, row)) {
         // DEBUG Line
-        if (_debug) { log->named_log(__FILE__, ("%d: %s\n", cnt++, row.c_str())); }
+        if (_debug) { 
+            sprintf(buf, "%d: %s\n", cnt++, row.c_str()); 
+            log->named_log(__FILE__, buf);
+        }
         pos = row.find(delim);                      // Locate Delimiter
         if (pos != std::string::npos){
             opt = row.substr(0, pos);               // Grab Option Name
