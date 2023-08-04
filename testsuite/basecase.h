@@ -3,7 +3,7 @@
 
 #include <cassert>
 #include <iostream>
-#include "../actor.h"
+#include "../balance.h"
 #include "../config.h"
 #include "../logger.h"
 
@@ -12,9 +12,9 @@
 
 class BaseCase {
 protected:
-    ConfigManager* conf;
+    BalanceController* bal;
+    ConfigManager* cnf;
     Logger* log;
-    Actor* dummy;
 public:
     BaseCase();
     ~BaseCase();
