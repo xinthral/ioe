@@ -9,6 +9,8 @@ protected:
     Actor* dummy;
 public:
     TestActors();
+
+    // Feet to the fire
     void test_actor();
 
     // Test Stats

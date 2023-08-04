@@ -12,6 +12,8 @@ void TestActors::test_actor() {
     this->base_attack();
     this->base_defense();
     this->base_health();
+
+    this->combatstate_idle();
 }
 
 /**
@@ -45,53 +47,57 @@ void TestActors::base_health() {
 }
 
 /**
- * FIXME
+ * Are actors states getting set properly?
 */
-void TestActors::combatstate_idle() { }
+void TestActors::combatstate_idle() { 
+    this->dummy->set_combat_idle();
+    assert(0 == this->dummy->get_combatstate());
+    BaseCase::log->named_log(__FILE__, "Tested Idle Combatstate for Actors");
+}
 
 /**
- * FIXME
+ * Are actors states getting set properly?
 */
 void TestActors::combatstate_patrol() { }
 
 /**
- * FIXME
+ * Are actors states getting set properly?
 */
 void TestActors::combatstate_fight() { }
 
 /**
- * FIXME
+ * Are actors states getting set properly?
 */
 void TestActors::combatstate_flee() { }
 
 /**
- * FIXME
+ * Are actors states getting set properly?
 */
 void TestActors::combatstate_follow() { }
 
 
 /**
- * FIXME
+ * Are actors states getting set properly?
 */
 void TestActors::healthstate_healthy() { }
 
 /**
- * FIXME
+ * Are actors states getting set properly?
 */
 void TestActors::healthstate_hurting() { }
 
 /**
- * FIXME
+ * Are actors states getting set properly?
 */
 void TestActors::healthstate_critical() { }
 
 /**
- * FIXME
+ * Are actors states getting set properly?
 */
 void TestActors::healthstate_sick() { }
 
 /**
- * FIXME
+ * Are actors states getting set properly?
 */
 void TestActors::healthstate_dead() { }
 
