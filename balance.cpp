@@ -52,7 +52,7 @@ BalanceController *BalanceController::GetInstance() {
 
 /**
  * Scalar Function to keep the entire universe in balance
- * y = δ(χ/[π^π])
+ * y = δ^(χ/[π^π])
  * @return :<double|scalar> - Scaled value based on level
 */
 double BalanceController::scalar(int level) {
@@ -66,17 +66,29 @@ double BalanceController::scalar(int level) {
 void BalanceController::display_state() {
 	double scl = 0.0;
 	char tmsg[2048];
-	sprintf(tmsg, "%*s :: %*s :: %*s", 4, "Lvl", span, "Attack", span, "Defense");
+	int spn = this->span;
+	int attack = this->atk;
+	int defense = this->def;
+	
+	sprintf(tmsg, "%*s :: %*s :: %*s", 4, "Lvl", spn, "Attack", spn, "Defense");
 	log->formed_log(tmsg);
 	for (int i = 0; i < MAXLVL; i++) {
 		scl = this->scalar(i);
-		sprintf(tmsg, "%*d :: %*.4f :: %*.4f", 4, i, span, (scl*atk), span, (scl*def));
+		sprintf(tmsg, "%*d :: %*.4f :: %*.4f", 4, i, spn, (scl*attack), spn, (scl*defense));
 		log->formed_log(tmsg);
 	}
 }
 
+/**
+ * Return the Base Scalar Attribute
+ * @return :<dbl|base>
+*/
 double BalanceController::get_base() { return base; }
 
+/**
+ * Return Difficulty Attribute
+ * @return :<Hardness||difficulty>
+*/
 Hardness BalanceController::get_difficulty() { return this->DIF; }
 
 /**
@@ -84,4 +96,7 @@ Hardness BalanceController::get_difficulty() { return this->DIF; }
 */
 void BalanceController::_help() { }
 
+/**
+ * Default Deconstructor
+*/
 BalanceController::~BalanceController() {}
