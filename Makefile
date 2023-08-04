@@ -72,7 +72,7 @@ $(HELP): $(patsubst %.cpp, %.o, $(UTIL *.cpp))
 	$(MAKE) -C ./helpsuite
 
 # Compile Documents 
-$(DOCS): docs/conf.dox 
+$(DOCS): docs/conf.dox
 	$(DOXYGEN) $<
 	
 # Build Object files
