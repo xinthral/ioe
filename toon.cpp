@@ -6,23 +6,19 @@
 Toon::Toon() { this->set_id(-1); }
 
 /**
- * @Overload
+ * @overload
  * Constructor Initializor
  * @param :<int|id> - Character Identity Number
 */
 Toon::Toon(int id) { this->set_id(id); }
 
 /**
- * @Override
- * Returns Attack Attribute
- * @return :<int|attack>
+ * @copydoc Actor::get_attack()
 */
 int Toon::get_attack() { return this->attack; }
 
 /**
- * @Override
- * Returns Defense Attribute
- * @return :<int|defense>
+ * @copydoc Actor::get_defense()
 */
 int Toon::get_defense() { return this->defense; }
 

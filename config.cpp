@@ -64,14 +64,16 @@ std::string ConfigManager::raw_config(const std::string& option) {
 }
 
 /**
- * FIXME
+ * Helper Function: Version
+ * @return :<str|version> - Return game version
 */
 std::string ConfigManager::get_version() {
 return this->raw_config("VERSION");
 }
 
 /**
- * FIXME
+ * Helper Function: Base Scalar
+ * @return :<int|scalar> - Return base scalar value 
 */
 int ConfigManager::get_base() {
     return atoi(this->raw_config("BAS").c_str());
