@@ -9,7 +9,7 @@
  * Default Constructor
 */
 HelpSuite::HelpSuite() {
-    cm = ConfigManager::GetInstance();
+    cnf = ConfigManager::GetInstance();
     log = Logger::GetInstance();
     log->named_log(__FILE__, "Helper Loaded!");
 }

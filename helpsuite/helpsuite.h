@@ -7,7 +7,7 @@
 
 class HelpSuite {
 protected:
-    ConfigManager* cm;
+    ConfigManager* cnf;
     Logger* log;
 public:
     HelpSuite();
