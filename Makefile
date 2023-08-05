@@ -41,13 +41,12 @@ CXXFLAGS = $(CXFLAGS) -Wall -pedantic -O3
 SHELL := /bin/bash
 
 # Build targets
-TEST = test
-HELP = help
 EXEC = maji 
 ENGN = engine
+TEST = test
+HELP = help
 DOCS = doc
-LIBRARIES := engine helpsuite testsuite
-OBJ := $(patsubst %.cpp, %.o, $(wildcard *.cpp))
+LIBRARIES := helpsuite testsuite core
 
 # GNU Make Compilation Macros: 
 # https://stackoverflow.com/questions/3220277/what-do-the-makefile-symbols-and-mean#3220288
@@ -72,9 +71,6 @@ $(HELP):
 $(DOCS): docs/conf.dox
 	$(DOXYGEN) $<
 	
-# Build Object files
-build: $(OBJ)
-
 # Compile Full porgram
 all: $(ENGN) $(TEST) $(HELP) $(DOCS) 
 
@@ -86,19 +82,22 @@ all: $(ENGN) $(TEST) $(HELP) $(DOCS)
 clean:
 	$(RM) *.exe *.stackdump $(EXEC) 
 	$(RM) *.o *.so *.a *.i 
-	$(foreach d, $(LIBRARIES), $(MAKE) clean -C $d &&) true 2>&1 >/dev/null
+
+cleandoc:
+ifeq ($(OS), Windows_NT)
+	$(RRM) docs\html
+	$(RRM) docs\latex
+	$(RRM) docs\lib
+else
+	$(RRM) docs/html/*
+	$(RRM) docs/latex/*
+	$(RRM) docs/lib/*
+endif
 
 cleanall:
-ifeq ($(OS), Windows_NT)
-	$(RRM) html
-	$(RRM) latex
-	$(RRM) lib
-else
-	$(RRM) html/*
-	$(RRM) latex/*
-	$(RRM) lib/*
-endif
+	$(MAKE) cleandoc
 	$(MAKE) clean
+	$(foreach d, $(LIBRARIES), $(MAKE) clean -C $d &&) true 2>&1 >/dev/null
 # $(delink)
 
-.PHONY: all build cleanall clean helper maji tester 
+.PHONY: all build cleanall cleandocs clean helper maji tester 

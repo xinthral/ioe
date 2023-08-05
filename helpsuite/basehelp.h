@@ -1,9 +1,9 @@
 #ifndef BASEHELP_H
 #define BASEHELP_H
 
-#include "../config.h"
-#include "../balance.h"
-#include "../logger.h"
+#include "../core/config.h"
+#include "../core/balance.h"
+#include "../core/logger.h"
 
 class BaseHelp {
 protected:

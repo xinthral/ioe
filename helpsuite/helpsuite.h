@@ -2,8 +2,9 @@
 #define HELPER_H
 
 #include <stdio.h>
-#include "../config.h"
-#include "../logger.h"
+#include "../core/config.h"
+#include "../core/logger.h"
+#include "../core/utilz.h"
 
 class HelpSuite {
 protected:

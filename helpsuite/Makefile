@@ -56,7 +56,7 @@ SHAREDFL := libhelpsuite.so.1
 
 # Ask gnuMake to return a list of *.o files from their source counterpart
 SRCFILES := $(patsubst %.cpp, %.o, $(wildcard *.cpp))
-SRCFILES += $(foreach d, $(UTIL), ../$d.o)
+SRCFILES += $(foreach d, $(UTIL), ../core/$d.o)
 SHAREDFL := libhelpsuite.so.1
 
 # Compile Full HelpSuite 

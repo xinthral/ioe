@@ -34,7 +34,7 @@ CXFLAGS = $(CFLAGS) -std=c++17
 CXXFLAGS = $(CXFLAGS) -Wall -pedantic -O3
 
 # Build targets
-EXEC = core
+EXEC = engine 
 ifeq ($(OS), Windows_NT)
 EXECLOC := ..\$(EXEC)
 else
