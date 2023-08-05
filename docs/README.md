@@ -8,16 +8,24 @@ undeterred. Taking my lumps along the way, we press on....more to come.
 #### Documentation in HTML format: 
 Using Doxygen document generation, you can make a library of web browsable documents
 detailing the entirety of the project.
+```bash
  > make doc;
+```
 
 #### Core Engine, vrooom: 
-> make engine;
-> ./core;
+```bash
+ > make engine;
+ > ./core;
+```
 
 #### TestSuite and debuggers delight:
-> make test;
-> ./tester;
+```bash
+ > make test;
+ > ./tester;
+```
 
 #### HelpSuite, thar be treasure: 
-> make help;
-> ./helper;
+```bash
+ > make help;
+ > ./helper;
+```
