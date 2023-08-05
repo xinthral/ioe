@@ -8,7 +8,14 @@
 /**
  * Default Constructor
 */
-HelpSuite::HelpSuite() {
+HelpSuite::HelpSuite() { }
+
+/**
+ * @overload
+ * Debugging Constructor
+ * @param[in] _debug Debugging option 
+*/
+HelpSuite::HelpSuite(bool _debug) {
     cnf = ConfigManager::GetInstance();
     log = Logger::GetInstance();
     log->named_log(__FILE__, "Helper Loaded!");

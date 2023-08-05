@@ -11,6 +11,7 @@ protected:
     Logger* log;
 public:
     HelpSuite();
+    HelpSuite(bool);
     ~HelpSuite();
 };
 
