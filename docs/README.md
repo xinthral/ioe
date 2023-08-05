@@ -9,23 +9,23 @@ undeterred. Taking my lumps along the way, we press on....more to come.
 Using Doxygen document generation, you can make a library of web browsable documents
 detailing the entirety of the project.
 ```bash
- > make doc;
+make doc;
 ```
 
 #### Core Engine, vrooom: 
 ```bash
- > make engine;
- > ./core;
+make engine;
+./core;
 ```
 
 #### TestSuite and debuggers delight:
 ```bash
- > make test;
- > ./tester;
+make test;
+./tester;
 ```
 
 #### HelpSuite, thar be treasure: 
 ```bash
- > make help;
- > ./helper;
+make help;
+./helper;
 ```
