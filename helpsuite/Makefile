@@ -35,8 +35,17 @@ CXXFLAGS = -shared -Wl,-soname,
 
 # Build targets
 EXEC    := helper
-EXECLOC := ..\\$(EXEC)
+ifeq ($(OS), Windows_NT)
+EXECLOC := ..\$(EXEC)
+else
+EXECLOC := ../$(EXEC)
+endif
 UTIL := actor balance combat config logger stage utilz
+
+# Ask gnuMake to return a list of *.o files from their source counterpart
+SRCFILES := $(patsubst %.cpp, %.o, $(wildcard *.cpp))
+SRCFILES += $(foreach d, $(UTIL), ../$d.o)
+SHAREDFL := libhelpsuite.so.1
 
 # GNU Make Compilation Macros: 
 # https://stackoverflow.com/questions/3220277/what-do-the-makefile-symbols-and-mean#3220288

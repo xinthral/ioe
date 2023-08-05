@@ -3,9 +3,9 @@
 
 #include <cassert>
 #include <iostream>
-#include "../balance.h"
-#include "../config.h"
-#include "../logger.h"
+#include "../engine/balance.h"
+#include "../engine/config.h"
+#include "../engine/logger.h"
 
 // Compiler/Linter hint
 #define assertm(exp, msg) assert(((void)msg, exp))

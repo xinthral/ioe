@@ -40,7 +40,6 @@ EXECLOC := ..\$(EXEC)
 else
 EXECLOC := ../$(EXEC)
 endif
-
 UTIL    := actor balance combat config logger stage utilz
 
 # GNU Make Compilation Macros: 
@@ -52,7 +51,7 @@ UTIL    := actor balance combat config logger stage utilz
 
 # Ask gnuMake to return a list of *.o files from their source counterpart
 SRCFILES := $(patsubst %.cpp, %.o, $(wildcard *.cpp))
-SRCFILES += $(foreach d, $(UTIL), ../$d.o)
+SRCFILES += $(foreach d, $(UTIL), ../engine/$d.o)
 SHAREDFL := libtestsuite.so.1
 
 # Compile Full TestSuite 

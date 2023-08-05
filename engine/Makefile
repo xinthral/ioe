@@ -8,15 +8,11 @@
 
 # the compiler: gcc for C programs, g++ for C++ programs
 CC = g++
-DOXYGEN := doxygen
-RRM := rm -rf
 
 # Windows Variants
 ifeq ($(OS), Windows_NT)
 CC = c++
-DOXYGEN := doxygen.exe
 RM = del
-RRM := del /S /Q /f
 endif
 
 # https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html
@@ -37,18 +33,18 @@ CXFLAGS = $(CFLAGS) -std=c++17
 # Extra Compiler Options
 CXXFLAGS = $(CXFLAGS) -Wall -pedantic -O3
 
-# Set GNU Shell
-SHELL := /bin/bash
-
 # Build targets
-TEST = test
-HELP = help
-EXEC = maji 
-ENGN = engine
-DOCS = doc
-UTIL := actor balance combat config engine logger stage utilz
-LIBRARIES := engine helpsuite testsuite
-OBJ := $(patsubst %.cpp, %.o, $(wildcard *.cpp))
+EXEC = core
+ifeq ($(OS), Windows_NT)
+EXECLOC := ..\$(EXEC)
+else
+EXECLOC := ../$(EXEC)
+endif
+
+# Ask gnuMake to return a list of *.o files from their source counterpart
+SRCFILES := $(patsubst %.cpp, %.o, $(wildcard *.cpp))
+# SRCFILES += $(foreach d, $(UTIL), ../$d.o)
+SHAREDFL := libhelpsuite.so.1
 
 # GNU Make Compilation Macros: 
 # https://stackoverflow.com/questions/3220277/what-do-the-makefile-symbols-and-mean#3220288
@@ -57,27 +53,15 @@ OBJ := $(patsubst %.cpp, %.o, $(wildcard *.cpp))
 # $< evaluates to library.cpp
 # $^ evaluates to library.cpp main.cpp
 
+# Ask gnuMake to return a list of *.o files from their source counterpart
+# SRCFILES := $(patsubst %.cpp, %.o, $(wildcard *.cpp))
+
 # Compile Engine
-$(ENGN): 
-	$(MAKE) -C engine
+engine: $(SRCFILES)
+	$(CC) $(CXXFLAGS) $^ -o $(EXECLOC)
 
-# Compile TestSuite
-$(TEST): 
-	$(MAKE) -C testsuite
-
-# Compile HelpSuite
-$(HELP): 
-	$(MAKE) -C helpsuite
-
-# Compile Documents 
-$(DOCS): docs/conf.dox
-	$(DOXYGEN) $<
-	
 # Build Object files
-build: $(OBJ)
-
-# Compile Full porgram
-all: $(ENGN) $(TEST) $(HELP) $(DOCS) 
+build: $(SRFFILES)
 
 # Template function to compile defined objects files
 # Dynamically assign *.o to be compiled from its source counterpart
@@ -85,21 +69,4 @@ all: $(ENGN) $(TEST) $(HELP) $(DOCS)
 	$(CC) $(CXFLAGS) -c -o $@ $< 
 
 clean:
-	$(RM) *.exe *.stackdump $(EXEC) 
-	$(RM) *.o *.so *.a *.i 
-	$(foreach d, $(LIBRARIES), $(MAKE) clean -C $d &&) true 2>&1 >/dev/null
-
-cleanall:
-ifeq ($(OS), Windows_NT)
-	$(RRM) html
-	$(RRM) latex
-	$(RRM) lib
-else
-	$(RRM) html/*
-	$(RRM) latex/*
-	$(RRM) lib/*
-endif
-	$(MAKE) clean
-# $(delink)
-
-.PHONY: all build cleanall clean delink helper maji tester 
+	$(RM) *.o *.so *.a *.i *.exe *.stackdump $(EXECLOC) 
