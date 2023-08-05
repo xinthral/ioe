@@ -34,8 +34,14 @@ CXFLAGS = -Wall -pedantic -O3 -fPIC
 CXXFLAGS = -shared -Wl,-soname,
 
 # Build targets
-EXEC = tester
-UTIL := actor balance combat config logger stage utilz
+EXEC    := tester
+ifeq ($(OS), Windows_NT)
+EXECLOC := ..\$(EXEC)
+else
+EXECLOC := ../$(EXEC)
+endif
+
+UTIL    := actor balance combat config logger stage utilz
 
 # GNU Make Compilation Macros: 
 # https://stackoverflow.com/questions/3220277/what-do-the-makefile-symbols-and-mean#3220288
@@ -51,7 +57,7 @@ SHAREDFL := libtestsuite.so.1
 
 # Compile Full TestSuite 
 testsuite: $(SRCFILES) 
-	$(CC) $(CFLAGS) $(CXFLAGS) $^ -o ../$(EXEC) 
+	$(CC) $(CFLAGS) $(CXFLAGS) $^ -o $(EXECLOC) 
 
 library: $(SRCFILES)
 	$(CC) $(CFLAGS) -o $(SHAREDFL).1 $^ $(CXXFLAGS)$(SHAREDFL)
@@ -62,4 +68,4 @@ library: $(SRCFILES)
 	$(CC) $(CFLAGS) $(CXFLAGS) -c -o $@ $<
 
 clean:
-	$(RM) *.o *.so* *.a *.i *.exe *.stackdump $(EXEC) 
+	$(RM) *.o *.so* *.a *.i *.exe *.stackdump $(EXECLOC) 

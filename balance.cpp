@@ -26,7 +26,7 @@ BalanceController::BalanceController() {
 
 	if (difficulty < 0 || difficulty > 5) {
 		sprintf(buf, "level %d. Please Enter a value between 0 and 5\n", difficulty);
-		log->formed_log(buf);
+		log->timed_log(buf);
 		log->raw_log(": Instatiating Balance Controller with invalid difficulty\n");
 		exit(-1);
 	}

@@ -7,6 +7,7 @@
 class Player : private Actor {
 private:
     Logger* log;
+    char buf[1024];
     int level;
     int power;
     int block;

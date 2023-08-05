@@ -33,7 +33,7 @@ void Logger::raw_log(std::string message) {
 /**
  * TimeStamped Logging
 */
-void Logger::formed_log(std::string message) {
+void Logger::timed_log(std::string message) {
     std::string time = Utilz::TimeStamp();
     char tmp[1024];
     std::sprintf(tmp, "%s :: %s", time.c_str(), message.c_str());

@@ -15,6 +15,8 @@ private:
     static const std::string DELIM;
     static Logger* _singleton;
     static std::mutex _mutex;
+    char buf[1024];
+
 public:
     // Singletons should not be cloneable
     Logger(Logger&) = delete;
@@ -23,7 +25,7 @@ public:
     // Singleton Constructor
     static Logger* GetInstance();
     void raw_log(std::string);
-    void formed_log(std::string);
+    void timed_log(std::string);
     void named_log(std::string, std::string); 
     void _help();
     ~Logger();

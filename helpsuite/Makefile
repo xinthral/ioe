@@ -34,7 +34,8 @@ CXFLAGS = -Wall -pedantic -O3 -fPIC
 CXXFLAGS = -shared -Wl,-soname,
 
 # Build targets
-EXEC = helper
+EXEC    := helper
+EXECLOC := ..\\$(EXEC)
 UTIL := actor balance combat config logger stage utilz
 
 # GNU Make Compilation Macros: 
@@ -51,7 +52,7 @@ SHAREDFL := libhelpsuite.so.1
 
 # Compile Full HelpSuite 
 helpsuite: $(SRCFILES) 
-	$(CC) $(CFLAGS) $(CXFLAGS) $^ -o ../$(EXEC)
+	$(CC) $(CFLAGS) $(CXFLAGS) $^ -o $(EXECLOC)
 
 library: $(SRCFILES)
 	$(CC) $(CFLAGS) -o $(SHAREDFL).1 $^ $(CXXFLAGS)$(SHAREDFL)
@@ -62,4 +63,4 @@ library: $(SRCFILES)
 	$(CC) $(CFLAGS) $(CXFLAGS) -c -o $@ $< 
 
 clean:
-	$(RM) *.o *.so* *.a *.i *.exe *.stackdump $(EXEC) 
+	$(RM) *.o *.so* *.a *.i *.exe *.stackdump $(EXECLOC) 

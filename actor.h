@@ -40,6 +40,9 @@ protected:
     int baseDefense;
     int baseHealth;
 
+private:
+    char buf[1024];
+
 public:
     // Constructors
     Actor();

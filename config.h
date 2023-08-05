@@ -22,6 +22,8 @@ private:
     static ConfigManager* _singleton;
     static std::mutex _mutex;
     Logger* log;
+    char buf[1024];
+
 public:
     std::ifstream conf;
     // Singletons should not be cloneable

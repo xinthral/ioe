@@ -9,7 +9,8 @@ std::mutex StageManager::_mutex;
 */
 StageManager::StageManager(const std::string _name) : name(_name) {
     log = Logger::GetInstance();
-    log->named_log(Utilz::FileName(__FILE__), ("StageManager Established: %s", this->name));
+    sprintf(buf, "StageManager Established: %s", this->name);
+    log->named_log(Utilz::FileName(__FILE__), buf);
 }
 
 

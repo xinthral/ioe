@@ -9,8 +9,7 @@
 /**
  * Default Constructor
 */
-TestSuite::TestSuite() {
-}
+TestSuite::TestSuite() { }
 
 /**
  * Initiates the Test for the Actor Module
@@ -30,21 +29,32 @@ void TestSuite::CaseCombat() { }
 /**
  * Default Deconstructor
 */
-TestSuite::~TestSuite() {}
+TestSuite::~TestSuite() { }
+
+/**
+ * Static Function to display help details
+*/
+void print_help() { 
+    Logger* log = Logger::GetInstance();
+    char buf[1024];
+    sprintf(buf, "Usage: %s [NUMBER]\n", Utilz::FileName(__FILE__)); 
+    log->named_log(__FILE__, buf);
+    log->named_log(__FILE__, "\t-:1 - Test Actor Module");
+    log->named_log(__FILE__, "\t-:2 - Test Balance Module");
+    log->named_log(__FILE__, "\t-:3 - Test Combat Module");
+    log->named_log(__FILE__, "\t-:0 - Default Test to rule them all\n");
+    exit(-1);
+}
 
 /**
  * Module Entry Point
 */
 int main(int argc, char const *argv[]) {
-    Logger* log = Logger::GetInstance();
-    char buf[1024];
-    if (argc < 2) {
-        sprintf(buf, "Usage: %s [options]\n", __FILE__); 
-        log->named_log(__FILE__, buf);
-        exit(-1);
-    }
+    if (argc < 2) { print_help(); }
 
     TestSuite ts;
+    Logger* log = Logger::GetInstance();
+    char buf[1024];
     int choice = 0;
     choice = atoi(argv[1]);
     
