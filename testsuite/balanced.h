@@ -2,7 +2,7 @@
 #define TESTBALANCE_H
 
 #include "basecase.h"
-#include "../engine/balance.h"
+#include "../core/balance.h"
 
 class TestBalance : public BaseCase {
 protected:

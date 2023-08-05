@@ -2,7 +2,7 @@
 #define TEST_H
 
 #include <stdio.h>
-#include "../engine/utilz.h"
+#include "../core/utilz.h"
 #include "actors.h"
 #include "balanced.h"
 

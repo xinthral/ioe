@@ -46,7 +46,6 @@ HELP = help
 EXEC = maji 
 ENGN = engine
 DOCS = doc
-UTIL := actor balance combat config engine logger stage utilz
 LIBRARIES := engine helpsuite testsuite
 OBJ := $(patsubst %.cpp, %.o, $(wildcard *.cpp))
 
@@ -59,7 +58,7 @@ OBJ := $(patsubst %.cpp, %.o, $(wildcard *.cpp))
 
 # Compile Engine
 $(ENGN): 
-	$(MAKE) -C engine
+	$(MAKE) -C core 
 
 # Compile TestSuite
 $(TEST): 
@@ -102,4 +101,4 @@ endif
 	$(MAKE) clean
 # $(delink)
 
-.PHONY: all build cleanall clean delink helper maji tester 
+.PHONY: all build cleanall clean helper maji tester 

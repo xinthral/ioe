@@ -2,7 +2,7 @@
 #define TESTACTOR_H
 
 #include "basecase.h"
-#include "../engine/actor.h"
+#include "../core/actor.h"
 
 class TestActors : public BaseCase {
 protected:
