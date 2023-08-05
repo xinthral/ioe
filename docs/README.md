@@ -12,6 +12,7 @@ detailing the entirety of the project.
 
 #### Core Engine, vrooom: 
 > make engine;
+> ./core;
 
 #### TestSuite and debuggers delight:
  > make test;
