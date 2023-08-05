@@ -10,6 +10,9 @@ Using Doxygen document generation, you can make a library of web browsable docum
 detailing the entirety of the project.
  > make doc;
 
+#### Core Engine, vrooom: 
+> make engine;
+
 #### TestSuite and debuggers delight:
  > make test;
  > ./tester;
