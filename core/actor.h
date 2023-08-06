@@ -41,7 +41,7 @@ protected:
     int baseHealth;
 
 private:
-    char buf[1024];
+    char buf[128];
 
 public:
     // Constructors

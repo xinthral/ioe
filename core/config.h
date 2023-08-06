@@ -22,7 +22,7 @@ private:
     static ConfigManager* _singleton;
     static std::mutex _mutex;
     Logger* log;
-    char buf[1024];
+    char buf[128];
 
 public:
     std::ifstream conf;

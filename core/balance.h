@@ -28,7 +28,7 @@ private:
     static BalanceController* _singleton;
     static std::mutex _mutex;
     Hardness  DIF;
-    char buf[256];
+    char buf[128];
 
 public:
     // Singletons should not be cloneable

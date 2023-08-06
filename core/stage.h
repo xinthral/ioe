@@ -15,7 +15,7 @@ private:
     Logger* log;
     std::string name;
     int maxCrew = 10;
-    char buf[1024];
+    char buf[128];
 public:
     // Singletons should not be cloneable
     StageManager(StageManager&) = delete;

@@ -16,7 +16,7 @@ private:
     ConfigManager*      cnf;
     Logger*             log;
     Condition matchup;
-    char buf[1024];
+    char buf[128];
 
 public:
     Combat();
