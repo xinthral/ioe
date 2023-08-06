@@ -1,6 +1,6 @@
 #include "combat.h"
 
-/**
+/*!
  * Default Constructor
 */
 Combat::Combat() {
@@ -11,22 +11,18 @@ Combat::Combat() {
     log->named_log(__FILE__, "Combat has been initiated!");
 }
 
-/**
+/*!
  * @overload
  * EvE Constructor
 */
 Combat::Combat(Toon& combatant1, Toon& combatant2) : Combat() { 
-    // Check Health State
-    if (combatant1.get_health() < 1 && combatant2.get_health() < 1) {
-        exit(-1);
-    }
-    // Check Combat State
-    if (!combatant1.isAlive() || !combatant2.isAlive()) {
-        exit(-1);
-    }
+    //! Check Health State
+    if (combatant1.get_health() < 1 && combatant2.get_health() < 1) { exit(-1); }
+    //! Check Combat State
+    if (!combatant1.isAlive() || !combatant2.isAlive()) { exit(-1); }
     char buf[1024];
     this->matchup = Condition::EvE;
-    // Set Combat State
+    //! Set Combat State
     combatant1.set_combat_fight();
     combatant2.set_combat_fight();
     sprintf(
@@ -37,19 +33,19 @@ Combat::Combat(Toon& combatant1, Toon& combatant2) : Combat() {
     log->named_log(__FILE__, buf);
 }
 
-/**
+/*!
  * @overload
  * PvE Constructor
 */
 Combat::Combat(Player& combatant1, Toon& combatant2) : Combat() { this->matchup = Condition::PvE; }
 
-/**
+/*!
  * @overload
  * PvP Constructor
 */
 Combat::Combat(Player& combatant1, Player& combatant2) : Combat() { this->matchup = Condition::PvP; }
 
-/**
+/*!
  * Initiates Combat
 */
 void Combat::begin_combat() {
@@ -73,7 +69,7 @@ void Combat::begin_combat() {
     } 
 }
 
-/**
+/*!
  * Default Deconstructor
 */
 Combat::~Combat() { }
