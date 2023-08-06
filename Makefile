@@ -80,24 +80,26 @@ all: $(ENGN) $(TEST) $(HELP) $(DOCS)
 	$(CC) $(CXFLAGS) -c -o $@ $< 
 
 clean:
-	$(RM) *.exe *.stackdump $(EXEC) 
+	$(RM) *.stackdump $(EXEC) 
 	$(RM) *.o *.so *.a *.i 
+	$(foreach d, $(LIBRARIES), $(MAKE) clean -C $d &&) true 2>&1 >/dev/null
 
 cleandoc:
 ifeq ($(OS), Windows_NT)
 	$(RRM) docs\html
 	$(RRM) docs\latex
-	$(RRM) docs\lib
+# $(RRM) docs\lib
 else
 	$(RRM) docs/html/*
 	$(RRM) docs/latex/*
-	$(RRM) docs/lib/*
+# $(RRM) docs/lib/*
 endif
 
 cleanall:
+	$(RM) *.exe
 	$(MAKE) cleandoc
 	$(MAKE) clean
-	$(foreach d, $(LIBRARIES), $(MAKE) clean -C $d &&) true 2>&1 >/dev/null
+	$(foreach d, $(LIBRARIES), $(MAKE) cleanall -C $d &&) true 2>&1 >/dev/null
 # $(delink)
 
-.PHONY: all build cleanall cleandocs clean helper maji tester 
+.PHONY: all build cleanall cleandoc clean helper maji tester 

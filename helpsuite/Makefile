@@ -72,4 +72,8 @@ library: $(SRCFILES)
 	$(CC) $(CFLAGS) $(CXFLAGS) -c -o $@ $< 
 
 clean:
-	$(RM) *.o *.so* *.a *.i *.exe *.stackdump $(EXECLOC) 
+	$(RM) *.o *.so* *.a *.i *.exe *.stackdump 
+
+cleanall:
+	$(RM) $(EXECLOC) 
+	$(MAKE) clean

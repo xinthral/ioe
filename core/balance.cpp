@@ -1,29 +1,29 @@
-/**
- * Like in life, so to in games do we need balance
- * In order to maintain consistency in a game, you need a universal scale
- * in which you operate from. This module creates a mathematical scalar
- * curve that all statistics can be derived from. y = c^[x/(π^π)]
- */
+
 #include "balance.h"
 
 // Singleton Instance
 BalanceController* BalanceController::_singleton = NULL;
 std::mutex BalanceController::_mutex;
 
-/**
- *  Protected Constructor 
-*/
+/*! 
+ * \brief 		Balance Controller 
+ * \details 	Like in life, so to in games do we need balance
+ * 				In order to maintain consistency in a game, you 
+ * 				need a universal scale in which you operate from. 
+ * 				This module creates a mathematical scalar curve 
+ * 				that all statistics can be derived from. 
+ * 
+ * \note		y = c^[x/(π^π)]
+ */
 BalanceController::BalanceController() {
-	// Load Logger
-	log = Logger::GetInstance();
+	//! Load Configurations Objects
+	cnf  = ConfigManager::GetInstance();
+	log  = Logger::GetInstance();
+	base = cnf->get_base();
 	log->named_log(__FILE__, "BalanceContoller Loaded!");
 
-	// Load Configurations
-	cnf = ConfigManager::GetInstance();
-	log = Logger::GetInstance();
-	base = cnf->get_base();
+	//! Conditional Check: Confirm Range
 	int difficulty = cnf->get_difficulty();
-
 	if (difficulty < 0 || difficulty > 5) {
 		sprintf(buf, "level %d. Please Enter a value between 0 and 5\n", difficulty);
 		log->timed_log(buf);
@@ -31,6 +31,7 @@ BalanceController::BalanceController() {
 		exit(-1);
 	}
 
+	//! Conditional: Difficulty Curve
 	switch(difficulty) {
 		case 1: { DIF = Vesy; base = LEVELS[1]; break; }
 		case 2: { DIF = Easy; base = LEVELS[2]; break; }
@@ -45,9 +46,9 @@ BalanceController::BalanceController() {
  *  Singleton Constructor 
 */
 BalanceController *BalanceController::GetInstance() {
-    // Acquire Instance Mutex
+    //! Acquire Instance Mutex
     std::lock_guard<std::mutex> lock(_mutex);
-    // If singleton already exists, return instance
+    //! If singleton already exists, return instance
     if (_singleton == NULL) { _singleton = new BalanceController(); }
     return _singleton;
 }
@@ -55,7 +56,7 @@ BalanceController *BalanceController::GetInstance() {
 /**
  * Scalar Function to keep the entire universe in balance
  * y = δ^(χ/[π^π])
- * @return Scaled value based on level
+ * \return Scaled value based on level
 */
 double BalanceController::scalar(int level) {
 	double x = level * 1.0;
@@ -83,13 +84,13 @@ void BalanceController::display_state() {
 
 /**
  * Helper Function: Base Scalar Value 
- * @return Returns Base Scalar Value
+ * \return Returns Base Scalar Value
 */
 double BalanceController::get_base() { return base; }
 
 /**
  * Helper Function: Game Difficulty 
- * @return Returns difficulty level
+ * \return Returns difficulty level
 */
 Hardness BalanceController::get_difficulty() { return this->DIF; }
 
