@@ -19,128 +19,147 @@ Actor::Actor() {
 }
 
 /**
- * Conditional Combat Check 
- * @return :<bool|condition> 
+ * @brief   Conditional Combat Check 
+ * 
+ * @details Confirm if Actor is currently fighting
+ * 
+ * @return  :boolean answer 
 */
 bool Actor::isFighting() { return (this->aiState == FIGHT); }
 
 /**
- * Conditional Health Check 
- * @return :<bool|condition> 
+ * @brief   Conditional Health Check 
+ * 
+ * @details Confirm if Actor is not dead
+ * 
+ * @return :boolean answer 
 */
 bool Actor::isAlive() { return (this->condition != DEAD); }
 
 /**
- * ReAssign Actor ID number
- * @param :<int|id> - Identity Reference Number
+ * @brief   ReAssign Actor ID number
+ * 
+ * @details Set ID Attribute
+ * 
+ * @param[in] id - Identity Reference Number
 */
 void Actor::set_id(int id) { this->id = id; }
 
 /**
- * ReAssign Actor Name
- * @param :<str|name> - Replace Name
+ * @brief   ReAssign Actor Name
+ * 
+ * @details Set Name Attribute
+ * 
+ * @param[in] name - Replace Name
 */
 void Actor::set_name(std::string name) { this->name = name; }
 
 /**
- * Return ID Attribute
- * @return :<int|id> - Identity Reference Number
+ * @brief   Return ID Attribute
+ * 
+ * @return id - Identity Reference Number
 */
 int Actor::get_id() { return this->id; }
 
 /**
- * Return Name Attribute
- * @return :<str|name> - Name Attribute
+ * @brief   Return Name Attribute
+ * 
+ * @return name - Name Value 
 */
 std::string Actor::get_name() { return this->name; }
 
 /**
- * Return Attack Attribute
- * @return :<int|attack> - Base Attack Attribute
+ * @brief   Return Attack Attribute
+ * 
+ * @return attack - Base Attack Value 
 */
 int Actor::get_attack() { return this->baseAttack; }
 
 /**
- * Return Defense Attribute
- * @return :<int|defense> - Base Defense Attribute
+ * @brief   Return Defense Attribute
+ * 
+ * @return defense - Base Defense Value 
 */
 int Actor::get_defense() { return this->baseDefense; }
 
 /**
- * Return Health Attribute
- * @return :<int|health> - Base Health Attribute
+ * @brief   Return Health Attribute
+ * 
+ * @return :health - Base Health Value 
 */
 int Actor::get_health() { return this->baseHealth; }
 
 /**
- * ReAssign Combat State
+ * @brief   ReAssign Combat State
 */
 void Actor::set_combatstate(CombatState state) { this->aiState = state; }
 
 /**
- * Set Combat State to Idling
+ * @brief   Set Combat State to Idling
 */
 void Actor::set_combat_idle() { this->set_combatstate(IDLE); }
 
 /**
- * Set Combat State to Patrolling 
+ * @brief   Set Combat State to Patrolling 
 */
 void Actor::set_combat_patrol() { this->set_combatstate(PATROL); }
 
 /**
- * Set Combat State to Fighting 
+ * @brief   Set Combat State to Fighting 
 */
 void Actor::set_combat_fight() { this->set_combatstate(FIGHT); }
 
 /**
- * Set Combat State to Fleeing 
+ * @brief   Set Combat State to Fleeing 
 */
 void Actor::set_combat_flee() { this->set_combatstate(FLEE); }
 
 /**
- * Set Combat State to Following 
+ * @brief   Set Combat State to Following 
 */
 void Actor::set_combat_follow() { this->set_combatstate(FOLLOW); }
 
 /**
- * Return Combat State 
- * @return :<CombatState|state> - Current Combat State of the character.
+ * @brief   Return Combat State 
+ * 
+ * @return state - Current Combat State of the character.
 */
 CombatState Actor::get_combatstate() { return this->aiState; }
 
 /**
- * ReAssign Health State
+ * @brief   ReAssign Health State
 */
 void Actor::set_healthstate(HealthState state) { this->condition = state; }
 
 /**
- * Set Health State to Healthy
+ * @brief   Set Health State to Healthy
 */
 void Actor::set_health_healthy() { this->set_healthstate(HEALTHY); }
 
 /**
- * Set Health State to Hurting
+ * @brief   Set Health State to Hurting
 */
 void Actor::set_health_hurting() { this->set_healthstate(HURTING); }
 
 /**
- * Set Health State to Critical 
+ * @brief   Set Health State to Critical 
 */
 void Actor::set_health_critical() { this->set_healthstate(CRITICAL); }
 
 /**
- * Set Health State to Sick 
+ * @brief   Set Health State to Sick 
 */
 void Actor::set_health_sick() { this->set_healthstate(SICK); }
 
 /**
- * Set Health State to Dead 
+ * @brief   Set Health State to Dead 
 */
 void Actor::set_health_dead() { this->set_healthstate(DEAD); }
 
 /**
- * Return Health State
- * @return :<HealthState|state> - Current Health State of the character.
+ * @brief   Return Health State
+ * 
+ * @return state - Current Health State of the character.
 */
 HealthState Actor::get_healthstate() { return this->condition; }
 
