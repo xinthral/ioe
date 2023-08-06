@@ -15,7 +15,7 @@ make doc
 #### Core Engine, vrooom: 
 ```bash
 make engine
-./core
+./engine
 ```
 
 #### TestSuite and debuggers delight:
