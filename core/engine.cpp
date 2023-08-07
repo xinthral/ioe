@@ -36,13 +36,19 @@ int main(int argc, char const *argv[]) {
 	BalanceController* 	bal = BalanceController::GetInstance();
 	Logger* 			log = Logger::GetInstance();
 	StageManager* 		mgr = StageManager::GetInstance("Jugo");
-	std::string names[5] = {"Kevin", "Connie", "Shawna", "Trever", "Jesse"};
-	std::string name;
 
+	//! Declare Variables
 	std::vector<Toon*> team;
 	Toon* t;
 	Toon* v;
 	Player* p;
+	Combat* cc;
+
+	//! FIXME Implement Interactive Shell
+	/* ********************************** */
+
+	std::string names[5] = {"Kevin", "Connie", "Shawna", "Trever", "Jesse"};
+	std::string name;
 
 	for (int i = 0; i < 10; i++) {
 		name = names[i%5];
@@ -51,7 +57,6 @@ int main(int argc, char const *argv[]) {
 	}
 	
 	char temp[10];
-	Combat* cc;
 	p = new Player(1, 1, 1);
 	while (team.size() > 1) {
 		t = team[team.size() - 1];
