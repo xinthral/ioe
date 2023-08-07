@@ -1,3 +1,9 @@
+/*!
+ * @class   Player player.h player.cpp
+ * @brief   Derived Player Class
+ * @details Construct containing player data representing the
+ *          virtual avatar within the engine.
+*/
 #include "player.h"
 
 /*!
@@ -24,9 +30,9 @@ Player::Player(int level, int power, int block) :
 /*!
  * @brief   Helper Hook used in CLI Help System
 */
-void Player::_help() {}
+void Player::_help() { }
 
 /*!
  * @brief   Default Deconstructor
 */
-Player::~Player() {}
+Player::~Player() { }

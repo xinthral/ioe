@@ -1,20 +1,24 @@
+/*!
+ * @class   Toon toon.h toon.cpp
+ * @brief   Toon class is for all non-player characters  
+*/
 #include "toon.h"
 
 /*!
- * Default Constructor
+ * @brief   Default Constructor
 */
 Toon::Toon() : Toon(-1, "Toon") { }
 
 /*!
  * @overload
- * Constructor Initializor
+ * @brief   Constructor Initializor
  * @param[in] id - Character Identity Number
 */
 Toon::Toon(int id) : Toon(id, "Toon") { }
 
 /*!
  * @overload
- * Constructor Initializ
+ * @brief   Constructor Initializ
  * @param[in] name - Name of the Character
  * 
 */
@@ -22,7 +26,7 @@ Toon::Toon(std::string name) : Toon(-1, name) { }
 
 /*!
  * @overload
- * Constructor Initializor
+ * @brief   Constructor Initializor
  * @param[in] id   - Character Identity Number
  * @param[in] name - Name of the Character
 */
@@ -52,11 +56,11 @@ int Toon::get_defense() { return this->defense; }
 void Toon::set_name(std::string name) { this->name = name; }
 
 /*!
- * Helper Hook used in CLI Help System
+ * @brief   Helper Hook used in CLI Help System
 */
 void Toon::_help() {}
 
-/**
- * Default Deconstructor
+/*!
+ * @brief   Default Deconstructor
 */
 Toon::~Toon() {}
