@@ -1,45 +1,46 @@
 TODO: 
 _ Configure Debug
-_ Add Helper System
 _ Update modules to implement Helper system
-
 x Docstrings motherfucker, do you use them!?
-: Doxygen
-* doxygen docs/conf.dox
-_ Add docstrings for doxygen
 
-: ConfigManager
-_ Parse Sections, and Keys into an object
-_ <---Do More
-
-: StageManager
+: Actors
 _ <---Do More
 
 : BalanceController
 _ <---Do More
 
-: Actors
+: Combat
 _ <---Do More
 
-: Players
-_ <---Do More
-
-: Toons
+: ConfigManager
+X Parse Sections, and Keys into an object
 _ <---Do More
 
 : Engine
+_ <---Do More
+
+: HelpSuite
+_ <---Do More
+
+: LeaderBoard
+_ Make the leader board
 _ <---Do More
 
 : Logger
 x Add Logging
 _ <---Do More
 
-: Utilz
-: LeaderBoard
+: Players
+_ <---Do More
+
+: StageManager
 _ <---Do More
 
 : TestSuite
 _ <---Do More
 
-: HelpSuite
+: Toons
+_ <---Do More
+
+: Utilz
 _ <---Do More
