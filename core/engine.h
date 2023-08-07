@@ -4,6 +4,7 @@
 // #include <windows.h> Both needed for sleep()
 // #include <unistd.h>  Both needed for sleep()
 
+#include <iostream>
 #include <stdio.h>
 #include <string>
 #include <vector>

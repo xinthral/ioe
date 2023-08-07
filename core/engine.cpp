@@ -39,10 +39,24 @@ int main(int argc, char const *argv[]) {
 
 	//! Declare Variables
 	std::vector<Toon*> team;
-	Toon* t;
-	Toon* v;
-	Player* p;
-	Combat* cc;
+	Toon* 		t;
+	Toon* 		v;
+	Player* 	p;
+	Combat* 	cc;
+	bool		vshContinue = true;
+	std::string prompt = "> ";
+	std::string rawInput;
+	size_t		found;
+
+	do {
+		printf("%s", prompt.c_str());		//! Display Message Prompt
+		std::cin >> rawInput;				//! Get User Input
+		log->timed_log(rawInput);			//! Debug Log
+		//! Conditional to end Shell
+		// vshContinue = parseInput(rawInput);
+		found = rawInput.find("exit");
+		if (found != std::string::npos) { vshContinue = false; }
+	} while (vshContinue == true);
 
 	//! FIXME Implement Interactive Shell
 	/* ********************************** */
