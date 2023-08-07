@@ -36,7 +36,7 @@ TestSuite::~TestSuite() { }
 */
 void print_help() { 
     Logger* log = Logger::GetInstance();
-    char buf[1024];
+    char buf[32];
     std::string fileName = Utilz::FileName(__FILE__);
     sprintf(buf, "Usage: %s [NUMBER]\n", fileName.c_str()); 
     log->raw_log(buf);
@@ -60,7 +60,7 @@ int main(int argc, char const *argv[]) {
 
     TestSuite ts;
     Logger* log = Logger::GetInstance();
-    char buf[1024];
+    char buf[32];
     int choice = 0;
     choice = atoi(argv[1]);
     
