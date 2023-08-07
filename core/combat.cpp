@@ -55,7 +55,7 @@ Combat::Combat(Player& combatant1, Player& combatant2) : Combat() { this->matchu
 void Combat::begin_combat() {
     std::srand(std::time(NULL));
     char buf[1024];
-    int r = rand() % 8 + 1;
+    int r = rand() % 3 + 1;
     sprintf(buf, "Sleeping for %d", r);
     log->named_log(__FILE__, buf);
     sleep(r);
