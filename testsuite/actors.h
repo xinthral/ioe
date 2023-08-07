@@ -13,22 +13,22 @@ protected:
 public:
     TestActors();
 
-    // Feet to the fire
+    //! Feet to the fire
     void test_actor();
 
-    // Test Stats
+    //! Test Stats
     void base_attack();
     void base_defense(); 
     void base_health();
 
-    // Test Combat States
+    //! Test Combat States
     void combatstate_idle();
     void combatstate_patrol();
     void combatstate_fight();
     void combatstate_flee();
     void combatstate_follow();
 
-    // Test Health States
+    //! Test Health States
     void healthstate_healthy();
     void healthstate_hurting();
     void healthstate_critical();

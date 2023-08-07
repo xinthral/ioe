@@ -1,16 +1,15 @@
 #include "player.h"
 
 /*!
- * Default Constructor
+ * @brief   Default Constructor
+ * @details If no values are provided, then default
+ *          values are initialized as (1, 1, 1).
 */
 Player::Player() : Player(1, 1, 1) {}
 
 /*!
  * @overload
  * @brief   Constructor Initializor
- * 
- * @details FIXME
- * 
  * @param[in] level - Level of the Player
  * @param[in] power - Cummulative Power of Player
  * @param[in] block - Defense of the Player
@@ -23,11 +22,11 @@ Player::Player(int level, int power, int block) :
 }
 
 /*!
- * Helper Hook used in CLI Help System
+ * @brief   Helper Hook used in CLI Help System
 */
 void Player::_help() {}
 
 /*!
- * Default Deconstructor
+ * @brief   Default Deconstructor
 */
 Player::~Player() {}

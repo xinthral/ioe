@@ -1,37 +1,41 @@
+/*!
+ * @class   Logger logger.h logger.cpp
+ * @brief   Logger Management module
+*/
 #include "logger.h"
 
-/* Global Variables */
+//! Global Variables
 const std::string Logger::DELIM = " :=: ";
 
-/* Singleton Instance */
+//! Singleton Instance
 Logger* Logger::_singleton = NULL;
 std::mutex Logger::_mutex;
 
-/**
- * Protected Constructor
+/*!
+ * @brief   Protected Constructor
 */
 Logger::Logger() {}
 
-/**
- * Singleton Constructor
+/*!
+ * @brief   Singleton Constructor
 */
 Logger* Logger::GetInstance() {
-    // Acquire Instance Mutex
+    //! Acquire Instance Mutex
     std::lock_guard<std::mutex> lock(_mutex);
-    // If singleton already exists, return instance
+    //! If singleton already exists, return instance
     if (_singleton == NULL) { _singleton = new Logger(); }
     return _singleton;
 }
 
-/**
- * Raw Unformatted Logging
+/*!
+ * @brief   Raw Unformatted Logging
 */
 void Logger::raw_log(std::string message) {
     printf("%s\n", message.c_str());
 }
 
-/**
- * TimeStamped Logging
+/*!
+ * @brief   TimeStamped Logging
 */
 void Logger::timed_log(std::string message) {
     std::string time = Utilz::TimeStamp();
@@ -40,8 +44,8 @@ void Logger::timed_log(std::string message) {
     this->raw_log(tmp);
 }
 
-/**
- * Labeled and Stamped Logging
+/*!
+ * @brief   Labeled and Stamped Logging
 */
 void Logger::named_log(std::string fileName, std::string message) {
     std::string time = Utilz::TimeStamp();
@@ -55,12 +59,12 @@ void Logger::named_log(std::string fileName, std::string message) {
     this->raw_log(tmp);
 }
 
-/**
- * Helper Hook used in CLI Help System
+/*!
+ * @brief   Helper Hook used in CLI Help System
 */
 void Logger::_help() { }
 
-/**
- * Default Deconstructor
+/*!
+ * @brief   Default Deconstructor
 */
 Logger::~Logger() {}

@@ -1,11 +1,16 @@
+/*!
+ * @class   BaseHelp basehelp.h basehelp.cpp 
+ * @brief   Base Class for the Helper Module
+*/
+
 #include "basehelp.h"
 
-/**
- * Default Constructor
+/*!
+ * @brief   Default Constructor
 */
 BaseHelp::BaseHelp() { }
 
-/**
- * Default Deconstructor
+/*!
+ * @brief   Default Deconstructor
 */
 BaseHelp::~BaseHelp() { }

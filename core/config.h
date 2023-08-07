@@ -9,26 +9,26 @@
 #include "logger.h"
 #include "utilz.h"
 
-/* External Varables */
+//! External Varables
 extern std::string _CNF_;
 
-/* Class Declarations */
+//! Class Declarations
 class ConfigManager {
 protected:
     ConfigManager();
 private:
     std::unordered_map<std::string, std::string> settings;
-    std::string delim = "=";
-    static ConfigManager* _singleton;
-    static std::mutex _mutex;
-    Logger* log;
+    std::string             delim = "=";
+    static ConfigManager*   _singleton;
+    static std::mutex       _mutex;
+    Logger*                 log;
     char buf[128];
 
 public:
     std::ifstream conf;
-    // Singletons should not be cloneable
+    //! Singletons should not be cloneable
     ConfigManager(ConfigManager&) = delete;
-    // Singletons should not be assignable
+    //! Singletons should not be assignable
     void operator=(const ConfigManager&) = delete;
     static ConfigManager* GetInstance();
     bool load_config(bool);

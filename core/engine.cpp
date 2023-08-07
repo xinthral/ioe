@@ -1,12 +1,15 @@
-/*!
- * \mainpage Engine Main Index
- * \brief Engine go vroom.
+/*! 
+ * @mainpage 	Engine Main Index
+ * @brief		Engine go vroom.
 */
 #include "engine.h"
 
 //! Extern Variable Declaration
 std::string _CNF_ = "docs/engine.ini";
 
+/*!
+ * @brief	Helper Function to display help
+*/
 void print_helper() {
 	//! Load Logger Object
 	Logger* log = Logger::GetInstance();
@@ -22,6 +25,9 @@ void print_helper() {
 	exit(-1);
 }
 
+/*!
+ * @brief	Module Entry Point
+*/
 int main(int argc, char const *argv[]) {
 	if (argc < 2) { print_helper(); }
 

@@ -8,8 +8,8 @@
 
 class HelpSuite {
 protected:
-    ConfigManager* cnf;
-    Logger* log;
+    ConfigManager*  cnf;
+    Logger*         log;
 public:
     HelpSuite();
     HelpSuite(bool);

@@ -1,12 +1,14 @@
-/**
- * Helper Suite is meant to parse Doxygen outputs, and provide
- * a commandline utility for quick reference while developing 
- * or debugging.
+/*!
+ * @class   HelpSuite helpsuite.h helpsuite.cpp
+ * @brief   Command Line Tool (CLI) for Help
+ * @details Helper Suite is meant to parse Doxygen outputs, and 
+ *          provide a commandline utility for quick reference 
+ *          while developing or debugging.
 */
 #include "helpsuite.h"
 
-/**
- * Default Constructor
+/*!
+ * @brief   Default Constructor
 */
 HelpSuite::HelpSuite() { 
     cnf = ConfigManager::GetInstance();
@@ -14,26 +16,25 @@ HelpSuite::HelpSuite() {
     log->named_log(__FILE__, "Helper Loaded!");
 }
 
-/**
+/*!
  * @overload
- * Debugging Constructor
+ * @brief   Debugging Constructor
  * @param[in] _debug Debugging option 
 */
 HelpSuite::HelpSuite(bool _debug) : HelpSuite() { }
 
-
-/**
- * Default Deconstructor
+/*!
+ * @brief   Default Deconstructor
 */
 HelpSuite::~HelpSuite() {}
 
-/**
- * Static Function to display help details
+/*!
+ * @brief   Static Function to display help details
 */
 void print_help() { 
     Logger* log = Logger::GetInstance();
-    char buf[64];
     std::string fileName = Utilz::FileName(__FILE__);
+    char buf[64];
     sprintf(buf, "Usage: %s [NUMBER]\n", fileName.c_str()); 
     log->raw_log(buf);
     log->raw_log("HelpSuite CLI Tool\n");
@@ -47,8 +48,8 @@ void print_help() {
     exit(-1);
 }
 
-/**
- * Module Entry Point
+/*!
+ * @brief   Module Entry Point
 */
 int main(int argc, char const *argv[]) {
     if (argc < 2) { print_help(); }

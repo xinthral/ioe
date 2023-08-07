@@ -1,3 +1,7 @@
+/*! 
+ * @class   TestActors actors.h actors.cpp
+ * @brief   Base Class for interactive Characters
+*/
 #include "actors.h"
 
 TestActors::TestActors() {
@@ -7,23 +11,24 @@ TestActors::TestActors() {
     test_actor();
 }
 
-/**
- * Run full set of test on Actor
+/*!
+ * @brief   Run full set of test on Actor
 */
 void TestActors::test_actor() {
-    base_attack();
-    base_defense();
-    base_health();
+    base_attack();          //! Test Base Attack Value
+    base_defense();         //! Test Base Defense Value
+    base_health();          //! Test Base Health Value
 
-    combatstate_idle();
-    combatstate_patrol();
-    combatstate_fight();
-    combatstate_flee();
-    combatstate_follow();
+    combatstate_idle();     //! Test Combat State Idle
+    combatstate_patrol();   //! Test Combat State Patrol
+    combatstate_fight();    //! Test Combat State Fight
+    combatstate_flee();     //! Test Combat State Flee
+    combatstate_follow();   //! Test Combat State Follow
 }
 
-/**
- * Are actors getting proper base values?
+/*!
+ * @brief   Validate Initial Condition: Attack Value
+ * @note    Are actors getting proper base values?
 */
 void TestActors::base_attack() {
     int cnf_atk = cnf->get_attack();
@@ -33,8 +38,9 @@ void TestActors::base_attack() {
     BaseCase::log->named_log(__FILE__, buf);
 }
 
-/**
- * Are actors getting proper base values?
+/*!
+ * @brief   Validate Initial Condition: Defense Value
+ * @note    Are actors getting proper base values?
 */
 void TestActors::base_defense() {
     int cnf_def = cnf->get_defense();
@@ -44,8 +50,9 @@ void TestActors::base_defense() {
     BaseCase::log->named_log(__FILE__, buf);
 }
 
-/**
- * Are actors getting proper base values?
+/*!
+ * @brief   Validate Initial Condition: Health Value
+ * @note    Are actors getting proper base values?
 */
 void TestActors::base_health() {
     int cnf_hlt = cnf->get_health();
@@ -55,8 +62,9 @@ void TestActors::base_health() {
     BaseCase::log->named_log(__FILE__, buf);
 }
 
-/**
- * Are actors states getting set properly?
+/*!
+ * @brief   Validate Initial Condition: Combat Idle
+ * @note    Are actors states getting set properly?
 */
 void TestActors::combatstate_idle() { 
     dummy->set_combat_idle();
@@ -65,8 +73,9 @@ void TestActors::combatstate_idle() {
     BaseCase::log->named_log(__FILE__, buf);
 }
 
-/**
- * Are actors states getting set properly?
+/*!
+ * @brief   Validate Initial Condition: Combat Patrol
+ * @note    Are actors states getting set properly?
 */
 void TestActors::combatstate_patrol() { 
     dummy->set_combat_patrol();
@@ -75,8 +84,9 @@ void TestActors::combatstate_patrol() {
     BaseCase::log->named_log(__FILE__, buf);
 }
 
-/**
- * Are actors states getting set properly?
+/*!
+ * @brief   Validate Initial Condition: Combat Fight
+ * @note    Are actors states getting set properly?
 */
 void TestActors::combatstate_fight() { 
     dummy->set_combat_fight();
@@ -85,8 +95,9 @@ void TestActors::combatstate_fight() {
     BaseCase::log->named_log(__FILE__, buf);
 }
 
-/**
- * Are actors states getting set properly?
+/*!
+ * @brief   Validate Initial Condition: Combat Flee
+ * @note    Are actors states getting set properly?
 */
 void TestActors::combatstate_flee() { 
     dummy->set_combat_flee();
@@ -95,8 +106,9 @@ void TestActors::combatstate_flee() {
     BaseCase::log->named_log(__FILE__, buf);
 }
 
-/**
- * Are actors states getting set properly?
+/*!
+ * @brief   Validate Initial Condition: Combat Follow
+ * @note    Are actors states getting set properly?
 */
 void TestActors::combatstate_follow() { 
     dummy->set_combat_follow();
@@ -105,9 +117,9 @@ void TestActors::combatstate_follow() {
     BaseCase::log->named_log(__FILE__, buf);
 }
 
-
-/**
- * Are actors states getting set properly?
+/*!
+ * @brief   Validate Initial Condition: Health Healthy
+ * @note    Are actors states getting set properly?
 */
 void TestActors::healthstate_healthy() { 
     dummy->set_health_healthy();
@@ -116,26 +128,33 @@ void TestActors::healthstate_healthy() {
     BaseCase::log->named_log(__FILE__, buf);
 }
 
-/**
- * Are actors states getting set properly?
+/*!
+ * @brief   Validate Initial Condition: Health Hurting
+ * @note    Are actors states getting set properly?
 */
 void TestActors::healthstate_hurting() { 
 
 }
 
 /**
- * Are actors states getting set properly?
+ * @brief   Validate Initial Condition: Health Critical 
+ * @note    Are actors states getting set properly?
 */
 void TestActors::healthstate_critical() { }
 
 /**
- * Are actors states getting set properly?
+ * @brief   Validate Initial Condition: Health Sick 
+ * @note    Are actors states getting set properly?
 */
 void TestActors::healthstate_sick() { }
 
 /**
- * Are actors states getting set properly?
+ * @brief   Validate Initial Condition: Health Dead 
+ * @note    Are actors states getting set properly?
 */
 void TestActors::healthstate_dead() { }
 
+/*!
+ * @brief   Default Deconstructor
+*/
 TestActors::~TestActors() {}

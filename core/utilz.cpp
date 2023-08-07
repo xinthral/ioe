@@ -1,3 +1,8 @@
+/*!
+ * @class 	Utilz utilz.h utilz.cpp
+ * @brief	Utility functions I find useful enough to not want 
+ * 			to have to repeat myself.
+*/
 #include "utilz.h"
 
 /*!
@@ -44,7 +49,7 @@ std::string Utilz::TimeStamp() {
  * @brief 	Truncates a string from the beginning of a string
  * @param[in] length  - Size of return string
  * @param[in] message - String to be truncated
- * @return :<str|trunc>
+ * @return	A new string truncated from the front 
 */
 std::string Utilz::HeadString(int length, std::string input) {
 	std::string output = input;
@@ -56,7 +61,7 @@ std::string Utilz::HeadString(int length, std::string input) {
  * @brief 	Truncates a string from the ending of a string
  * @param[in] length  - Size of return string
  * @param[in] message - String to be truncated
- * @return	A new string truncated to the specified length
+ * @return	A new string truncated from the back
 */
 std::string Utilz::TailString(int length, std::string input) {
 	std::string output;

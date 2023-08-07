@@ -1,11 +1,16 @@
+/*!
+ * @class   StageManager stage.h stage.cpp
+ * @brief   The stage manager controls the entirety of whom
+ *          is active on the stage for any given scene.
+*/
 #include "stage.h"
 
-// Singleton Instance
+//! Singleton Instance
 StageManager* StageManager::_singleton = NULL;
 std::mutex StageManager::_mutex;
 
-/**
- * Protected Constructor
+/*!
+ * @brief   Protected Constructor
 */
 StageManager::StageManager(const std::string _name) : name(_name) {
     log = Logger::GetInstance();
@@ -14,32 +19,36 @@ StageManager::StageManager(const std::string _name) : name(_name) {
 }
 
 
-/**
- * Singleton Constructor
+/*!
+ * @brief   Singleton Constructor
 */
 StageManager* StageManager::GetInstance(const std::string& name) {
-    // Acquire Instance Mutex
+    //! Acquire Instance Mutex
     std::lock_guard<std::mutex> lock(_mutex);
-    // If singleton already exists, return instance
+    //! If singleton already exists, return instance
     if (_singleton == NULL) { _singleton = new StageManager(name); }
     return _singleton;
 }
 
-/**
- * Returns the name attribute
- * @return :<str|name>
+/*!
+ * @brief   Returns the name attribute
+ * @return  Name Value
 */
 std::string StageManager::get_name() { return this->name; }
 
-void StageManager::casting_call() { }
+/*!
+ * @brief   Have the StageManager Load the Scene with Actors
+ * @note    FIXME
+*/
+void StageManager::casting_call() { /* FIXME */ }
 
 
-/**
- * Helper Hook used in CLI Help System
+/*!
+ * @brief   Helper Hook used in CLI Help System
 */
 void StageManager::_help() { }
 
 /**
- * Default Constructor
+ * @brief   Default Constructor
 */
 StageManager::~StageManager() { }

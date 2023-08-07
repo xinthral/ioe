@@ -1,5 +1,6 @@
-/*! @class ConfigManager config.h config.cpp
- * ConfigManager Docstring
+/*!
+ * @class   ConfigManager config.h config.cpp
+ * @brief   ConfigManager Docstring
  */
 #include "config.h"
 
@@ -133,7 +134,7 @@ bool ConfigManager::load_config(bool _debug) {
 }
 
 /*!
- * Helper Hook used in CLI Help System
+ * @brief   Helper Hook used in CLI Help System
 */
 void ConfigManager::_help() { }
 

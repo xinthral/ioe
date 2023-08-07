@@ -1,38 +1,40 @@
-/**
- * Test Suite is meant to be a collection of unit testing
- * with the idea of reaching 100% coverage of testing, while 
- * providing a command line utility for reference when
- * developing or debugging.
+/*!
+ * @class   TestSuite testsuite.h testsuite.cpp
+ * @brief   Command Line Tool (CLI) for Tester 
+ * @details Test Suite is meant to be a collection of unit testing
+ *          with the idea of reaching 100% coverage of testing, 
+ *          while providing a command line utility for reference 
+ *          when developing or debugging.
 */
 #include "testsuite.h"
 
-/**
- * Default Constructor
+/*!
+ * @brief   Default Constructor
 */
 TestSuite::TestSuite() { }
 
-/**
- * Initiates the Test for the Actor Module
+/*!
+ * @brief   Initiates the Test for the Actor Module
 */
 void TestSuite::CaseActor() { TestActors* ta = new TestActors(); }
 
-/**
- * Initiates the Test for the Balance Module
+/*!
+ * @brief   Initiates the Test for the Balance Module
 */
 void TestSuite::CaseBalance() { }
 
-/**
- * Initiates the Test for the Balance Module
+/*!
+ * @brief   Initiates the Test for the Balance Module
 */
 void TestSuite::CaseCombat() { }
 
-/**
- * Default Deconstructor
+/*!
+ * @brief   Default Deconstructor
 */
 TestSuite::~TestSuite() { }
 
-/**
- * Static Function to display help details
+/*!
+ * @brief   Static Function to display help details
 */
 void print_help() { 
     Logger* log = Logger::GetInstance();
@@ -52,8 +54,8 @@ void print_help() {
     exit(-1);
 }
 
-/**
- * Module Entry Point
+/*!
+ * @brief   Module Entry Point
 */
 int main(int argc, char const *argv[]) {
     if (argc < 2) { print_help(); }

@@ -1,4 +1,5 @@
-/*! @class	BalanceController balance.h balance.cpp
+/*! 
+ * @class	BalanceController balance.h balance.cpp
  * @brief 	Balance Controller 
  * @details Like in life, so to in games do we need balance
  * 			In order to maintain consistency in a game, you 
@@ -13,7 +14,7 @@
 */
 #include "balance.h"
 
-// Singleton Instance
+//! Singleton Instance
 BalanceController* BalanceController::_singleton = NULL;
 std::mutex BalanceController::_mutex;
 

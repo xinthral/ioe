@@ -1,4 +1,5 @@
-/*! @class  Combat combat.h combat.cpp
+/*!
+ * @class   Combat combat.h combat.cpp
  * @brief   Handle the interactive logic for combat
 */
 #include "combat.h"

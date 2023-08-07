@@ -7,10 +7,10 @@
 
 class BaseHelp {
 protected:
-    BalanceController* bal;
-    ConfigManager* cnf;
-    Logger* log;
-    char buf[1024];
+    BalanceController*  bal;
+    ConfigManager*      cnf;
+    Logger*             log;
+    char buf[512];
 
 private:
 public:
