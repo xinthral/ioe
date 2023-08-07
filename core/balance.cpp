@@ -1,19 +1,24 @@
-
+/*! @class	BalanceController balance.h balance.cpp
+ * @brief 	Balance Controller 
+ * @details Like in life, so to in games do we need balance
+ * 			In order to maintain consistency in a game, you 
+ * 			need a universal scale in which you operate from. 
+ * 			This module creates a mathematical scalar curve 
+ * 			that all statistics can be derived from. 
+ * @note	\f$y = c\f$^[\f$x/(π^π)\f$]
+ * @note	\f$c :=\f$ Constant based on game difficulty
+ * @note	\f$x :=\f$ Character's Current Level
+ * @note	\f$π :=\f$ Pi....mmmm Pi
+ * @note	\f$y :=\f$ The scalar value
+*/
 #include "balance.h"
 
 // Singleton Instance
 BalanceController* BalanceController::_singleton = NULL;
 std::mutex BalanceController::_mutex;
 
-/*! 
- * @brief 		Balance Controller 
- * @details 	Like in life, so to in games do we need balance
- * 				In order to maintain consistency in a game, you 
- * 				need a universal scale in which you operate from. 
- * 				This module creates a mathematical scalar curve 
- * 				that all statistics can be derived from. 
- * 
- * @note		y = c^[x/(π^π)]
+/*!
+ * @brief 	Default Constructor 
  */
 BalanceController::BalanceController() {
 	//! Load Configurations Objects
@@ -43,7 +48,7 @@ BalanceController::BalanceController() {
 }
 
 /*!
- *  Singleton Constructor 
+ * @brief 	Singleton Constructor 
 */
 BalanceController *BalanceController::GetInstance() {
     //! Acquire Instance Mutex
@@ -54,14 +59,11 @@ BalanceController *BalanceController::GetInstance() {
 }
 
 /*!
- * @brief		Scales The Universe
- * 
- * @details		Scalar Function to keep the entire universe 
- *				in balance.
- *
- * @note		y = δ^(χ/[π^π])
- * 
- * @return Scaled value based on level
+ * @brief	Scales The Universe
+ * @details	Scalar Function to keep the entire universe 
+ *			in balance.
+ * @note	y = δ^(χ/[π^π])
+ * @return 	Scaled value based on level
 */
 double BalanceController::scalar(int level) {
 	double x = level * 1.0;
@@ -69,7 +71,8 @@ double BalanceController::scalar(int level) {
 }
 
 /*!
- * Display the current state of the base game attributes
+ * @brief 	Log Game State
+ * @details Display the current state of the base game attributes
 */
 void BalanceController::display_state() {
 	double scl = 0.0;
@@ -87,23 +90,23 @@ void BalanceController::display_state() {
 }
 
 /*!
- * Helper Function: Base Scalar Value 
- * @return Returns Base Scalar Value
+ * @brief	Helper Function: Base Scalar Value 
+ * @return 	Returns Base Scalar Value
 */
 double BalanceController::get_base() { return base; }
 
 /*!
- * Helper Function: Game Difficulty 
- * @return Returns difficulty level
+ * @brief 	Helper Function: Game Difficulty 
+ * @return 	Returns difficulty level
 */
 Hardness BalanceController::get_difficulty() { return this->DIF; }
 
 /*!
- * Helper Hook used in CLI Help System
+ * @brief 	Helper Hook used in CLI Help System
 */
 void BalanceController::_help() { }
 
 /*!
- * Default Deconstructor
+ * @brief 	Default Deconstructor
 */
 BalanceController::~BalanceController() {}

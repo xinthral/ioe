@@ -1,9 +1,9 @@
 #include "utilz.h"
 
-/**
- * Strips away the file extension 
- * @param :<chr*|__FILE__> - the file extension
- * @return :<str|filename>
+/*!
+ * @brief 	Strips away the file extension 
+ * @param[in] __FILE__ - the file extension
+ * @return 	A new string with the tld stripped.
 */
 std::string Utilz::FileName(const char* file) {
 	std::string fileName = file;
@@ -11,20 +11,21 @@ std::string Utilz::FileName(const char* file) {
 	return fileName.substr(0, pos);
 }
 
-/**
- * Truncating method to strip away file extension 
- * @param :<int|length> - Size of return string
- * @param :<chr*|__FILE__> - the file extension
- * @return :<str|filename>
+/*!
+ * @brief 	Truncating method to strip away file extension 
+ * @param[in] length   - Size of return string
+ * @param[in] __FILE__ - the file extension
+ * @return 	A new string containing a truncated Filename 
 */
 std::string Utilz::FileName(int length, const char* file) {
 	std::string output = Utilz::FileName(file);
 	return Utilz::HeadString(length, output);
 }
 
-/**
- * Formatted Timestamp for uniformity
- * @return :<str|timestamp>
+/*!
+ * @brief 	Formatted Timestamp for uniformity
+ * @return 	A string containing the time in a pre-formatted
+ * 			way.
 */
 std::string Utilz::TimeStamp() {
 	std::time_t time = std::time({});
@@ -39,10 +40,10 @@ std::string Utilz::TimeStamp() {
 	return output;
 }
 
-/**
- * Truncates a string from the beginning of a string
- * @param :<int|length> - Size of return string
- * @param :<str|message> - String to be truncated
+/*!
+ * @brief 	Truncates a string from the beginning of a string
+ * @param[in] length  - Size of return string
+ * @param[in] message - String to be truncated
  * @return :<str|trunc>
 */
 std::string Utilz::HeadString(int length, std::string input) {
@@ -51,11 +52,11 @@ std::string Utilz::HeadString(int length, std::string input) {
 	return output;
 }
 
-/**
- * Truncates a string from the ending of a string
- * @param :<int|length> - Size of return string
- * @param :<str|message> - String to be truncated
- * @return :<str|trunc>
+/*!
+ * @brief 	Truncates a string from the ending of a string
+ * @param[in] length  - Size of return string
+ * @param[in] message - String to be truncated
+ * @return	A new string truncated to the specified length
 */
 std::string Utilz::TailString(int length, std::string input) {
 	std::string output;
@@ -64,9 +65,9 @@ std::string Utilz::TailString(int length, std::string input) {
 	return output;
 }
 
-/**
- * Removes whitespace from string
- * @param :<str|message> - String to be crunched
+/*!
+ * @brief 	Removes whitespace from string
+ * @param[in] message - String to be crunched
 */
 void Utilz::Strip(std::string& input) {
 	std::string::iterator pos = std::remove(input.begin(), input.end(), ' ');

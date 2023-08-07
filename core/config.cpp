@@ -1,14 +1,14 @@
-/*! \class ConfigManager config.h config.h
+/*! @class ConfigManager config.h config.cpp
  * ConfigManager Docstring
  */
 #include "config.h"
 
-/* Singleton Instance */
+//! Singleton Instance 
 ConfigManager* ConfigManager::_singleton = NULL;
 std::mutex ConfigManager::_mutex;
 
-/**
- * Protected Constructor 
+/*!
+ * @brief   Protected Constructor 
 */
 ConfigManager::ConfigManager() { 
     log = Logger::GetInstance();
@@ -16,8 +16,8 @@ ConfigManager::ConfigManager() {
     load_config(false); 
 }
 
-/**
- * Singleton Constructor 
+/*!
+ * @brief   Singleton Constructor 
 */
 ConfigManager* ConfigManager::GetInstance() {
     // Acquire Instance Mutex
@@ -27,125 +27,112 @@ ConfigManager* ConfigManager::GetInstance() {
     return _singleton;
 }
 
-/**
- * Injest Setting into struct, and return struct size.
+/*!
+ * @brief   Injest Setting into struct, and return struct size.
  * @param[in] option The Key value for lookup
  * @param[in] value  The data value associated with the key
- * @return Returns current config queue size 
+ * @return  Returns current config queue size 
 */
 size_t ConfigManager::add_setting(const std::string& option, const std::string& value) {
     settings[option] = value;
     return settings.size();
 }
 
-/**
- * FIXME
+/*!
+ * @brief   Remove Setting from injested list
+ * @param[in] option 
+ * @return  Current Size of Settings List
 */
 size_t ConfigManager::rem_setting(const std::string& option) {
     settings.erase(option);
     return settings.size();
 }
 
-/**
- * FIXME
+/*!
+ * @brief   Reload Settings
+ * @details Forces a reload of the injested settings list,
+ *          and outputs the configs to the logs.
 */
-void ConfigManager::reload_state() {
-    /* Forces a reload on the configuration file */
-    this->load_config(true);
-}
+void ConfigManager::reload_state() { this->load_config(true); }
 
-/**
- * Return the Value of a Configuration Option 
+/*!
+ * @brief   Return the Value of a Configuration Option 
  * @param[in] option The name of the Configuration Option
- * @return The value related to input key
+ * @return  The value related to input key
  */
-std::string ConfigManager::raw_config(const std::string& option) {
-    return settings[option];
-}
+std::string ConfigManager::raw_config(const std::string& option) { return settings[option]; }
 
-/**
- * Helper Function: Version
- * @return Return game version
+/*!
+ * @brief   Helper Function: Version
+ * @return  Return game version
 */
-std::string ConfigManager::get_version() {
-return this->raw_config("VERSION");
-}
+std::string ConfigManager::get_version() { return this->raw_config("VERSION"); }
 
-/**
- * Helper Function: Base Scalar
- * @return Return base scalar value 
+/*!
+ * @brief   Helper Function: Base Scalar
+ * @return  Return base scalar value 
 */
-int ConfigManager::get_base() {
-    return atoi(this->raw_config("BAS").c_str());
-}
+int ConfigManager::get_base() { return atoi(this->raw_config("BAS").c_str()); }
 
-/**
- * Helper Function: Attack 
- * @return Return base attack value 
+/*!
+ * @brief   Helper Function: Attack 
+ * @return  Return base attack value 
  */
-int ConfigManager::get_attack() {
-    return atoi(this->raw_config("ATK").c_str());
-}
+int ConfigManager::get_attack() { return atoi(this->raw_config("ATK").c_str()); }
 
-/**
- * Helper Function: Defense 
- * @return Return base defense value 
+/*!
+ * @brief   Helper Function: Defense 
+ * @return  Return base defense value 
  */
-int ConfigManager::get_defense() {
-    return atoi(this->raw_config("DEF").c_str());
-}
+int ConfigManager::get_defense() { return atoi(this->raw_config("DEF").c_str()); }
 
-/**
- * Helper Function: Difficulty
- * @return Return base difficulty value
+/*!
+ * @brief   Helper Function: Difficulty
+ * @return  Return base difficulty value
 */
-int ConfigManager::get_difficulty() {
-    return atoi(this->raw_config("DIF").c_str());
-}
+int ConfigManager::get_difficulty() { return atoi(this->raw_config("DIF").c_str()); }
 
-/**
- * Helper Function: Health
- * @return Return base health value 
+/*!
+ * @brief   Helper Function: Health
+ * @return  Return base health value 
  */
-int ConfigManager::get_health() {
-    return atoi(this->raw_config("HLT").c_str());
-}
+int ConfigManager::get_health() { return atoi(this->raw_config("HLT").c_str()); }
 
-/**
- * Reads in Config File and Parses Options
+/*!
+ * @brief   Reads in Config File and Parses Options
  * @param[in] _debug Debugging Option
- * @return Confirmation that all values were loaded
+ * @return  Confirmation that all values were loaded
  */
 bool ConfigManager::load_config(bool _debug) {
     char* buf;
-    std::size_t pos;                                // Positional Pointer for delimeter
-    std::string row;                                // Temporary File Row Storage
-    std::string opt;                                // Settings Option
-    std::string val;                                // Settings Value
-    std::size_t qsize = 0;                          // Current Size of Queue
+    std::size_t pos;                                //! Positional Pointer for delimeter
+    std::string row;                                //! Temporary File Row Storage
+    std::string opt;                                //! Settings Option
+    std::string val;                                //! Settings Value
+    std::size_t qsize = 0;                          //! Current Size of Queue
     int cnt = 0;
-    conf.open("docs/engine.ini");                   // Open INI file for reading
+    conf.open("docs/engine.ini");                   //! Open INI file for reading
     while (std::getline(conf, row)) {
         // DEBUG Line
         if (_debug) { 
             sprintf(buf, "%d: %s\n", cnt++, row.c_str()); 
             log->named_log(__FILE__, buf);
         }
-        pos = row.find(delim);                      // Locate Delimiter
+        pos = row.find(delim);                      //! Locate Position of Delimiter
         if (pos != std::string::npos){
-            opt = row.substr(0, pos);               // Grab Option Name
+            opt = row.substr(0, pos);               //! Grab Option Name
             Utilz::Strip(opt);
-            val = row.substr(pos+1, row.size()-1);  // Grab Option Value
+            val = row.substr(pos+1, row.size()-1);  //! Grab Option Value
             Utilz::Strip(val);
-            qsize = this->add_setting(opt, val);    // Load Setting
-            cnt++;                                  // Increment Settings counter
+            qsize = this->add_setting(opt, val);    //! Load Setting
+            cnt++;                                  //! Increment Settings counter
         }
     }
-    conf.close();                                   // Close INI file descriptor
+    conf.close();                                   //! Close INI file descriptor
     return cnt == qsize;
 }
 
-/**
+/*!
  * Helper Hook used in CLI Help System
 */
 void ConfigManager::_help() { }

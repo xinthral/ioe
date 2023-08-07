@@ -1,10 +1,13 @@
+/*! @class  Combat combat.h combat.cpp
+ * @brief   Handle the interactive logic for combat
+*/
 #include "combat.h"
 
 /*!
- * Default Constructor
+ * @brief   Default Constructor
 */
 Combat::Combat() {
-    // Establish Singletons 
+    //! Establish Singletons 
     bal = BalanceController::GetInstance();
     cnf = ConfigManager::GetInstance();
     log = Logger::GetInstance();
@@ -13,7 +16,7 @@ Combat::Combat() {
 
 /*!
  * @overload
- * EvE Constructor
+ * @brief   EvE Constructor
 */
 Combat::Combat(Toon& combatant1, Toon& combatant2) : Combat() { 
     //! Check Health State
@@ -35,23 +38,23 @@ Combat::Combat(Toon& combatant1, Toon& combatant2) : Combat() {
 
 /*!
  * @overload
- * PvE Constructor
+ * @brief   PvE Constructor
 */
 Combat::Combat(Player& combatant1, Toon& combatant2) : Combat() { this->matchup = Condition::PvE; }
 
 /*!
  * @overload
- * PvP Constructor
+ * @brief   PvP Constructor
 */
 Combat::Combat(Player& combatant1, Player& combatant2) : Combat() { this->matchup = Condition::PvP; }
 
 /*!
- * Initiates Combat
+ * @brief   Initiates Combat
 */
 void Combat::begin_combat() {
     std::srand(std::time(NULL));
     char buf[1024];
-    int r = rand() % 20 + 1;
+    int r = rand() % 8 + 1;
     sprintf(buf, "Sleeping for %d", r);
     log->named_log(__FILE__, buf);
     sleep(r);
@@ -70,6 +73,6 @@ void Combat::begin_combat() {
 }
 
 /*!
- * Default Deconstructor
+ * @brief   Default Deconstructor
 */
 Combat::~Combat() { }

@@ -1,7 +1,19 @@
 #include "player.h"
 
-/**
+/*!
  * Default Constructor
+*/
+Player::Player() : Player(1, 1, 1) {}
+
+/*!
+ * @overload
+ * @brief   Constructor Initializor
+ * 
+ * @details FIXME
+ * 
+ * @param[in] level - Level of the Player
+ * @param[in] power - Cummulative Power of Player
+ * @param[in] block - Defense of the Player
 */
 Player::Player(int level, int power, int block) :
     level(level), power(power), block(block) {
@@ -10,12 +22,12 @@ Player::Player(int level, int power, int block) :
     log->named_log(__FILE__, buf);
 }
 
-/**
+/*!
  * Helper Hook used in CLI Help System
 */
 void Player::_help() {}
 
-/**
+/*!
  * Default Deconstructor
 */
 Player::~Player() {}
