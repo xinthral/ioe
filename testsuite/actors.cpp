@@ -24,6 +24,12 @@ void TestActors::test_actor() {
     combatstate_fight();    //! Test Combat State Fight
     combatstate_flee();     //! Test Combat State Flee
     combatstate_follow();   //! Test Combat State Follow
+
+    healthstate_healthy();  //! Test Health State Healthy
+    healthstate_hurting();  //! Test Health State Hurting
+    healthstate_critical(); //! Test Health State Critical 
+    healthstate_sick();     //! Test Health State Sick 
+    healthstate_dead();     //! Test Health State Dead 
 }
 
 /*!
@@ -32,7 +38,7 @@ void TestActors::test_actor() {
 */
 void TestActors::base_attack() {
     int cnf_atk = cnf->get_attack();
-    sprintf(buf, "%s %s %s", msgHead, "Base Attack Value", msgTail);
+    sprintf(buf, "%s %s %s", msgHead, "Base [Attack] Value", msgTail);
     dummy = new Actor();
     assert(cnf_atk == dummy->get_attack());
     BaseCase::log->named_log(__FILE__, buf);
@@ -45,7 +51,7 @@ void TestActors::base_attack() {
 void TestActors::base_defense() {
     int cnf_def = cnf->get_defense();
     dummy = new Actor();
-    sprintf(buf, "%s %s %s", msgHead, "Base Defense Value", msgTail);
+    sprintf(buf, "%s %s %s", msgHead, "Base [Defense] Value", msgTail);
     assertm(cnf_def == dummy->get_defense(), "Actor Defense Mismatch\t<--");
     BaseCase::log->named_log(__FILE__, buf);
 }
@@ -56,7 +62,7 @@ void TestActors::base_defense() {
 */
 void TestActors::base_health() {
     int cnf_hlt = cnf->get_health();
-    sprintf(buf, "%s %s %s", msgHead, "Base Health Value", msgTail);
+    sprintf(buf, "%s %s %s", msgHead, "Base [Health] Value", msgTail);
     dummy = new Actor();
     assert(cnf_hlt == dummy->get_health());
     BaseCase::log->named_log(__FILE__, buf);
@@ -68,7 +74,7 @@ void TestActors::base_health() {
 */
 void TestActors::combatstate_idle() { 
     dummy->set_combat_idle();
-    sprintf(buf, "%s %s %s", msgHead, "Idle Combatstate", msgTail);
+    sprintf(buf, "%s %s %s", msgHead, "[Idle] Combatstate", msgTail);
     assert(IDLE == dummy->get_combatstate());
     BaseCase::log->named_log(__FILE__, buf);
 }
@@ -79,7 +85,7 @@ void TestActors::combatstate_idle() {
 */
 void TestActors::combatstate_patrol() { 
     dummy->set_combat_patrol();
-    sprintf(buf, "%s %s %s", msgHead, "Patrol Combatstate", msgTail);
+    sprintf(buf, "%s %s %s", msgHead, "[Patrol] Combatstate", msgTail);
     assert(PATROL == dummy->get_combatstate());
     BaseCase::log->named_log(__FILE__, buf);
 }
@@ -90,7 +96,7 @@ void TestActors::combatstate_patrol() {
 */
 void TestActors::combatstate_fight() { 
     dummy->set_combat_fight();
-    sprintf(buf, "%s %s %s", msgHead, "Fight Combatstate", msgTail);
+    sprintf(buf, "%s %s %s", msgHead, "[Fight] Combatstate", msgTail);
     assert(FIGHT == dummy->get_combatstate());
     BaseCase::log->named_log(__FILE__, buf);
 }
@@ -101,7 +107,7 @@ void TestActors::combatstate_fight() {
 */
 void TestActors::combatstate_flee() { 
     dummy->set_combat_flee();
-    sprintf(buf, "%s %s %s", msgHead, "Flee Combatstate", msgTail);
+    sprintf(buf, "%s %s %s", msgHead, "[Flee] Combatstate", msgTail);
     assert(FLEE == dummy->get_combatstate());
     BaseCase::log->named_log(__FILE__, buf);
 }
@@ -112,7 +118,7 @@ void TestActors::combatstate_flee() {
 */
 void TestActors::combatstate_follow() { 
     dummy->set_combat_follow();
-    sprintf(buf, "%s %s %s", msgHead, "Follow Combatstate", msgTail);
+    sprintf(buf, "%s %s %s", msgHead, "[Follow] Combatstate", msgTail);
     assert(FOLLOW == dummy->get_combatstate());
     BaseCase::log->named_log(__FILE__, buf);
 }
@@ -123,7 +129,7 @@ void TestActors::combatstate_follow() {
 */
 void TestActors::healthstate_healthy() { 
     dummy->set_health_healthy();
-    sprintf(buf, "%s %s %s", msgHead, "Healthy Healthstate", msgTail);
+    sprintf(buf, "%s %s %s", msgHead, "[Healthy] Healthstate", msgTail);
     assert(HEALTHY == dummy->get_healthstate());
     BaseCase::log->named_log(__FILE__, buf);
 }
@@ -133,26 +139,45 @@ void TestActors::healthstate_healthy() {
  * @note    Are actors states getting set properly?
 */
 void TestActors::healthstate_hurting() { 
-
+    dummy->set_health_hurting();
+    sprintf(buf, "%s %s %s", msgHead, "[Hurting] Healthstate", msgTail);
+    assert(HURTING == dummy->get_healthstate());
+    BaseCase::log->named_log(__FILE__, buf);
 }
 
 /**
  * @brief   Validate Initial Condition: Health Critical 
  * @note    Are actors states getting set properly?
 */
-void TestActors::healthstate_critical() { }
+void TestActors::healthstate_critical() { 
+    dummy->set_health_critical();
+    sprintf(buf, "%s %s %s", msgHead, "[Critical] Healthstate", msgTail);
+    assert(CRITICAL == dummy->get_healthstate());
+    BaseCase::log->named_log(__FILE__, buf);
+
+}
 
 /**
  * @brief   Validate Initial Condition: Health Sick 
  * @note    Are actors states getting set properly?
 */
-void TestActors::healthstate_sick() { }
+void TestActors::healthstate_sick() { 
+    dummy->set_health_sick();
+    sprintf(buf, "%s %s %s", msgHead, "[Sick] Healthstate", msgTail);
+    assert(SICK == dummy->get_healthstate());
+    BaseCase::log->named_log(__FILE__, buf);
+}
 
 /**
  * @brief   Validate Initial Condition: Health Dead 
  * @note    Are actors states getting set properly?
 */
-void TestActors::healthstate_dead() { }
+void TestActors::healthstate_dead() { 
+    dummy->set_health_dead();
+    sprintf(buf, "%s %s %s", msgHead, "[Dead] Healthstate", msgTail);
+    assert(DEAD == dummy->get_healthstate());
+    BaseCase::log->named_log(__FILE__, buf);
+}
 
 /*!
  * @brief   Default Deconstructor
