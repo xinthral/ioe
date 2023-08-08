@@ -68,22 +68,26 @@ int main(int argc, char const *argv[]) {
     
     switch (choice) {
         case 1:
-            sprintf(buf, "Selected Actor Case...");
+            sprintf(buf, "Actor TestCase Completed...");
             ts.CaseActor();
             break;
         case 2:
-            sprintf(buf, "Selected Balance Case...");
+            sprintf(buf, "Balance TestCase Completed...");
             ts.CaseBalance();
             break;
         case 3:
-            sprintf(buf, "Selected Combat Case");
+            sprintf(buf, "Combat TestCase Completed...");
             ts.CaseCombat();
             break;
         default:
-            log->named_log(__FILE__, "Default Case");
+            sprintf(buf, "All TestCases' Completed...");
+            ts.CaseActor();
+            ts.CaseBalance();
+            ts.CaseCombat();
             break;
     }
     
     log->named_log(__FILE__, buf);
+    
     return 0;
 }

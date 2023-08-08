@@ -9,12 +9,15 @@ protected:
     Actor* dummy;
     char msgHead[32];
     char msgTail[128];
+    char msgNote[32];
 
 public:
     TestActors();
 
     //! Feet to the fire
     void test_actor();
+    void test_combatstate();
+    void test_healthstate();
 
     //! Test Stats
     void base_attack();
