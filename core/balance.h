@@ -15,14 +15,14 @@ const double LEVELS[] = {1, 3, 5, 8, 13, 21};
 class BalanceController {
 protected:
     BalanceController();
-	ConfigManager* cnf;
-    Logger* log;
-    int MAXLVL = 80;
-    double base = 5.0;
-    int span = 8;
-    int atk = 24;
-    int def = 32;
-    int hlt = 100;
+	ConfigManager*  cnf;
+    Logger*         log;
+    int MAXLVL      = 80;
+    double base     = 5.0;
+    int span        = 8;
+    int atk         = 24;
+    int def         = 32;
+    int hlt         = 100;
 
 private:
     static BalanceController* _singleton;
