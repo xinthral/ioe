@@ -21,7 +21,7 @@ void TestSuite::CaseActor() { TestActors* ta = new TestActors(); }
 /*!
  * @brief   Initiates the Test for the Balance Module
 */
-void TestSuite::CaseBalance() { }
+void TestSuite::CaseBalance() { TestBalance* tb = new TestBalance(); }
 
 /*!
  * @brief   Initiates the Test for the Balance Module
