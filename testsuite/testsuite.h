@@ -1,10 +1,11 @@
-#ifndef TEST_H
-#define TEST_H
+#ifndef TESTER_H
+#define TESTER_H
 
 #include <stdio.h>
 #include "../core/utilz.h"
-#include "actors.h"
-#include "balanced.h"
+#include "actorcase.h"
+#include "balancecase.h"
+#include "combatcase.h"
 
 class TestSuite {
 protected:
@@ -17,4 +18,4 @@ public:
     ~TestSuite();
 };
 
-#endif // TEST_H //
+#endif // TESTER_H //

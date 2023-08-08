@@ -1,8 +1,8 @@
 /*! 
- * @class   TestActors actors.h actors.cpp
- * @brief   Base Class for interactive Characters
+ * @class   TestActors actorcase.h actorcase.cpp
+ * @brief   Case for testing Actor functionality
 */
-#include "actors.h"
+#include "actorcase.h"
 
 TestActors::TestActors() {
     BaseCase::log->named_log(__FILE__, "Testing Actors!");

@@ -26,7 +26,7 @@ void TestSuite::CaseBalance() { TestBalance* tb = new TestBalance(); }
 /*!
  * @brief   Initiates the Test for the Balance Module
 */
-void TestSuite::CaseCombat() { }
+void TestSuite::CaseCombat() { TestCombat* tc = new TestCombat(); }
 
 /*!
  * @brief   Default Deconstructor

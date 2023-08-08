@@ -1,8 +1,8 @@
 /*!
- * @class   TestBalance balanced.h balanced.cpp
+ * @class   TestBalance balancecase.h balancecase.cpp
  * @brief   Test Balance Module 
 */
-#include "balanced.h"
+#include "balancecase.h"
 
 /*!
  * @brief   Default Constructor
