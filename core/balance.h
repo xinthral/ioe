@@ -8,7 +8,7 @@
 #include "config.h"
 #include "logger.h"
 
-enum Hardness { Vesy, Easy, Norm, Hard, Vard };
+enum Hardness { Vasy, Easy, Norm, Hard, Vard };
 
 const double LEVELS[] = {1, 3, 5, 8, 13, 21};
 
@@ -42,6 +42,7 @@ public:
     void display_state();
     double get_base();
     Hardness get_difficulty();
+    std::string get_difficulty_str();
     void _help();
     ~BalanceController();
 };

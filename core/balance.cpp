@@ -6,8 +6,8 @@
  * 			need a universal scale in which you operate from. 
  * 			This module creates a mathematical scalar curve 
  * 			that all statistics can be derived from. 
- * @note	\f$y = c\f$^[\f$x/(π^π)\f$]
- * @note	\f$c :=\f$ Constant based on game difficulty
+ * @note	\f$y = δ\f$^[\f$x/(π^π)\f$]
+ * @note	\f$δ :=\f$ Constant based on game difficulty
  * @note	\f$x :=\f$ Character's Current Level
  * @note	\f$π :=\f$ Pi....mmmm Pi
  * @note	\f$y :=\f$ The scalar value
@@ -20,7 +20,7 @@ std::mutex BalanceController::_mutex;
 
 /*!
  * @brief 	Default Constructor 
- */
+*/
 BalanceController::BalanceController() {
 	//! Load Configurations Objects
 	cnf  = ConfigManager::GetInstance();
@@ -39,7 +39,7 @@ BalanceController::BalanceController() {
 
 	//! Conditional: Difficulty Curve
 	switch(difficulty) {
-		case 1: { DIF = Vesy; base = LEVELS[1]; break; }
+		case 1: { DIF = Vasy; base = LEVELS[1]; break; }
 		case 2: { DIF = Easy; base = LEVELS[2]; break; }
 		case 3: { DIF = Norm; base = LEVELS[3]; break; }
 		case 4: { DIF = Hard; base = LEVELS[4]; break; } 
@@ -101,6 +101,21 @@ double BalanceController::get_base() { return base; }
  * @return 	Returns difficulty level
 */
 Hardness BalanceController::get_difficulty() { return this->DIF; }
+
+/*!
+ * @brief	Converts the difficulty to a string 
+ * @return	Difficulty as a string 
+*/
+std::string BalanceController::get_difficulty_str() {
+	switch(this->get_difficulty()) {
+		case Vasy:		return "Vasy";
+		case Easy:		return "Easy";
+		case Norm:		return "Norm";
+		case Hard:		return "Hard";
+		case Vard:		return "Vard";
+		default:		return "Invalid";
+	}
+}
 
 /*!
  * @brief 	Helper Hook used in CLI Help System

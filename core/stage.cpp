@@ -37,10 +37,10 @@ StageManager* StageManager::GetInstance(const std::string& name) {
 std::string StageManager::get_name() { return this->name; }
 
 /*!
- * @brief   Have the StageManager Load the Scene with Actors
+ * @brief   StageManager Loads the Scene with Actors
  * @note    FIXME
 */
-void StageManager::casting_call() { /* FIXME */ }
+void StageManager::casting_call() { }
 
 
 /*!

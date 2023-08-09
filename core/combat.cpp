@@ -24,7 +24,6 @@ Combat::Combat(Toon& combatant1, Toon& combatant2) : Combat() {
     if (combatant1.get_health() < 1 && combatant2.get_health() < 1) { exit(-1); }
     //! Check Combat State
     if (!combatant1.isAlive() || !combatant2.isAlive()) { exit(-1); }
-    char buf[1024];
     this->matchup = Condition::EvE;
     //! Set Combat State
     combatant1.set_combat_fight();
@@ -41,24 +40,25 @@ Combat::Combat(Toon& combatant1, Toon& combatant2) : Combat() {
  * @overload
  * @brief   PvE Constructor
 */
-Combat::Combat(Player& combatant1, Toon& combatant2) : Combat() { this->matchup = Condition::PvE; }
+Combat::Combat(Player& combatant1, Toon& combatant2) : Combat() { 
+    this->matchup = Condition::PvE; 
+}
 
 /*!
  * @overload
  * @brief   PvP Constructor
 */
-Combat::Combat(Player& combatant1, Player& combatant2) : Combat() { this->matchup = Condition::PvP; }
+Combat::Combat(Player& combatant1, Player& combatant2) : Combat() { 
+    this->matchup = Condition::PvP; 
+}
 
 /*!
  * @brief   Initiates Combat
 */
 void Combat::begin_combat() {
-    std::srand(std::time(NULL));
-    char buf[1024];
+    //! Seed and Generate Random Number
+    std::srand(std::time(0));
     int r = rand() % 3 + 1;
-    sprintf(buf, "Sleeping for %d", r);
-    log->named_log(__FILE__, buf);
-    sleep(r);
     switch(this->matchup) {
         case Condition::EvE: {
             log->named_log(__FILE__, "EvE Combat!");
@@ -71,6 +71,9 @@ void Combat::begin_combat() {
         } break;
         default: break;
     } 
+    sprintf(buf, "Sleeping for %d", r);
+    log->named_log(__FILE__, buf);
+    sleep(r);
 }
 
 /*!

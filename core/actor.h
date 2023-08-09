@@ -39,6 +39,7 @@ protected:
     int baseAttack;
     int baseDefense;
     int baseHealth;
+    int baseFlux;
 
 private:
     char buf[128];

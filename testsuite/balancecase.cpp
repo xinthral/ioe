@@ -16,7 +16,7 @@ TestBalance::TestBalance() {
 }
 
 /*!
- * @brief   Test the entire Balance Module
+ * @brief   Validate the entire Balance Module
 */
 void TestBalance::test_balance() { 
     this->def_atk_ratio();      //! Test Atk/Def Ration
@@ -32,18 +32,20 @@ void TestBalance::def_atk_ratio() {
     double denominator = this->baseDef * bal->scalar(100);
     double posRatio = numerator / denominator;
     assert(preRatio == posRatio);
-    sprintf(buf, "Tested Defense/Attack Ratio at Scale; %f.", posRatio);
+    sprintf(buf, "Tested Defense/Attack Ratio at Scale; %.4f.", posRatio);
     BaseCase::log->named_log(__FILE__, buf);
 }
 
 /*!
- * @brief   
+ * @brief   Validate that the appropriate difficulty level is
+ *          is being assigned. 
 */
 void TestBalance::difficulty_level() {
-    // std::string dif = cnf->raw_config("DIF");
-    // Hardness diff   = bal->get_difficulty();
-    // Hardness difff  = Norm;
-    // printf("%s dd \n", difff);
+    std::string dif  = cnf->raw_config("DIF");
+    std::string diff = bal->get_difficulty_str();
+    assert(dif.compare(diff));
+    sprintf(buf, "Tested Difficulty level.");
+    BaseCase::log->named_log(__FILE__, buf);
 }
 
 /*!

@@ -79,6 +79,15 @@ int main(int argc, char const *argv[]) {
             sprintf(buf, "Combat TestCase Completed...");
             ts.CaseCombat();
             break;
+        case 4:
+        case 5:
+        case 6:
+        case 7:
+        case 8:
+        case 9:
+        case 10:
+        case 11:
+        case 12:
         default:
             sprintf(buf, "All TestCases' Completed...");
             ts.CaseActor();
