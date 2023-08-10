@@ -39,10 +39,11 @@ int main(int argc, char const *argv[]) {
 
 	//! Declare Variables
 	std::vector<Toon*> team;
+	Battle*		bat; 
+	Combat* 	cc;
+	Player* 	p;
 	Toon* 		t;
 	Toon* 		v;
-	Player* 	p;
-	Combat* 	cc;
 	bool		vshContinue = true;
 	std::string prompt = "> ";
 	std::string rawInput;
@@ -64,25 +65,9 @@ int main(int argc, char const *argv[]) {
 	std::string names[5] = {"Kevin", "Connie", "Shawna", "Trever", "Jesse"};
 	std::string name;
 
-	for (int i = 0; i < 10; i++) {
-		name = names[i%5];
-		t = new Toon(i, name);
-		team.push_back(t);
-	}
-	
-	char temp[10];
 	p = new Player(1, 1, 1);
-	while (team.size() > 1) {
-		t = team[team.size() - 1];
-		team.pop_back();
-		v = team[team.size() - 1];
-		team.pop_back();
-		cc = new Combat(*t, *v);
-		cc->begin_combat();
-	}
+	mgr->casting_call(10, team);
+	bat = new Battle(10, p, team);
 
-	cc = new Combat(*p, *t);
-	cc->begin_combat();
-	
     return 0;
 }
