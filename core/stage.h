@@ -4,7 +4,9 @@
 #include <mutex>
 #include <stdio.h>
 #include <string>
+#include <vector>
 #include "logger.h"
+#include "toon.h"
 
 class StageManager {
 protected:
@@ -23,7 +25,7 @@ public:
     void operator = (const StageManager&) = delete;
     static StageManager *GetInstance(const std::string&);
     std::string get_name();
-    void casting_call();
+    void casting_call(int, std::vector<Toon*>&);
     void _help();
     ~StageManager();
 };

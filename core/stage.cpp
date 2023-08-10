@@ -40,7 +40,14 @@ std::string StageManager::get_name() { return this->name; }
  * @brief   StageManager Loads the Scene with Actors
  * @note    FIXME
 */
-void StageManager::casting_call() { }
+void StageManager::casting_call(int size, std::vector<Toon*>& npcs) { 
+    Toon* t;
+    for (int i = 0; i < size; i++) {
+        sprintf(buf, "Toon_%d", i);
+        t = new Toon(buf);
+        npcs.push_back(t);
+    }
+}
 
 
 /*!
