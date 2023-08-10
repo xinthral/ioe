@@ -41,7 +41,20 @@ Combat::Combat(Toon& combatant1, Toon& combatant2) : Combat() {
  * @brief   PvE Constructor
 */
 Combat::Combat(Player& combatant1, Toon& combatant2) : Combat() { 
+    //! Check Health State
+    if (combatant1.get_health() < 1 && combatant2.get_health() < 1) { exit(-1); }
+    //! Check Combat State
+    if (!combatant1.isAlive() || !combatant2.isAlive()) { exit(-1); }
     this->matchup = Condition::PvE; 
+    //! Set Combat State
+    combatant1.set_combat_fight();
+    combatant2.set_combat_fight();
+    sprintf(
+        buf, "%s is fighting %s", 
+        combatant1.get_name().c_str(), 
+        combatant2.get_name().c_str()
+    );
+    log->named_log(__FILE__, buf);
 }
 
 /*!
@@ -49,6 +62,10 @@ Combat::Combat(Player& combatant1, Toon& combatant2) : Combat() {
  * @brief   PvP Constructor
 */
 Combat::Combat(Player& combatant1, Player& combatant2) : Combat() { 
+    //! Check Health State
+    if (combatant1.get_health() < 1 && combatant2.get_health() < 1) { exit(-1); }
+    //! Check Combat State
+    if (!combatant1.isAlive() || !combatant2.isAlive()) { exit(-1); }
     this->matchup = Condition::PvP; 
 }
 
