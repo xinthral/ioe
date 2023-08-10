@@ -47,6 +47,7 @@ private:
 public:
     // Constructors
     Actor();
+    Actor(std::string);
 
     // Status Checks
     bool isFighting();

@@ -5,7 +5,7 @@
 #include "actor.h"
 
 /*!
- * Default Constructor 
+ * @brief   Default Constructor 
 */
 Actor::Actor() {
     cnf = ConfigManager::GetInstance();
@@ -14,9 +14,11 @@ Actor::Actor() {
     this->baseAttack = cnf->get_attack();
     this->baseDefense = cnf->get_defense();
     this->baseHealth = cnf->get_health();
-    // DEBUG: line
     this->name = "Actor_" + Utilz::TailString(2, Utilz::TimeStamp());
-    // sleep(1);
+}
+
+Actor::Actor(std::string name) : Actor() {
+    this->name = name;
 }
 
 /*!
