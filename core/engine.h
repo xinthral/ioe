@@ -1,9 +1,6 @@
 #ifndef XENGINE_H
 #define XENGINE_H
 
-// #include <windows.h> Both needed for sleep()
-// #include <unistd.h>  Both needed for sleep()
-
 #include <iostream>
 #include <stdio.h>
 #include <string>
@@ -17,5 +14,8 @@
 #include "player.h"
 #include "stage.h"
 #include "toon.h"
+
+bool parse_input();
+void print_help();
 
 #endif // XENGINE_H //

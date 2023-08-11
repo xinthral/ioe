@@ -8,6 +8,22 @@
 std::string _CNF_ = "docs/engine.ini";
 
 /*!
+ * @brief	Helper Function to parse input 
+*/
+bool parse_input(std::string input) {
+	//! Establish Variables 
+	Logger* log = Logger::GetInstance();
+	std::string fileName = Utilz::FileName(__FILE__);
+	bool containsExit = false;
+
+	//! FIXME
+	log->timed_log(input);
+	size_t found = input.find("exit");
+	if (found != std::string::npos) { containsExit = true; }
+	return !containsExit;
+}
+
+/*!
  * @brief	Helper Function to display help
 */
 void print_helper() {
@@ -29,43 +45,47 @@ void print_helper() {
  * @brief	Module Entry Point
 */
 int main(int argc, char const *argv[]) {
+	//! Conditional Check
 	if (argc < 2) { print_helper(); }
 
-	//! Establish Controlers
+	//! Establish Controllers
 	ConfigManager* 		cnf = ConfigManager::GetInstance();
 	BalanceController* 	bal = BalanceController::GetInstance();
 	Logger* 			log = Logger::GetInstance();
 	StageManager* 		mgr = StageManager::GetInstance("Jugo");
 
 	//! Declare Variables
-	std::vector<Toon*> team;
 	Battle*		bat; 
 	Combat* 	cc;
 	Player* 	p;
 	Toon* 		t;
 	Toon* 		v;
-	bool		vshContinue = true;
+	std::vector<Toon*> team;
 	std::string prompt = "> ";
 	std::string rawInput;
 	size_t		found;
+	bool		vshContinue = true;
 
+	//! Interactive Shell
+	/* ********************************** */
 	do {
 		printf("%s", prompt.c_str());		//! Display Message Prompt
 		std::cin >> rawInput;				//! Get User Input
-		log->timed_log(rawInput);			//! Debug Log
 		//! Conditional to end Shell
-		// vshContinue = parseInput(rawInput);
-		found = rawInput.find("exit");
-		if (found != std::string::npos) { vshContinue = false; }
+		vshContinue = parse_input(rawInput);
 	} while (vshContinue == true);
-
-	//! FIXME Implement Interactive Shell
 	/* ********************************** */
 
-	std::string names[5] = {"Kevin", "Connie", "Shawna", "Trever", "Jesse"};
+	std::string names[5] = {
+		"Kevin", 
+		"Connie", 
+		"Shawna", 
+		"Trever", 
+		"Jesse"
+	};
 	std::string name;
 
-	p = new Player(1, 1, 1);
+	p = new Player("Jesse", 1, 1, 1);
 	mgr->casting_call(10, team);
 	bat = new Battle(10, p, team);
 
