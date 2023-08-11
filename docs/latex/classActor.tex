@@ -1,0 +1,276 @@
+\hypertarget{classActor}{}\section{Actor Class Reference}
+\label{classActor}\index{Actor@{Actor}}
+
+
+The base class for all \mbox{\hyperlink{classToon}{Toon}} and \mbox{\hyperlink{classPlayer}{Player}} types.  
+
+
+
+
+{\ttfamily \#include $<$actor.\+cpp$>$}
+
+Inheritance diagram for Actor\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classActor}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classActor_a2a0ff4335a1ee9096df90f288c026c8b}\label{classActor_a2a0ff4335a1ee9096df90f288c026c8b}} 
+\mbox{\hyperlink{classActor_a2a0ff4335a1ee9096df90f288c026c8b}{Actor}} ()
+\begin{DoxyCompactList}\small\item\em Default Constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classActor_af8f3f7be89b9933e46ec096a1a2ceb6a}\label{classActor_af8f3f7be89b9933e46ec096a1a2ceb6a}} 
+{\bfseries Actor} (std\+::string)
+\item 
+bool \mbox{\hyperlink{classActor_a8836e8c2b76103a8dc47ff408d89ce3e}{is\+Fighting}} ()
+\begin{DoxyCompactList}\small\item\em Conditional \mbox{\hyperlink{classCombat}{Combat}} Check. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classActor_aee8e4efcd61cfc994a232730d89a4fef}{is\+Alive}} ()
+\begin{DoxyCompactList}\small\item\em Conditional Health Check. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classActor_a252bc0e75933e7e3062d54b8e1f8fafb}{set\+\_\+id}} (int)
+\begin{DoxyCompactList}\small\item\em Re\+Assign \mbox{\hyperlink{classActor}{Actor}} ID number. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classActor_a7bf5eaa29d6275591d35fd43f67dd7be}{set\+\_\+name}} (std\+::string)
+\begin{DoxyCompactList}\small\item\em Re\+Assign \mbox{\hyperlink{classActor}{Actor}} Name. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classActor_aa6a652e6ced2aad8f848ea7324365d69}{get\+\_\+id}} ()
+\begin{DoxyCompactList}\small\item\em Return ID Attribute. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classActor_a55a6dcdcec5931619506b2a76ccb9db5}{get\+\_\+name}} ()
+\begin{DoxyCompactList}\small\item\em Return Name Attribute. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classActor_a10f4cbdafcc6aea7d3a9a4cfa78ef15f}{get\+\_\+attack}} ()
+\begin{DoxyCompactList}\small\item\em Return Attack Attribute. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classActor_a9ad76549333736c7b76a4b78bf46cc17}{get\+\_\+defense}} ()
+\begin{DoxyCompactList}\small\item\em Return Defense Attribute. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classActor_a32de439dc3ba0d36ae913b173b4b633f}{get\+\_\+health}} ()
+\begin{DoxyCompactList}\small\item\em Return Health Attribute. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classActor_a760913da638e0e92b2ec47d0764a4028}\label{classActor_a760913da638e0e92b2ec47d0764a4028}} 
+void \mbox{\hyperlink{classActor_a760913da638e0e92b2ec47d0764a4028}{set\+\_\+combat\+\_\+idle}} ()
+\begin{DoxyCompactList}\small\item\em Set \mbox{\hyperlink{classCombat}{Combat}} State to Idling. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classActor_a313f15612961c7468b4b7283be8dc87c}\label{classActor_a313f15612961c7468b4b7283be8dc87c}} 
+void \mbox{\hyperlink{classActor_a313f15612961c7468b4b7283be8dc87c}{set\+\_\+combat\+\_\+patrol}} ()
+\begin{DoxyCompactList}\small\item\em Set \mbox{\hyperlink{classCombat}{Combat}} State to Patrolling. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classActor_ada813b8eb87215f047e8a76a4a46f4b1}\label{classActor_ada813b8eb87215f047e8a76a4a46f4b1}} 
+void \mbox{\hyperlink{classActor_ada813b8eb87215f047e8a76a4a46f4b1}{set\+\_\+combat\+\_\+fight}} ()
+\begin{DoxyCompactList}\small\item\em Set \mbox{\hyperlink{classCombat}{Combat}} State to Fighting. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classActor_a0fb7d6f1a49c27bac45adb6d4454dff7}\label{classActor_a0fb7d6f1a49c27bac45adb6d4454dff7}} 
+void \mbox{\hyperlink{classActor_a0fb7d6f1a49c27bac45adb6d4454dff7}{set\+\_\+combat\+\_\+flee}} ()
+\begin{DoxyCompactList}\small\item\em Set \mbox{\hyperlink{classCombat}{Combat}} State to Fleeing. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classActor_af5cf54d05eebc614a009d7209d1ada65}\label{classActor_af5cf54d05eebc614a009d7209d1ada65}} 
+void \mbox{\hyperlink{classActor_af5cf54d05eebc614a009d7209d1ada65}{set\+\_\+combat\+\_\+follow}} ()
+\begin{DoxyCompactList}\small\item\em Set \mbox{\hyperlink{classCombat}{Combat}} State to Following. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classActor_ae15ef7e10551ee95f482ac12b1d33aed}\label{classActor_ae15ef7e10551ee95f482ac12b1d33aed}} 
+void \mbox{\hyperlink{classActor_ae15ef7e10551ee95f482ac12b1d33aed}{set\+\_\+combatstate}} (Combat\+State)
+\begin{DoxyCompactList}\small\item\em Re\+Assign \mbox{\hyperlink{classCombat}{Combat}} State. \end{DoxyCompactList}\item 
+Combat\+State \mbox{\hyperlink{classActor_a15f8173b7ac5479a1547f842d5fc474b}{get\+\_\+combatstate}} ()
+\begin{DoxyCompactList}\small\item\em Return \mbox{\hyperlink{classCombat}{Combat}} State. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classActor_a1ba58c4ac487e92bfe9c576af2ee4c49}\label{classActor_a1ba58c4ac487e92bfe9c576af2ee4c49}} 
+void \mbox{\hyperlink{classActor_a1ba58c4ac487e92bfe9c576af2ee4c49}{set\+\_\+health\+\_\+healthy}} ()
+\begin{DoxyCompactList}\small\item\em Set Health State to Healthy. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classActor_a2fd292d5fbf5d3cb9be4093c819b2b27}\label{classActor_a2fd292d5fbf5d3cb9be4093c819b2b27}} 
+void \mbox{\hyperlink{classActor_a2fd292d5fbf5d3cb9be4093c819b2b27}{set\+\_\+health\+\_\+hurting}} ()
+\begin{DoxyCompactList}\small\item\em Set Health State to Hurting. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classActor_a8a9c36002bd9c16263f71998db342f43}\label{classActor_a8a9c36002bd9c16263f71998db342f43}} 
+void \mbox{\hyperlink{classActor_a8a9c36002bd9c16263f71998db342f43}{set\+\_\+health\+\_\+critical}} ()
+\begin{DoxyCompactList}\small\item\em Set Health State to Critical. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classActor_aa50ea98f77ccff3d887942e5dbafcc5f}\label{classActor_aa50ea98f77ccff3d887942e5dbafcc5f}} 
+void \mbox{\hyperlink{classActor_aa50ea98f77ccff3d887942e5dbafcc5f}{set\+\_\+health\+\_\+sick}} ()
+\begin{DoxyCompactList}\small\item\em Set Health State to Sick. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classActor_a1c070ef8e7e3e26a31180ad1553f0740}\label{classActor_a1c070ef8e7e3e26a31180ad1553f0740}} 
+void \mbox{\hyperlink{classActor_a1c070ef8e7e3e26a31180ad1553f0740}{set\+\_\+health\+\_\+dead}} ()
+\begin{DoxyCompactList}\small\item\em Set Health State to Dead. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classActor_a6cc3e20a87778ba62cfd5e2940fde6d0}\label{classActor_a6cc3e20a87778ba62cfd5e2940fde6d0}} 
+void \mbox{\hyperlink{classActor_a6cc3e20a87778ba62cfd5e2940fde6d0}{set\+\_\+healthstate}} (Health\+State)
+\begin{DoxyCompactList}\small\item\em Re\+Assign Health State. \end{DoxyCompactList}\item 
+Health\+State \mbox{\hyperlink{classActor_ab3db004321ad4d3ce4195b1e6173dbfb}{get\+\_\+healthstate}} ()
+\begin{DoxyCompactList}\small\item\em Return Health State. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classActor_ad807fe8f85e72ab263a0c05e3231cb39}\label{classActor_ad807fe8f85e72ab263a0c05e3231cb39}} 
+\mbox{\hyperlink{classActor_ad807fe8f85e72ab263a0c05e3231cb39}{$\sim$\+Actor}} ()
+\begin{DoxyCompactList}\small\item\em Default Deconstructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classActor_ad8a8c1ffec1bd95560bfa4a85d0cc057}\label{classActor_ad8a8c1ffec1bd95560bfa4a85d0cc057}} 
+\mbox{\hyperlink{classConfigManager}{Config\+Manager}} $\ast$ {\bfseries cnf}
+\item 
+\mbox{\Hypertarget{classActor_a5e0fd27e191f60bd9f4a7bbe27d65a3a}\label{classActor_a5e0fd27e191f60bd9f4a7bbe27d65a3a}} 
+Combat\+State {\bfseries ai\+State}
+\item 
+\mbox{\Hypertarget{classActor_af5807d0cf4ed92c7f0d324d5e7940b36}\label{classActor_af5807d0cf4ed92c7f0d324d5e7940b36}} 
+Health\+State {\bfseries condition}
+\item 
+\mbox{\Hypertarget{classActor_ae99855a0b1eb2cb0ff78eb32e98e487f}\label{classActor_ae99855a0b1eb2cb0ff78eb32e98e487f}} 
+std\+::string {\bfseries name}
+\item 
+\mbox{\Hypertarget{classActor_a0d2b93f5baefded4573b9f89aa5bda9a}\label{classActor_a0d2b93f5baefded4573b9f89aa5bda9a}} 
+int {\bfseries id}
+\item 
+\mbox{\Hypertarget{classActor_a60ebb0a994dbaa1f6e6f3d96faaabcec}\label{classActor_a60ebb0a994dbaa1f6e6f3d96faaabcec}} 
+int {\bfseries base\+Attack}
+\item 
+\mbox{\Hypertarget{classActor_a0ad19cf932aa7e2fae32264271c2d2bf}\label{classActor_a0ad19cf932aa7e2fae32264271c2d2bf}} 
+int {\bfseries base\+Defense}
+\item 
+\mbox{\Hypertarget{classActor_abef2883e3d1e88a29c64123983e7c605}\label{classActor_abef2883e3d1e88a29c64123983e7c605}} 
+int {\bfseries base\+Health}
+\item 
+\mbox{\Hypertarget{classActor_ae696ae51f2ab291fda2473ebacc89b8c}\label{classActor_ae696ae51f2ab291fda2473ebacc89b8c}} 
+int {\bfseries base\+Flux}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The base class for all \mbox{\hyperlink{classToon}{Toon}} and \mbox{\hyperlink{classPlayer}{Player}} types. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classActor_a10f4cbdafcc6aea7d3a9a4cfa78ef15f}\label{classActor_a10f4cbdafcc6aea7d3a9a4cfa78ef15f}} 
+\index{Actor@{Actor}!get\+\_\+attack@{get\+\_\+attack}}
+\index{get\+\_\+attack@{get\+\_\+attack}!Actor@{Actor}}
+\subsubsection{\texorpdfstring{get\+\_\+attack()}{get\_attack()}}
+{\footnotesize\ttfamily int Actor\+::get\+\_\+attack (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Return Attack Attribute. 
+
+\begin{DoxyReturn}{Returns}
+Base Attack Value 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classActor_a15f8173b7ac5479a1547f842d5fc474b}\label{classActor_a15f8173b7ac5479a1547f842d5fc474b}} 
+\index{Actor@{Actor}!get\+\_\+combatstate@{get\+\_\+combatstate}}
+\index{get\+\_\+combatstate@{get\+\_\+combatstate}!Actor@{Actor}}
+\subsubsection{\texorpdfstring{get\+\_\+combatstate()}{get\_combatstate()}}
+{\footnotesize\ttfamily Combat\+State Actor\+::get\+\_\+combatstate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Return \mbox{\hyperlink{classCombat}{Combat}} State. 
+
+\begin{DoxyReturn}{Returns}
+Current \mbox{\hyperlink{classCombat}{Combat}} State of the character. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classActor_a9ad76549333736c7b76a4b78bf46cc17}\label{classActor_a9ad76549333736c7b76a4b78bf46cc17}} 
+\index{Actor@{Actor}!get\+\_\+defense@{get\+\_\+defense}}
+\index{get\+\_\+defense@{get\+\_\+defense}!Actor@{Actor}}
+\subsubsection{\texorpdfstring{get\+\_\+defense()}{get\_defense()}}
+{\footnotesize\ttfamily int Actor\+::get\+\_\+defense (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Return Defense Attribute. 
+
+\begin{DoxyReturn}{Returns}
+Base Defense Value 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classActor_a32de439dc3ba0d36ae913b173b4b633f}\label{classActor_a32de439dc3ba0d36ae913b173b4b633f}} 
+\index{Actor@{Actor}!get\+\_\+health@{get\+\_\+health}}
+\index{get\+\_\+health@{get\+\_\+health}!Actor@{Actor}}
+\subsubsection{\texorpdfstring{get\+\_\+health()}{get\_health()}}
+{\footnotesize\ttfamily int Actor\+::get\+\_\+health (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Return Health Attribute. 
+
+\begin{DoxyReturn}{Returns}
+Base Health Value 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classActor_ab3db004321ad4d3ce4195b1e6173dbfb}\label{classActor_ab3db004321ad4d3ce4195b1e6173dbfb}} 
+\index{Actor@{Actor}!get\+\_\+healthstate@{get\+\_\+healthstate}}
+\index{get\+\_\+healthstate@{get\+\_\+healthstate}!Actor@{Actor}}
+\subsubsection{\texorpdfstring{get\+\_\+healthstate()}{get\_healthstate()}}
+{\footnotesize\ttfamily Health\+State Actor\+::get\+\_\+healthstate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Return Health State. 
+
+\begin{DoxyReturn}{Returns}
+Current Health State of the character. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classActor_aa6a652e6ced2aad8f848ea7324365d69}\label{classActor_aa6a652e6ced2aad8f848ea7324365d69}} 
+\index{Actor@{Actor}!get\+\_\+id@{get\+\_\+id}}
+\index{get\+\_\+id@{get\+\_\+id}!Actor@{Actor}}
+\subsubsection{\texorpdfstring{get\+\_\+id()}{get\_id()}}
+{\footnotesize\ttfamily int Actor\+::get\+\_\+id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Return ID Attribute. 
+
+\begin{DoxyReturn}{Returns}
+Identity Reference Number 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classActor_a55a6dcdcec5931619506b2a76ccb9db5}\label{classActor_a55a6dcdcec5931619506b2a76ccb9db5}} 
+\index{Actor@{Actor}!get\+\_\+name@{get\+\_\+name}}
+\index{get\+\_\+name@{get\+\_\+name}!Actor@{Actor}}
+\subsubsection{\texorpdfstring{get\+\_\+name()}{get\_name()}}
+{\footnotesize\ttfamily std\+::string Actor\+::get\+\_\+name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Return Name Attribute. 
+
+\begin{DoxyReturn}{Returns}
+Name Value 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classActor_aee8e4efcd61cfc994a232730d89a4fef}\label{classActor_aee8e4efcd61cfc994a232730d89a4fef}} 
+\index{Actor@{Actor}!is\+Alive@{is\+Alive}}
+\index{is\+Alive@{is\+Alive}!Actor@{Actor}}
+\subsubsection{\texorpdfstring{is\+Alive()}{isAlive()}}
+{\footnotesize\ttfamily bool Actor\+::is\+Alive (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Conditional Health Check. 
+
+Confirm if \mbox{\hyperlink{classActor}{Actor}} is not dead \begin{DoxyReturn}{Returns}
+Boolean answer 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classActor_a8836e8c2b76103a8dc47ff408d89ce3e}\label{classActor_a8836e8c2b76103a8dc47ff408d89ce3e}} 
+\index{Actor@{Actor}!is\+Fighting@{is\+Fighting}}
+\index{is\+Fighting@{is\+Fighting}!Actor@{Actor}}
+\subsubsection{\texorpdfstring{is\+Fighting()}{isFighting()}}
+{\footnotesize\ttfamily bool Actor\+::is\+Fighting (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Conditional \mbox{\hyperlink{classCombat}{Combat}} Check. 
+
+Confirm if \mbox{\hyperlink{classActor}{Actor}} is currently fighting \begin{DoxyReturn}{Returns}
+Boolean answer 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classActor_a252bc0e75933e7e3062d54b8e1f8fafb}\label{classActor_a252bc0e75933e7e3062d54b8e1f8fafb}} 
+\index{Actor@{Actor}!set\+\_\+id@{set\+\_\+id}}
+\index{set\+\_\+id@{set\+\_\+id}!Actor@{Actor}}
+\subsubsection{\texorpdfstring{set\+\_\+id()}{set\_id()}}
+{\footnotesize\ttfamily void Actor\+::set\+\_\+id (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+Re\+Assign \mbox{\hyperlink{classActor}{Actor}} ID number. 
+
+Set ID Attribute 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em id} & -\/ Identity Reference Number \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classActor_a7bf5eaa29d6275591d35fd43f67dd7be}\label{classActor_a7bf5eaa29d6275591d35fd43f67dd7be}} 
+\index{Actor@{Actor}!set\+\_\+name@{set\+\_\+name}}
+\index{set\+\_\+name@{set\+\_\+name}!Actor@{Actor}}
+\subsubsection{\texorpdfstring{set\+\_\+name()}{set\_name()}}
+{\footnotesize\ttfamily void Actor\+::set\+\_\+name (\begin{DoxyParamCaption}\item[{std\+::string}]{name }\end{DoxyParamCaption})}
+
+
+
+Re\+Assign \mbox{\hyperlink{classActor}{Actor}} Name. 
+
+Set Name Attribute 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em name} & -\/ Replace Name \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+core/actor.\+h\item 
+core/actor.\+cpp\end{DoxyCompactItemize}

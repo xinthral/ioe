@@ -1,0 +1,192 @@
+\hypertarget{classBalanceController}{}\section{Balance\+Controller Class Reference}
+\label{classBalanceController}\index{Balance\+Controller@{Balance\+Controller}}
+
+
+Balance Controller.  
+
+
+
+
+{\ttfamily \#include $<$balance.\+cpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classBalanceController_ad03029a693705a0adc90bd6cc426aa96}\label{classBalanceController_ad03029a693705a0adc90bd6cc426aa96}} 
+{\bfseries Balance\+Controller} (\mbox{\hyperlink{classBalanceController}{Balance\+Controller}} \&)=delete
+\item 
+\mbox{\Hypertarget{classBalanceController_af8b3ab3ca188003176f33161800c7991}\label{classBalanceController_af8b3ab3ca188003176f33161800c7991}} 
+void {\bfseries operator=} (const \mbox{\hyperlink{classBalanceController}{Balance\+Controller}} \&)=delete
+\item 
+double \mbox{\hyperlink{classBalanceController_a89402d9a7abd85a4fa522f3ad642b6ce}{scalar}} (int)
+\begin{DoxyCompactList}\small\item\em Scales The Universe. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBalanceController_a13eb2d765e0aa528b131b32dd1940fac}{display\+\_\+state}} ()
+\begin{DoxyCompactList}\small\item\em Log Game State. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classBalanceController_a68f4371ae68f48c5040906949cab77b4}{get\+\_\+base}} ()
+\begin{DoxyCompactList}\small\item\em Helper Function\+: Base Scalar Value. \end{DoxyCompactList}\item 
+Hardness \mbox{\hyperlink{classBalanceController_ab533d0f17d9e616c208049dc318a9dc8}{get\+\_\+difficulty}} ()
+\begin{DoxyCompactList}\small\item\em Helper Function\+: Game Difficulty. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classBalanceController_a882a510066a59049b37bacd83a303267}{get\+\_\+difficulty\+\_\+str}} ()
+\begin{DoxyCompactList}\small\item\em Converts the difficulty to a string. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classBalanceController_a8936276becef1b520f9b92984e9cf46f}\label{classBalanceController_a8936276becef1b520f9b92984e9cf46f}} 
+void \mbox{\hyperlink{classBalanceController_a8936276becef1b520f9b92984e9cf46f}{\+\_\+help}} ()
+\begin{DoxyCompactList}\small\item\em Helper Hook used in C\+LI Help System. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classBalanceController_a59d36764e3b3c8121577eb9d699a2d49}\label{classBalanceController_a59d36764e3b3c8121577eb9d699a2d49}} 
+\mbox{\hyperlink{classBalanceController_a59d36764e3b3c8121577eb9d699a2d49}{$\sim$\+Balance\+Controller}} ()
+\begin{DoxyCompactList}\small\item\em Default Deconstructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classBalanceController}{Balance\+Controller}} $\ast$ \mbox{\hyperlink{classBalanceController_a570c607b223a0a9c033603e833458251}{Get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Singleton Constructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classBalanceController_a525efc25f5f4876cbff5ca052d7c55f6}{Balance\+Controller}} ()
+\begin{DoxyCompactList}\small\item\em Default Constructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classBalanceController_ad0149e68d9da3d925520b69557a72dac}\label{classBalanceController_ad0149e68d9da3d925520b69557a72dac}} 
+\mbox{\hyperlink{classConfigManager}{Config\+Manager}} $\ast$ {\bfseries cnf}
+\item 
+\mbox{\Hypertarget{classBalanceController_ae5b4a0c624a64e718ded1740bc2a15bb}\label{classBalanceController_ae5b4a0c624a64e718ded1740bc2a15bb}} 
+\mbox{\hyperlink{classLogger}{Logger}} $\ast$ {\bfseries log}
+\item 
+\mbox{\Hypertarget{classBalanceController_ac0e90b2de8f8bc811d992834e2c07435}\label{classBalanceController_ac0e90b2de8f8bc811d992834e2c07435}} 
+int {\bfseries M\+A\+X\+L\+VL} = 80
+\item 
+\mbox{\Hypertarget{classBalanceController_a7f63808b3db1ec02ad86c2289df693d0}\label{classBalanceController_a7f63808b3db1ec02ad86c2289df693d0}} 
+double {\bfseries base} = 5.\+0
+\item 
+\mbox{\Hypertarget{classBalanceController_a758f9a2858bc14a457b47cddff7731e1}\label{classBalanceController_a758f9a2858bc14a457b47cddff7731e1}} 
+int {\bfseries span} = 8
+\item 
+\mbox{\Hypertarget{classBalanceController_a94f8f130dbfc209acad2ad8075121cba}\label{classBalanceController_a94f8f130dbfc209acad2ad8075121cba}} 
+int {\bfseries atk} = 24
+\item 
+\mbox{\Hypertarget{classBalanceController_af479abd150c2c81c537734f933ba3341}\label{classBalanceController_af479abd150c2c81c537734f933ba3341}} 
+int {\bfseries def} = 32
+\item 
+\mbox{\Hypertarget{classBalanceController_a1a775776fabf4916503f0ebdaeeb4234}\label{classBalanceController_a1a775776fabf4916503f0ebdaeeb4234}} 
+int {\bfseries hlt} = 100
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Balance Controller. 
+
+Like in life, so to in games do we need balance In order to maintain consistency in a game, you need a universal scale in which you operate from. This module creates a mathematical scalar curve that all statistics can be derived from. \begin{DoxyNote}{Note}
+$y = δ$$^\wedge$\mbox{[} $x/(π^π)$\mbox{]} 
+
+$δ :=$ Constant based on game difficulty 
+
+$x :=$ Character\textquotesingle{}s Current Level 
+
+$π :=$ Pi....mmmm Pi 
+
+$y :=$ The scalar value 
+\end{DoxyNote}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBalanceController_a525efc25f5f4876cbff5ca052d7c55f6}\label{classBalanceController_a525efc25f5f4876cbff5ca052d7c55f6}} 
+\index{Balance\+Controller@{Balance\+Controller}!Balance\+Controller@{Balance\+Controller}}
+\index{Balance\+Controller@{Balance\+Controller}!Balance\+Controller@{Balance\+Controller}}
+\subsubsection{\texorpdfstring{Balance\+Controller()}{BalanceController()}}
+{\footnotesize\ttfamily Balance\+Controller\+::\+Balance\+Controller (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Default Constructor. 
+
+Load Configurations Objects
+
+Conditional Check\+: Confirm Range
+
+Conditional\+: Difficulty Curve 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classBalanceController_a13eb2d765e0aa528b131b32dd1940fac}\label{classBalanceController_a13eb2d765e0aa528b131b32dd1940fac}} 
+\index{Balance\+Controller@{Balance\+Controller}!display\+\_\+state@{display\+\_\+state}}
+\index{display\+\_\+state@{display\+\_\+state}!Balance\+Controller@{Balance\+Controller}}
+\subsubsection{\texorpdfstring{display\+\_\+state()}{display\_state()}}
+{\footnotesize\ttfamily void Balance\+Controller\+::display\+\_\+state (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Log Game State. 
+
+Display the current state of the base game attributes \mbox{\Hypertarget{classBalanceController_a68f4371ae68f48c5040906949cab77b4}\label{classBalanceController_a68f4371ae68f48c5040906949cab77b4}} 
+\index{Balance\+Controller@{Balance\+Controller}!get\+\_\+base@{get\+\_\+base}}
+\index{get\+\_\+base@{get\+\_\+base}!Balance\+Controller@{Balance\+Controller}}
+\subsubsection{\texorpdfstring{get\+\_\+base()}{get\_base()}}
+{\footnotesize\ttfamily double Balance\+Controller\+::get\+\_\+base (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Helper Function\+: Base Scalar Value. 
+
+\begin{DoxyReturn}{Returns}
+Returns Base Scalar Value 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classBalanceController_ab533d0f17d9e616c208049dc318a9dc8}\label{classBalanceController_ab533d0f17d9e616c208049dc318a9dc8}} 
+\index{Balance\+Controller@{Balance\+Controller}!get\+\_\+difficulty@{get\+\_\+difficulty}}
+\index{get\+\_\+difficulty@{get\+\_\+difficulty}!Balance\+Controller@{Balance\+Controller}}
+\subsubsection{\texorpdfstring{get\+\_\+difficulty()}{get\_difficulty()}}
+{\footnotesize\ttfamily Hardness Balance\+Controller\+::get\+\_\+difficulty (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Helper Function\+: Game Difficulty. 
+
+\begin{DoxyReturn}{Returns}
+Returns difficulty level 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classBalanceController_a882a510066a59049b37bacd83a303267}\label{classBalanceController_a882a510066a59049b37bacd83a303267}} 
+\index{Balance\+Controller@{Balance\+Controller}!get\+\_\+difficulty\+\_\+str@{get\+\_\+difficulty\+\_\+str}}
+\index{get\+\_\+difficulty\+\_\+str@{get\+\_\+difficulty\+\_\+str}!Balance\+Controller@{Balance\+Controller}}
+\subsubsection{\texorpdfstring{get\+\_\+difficulty\+\_\+str()}{get\_difficulty\_str()}}
+{\footnotesize\ttfamily std\+::string Balance\+Controller\+::get\+\_\+difficulty\+\_\+str (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Converts the difficulty to a string. 
+
+\begin{DoxyReturn}{Returns}
+Difficulty as a string 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classBalanceController_a570c607b223a0a9c033603e833458251}\label{classBalanceController_a570c607b223a0a9c033603e833458251}} 
+\index{Balance\+Controller@{Balance\+Controller}!Get\+Instance@{Get\+Instance}}
+\index{Get\+Instance@{Get\+Instance}!Balance\+Controller@{Balance\+Controller}}
+\subsubsection{\texorpdfstring{Get\+Instance()}{GetInstance()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBalanceController}{Balance\+Controller}} $\ast$ Balance\+Controller\+::\+Get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Singleton Constructor. 
+
+Acquire Instance Mutex
+
+If singleton already exists, return instance \mbox{\Hypertarget{classBalanceController_a89402d9a7abd85a4fa522f3ad642b6ce}\label{classBalanceController_a89402d9a7abd85a4fa522f3ad642b6ce}} 
+\index{Balance\+Controller@{Balance\+Controller}!scalar@{scalar}}
+\index{scalar@{scalar}!Balance\+Controller@{Balance\+Controller}}
+\subsubsection{\texorpdfstring{scalar()}{scalar()}}
+{\footnotesize\ttfamily double Balance\+Controller\+::scalar (\begin{DoxyParamCaption}\item[{int}]{level }\end{DoxyParamCaption})}
+
+
+
+Scales The Universe. 
+
+Scalar Function to keep the entire universe in balance. \begin{DoxyNote}{Note}
+y = δ$^\wedge$(χ/\mbox{[}π$^\wedge$π\mbox{]}) 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+Scaled value based on level 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+core/balance.\+h\item 
+core/balance.\+cpp\end{DoxyCompactItemize}
