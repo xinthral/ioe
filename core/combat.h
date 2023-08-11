@@ -8,6 +8,8 @@
 #include "player.h"
 #include "toon.h"
 
+
+//! Combat Condition
 enum Condition { EvE, PvE, PvP };
 
 class Combat {
