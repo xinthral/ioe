@@ -8,24 +8,14 @@
 
 # Compiler: gcc for C programs, g++ for C++ programs
 # emcc for embedded C programs, em++ for embedded C++ programs
-# CC = g++
 DOXYGEN := doxygen
 RRM := rm -rf
 
 # Windows Variants
 ifeq ($(OS), Windows_NT)
-# CC = c++
-# CC = em++
 DOXYGEN := doxygen.exe
-RM = del
+RM := del
 RRM := del /S /Q /f
-
-# Linux EM++ Variants
-# else ifneq ($(OS), ubuntu)
-# CC = em++
-# Unsupportd OS
-else
-	$(error Unsupported OS: $(OS))
 
 endif
 

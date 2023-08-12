@@ -6,17 +6,22 @@
 
 #pragma GCC diagnostic ignored "-Wmaybe-uniitialized"
 
-# the compiler: gcc for C programs, g++ for C++ programs
-# emcc for embedded C programs, em++ for embedded C++ programs
-CC = em++
+# Compiler: cc, c++, gcc, g++, emcc, em++ 
+# cc for C programs on windows
+# c++ for C++ programs on windows
+# gcc for C programs on gnu
+# g++ for C++ programs on gnu
+# emcc for C programs for embedded languages
+# em++ for C++ programs for embedded languages
+CC = g++
 
 # Windows Variants
 ifeq ($(OS), Windows_NT)
-CC = c++
+# CC = c++
 RM = del
 
-else ifeq ($(OS), ubuntu)
-CC = g++
+else ifneq ($(OS), ubuntu)
+CC = em++
 endif
 
 # https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html
@@ -40,7 +45,8 @@ CXXFLAGS = $(CXFLAGS) -Wall -pedantic -O3
 # Build targets
 EXEC = engine 
 ifeq ($(OS), Windows_NT)
-EXECLOC := "..\"
+EXECLOC := ..\\
+
 else
 EXECLOC := ../
 endif
@@ -62,7 +68,7 @@ SHAREDFL := libxengine.so.1
 
 # Compile Engine
 engine: $(SRCFILES)
-	$(CC) $(CXXFLAGS) $^ -o $(EXECLOC)
+	$(CC) $(CXXFLAGS) $^ -o $(EXECLOC)$(EXEC)
 
 # Build Object files
 build: $(SRFFILES)
