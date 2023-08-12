@@ -55,6 +55,11 @@ LIBRARIES := helpsuite testsuite core
 # $^ evaluates to library.cpp main.cpp
 
 # Compile Engine
+build:
+	$(MAKE) build -C core
+	$(MAKE) build -C testsuite 
+	$(MAKE) build -C helpsuite 
+
 $(ENGN): 
 	$(MAKE) -C core 
 
