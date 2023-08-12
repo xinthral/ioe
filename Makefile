@@ -8,14 +8,14 @@
 
 # Compiler: gcc for C programs, g++ for C++ programs
 # emcc for embedded C programs, em++ for embedded C++ programs
-CC = g++
+# CC = g++
 DOXYGEN := doxygen
 RRM := rm -rf
 
 # Windows Variants
 ifeq ($(OS), Windows_NT)
 # CC = c++
-CC = em++
+# CC = em++
 DOXYGEN := doxygen.exe
 RM = del
 RRM := del /S /Q /f
@@ -83,10 +83,10 @@ $(DOCS): docs/conf.dox
 # Compile Full porgram
 all: $(ENGN) $(TEST) $(HELP) $(DOCS) 
 
-# Template function to compile defined objects files
-# Dynamically assign *.o to be compiled from its source counterpart
-%.o: %.cpp %.h
-	$(CC) $(CXFLAGS) -c -o $@ $< 
+# # Template function to compile defined objects files
+# # Dynamically assign *.o to be compiled from its source counterpart
+# %.o: %.cpp %.h
+# 	$(CC) $(CXFLAGS) -c -o $@ $< 
 
 clean:
 	$(RM) *.stackdump $(EXEC) 

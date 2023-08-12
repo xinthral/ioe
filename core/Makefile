@@ -7,12 +7,16 @@
 #pragma GCC diagnostic ignored "-Wmaybe-uniitialized"
 
 # the compiler: gcc for C programs, g++ for C++ programs
-CC = g++
+# emcc for embedded C programs, em++ for embedded C++ programs
+CC = em++
 
 # Windows Variants
 ifeq ($(OS), Windows_NT)
 CC = c++
 RM = del
+
+else ifeq ($(OS), ubuntu)
+CC = g++
 endif
 
 # https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html
@@ -36,15 +40,15 @@ CXXFLAGS = $(CXFLAGS) -Wall -pedantic -O3
 # Build targets
 EXEC = engine 
 ifeq ($(OS), Windows_NT)
-EXECLOC := ..\$(EXEC)
+EXECLOC := "..\"
 else
-EXECLOC := ../$(EXEC)
+EXECLOC := ../
 endif
 
 # Ask gnuMake to return a list of *.o files from their source counterpart
 SRCFILES := $(patsubst %.cpp, %.o, $(wildcard *.cpp))
 # SRCFILES += $(foreach d, $(UTIL), ../$d.o)
-SHAREDFL := libhelpsuite.so.1
+SHAREDFL := libxengine.so.1
 
 # GNU Make Compilation Macros: 
 # https://stackoverflow.com/questions/3220277/what-do-the-makefile-symbols-and-mean#3220288
@@ -69,4 +73,4 @@ build: $(SRFFILES)
 	$(CC) $(CXFLAGS) -c -o $@ $< 
 
 clean:
-	$(RM) *.o *.so *.a *.i *.exe *.stackdump $(EXECLOC) 
+	$(RM) *.o *.so *.a *.i *.exe *.stackdump $(EXECLOC)*.wasm $(EXECLOC)$(EXEC) 
