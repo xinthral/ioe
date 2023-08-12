@@ -73,6 +73,9 @@ engine: $(SRCFILES)
 # Build Object files
 build: $(SRFFILES)
 
+ops: 
+	@echo $(OS)
+
 # Template function to compile defined objects files
 # Dynamically assign *.o to be compiled from its source counterpart
 %.o: %.cpp %.h
