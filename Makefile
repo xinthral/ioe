@@ -66,6 +66,9 @@ $(TEST):
 $(HELP): 
 	$(MAKE) -C helpsuite
 
+ops:
+	$(MAKE) ops -C core
+
 # Compile Documents 
 $(DOCS): docs/conf.dox
 	$(DOXYGEN) $<
