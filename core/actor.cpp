@@ -14,12 +14,16 @@ Actor::Actor() {
     this->baseAttack = cnf->get_attack();
     this->baseDefense = cnf->get_defense();
     this->baseHealth = cnf->get_health();
+    this->baseFlux = cnf->get_flux();
     this->name = "Actor_" + Utilz::TailString(2, Utilz::TimeStamp());
 }
 
-Actor::Actor(std::string name) : Actor() {
-    this->name = name;
-}
+/*!
+ * @overload
+ * @brief   Named Constructor 
+ * @param[in] name - Name to assign to actor
+*/
+Actor::Actor(std::string name) : Actor() { this->name = name; }
 
 /*!
  * @brief   Conditional Combat Check 
@@ -36,18 +40,28 @@ bool Actor::isFighting() { return (this->aiState == FIGHT); }
 bool Actor::isAlive() { return (this->condition != DEAD); }
 
 /*!
- * @brief   ReAssign Actor ID number
- * @details Set ID Attribute
- * @param[in] id - Identity Reference Number
+ * @brief   Return Attack Attribute
+ * @return  Base Attack Value 
 */
-void Actor::set_id(int id) { this->id = id; }
+int Actor::get_attack() { return this->baseAttack; }
 
 /*!
- * @brief   ReAssign Actor Name
- * @details Set Name Attribute
- * @param[in] name - Replace Name
+ * @brief   Return Defense Attribute
+ * @return  Base Defense Value 
 */
-void Actor::set_name(std::string name) { this->name = name; }
+int Actor::get_defense() { return this->baseDefense; }
+
+/*!
+ * @brief   Return Flux Attribute
+ * @return  Flux Value
+*/
+int Actor::get_flux() { return this->baseFlux; }
+
+/*!
+ * @brief   Return Health Attribute
+ * @return  Base Health Value 
+*/
+int Actor::get_health() { return this->baseHealth; }
 
 /*!
  * @brief   Return ID Attribute
@@ -62,25 +76,35 @@ int Actor::get_id() { return this->id; }
 std::string Actor::get_name() { return this->name; }
 
 /*!
- * @brief   Return Attack Attribute
- * @return  Base Attack Value 
+ * @brief   ReAssign Actor Flux Value
+ * @details Set Flux Attribute 
+ * @param[in] flux - New Flux Value
 */
-int Actor::get_attack() { return this->baseAttack; }
+void Actor::set_flux(int flux) { this->baseFlux = flux; }
 
 /*!
- * @brief   Return Defense Attribute
- * @return  Base Defense Value 
+ * @brief   ReAssign Actor ID number
+ * @details Set ID Attribute
+ * @param[in] id - Identity Reference Number
 */
-int Actor::get_defense() { return this->baseDefense; }
+void Actor::set_id(int id) { this->id = id; }
 
 /*!
- * @brief   Return Health Attribute
- * @return  Base Health Value 
+ * @brief   ReAssign Actor Name
+ * @details Set Name Attribute
+ * @param[in] name - New Name Value
 */
-int Actor::get_health() { return this->baseHealth; }
+void Actor::set_name(std::string name) { this->name = name; }
+
+/*!
+ * @brief   Return Combat State 
+ * @return  Current Combat State of the character.
+*/
+CombatState Actor::get_combatstate() { return this->aiState; }
 
 /*!
  * @brief   ReAssign Combat State
+ * @param[in] state Current State of the Combat AI 
 */
 void Actor::set_combatstate(CombatState state) { this->aiState = state; }
 
@@ -110,10 +134,10 @@ void Actor::set_combat_flee() { this->set_combatstate(FLEE); }
 void Actor::set_combat_follow() { this->set_combatstate(FOLLOW); }
 
 /*!
- * @brief   Return Combat State 
- * @return  Current Combat State of the character.
+ * @brief   Return Health State
+ * @return  Current Health State of the character.
 */
-CombatState Actor::get_combatstate() { return this->aiState; }
+HealthState Actor::get_healthstate() { return this->condition; }
 
 /*!
  * @brief   ReAssign Health State
@@ -144,12 +168,6 @@ void Actor::set_health_sick() { this->set_healthstate(SICK); }
  * @brief   Set Health State to Dead 
 */
 void Actor::set_health_dead() { this->set_healthstate(DEAD); }
-
-/*!
- * @brief   Return Health State
- * @return  Current Health State of the character.
-*/
-HealthState Actor::get_healthstate() { return this->condition; }
 
 /*!
  * @brief   Default Deconstructor 

@@ -36,12 +36,13 @@ public:
     size_t add_setting(const std::string&, const std::string&);
     size_t rem_setting(const std::string&);
     std::string raw_config(const std::string&);
-    std::string get_version();
     int get_attack();
     int get_base();
     int get_defense();
     int get_difficulty();
+    int get_flux();
     int get_health();
+    std::string get_version();
     void _help();
     ~ConfigManager();
 };

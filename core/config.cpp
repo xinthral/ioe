@@ -63,23 +63,18 @@ void ConfigManager::reload_state() { this->load_config(true); }
  */
 std::string ConfigManager::raw_config(const std::string& option) { return settings[option]; }
 
-/*!
- * @brief   Helper Function: Version
- * @return  Return game version
-*/
-std::string ConfigManager::get_version() { return this->raw_config("VERSION"); }
-
-/*!
- * @brief   Helper Function: Base Scalar
- * @return  Return base scalar value 
-*/
-int ConfigManager::get_base() { return atoi(this->raw_config("BAS").c_str()); }
 
 /*!
  * @brief   Helper Function: Attack 
  * @return  Return base attack value 
  */
 int ConfigManager::get_attack() { return atoi(this->raw_config("ATK").c_str()); }
+
+/*!
+ * @brief   Helper Function: Base Scalar
+ * @return  Return base scalar value 
+*/
+int ConfigManager::get_base() { return atoi(this->raw_config("BAS").c_str()); }
 
 /*!
  * @brief   Helper Function: Defense 
@@ -97,7 +92,19 @@ int ConfigManager::get_difficulty() { return atoi(this->raw_config("DIF").c_str(
  * @brief   Helper Function: Health
  * @return  Return base health value 
  */
+int ConfigManager::get_flux() { return atoi(this->raw_config("FLX").c_str()); }
+
+/*!
+ * @brief   Helper Function: Health
+ * @return  Return base health value 
+ */
 int ConfigManager::get_health() { return atoi(this->raw_config("HLT").c_str()); }
+
+/*!
+ * @brief   Helper Function: Version
+ * @return  Return game version
+*/
+std::string ConfigManager::get_version() { return this->raw_config("VERSION"); }
 
 /*!
  * @brief   Reads in Config File and Parses Options
