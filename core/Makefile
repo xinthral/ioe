@@ -18,10 +18,9 @@ CC = g++
 # Windows Variants
 ifeq ($(OS), Windows_NT)
 # CC = c++
+CC = em++
 RM = del
 
-else ifneq ($(OS), ubuntu)
-CC = em++
 endif
 
 # https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html
@@ -34,7 +33,7 @@ endif
 #  	-no-pie 								- do not produce a position-independent executable
 #	-fPIC									- Format position-independent code
 # Standard Compiler Options
-CFLAGS = -g -Wno-format -Wno-sign-compare -Wno-maybe-uninitialized
+CFLAGS = -g -Wno-format -Wno-sign-compare -Wno-uninitialized
 
 # Extended Compiler Options
 CXFLAGS = $(CFLAGS) -std=c++17 
