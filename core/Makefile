@@ -18,6 +18,7 @@ CC = g++
 # Windows Variants
 ifeq ($(OS), Windows_NT)
 CC = c++
+# CC = em++
 RM = del
 
 endif
@@ -35,7 +36,7 @@ endif
 CFLAGS = -g -Wno-format -Wno-sign-compare -Wno-uninitialized
 
 # Extended Compiler Options
-CXFLAGS = $(CFLAGS) -std=c++17 
+CXFLAGS = $(CFLAGS) -std=c++17
 
 # Extra Compiler Options
 CXXFLAGS = $(CXFLAGS) -Wall -pedantic -O3

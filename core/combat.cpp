@@ -81,7 +81,6 @@ Combat::Combat(Player& combatant1, Player& combatant2) : Combat() {
         combatant2.get_name().c_str()
     );
     log->named_log(__FILE__, buf);
-
 }
 
 /*!
@@ -106,7 +105,7 @@ void Combat::begin_combat() {
     } 
     sprintf(buf, "Sleeping for %d", r);
     log->named_log(__FILE__, buf);
-    sleep(r);
+    // sleep(r);
 }
 
 /*!

@@ -8,19 +8,13 @@
 std::string _CNF_ = "docs/engine.ini";
 
 /*!
- * @brief	Helper Function to parse input 
+ * @brief	Helper Function to parse input
 */
-bool parse_input(std::string input) {
+bool parse_input(std::string criteria, std::string input) {
 	//! Establish Variables 
-	Logger* log = Logger::GetInstance();
-	std::string fileName = Utilz::FileName(__FILE__);
-	bool containsExit = false;
-
-	//! FIXME
-	log->timed_log(input);
-	size_t found = input.find("exit");
-	if (found != std::string::npos) { containsExit = true; }
-	return !containsExit;
+	size_t found = input.find(criteria);
+	if (found != std::string::npos) { return true; }
+	return false;
 }
 
 /*!
@@ -72,7 +66,7 @@ int main(int argc, char const *argv[]) {
 		printf("%s", prompt.c_str());		//! Display Message Prompt
 		std::cin >> rawInput;				//! Get User Input
 		//! Conditional to end Shell
-		vshContinue = parse_input(rawInput);
+		vshContinue = parse_input(rawInput, "exit");
 	} while (vshContinue == true);
 	/* ********************************** */
 

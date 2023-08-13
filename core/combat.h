@@ -1,7 +1,7 @@
 #ifndef COMBAT_H
 #define COMBAT_H
 
-#include <unistd.h>
+// #include <unistd.h>
 #include "balance.h"
 #include "config.h"
 #include "logger.h"

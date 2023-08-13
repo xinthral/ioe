@@ -1,5 +1,8 @@
 {
     "C_Cpp.default.configurationProvider": "ms-vscode.makefile-tools",
+    "C_Cpp.default.includePath": [
+        "C:/Users/PC/GitHub/emsdk/upstream/emscripten/system/**"
+    ],
     "files.associations": {
         "xhash": "cpp",
         "xstring": "cpp",

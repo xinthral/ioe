@@ -55,10 +55,6 @@ LIBRARIES := helpsuite testsuite core
 # $^ evaluates to library.cpp main.cpp
 
 # Compile Engine
-build:
-	$(MAKE) build -C core
-	$(MAKE) build -C testsuite 
-	$(MAKE) build -C helpsuite 
 
 $(ENGN): 
 	$(MAKE) -C core 
@@ -78,10 +74,11 @@ $(DOCS): docs/conf.dox
 # Compile Full porgram
 all: $(ENGN) $(TEST) $(HELP) $(DOCS) 
 
-# # Template function to compile defined objects files
-# # Dynamically assign *.o to be compiled from its source counterpart
-# %.o: %.cpp %.h
-# 	$(CC) $(CXFLAGS) -c -o $@ $< 
+# PreCompile Object Files
+build:
+	$(MAKE) build -C core
+	$(MAKE) build -C testsuite 
+	$(MAKE) build -C helpsuite 
 
 clean:
 	$(RM) *.stackdump $(EXEC) 
@@ -92,11 +89,9 @@ cleandoc:
 ifeq ($(OS), Windows_NT)
 	$(RRM) docs\html
 	$(RRM) docs\latex
-# $(RRM) docs\lib
 else
 	$(RRM) docs/html/*
 	$(RRM) docs/latex/*
-# $(RRM) docs/lib/*
 endif
 
 cleanall:
@@ -104,6 +99,5 @@ cleanall:
 	$(MAKE) cleandoc
 	$(MAKE) clean
 	$(foreach d, $(LIBRARIES), $(MAKE) cleanall -C $d &&) true 2>&1 >/dev/null
-# $(delink)
 
-.PHONY: all build cleanall cleandoc clean helper maji tester 
+.PHONY: all build cleanall cleandoc clean engine helper tester 
