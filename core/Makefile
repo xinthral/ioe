@@ -17,8 +17,8 @@ CC = g++
 
 # Windows Variants
 ifeq ($(OS), Windows_NT)
+# CC = emcc
 CC = c++
-# CC = em++
 RM = del
 
 endif
@@ -43,6 +43,7 @@ CXXFLAGS = $(CXFLAGS) -Wall -pedantic -O3
 
 # Build targets
 EXEC = engine 
+MOD1 = utilz
 ifeq ($(OS), Windows_NT)
 EXECLOC := ..\\
 
@@ -63,15 +64,18 @@ SHAREDFL := libxengine.so.1
 
 # Compile Engine
 engine: $(SRCFILES)
-	$(CC) $(CXXFLAGS) $^ -o $(EXECLOC)$(EXEC)
+#$(CC) $(CXXFLAGS) $^ -o $(EXECLOC)$(EXEC)
 
 # Build Object files
 build: $(SRCFILES)
 
+$(MOD1): $(MOD1).cpp $(MOD1).h
+	$(CC) $< -o $(MOD1).html -sEXPORTED_FUNCTIONS=_FileName -sEXPORTED_RUNTIME_METHODS=ccall,cwrap 
+
 # Template function to compile defined objects files
 # Dynamically assign *.o to be compiled from its source counterpart
 %.o: %.cpp %.h
-	$(CC) $(CXFLAGS) -c -o $@ $< 
+	$(CC) $(CXFLAGS) -c $< -o $@
 
 clean:
 	$(RM) *.o *.so *.a *.i *.exe *.stackdump *.html *.js *.wasm $(EXECLOC)*.wasm $(EXECLOC)$(EXEC) 

@@ -112,7 +112,7 @@ std::string ConfigManager::get_version() { return this->raw_config("VERSION"); }
  * @return  Confirmation that all values were loaded
  */
 bool ConfigManager::load_config(bool _debug) {
-    char* buf;
+    char buf[64];
     std::size_t pos;                                //! Positional Pointer for delimeter
     std::string row;                                //! Temporary File Row Storage
     std::string opt;                                //! Settings Option

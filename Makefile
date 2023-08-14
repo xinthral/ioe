@@ -29,10 +29,10 @@ endif
 #  	-no-pie					- do not produce a position-independent executable
 #	-fPIC					- Format position-independent code
 # Standard Compiler Options
-CFLAGS = -g -Wno-format -Wno-sign-compare -Wno-maybe-uninitialized
+CFLAGS = -g -Wno-format -Wno-sign-compare -Wno-uninitialized
 
 # Extended Compiler Options
-CXFLAGS = $(CFLAGS) -std=c++17 
+CXFLAGS = $(CFLAGS) -std=c++17
 
 # Extra Compiler Options
 CXXFLAGS = $(CXFLAGS) -Wall -pedantic -O3
@@ -45,7 +45,8 @@ ENGN = engine
 TEST = test
 HELP = help
 DOCS = doc
-LIBRARIES := helpsuite testsuite core
+CLIS = cli
+LIBRARIES := helpsuite testsuite core clisuite
 
 # GNU Make Compilation Macros: 
 # https://stackoverflow.com/questions/3220277/what-do-the-makefile-symbols-and-mean#3220288
@@ -67,18 +68,20 @@ $(TEST):
 $(HELP): 
 	$(MAKE) -C helpsuite
 
+# Compile CLISuite
+$(CLIS):
+	$(MAKE) -C clisuite
+
 # Compile Documents 
 $(DOCS): docs/conf.dox
 	$(DOXYGEN) $<
 	
 # Compile Full porgram
-all: $(ENGN) $(TEST) $(HELP) $(DOCS) 
+all: $(ENGN) $(TEST) $(HELP) $(DOCS) $(CLIS) 
 
 # PreCompile Object Files
 build:
-	$(MAKE) build -C core
-	$(MAKE) build -C testsuite 
-	$(MAKE) build -C helpsuite 
+	$(foreach d, $(LIBRARIES), $(MAKE) build -C $d &&) true 2>&1 >/dev/null
 
 clean:
 	$(RM) *.stackdump $(EXEC) 
