@@ -25,7 +25,7 @@ endif
 #  	-no-pie 								- do not produce a position-independent executable
 #	-fPIC									- Format position-independent code
 # Standard Compiler Options
-CFLAGS = -g -Wno-format -Wno-sign-compare -Wno-uninitialized -std=c++17
+CFLAGS = -g -Wno-format -Wno-sign-compare -Wno-uninitialized -Wno-unused-variable -std=c++17
 
 # Extended Compiler Options
 CXFLAGS = -Wall -pedantic -O3 -fPIC
@@ -34,18 +34,13 @@ CXFLAGS = -Wall -pedantic -O3 -fPIC
 CXXFLAGS = -shared -Wl,-soname,
 
 # Build targets
-EXEC    := helper
+EXEC    := engine 
 ifeq ($(OS), Windows_NT)
 EXECLOC := ..\$(EXEC)
 else
 EXECLOC := ../$(EXEC)
 endif
-UTIL := actor balance combat config logger stage toon utilz
-
-# Ask gnuMake to return a list of *.o files from their source counterpart
-SRCFILES := $(patsubst %.cpp, %.o, $(wildcard *.cpp))
-SRCFILES += $(foreach d, $(UTIL), ../$d.o)
-SHAREDFL := libhelpsuite.so.1
+UTIL    := actor balance battle combat config logger player stage toon utilz
 
 # GNU Make Compilation Macros: 
 # https://stackoverflow.com/questions/3220277/what-do-the-makefile-symbols-and-mean#3220288
@@ -57,11 +52,11 @@ SHAREDFL := libhelpsuite.so.1
 # Ask gnuMake to return a list of *.o files from their source counterpart
 SRCFILES := $(patsubst %.cpp, %.o, $(wildcard *.cpp))
 SRCFILES += $(foreach d, $(UTIL), ../core/$d.o)
-SHAREDFL := libhelpsuite.so.1
+SHAREDFL := libxclisuite.so.1
 
-# Compile Full HelpSuite 
-helpsuite: $(SRCFILES) 
-	$(CC) $(CFLAGS) $(CXFLAGS) $^ -o $(EXECLOC)
+# Compile Full TestSuite 
+clisuite: $(SRCFILES) 
+	$(CC) $(CFLAGS) $(CXFLAGS) $^ -o $(EXECLOC) 
 
 library: $(SRCFILES)
 	$(CC) $(CFLAGS) -o $(SHAREDFL).1 $^ $(CXXFLAGS)$(SHAREDFL)

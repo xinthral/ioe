@@ -1,8 +1,7 @@
 /*! 
- * @mainpage 	Engine Main Index
- * @brief		Engine go vroom.
+ * @brief		Command Line Interface for Engine.
 */
-#include "engine.h"
+#include "clisuite.h"
 
 //! Extern Variable Declaration
 std::string _CNF_ = "docs/engine.ini";
@@ -10,11 +9,11 @@ std::string _CNF_ = "docs/engine.ini";
 /*!
  * @brief	Helper Function to parse input
 */
-bool parse_input(std::string criteria, std::string input) {
+bool parse_input(std::string input, std::string criteria) {
 	//! Establish Variables 
 	size_t found = input.find(criteria);
-	if (found != std::string::npos) { return true; }
-	return false;
+	if (found != std::string::npos) { return false; }
+	return true;
 }
 
 /*!
@@ -28,33 +27,21 @@ void print_helper() {
 	std::string fileName = Utilz::FileName(__FILE__);
 
 	//! Display Help 
-	char buf[32];
-	sprintf(buf, "Usage: ./%s <bool|debug>:\n", fileName.c_str()); 
+	char buf[64];
+	sprintf(buf, "\nUsage: ./%s <bool|debug>", fileName.c_str()); 
 	log->raw_log(buf);
-	log->raw_log("\tParam: <bool|debug> - Debugging Flag\n");
+	log->raw_log("Param:\n\t<bool|debug> - Debugging Flag\n");
 	exit(-1);
 }
 
-/*!
- * @brief	Module Entry Point
-*/
+// /*!
+//  * @brief	Module Entry Point
+// */
 int main(int argc, char const *argv[]) {
 	//! Conditional Check
 	if (argc < 2) { print_helper(); }
 
-	//! Establish Controllers
-	ConfigManager* 		cnf = ConfigManager::GetInstance();
-	BalanceController* 	bal = BalanceController::GetInstance();
-	Logger* 			log = Logger::GetInstance();
-	StageManager* 		mgr = StageManager::GetInstance("Jugo");
-
 	//! Declare Variables
-	Battle*		bat; 
-	Combat* 	cc;
-	Player* 	p;
-	Toon* 		t;
-	Toon* 		v;
-	std::vector<Toon*> team;
 	std::string prompt = "> ";
 	std::string rawInput;
 	size_t		found;
@@ -69,19 +56,6 @@ int main(int argc, char const *argv[]) {
 		vshContinue = parse_input(rawInput, "exit");
 	} while (vshContinue == true);
 	/* ********************************** */
-
-	std::string names[5] = {
-		"Kevin", 
-		"Connie", 
-		"Shawna", 
-		"Trever", 
-		"Jesse"
-	};
-	std::string name;
-
-	p = new Player("Jesse", 1, 1, 1);
-	mgr->casting_call(10, team);
-	bat = new Battle(10, p, team);
 
     return 0;
 }
