@@ -14,7 +14,8 @@ Battle::Battle() {}
  * @brief   Player v Team Constructor
 */
 Battle::Battle(int size, Player* player, std::vector<Toon*>& team) {
-    Toon* t, * v;
+    Toon* t = new Toon();
+	Toon* v;
     Combat* cc;
     while (team.size() > 1) {
 		t = team[team.size() - 1];
