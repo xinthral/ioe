@@ -2,11 +2,14 @@
 #define TESTER_H
 
 #include <stdio.h>
-#include "../core/utilz.h"
 #include "actorcase.h"
 #include "balancecase.h"
 #include "combatcase.h"
+#include "configcase.h"
 #include "playercase.h"
+#include "stagecase.h"
+#include "tooncase.h"
+#include "utilzcase.h"
 
 class TestSuite {
 protected:
@@ -16,7 +19,11 @@ public:
     void CaseActor();
     void CaseBalance();
     void CaseCombat();
+    void CaseConfig();
     void CasePlayer();
+    void CaseStage();
+    void CaseToon();
+    void CaseUtilz();
     ~TestSuite();
 };
 

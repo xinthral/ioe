@@ -8,7 +8,7 @@
  * @brief   Default Constructor
 */
 TestBalance::TestBalance() {
-    BaseCase::log->named_log(__FILE__, "Testing Balance!");
+    BaseCase::log->named_log(__FILE__, "Testing the BalanceController!");
     this->baseAtk = BaseCase::cnf->get_attack();
     this->baseDef = BaseCase::cnf->get_defense();
     this->baseHlt = BaseCase::cnf->get_health();
