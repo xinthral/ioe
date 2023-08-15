@@ -5,13 +5,13 @@
 #include "combatcase.h"
 
 /*! 
- * @brief   
+ * @brief   Default Constructor
 */
 TestCombat::TestCombat() {
     BaseCase::log->named_log(__FILE__, "Testing Combat!");
  }
 
 /*! 
- * @brief   
+ * @brief   Default Deconstructor
 */
 TestCombat::~TestCombat() { }
