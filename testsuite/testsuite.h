@@ -6,6 +6,7 @@
 #include "actorcase.h"
 #include "balancecase.h"
 #include "combatcase.h"
+#include "playercase.h"
 
 class TestSuite {
 protected:
@@ -15,6 +16,7 @@ public:
     void CaseActor();
     void CaseBalance();
     void CaseCombat();
+    void CasePlayer();
     ~TestSuite();
 };
 
