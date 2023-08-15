@@ -1,5 +1,6 @@
 /*! 
- * @brief		Command Line Interface for Engine.
+ * @class 	CLISuite clisuite.cpp clisuite.h
+ * @brief	Command Line Interface for Engine.
 */
 #include "clisuite.h"
 
@@ -40,6 +41,15 @@ void print_helper() {
 int main(int argc, char const *argv[]) {
 	//! Conditional Check
 	if (argc < 2) { print_helper(); }
+
+	std::string input(argv[1]);
+	char _input = input[0];
+	switch (_input) {
+		case '0': return 0;
+		case '1':
+		default: 
+			break;
+	}
 
 	//! Declare Variables
 	std::string prompt = "> ";
