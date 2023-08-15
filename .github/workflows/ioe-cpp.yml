@@ -2,9 +2,9 @@ name: C/C++ CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "testing", "development" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main", "testing", "development" ]
 
 jobs:
   build:
@@ -13,12 +13,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: make
-      run: make
+    - name: make cli
+      run: make cli
     - name: make test
       run: make test
     - name: make help
       run: make help
+    - name: clisuite
+      run: ./engine 0
     - name: testsuite
       run: ./tester 0
     - name: helpsuite
