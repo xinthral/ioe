@@ -77,7 +77,7 @@ $(DOCS): docs/conf.dox
 	$(DOXYGEN) $<
 	
 # Compile Full porgram
-all: $(ENGN) $(TEST) $(HELP) $(DOCS) $(CLIS) 
+all: $(DOCS) $(ENGN) $(TEST) $(HELP) $(CLIS) 
 
 # PreCompile Object Files
 build:
