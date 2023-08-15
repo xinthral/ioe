@@ -35,8 +35,8 @@ ConfigManager* ConfigManager::GetInstance() {
  * @return  Returns current config queue size 
 */
 size_t ConfigManager::add_setting(const std::string& option, const std::string& value) {
-    settings[option] = value;
-    return settings.size();
+    this->settings[option] = value;
+    return this->settings.size();
 }
 
 /*!
@@ -45,8 +45,8 @@ size_t ConfigManager::add_setting(const std::string& option, const std::string& 
  * @return  Current Size of Settings List
 */
 size_t ConfigManager::rem_setting(const std::string& option) {
-    settings.erase(option);
-    return settings.size();
+    this->settings.erase(option);
+    return this->settings.size();
 }
 
 /*!
@@ -61,7 +61,7 @@ void ConfigManager::reload_state() { this->load_config(true); }
  * @param[in] option The name of the Configuration Option
  * @return  The value related to input key
  */
-std::string ConfigManager::raw_config(const std::string& option) { return settings[option]; }
+std::string ConfigManager::raw_config(const std::string& option) { return this->settings[option]; }
 
 
 /*!
@@ -89,8 +89,8 @@ int ConfigManager::get_defense() { return atoi(this->raw_config("DEF").c_str());
 int ConfigManager::get_difficulty() { return atoi(this->raw_config("DIF").c_str()); }
 
 /*!
- * @brief   Helper Function: Health
- * @return  Return base health value 
+ * @brief   Helper Function: Flux 
+ * @return  Return base flux value 
  */
 int ConfigManager::get_flux() { return atoi(this->raw_config("FLX").c_str()); }
 
@@ -99,6 +99,12 @@ int ConfigManager::get_flux() { return atoi(this->raw_config("FLX").c_str()); }
  * @return  Return base health value 
  */
 int ConfigManager::get_health() { return atoi(this->raw_config("HLT").c_str()); }
+
+/*!
+ * @brief   Helper Function: Settings 
+ * @return  Return size of settings vector 
+ */
+size_t ConfigManager::get_settingsSize() { return this->settings.size(); }
 
 /*!
  * @brief   Helper Function: Version

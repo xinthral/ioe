@@ -42,6 +42,7 @@ public:
     int get_difficulty();
     int get_flux();
     int get_health();
+    size_t get_settingsSize();
     std::string get_version();
     void _help();
     ~ConfigManager();
