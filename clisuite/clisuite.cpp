@@ -35,17 +35,20 @@ void print_helper() {
 	exit(-1);
 }
 
-// /*!
-//  * @brief	Module Entry Point
-// */
+/*!
+ * @brief	Module Entry Point
+*/
 int main(int argc, char const *argv[]) {
 	//! Conditional Check
 	if (argc < 2) { print_helper(); }
 
-	std::string input(argv[1]);
-	char _input = input[0];
+	Logger* log = Logger::GetInstance();
+	//! Input Switch Case
+	char _input = argv[1][0];
 	switch (_input) {
-		case '0': return 0;
+		case '0': 
+			log->named_log(__FILE__, "CLI Suite Loaded!");
+			return 0;
 		case '1':
 		default: 
 			break;
