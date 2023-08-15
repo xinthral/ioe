@@ -26,7 +26,7 @@ void TestActors::test_actor() {
  * @brief   Run full set of test on Combat States 
 */
 void TestActors::test_combatstate() {
-    sprintf(msgNote, "Actor CombatState Mismatch\t<--");
+    sprintf(this->msgNote, "Actor CombatState Mismatch\t<--");
     combatstate_idle();     //! Test Combat State Idle
     combatstate_patrol();   //! Test Combat State Patrol
     combatstate_fight();    //! Test Combat State Fight
@@ -38,7 +38,7 @@ void TestActors::test_combatstate() {
  * @brief   Run full set of test on Health States 
 */
 void TestActors::test_healthstate() {
-    sprintf(msgNote, "Actor HealthState Mismatch\t<--");
+    sprintf(this->msgNote, "Actor HealthState Mismatch\t<--");
     healthstate_healthy();  //! Test Health State Healthy
     healthstate_hurting();  //! Test Health State Hurting
     healthstate_critical(); //! Test Health State Critical 
@@ -77,7 +77,7 @@ void TestActors::base_defense() {
 void TestActors::base_health() {
     int cnf_hlt = cnf->get_health();
     dummy = new Actor();
-    assertm(cnf_hlt == dummy->get_health(), msgNote);
+    assertm(cnf_hlt == dummy->get_health(), this->msgNote);
     sprintf(buf, "%s %s %s", msgHead, "Base [Health] Value", msgTail);
     BaseCase::log->named_log(__FILE__, buf);
 }
@@ -89,7 +89,7 @@ void TestActors::base_health() {
 void TestActors::combatstate_idle() { 
     dummy = new Actor();
     dummy->set_combat_idle();
-    assertm(IDLE == dummy->get_combatstate(), msgNote);
+    assertm(IDLE == dummy->get_combatstate(), this->msgNote);
     sprintf(buf, "%s %s %s", msgHead, "[Idle] Combatstate", msgTail);
     BaseCase::log->named_log(__FILE__, buf);
 }
@@ -101,7 +101,7 @@ void TestActors::combatstate_idle() {
 void TestActors::combatstate_patrol() { 
     dummy = new Actor();
     dummy->set_combat_patrol();
-    assertm(PATROL == dummy->get_combatstate(), msgNote);
+    assertm(PATROL == dummy->get_combatstate(), this->msgNote);
     sprintf(buf, "%s %s %s", msgHead, "[Patrol] Combatstate", msgTail);
     BaseCase::log->named_log(__FILE__, buf);
 }
@@ -113,7 +113,7 @@ void TestActors::combatstate_patrol() {
 void TestActors::combatstate_fight() { 
     dummy = new Actor();
     dummy->set_combat_fight();
-    assertm(FIGHT == dummy->get_combatstate(), msgNote);
+    assertm(FIGHT == dummy->get_combatstate(), this->msgNote);
     sprintf(buf, "%s %s %s", msgHead, "[Fight] Combatstate", msgTail);
     BaseCase::log->named_log(__FILE__, buf);
 }
@@ -125,7 +125,7 @@ void TestActors::combatstate_fight() {
 void TestActors::combatstate_flee() { 
     dummy = new Actor();
     dummy->set_combat_flee();
-    assertm(FLEE == dummy->get_combatstate(), msgNote);
+    assertm(FLEE == dummy->get_combatstate(), this->msgNote);
     sprintf(buf, "%s %s %s", msgHead, "[Flee] Combatstate", msgTail);
     BaseCase::log->named_log(__FILE__, buf);
 }
@@ -137,7 +137,7 @@ void TestActors::combatstate_flee() {
 void TestActors::combatstate_follow() { 
     dummy = new Actor();
     dummy->set_combat_follow();
-    assertm(FOLLOW == dummy->get_combatstate(), msgNote);
+    assertm(FOLLOW == dummy->get_combatstate(), this->msgNote);
     sprintf(buf, "%s %s %s", msgHead, "[Follow] Combatstate", msgTail);
     BaseCase::log->named_log(__FILE__, buf);
 }
@@ -149,7 +149,7 @@ void TestActors::combatstate_follow() {
 void TestActors::healthstate_healthy() { 
     dummy = new Actor();
     dummy->set_health_healthy();
-    assertm(HEALTHY == dummy->get_healthstate(), msgNote);
+    assertm(HEALTHY == dummy->get_healthstate(), this->msgNote);
     sprintf(buf, "%s %s %s", msgHead, "[Healthy] Healthstate", msgTail);
     BaseCase::log->named_log(__FILE__, buf);
 }
@@ -161,7 +161,7 @@ void TestActors::healthstate_healthy() {
 void TestActors::healthstate_hurting() { 
     dummy = new Actor();
     dummy->set_health_hurting();
-    assertm(HURTING == dummy->get_healthstate(), msgNote);
+    assertm(HURTING == dummy->get_healthstate(), this->msgNote);
     sprintf(buf, "%s %s %s", msgHead, "[Hurting] Healthstate", msgTail);
     BaseCase::log->named_log(__FILE__, buf);
 }
@@ -173,7 +173,7 @@ void TestActors::healthstate_hurting() {
 void TestActors::healthstate_critical() { 
     dummy = new Actor();
     dummy->set_health_critical();
-    assertm(CRITICAL == dummy->get_healthstate(), msgNote);
+    assertm(CRITICAL == dummy->get_healthstate(), this->msgNote);
     sprintf(buf, "%s %s %s", msgHead, "[Critical] Healthstate", msgTail);
     BaseCase::log->named_log(__FILE__, buf);
 }
@@ -185,7 +185,7 @@ void TestActors::healthstate_critical() {
 void TestActors::healthstate_sick() { 
     dummy = new Actor();
     dummy->set_health_sick();
-    assertm(SICK == dummy->get_healthstate(), msgNote);
+    assertm(SICK == dummy->get_healthstate(), this->msgNote);
     sprintf(buf, "%s %s %s", msgHead, "[Sick] Healthstate", msgTail);
     BaseCase::log->named_log(__FILE__, buf);
 }
@@ -197,7 +197,7 @@ void TestActors::healthstate_sick() {
 void TestActors::healthstate_dead() { 
     dummy = new Actor();
     dummy->set_health_dead();
-    assertm(DEAD == dummy->get_healthstate(), msgNote);
+    assertm(DEAD == dummy->get_healthstate(), this->msgNote);
     sprintf(buf, "%s %s %s", msgHead, "[Dead] Healthstate", msgTail);
     BaseCase::log->named_log(__FILE__, buf);
 }
