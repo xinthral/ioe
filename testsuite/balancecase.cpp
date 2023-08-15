@@ -32,7 +32,7 @@ void TestBalance::def_atk_ratio() {
     double denominator = this->baseDef * bal->scalar(100);
     double posRatio = numerator / denominator;
     assert(preRatio == posRatio);
-    sprintf(buf, "Tested Defense/Attack Ratio at Scale; %.4f.", posRatio);
+    sprintf(buf, "Tested [DAF: %.4f] (Defense/Attack Ratio) at Scale.", posRatio);
     BaseCase::log->named_log(__FILE__, buf);
 }
 
@@ -44,7 +44,7 @@ void TestBalance::difficulty_level() {
     std::string dif  = cnf->raw_config("DIF");
     std::string diff = bal->get_difficulty_str();
     assert(dif.compare(diff));
-    sprintf(buf, "Tested Difficulty level.");
+    sprintf(buf, "Tested [Difficulty] level assigned.");
     BaseCase::log->named_log(__FILE__, buf);
 }
 
