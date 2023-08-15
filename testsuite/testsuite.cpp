@@ -24,9 +24,14 @@ void TestSuite::CaseActor() { TestActors* ta = new TestActors(); }
 void TestSuite::CaseBalance() { TestBalance* tb = new TestBalance(); }
 
 /*!
- * @brief   Initiates the Test for the Balance Module
+ * @brief   Initiates the Test for the Combat Module
 */
 void TestSuite::CaseCombat() { TestCombat* tc = new TestCombat(); }
+
+/*!
+ * @brief   Initiates the Test for the Combat Module
+*/
+void TestSuite::CasePlayer() { TestPlayer* tp = new TestPlayer(); }
 
 /*!
  * @brief   Default Deconstructor
@@ -80,6 +85,9 @@ int main(int argc, char const *argv[]) {
             ts.CaseCombat();
             break;
         case 4:
+            sprintf(buf, "Player TestCase Completed...");
+            ts.CasePlayer();
+            break;
         case 5:
         case 6:
         case 7:
@@ -93,6 +101,7 @@ int main(int argc, char const *argv[]) {
             ts.CaseActor();
             ts.CaseBalance();
             ts.CaseCombat();
+            ts.CasePlayer();
             break;
     }
     
