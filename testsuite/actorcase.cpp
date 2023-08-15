@@ -5,7 +5,7 @@
 #include "actorcase.h"
 
 TestActors::TestActors() {
-    BaseCase::log->named_log(__FILE__, "Testing Actors!");
+    BaseCase::log->named_log(__FILE__, "Testing Actor's!");
     sprintf(this->msgHead, "Tested");
     sprintf(this->msgTail, "for Actors!");
     test_actor();

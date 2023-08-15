@@ -8,7 +8,7 @@
  * @brief   Default Constructor
 */
 TestPlayer::TestPlayer() {
-    BaseCase::log->named_log(__FILE__, "Testing Players!");
+    BaseCase::log->named_log(__FILE__, "Testing Player's!");
 }
 
 /*!
