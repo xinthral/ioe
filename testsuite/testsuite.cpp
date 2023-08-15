@@ -31,7 +31,27 @@ void TestSuite::CaseCombat() { TestCombat* tc = new TestCombat(); }
 /*!
  * @brief   Initiates the Test for the Combat Module
 */
+void TestSuite::CaseConfig() { TestConfig* tf = new TestConfig(); }
+
+/*!
+ * @brief   Initiates the Test for the Combat Module
+*/
 void TestSuite::CasePlayer() { TestPlayer* tp = new TestPlayer(); }
+
+/*!
+ * @brief   Initiates the Test for the Combat Module
+*/
+void TestSuite::CaseStage() { TestStage* tg = new TestStage(); }
+
+/*!
+ * @brief   Initiates the Test for the Combat Module
+*/
+void TestSuite::CaseToon() { TestToon* tt = new TestToon(); }
+
+/*!
+ * @brief   Initiates the Test for the Combat Module
+*/
+void TestSuite::CaseUtilz() { TestUtilz* tu = new TestUtilz(); }
 
 /*!
  * @brief   Default Deconstructor
@@ -55,6 +75,11 @@ void print_help() {
     log->raw_log("\t[1] - Test Actor Module");
     log->raw_log("\t[2] - Test Balance Module");
     log->raw_log("\t[3] - Test Combat Module");
+    log->raw_log("\t[4] - Test Config Module");
+    log->raw_log("\t[5] - Test Player Module");
+    log->raw_log("\t[6] - Test Stage Module");
+    log->raw_log("\t[7] - Test Toon Module");
+    log->raw_log("\t[8] - Test Utilz Module");
     log->raw_log("\t[0] - Default Test to rule them all\n");
     exit(-1);
 }
@@ -85,23 +110,40 @@ int main(int argc, char const *argv[]) {
             ts.CaseCombat();
             break;
         case 4:
+            sprintf(buf, "Config TestCase Completed...");
+            ts.CaseConfig();
+            break;
+        case 5:
             sprintf(buf, "Player TestCase Completed...");
             ts.CasePlayer();
             break;
-        case 5:
         case 6:
+            sprintf(buf, "Stage TestCase Completed...");
+            ts.CaseStage();
+            break;
         case 7:
+            sprintf(buf, "Toon TestCase Completed...");
+            ts.CaseToon();
+            break;
         case 8:
+            sprintf(buf, "Utilz TestCase Completed...");
+            ts.CaseUtilz();
+            break;
         case 9:
         case 10:
         case 11:
         case 12:
+        case 13:
         default:
             sprintf(buf, "All TestCases' Completed...");
             ts.CaseActor();
             ts.CaseBalance();
             ts.CaseCombat();
+            ts.CaseConfig();
             ts.CasePlayer();
+            ts.CaseStage();
+            ts.CaseToon();
+            ts.CaseUtilz();
             break;
     }
     
