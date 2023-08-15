@@ -45,7 +45,7 @@ ENGN = engine
 TEST = test
 HELP = help
 DOCS = doc
-CLIS = cli
+CLIS = cli 
 LIBRARIES := core helpsuite testsuite clisuite
 
 # GNU Make Compilation Macros: 
@@ -56,7 +56,6 @@ LIBRARIES := core helpsuite testsuite clisuite
 # $^ evaluates to library.cpp main.cpp
 
 # Compile Engine
-
 $(ENGN): 
 	$(MAKE) -C core 
 
