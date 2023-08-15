@@ -8,8 +8,8 @@ class TestActors : public BaseCase {
 protected:
     Actor* dummy;
     char msgHead[32];
-    char msgTail[128];
-    char msgNote[32];
+    char msgTail[16];
+    char msgNote[64];
 
 public:
     TestActors();
