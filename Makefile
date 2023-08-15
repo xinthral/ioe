@@ -46,7 +46,7 @@ TEST = test
 HELP = help
 DOCS = doc
 CLIS = cli
-LIBRARIES := helpsuite testsuite core clisuite
+LIBRARIES := core helpsuite testsuite clisuite
 
 # GNU Make Compilation Macros: 
 # https://stackoverflow.com/questions/3220277/what-do-the-makefile-symbols-and-mean#3220288
