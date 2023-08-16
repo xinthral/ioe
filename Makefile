@@ -45,7 +45,7 @@ ENGN = engine
 TEST = test
 HELP = help
 DOCS = doc
-CLIS = cli
+CLIS = cli 
 LIBRARIES := core helpsuite testsuite clisuite
 
 # GNU Make Compilation Macros: 
@@ -84,7 +84,7 @@ build:
 
 clean:
 	$(RM) *.stackdump $(EXEC) 
-	$(RM) *.o *.so *.a *.i 
+	$(RM) *.o *.so *.a *.i *.js *.html *.wasm 
 	$(foreach d, $(LIBRARIES), $(MAKE) clean -C $d &&) true 2>&1 >/dev/null
 
 cleandoc:

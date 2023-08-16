@@ -31,7 +31,7 @@ void print_helper() {
 	char buf[64];
 	sprintf(buf, "\nUsage: ./%s <bool|debug>", fileName.c_str()); 
 	log->raw_log(buf);
-	log->raw_log("Param:\n\t<bool|debug> - Debugging Flag\n");
+	log->raw_log("Param:\n  <bool|debug> - Debugging Flag\n");
 	exit(-1);
 }
 
@@ -41,10 +41,11 @@ void print_helper() {
 int main(int argc, char const *argv[]) {
 	//! Conditional Check
 	if (argc < 2) { print_helper(); }
+	bool vshContinue = false;
 
 	//! Declare Variables
 	size_t		found;
-	bool		vshContinue = false;
+	bool		  vshContinue = false;
 	std::string prompt = "> ";
 	std::string rawInput;
 	Logger* log = Logger::GetInstance();
@@ -65,11 +66,12 @@ int main(int argc, char const *argv[]) {
 	/* ********************************** */
 	while (vshContinue == true) {
 		printf("%s", prompt.c_str());		//! Display Message Prompt
-		std::cin >> rawInput;				//! Get User Input
+		std::getline(std::cin, rawInput);	//! Get User Input
 		//! Conditional to end Shell
 		vshContinue = parse_input(rawInput, "!exit");
 	}
 	/* ********************************** */
 
+	printf("I have continued");
     return 0;
 }
