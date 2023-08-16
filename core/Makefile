@@ -13,7 +13,8 @@
 # g++ for C++ programs on gnu
 # emcc for C programs for embedded languages
 # em++ for C++ programs for embedded languages
-CC = g++
+CC = emcc
+# CC = g++
 
 # Windows Variants
 ifeq ($(OS), Windows_NT)
@@ -41,14 +42,16 @@ CXFLAGS = $(CFLAGS) -std=c++17
 # Extra Compiler Options
 CXXFLAGS = $(CXFLAGS) -Wall -pedantic -O3
 
+# EMCC Compiler Options
+EFLAGS = -sEXIT_RUNTIME=1
+
 # Build targets
-EXEC = engine 
+EXEC = engine
 MOD1 = utilz
 ifeq ($(OS), Windows_NT)
-EXECLOC := ..\\
-
+EXECLOC := ..\\$(EXEC)
 else
-EXECLOC := ../
+EXECLOC := ../$(EXEC)
 endif
 
 # Ask gnuMake to return a list of *.o files from their source counterpart
@@ -64,7 +67,6 @@ SHAREDFL := libxengine.so.1
 
 # Compile Engine
 engine: $(SRCFILES)
-#$(CC) $(CXXFLAGS) $^ -o $(EXECLOC)$(EXEC)
 
 # Build Object files
 build: $(SRCFILES)
@@ -78,4 +80,8 @@ $(MOD1): $(MOD1).cpp $(MOD1).h
 	$(CC) $(CXFLAGS) -c $< -o $@
 
 clean:
-	$(RM) *.o *.so *.a *.i *.exe *.stackdump *.html *.js *.wasm $(EXECLOC)*.wasm $(EXECLOC)$(EXEC) 
+	$(RM) *.o *.so *.a *.i *.exe *.stackdump *.html *.js *.wasm 
+	
+cleanall:
+	$(RM) $(EXECLOC) $(EXECLOC).*
+	$(MAKE) clean

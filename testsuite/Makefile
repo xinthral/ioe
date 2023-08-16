@@ -6,7 +6,14 @@
 # @date		3 Aug 2023
 #**************************************/
 
-# the compiler: gcc for C programs, g++ for C++ programs
+# Compiler: cc, c++, gcc, g++, emcc, em++ 
+# cc for C programs on windows
+# c++ for C++ programs on windows
+# gcc for C programs on gnu
+# g++ for C++ programs on gnu
+# emcc for C programs for embedded languages
+# em++ for C++ programs for embedded languages
+CC = emcc
 CC = g++
 
 # Windows Variants
@@ -56,7 +63,7 @@ SHAREDFL := libtestsuite.so.1
 
 # Compile Full TestSuite 
 testsuite: $(SRCFILES) 
-	$(CC) $(CFLAGS) $(CXFLAGS) $^ -o $(EXECLOC) 
+	$(CC) $(CFLAGS) $(CXFLAGS) $^ -o $(EXECLOC).js
 
 library: $(SRCFILES)
 	$(CC) $(CFLAGS) -o $(SHAREDFL).1 $^ $(CXXFLAGS)$(SHAREDFL)
@@ -66,11 +73,11 @@ build: $(SRCFILES)
 # Template function to compile defined objects files
 # Dynamically assign *.o to be compiled from its source counterpart
 %.o: %.cpp %.h
-	$(CC) $(CFLAGS) $(CXFLAGS) -c -o $@ $<
+	$(CC) $(CFLAGS) $(CXFLAGS) -c $< -o $@
 
 clean:
-	$(RM) *.o *.so* *.a *.i *.exe *.stackdump 
+	$(RM) *.o *.so* *.a *.i *.js *.exe *.stackdump 
 
 cleanall:
-	$(RM) $(EXECLOC) 
+	$(RM) $(EXECLOC) $(EXECLOC).*
 	$(MAKE) clean
