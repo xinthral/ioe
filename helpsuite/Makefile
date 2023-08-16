@@ -88,7 +88,7 @@ build: $(SRCFILES)
 	$(CC) $(CFLAGS) $(CXFLAGS) -c $< -o $@
 
 clean:
-	$(RM) *.o *.so *.a *.i *.js *.html *.wasm 
+	$(RM) *.o *.so *.a *.i *.js *.html *.wasm *.stackdump 
 
 cleanall:
 	$(RM) $(EXECLOC) $(EXECLOC).*

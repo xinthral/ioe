@@ -84,7 +84,7 @@ $(MOD1): $(MOD1).cpp $(MOD1).h
 	$(CC) $(CXFLAGS) -c $< -o $@ -sEXIT_RUNTIME=1
 
 clean:
-	$(RM) *.o *.so *.a *.i *.exe *.stackdump *.html *.js *.wasm 
+	$(RM) *.o *.so *.a *.i *.js *.html *.wasm *.stackdump 
 	
 cleanall:
 	$(RM) $(EXECLOC) $(EXECLOC).*
