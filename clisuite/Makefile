@@ -29,15 +29,22 @@ endif
 CFLAGS = -g -Wno-format -Wno-sign-compare -Wno-uninitialized -Wno-unused-variable -std=c++17
 
 # Extended Compiler Options
-CXFLAGS = -sEXIT_RUNTIME=1 -Wall -pedantic -O3 -fPIC
+CXFLAGS = -Wall -pedantic -O3 -fPIC
 
 # Extra Compiler Options
 CXXFLAGS = -shared -Wl,-soname,
+
+#
+# compiler flags:
+# -EXIT_RUNTIME to display output to console
+# Emscriten Compiler Options
+EFLAGS = -sEXIT_RUNTIME=1
 
 # Build targets
 EXEC    := engine 
 ifeq ($(OS), Windows_NT)
 EXECLOC := ..\$(EXEC)
+CXFLAGS := $(EFLAGS)
 else
 EXECLOC := ../$(EXEC)
 endif
