@@ -42,32 +42,33 @@ int main(int argc, char const *argv[]) {
 	//! Conditional Check
 	if (argc < 2) { print_helper(); }
 
+	//! Declare Variables
+	size_t		found;
+	bool		vshContinue = false;
+	std::string prompt = "> ";
+	std::string rawInput;
 	Logger* log = Logger::GetInstance();
+	log->named_log(__FILE__, "CLI Suite Loaded!");
+
 	//! Input Switch Case
 	char _input = argv[1][0];
 	switch (_input) {
 		case '0': 
-			log->named_log(__FILE__, "CLI Suite Loaded!");
 			return 0;
 		case '1':
+			vshContinue = true;
 		default: 
 			break;
 	}
 
-	//! Declare Variables
-	std::string prompt = "> ";
-	std::string rawInput;
-	size_t		found;
-	bool		vshContinue = true;
-
 	//! Interactive Shell
 	/* ********************************** */
-	do {
+	while (vshContinue == true) {
 		printf("%s", prompt.c_str());		//! Display Message Prompt
 		std::cin >> rawInput;				//! Get User Input
 		//! Conditional to end Shell
-		vshContinue = parse_input(rawInput, "exit");
-	} while (vshContinue == true);
+		vshContinue = parse_input(rawInput, "!exit");
+	}
 	/* ********************************** */
 
     return 0;

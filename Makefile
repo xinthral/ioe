@@ -55,8 +55,11 @@ LIBRARIES := core helpsuite testsuite clisuite
 # $< evaluates to library.cpp
 # $^ evaluates to library.cpp main.cpp
 
-# Compile Engine
+# Compile CLISuite
+$(CLIS):
+	$(MAKE) -C clisuite
 
+# Compile Engine
 $(ENGN): 
 	$(MAKE) -C core 
 
@@ -67,10 +70,6 @@ $(TEST):
 # Compile HelpSuite
 $(HELP): 
 	$(MAKE) -C helpsuite
-
-# Compile CLISuite
-$(CLIS):
-	$(MAKE) -C clisuite
 
 # Compile Documents 
 $(DOCS): docs/conf.dox
