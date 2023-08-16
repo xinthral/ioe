@@ -43,25 +43,24 @@ int main(int argc, char const *argv[]) {
 	if (argc < 2) { print_helper(); }
 	bool vshContinue = false;
 
+	//! Declare Variables
+	size_t		found;
+	bool		  vshContinue = false;
+	std::string prompt = "> ";
+	std::string rawInput;
 	Logger* log = Logger::GetInstance();
+	log->named_log(__FILE__, "CLI Suite Loaded!");
+
 	//! Input Switch Case
 	char _input = argv[1][0];
 	switch (_input) {
 		case '0': 
-			log->named_log(__FILE__, "CLI Suite Loaded!");
-			break;
+			return 0;
 		case '1':
 			vshContinue = true;
-			break;
 		default: 
 			break;
 	}
-
-	//! Declare Variables
-	size_t		found;
-	std::string prompt = "> ";
-	std::string rawInput;
-	rawInput.reserve(256);
 
 	//! Interactive Shell
 	/* ********************************** */

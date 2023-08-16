@@ -6,8 +6,15 @@
 # @date		3 Aug 2023
 #**************************************/
 
-# the compiler: gcc for C programs, g++ for C++ programs
-CC = g++
+# Compiler: cc, c++, gcc, g++, emcc, em++ 
+# cc for C programs on windows
+# c++ for C++ programs on windows
+# gcc for C programs on gnu
+# g++ for C++ programs on gnu
+# emcc for C programs for embedded languages
+# em++ for C++ programs for embedded languages
+CC = emcc
+# CC = g++
 
 # Windows Variants
 ifeq ($(OS), Windows_NT)
@@ -41,7 +48,7 @@ CXXFLAGS = -shared -Wl,-soname,
 EFLAGS = -sEXIT_RUNTIME=1
 
 # Build targets
-EXEC    := engine 
+EXEC    := engine
 ifeq ($(OS), Windows_NT)
 EXECLOC := ..\$(EXEC)
 CXFLAGS := $(EFLAGS)
@@ -64,7 +71,7 @@ SHAREDFL := libxclisuite.so.1
 
 # Compile Full TestSuite 
 clisuite: $(SRCFILES) 
-	$(CC) $(CFLAGS) $(CXFLAGS) $^ -o $(EXECLOC) 
+	$(CC) $(CFLAGS) $(CXFLAGS) $^ -o $(EXECLOC).js 
 
 library: $(SRCFILES)
 	$(CC) $(CFLAGS) -o $(SHAREDFL).1 $^ $(CXXFLAGS)$(SHAREDFL)
@@ -80,5 +87,5 @@ clean:
 	$(RM) *.o *.so *.a *.i *.js *.html *.wasm 
 
 cleanall:
-	$(RM) $(EXECLOC) 
+	$(RM) $(EXECLOC) $(EXECLOC) $(EXECLOC).*
 	$(MAKE) clean
