@@ -78,7 +78,7 @@ build: $(SRCFILES)
 # Template function to compile defined objects files
 # Dynamically assign *.o to be compiled from its source counterpart
 %.o: %.cpp %.h
-	$(CC) $(CFLAGS) $(CXFLAGS) -c $< -o $@.html
+	$(CC) $(CFLAGS) $(CXFLAGS) -c $< -o $@
 
 clean:
 	$(RM) *.o *.so *.a *.i *.js *.html *.wasm 
