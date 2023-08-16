@@ -29,7 +29,7 @@ endif
 CFLAGS = -g -Wno-format -Wno-sign-compare -Wno-maybe-uninitialized -Wno-unused-variable -std=c++17
 
 # Extended Compiler Options
-CXFLAGS = -sEXIT_RUNTIME=1 -Wall -pedantic -O3 -fPIC
+CXFLAGS = -Wall -pedantic -O3 -fPIC
 
 # Extra Compiler Options
 CXXFLAGS = -shared -Wl,-soname,
