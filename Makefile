@@ -55,6 +55,10 @@ LIBRARIES := core helpsuite testsuite clisuite
 # $< evaluates to library.cpp
 # $^ evaluates to library.cpp main.cpp
 
+# Compile CLISuite
+$(CLIS):
+	$(MAKE) -C clisuite
+
 # Compile Engine
 $(ENGN): 
 	$(MAKE) -C core 
@@ -66,10 +70,6 @@ $(TEST):
 # Compile HelpSuite
 $(HELP): 
 	$(MAKE) -C helpsuite
-
-# Compile CLISuite
-$(CLIS):
-	$(MAKE) -C clisuite
 
 # Compile Documents 
 $(DOCS): docs/conf.dox
@@ -84,7 +84,7 @@ build:
 
 clean:
 	$(RM) *.stackdump $(EXEC) 
-	$(RM) *.o *.so *.a *.i 
+	$(RM) *.o *.so *.a *.i *.js *.html *.wasm 
 	$(foreach d, $(LIBRARIES), $(MAKE) clean -C $d &&) true 2>&1 >/dev/null
 
 cleandoc:

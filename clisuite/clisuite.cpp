@@ -31,7 +31,7 @@ void print_helper() {
 	char buf[64];
 	sprintf(buf, "\nUsage: ./%s <bool|debug>", fileName.c_str()); 
 	log->raw_log(buf);
-	log->raw_log("Param:\n\t<bool|debug> - Debugging Flag\n");
+	log->raw_log("Param:\n  <bool|debug> - Debugging Flag\n");
 	exit(-1);
 }
 
@@ -41,6 +41,7 @@ void print_helper() {
 int main(int argc, char const *argv[]) {
 	//! Conditional Check
 	if (argc < 2) { print_helper(); }
+	bool vshContinue = false;
 
 	Logger* log = Logger::GetInstance();
 	//! Input Switch Case
@@ -48,27 +49,30 @@ int main(int argc, char const *argv[]) {
 	switch (_input) {
 		case '0': 
 			log->named_log(__FILE__, "CLI Suite Loaded!");
-			return 0;
+			break;
 		case '1':
+			vshContinue = true;
+			break;
 		default: 
 			break;
 	}
 
 	//! Declare Variables
+	size_t		found;
 	std::string prompt = "> ";
 	std::string rawInput;
-	size_t		found;
-	bool		vshContinue = true;
+	rawInput.reserve(256);
 
 	//! Interactive Shell
 	/* ********************************** */
-	do {
+	while (vshContinue == true) {
 		printf("%s", prompt.c_str());		//! Display Message Prompt
-		std::cin >> rawInput;				//! Get User Input
+		std::getline(std::cin, rawInput);	//! Get User Input
 		//! Conditional to end Shell
-		vshContinue = parse_input(rawInput, "exit");
-	} while (vshContinue == true);
+		vshContinue = parse_input(rawInput, "!exit");
+	}
 	/* ********************************** */
 
+	printf("I have continued");
     return 0;
 }

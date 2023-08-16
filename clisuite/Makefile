@@ -11,7 +11,8 @@ CC = g++
 
 # Windows Variants
 ifeq ($(OS), Windows_NT)
-CC = c++
+CC = emcc
+# CC = c++
 RM = del
 endif
 
@@ -28,7 +29,7 @@ endif
 CFLAGS = -g -Wno-format -Wno-sign-compare -Wno-uninitialized -Wno-unused-variable -std=c++17
 
 # Extended Compiler Options
-CXFLAGS = -Wall -pedantic -O3 -fPIC
+CXFLAGS = -sEXIT_RUNTIME=1 -Wall -pedantic -O3 -fPIC
 
 # Extra Compiler Options
 CXXFLAGS = -shared -Wl,-soname,
@@ -69,7 +70,7 @@ build: $(SRCFILES)
 	$(CC) $(CFLAGS) $(CXFLAGS) -c $< -o $@
 
 clean:
-	$(RM) *.o *.so* *.a *.i *.exe *.stackdump 
+	$(RM) *.o *.so *.a *.i *.js *.html *.wasm 
 
 cleanall:
 	$(RM) $(EXECLOC) 

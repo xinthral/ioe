@@ -11,7 +11,8 @@ CC = g++
 
 # Windows Variants
 ifeq ($(OS), Windows_NT)
-CC = c++
+# CC = c++
+CC = emcc
 RM = del
 endif
 
@@ -28,7 +29,7 @@ endif
 CFLAGS = -g -Wno-format -Wno-sign-compare -Wno-maybe-uninitialized -Wno-unused-variable -std=c++17
 
 # Extended Compiler Options
-CXFLAGS = -Wall -pedantic -O3 -fPIC
+CXFLAGS = -sEXIT_RUNTIME=1 -Wall -pedantic -O3 -fPIC
 
 # Extra Compiler Options
 CXXFLAGS = -shared -Wl,-soname,
@@ -56,7 +57,7 @@ SHAREDFL := libtestsuite.so.1
 
 # Compile Full TestSuite 
 testsuite: $(SRCFILES) 
-	$(CC) $(CFLAGS) $(CXFLAGS) $^ -o $(EXECLOC) 
+	$(CC) $(CFLAGS) $(CXFLAGS) $^ -o $(EXECLOC).js
 
 library: $(SRCFILES)
 	$(CC) $(CFLAGS) -o $(SHAREDFL).1 $^ $(CXXFLAGS)$(SHAREDFL)
@@ -66,10 +67,10 @@ build: $(SRCFILES)
 # Template function to compile defined objects files
 # Dynamically assign *.o to be compiled from its source counterpart
 %.o: %.cpp %.h
-	$(CC) $(CFLAGS) $(CXFLAGS) -c -o $@ $<
+	$(CC) $(CFLAGS) $(CXFLAGS) -c $< -o $@
 
 clean:
-	$(RM) *.o *.so* *.a *.i *.exe *.stackdump 
+	$(RM) *.o *.so *.a *.i *.js *.html *.wasm 
 
 cleanall:
 	$(RM) $(EXECLOC) 
