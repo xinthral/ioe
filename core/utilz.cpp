@@ -78,3 +78,9 @@ void Utilz::Strip(std::string& input) {
 	std::string::iterator pos = std::remove(input.begin(), input.end(), ' ');
 	input.erase(pos, input.end());
 }
+
+extern "C" {
+	int addIt(int a, int b) {
+		return a + b;
+	}
+}

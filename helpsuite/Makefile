@@ -18,7 +18,7 @@ CC = g++
 
 # Windows Variants
 ifeq ($(OS), Windows_NT)
-CC = c++
+CC = emcc
 RM = del
 endif
 
@@ -40,10 +40,17 @@ CXFLAGS = -Wall -pedantic -O3 -fPIC
 # Extra Compiler Options
 CXXFLAGS = -shared -Wl,-soname,
 
+#
+# compiler flags:
+# -EXIT_RUNTIME to display output to console
+# Emscriten Compiler Options
+EFLAGS = -sEXIT_RUNTIME=1
+
 # Build targets
 EXEC    := helper
 ifeq ($(OS), Windows_NT)
 EXECLOC := ..\$(EXEC)
+CXFLAGS := $(EFLAGS)
 else
 EXECLOC := ../$(EXEC)
 endif
@@ -81,7 +88,7 @@ build: $(SRCFILES)
 	$(CC) $(CFLAGS) $(CXFLAGS) -c $< -o $@
 
 clean:
-	$(RM) *.o *.so* *.a *.i *.exe *.stackdump 
+	$(RM) *.o *.so *.a *.i *.js *.html *.wasm 
 
 cleanall:
 	$(RM) $(EXECLOC) $(EXECLOC).*

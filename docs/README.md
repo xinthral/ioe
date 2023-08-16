@@ -12,7 +12,12 @@ make doc
 
 #### Core Engine, vrooom: 
 ```bash
-make engine
+make build
+```
+
+#### CLISuite Interfacing with that Line Command
+```bash
+make cli 
 ./engine
 ```
 

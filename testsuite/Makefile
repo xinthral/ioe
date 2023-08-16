@@ -18,7 +18,8 @@ CC = g++
 
 # Windows Variants
 ifeq ($(OS), Windows_NT)
-CC = c++
+# CC = c++
+CC = emcc
 RM = del
 endif
 
@@ -40,10 +41,17 @@ CXFLAGS = -Wall -pedantic -O3 -fPIC
 # Extra Compiler Options
 CXXFLAGS = -shared -Wl,-soname,
 
+#
+# compiler flags:
+# -EXIT_RUNTIME to display output to console
+# Emscriten Compiler Options
+EFLAGS = -sEXIT_RUNTIME=1
+
 # Build targets
 EXEC    := tester
 ifeq ($(OS), Windows_NT)
 EXECLOC := ..\$(EXEC)
+CXFLAGS := $(EFLAGS)
 else
 EXECLOC := ../$(EXEC)
 endif

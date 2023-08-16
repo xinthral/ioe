@@ -18,8 +18,8 @@ CC = emcc
 
 # Windows Variants
 ifeq ($(OS), Windows_NT)
-# CC = emcc
-CC = c++
+CC = emcc
+# CC = c++
 RM = del
 
 endif
@@ -66,10 +66,14 @@ SHAREDFL := libxengine.so.1
 # $^ evaluates to library.cpp main.cpp
 
 # Compile Engine
-engine: $(SRCFILES)
+#engine: $(SRCFILES)
 
 # Build Object files
 build: $(SRCFILES)
+
+# Compile Engine
+engine: $(SRCFILES)
+	$(CC) $(CXXFLAGS) $^ -o $(EXECLOC)$(EXEC)
 
 $(MOD1): $(MOD1).cpp $(MOD1).h
 	$(CC) $< -o $(MOD1).html -sEXPORTED_FUNCTIONS=_FileName -sEXPORTED_RUNTIME_METHODS=ccall,cwrap 
@@ -77,7 +81,7 @@ $(MOD1): $(MOD1).cpp $(MOD1).h
 # Template function to compile defined objects files
 # Dynamically assign *.o to be compiled from its source counterpart
 %.o: %.cpp %.h
-	$(CC) $(CXFLAGS) -c $< -o $@
+	$(CC) $(CXFLAGS) -c $< -o $@ -sEXIT_RUNTIME=1
 
 clean:
 	$(RM) *.o *.so *.a *.i *.exe *.stackdump *.html *.js *.wasm 

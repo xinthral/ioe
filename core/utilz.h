@@ -15,4 +15,8 @@ namespace Utilz {
     void Strip(std::string&);
 } // namespace Utilz
 
+extern "C" {
+    int addIt(int, int);
+}
+
 #endif // UTILZ_H //
