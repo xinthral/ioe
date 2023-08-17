@@ -13,13 +13,12 @@
 # g++ for C++ programs on gnu
 # emcc for C programs for embedded languages
 # em++ for C++ programs for embedded languages
-CC = emcc
 CC = g++
 
 # Windows Variants
 ifeq ($(OS), Windows_NT)
-# CC = c++
-CC = emcc
+# CC = emcc
+CC = c++
 RM = del
 endif
 
@@ -33,7 +32,7 @@ endif
 #  	-no-pie 								- do not produce a position-independent executable
 #	-fPIC									- Format position-independent code
 # Standard Compiler Options
-CFLAGS = -g -Wno-format -Wno-sign-compare -Wno-maybe-uninitialized -Wno-unused-variable -std=c++17
+CFLAGS = -g -Wno-format -Wno-sign-compare -Wno-uninitialized -Wno-unused-variable -std=c++17
 
 # Extended Compiler Options
 CXFLAGS = -Wall -pedantic -O3 -fPIC
@@ -51,7 +50,7 @@ EFLAGS = -sEXIT_RUNTIME=1
 EXEC    := tester
 ifeq ($(OS), Windows_NT)
 EXECLOC := ..\$(EXEC)
-CXFLAGS := $(EFLAGS)
+# CXFLAGS := $(EFLAGS)
 else
 EXECLOC := ../$(EXEC)
 endif
@@ -71,7 +70,7 @@ SHAREDFL := libtestsuite.so.1
 
 # Compile Full TestSuite 
 testsuite: $(SRCFILES) 
-	$(CC) $(CFLAGS) $(CXFLAGS) $^ -o $(EXECLOC).js
+	$(CC) $(CFLAGS) $(CXFLAGS) $^ -o $(EXECLOC)
 
 library: $(SRCFILES)
 	$(CC) $(CFLAGS) -o $(SHAREDFL).1 $^ $(CXXFLAGS)$(SHAREDFL)
@@ -84,7 +83,7 @@ build: $(SRCFILES)
 	$(CC) $(CFLAGS) $(CXFLAGS) -c $< -o $@
 
 clean:
-	$(RM) *.o *.so* *.a *.i *.js *.exe *.stackdump 
+	$(RM) *.o *.so *.a *.i *.js *.html *.wasm *.stackdump 
 
 cleanall:
 	$(RM) $(EXECLOC) $(EXECLOC).*

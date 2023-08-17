@@ -13,13 +13,12 @@
 # g++ for C++ programs on gnu
 # emcc for C programs for embedded languages
 # em++ for C++ programs for embedded languages
-CC = emcc
-# CC = g++
+CC = g++
 
 # Windows Variants
 ifeq ($(OS), Windows_NT)
-CC = emcc
-# CC = c++
+# CC = emcc
+CC = c++
 RM = del
 
 endif
@@ -50,6 +49,7 @@ EXEC = engine
 MOD1 = utilz
 ifeq ($(OS), Windows_NT)
 EXECLOC := ..\\$(EXEC)
+# EXECLOC = $(EFLAGS)
 else
 EXECLOC := ../$(EXEC)
 endif
@@ -65,9 +65,6 @@ SHAREDFL := libxengine.so.1
 # $< evaluates to library.cpp
 # $^ evaluates to library.cpp main.cpp
 
-# Compile Engine
-#engine: $(SRCFILES)
-
 # Build Object files
 build: $(SRCFILES)
 
@@ -75,16 +72,13 @@ build: $(SRCFILES)
 engine: $(SRCFILES)
 	$(CC) $(CXXFLAGS) $^ -o $(EXECLOC)$(EXEC)
 
-$(MOD1): $(MOD1).cpp $(MOD1).h
-	$(CC) $< -o $(MOD1).html -sEXPORTED_FUNCTIONS=_FileName -sEXPORTED_RUNTIME_METHODS=ccall,cwrap 
-
 # Template function to compile defined objects files
 # Dynamically assign *.o to be compiled from its source counterpart
 %.o: %.cpp %.h
-	$(CC) $(CXFLAGS) -c $< -o $@ -sEXIT_RUNTIME=1
+	$(CC) $(CXFLAGS) -c $< -o $@
 
 clean:
-	$(RM) *.o *.so *.a *.i *.exe *.stackdump *.html *.js *.wasm 
+	$(RM) *.o *.so *.a *.i *.js *.html *.wasm *.stackdump 
 	
 cleanall:
 	$(RM) $(EXECLOC) $(EXECLOC).*

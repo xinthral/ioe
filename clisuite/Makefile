@@ -13,13 +13,12 @@
 # g++ for C++ programs on gnu
 # emcc for C programs for embedded languages
 # em++ for C++ programs for embedded languages
-CC = emcc
-# CC = g++
+CC = g++
 
 # Windows Variants
 ifeq ($(OS), Windows_NT)
-CC = emcc
-# CC = c++
+# CC = em++
+CC = c++
 RM = del
 endif
 
@@ -45,13 +44,13 @@ CXXFLAGS = -shared -Wl,-soname,
 # compiler flags:
 # -EXIT_RUNTIME to display output to console
 # Emscriten Compiler Options
-EFLAGS = -sEXIT_RUNTIME=1
+EFLAGS = -0s -g1 -sEXIT_RUNTIME=1 -sWASM=1 -sMODULARIZE=1 -sMALLOC=emmalloc -sALLOW_MEMORY_GROWTH=1 -sEXPORT_ES6 --bind
 
 # Build targets
 EXEC    := engine
 ifeq ($(OS), Windows_NT)
-EXECLOC := ..\$(EXEC)
-CXFLAGS := $(EFLAGS)
+EXECLOC := ..\\$(EXEC)
+# CXFLAGS := $(EFLAGS)
 else
 EXECLOC := ../$(EXEC)
 endif
@@ -71,7 +70,7 @@ SHAREDFL := libxclisuite.so.1
 
 # Compile Full TestSuite 
 clisuite: $(SRCFILES) 
-	$(CC) $(CFLAGS) $(CXFLAGS) $^ -o $(EXECLOC).js 
+	$(CC) $(CFLAGS) $(CXFLAGS) $^ -o $(EXECLOC) 
 
 library: $(SRCFILES)
 	$(CC) $(CFLAGS) -o $(SHAREDFL).1 $^ $(CXXFLAGS)$(SHAREDFL)
@@ -84,8 +83,8 @@ build: $(SRCFILES)
 	$(CC) $(CFLAGS) $(CXFLAGS) -c $< -o $@
 
 clean:
-	$(RM) *.o *.so *.a *.i *.js *.html *.wasm 
+	$(RM) *.o *.so *.a *.i *.js *.html *.wasm *.stackdump
 
 cleanall:
-	$(RM) $(EXECLOC) $(EXECLOC) $(EXECLOC).*
+	$(RM) $(EXECLOC) $(EXECLOC).*
 	$(MAKE) clean

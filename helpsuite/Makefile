@@ -13,12 +13,12 @@
 # g++ for C++ programs on gnu
 # emcc for C programs for embedded languages
 # em++ for C++ programs for embedded languages
-# CC = emcc
 CC = g++
 
 # Windows Variants
 ifeq ($(OS), Windows_NT)
-CC = emcc
+# CC = emcc
+CC = c++
 RM = del
 endif
 
@@ -49,8 +49,8 @@ EFLAGS = -sEXIT_RUNTIME=1
 # Build targets
 EXEC    := helper
 ifeq ($(OS), Windows_NT)
-EXECLOC := ..\$(EXEC)
-CXFLAGS := $(EFLAGS)
+EXECLOC := ..\\$(EXEC)
+# CXFLAGS := $(EFLAGS)
 else
 EXECLOC := ../$(EXEC)
 endif
@@ -88,7 +88,7 @@ build: $(SRCFILES)
 	$(CC) $(CFLAGS) $(CXFLAGS) -c $< -o $@
 
 clean:
-	$(RM) *.o *.so *.a *.i *.js *.html *.wasm 
+	$(RM) *.o *.so *.a *.i *.js *.html *.wasm *.stackdump 
 
 cleanall:
 	$(RM) $(EXECLOC) $(EXECLOC).*
