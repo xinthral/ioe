@@ -41,11 +41,10 @@ void print_helper() {
 int main(int argc, char const *argv[]) {
 	//! Conditional Check
 	if (argc < 2) { print_helper(); }
-	bool vshContinue = false;
 
 	//! Declare Variables
-	size_t		found;
-	bool		  vshContinue = false;
+	size_t	found;
+	bool	vshContinue = false;
 	std::string prompt = "> ";
 	std::string rawInput;
 	Logger* log = Logger::GetInstance();
@@ -72,6 +71,6 @@ int main(int argc, char const *argv[]) {
 	}
 	/* ********************************** */
 
-	printf("I have continued");
+	log->named_log(__FILE__, "I have continued");
     return 0;
 }
