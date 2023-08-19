@@ -1,15 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
-import GameComponent from './engine/core';
+import GameComponent from './engine/core/core';
+import { RouterProvider } from 'react-router-dom';
+import router from './pages/routes'
+import Root from './pages/root/root';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
-    <GameComponent />
+    <RouterProvider router={router}>
+      <Root />
+    </RouterProvider>
   </React.StrictMode>
 );
 
