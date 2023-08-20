@@ -1,3 +1,15 @@
+https://www.w3schools.com/react/react_class.asp
+
+React Class Built-ins:
+_ getDerivedStateFromProps()
+_ shouldComponentUpdate()
+_ render()
+_ getSnapshotBeforeUpdate()
+_ componentDidUpdate()
+
+
+
+/***************************CPP
 TODO: 
 _ Configure Debug
 _ Update modules to implement Helper system
