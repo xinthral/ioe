@@ -1,5 +1,0 @@
-name: 'BaseCase'
-description: 'Basic Test that site compiles/runs'
-runs:
-  using: 'node20'
-  main: 'index.js'
