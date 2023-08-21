@@ -1,0 +1,28 @@
+.circle-progress-bar {
+  display: inline-block;
+  position: relative;
+}
+
+.outer-circle {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 10;
+  stroke-linecap: round;
+  transform: rotate(-90deg);
+  transform-origin: center;
+  transition: stroke-dashoffset 0.3s ease;
+}
+
+.inner-circle {
+  fill: #fff;
+}
+
+.icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* Additional styling can be added as needed */
