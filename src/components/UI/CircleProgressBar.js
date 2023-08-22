@@ -13,7 +13,8 @@ const CircleProgressBar = ({ progress, icon, size }) => {
   useEffect(() => {
     // Timer to update progress by 5 every second
     const timer = setInterval(() => {
-      setCurrentProgress(prevProgress => (prevProgress + 5) % 101); // Ensure progress doesn't exceed 100
+      // Ensure progress doesn't exceed 100 %
+      setCurrentProgress(prevProgress => (prevProgress + 5) % 101)
     }, 1000);
     
     // Cleanup on unmount
