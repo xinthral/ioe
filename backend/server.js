@@ -57,13 +57,13 @@ app.patch('/players/:id/incrementLevel', (req, res) => {
 	if (index > -1) { players[index].level = level; }
 	return res.send(players[index]);
 });
-// app.patch('/players/:id/decrementLevel', (req, res) => {
-// 	const id = req.params.id;
-// 	const index = players.findIndex((player) => player.id === id);
-// 	const level = req.body.newLevel;
-// 	if (index > -1) { players[index].level = level; }
-// 	return res.send(players[index]);
-// });
+app.patch('/players/:id/decrementLevel', (req, res) => {
+	const id = req.params.id;
+	const index = players.findIndex((player) => player.id === id);
+	const level = req.body.level;
+	if (index > -1) { players[index].level = level; }
+	return res.send(players[index]);
+});
 app.delete('/players/:id', (req, res) => {
 	const id = req.params.id;
 	const index = players.findIndex((player) => player.id === id);

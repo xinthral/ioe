@@ -3,7 +3,12 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import { useDispatch } from 'react-redux';
-import { deletePlayerAsync, completePlayerAsync, incrementPlayerLevelAsync } from '../../redux/playerSlice';
+import { 
+	deletePlayerAsync, 
+	completePlayerAsync, 
+	incrementPlayerLevelAsync, 
+	decrementPlayerLevelAsync 
+} from '../../redux/playerSlice';
 
 const PlayerItem = ({ id, name, level, completed }) => {
 	const dispatch = useDispatch();
@@ -17,7 +22,7 @@ const PlayerItem = ({ id, name, level, completed }) => {
 	}
 
 	const handleDecrementClick = () => {
-		dispatch();
+		dispatch(decrementPlayerLevelAsync({ id, level: level -= 1 }));
 	}
 
 	const handleIncrementClick = () => {
