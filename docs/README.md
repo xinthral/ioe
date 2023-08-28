@@ -5,44 +5,45 @@ This game engine is nothing more than a passion project for me. Intentions may b
 
 #### Available Scripts
 
-In the project directory, you can run:
+# React redux todo app
 
-```bash
-npm start
+Source code for React redux todo app YouTube tutorial. Includes
+
+- Finished source code
+- Starter code
+- An API
+
+## Running the finished code
+
+Clone the repo and run the following:
+
+- cd final
+- npm install
+- npm start
+
+**NOTE:** The API must be running in order for the finished code to work as intended. Seee "Running the API" below
+
+## Running the starter code
+
+The starter code is located in its own folder. To get it:
+
+- cd starter
+- npm install
+- npm start
+
+## Running the API
+
+The API is a dead basic node.js/express server. Clone the repo and run the following:
+
+- cd api
+- npm install
+- npm run server
+- check its running by going to browser/postman
+
 ```
+localhost:7000/todos
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-```bash
-npm test
 ```
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-```bash
-npm run build
-```
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-```bash
-npm run eject
-```
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
 # Outdated
 #### Documentation in HTML format: 
