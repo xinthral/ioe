@@ -1,22 +1,23 @@
+/*! Build Databases in Memory */
+const player = require('./db/setupPlayerTable');
+
+/*! Establish Variables */
 const express = require('express');
 const dotenv = require('dotenv');
 const colors = require('colors');
 const cors = require('cors');
 const { json } = require('body-parser');
 const { nanoid } = require('nanoid');
-
-
-dotenv.config({ path: './config.env' });
-
 const app = express();
 
+dotenv.config({ path: './config.env' });
 app.use(cors());
 app.use(json());
 
 let todos = [];
 let players = [];
 
-/* Todo List */
+/*! Todo List API */
 app.get('/todos', (req, res) => res.send(todos));
 app.post('/todos', (req, res) => {
 	const todo = { id: nanoid(), title: req.body.title, completed: false };
@@ -37,33 +38,12 @@ app.delete('/todos/:id', (req, res) => {
 	res.send(todos);
 });
 
-/* Players */
+/*! Players API */
 app.get('/players', (req, res) => res.send(players));
 app.post('/players', (req, res) => {
 	const player = { id: nanoid(), name: req.body.name, level: 0, completed: false };
 	players.push(player);
 	return res.send(player);
-});
-app.patch('/players/:id', (req, res) => {
-	const id = req.params.id;
-	const index = players.findIndex((player) => player.id === id);
-	const completed = Boolean(req.body.completed);
-	if (index > -1) { players[index].completed = completed;}
-	return res.send(players[index]);
-});
-app.patch('/players/:id/incrementLevel', (req, res) => {
-	const id = req.params.id;
-	const index = players.findIndex((player) => player.id === id);
-	const level = req.body.level;
-	if (index > -1) { players[index].level = level; }
-	return res.send(players[index]);
-});
-app.patch('/players/:id/decrementLevel', (req, res) => {
-	const id = req.params.id;
-	const index = players.findIndex((player) => player.id === id);
-	const level = req.body.level;
-	if (index > -1) { players[index].level = level; }
-	return res.send(players[index]);
 });
 app.delete('/players/:id', (req, res) => {
 	const id = req.params.id;
@@ -71,6 +51,21 @@ app.delete('/players/:id', (req, res) => {
 	if (index > -1) { players.splice(index, 1);	}
 	res.send(players);
 });
-
+//! PlayerList Mark Player
+app.patch('/players/:id', (req, res) => {
+	const id = req.params.id;
+	const index = players.findIndex((player) => player.id === id);
+	const completed = Boolean(req.body.completed);
+	if (index > -1) { players[index].completed = completed;}
+	return res.send(players[index]);
+});
+//! (In)/(De)crementLevel
+app.patch('/players/:id/?crementLevel', (req, res) => {
+	const id = req.params.id;
+	const index = players.findIndex((player) => player.id === id);
+	const level = req.body.level;
+	if (index > -1) { players[index].level = level; }
+	return res.send(players[index]);
+});
 const PORT = 7000;
 app.listen(PORT, console.log(`Server running on port ${PORT}`.green.bold));

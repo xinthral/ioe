@@ -40,11 +40,10 @@ const PlayerItem = ({ id, name, level, completed }) => {
 						onClick={handleCheckboxClick}
 					></input>
 					<Row className={{display: 'flex', justifyContent: 'center'}}>
-						<Col sm="auto">{ name }</Col>
-						<Col sm="auto">{ level }</Col>
+						<Col md="auto">{ name }</Col>
+						<Col md="auto">{ level }</Col>
 						<Col>{ id }</Col>
 					</Row>
-					
 				</span>
 				<Button onClick={handleDecrementClick} className='btn btn-secondary'>
 					Level-
