@@ -13,8 +13,8 @@ const PlayerList = () => {
 
 	return (
 		<ul className='list-group'>
-			{players && players.map((player) => (
-				<PlayerItem id={player.id} name={player.name} level={player.level} completed={player.completed} />
+			{players && players.map((player, uid) => (
+				<PlayerItem key={uid} id={player.id} name={player.name} level={player.level} completed={player.completed} />
 			))}
 		</ul>
 	);

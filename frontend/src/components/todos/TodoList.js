@@ -13,8 +13,8 @@ const TodoList = () => {
 
 	return (
 		<ul className='list-group'>
-			{todos && todos.map((todo) => (
-				<TodoItem id={todo.id} title={todo.title} completed={todo.completed} />
+			{todos && todos.map((todo, uid) => (
+				<TodoItem key={uid} id={todo.id} title={todo.title} completed={todo.completed} />
 			))}
 		</ul>
 	);
