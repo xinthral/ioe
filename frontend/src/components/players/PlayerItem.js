@@ -37,6 +37,7 @@ const PlayerItem = ({ id, name, level, completed }) => {
 						type='checkbox'
 						className='mr-3'
 						checked={completed}
+						onChange={(event) => {}}
 						onClick={handleCheckboxClick}
 					></input>
 					<Row className={{display: 'flex', justifyContent: 'center'}}>
