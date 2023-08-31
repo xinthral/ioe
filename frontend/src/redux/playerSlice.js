@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { nanoid } from "nanoid";
 
-
 /* ----- Globals ----- */
 let g_headers = { 'Content-Type': 'application/json', }
 
@@ -17,18 +16,18 @@ export const getPlayersAsync = createAsyncThunk(
 	}
 );
 	
-	export const addPlayerAsync = createAsyncThunk(
-		'players/addPlayerAsync',
-		async (payload) => {
-			const resp = await fetch("http://localhost:7000/players", {
-				method: 'POST',
-				headers: g_headers,
-				body: JSON.stringify({ name: payload.name }),
-			});
-			if (resp.ok) {
-				const player = await resp.json();
-				return { player };
-			}
+export const addPlayerAsync = createAsyncThunk(
+	'players/addPlayerAsync',
+	async (payload) => {
+		const resp = await fetch("http://localhost:7000/players", {
+			method: 'POST',
+			headers: g_headers,
+			body: JSON.stringify({ name: payload.name }),
+		});
+		if (resp.ok) {
+			const player = await resp.json();
+			return { player };
+		}
 	}
 );
 	
@@ -82,6 +81,7 @@ export const deletePlayerAsync = createAsyncThunk(
 	async (payload) => {
 		const resp = await fetch(`http://localhost:7000/players/${payload.id}`, {
 			method: 'DELETE',
+			headers: g_headers,
 		});
 		if (resp.ok) {
 			return { id: payload.id };

@@ -4,8 +4,6 @@ import Navigation from '../../components/ui/navbars/Navigation';
 import PlayerList from '../../components/players/PlayerList';
 
 class PlayerLanding extends React.Component {
-    reRender = () => { this.forceUpdate(); }
-
     render() {
         return (
             <>

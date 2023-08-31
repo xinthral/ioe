@@ -5,12 +5,12 @@ const { nanoid } = require('nanoid');
 //! Dummy Data sets
 var tableNames = [];
 var createQueries = [];
-
-// var dummyPlayerData = [
+// var dummyPlayerData = [];
 //     [nanoid(), 'xTestUser-1', 'Xtest', 'User1', 'Kickin it old school.'],
 //     [nanoid(), 'xTestUser-2', 'testX', 'User2', 'Flowin like its cool.'],
 //     [nanoid(), 'xTestUser-3', 'teXst', 'User3', 'Feelin like the fool.'],
-// ];
+
+/*! Players Table */
 tableNames.push('players')
 var createPlayerQuery = `CREATE TABLE IF NOT EXISTS ${tableNames[0]} (` +
     'uid VARCHAR(32) PRIMARY KEY NOT NULL, ' +
@@ -21,6 +21,7 @@ var createPlayerQuery = `CREATE TABLE IF NOT EXISTS ${tableNames[0]} (` +
     ');'
 createQueries.push(createPlayerQuery)
 
+/*! Toons Table */
 tableNames.push('toons');
 var createToonQuery = `CREATE TABLE IF NOT EXISTS ${tableNames[1]} (` +
     'uid VARCHAR(32) PRIMARY KEY NOT NULL, ' +

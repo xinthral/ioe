@@ -4,7 +4,11 @@ import { nanoid } from 'nanoid';
 export const getTodosAsync = createAsyncThunk(
 	'todos/getTodosAsync',
 	async () => {
-		const resp = await fetch('http://localhost:7000/todos');
+		const resp = await fetch('http://localhost:7000/todos', {
+			method: 'GET',
+			headers: { 'Content-Type': 'application/json'},
+			body: JSON.stringify(),
+		});
 		if (resp.ok) {
 			const todos = await resp.json();
 			return { todos };
