@@ -118,34 +118,34 @@ export const playerSlice = createSlice({
 			return state.filter((player) => player.id !== action.payload.id);
 		},
 	},
-	extraReducers: {
-		[getPlayersAsync.fulfilled]: (state, action) => {
+	extraReducers: (builder) => {
+		builder.addCase(getPlayersAsync.fulfilled, (state, action) => {
 			return action.payload.players;
-		},
-		[addPlayerAsync.fulfilled]: (state, action) => {
+		})
+		builder.addCase(addPlayerAsync.fulfilled, (state, action) => {
 			state.push(action.payload.player);
-		},
-		[completePlayerAsync.fulfilled]: (state, action) => {
+		})
+		builder.addCase(completePlayerAsync.fulfilled, (state, action) => {
 			const index = state.findIndex(
 				(player) => player.id === action.payload.player.id
 			);
 			state[index].completed = action.payload.player.completed;
-		},
-		[incrementPlayerLevelAsync.fulfilled]: (state, action) => {
+		})
+		builder.addCase(incrementPlayerLevelAsync.fulfilled, (state, action) => {
 			const index = state.findIndex(
 				(player) => player.id === action.payload.player.id
 			);
 			state[index].level = action.payload.player.level;
-		},
-		[decrementPlayerLevelAsync.fulfilled]: (state, action) => {
+		})
+		builder.addCase(decrementPlayerLevelAsync.fulfilled, (state, action) => {
 			const index = state.findIndex(
 				(player) => player.id === action.payload.player.id
 			);
 			state[index].level = action.payload.player.level;
-		},
-		[deletePlayerAsync.fulfilled]: (state, action) => {
+		})
+		builder.addCase(deletePlayerAsync.fulfilled, (state, action) => {
 			return state.filter((player) => player.id !== action.payload.id);
-		},
+		})
 	},
 });
 	

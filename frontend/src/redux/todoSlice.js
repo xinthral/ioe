@@ -78,22 +78,22 @@ export const todoSlice = createSlice({
 			return state.filter((todo) => todo.id !== action.payload.id);
 		},
 	},
-	extraReducers: {
-		[getTodosAsync.fulfilled]: (state, action) => {
+	extraReducers: (builder) => {
+		builder.addCase(getTodosAsync.fulfilled, (state, action) => {
 			return action.payload.todos;
-		},
-		[addTodoAsync.fulfilled]: (state, action) => {
+		})
+		builder.addCase(addTodoAsync.fulfilled, (state, action) => {
 			state.push(action.payload.todo);
-		},
-		[completeTodoAsync.fulfilled]: (state, action) => {
+		})
+		builder.addCase(completeTodoAsync.fulfilled, (state, action) => {
 			const index = state.findIndex(
 				(todo) => todo.id === action.payload.todo.id
 			);
 			state[index].completed = action.payload.todo.completed;
-		},
-		[deleteTodoAsync.fulfilled]: (state, action) => {
+		})
+		builder.addCase(deleteTodoAsync.fulfilled, (state, action) => {
 			return state.filter((todo) => todo.id !== action.payload.id);
-		},
+		})
 	},
 });
 
