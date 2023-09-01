@@ -1,5 +1,3 @@
-/*! Build Databases in Memory */
-const player = require('./db/setupDatabaseTables');
 
 /*! Establish Variables */
 const express = require('express');
@@ -59,7 +57,6 @@ app.patch('/players/:id', (req, res) => {
 	if (index > -1) { players[index].completed = completed;}
 	return res.send(players[index]);
 });
-
 //! (In)/(De)crementLevel
 app.patch('/players/:id/incrementLevel', (req, res) => {
 	const id = req.params.id;
@@ -68,13 +65,19 @@ app.patch('/players/:id/incrementLevel', (req, res) => {
 	if (index > -1) { players[index].level = level; }
 	return res.send(players[index]);
 });
-
 app.patch('/players/:id/decrementLevel', (req, res) => {
 	const id = req.params.id;
 	const index = players.findIndex((player) => player.id === id);
 	const level = req.body.level;
 	if (index > -1) { players[index].level = level; }
 	return res.send(players[index]);
+});
+
+//! Engine API request
+app.get('/engine/loadDatabase', (req, res) => {
+	/*! Build Databases in Memory */
+	const dbcontroller = require('./db/controller');
+	return res.send([]);
 });
 
 const PORT = 7000;
