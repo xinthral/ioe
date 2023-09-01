@@ -1,3 +1,8 @@
+/*!
+ * \mainpage Isles Of Eris
+ * \brief	Jello!
+ *
+*/
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
