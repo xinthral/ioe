@@ -77,7 +77,8 @@ app.patch('/players/:id/decrementLevel', (req, res) => {
 app.get('/engine/loadDatabase', (req, res) => {
 	/*! Build Databases in Memory */
 	const dbcontroller = require('./db/controller');
-	return res.send([]);
+	dbcontroller();
+	return res.send(players);
 });
 
 const PORT = 7000;

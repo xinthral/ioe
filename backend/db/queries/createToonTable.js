@@ -1,7 +1,7 @@
 const tableNames = require('../structures/tableNames');
 const createQueries = require('../structures/createQueries');
 
-export default createToons = () => {
+function createToons() {
     /*! Toons Table */
     tableNames.push('toons');
     var createToonQuery = `CREATE TABLE IF NOT EXISTS ${tableNames[1]} (` +
@@ -13,3 +13,5 @@ export default createToons = () => {
         ');'
     createQueries.push(createToonQuery)
 };
+
+module.exports = createToons;

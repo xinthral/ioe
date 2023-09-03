@@ -6,11 +6,11 @@ const testToonTable = require('./integrity/schema/testToonTable');
 
 const RunItSon = () => {
     //! Setup Table
-    setupTables;
+    setupTables();
     
     //! Test Tables
-    testPlayerTable;
-    testToonTable;
+    testPlayerTable();
+    testToonTable();
 };
 
-exports.module = RunItSon;
+module.exports = RunItSon;

@@ -1,7 +1,7 @@
 const tableNames = require('../structures/tableNames');
 const createQueries = require('../structures/createQueries');
 
-export default createPlayers = () => {
+function createPlayers () {
     /*! Players Table */
     tableNames.push('players');
     var createPlayerQuery = `CREATE TABLE IF NOT EXISTS ${tableNames[0]} (` +
@@ -13,3 +13,5 @@ export default createPlayers = () => {
         ');'
     createQueries.push(createPlayerQuery);
 };
+
+module.exports = createPlayers;
