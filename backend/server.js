@@ -62,14 +62,14 @@ app.patch('/players/:id/incrementLevel', (req, res) => {
 	const id = req.params.id;
 	const index = players.findIndex((player) => player.id === id);
 	const level = req.body.level;
-	if (index > -1) { players[index].level = level; }
+	if (index > -1) { players[index].level = level + 1; }
 	return res.send(players[index]);
 });
 app.patch('/players/:id/decrementLevel', (req, res) => {
 	const id = req.params.id;
 	const index = players.findIndex((player) => player.id === id);
 	const level = req.body.level;
-	if (index > -1) { players[index].level = level; }
+	if (index > -1) { players[index].level = level - 1; }
 	return res.send(players[index]);
 });
 
