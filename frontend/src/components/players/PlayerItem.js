@@ -22,11 +22,11 @@ const PlayerItem = ({ id, name, level, completed }) => {
 	}
 
 	const handleDecrementClick = () => {
-		dispatch(decrementPlayerLevelAsync({ id, level: level -= 1 }));
+		dispatch(decrementPlayerLevelAsync({ id, level }));
 	}
 
 	const handleIncrementClick = () => {
-		dispatch(incrementPlayerLevelAsync({ id, level: level += 1 }));
+		dispatch(incrementPlayerLevelAsync({ id, level }));
 	}
 
 	return (
