@@ -1,5 +1,4 @@
 // components/Navigation.js
-import { Link } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -10,12 +9,12 @@ const Navigation = () => {
     <div>
       <Navbar expand="lg" className="bg-body-tertiary justify-content-between navbar bg-dark navbar-dark">
         <Container>
-          <Navbar.Brand href="#home">IoE</Navbar.Brand>
+          <Navbar.Brand href="/">IoE</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               {/* <Nav.Link href="/">Home</Nav.Link> */}
-              {/* <Nav.Link href="/todolist">List</Nav.Link> */}
+              <Nav.Link href="/signup">Signup</Nav.Link>
               <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                 <NavDropdown.Item href="/">Home</NavDropdown.Item>
                 <NavDropdown.Item href="/todos">Todos</NavDropdown.Item>
