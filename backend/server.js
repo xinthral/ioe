@@ -7,6 +7,8 @@ const cors = require('cors');
 const { json } = require('body-parser');
 const { nanoid } = require('nanoid');
 const app = express();
+const {closePlayerConnection} = require('./db/integrity/schema/testPlayerTable');
+const {closeToonConnection} = require('./db/integrity/schema/testToonTable');
 
 dotenv.config({ path: './config.env' });
 app.use(cors());
@@ -14,6 +16,20 @@ app.use(json());
 
 let todos = [];
 let players = [];
+
+
+process.on('SIGTERM', shutdownConnections);
+process.on('SIGINT', shutdownConnections);
+
+function shutdownConnections() {
+	console.log('User Requested shutdown...');
+	closePlayerConnection();
+	closeToonConnection();
+    setTimeout(() => {
+		console.log('Closed Remaining Connections');
+		process.exit(0);
+    }, 1000);
+};
 
 /*! Todo List API */
 app.get('/todos', (req, res) => res.send(todos));
@@ -80,6 +96,7 @@ app.get('/engine/loadDatabase', (req, res) => {
 	dbcontroller();
 	return res.send(players);
 });
+
 
 const PORT = 7000;
 app.listen(PORT, console.log(`Server running on port ${PORT}`.green.bold));

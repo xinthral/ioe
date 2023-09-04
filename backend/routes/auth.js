@@ -4,7 +4,6 @@ var LocalStrategy = require('passport-local');
 var crypto = require('crypto');
 var db = require('../db');
 
-
 /* Configure password authentication strategy.
  *
  * The `LocalStrategy` authenticates users by verifying a username and password.

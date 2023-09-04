@@ -14,7 +14,8 @@ function WeaveTheWeb() {
     injestToonTable();            // 1
     
     console.log(`Table Names: ${tableNames}`);
-    
+    console.log('Injesting Cached Data...');
+
     //! Create Table Schema's
     db.serialize(() => {
         for (let i = 0; i < createQueries.length; i++) {
@@ -27,7 +28,7 @@ function WeaveTheWeb() {
             });
         }
     });
-    
+
     //! Close Database Connection
     db.close((err) => {
         if (err) {
@@ -36,6 +37,8 @@ function WeaveTheWeb() {
             console.log(`Connection to ${tableNames} closed.`);
         }
     });
+
+    console.log('Injested Cached Data!');
 };
 
 module.exports = WeaveTheWeb;

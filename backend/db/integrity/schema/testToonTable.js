@@ -12,9 +12,6 @@ const tableIdx = 1;
 var tmpids = ['AussdATQXDaWEAnHx5LU8', '43790jY-1pahg2ND9-vYU', '1-3VNV8wIvUulD8Y1CLWC', 'y_to43uTjVajJs8M03T44']
 
 function TestToonSchema() {
-    //! Setup Table Schema
-    tableWeaver;
-    
     //! Display Dummy Data
     var dummyData = [];
     
@@ -22,6 +19,8 @@ function TestToonSchema() {
         dummyData.push([nanoid(), `xTestUser-${step}`, 1, `${tmpids[step]}`]);
     };
     
+    console.log('Preparing Toon Table Statement...');
+
     db.serialize(() => {
         // ! Implement Dummy Data
         const stmt = db.prepare(`INSERT INTO ${tableNames[tableIdx]} VALUES (?, ?, ?, ?)`);
@@ -30,12 +29,14 @@ function TestToonSchema() {
         }
         stmt.finalize();
         
-    // ! Display what was ingested
-    // db.each(`SELECT rowid AS id, uid, name, level FROM ${tableNames[tableIdx]}`, (err, row) => {
-    //     console.log(`${row.id} :${row.uid}: ${row.name}-${row.level}`);
-    // });
+        // ! Display what was ingested
+        db.each(`SELECT rowid AS id, uid, name, level FROM ${tableNames[tableIdx]}`, (err, row) => {
+            console.log(`${row.id} :${row.uid}: ${row.name}-${row.level}`);
+        });
     });
-    
+};
+
+function closeToonConnection() {    
     //! Close Database Connection
     db.close((err) => {
         if (err) {
@@ -46,4 +47,4 @@ function TestToonSchema() {
     });
 };
 
-module.exports = TestToonSchema;
+module.exports = {TestToonSchema, closeToonConnection};

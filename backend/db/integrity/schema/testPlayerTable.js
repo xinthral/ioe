@@ -11,17 +11,13 @@ const tableIdx = 0;
 
 
 function testPlayerSchema() {
-
-    //! Setup Table Schema
-    tableWeaver;
-    
     //! Display Dummy Data
     var dummyData = [
         [nanoid(), 'xTestUser-1', 'Xtest', 'User1', 'Kickin it old school.'],
         [nanoid(), 'xTestUser-2', 'testX', 'User2', 'Flowin like its cool.'],
         [nanoid(), 'xTestUser-3', 'teXst', 'User3', 'Feelin like the fool.'],
     ];
-    
+
     db.serialize(() => {
         // ! Implement Dummy Data
         const stmt = db.prepare(`INSERT INTO ${tableNames[tableIdx]} VALUES (?, ?, ?, ?, ?)`);
@@ -35,7 +31,11 @@ function testPlayerSchema() {
             console.log(`${row.id} :${row.uid}: ${row.firstname}-${row.surname} ${row.bio}`);
         });
     });
-    
+
+    console.log('Prepared Player Table Test Statement...');
+};
+
+function closePlayerConnection() {
     //! Close Database Connection
     db.close((err) => {
         if (err) {
@@ -46,4 +46,4 @@ function testPlayerSchema() {
     });
 };
 
-module.exports = testPlayerSchema;
+module.exports = {testPlayerSchema, closePlayerConnection};

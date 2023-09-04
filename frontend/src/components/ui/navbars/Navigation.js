@@ -20,7 +20,7 @@ const Navigation = () => {
                 <NavDropdown.Item href="/todos">Todos</NavDropdown.Item>
                 <NavDropdown.Item href="/players">Players</NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">Admin</NavDropdown.Item>
+                <NavDropdown.Item href="http://localhost:7000/engine/loadDatabase">Admin</NavDropdown.Item>
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>
