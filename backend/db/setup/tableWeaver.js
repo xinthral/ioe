@@ -41,4 +41,4 @@ function WeaveTheWeb() {
     console.log('Injested Cached Data!');
 };
 
-module.exports = WeaveTheWeb;
+export default WeaveTheWeb;

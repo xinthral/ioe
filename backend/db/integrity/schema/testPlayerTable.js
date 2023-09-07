@@ -2,13 +2,14 @@
  * Ensure the integrity of the Player Schema
  * [uid, username, firstname, surname, bio]
 */
-const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('./ioe.db');
-const { nanoid } = require('nanoid');
-const tableNames = require('../../structures/tableNames');
-const tableWeaver = require('../../setup/tableWeaver');
-const tableIdx = 0;
+import sqlite3 from 'sqlite3'
+import { nanoid } from 'nanoid'
+import tableNames from '../../structures/tableNames.js'
+import tableWeaver from '../../setup/tableWeaver.js'
 
+sqlite3.verbose()
+let db = new sqlite3.Database('./ioe.db');
+let tableIdx = 0
 
 function testPlayerSchema() {
     //! Display Dummy Data

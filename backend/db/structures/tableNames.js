@@ -1,3 +1,3 @@
 const tableNames = [];
 
-module.exports = tableNames;
+export default tableNames;
