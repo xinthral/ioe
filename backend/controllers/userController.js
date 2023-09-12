@@ -1,6 +1,6 @@
-import asyncHandler from 'express-async-handler'
-import User from '../models/userModel.js'
-import generateToken from '../utils/generateToken.js'
+const asyncHandler = require('express-async-handler')
+const User = require('../models/userModel.js')
+const generateToken = require('../utils/generateToken.js')
 
 const registerUser = asyncHandler(async (req, res) => {
   const { firstName, email, password } = req.body
@@ -64,4 +64,4 @@ const getUserProfile = asyncHandler(async (req, res) => {
   }
 })
 
-export { registerUser, loginUser, getUserProfile }
+module.exports = { registerUser, loginUser, getUserProfile }

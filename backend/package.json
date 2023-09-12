@@ -2,7 +2,7 @@
 	"name": "IoE",
 	"version": "0.0.1",
 	"description": "",
-	"type": "module",
+	"type": "commonjs",
 	"main": "index.js",
 	"scripts": {
 		"start": "node server",
@@ -23,6 +23,7 @@
 		"express-async-handler": "^1.2.0",
 		"jsdoc": "^4.0.2",
 		"jsonwebtoken": "^9.0.2",
+		"mongodb": "^6.0.0",
 		"mongoose": "^7.5.0",
 		"nanoid": "^3.3.6",
 		"sqlite3": "^5.1.6",

@@ -1,3 +1,4 @@
+import AddUserForm from "../../components/users/AddUserForm";
 import Navigation from "../../components/ui/navbars/Navigation";
 
 export default function SignUp() {
@@ -42,6 +43,7 @@ export default function SignUp() {
             </nav>
           </div>
           <div id="detail"></div>
+          <AddUserForm />
         </div>
       </>
     );

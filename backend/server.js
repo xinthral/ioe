@@ -1,70 +1,47 @@
-import path from 'path'
-import express from 'express'
-import connectDB from './config/db.js'
-import userRoutes from './routes/userRoutes.js'
-import { errorHandler, notFound } from './middleware/errorMiddleware.js'
+const express = require('express');
+const app = express();
+const dotenv = require('dotenv');
+const colors = require('colors');
+const cors = require('cors');
+const { nanoid } = require('nanoid');
+// const connectDB = require('./config/db.js')
+const userRoutes = require('./routes/userRoutes.js')
+const { errorHandler, notFound } = require('./middleware/errorMiddleware.js')
 
-import dotenv from 'dotenv'
-// const colors = require('colors');
-import cors from 'cors'
-import { json } from 'body-parser'
-import { nanoid } from 'nanoid'
-import {closePlayerConnection} from './db/integrity/schema/testPlayerTable.js'
-import {closeToonConnection} from './db/integrity/schema/testToonTable.js'
-
-app.use(cors());
-app.use(json());
-// dotenv.config()
-dotenv.config({ path: './config.env' });
-
-// connect to database
-connectDB()
-
-const app = express()
-
-// Body parser
+//! Setup Server Environment
+// dotenv.config({ path: './config.env' });
+dotenv.config()
 app.use(express.json())
-
-// API routes
-app.use('/api/user', userRoutes)
-
-// deployment configuration
-const __dirname = path.resolve()
-
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '/frontend/build')))
-
-  app.get('*', (req, res) =>
-    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'))
-  )
-}
-
-// Middleware
-app.use(notFound)
-app.use(errorHandler)
-
-// ASync Routes
-
-/*! Establish Variables */
-
-let todos = [];
-let players = [];
-
-
+app.use(cors());
 process.on('SIGTERM', shutdownConnections);
 process.on('SIGINT', shutdownConnections);
+// connectDB()				// connect to database
+
+/*! Establish Variables */
+let todos = [];
+let players = [];
+let users = [];
 
 function shutdownConnections() {
 	console.log('User Requested shutdown...');
-	closePlayerConnection();
-	closeToonConnection();
+	// closePlayerConnection();
+	// closeToonConnection();
     setTimeout(() => {
 		console.log('Closed Remaining Connections');
 		process.exit(0);
     }, 1000);
 };
 
-/*! Todo List API */
+/*! ASync Routes */
+//! Users API 
+app.get('/users', (req, res) => res.send(users));
+app.post('/users', (req, res) => {
+	const user = { id: nanoid(), name: req.body.name, level: 0, completed: false };
+	users.push(user);
+	return res.send(user);
+});
+
+//! Todo List API 
 app.get('/todos', (req, res) => res.send(todos));
 app.post('/todos', (req, res) => {
 	const todo = { id: nanoid(), title: req.body.title, completed: false };
@@ -85,7 +62,7 @@ app.delete('/todos/:id', (req, res) => {
 	res.send(todos);
 });
 
-/*! Players API */
+//! Players API 
 app.get('/players', (req, res) => res.send(players));
 app.post('/players', (req, res) => {
 	const player = { id: nanoid(), name: req.body.name, level: 0, completed: false };
@@ -98,6 +75,7 @@ app.delete('/players/:id', (req, res) => {
 	if (index > -1) { players.splice(index, 1);	}
 	res.send(players);
 });
+
 //! PlayerList Mark Player
 app.patch('/players/:id', (req, res) => {
 	const id = req.params.id;
@@ -129,6 +107,24 @@ app.get('/engine/loadDatabase', (req, res) => {
 	// dbcontroller();
 	return res.send(players);
 });
+
+// API routes
+app.use('/api/user', userRoutes)
+
+// deployment configuration
+// const __dirname = path.resolve()
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '/frontend/build')))
+
+  app.get('*', (req, res) =>
+    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'))
+  )
+}
+
+// Middleware
+app.use(notFound)
+app.use(errorHandler)
 
 const PORT = process.env.PORT || 7000
 app.listen(PORT, (err) => {

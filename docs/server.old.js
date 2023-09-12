@@ -17,7 +17,6 @@ app.use(json());
 let todos = [];
 let players = [];
 
-
 process.on('SIGTERM', shutdownConnections);
 process.on('SIGINT', shutdownConnections);
 
