@@ -7,8 +7,8 @@ class HelpHelping : public BaseHelp {
 protected:
 private:
 public:
-    HelpHelping();
-    ~HelpHelping();
+  HelpHelping();
+  ~HelpHelping();
 };
 
 #endif // HELPHELPSUITE_H //

@@ -3,6 +3,8 @@
 
 #include <cassert>
 #include <iostream>
+#include <string.h>
+#include "../core/actor.h"
 #include "../core/balance.h"
 #include "../core/config.h"
 #include "../core/logger.h"

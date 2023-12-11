@@ -12,23 +12,23 @@ make doc
 
 #### Core Engine, vrooom: 
 ```bash
-make build
+make engine 
 ```
 
 #### CLISuite Interfacing with that Line Command
 ```bash
 make cli 
-./engine
+./engine.exe -h
 ```
 
 #### TestSuite and debuggers delight:
 ```bash
 make test
-./tester
+./tester.exe -h
 ```
 
 #### HelpSuite, thar be treasure: 
 ```bash
 make help
-./helper
+./helper.exe -h
 ```

@@ -14,19 +14,19 @@ enum Condition { EvE, PvE, PvP };
 
 class Combat {
 private:
-    BalanceController*  bal;
-    ConfigManager*      cnf;
-    Logger*             log;
-    Condition matchup;
-    char buf[128];
+  BalanceController*  bal;
+  ConfigManager*      cnf;
+  Logger*             log;
+  Condition matchup;
+  char buf[128];
 
 public:
-    Combat();
-    Combat(Toon&, Toon&);
-    Combat(Player&, Toon&);
-    Combat(Player&, Player&);
-    void begin_combat();
-    ~Combat();
+  Combat();
+  Combat(Toon&, Toon&);
+  Combat(Player&, Toon&);
+  Combat(Player&, Player&);
+  void begin_combat();
+  ~Combat();
 };
 
 #endif // COMBAT_H //
