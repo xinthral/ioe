@@ -31,8 +31,8 @@ Toon::Toon(std::string name) : Toon(-1, name) { }
  * @param[in] name - Name of the Character
 */
 Toon::Toon(int id, std::string name) { 
-    this->set_id(id);
-    this->set_name(name);
+  this->set_id(id);
+  this->set_name(name);
 }
 
 /*!

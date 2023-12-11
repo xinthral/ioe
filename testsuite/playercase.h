@@ -7,8 +7,8 @@ class TestPlayer: public BaseCase {
 protected:
 private:
 public:
-    TestPlayer();
-    ~TestPlayer();
+  TestPlayer();
+  ~TestPlayer();
 };
 
 #endif // TESTPLAYER_H //

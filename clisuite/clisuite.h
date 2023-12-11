@@ -1,9 +1,8 @@
 #ifndef XENGINE_H
 #define XENGINE_H
 
-
 #include <iostream>
-#include <string>
+#include <string.h>
 #include <vector>
 #include "../core/actor.h"
 #include "../core/balance.h"
@@ -15,7 +14,10 @@
 #include "../core/stage.h"
 #include "../core/toon.h"
 
-bool parse_input();
+ConfigManager* cnf;
+
+void parse_user_input(std::string);
+bool parse_input(std::string,std::string);
 void print_help();
 
 #endif // XENGINE_H //`
