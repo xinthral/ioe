@@ -69,9 +69,9 @@ std::string ConfigManager::raw_config(const std::string& option) { return this->
  * @param[out] option - A string array to recieve the commands
 */
 void ConfigManager::get_authorized_cli_commands(std::vector<std::string>& input) { 
-  std::string inp = "exit help "; 
-  inp += this->raw_config("CMDLIST");
-  Utilz::StringToArray(inp, &input);
+  // std::string inp = this->raw_config("CMDLIST");
+  std::string inp = "exit help";
+  Utilz::StringToArray(inp, input);
 }
 
 /*!

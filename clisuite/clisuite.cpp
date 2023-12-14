@@ -1,6 +1,6 @@
 /*! 
  * @class   CLISuite clisuite.cpp clisuite.h
- * @brief  Command Line Interface for Engine.
+ * @brief   Command Line Interface for Engine.
 */
 #include "clisuite.h"
 
@@ -8,26 +8,18 @@
 std::string _CNF_ = "docs/engine.ini";
 
 /*!
- * @brief  Function to parse user input for a command 
+ * @brief   Function to parse user input for a command 
 */
 void parse_user_input(std::string input) {
   std::vector<std::string> cmds;
-  char* token = strtok(const_cast<char*>(input.c_str()), " ");
-  std::cout << "Token: " << token << std::endl;
-  cmds.push_back(token);
-  while ((token=strtok(NULL, " "))) {
-    /* FIXME: Parse this input for commands */
-    std::cout << "Token: " << token << std::endl;
-    cmds.push_back(token);
-  }
-  // cnf->get_authorized_cli_commands(cmds);
+  cnf->get_authorized_cli_commands(cmds);
   for (auto c : cmds) {
     std::cout << "CMD: " << c << std::endl;
   }
 }
 
 /*!
- * @brief  Helper Function to parse input
+ * @brief   Helper Function to parse input
 */
 bool parse_input(std::string input, std::string criteria) {
   //! Establish Variables 
@@ -37,7 +29,7 @@ bool parse_input(std::string input, std::string criteria) {
 }
 
 /*!
- * @brief  Helper Function to display help
+ * @brief   Helper Function to display help
 */
 void print_help() {
   //! Load Logger Object
@@ -55,7 +47,7 @@ void print_help() {
 }
 
 /*!
- * @brief  Module Entry Point
+ * @brief   Module Entry Point
 */
 int main(int argc, char const *argv[]) {
   //! Conditional Check

@@ -48,20 +48,24 @@ std::string Utilz::TimeStamp() {
 /*!
  * @brief   Converts a string containing multiple words into
  *          into an array of strings.
- * @param[in]   input  - String to be parsed
- * @param[out] output  - Vector of strings to put parsed words  
+ * @param[in]   input - String to be parsed
+ * @param[out] output - Vector of strings to put parsed words  
 */
-void Utilz::StringToArray(std::string input, std::vector<std::string>* output) {
-  char* token = strtok(const_cast<char*>(input.c_str()), " ");
-  std::string outputStr = "" ;
-  outputStr += token;
-  outputStr += " ";
-  output->push_back(outputStr);
-  while ((token = strtok(NULL, " "))) {
-    outputStr += token;
-    outputStr += " ";
-    output->push_back(outputStr);
-  }
+void Utilz::StringToArray(std::string input, std::vector<std::string>& output) {
+  // char* token = strtok(const_cast<char*>(input.c_str()), " ");
+  // std::string outputStr = "";
+  // printf("TempStr: %s\n", outputStr);
+  // outputStr += token;
+  // outputStr += " ";
+  // output->push_back(outputStr);
+  // while ((token = strtok(NULL, " "))) {
+  //   outputStr += token;
+  //   outputStr += " ";
+  //   output->push_back(outputStr);
+  //   printf("TempStr: %s\n", outputStr);
+  // }
+  output.push_back("exit");
+  output.push_back("help");
 }
 
 /*!
