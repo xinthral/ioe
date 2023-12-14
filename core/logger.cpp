@@ -67,4 +67,4 @@ void Logger::_help() { }
 /*!
  * @brief   Default Deconstructor
 */
-Logger::~Logger() {}
+Logger::~Logger() { }

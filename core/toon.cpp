@@ -58,9 +58,9 @@ void Toon::set_name(std::string name) { this->name = name; }
 /*!
  * @brief   Helper Hook used in CLI Help System
 */
-void Toon::_help() {}
+void Toon::_help() { }
 
 /*!
  * @brief   Default Deconstructor
 */
-Toon::~Toon() {}
+Toon::~Toon() { }

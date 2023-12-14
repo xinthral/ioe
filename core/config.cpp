@@ -137,7 +137,6 @@ bool ConfigManager::load_config(bool _debug) {
   conf.open("docs/engine.ini");               //! Open INI file for reading
   while (std::getline(conf, row)) {
     // DEBUG Line
-    // if (_debug) { 
     if (_debug) { 
       sprintf(buf, "%d: %s", cnt++, row.c_str()); 
       log->named_log(__FILE__, buf);
@@ -160,4 +159,4 @@ bool ConfigManager::load_config(bool _debug) {
 */
 void ConfigManager::_help() { }
 
-ConfigManager::~ConfigManager() {}
+ConfigManager::~ConfigManager() { }

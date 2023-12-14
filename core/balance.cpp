@@ -125,4 +125,4 @@ void BalanceController::_help() { }
 /*!
  * @brief   Default Deconstructor
 */
-BalanceController::~BalanceController() {}
+BalanceController::~BalanceController() { }

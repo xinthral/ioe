@@ -42,4 +42,4 @@ Battle::Battle(std::vector<Toon*>& gang1, std::vector<Toon*>& gang2) {
 /*! 
  * @brief   Default Deconstructor
 */
-Battle::~Battle() {}
+Battle::~Battle() { }
