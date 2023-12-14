@@ -7,8 +7,8 @@ class TestToon : public BaseCase {
 protected:
 private:
 public:
-    TestToon();
-    ~TestToon();
+  TestToon();
+  ~TestToon();
 };
 
 #endif // TESTTOON_H //

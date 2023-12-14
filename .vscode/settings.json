@@ -77,6 +77,9 @@
         "string_view": "cpp",
         "numbers": "cpp",
         "semaphore": "cpp",
-        "sstream": "cpp"
+        "sstream": "cpp",
+        "chrono": "cpp",
+        "map": "cpp",
+        "optional": "cpp"
     }
 }

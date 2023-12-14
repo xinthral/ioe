@@ -2,6 +2,7 @@
 #define TESTER_H
 
 #include <stdio.h>
+#include <string.h>
 #include "actorcase.h"
 #include "balancecase.h"
 #include "combatcase.h"

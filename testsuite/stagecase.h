@@ -7,8 +7,8 @@ class TestStage : public BaseCase {
 protected:
 private:
 public:
-    TestStage();
-    ~TestStage();
+  TestStage();
+  ~TestStage();
 };
 
 #endif // TESTSTAGE_H //

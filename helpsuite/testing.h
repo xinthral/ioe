@@ -7,8 +7,8 @@ class HelpTesting : public BaseHelp {
 protected:
 private:
 public:
-    HelpTesting();
-    ~HelpTesting();
+  HelpTesting();
+  ~HelpTesting();
 };
 
 #endif // HELPTESTSUIT_H //

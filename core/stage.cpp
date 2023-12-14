@@ -1,7 +1,7 @@
 /*!
  * @class   StageManager stage.h stage.cpp
  * @brief   The stage manager controls the entirety of whom
- *          is active on the stage for any given scene.
+ *      is active on the stage for any given scene.
 */
 #include "stage.h"
 
@@ -13,9 +13,9 @@ std::mutex StageManager::_mutex;
  * @brief   Protected Constructor
 */
 StageManager::StageManager(const std::string _name) : name(_name) {
-    log = Logger::GetInstance();
-    sprintf(buf, "StageManager Established: %s", this->name.c_str());
-    log->named_log(Utilz::FileName(__FILE__), buf);
+  log = Logger::GetInstance();
+  sprintf(buf, "StageManager Established: %s", this->name.c_str());
+  log->named_log(Utilz::FileName(__FILE__), buf);
 }
 
 
@@ -23,11 +23,11 @@ StageManager::StageManager(const std::string _name) : name(_name) {
  * @brief   Singleton Constructor
 */
 StageManager* StageManager::GetInstance(const std::string& name) {
-    //! Acquire Instance Mutex
-    std::lock_guard<std::mutex> lock(_mutex);
-    //! If singleton already exists, return instance
-    if (_singleton == NULL) { _singleton = new StageManager(name); }
-    return _singleton;
+  //! Acquire Instance Mutex
+  std::lock_guard<std::mutex> lock(_mutex);
+  //! If singleton already exists, return instance
+  if (_singleton == NULL) { _singleton = new StageManager(name); }
+  return _singleton;
 }
 
 /*!
@@ -41,12 +41,12 @@ std::string StageManager::get_name() { return this->name; }
  * @note    FIXME
 */
 void StageManager::casting_call(int size, std::vector<Toon*>& npcs) { 
-    Toon* t;
-    for (int i = 0; i < size; i++) {
-        sprintf(buf, "Toon_%d", i);
-        t = new Toon(buf);
-        npcs.push_back(t);
-    }
+  Toon* t;
+  for (int i = 0; i < size; i++) {
+    sprintf(buf, "Toon_%d", i);
+    t = new Toon(buf);
+    npcs.push_back(t);
+  }
 }
 
 

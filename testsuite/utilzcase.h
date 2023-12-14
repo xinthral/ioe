@@ -7,8 +7,8 @@ class TestUtilz : public BaseCase {
 protected:
 private:
 public:
-    TestUtilz();
-    ~TestUtilz();
+  TestUtilz();
+  ~TestUtilz();
 };
 
 #endif // TESTUTILZ_H //

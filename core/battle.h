@@ -9,9 +9,10 @@ class Battle {
 protected:
 private:
 public:
-    Battle();
-    Battle(int, Player*, std::vector<Toon*>&);
-    ~Battle();
+  Battle();
+  Battle(int, Player*, std::vector<Toon*>&);
+  Battle(std::vector<Toon*>&, std::vector<Toon*>&);
+  ~Battle();
 };
 
 #endif // BATTLE_H //
