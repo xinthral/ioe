@@ -7,6 +7,7 @@
 #include "balancecase.h"
 #include "combatcase.h"
 #include "configcase.h"
+#include "leadercase.h"
 #include "playercase.h"
 #include "stagecase.h"
 #include "tooncase.h"
@@ -21,6 +22,7 @@ public:
     void CaseBalance();
     void CaseCombat();
     void CaseConfig();
+    void CaseLeader();
     void CasePlayer();
     void CaseStage();
     void CaseToon();

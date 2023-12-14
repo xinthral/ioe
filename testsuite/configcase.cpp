@@ -65,13 +65,12 @@ void TestConfig::test_remConfig() {
 void TestConfig::test_listOfCommands() {
     const char* commandString = BaseCase::cnf->raw_config("CMDLIST").c_str();
  	char* token = strtok((char*)commandString, " ");
-    BaseCase::log->timed_log(token);
     int steps = 1;
-	while ((token = strtok(NULL, " "))) {
-        BaseCase::log->named_log(__FILE__, token);
+	while (token != NULL) {
         steps++;
+        token = strtok(NULL, " \n");
 	}
-    assertm((steps != 2), "ConfigManager failed to return the list of commands");
+    assertm((steps > 1), "ConfigManager failed to return the list of commands");
     sprintf(buf, "%s %s %s", this->msgHead, "[valid] authorized commands config option", this->msgTail);
     BaseCase::log->named_log(__FILE__, buf);
 }

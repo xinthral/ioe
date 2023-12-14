@@ -29,27 +29,32 @@ void TestSuite::CaseBalance() { TestBalance* tb = new TestBalance(); }
 void TestSuite::CaseCombat() { TestCombat* tc = new TestCombat(); }
 
 /*!
- * @brief   Initiates the Test for the Combat Module
+ * @brief   Initiates the Test for the Config Module
 */
 void TestSuite::CaseConfig() { TestConfig* tf = new TestConfig(); }
 
 /*!
- * @brief   Initiates the Test for the Combat Module
+ * @brief   Initiates the Test for the LeaderBoard Module 
+*/
+void TestSuite::CaseLeader() { TestLeader* tl = new TestLeader(); }
+
+/*!
+ * @brief   Initiates the Test for the Player Module
 */
 void TestSuite::CasePlayer() { TestPlayer* tp = new TestPlayer(); }
 
 /*!
- * @brief   Initiates the Test for the Combat Module
+ * @brief   Initiates the Test for the Stage Module
 */
 void TestSuite::CaseStage() { TestStage* tg = new TestStage(); }
 
 /*!
- * @brief   Initiates the Test for the Combat Module
+ * @brief   Initiates the Test for the Toon Module
 */
 void TestSuite::CaseToon() { TestToon* tt = new TestToon(); }
 
 /*!
- * @brief   Initiates the Test for the Combat Module
+ * @brief   Initiates the Test for the Utility Module
 */
 void TestSuite::CaseUtilz() { TestUtilz* tu = new TestUtilz(); }
 
@@ -76,12 +81,13 @@ void print_help() {
   log->raw_log("\t[2] - Test Balance Module");
   log->raw_log("\t[3] - Test Combat Module");
   log->raw_log("\t[4] - Test Config Module");
-  log->raw_log("\t[5] - Test Player Module");
-  log->raw_log("\t[6] - Test Stage Module");
-  log->raw_log("\t[7] - Test Toon Module");
-  log->raw_log("\t[8] - Test Utilz Module");
+  log->raw_log("\t[5] - Test LeaderBoard Module");
+  log->raw_log("\t[6] - Test Player Module");
+  log->raw_log("\t[7] - Test Stage Module");
+  log->raw_log("\t[8] - Test Toon Module");
+  log->raw_log("\t[9] - Test Utilz Module");
   log->raw_log("\t[0] - Default Test to rule them all\n");
-  exit(-1);
+  exit(0);
 }
 
 /*!
@@ -116,22 +122,25 @@ int main(int argc, char const *argv[]) {
       ts.CaseConfig();
       break;
     case 5:
+      sprintf(buf, "Leader TestCase Completed...");
+      ts.CaseLeader();
+      break;
+    case 6:
       sprintf(buf, "Player TestCase Completed...");
       ts.CasePlayer();
       break;
-    case 6:
+    case 7:
       sprintf(buf, "Stage TestCase Completed...");
       ts.CaseStage();
       break;
-    case 7:
+    case 8:
       sprintf(buf, "Toon TestCase Completed...");
       ts.CaseToon();
       break;
-    case 8:
+    case 9:
       sprintf(buf, "Utilz TestCase Completed...");
       ts.CaseUtilz();
       break;
-    case 9:
     case 10:
     case 11:
     case 12:
@@ -142,6 +151,7 @@ int main(int argc, char const *argv[]) {
       ts.CaseBalance();
       ts.CaseCombat();
       ts.CaseConfig();
+      ts.CaseLeader();
       ts.CasePlayer();
       ts.CaseStage();
       ts.CaseToon();
