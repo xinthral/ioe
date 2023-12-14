@@ -5,16 +5,21 @@
 #include "clisuite.h"
 
 //! Extern Variable Declaration
-std::string _CNF_ = "docs/engine.ini";
+std::string __cnf_ = "docs/engine.ini";
+Logger* _log = Logger::GetInstance();
+ConfigManager* _cnf = ConfigManager::GetInstance();
 
 /*!
  * @brief   Function to parse user input for a command 
 */
 void parse_user_input(std::string input) {
   std::vector<std::string> cmds;
-  cnf->get_authorized_cli_commands(cmds);
-  for (auto c : cmds) {
-    std::cout << "CMD: " << c << std::endl;
+  _cnf->get_authorized_cli_commands(cmds);
+  char buf[64];
+  if (std::find(cmds.begin(), cmds.end(), input) != cmds.end()) {
+    sprintf(buf, "Authorized command: %s!", input.c_str());
+    _log->named_log(__FILE__, buf);
+    // __FIXME: Now that the commands are authorized, do something with them.
   }
 }
 
@@ -32,17 +37,14 @@ bool parse_input(std::string input, std::string criteria) {
  * @brief   Helper Function to display help
 */
 void print_help() {
-  //! Load Logger Object
-  Logger* log = Logger::GetInstance();
-
   //! Get File Name
   std::string fileName = Utilz::FileName(__FILE__);
 
   //! Display Help 
   char buf[64];
   sprintf(buf, "\nUsage: ./%s <bool|debug>", fileName.c_str()); 
-  log->raw_log(buf);
-  log->raw_log("Param:\n  <bool|debug> - Debugging Flag\n");
+  _log->raw_log(buf);
+  _log->raw_log("Param:\n  <bool|debug> - Debugging Flag\n");
   exit(-1);
 }
 
@@ -59,8 +61,7 @@ int main(int argc, char const *argv[]) {
   bool vshContinue = false;
   std::string prompt = "> ";
   std::string rawInput;
-  Logger* log = Logger::GetInstance();
-  log->named_log(__FILE__, "CLI Suite Loaded!");
+  _log->named_log(__FILE__, "CLI Suite Loaded!");
 
   //! Input Switch Case
   char _input = argv[1][0];
@@ -68,7 +69,7 @@ int main(int argc, char const *argv[]) {
     case '0': 
       return 0;
     case '1':
-      log->named_log(__FILE__, "Engine Firing up...");
+      _log->named_log(__FILE__, "Engine Firing up...");
       vshContinue = true;
       break;
     default: 
@@ -86,7 +87,7 @@ int main(int argc, char const *argv[]) {
   }
   /* ********************************** */
 
-  log->named_log(__FILE__, "Engine Winding down...");
-  log->named_log(__FILE__, "Summary:\n(Output Event Analysis)");
+  _log->named_log(__FILE__, "Engine Winding down...");
+  _log->named_log(__FILE__, "Summary:\n(Output Event Analysis)");
   return 0;
 }

@@ -52,20 +52,11 @@ std::string Utilz::TimeStamp() {
  * @param[out] output - Vector of strings to put parsed words  
 */
 void Utilz::StringToArray(std::string input, std::vector<std::string>& output) {
-  // char* token = strtok(const_cast<char*>(input.c_str()), " ");
-  // std::string outputStr = "";
-  // printf("TempStr: %s\n", outputStr);
-  // outputStr += token;
-  // outputStr += " ";
-  // output->push_back(outputStr);
-  // while ((token = strtok(NULL, " "))) {
-  //   outputStr += token;
-  //   outputStr += " ";
-  //   output->push_back(outputStr);
-  //   printf("TempStr: %s\n", outputStr);
-  // }
-  output.push_back("exit");
-  output.push_back("help");
+  char* token = strtok(const_cast<char*>(input.c_str()), " ");
+  while (token != NULL) {
+    output.push_back(token);
+    token = strtok(NULL, " \n");
+  }
 }
 
 /*!
