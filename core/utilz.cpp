@@ -53,9 +53,14 @@ std::string Utilz::TimeStamp() {
 */
 void Utilz::StringToArray(std::string input, std::vector<std::string>* output) {
   char* token = strtok(const_cast<char*>(input.c_str()), " ");
-  output->push_back(token);
+  std::string outputStr = "" ;
+  outputStr += token;
+  outputStr += " ";
+  output->push_back(outputStr);
   while ((token = strtok(NULL, " "))) {
-    output->push_back(token);
+    outputStr += token;
+    outputStr += " ";
+    output->push_back(outputStr);
   }
 }
 
