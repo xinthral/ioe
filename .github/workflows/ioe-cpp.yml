@@ -18,12 +18,12 @@ jobs:
       name: make cli
     - run: make cli
       name: clisuite
-    - run: engine.exe 0
+    - run: /home/runner/work/ioe/ioe/engine.exe 0
       name: make test
     - run: make test
       name: testsuite
-    - run: tester.exe 0
+    - run: /home/runner/work/ioe/ioe/tester.exe 0
       name: make help
     - run: make help
       name: helpsuite
-    - run: helper.exe 0
+    - run: /home/runner/work/ioe/ioe/helper.exe 0
