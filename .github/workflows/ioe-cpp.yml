@@ -18,12 +18,12 @@ jobs:
       name: make cli
     - run: make cli
       name: clisuite
-    - run: ./engine 0
+    - run: engine.exe 0
       name: make test
     - run: make test
       name: testsuite
-    - run: ./tester 0
+    - run: tester.exe 0
       name: make help
     - run: make help
       name: helpsuite
-    - run: ./helper 0
+    - run: helper.exe 0
