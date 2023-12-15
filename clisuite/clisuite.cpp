@@ -49,6 +49,13 @@ void print_help() {
   exit(0);
 }
 
+void cli_help() {
+  std::vector<std::string> cmds;
+  _cnf->get_authorizedCommands(cmds);
+  printf("Commands:\n");
+  for (auto c : cmds) { printf(": %s\n", c.c_str()); }
+}
+
 /*!
  * @brief   Run Engine Commands
 */
@@ -60,14 +67,12 @@ void run_command(const std::string input) {
   for (std::vector<std::string>::iterator itr = cmds.begin(); itr != cmds.end(); ++itr, ++idx) {
     if (strcmp((*itr).c_str(), input.c_str()) == 0) {
       switch(idx) {
-        case 0:
-          printf("Cmd Exit\n"); 
-          exit(0);
-        case 1:
-          printf("Cmd Help\n"); 
+        case 0:   //! Help Info
+          cli_help();
           break;
-        case 2:
-          printf("Cmd Reload\n");
+        case 1:   //! Exit Shell
+          exit(0);
+        case 2:   //! Reload Config Options
           _cnf->reload_state();
           break;
         default:
