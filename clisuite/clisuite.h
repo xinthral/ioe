@@ -17,5 +17,6 @@
 void parse_user_input(std::string);
 bool parse_input(const std::string, const std::string);
 void print_help();
+void run_command(const std::string);
 
 #endif // XENGINE_H //`

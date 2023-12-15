@@ -21,6 +21,7 @@ void parse_user_input(std::string input) {
     sprintf(buf, "Authorized command: %s!", token);
     _log->named_log(__FILE__, buf);
     // __FIXME: Now that the commands are authorized, do something with them.
+    run_command(token);
   }
 }
 
@@ -54,11 +55,27 @@ void print_help() {
 */
 void run_command(const std::string input) {
   std::vector<std::string> cmds;
+  char buf[64];
   _cnf->get_authorized_cli_commands(cmds);
   int idx = 0;
   for (std::vector<std::string>::iterator itr = cmds.begin(); itr != cmds.end(); ++itr, ++idx) {
     if (strcmp((*itr).c_str(), input.c_str()) == 0) {
-
+      switch(idx) {
+        case 0:
+          printf("Cmd Exit\n"); 
+          exit(0);
+        case 1:
+          printf("Cmd Help\n"); 
+          break;
+        case 2:
+          printf("Cmd Reload\n");
+          _cnf->reload_state();
+          break;
+        default:
+          sprintf(buf, "Unimplemented Command: %d", idx);
+          _log->named_log(__FILE__, buf);
+          break;
+      }
     }
   }
 }
@@ -95,9 +112,9 @@ int main(int argc, const char *argv[]) {
   //! Interactive Shell
   /* ********************************** */
   while (vshContinue == true) {
-    printf("%s", prompt.c_str());                  //! Display Message Prompt
-    std::getline(std::cin, rawInput);              //! Get User Input
-    vshContinue = parse_input(rawInput, "!exit");  //! Conditional to end Shell
+    printf("%s", prompt.c_str());                   //! Display Message Prompt
+    std::getline(std::cin, rawInput);               //! Get User Input
+    vshContinue = parse_input(rawInput, "!exit");   //! Conditional to end Shell
     parse_user_input(rawInput);
   }
   /* ********************************** */
