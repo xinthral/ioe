@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <thread>
 #include "actorcase.h"
 #include "balancecase.h"
 #include "combatcase.h"
