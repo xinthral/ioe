@@ -14,11 +14,9 @@ private:
   Logger*               log;
   char buf[1024];
 public:
-  //! Singletons should not be cloneable
-  LeaderBoard(LeaderBoard&) = delete;
-  //! Singletons should not be assignable
-  void operator=(const LeaderBoard&) = delete;
-  static LeaderBoard* GetInstance();
+  LeaderBoard(LeaderBoard&) = delete;             //! Singletons should not be cloneable
+  void operator=(const LeaderBoard&) = delete;    //! Singletons should not be assignable
+  static LeaderBoard* GetInstance();              //! Singleton Constructor
   void _help();
   ~LeaderBoard();
 };

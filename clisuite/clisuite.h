@@ -15,7 +15,7 @@
 #include "../core/toon.h"
 
 void parse_user_input(std::string);
-bool parse_input(std::string,std::string);
+bool parse_input(const std::string, const std::string);
 void print_help();
 
 #endif // XENGINE_H //`

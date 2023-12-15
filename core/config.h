@@ -29,11 +29,9 @@ private:
 
 public:
   std::ifstream conf;
-  //! Singletons should not be cloneable
-  ConfigManager(ConfigManager&) = delete;
-  //! Singletons should not be assignable
-  void operator=(const ConfigManager&) = delete;
-  static ConfigManager* GetInstance();
+  ConfigManager(ConfigManager&) = delete;           //! Singletons should not be cloneable
+  void operator=(const ConfigManager&) = delete;    //! Singletons should not be assignable
+  static ConfigManager* GetInstance();              //! Singleton Constructor
   bool load_config(bool);
   void reload_state();
   size_t add_setting(const std::string&, const std::string&);

@@ -14,10 +14,11 @@ ConfigManager* _cnf = ConfigManager::GetInstance();
 */
 void parse_user_input(std::string input) {
   std::vector<std::string> cmds;
+  char* token = strtok((char*)input.c_str(), " \n");
   _cnf->get_authorized_cli_commands(cmds);
   char buf[64];
-  if (std::find(cmds.begin(), cmds.end(), input) != cmds.end()) {
-    sprintf(buf, "Authorized command: %s!", input.c_str());
+  if (std::find(cmds.begin(), cmds.end(), token) != cmds.end()) {
+    sprintf(buf, "Authorized command: %s!", token);
     _log->named_log(__FILE__, buf);
     // __FIXME: Now that the commands are authorized, do something with them.
   }
@@ -26,7 +27,7 @@ void parse_user_input(std::string input) {
 /*!
  * @brief   Helper Function to parse input
 */
-bool parse_input(std::string input, std::string criteria) {
+bool parse_input(const std::string input, const std::string criteria) {
   //! Establish Variables 
   size_t found = input.find(criteria);
   if (found != std::string::npos) { return false; }
@@ -42,16 +43,30 @@ void print_help() {
 
   //! Display Help 
   char buf[64];
-  sprintf(buf, "\nUsage: ./%s <bool|debug>", fileName.c_str()); 
+  sprintf(buf, "\nUsage: ./%s [bool|debug]", fileName.c_str()); 
   _log->raw_log(buf);
-  _log->raw_log("Param:\n  <bool|debug> - Debugging Flag\n");
-  exit(-1);
+  _log->raw_log("\tdebug - Debugging Flag\n");
+  exit(0);
+}
+
+/*!
+ * @brief   Run Engine Commands
+*/
+void run_command(const std::string input) {
+  std::vector<std::string> cmds;
+  _cnf->get_authorized_cli_commands(cmds);
+  int idx = 0;
+  for (std::vector<std::string>::iterator itr = cmds.begin(); itr != cmds.end(); ++itr, ++idx) {
+    if (strcmp((*itr).c_str(), input.c_str()) == 0) {
+
+    }
+  }
 }
 
 /*!
  * @brief   Module Entry Point
 */
-int main(int argc, char const *argv[]) {
+int main(int argc, const char *argv[]) {
   //! Conditional Check
   if (argc < 2) { print_help(); return 0; }
   if (strcmp(argv[1], "-h") == 0) { print_help(); return 0; }
