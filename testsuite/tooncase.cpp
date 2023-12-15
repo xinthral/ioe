@@ -14,4 +14,4 @@ TestToon::TestToon() {
 /*!
  * @brief   Default Deconstructor
 */
-TestToon::~TestToon() {}
+TestToon::~TestToon() { }

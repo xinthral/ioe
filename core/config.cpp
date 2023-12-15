@@ -68,7 +68,7 @@ std::string ConfigManager::raw_config(const std::string& option) { return this->
  *          CLI Suite
  * @param[out] option - A string array to recieve the commands
 */
-void ConfigManager::get_authorized_cli_commands(std::vector<std::string>& input) { 
+void ConfigManager::get_authorizedCommands(std::vector<std::string>& input) { 
   std::string inp = this->raw_config("CMDLIST");
   Utilz::StringToArray(inp, input);
 }

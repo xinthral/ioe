@@ -8,6 +8,7 @@
 #include "../core/balance.h"
 #include "../core/config.h"
 #include "../core/logger.h"
+#include "../core/utilz.h"
 
 //! Compiler/Linter hint
 #define assertm(exp, msg) assert(((void)msg, exp))

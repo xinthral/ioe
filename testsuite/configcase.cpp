@@ -15,7 +15,7 @@ TestConfig::TestConfig() {
 }
 
 /*!
- * @brief   Initiate all test
+ * @brief   Run full set of test on module 
 */
 void TestConfig::test_all() {
     test_mapping();
@@ -63,14 +63,9 @@ void TestConfig::test_remConfig() {
  * @brief   Evaluate return type for get_authorized_cli_commands()
 */
 void TestConfig::test_listOfCommands() {
-    const char* commandString = BaseCase::cnf->raw_config("CMDLIST").c_str();
- 	char* token = strtok((char*)commandString, " ");
-    int steps = 1;
-	while (token != NULL) {
-        steps++;
-        token = strtok(NULL, " \n");
-	}
-    assertm((steps > 1), "ConfigManager failed to return the list of commands");
+    std::vector<std::string> commands;
+    BaseCase::cnf->get_authorizedCommands(commands);
+    assertm((commands.size() > 1), "ConfigManager failed to return the list of commands");
     sprintf(buf, "%s %s %s", this->msgHead, "[valid] authorized commands config option", this->msgTail);
     BaseCase::log->named_log(__FILE__, buf);
 }

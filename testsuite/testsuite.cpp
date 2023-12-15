@@ -100,10 +100,10 @@ int main(int argc, char const *argv[]) {
 
   TestSuite ts;
   Logger* log = Logger::GetInstance();
+  std::vector<std::thread> threadList;
   char buf[32];
   int choice = 0;
   choice = atoi(argv[1]);
-  std::vector<std::thread> threadList;
   
   switch (choice) {
     case 1:
@@ -148,69 +148,28 @@ int main(int argc, char const *argv[]) {
     case 13:
     default:
       sprintf(buf, "All TestCases' Completed...");
-      std::thread cact(&TestSuite::CaseActor);
-      threadList.push_back(cact);
-      std::thread cbal(&TestSuite::CaseBalance);
-      threadList.push_back(cbal);
-      std::thread ccom(&TestSuite::CaseCombat);
-      threadList.push_back(ccom);
-      std::thread ccon(&TestSuite::CaseConfig);
-      threadList.push_back(ccon);
-      std::thread clea(&TestSuite::CaseLeader);
-      threadList.push_back(clea);
-      std::thread cpla(&TestSuite::CasePlayer);
-      threadList.push_back(cpla);
-      std::thread csta(&TestSuite::CaseStage);
-      threadList.push_back(csta);
-      std::thread ctoo(&TestSuite::CaseToon);
-      threadList.push_back(ctoo);
-      std::thread cuti(&TestSuite::CaseUtilz);
-      threadList.push_back(cuti);
+      std::thread cact(&TestSuite::CaseActor, &ts);
+      threadList.emplace_back(std::move(cact));
+      std::thread cbal(&TestSuite::CaseBalance, &ts);
+      threadList.emplace_back(std::move(cbal));
+      std::thread ccom(&TestSuite::CaseCombat, &ts);
+      threadList.emplace_back(std::move(ccom));
+      std::thread ccon(&TestSuite::CaseConfig, &ts);
+      threadList.emplace_back(std::move(ccon));
+      std::thread clea(&TestSuite::CaseLeader, &ts);
+      threadList.emplace_back(std::move(clea));
+      std::thread cpla(&TestSuite::CasePlayer, &ts);
+      threadList.emplace_back(std::move(cpla));
+      std::thread csta(&TestSuite::CaseStage, &ts);
+      threadList.emplace_back(std::move(csta));
+      std::thread ctoo(&TestSuite::CaseToon, &ts);
+      threadList.emplace_back(std::move(ctoo));
+      std::thread cuti(&TestSuite::CaseUtilz, &ts);
+      threadList.emplace_back(std::move(cuti));
       break;
   }
-  for (auto& t : threadList) {
-    t.join();
-  }
+  
+  for (auto& t : threadList) { t.join(); }
   log->named_log(__FILE__, buf);
   return 0;
 }
-
-/* FROM CHATGPT
-
-#include <iostream>
-#include <vector>
-#include <thread>
-
-class MyClass {
-public:
-    void myMethod(int id) {
-        std::cout << "Thread " << id << " is running." << std::endl;
-        // Your class method logic goes here
-    }
-};
-
-int main() {
-    const int numThreads = 5;
-    
-    // Step 1: Create instances of the class and store them in a vector
-    std::vector<MyClass> myObjects(numThreads);
-
-    // Step 2: Create threads and call the class methods using a lambda function
-    std::vector<std::thread> threads;
-    for (int i = 0; i < numThreads; ++i) {
-        threads.emplace_back([&, i]() {
-            myObjects[i].myMethod(i);
-        });
-    }
-
-    // Step 3: Store the threads in a vector
-
-    // Step 4: Join the threads later
-    for (auto& thread : threads) {
-        thread.join();
-    }
-
-    return 0;
-}
-
-*/

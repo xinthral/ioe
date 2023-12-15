@@ -37,7 +37,7 @@ public:
   size_t add_setting(const std::string&, const std::string&);
   size_t rem_setting(const std::string&);
   std::string raw_config(const std::string&);
-  void get_authorized_cli_commands(std::vector<std::string>&);
+  void get_authorizedCommands(std::vector<std::string>&);
   int get_attack();
   int get_base();
   int get_defense();

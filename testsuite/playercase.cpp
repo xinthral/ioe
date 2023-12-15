@@ -14,4 +14,4 @@ TestPlayer::TestPlayer() {
 /*!
  * @brief   Default Deconstructor
 */
-TestPlayer::~TestPlayer() {}
+TestPlayer::~TestPlayer() { }

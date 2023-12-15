@@ -15,4 +15,4 @@ TestLeader::TestLeader() {
 /*!
  * @brief   Default Deconstructor
 */
-TestLeader::~TestLeader() {}
+TestLeader::~TestLeader() { }

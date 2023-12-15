@@ -15,4 +15,4 @@ TestStage::TestStage() {
 /*!
  * @brief   Default Deconstructor
 */
-TestStage::~TestStage() {}
+TestStage::~TestStage() { }

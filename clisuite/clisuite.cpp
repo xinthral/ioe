@@ -15,12 +15,11 @@ ConfigManager* _cnf = ConfigManager::GetInstance();
 void parse_user_input(std::string input) {
   std::vector<std::string> cmds;
   char* token = strtok((char*)input.c_str(), " \n");
-  _cnf->get_authorized_cli_commands(cmds);
+  _cnf->get_authorizedCommands(cmds);
   char buf[64];
   if (std::find(cmds.begin(), cmds.end(), token) != cmds.end()) {
-    sprintf(buf, "Authorized command: %s!", token);
-    _log->named_log(__FILE__, buf);
-    // __FIXME: Now that the commands are authorized, do something with them.
+    // sprintf(buf, "Authorized command: %s!", token);
+    // _log->named_log(__FILE__, buf);
     run_command(token);
   }
 }
@@ -56,7 +55,7 @@ void print_help() {
 void run_command(const std::string input) {
   std::vector<std::string> cmds;
   char buf[64];
-  _cnf->get_authorized_cli_commands(cmds);
+  _cnf->get_authorizedCommands(cmds);
   int idx = 0;
   for (std::vector<std::string>::iterator itr = cmds.begin(); itr != cmds.end(); ++itr, ++idx) {
     if (strcmp((*itr).c_str(), input.c_str()) == 0) {

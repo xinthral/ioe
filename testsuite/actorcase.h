@@ -15,7 +15,7 @@ public:
     TestActors();
 
     //! Feet to the fire
-    void test_actor();
+    void test_all();
     void test_combatstate();
     void test_healthstate();
 

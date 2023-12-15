@@ -14,4 +14,4 @@ TestUtilz::TestUtilz() {
 /*!
  * @brief   Default Deconstructor
 */
-TestUtilz::~TestUtilz() {}
+TestUtilz::~TestUtilz() { }

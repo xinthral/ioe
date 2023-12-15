@@ -8,16 +8,16 @@ TestActors::TestActors() {
   BaseCase::log->named_log(__FILE__, "Testing Actor's!");
   sprintf(this->msgHead, "Tested");
   sprintf(this->msgTail, "for Actors!");
-  test_actor();
+  test_all();
 }
 
 /*!
- * @brief   Run full set of test on Actor
+ * @brief   Run full set of test on module 
 */
-void TestActors::test_actor() {
-  base_attack();      //! Test Base Attack Value
-  base_defense();     //! Test Base Defense Value
-  base_health();      //! Test Base Health Value
+void TestActors::test_all() {
+  base_attack();        //! Test Base Attack Value
+  base_defense();       //! Test Base Defense Value
+  base_health();        //! Test Base Health Value
   test_combatstate();   //! Testing Combat States
   test_healthstate();   //! Testing Health States
 }
@@ -27,10 +27,10 @@ void TestActors::test_actor() {
 */
 void TestActors::test_combatstate() {
   sprintf(this->msgNote, "Actor CombatState Mismatch\t<--");
-  combatstate_idle();   //! Test Combat State Idle
+  combatstate_idle();     //! Test Combat State Idle
   combatstate_patrol();   //! Test Combat State Patrol
-  combatstate_fight();  //! Test Combat State Fight
-  combatstate_flee();   //! Test Combat State Flee
+  combatstate_fight();    //! Test Combat State Fight
+  combatstate_flee();     //! Test Combat State Flee
   combatstate_follow();   //! Test Combat State Follow
 }
 
@@ -42,8 +42,8 @@ void TestActors::test_healthstate() {
   healthstate_healthy();  //! Test Health State Healthy
   healthstate_hurting();  //! Test Health State Hurting
   healthstate_critical(); //! Test Health State Critical 
-  healthstate_sick();   //! Test Health State Sick 
-  healthstate_dead();   //! Test Health State Dead 
+  healthstate_sick();     //! Test Health State Sick 
+  healthstate_dead();     //! Test Health State Dead 
 }
 
 /*!
@@ -205,4 +205,4 @@ void TestActors::healthstate_dead() {
 /*!
  * @brief   Default Deconstructor
 */
-TestActors::~TestActors() {}
+TestActors::~TestActors() { }

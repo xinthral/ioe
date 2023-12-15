@@ -51,4 +51,4 @@ void TestBalance::difficulty_level() {
 /*!
  * @brief   Default Deconstructor
 */
-TestBalance::~TestBalance() {}
+TestBalance::~TestBalance() { }
