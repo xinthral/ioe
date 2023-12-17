@@ -14,9 +14,16 @@
 #include "../core/stage.h"
 #include "../core/toon.h"
 
+std::unordered_map<std::string, int> _CMDMAP = {
+  {"help",    0},
+  {"exit",    1},
+  {"reload",  2},
+  {"test",    3},
+};
+
 void parse_user_input(std::string);
 bool parse_input(const std::string, const std::string);
 void print_help();
-void run_command(const std::string);
+void run_command(const std::string, std::vector<std::string>&);
 
-#endif // XENGINE_H //`
+#endif // XENGINE_H //

@@ -14,13 +14,15 @@ ConfigManager* _cnf = ConfigManager::GetInstance();
 */
 void parse_user_input(std::string input) {
   std::vector<std::string> cmds;
+  std::vector<std::string> cmdline;
+  Utilz::StringToArray(input, cmdline);
   char* token = strtok((char*)input.c_str(), " \n");
   _cnf->get_authorizedCommands(cmds);
   char buf[64];
   if (std::find(cmds.begin(), cmds.end(), token) != cmds.end()) {
     // sprintf(buf, "Authorized command: %s!", token);
     // _log->named_log(__FILE__, buf);
-    run_command(token);
+    run_command(token, cmdline);
   }
 }
 
@@ -59,28 +61,32 @@ void cli_help() {
 /*!
  * @brief   Run Engine Commands
 */
-void run_command(const std::string input) {
+void run_command(const std::string input, std::vector<std::string>& cmdline) {
+  char buf[256];
   std::vector<std::string> cmds;
-  char buf[64];
   _cnf->get_authorizedCommands(cmds);
-  int idx = 0;
-  for (std::vector<std::string>::iterator itr = cmds.begin(); itr != cmds.end(); ++itr, ++idx) {
-    if (strcmp((*itr).c_str(), input.c_str()) == 0) {
-      switch(idx) {
-        case 0:   //! Help Info
-          cli_help();
-          break;
-        case 1:   //! Exit Shell
-          exit(0);
-        case 2:   //! Reload Config Options
-          _cnf->reload_state();
-          break;
-        default:
-          sprintf(buf, "Unimplemented Command: %d", idx);
-          _log->named_log(__FILE__, buf);
-          break;
-      }
-    }
+  int idx = _CMDMAP[input];
+  switch(idx) {
+    case 0:   //! Help Info
+      cli_help();
+      break;
+    case 1:   //! Exit Shell
+      exit(0);
+    case 2:   //! Reload Config Options
+      _cnf->reload_state();
+      break;
+    case 3:   //! Test Command 
+      for (std::string c : cmdline) { printf("_ : %s\n", c.c_str()); }
+      break;
+    case 4:   //! Unimplemented Command 
+    case 5:   //! Unimplemented Command 
+    case 6:   //! Unimplemented Command 
+    case 8:   //! Unimplemented Command 
+    case 9:   //! Unimplemented Command 
+    default:
+      sprintf(buf, "Unimplemented Command: %s", input.c_str());
+      _log->named_log(__FILE__, buf);
+      break;
   }
 }
 
