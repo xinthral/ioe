@@ -1,10 +1,10 @@
 /*!
  * @class   TestSuite testsuite.h testsuite.cpp
- * @brief   Command Line Tool (CLI) for Tester 
+ * @brief   Command Line Tool (CLI) for the TestSuite
  * @details Test Suite is meant to be a collection of unit testing
- *      with the idea of reaching 100% coverage of testing, 
- *      while providing a command line utility for reference 
- *      when developing or debugging.
+ *          with the idea of reaching 100% coverage of testing, 
+ *          while providing a command line utility for reference 
+ *          when developing or debugging.
 */
 #include "testsuite.h"
 

@@ -9,11 +9,7 @@
 /*!
  * @brief   Default Constructor
 */
-ActorHelp::ActorHelp() {
-  Actor* dummy;
-  dummy->_help(buf);
-  BaseHelp::log->named_log(__FILE__, buf);
-}
+ActorHelp::ActorHelp() { dummy = new Actor(); dummy->_help(); }
 
 /*!
  * @brief   Default Deconstructor

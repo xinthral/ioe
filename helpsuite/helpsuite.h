@@ -12,13 +12,16 @@ class HelpSuite {
 protected:
   ConfigManager*    cnf;
   Logger*           log;
-  char helpmsg[1024];
 public:
   HelpSuite();
   HelpSuite(bool);
+  void HelpAll();
   void HelpActor();
-  void _help(char *);
+  void _help();
   ~HelpSuite();
 };
+
+//! Static Display Function
+void print_help();
 
 #endif // HELPER_H //

@@ -29,6 +29,7 @@ extern enum HealthState healthState;
 class Actor {
 protected:
   ConfigManager* cnf;       //!< ConfigManager Instantiation
+  Logger* log;              //!< Logging Handler
   CombatState aiState;      //!< Current AI CombatState
   HealthState condition;    //!< Current Health State
 
@@ -83,7 +84,7 @@ public:
   void set_health_dead();
 
   //! HelpSuite CLI Hook
-  void _help(char*);
+  void _help();
 
   //! Deconstructor
   ~Actor();

@@ -6,6 +6,7 @@
 
 class ActorHelp : public BaseHelp {
 protected:
+  Actor*            dummy;
   ConfigManager*    cnf;
   Logger*           log;
 private:
