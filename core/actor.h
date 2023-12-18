@@ -82,6 +82,9 @@ public:
   void set_health_sick();
   void set_health_dead();
 
+  //! HelpSuite CLI Hook
+  void _help(char*);
+
   //! Deconstructor
   ~Actor();
 };
