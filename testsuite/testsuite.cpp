@@ -70,7 +70,7 @@ void print_help() {
   Logger* log = Logger::GetInstance();
   char buf[32];
   std::string fileName = Utilz::FileName(__FILE__);
-  sprintf(buf, "Usage: %s [NUMBER]\n", fileName.c_str()); 
+  sprintf(buf, "Usage: %s.exe [NUMBER]\n", fileName.c_str()); 
   log->raw_log(buf);
   log->raw_log("TestSuite CLI Tool\n");
   log->raw_log("A testing system, to give the developer/debugger" \

@@ -45,7 +45,7 @@ void print_help() {
 
   //! Display Help 
   char buf[64];
-  sprintf(buf, "\nUsage: ./%s [bool|debug]", fileName.c_str()); 
+  sprintf(buf, "\nUsage: %s.exe [bool|debug]", fileName.c_str()); 
   _log->raw_log(buf);
   _log->raw_log("\tdebug - Debugging Flag\n");
   exit(0);

@@ -1,7 +1,7 @@
 #ifndef HELPHELPSUITE_H
 #define HELPHELPSUITE_H
 
-#include "helpbase.h"
+#include "basehelp.h"
 
 class HelpHelping : public BaseHelp {
 protected:

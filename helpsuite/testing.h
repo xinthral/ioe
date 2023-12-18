@@ -1,7 +1,7 @@
 #ifndef HELPTESTSUIT_H
 #define HELPTESTSUIT_H
 
-#include "helpbase.h"
+#include "basehelp.h"
 
 class HelpTesting : public BaseHelp {
 protected:

@@ -24,6 +24,24 @@ HelpSuite::HelpSuite() {
 HelpSuite::HelpSuite(bool _debug) : HelpSuite() { }
 
 /*!
+ * @brief   FIXME: Needs desc
+*/
+void HelpSuite::HelpActor() {
+  Actor* dummy;
+  char helpmsg[1024];
+  dummy->_help(helpmsg);
+  log->named_log(__FILE__, helpmsg);
+}
+
+/*!
+ * @brief   FIXME: Needs desc
+*/
+void HelpSuite::_help(char * response) {
+  strcpy(response, "HelpSuite Test Helper Message....");
+  printf("%s\n", response);
+}
+
+/*!
  * @brief   Default Deconstructor
 */
 HelpSuite::~HelpSuite() {}
@@ -35,7 +53,7 @@ void print_help() {
   Logger* log = Logger::GetInstance();
   std::string fileName = Utilz::FileName(__FILE__);
   char buf[64];
-  sprintf(buf, "Usage: %s [NUMBER]\n", fileName.c_str()); 
+  sprintf(buf, "Usage: %s.exe [NUMBER]\n", fileName.c_str()); 
   log->raw_log(buf);
   log->raw_log("HelpSuite CLI Tool\n");
   log->raw_log("A helper system, to give the developer/debugger" \
@@ -43,7 +61,7 @@ void print_help() {
     " This can be used in conjuction with the TestSuite in order to"\
     " maximize the benefit of the CLI Debugging Suite.\n");
   log->raw_log("\t[1] - HelpSuit details");
-  log->raw_log("\t[2] - TestSuite details");
+  log->raw_log("\t[2] - Actor details");
   log->raw_log("\t[0] - Default Help to rule them all\n");
   exit(-1);
 }
@@ -54,6 +72,21 @@ void print_help() {
 int main(int argc, char const *argv[]) {
   if (argc < 2) { print_help(); return 0; }
   if (strcmp(argv[1], "-h") == 0) { print_help(); return 0; }
+  Logger* log = Logger::GetInstance();
+  char buf[128];
+  int idx = atoi(argv[1]);
   HelpSuite h;
+  switch(idx) {
+    case 1:
+      print_help();
+      break;
+    case 2:
+      h.HelpActor();
+      break;
+    default:
+      log->named_log(__FILE__, "Default HelpSuite Msg");
+      h._help(buf);
+      h.HelpActor();
+  }
   return 0;
 }

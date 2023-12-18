@@ -1,9 +1,9 @@
 /*!
- * @class   BaseHelp basehelp.h basehelp.cpp 
- * @brief   Base Class for the Helper Module
+ * @class   BaseHelp helpbase.h helpbase.cpp 
+ * @brief   Base Class for the HelpSuite Module
 */
 
-#include "helpbase.h"
+#include "basehelp.h"
 
 /*!
  * @brief   Default Constructor
