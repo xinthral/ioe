@@ -1,7 +1,7 @@
 /*!
  * @class   StageManager stage.h stage.cpp
- * @brief   The stage manager controls the entirety of whom
- *      is active on the stage for any given scene.
+ * @brief   StageManager controls the entirety of whom
+ *          is active on the stage for any given scene.
 */
 #include "stage.h"
 

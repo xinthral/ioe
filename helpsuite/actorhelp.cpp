@@ -1,7 +1,8 @@
 /*!
- * @class   ActorHelp helpactor.h helpactor.cpp
- * @brief   Command Line Tool (CLI) for Help
- * @details ActorHelp Callback for the HelpSuite 
+ * @class   HelpActor helpactor.h helpactor.cpp
+ * @brief   Additional details about the Actor class, it's implementation
+ *          and any developers details relevant to it's use.
+ * @details HelpActor Callback for the HelpSuite 
 */
 
 #include "actorhelp.h"
@@ -9,9 +10,9 @@
 /*!
  * @brief   Default Constructor
 */
-ActorHelp::ActorHelp() { dummy = new Actor(); dummy->_help(); }
+HelpActor::HelpActor() { dummy = new Actor(); dummy->_help(); }
 
 /*!
  * @brief   Default Deconstructor
 */
-ActorHelp::~ActorHelp() { }
+HelpActor::~HelpActor() { }

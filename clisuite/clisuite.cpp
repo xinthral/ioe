@@ -1,6 +1,6 @@
 /*! 
  * @class   CLISuite clisuite.cpp clisuite.h
- * @brief   Command Line Interface for Engine.
+ * @brief   Command Line Interface (CLI) for Engine.
 */
 #include "clisuite.h"
 

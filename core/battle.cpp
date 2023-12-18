@@ -1,6 +1,6 @@
 /*! 
  * @class   Battle battle.h battle.cpp
- * @brief   Interweaving combat events
+ * @brief   Interweaving Combat events
  */
 #include "battle.h"
 

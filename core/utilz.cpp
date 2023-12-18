@@ -1,7 +1,6 @@
 /*!
  * @class   Utilz utilz.h utilz.cpp
- * @brief   Utility functions I find useful enough to not want 
- *          to have to repeat myself.
+ * @brief   Utility functions I find useful.
 */
 #include "utilz.h"
 

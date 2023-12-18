@@ -1,6 +1,7 @@
 /*!
  * @class   ConfigManager config.h config.cpp
- * @brief   ConfigManager Docstring
+ * @brief   ConfigManager handles configuration loading
+ *          and managing throughout the engine. 
  */
 #include "config.h"
 
@@ -138,7 +139,7 @@ bool ConfigManager::load_config(bool _debug) {
   while (std::getline(conf, row)) {
     // DEBUG Line
     if (_debug) { 
-      sprintf(buf, "%d: %s", cnt++, row.c_str()); 
+      sprintf(buf, "%s", row.c_str()); 
       log->named_log(__FILE__, buf);
     }
     pos = row.find(delim);                    //! Locate Position of Delimiter

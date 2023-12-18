@@ -1,5 +1,5 @@
-#ifndef BASEHELP_H 
-#define BASEHELP_H
+#ifndef HELPBASE_H 
+#define HELPBASE_H
 
 #include "../core/actor.h"
 #include "../core/config.h"
@@ -19,4 +19,4 @@ public:
   ~BaseHelp();
 };
 
-#endif // BASEHELP_H //
+#endif // HELPBASE_H //

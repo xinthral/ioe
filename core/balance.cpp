@@ -1,11 +1,12 @@
 /*! 
- * @class  BalanceController balance.h balance.cpp
- * @brief   Balance Controller 
+ * @class   BalanceController balance.h balance.cpp
+ * @brief   BalanceController handles balancing engine mechanics
+ *          in a consistant, scalable and easily changeable way.
  * @details Like in life, so to in games do we need balance
- *       In order to maintain consistency in a game, you 
- *       need a universal scale in which you operate from. 
- *       This module creates a mathematical scalar curve 
- *       that all statistics can be derived from. 
+ *          In order to maintain consistency in a game, you 
+ *          need a universal scale in which you operate from. 
+ *          This module creates a mathematical scalar curve 
+ *          that all statistics can be derived from. 
  * @note  \f$y = δ\f$^[\f$x/(π^π)\f$]
  * @note  \f$δ :=\f$ Constant based on game difficulty
  * @note  \f$x :=\f$ Character's Current Level
@@ -16,6 +17,7 @@
 
 //! Singleton Instance
 BalanceController* BalanceController::_singleton = NULL;
+//! Lock Mutex 
 std::mutex BalanceController::_mutex;
 
 /*!

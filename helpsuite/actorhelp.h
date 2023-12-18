@@ -1,18 +1,18 @@
-#ifndef ACTORHELP_H
-#define ACTORHELP_H 
+#ifndef HELPACTOR_H
+#define HELPACTOR_H 
 
 #include "basehelp.h"
 #include "../core/actor.h"
 
-class ActorHelp : public BaseHelp {
+class HelpActor : public BaseHelp {
 protected:
   Actor*            dummy;
   ConfigManager*    cnf;
   Logger*           log;
 private:
 public:
-  ActorHelp();
-  ~ActorHelp();
+  HelpActor();
+  ~HelpActor();
 };
 
-#endif  // ACTORHELP_H //
+#endif  // HELPACTOR_H //
