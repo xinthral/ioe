@@ -19,7 +19,7 @@ TestSuite::TestSuite() { }
 void TestSuite::CaseActor() { TestActors* ta = new TestActors(); }
 
 /*!
- * @brief   Initiates the Test for the Balance Module
+ * @brief   Initiates the Test for the BalanceController Module
 */
 void TestSuite::CaseBalance() { TestBalance* tb = new TestBalance(); }
 
@@ -29,7 +29,7 @@ void TestSuite::CaseBalance() { TestBalance* tb = new TestBalance(); }
 void TestSuite::CaseCombat() { TestCombat* tc = new TestCombat(); }
 
 /*!
- * @brief   Initiates the Test for the Config Module
+ * @brief   Initiates the Test for the ConfigManager Module
 */
 void TestSuite::CaseConfig() { TestConfig* tf = new TestConfig(); }
 
@@ -44,7 +44,7 @@ void TestSuite::CaseLeader() { TestLeader* tl = new TestLeader(); }
 void TestSuite::CasePlayer() { TestPlayer* tp = new TestPlayer(); }
 
 /*!
- * @brief   Initiates the Test for the Stage Module
+ * @brief   Initiates the Test for the StageManager Module
 */
 void TestSuite::CaseStage() { TestStage* tg = new TestStage(); }
 
@@ -54,7 +54,7 @@ void TestSuite::CaseStage() { TestStage* tg = new TestStage(); }
 void TestSuite::CaseToon() { TestToon* tt = new TestToon(); }
 
 /*!
- * @brief   Initiates the Test for the Utility Module
+ * @brief   Initiates the Test for the Utilz Module
 */
 void TestSuite::CaseUtilz() { TestUtilz* tu = new TestUtilz(); }
 
@@ -104,43 +104,53 @@ int main(int argc, char const *argv[]) {
   char buf[32];
   int choice = 0;
   choice = atoi(argv[1]);
+  std::thread cact, cbal, ccom, ccon, clea, cpla, csta, ctoo, cuti;
   
   switch (choice) {
     case 1:
       sprintf(buf, "Actor TestCase Completed...");
-      ts.CaseActor();
+      cact = std::thread(&TestSuite::CaseActor, &ts);
+      threadList.emplace_back(std::move(cact));
       break;
     case 2:
       sprintf(buf, "Balance TestCase Completed...");
-      ts.CaseBalance();
+      cbal = std::thread(&TestSuite::CaseBalance, &ts);
+      threadList.emplace_back(std::move(cbal));
       break;
     case 3:
       sprintf(buf, "Combat TestCase Completed...");
-      ts.CaseCombat();
+      ccom = std::thread(&TestSuite::CaseCombat, &ts);
+      threadList.emplace_back(std::move(ccom));
       break;
     case 4:
       sprintf(buf, "Config TestCase Completed...");
-      ts.CaseConfig();
+      ccon = std::thread(&TestSuite::CaseConfig, &ts);
+      threadList.emplace_back(std::move(ccon));
       break;
     case 5:
       sprintf(buf, "Leader TestCase Completed...");
-      ts.CaseLeader();
+      clea = std::thread(&TestSuite::CaseLeader, &ts);
+      threadList.emplace_back(std::move(clea));
       break;
     case 6:
       sprintf(buf, "Player TestCase Completed...");
-      ts.CasePlayer();
+      cpla = std::thread(&TestSuite::CasePlayer, &ts);
+      threadList.emplace_back(std::move(cpla));
       break;
     case 7:
       sprintf(buf, "Stage TestCase Completed...");
-      ts.CaseStage();
+      csta = std::thread(&TestSuite::CaseStage, &ts);
+      threadList.emplace_back(std::move(csta));
       break;
     case 8:
       sprintf(buf, "Toon TestCase Completed...");
-      ts.CaseToon();
+      ctoo = std::thread(&TestSuite::CaseToon, &ts);
+      threadList.emplace_back(std::move(ctoo));
       break;
     case 9:
       sprintf(buf, "Utilz TestCase Completed...");
-      ts.CaseUtilz();
+      cuti = std::thread(&TestSuite::CaseUtilz, &ts);
+      threadList.emplace_back(std::move(cuti));
       break;
     case 10:
     case 11:
@@ -148,25 +158,24 @@ int main(int argc, char const *argv[]) {
     case 13:
     default:
       sprintf(buf, "All TestCases' Completed...");
-      std::thread cact(&TestSuite::CaseActor, &ts);
+      cact = std::thread(&TestSuite::CaseActor, &ts);
       threadList.emplace_back(std::move(cact));
-      std::thread cbal(&TestSuite::CaseBalance, &ts);
+      cbal = std::thread(&TestSuite::CaseBalance, &ts);
       threadList.emplace_back(std::move(cbal));
-      std::thread ccom(&TestSuite::CaseCombat, &ts);
+      ccom = std::thread(&TestSuite::CaseCombat, &ts);
       threadList.emplace_back(std::move(ccom));
-      std::thread ccon(&TestSuite::CaseConfig, &ts);
+      ccon = std::thread(&TestSuite::CaseConfig, &ts);
       threadList.emplace_back(std::move(ccon));
-      std::thread clea(&TestSuite::CaseLeader, &ts);
+      clea = std::thread(&TestSuite::CaseLeader, &ts);
       threadList.emplace_back(std::move(clea));
-      std::thread cpla(&TestSuite::CasePlayer, &ts);
+      cpla = std::thread(&TestSuite::CasePlayer, &ts);
       threadList.emplace_back(std::move(cpla));
-      std::thread csta(&TestSuite::CaseStage, &ts);
+      csta = std::thread(&TestSuite::CaseStage, &ts);
       threadList.emplace_back(std::move(csta));
-      std::thread ctoo(&TestSuite::CaseToon, &ts);
+      ctoo = std::thread(&TestSuite::CaseToon, &ts);
       threadList.emplace_back(std::move(ctoo));
-      std::thread cuti(&TestSuite::CaseUtilz, &ts);
+      cuti = std::thread(&TestSuite::CaseUtilz, &ts);
       threadList.emplace_back(std::move(cuti));
-      break;
   }
   
   for (auto& t : threadList) { t.join(); }

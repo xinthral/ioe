@@ -25,13 +25,13 @@ private:
   static ConfigManager*   _singleton;
   static std::mutex       _mutex;
   Logger*                 log;
-  char buf[128];
+  char buf[128];                                    //!< Buffer Value for Logger outputs
 
 public:
   std::ifstream conf;
-  ConfigManager(ConfigManager&) = delete;           //! Singletons should not be cloneable
-  void operator=(const ConfigManager&) = delete;    //! Singletons should not be assignable
-  static ConfigManager* GetInstance();              //! Singleton Constructor
+  ConfigManager(ConfigManager&) = delete;           //!< Singletons should not be cloneable
+  void operator=(const ConfigManager&) = delete;    //!< Singletons should not be assignable
+  static ConfigManager* GetInstance();              //!< Singleton Constructor
   bool load_config(bool);
   void reload_state();
   size_t add_setting(const std::string&, const std::string&);

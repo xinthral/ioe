@@ -2,14 +2,14 @@
  * @class   Player player.h player.cpp
  * @brief   Derived Player Class
  * @details Construct containing player data representing the
- *      virtual avatar within the engine.
+ *          virtual avatar within the engine.
 */
 #include "player.h"
 
 /*!
  * @brief   Default Constructor
  * @details If no values are provided, then default
- *      values are initialized as (1, 1, 1).
+ *          values are initialized as (1, 1, 1).
 */
 Player::Player() {
   log = Logger::GetInstance();
