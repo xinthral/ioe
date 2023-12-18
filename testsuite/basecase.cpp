@@ -1,6 +1,6 @@
 /*!
  * @class   BaseCase basecase.h basecase.cpp
- * @brief   Base Testing Case for Tester Module  
+ * @brief   Base Testing Case for TestSuite Module  
 */
 #include "basecase.h"
 

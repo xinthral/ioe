@@ -78,9 +78,9 @@ void print_help() {
     " This can be used in conjuction with the HelpSuite in order to"\
     " maximize the benefit of the CLI Debugging Suite.\n");
   log->raw_log("\t[1] - Test Actor Module");
-  log->raw_log("\t[2] - Test Balance Module");
+  log->raw_log("\t[2] - Test BalanceController Module");
   log->raw_log("\t[3] - Test Combat Module");
-  log->raw_log("\t[4] - Test Config Module");
+  log->raw_log("\t[4] - Test ConfigManager Module");
   log->raw_log("\t[5] - Test LeaderBoard Module");
   log->raw_log("\t[6] - Test Player Module");
   log->raw_log("\t[7] - Test Stage Module");

@@ -25,4 +25,4 @@ public:
     ~BaseCase();
 };
 
-#endif // BASECASE_H //
+#endif  // BASECASE_H //

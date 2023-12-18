@@ -89,11 +89,15 @@ clean:
 
 cleandoc:
 ifeq ($(OS), Windows_NT)
+	attrib +r docs\*.gitkeep
 	$(RRM) docs\html
 	$(RRM) docs\latex
+	attrib -r docs\*.gitkeep
 else
+	find ./docs/ -type f -name '.gitkeep' -exec chmod -w {} \;
 	$(RRM) docs/html/*
 	$(RRM) docs/latex/*
+	find ./docs/ -type f -name '.gitkeep' -exec chmod +w {} \;
 endif
 
 cleanall:
