@@ -1,6 +1,6 @@
 /*!
  * @class   TestUtilz utilzcase.cpp utilzcase.h
- * @brief   Testing for the Utility Functions 
+ * @brief   Testing for the Utilz Functions 
 */
 #include "utilzcase.h"
 
@@ -14,4 +14,4 @@ TestUtilz::TestUtilz() {
 /*!
  * @brief   Default Deconstructor
 */
-TestUtilz::~TestUtilz() {}
+TestUtilz::~TestUtilz() { }

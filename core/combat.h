@@ -26,6 +26,7 @@ public:
   Combat(Player&, Toon&);
   Combat(Player&, Player&);
   void begin_combat();
+  void _help();
   ~Combat();
 };
 

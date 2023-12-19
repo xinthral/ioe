@@ -31,12 +31,9 @@ private:
   char buf[128];
 
 public:
-  // Singletons should not be cloneable
-  BalanceController(BalanceController&) = delete;
-  // Singletons should not be assignable
-  void operator = (const BalanceController&) = delete;
-  // Singleton Constructor
-  static BalanceController *GetInstance();
+  BalanceController(BalanceController&) = delete;         //! Singletons should not be cloneable
+  void operator = (const BalanceController&) = delete;    //! Singletons should not be assignable
+  static BalanceController *GetInstance();                //! Singleton Constructor
   double scalar(int);
   void display_state();
   double get_base();

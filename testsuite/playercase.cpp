@@ -9,9 +9,39 @@
 */
 TestPlayer::TestPlayer() {
     BaseCase::log->named_log(__FILE__, "Testing Player's!");
+    dummy = new Player();
+    sprintf(msgHead, "Tested");
+    sprintf(msgTail, "for Actors!");
+    test_all();
 }
+
+/*!
+ * @brief   Test if Player Alive State holds
+*/
+void TestPlayer::test_all() {
+    test_isAlive();
+    test_isFighting();
+}
+
+/*!
+ * @brief   Test if Player Alive State holds
+*/
+void TestPlayer::test_isAlive() {
+    bool isAlive = dummy->isAlive();
+    assertm(isAlive == true, "Is Not Alive");
+    dummy->set_health_dead();
+    isAlive = dummy->isAlive();
+    assertm(isAlive == false, "Has Risen from the Dead");
+    sprintf(buf, "%s %s %s", msgHead, "[Alive] Value", msgTail);
+    BaseCase::log->named_log(__FILE__, buf);
+}
+
+/*!
+ * @brief   Test if Player Combat State holds
+*/
+void TestPlayer::test_isFighting() { }
 
 /*!
  * @brief   Default Deconstructor
 */
-TestPlayer::~TestPlayer() {}
+TestPlayer::~TestPlayer() { }

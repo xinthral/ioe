@@ -8,6 +8,7 @@
 #include "../core/balance.h"
 #include "../core/config.h"
 #include "../core/logger.h"
+#include "../core/utilz.h"
 
 //! Compiler/Linter hint
 #define assertm(exp, msg) assert(((void)msg, exp))
@@ -24,4 +25,4 @@ public:
     ~BaseCase();
 };
 
-#endif // BASECASE_H //
+#endif  // BASECASE_H //

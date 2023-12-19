@@ -54,6 +54,9 @@ LIBRARIES := core helpsuite testsuite clisuite
 # $@ evaluates to all
 # $< evaluates to library.cpp
 # $^ evaluates to library.cpp main.cpp
+	
+# Compile Full porgram
+all: $(DOCS) $(ENGN) $(TEST) $(HELP) $(CLIS) 
 
 # Compile CLISuite
 $(CLIS):
@@ -74,9 +77,6 @@ $(HELP):
 # Compile Documents 
 $(DOCS): docs/conf.dox
 	$(DOXYGEN) $<
-	
-# Compile Full porgram
-all: $(DOCS) $(ENGN) $(TEST) $(HELP) $(CLIS) 
 
 # PreCompile Object Files
 build:
@@ -89,11 +89,9 @@ clean:
 
 cleandoc:
 ifeq ($(OS), Windows_NT)
-	$(RRM) docs\html
-	$(RRM) docs\latex
+	@powershell -ExecutionPolicy Bypass -File .\docs\docCleanup.ps1 
 else
-	$(RRM) docs/html/*
-	$(RRM) docs/latex/*
+	find docs/html/ docs/latex/ docs/out/ ! -name .gitkeep -type f -delete
 endif
 
 cleanall:

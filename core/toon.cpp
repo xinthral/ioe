@@ -58,9 +58,12 @@ void Toon::set_name(std::string name) { this->name = name; }
 /*!
  * @brief   Helper Hook used in CLI Help System
 */
-void Toon::_help() {}
+void Toon::_help() {
+  char* helpline = (char*)"Toon Helpline!";
+  log->named_log(__FILE__, helpline);
+}
 
 /*!
  * @brief   Default Deconstructor
 */
-Toon::~Toon() {}
+Toon::~Toon() { }

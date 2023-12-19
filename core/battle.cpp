@@ -1,19 +1,21 @@
 /*! 
  * @class   Battle battle.h battle.cpp
- * @brief   Interweaving combat events
+ * @brief   Interweaving Combat events
  */
 #include "battle.h"
 
 /*! 
  * @brief   Default Constructor
 */
-Battle::Battle() {}
+Battle::Battle() {
+  log = Logger::GetInstance();
+}
 
 /*! 
  * @overload
  * @brief   Player v Team Constructor
 */
-Battle::Battle(int size, Player* player, std::vector<Toon*>& team) {
+Battle::Battle(int size, Player* player, std::vector<Toon*>& team) : Battle() {
   Toon* t = new Toon();
   Toon* v;
   Combat* cc;
@@ -35,11 +37,17 @@ Battle::Battle(int size, Player* player, std::vector<Toon*>& team) {
  * @overload
  * @brief    Gang v Gang Constructor
 */
-Battle::Battle(std::vector<Toon*>& gang1, std::vector<Toon*>& gang2) {
-  
+Battle::Battle(std::vector<Toon*>& gang1, std::vector<Toon*>& gang2) : Battle() { }
+
+/*!
+ * @brief   Helper Hook used in CLI Help System
+*/
+void Battle::_help() {
+  char* helpline = (char*)"Battle Helpline!";
+  log->named_log(__FILE__, helpline);
 }
 
 /*! 
  * @brief   Default Deconstructor
 */
-Battle::~Battle() {}
+Battle::~Battle() { }

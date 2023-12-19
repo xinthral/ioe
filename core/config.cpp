@@ -1,6 +1,7 @@
 /*!
  * @class   ConfigManager config.h config.cpp
- * @brief   ConfigManager Docstring
+ * @brief   ConfigManager handles configuration loading
+ *          and managing throughout the engine. 
  */
 #include "config.h"
 
@@ -68,10 +69,9 @@ std::string ConfigManager::raw_config(const std::string& option) { return this->
  *          CLI Suite
  * @param[out] option - A string array to recieve the commands
 */
-void ConfigManager::get_authorized_cli_commands(std::vector<std::string>& input) { 
-  std::string inp = "exit help "; 
-  inp += this->raw_config("CMDLIST");
-  Utilz::StringToArray(inp, &input);
+void ConfigManager::get_authorizedCommands(std::vector<std::string>& input) { 
+  std::string inp = this->raw_config("CMDLIST");
+  Utilz::StringToArray(inp, input);
 }
 
 /*!
@@ -129,36 +129,38 @@ std::string ConfigManager::get_version() { return this->raw_config("VERSION"); }
  */
 bool ConfigManager::load_config(bool _debug) {
   char buf[64];
-  std::size_t pos;                                //! Positional Pointer for delimeter
-  std::string row;                                //! Temporary File Row Storage
-  std::string opt;                                //! Settings Option
-  std::string val;                                //! Settings Value
-  std::size_t qsize = 0;                          //! Current Size of Queue
+  std::size_t pos;                            //! Positional Pointer for delimeter
+  std::string row;                            //! Temporary File Row Storage
+  std::string opt;                            //! Settings Option
+  std::string val;                            //! Settings Value
+  std::size_t qsize = 0;                      //! Current Size of Queue
   int cnt = 0;
-  conf.open("docs/engine.ini");                   //! Open INI file for reading
+  conf.open("docs/engine.ini");               //! Open INI file for reading
   while (std::getline(conf, row)) {
     // DEBUG Line
     if (_debug) { 
-      sprintf(buf, "%d: %s\n", cnt++, row.c_str()); 
+      sprintf(buf, "%s", row.c_str()); 
       log->named_log(__FILE__, buf);
     }
-    pos = row.find(delim);                      //! Locate Position of Delimiter
+    pos = row.find(delim);                    //! Locate Position of Delimiter
     if (pos != std::string::npos){
       opt = row.substr(0, pos);               //! Grab Option Name
       Utilz::Strip(opt);
-      val = row.substr(pos+1, row.size()-1);  //! Grab Option Value
-      Utilz::Strip(val);
+      val = row.substr(pos+2, row.size()-1);  //! Grab Option Value
       qsize = this->add_setting(opt, val);    //! Load Setting
       cnt++;                                  //! Increment Settings counter
     }
   }
-  conf.close();                                   //! Close INI file descriptor
+  conf.close();                               //! Close INI file descriptor
   return cnt == qsize;
 }
 
 /*!
  * @brief   Helper Hook used in CLI Help System
 */
-void ConfigManager::_help() { }
+void ConfigManager::_help() {
+  char* helpline = (char*)"ConfigManager Helpline!";
+  log->named_log(__FILE__, helpline);
+}
 
-ConfigManager::~ConfigManager() {}
+ConfigManager::~ConfigManager() { }

@@ -1,7 +1,6 @@
 /*!
  * @class   Utilz utilz.h utilz.cpp
- * @brief   Utility functions I find useful enough to not want 
- *          to have to repeat myself.
+ * @brief   Utility functions I find useful.
 */
 #include "utilz.h"
 
@@ -48,14 +47,14 @@ std::string Utilz::TimeStamp() {
 /*!
  * @brief   Converts a string containing multiple words into
  *          into an array of strings.
- * @param[in]   input  - String to be parsed
- * @param[out] output  - Vector of strings to put parsed words  
+ * @param[in]   input - String to be parsed
+ * @param[out] output - Vector of strings to put parsed words  
 */
-void Utilz::StringToArray(std::string input, std::vector<std::string>* output) {
-  char* token = strtok(const_cast<char*>(input.c_str()), " ");
-  output->push_back(token);
-  while ((token = strtok(NULL, " "))) {
-    output->push_back(token);
+void Utilz::StringToArray(std::string input, std::vector<std::string>& output) {
+  char* token = strtok(const_cast<char*>(input.c_str()), " \n");
+  while (token != NULL) {
+    output.push_back(token);
+    token = strtok(NULL, " \n");
   }
 }
 
@@ -91,6 +90,11 @@ std::string Utilz::TailString(int length, std::string input) {
 void Utilz::Strip(std::string& input) {
   std::string::iterator pos = std::remove(input.begin(), input.end(), ' ');
   input.erase(pos, input.end());
+}
+
+void Utilz::_help() {
+  char* helpline = (char*)"Utilz Helpline!";
+  Logger::GetInstance()->named_log(__FILE__, helpline);
 }
 
 extern "C" {

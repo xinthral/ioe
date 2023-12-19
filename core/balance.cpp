@@ -1,11 +1,12 @@
 /*! 
- * @class  BalanceController balance.h balance.cpp
- * @brief   Balance Controller 
+ * @class   BalanceController balance.h balance.cpp
+ * @brief   BalanceController handles balancing engine mechanics
+ *          in a consistant, scalable and easily changeable way.
  * @details Like in life, so to in games do we need balance
- *       In order to maintain consistency in a game, you 
- *       need a universal scale in which you operate from. 
- *       This module creates a mathematical scalar curve 
- *       that all statistics can be derived from. 
+ *          In order to maintain consistency in a game, you 
+ *          need a universal scale in which you operate from. 
+ *          This module creates a mathematical scalar curve 
+ *          that all statistics can be derived from. 
  * @note  \f$y = δ\f$^[\f$x/(π^π)\f$]
  * @note  \f$δ :=\f$ Constant based on game difficulty
  * @note  \f$x :=\f$ Character's Current Level
@@ -16,6 +17,7 @@
 
 //! Singleton Instance
 BalanceController* BalanceController::_singleton = NULL;
+//! Lock Mutex 
 std::mutex BalanceController::_mutex;
 
 /*!
@@ -26,7 +28,7 @@ BalanceController::BalanceController() {
   cnf  = ConfigManager::GetInstance();
   log  = Logger::GetInstance();
   base = cnf->get_base();
-  log->named_log(__FILE__, "BalanceContoller Loaded!");
+  log->named_log(__FILE__, "BalanceController Loaded!");
 
   //! Conditional Check: Confirm Range
   int difficulty = cnf->get_difficulty();
@@ -60,11 +62,11 @@ BalanceController *BalanceController::GetInstance() {
 }
 
 /*!
- * @brief  Scales The Universe
- * @details  Scalar Function to keep the entire universe 
- *      in balance.
- * @note  y = δ^(χ/[π^π])
- * @return   Scaled value based on level
+ * @brief   Scales The Universe
+ * @details Scalar Function to keep the entire universe 
+ *          in balance.
+ * @note    y = δ^(χ/[π^π])
+ * @return  Scaled value based on level
 */
 double BalanceController::scalar(int level) {
   double x = level * 1.0;
@@ -91,19 +93,19 @@ void BalanceController::display_state() {
 }
 
 /*!
- * @brief  Helper Function: Base Scalar Value 
- * @return   Returns Base Scalar Value
+ * @brief   Helper Function: Base Scalar Value 
+ * @return  Returns Base Scalar Value
 */
 double BalanceController::get_base() { return base; }
 
 /*!
  * @brief   Helper Function: Game Difficulty 
- * @return   Returns difficulty level
+ * @return  Returns difficulty level
 */
 Hardness BalanceController::get_difficulty() { return this->DIF; }
 
 /*!
- * @brief  Converts the difficulty to a string 
+ * @brief   Converts the difficulty to a string 
  * @return  Difficulty as a string 
 */
 std::string BalanceController::get_difficulty_str() {
@@ -120,9 +122,12 @@ std::string BalanceController::get_difficulty_str() {
 /*!
  * @brief   Helper Hook used in CLI Help System
 */
-void BalanceController::_help() { }
+void BalanceController::_help() { 
+  char* helpline = (char*)"BalanceController Helpline!";
+  log->named_log(__FILE__, helpline);
+}
 
 /*!
  * @brief   Default Deconstructor
 */
-BalanceController::~BalanceController() {}
+BalanceController::~BalanceController() { }

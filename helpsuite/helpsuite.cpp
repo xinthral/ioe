@@ -1,6 +1,6 @@
 /*!
  * @class   HelpSuite helpsuite.h helpsuite.cpp
- * @brief   Command Line Tool (CLI) for Help
+ * @brief   Command Line Tool (CLI) for the HelpSuite
  * @details Helper Suite is meant to parse Doxygen outputs, and 
  *      provide a commandline utility for quick reference 
  *      while developing or debugging.
@@ -24,6 +24,30 @@ HelpSuite::HelpSuite() {
 HelpSuite::HelpSuite(bool _debug) : HelpSuite() { }
 
 /*!
+ * @brief   FIXME: Needs desc
+*/
+void HelpSuite::HelpAll() { 
+  this->_help();
+  this->ActorHelp();
+  this->BalanceHelp();
+}
+
+/*!
+ * @brief   FIXME: Needs desc
+*/
+void HelpSuite::ActorHelp() { HelpActor* ha = new HelpActor(); }
+
+/*!
+ * @brief   FIXME: Needs desc
+*/
+void HelpSuite::BalanceHelp() { HelpBalance* ha = new HelpBalance(); }
+
+/*!
+ * @brief   Helper hook for CLI Tool to display help details
+*/
+void HelpSuite::_help() { print_help(); }
+
+/*!
  * @brief   Default Deconstructor
 */
 HelpSuite::~HelpSuite() {}
@@ -31,11 +55,11 @@ HelpSuite::~HelpSuite() {}
 /*!
  * @brief   Static Function to display help details
 */
-void print_help() { 
+void print_help() {
   Logger* log = Logger::GetInstance();
   std::string fileName = Utilz::FileName(__FILE__);
   char buf[64];
-  sprintf(buf, "Usage: %s [NUMBER]\n", fileName.c_str()); 
+  sprintf(buf, "Usage: %s.exe [option]\n", fileName.c_str()); 
   log->raw_log(buf);
   log->raw_log("HelpSuite CLI Tool\n");
   log->raw_log("A helper system, to give the developer/debugger" \
@@ -43,17 +67,32 @@ void print_help() {
     " This can be used in conjuction with the TestSuite in order to"\
     " maximize the benefit of the CLI Debugging Suite.\n");
   log->raw_log("\t[1] - HelpSuit details");
-  log->raw_log("\t[2] - TestSuite details");
+  log->raw_log("\t[2] - Actor details");
+  log->raw_log("\t[3] - BalanceController details");
   log->raw_log("\t[0] - Default Help to rule them all\n");
-  exit(-1);
 }
 
 /*!
  * @brief   Module Entry Point
 */
 int main(int argc, char const *argv[]) {
-  if (argc < 2) { print_help(); return 0; }
-  if (strcmp(argv[1], "-h") == 0) { print_help(); return 0; }
-  HelpSuite h;
+  if (argc < 2 || strcmp(argv[1], "-h") == 0) { print_help(); return 0; }
+  HelpSuite hs;
+  Logger* log = Logger::GetInstance();
+  int idx = atoi(argv[1]);
+  switch(idx) {
+    case 1: //! Display HelpSuite Helper Details
+      hs._help();
+      break;
+    case 2: //! Display Actor Help Details
+      hs.ActorHelp();
+      break;
+    case 3: //! Display Balance Help Details
+      hs.BalanceHelp();
+      break;
+    default:
+      log->named_log(__FILE__, "Displaying full HelpSuite");
+      hs.HelpAll();
+  }
   return 0;
 }

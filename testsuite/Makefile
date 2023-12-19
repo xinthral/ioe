@@ -54,7 +54,7 @@ EXECLOC := ..\$(EXEC)
 else
 EXECLOC := ../$(EXEC)
 endif
-UTIL    := actor balance battle combat config logger player stage toon utilz
+UTIL    := actor balance battle combat config leader logger player stage toon utilz
 
 # GNU Make Compilation Macros: 
 # https://stackoverflow.com/questions/3220277/what-do-the-makefile-symbols-and-mean#3220288
@@ -70,7 +70,7 @@ SHAREDFL := libtestsuite.so.1
 
 # Compile Full TestSuite 
 testsuite: $(SRCFILES) 
-	$(CC) $(CFLAGS) $(CXFLAGS) $^ -o $(EXECLOC).exe
+	$(CC) $(CFLAGS) $(CXFLAGS) -pthread $^ -o $(EXECLOC).exe
 
 library: $(SRCFILES)
 	$(CC) $(CFLAGS) -o $(SHAREDFL).1 $^ $(CXXFLAGS)$(SHAREDFL)

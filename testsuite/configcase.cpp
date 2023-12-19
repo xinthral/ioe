@@ -15,7 +15,7 @@ TestConfig::TestConfig() {
 }
 
 /*!
- * @brief   Initiate all test
+ * @brief   Run full set of test on module 
 */
 void TestConfig::test_all() {
     test_mapping();
@@ -30,8 +30,7 @@ void TestConfig::test_mapping() {
     this->test_addConfig(); 
     this->test_remConfig(); 
     size_t finalSize = BaseCase::cnf->get_settingsSize();
-    sprintf(this->msgNote, "ConfigManager failed config mappings\t<--\n%d - %d", finalSize, initialSize);
-    assertm(finalSize - initialSize == 0, this->msgNote);
+    assertm(finalSize - initialSize == 0, "ConfigManager failed config mappings");
     sprintf(buf, "%s %s %s", this->msgHead, "[mapping] of config options", this->msgTail);
     BaseCase::log->named_log(__FILE__, buf);
 }
@@ -43,8 +42,7 @@ void TestConfig::test_addConfig() {
     size_t initialSize = BaseCase::cnf->get_settingsSize();
     BaseCase::cnf->add_setting("test", "added");
     size_t finalSize = BaseCase::cnf->get_settingsSize();
-    sprintf(this->msgNote, "ConfigManager failed to add a test config\t<--\n%d - %d", finalSize, initialSize);
-    assertm(finalSize - initialSize == 1, this->msgNote);
+    assertm(finalSize - initialSize == 1, "ConfigManager failed to add a test config");
     sprintf(buf, "%s %s %s", this->msgHead, "[adding] a config option", this->msgTail);
     BaseCase::log->named_log(__FILE__, buf);
 }
@@ -56,8 +54,7 @@ void TestConfig::test_remConfig() {
     size_t initialSize = BaseCase::cnf->get_settingsSize();
     BaseCase::cnf->rem_setting("test");
     size_t finalSize = BaseCase::cnf->get_settingsSize();
-    sprintf(this->msgNote, "ConfigManager failed to remove a test config\t<--\n%d - %d", initialSize, finalSize);
-    assertm(initialSize - finalSize == 1, this->msgNote);
+    assertm(initialSize - finalSize == 1, "ConfigManager failed to remove a test config");
     sprintf(buf, "%s %s %s", this->msgHead, "[removing] a config option", this->msgTail);
     BaseCase::log->named_log(__FILE__, buf);
 }
@@ -66,16 +63,9 @@ void TestConfig::test_remConfig() {
  * @brief   Evaluate return type for get_authorized_cli_commands()
 */
 void TestConfig::test_listOfCommands() {
-    const char* commandString = BaseCase::cnf->raw_config("CMDLIST").c_str();
- 	char* token = strtok((char*)commandString, " ");
-    BaseCase::log->timed_log(token);
-    int steps = 2;
-	while ((token = strtok(NULL, " "))) {
-        BaseCase::log->timed_log(token);
-        steps++;
-	}
-    sprintf(this->msgNote, "ConfigManager failed to return the appropriate type\t<--\n%d - %d", steps, "2");
-    assertm(steps == 2, this->msgNote);
+    std::vector<std::string> commands;
+    BaseCase::cnf->get_authorizedCommands(commands);
+    assertm((commands.size() > 1), "ConfigManager failed to return the list of commands");
     sprintf(buf, "%s %s %s", this->msgHead, "[valid] authorized commands config option", this->msgTail);
     BaseCase::log->named_log(__FILE__, buf);
 }

@@ -1,6 +1,6 @@
 /*!
  * @class   TestBalance balancecase.h balancecase.cpp
- * @brief   Test Balance Module 
+ * @brief   Test BalanceController Module 
 */
 #include "balancecase.h"
 
@@ -51,4 +51,4 @@ void TestBalance::difficulty_level() {
 /*!
  * @brief   Default Deconstructor
 */
-TestBalance::~TestBalance() {}
+TestBalance::~TestBalance() { }

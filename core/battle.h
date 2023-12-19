@@ -7,11 +7,13 @@
 
 class Battle {
 protected:
+  Logger*   log;
 private:
 public:
   Battle();
   Battle(int, Player*, std::vector<Toon*>&);
   Battle(std::vector<Toon*>&, std::vector<Toon*>&);
+  void _help();
   ~Battle();
 };
 

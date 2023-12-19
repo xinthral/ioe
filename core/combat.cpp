@@ -1,6 +1,6 @@
 /*!
  * @class   Combat combat.h combat.cpp
- * @brief   Handle the interactive logic for combat
+ * @brief   Handle the interactive logic for Combat
 */
 #include "combat.h"
 
@@ -85,7 +85,7 @@ Combat::Combat(Player& combatant1, Player& combatant2) : Combat() {
 void Combat::begin_combat() {
   //! Seed and Generate Random Number
   std::srand(std::time(0));
-  int r = rand() % 3 + 1;
+  int r = rand() % 5 + 1;
   switch(this->matchup) {
     case Condition::EvE: {
       log->named_log(__FILE__, "EvE Combat!");
@@ -101,6 +101,14 @@ void Combat::begin_combat() {
   sprintf(buf, "Sleeping for %d", r);
   log->named_log(__FILE__, buf);
   // sleep(r);
+}
+
+/*!
+ * @brief   Helper Hook used in CLI Help System
+*/
+void Combat::_help() {
+  char* helpline = (char*)"Combat Helpline!";
+  log->named_log(__FILE__, helpline);
 }
 
 /*!

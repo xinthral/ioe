@@ -170,6 +170,14 @@ void Actor::set_health_sick() { this->set_healthstate(SICK); }
 void Actor::set_health_dead() { this->set_healthstate(DEAD); }
 
 /*!
+ * @brief   Helper Hook used in CLI Help System
+*/
+void Actor::_help() {
+  char* helpline = (char*)"Actor Helpline!";
+  log->named_log(__FILE__, helpline);
+}
+
+/*!
  * @brief   Default Deconstructor 
 */
 Actor::~Actor() { }

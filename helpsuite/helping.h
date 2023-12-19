@@ -1,5 +1,5 @@
-#ifndef HELPHELPSUITE_H
-#define HELPHELPSUITE_H
+#ifndef HELPHELPING_H
+#define HELPHELPING_H
 
 #include "basehelp.h"
 
@@ -11,4 +11,4 @@ public:
   ~HelpHelping();
 };
 
-#endif // HELPHELPSUITE_H //
+#endif // HELPHELPING_H //
