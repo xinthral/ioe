@@ -14,7 +14,7 @@ private:
   int power   = 1;    //!< Power Value Amplifies Abilies Used
 public:
   Player();
-  Player(int, int, int);
+  Player(int/**< [in] level - Level of the Player */, int, int);
   Player(std::string, int, int, int);
   void _help();
   ~Player();

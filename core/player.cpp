@@ -1,6 +1,6 @@
 /*!
  * @class   Player player.h player.cpp
- * @details Construct containing Player data representing the
+ * @brief   Construct containing Player data representing the
  *          virtual avatar within the engine.
 */
 #include "player.h"

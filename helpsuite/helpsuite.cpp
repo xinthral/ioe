@@ -91,7 +91,7 @@ int main(int argc, char const *argv[]) {
       hs.BalanceHelp();
       break;
     default:
-      log->named_log(__FILE__, "Default HelpSuite Msg");
+      log->named_log(__FILE__, "Displaying full HelpSuite");
       hs.HelpAll();
   }
   return 0;

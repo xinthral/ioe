@@ -5,14 +5,13 @@
 #include "clisuite.h"
 
 //! Extern Variable Declaration
-std::string __cnf_ = "docs/engine.ini";
-Logger* _log = Logger::GetInstance();
-ConfigManager* _cnf = ConfigManager::GetInstance();
+std::string  __cnf_ = "docs/engine.ini";
 
 /*!
  * @brief   Function to parse user input for a command 
 */
 void parse_user_input(std::string input) {
+  ConfigManager* _cnf = ConfigManager::GetInstance();
   std::vector<std::string> cmds;
   std::vector<std::string> cmdline;
   Utilz::StringToArray(input, cmdline);
@@ -40,6 +39,8 @@ bool parse_input(const std::string input, const std::string criteria) {
  * @brief   Helper Function to display help
 */
 void print_help() {
+  //! Establish Logger Object
+  Logger* _log = Logger::GetInstance();
   //! Get File Name
   std::string fileName = Utilz::FileName(__FILE__);
 
@@ -48,10 +49,10 @@ void print_help() {
   sprintf(buf, "\nUsage: %s.exe [bool|debug]", fileName.c_str()); 
   _log->raw_log(buf);
   _log->raw_log("\tdebug - Debugging Flag\n");
-  exit(0);
 }
 
 void cli_help() {
+  ConfigManager* _cnf = ConfigManager::GetInstance();
   std::vector<std::string> cmds;
   _cnf->get_authorizedCommands(cmds);
   printf("Commands:\n");
@@ -62,9 +63,11 @@ void cli_help() {
  * @brief   Run Engine Commands
 */
 void run_command(const std::string input, std::vector<std::string>& cmdline) {
-  char buf[256];
+  Logger* _log = Logger::GetInstance();                 //!< Establish Logger Object
+  ConfigManager* _cnf = ConfigManager::GetInstance();   //!< Establish ConfigManager Object
   std::vector<std::string> cmds;
   _cnf->get_authorizedCommands(cmds);
+  char buf[256];
   int idx = _CMDMAP[input];
   switch(idx) {
     case 0:   //! Help Info
@@ -99,6 +102,7 @@ int main(int argc, const char *argv[]) {
   if (strcmp(argv[1], "-h") == 0) { print_help(); return 0; }
 
   //! Declare Variables
+  Logger* _log = Logger::GetInstance();                 //!< Establish Logger Object
   size_t found;
   bool vshContinue = false;
   std::string prompt = "> ";

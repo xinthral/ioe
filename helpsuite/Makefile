@@ -32,7 +32,7 @@ endif
 #  	-no-pie 								- do not produce a position-independent executable
 #	-fPIC									- Format position-independent code
 # Standard Compiler Options
-CFLAGS = -g -Wno-format -Wno-sign-compare -Wno-uninitialized -std=c++17
+CFLAGS = -g -Wno-unused-variable -Wno-format -Wno-sign-compare -Wno-uninitialized -std=c++17
 
 # Extended Compiler Options
 CXFLAGS = -Wall -pedantic -O3 -fPIC

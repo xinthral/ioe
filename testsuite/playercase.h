@@ -6,10 +6,10 @@
 
 class TestPlayer: public BaseCase {
 protected:
-    Player* dummy;
-    char msgHead[32];
-    char msgTail[16];
-    char msgNote[64];
+  Player* dummy;
+  char msgHead[32];
+  char msgTail[16];
+  char msgNote[64];
 
 private:
 public:
