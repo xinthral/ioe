@@ -28,20 +28,24 @@ HelpSuite::HelpSuite(bool _debug) : HelpSuite() { }
 */
 void HelpSuite::HelpAll() { 
   this->_help();
-  this->HelpActor();
+  this->ActorHelp();
+  this->BalanceHelp();
 }
 
 /*!
  * @brief   FIXME: Needs desc
 */
-void HelpSuite::HelpActor() { new ActorHelp(); }
+void HelpSuite::ActorHelp() { HelpActor* ha = new HelpActor(); }
+
+/*!
+ * @brief   FIXME: Needs desc
+*/
+void HelpSuite::BalanceHelp() { HelpBalance* ha = new HelpBalance(); }
 
 /*!
  * @brief   Helper hook for CLI Tool to display help details
 */
-void HelpSuite::_help() { 
-  print_help();
-}
+void HelpSuite::_help() { print_help(); }
 
 /*!
  * @brief   Default Deconstructor
@@ -64,6 +68,7 @@ void print_help() {
     " maximize the benefit of the CLI Debugging Suite.\n");
   log->raw_log("\t[1] - HelpSuit details");
   log->raw_log("\t[2] - Actor details");
+  log->raw_log("\t[3] - BalanceController details");
   log->raw_log("\t[0] - Default Help to rule them all\n");
 }
 
@@ -76,11 +81,14 @@ int main(int argc, char const *argv[]) {
   Logger* log = Logger::GetInstance();
   int idx = atoi(argv[1]);
   switch(idx) {
-    case 1:
+    case 1: //! Display HelpSuite Helper Details
       hs._help();
       break;
-    case 2:
-      hs.HelpActor();
+    case 2: //! Display Actor Help Details
+      hs.ActorHelp();
+      break;
+    case 3: //! Display Balance Help Details
+      hs.BalanceHelp();
       break;
     default:
       log->named_log(__FILE__, "Default HelpSuite Msg");

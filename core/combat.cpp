@@ -104,6 +104,14 @@ void Combat::begin_combat() {
 }
 
 /*!
+ * @brief   Helper Hook used in CLI Help System
+*/
+void Combat::_help() {
+  char* helpline = (char*)"Combat Helpline!";
+  log->named_log(__FILE__, helpline);
+}
+
+/*!
  * @brief   Default Deconstructor
 */
 Combat::~Combat() { }

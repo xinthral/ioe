@@ -158,6 +158,9 @@ bool ConfigManager::load_config(bool _debug) {
 /*!
  * @brief   Helper Hook used in CLI Help System
 */
-void ConfigManager::_help() { }
+void ConfigManager::_help() {
+  char* helpline = (char*)"ConfigManager Helpline!";
+  log->named_log(__FILE__, helpline);
+}
 
 ConfigManager::~ConfigManager() { }

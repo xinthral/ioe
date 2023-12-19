@@ -31,6 +31,9 @@ LeaderBoard* LeaderBoard::GetInstance() {
 /*!
  * @brief   Helper Hook used in CLI Help System
 */
-void LeaderBoard::_help() { }
+void LeaderBoard::_help() { 
+  char* helpline = (char*)"LeaderBoard Helpline!";
+  log->named_log(__FILE__, helpline);
+}
 
 LeaderBoard::~LeaderBoard() { }

@@ -62,7 +62,10 @@ void Logger::named_log(std::string fileName, std::string message) {
 /*!
  * @brief   Helper Hook used in CLI Help System
 */
-void Logger::_help() { }
+void Logger::_help() {
+  char* helpline = (char*)"LeaderBoard Helpline!";
+  this->named_log(__FILE__, helpline);
+}
 
 /*!
  * @brief   Default Deconstructor

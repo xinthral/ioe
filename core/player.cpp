@@ -45,7 +45,10 @@ Player::Player(std::string name, int level, int power, int block) :
 /*!
  * @brief   Helper Hook used in CLI Help System
 */
-void Player::_help() { }
+void Player::_help() {
+  char* helpline = (char*)"LeaderBoard Helpline!";
+  log->named_log(__FILE__, helpline);
+}
 
 /*!
  * @brief   Default Deconstructor

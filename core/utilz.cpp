@@ -92,6 +92,11 @@ void Utilz::Strip(std::string& input) {
   input.erase(pos, input.end());
 }
 
+void Utilz::_help() {
+  char* helpline = (char*)"Utilz Helpline!";
+  Logger::GetInstance()->named_log(__FILE__, helpline);
+}
+
 extern "C" {
   int addIt(int a, int b) {
     return a + b;

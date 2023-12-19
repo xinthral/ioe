@@ -28,7 +28,7 @@ BalanceController::BalanceController() {
   cnf  = ConfigManager::GetInstance();
   log  = Logger::GetInstance();
   base = cnf->get_base();
-  log->named_log(__FILE__, "BalanceContoller Loaded!");
+  log->named_log(__FILE__, "BalanceController Loaded!");
 
   //! Conditional Check: Confirm Range
   int difficulty = cnf->get_difficulty();
@@ -62,11 +62,11 @@ BalanceController *BalanceController::GetInstance() {
 }
 
 /*!
- * @brief  Scales The Universe
- * @details  Scalar Function to keep the entire universe 
- *      in balance.
- * @note  y = δ^(χ/[π^π])
- * @return   Scaled value based on level
+ * @brief   Scales The Universe
+ * @details Scalar Function to keep the entire universe 
+ *          in balance.
+ * @note    y = δ^(χ/[π^π])
+ * @return  Scaled value based on level
 */
 double BalanceController::scalar(int level) {
   double x = level * 1.0;
@@ -93,19 +93,19 @@ void BalanceController::display_state() {
 }
 
 /*!
- * @brief  Helper Function: Base Scalar Value 
- * @return   Returns Base Scalar Value
+ * @brief   Helper Function: Base Scalar Value 
+ * @return  Returns Base Scalar Value
 */
 double BalanceController::get_base() { return base; }
 
 /*!
  * @brief   Helper Function: Game Difficulty 
- * @return   Returns difficulty level
+ * @return  Returns difficulty level
 */
 Hardness BalanceController::get_difficulty() { return this->DIF; }
 
 /*!
- * @brief  Converts the difficulty to a string 
+ * @brief   Converts the difficulty to a string 
  * @return  Difficulty as a string 
 */
 std::string BalanceController::get_difficulty_str() {
@@ -122,7 +122,10 @@ std::string BalanceController::get_difficulty_str() {
 /*!
  * @brief   Helper Hook used in CLI Help System
 */
-void BalanceController::_help() { }
+void BalanceController::_help() { 
+  char* helpline = (char*)"BalanceController Helpline!";
+  log->named_log(__FILE__, helpline);
+}
 
 /*!
  * @brief   Default Deconstructor

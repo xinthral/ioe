@@ -7,6 +7,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <vector>
+#include "logger.h"
 
 namespace Utilz {
   std::string FileName(const char *);
@@ -16,6 +17,7 @@ namespace Utilz {
   std::string HeadString(int, std::string);
   std::string TailString(int, std::string);
   void Strip(std::string&);
+  void _help();
 } // namespace Utilz
 
 extern "C" {

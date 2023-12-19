@@ -7,6 +7,7 @@
 #include "../core/logger.h"
 #include "../core/utilz.h"
 #include "actorhelp.h"
+#include "balancehelp.h"
 
 class HelpSuite {
 protected:
@@ -16,7 +17,8 @@ public:
   HelpSuite();
   HelpSuite(bool);
   void HelpAll();
-  void HelpActor();
+  void ActorHelp();
+  void BalanceHelp();
   void _help();
   ~HelpSuite();
 };

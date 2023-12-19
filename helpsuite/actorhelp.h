@@ -7,8 +7,6 @@
 class HelpActor : public BaseHelp {
 protected:
   Actor*            dummy;
-  ConfigManager*    cnf;
-  Logger*           log;
 private:
 public:
   HelpActor();
