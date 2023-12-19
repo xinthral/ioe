@@ -89,19 +89,9 @@ clean:
 
 cleandoc:
 ifeq ($(OS), Windows_NT)
-	attrib +r docs\html\search\.gitkeep
-	attrib +r docs\latex\.gitkeep
-	attrib +r docs\out\.gitkeep
-	$(RRM) docs\html
-	$(RRM) docs\latex
-	attrib -r docs\out\.gitkeep
-	attrib -r docs\latex\.gitkeep
-	attrib -r docs\html\search\.gitkeep
+	@powershell -ExecutionPolicy Bypass -File .\docs\docCleanup.ps1 
 else
-	find ./docs/ -type f -name '.gitkeep' -exec chmod -w {} \;
-	$(RRM) docs/html/*
-	$(RRM) docs/latex/*
-	find ./docs/ -type f -name '.gitkeep' -exec chmod +w {} \;
+	find docs/html/ docs/latex/ docs/out/ ! -name .gitkeep -type f -delete
 endif
 
 cleanall:
