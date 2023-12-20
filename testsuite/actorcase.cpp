@@ -4,11 +4,14 @@
 */
 #include "actorcase.h"
 
-TestActors::TestActors() {
+/*!
+ * @brief   Default Constructor
+*/
+TestActors::TestActors() : BaseCase(__FILE__) {
   BaseCase::log->named_log(__FILE__, "Testing Actor's!");
   sprintf(this->msgHead, "Tested");
   sprintf(this->msgTail, "for Actors!");
-  test_all();
+  this->test_all();
 }
 
 /*!

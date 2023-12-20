@@ -8,7 +8,7 @@
 /*!
  * @brief   Default Constructor
 */
-TestStage::TestStage() {
+TestStage::TestStage() : BaseCase(__FILE__) {
   BaseCase::log->named_log(__FILE__, "Testing the StageManager!");
 }
 

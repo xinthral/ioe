@@ -81,5 +81,6 @@
         "chrono": "cpp",
         "map": "cpp",
         "optional": "cpp"
-    }
+    },
+    "editor.renderWhitespace": "all"
 }

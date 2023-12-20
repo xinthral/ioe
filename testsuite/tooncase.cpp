@@ -7,8 +7,8 @@
 /*!
  * @brief   Default Constructor
 */
-TestToon::TestToon() {
-    BaseCase::log->named_log(__FILE__, "Testing the Toon's!");
+TestToon::TestToon() : BaseCase(__FILE__) {
+  BaseCase::log->named_log(__FILE__, "Testing the Toon's!");
 }
 
 /*!

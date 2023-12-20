@@ -4,6 +4,7 @@
 #include <cassert>
 #include <iostream>
 #include <string.h>
+#include <vector>
 #include "../core/actor.h"
 #include "../core/balance.h"
 #include "../core/config.h"
@@ -15,14 +16,15 @@
 
 class BaseCase {
 protected:
-    BalanceController*  bal;
-    ConfigManager*      cnf;
-    Logger*             log;
-    char buf[256];
+  BalanceController*  bal;    //!< Instantiated BalanceController Object
+  ConfigManager*      cnf;    //!< Instantiated ConfigManager Object
+  Logger*             log;    //!< Instantiated Logger Object
+  char buf[256];
 
 public:
-    BaseCase();
-    ~BaseCase();
+  BaseCase();
+  BaseCase(const char*);
+  ~BaseCase();
 };
 
 #endif  // BASECASE_H //
