@@ -8,8 +8,8 @@ class TestCombat : public BaseCase {
 protected:
 private:
 public:
-    TestCombat();
-    ~TestCombat();
+  TestCombat();
+  ~TestCombat();
 };
 
 #endif // TESTCOMBAT_H //

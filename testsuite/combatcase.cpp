@@ -7,8 +7,8 @@
 /*! 
  * @brief   Default Constructor
 */
-TestCombat::TestCombat() {
-    BaseCase::log->named_log(__FILE__, "Testing Combat!");
+TestCombat::TestCombat() : BaseCase(__FILE__) {
+  BaseCase::log->named_log(__FILE__, "Testing Combat!");
  }
 
 /*! 
