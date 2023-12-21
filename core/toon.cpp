@@ -7,14 +7,17 @@
 /*!
  * @brief   Default Constructor
 */
-Toon::Toon() : Toon(-1, "Toon") { }
+Toon::Toon() : Toon(-1, "Toon_#-1") { }
 
 /*!
  * @overload
  * @brief   Constructor Initializor
  * @param[in] id - Character Identity Number
 */
-Toon::Toon(int id) : Toon(id, "Toon") { }
+Toon::Toon(int id) : Toon(id, "Toon") { 
+  sprintf(buf, "Toon_#%d", id); 
+  this->set_name(buf); 
+}
 
 /*!
  * @overload
