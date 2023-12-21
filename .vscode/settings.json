@@ -82,5 +82,5 @@
         "map": "cpp",
         "optional": "cpp"
     },
-    "editor.renderWhitespace": "all"
+    "editor.renderWhitespace": "all",
 }
