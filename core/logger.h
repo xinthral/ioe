@@ -18,9 +18,9 @@ private:
   char buf[1024];
 
 public:
-  Logger(Logger&) = delete;                   //! Singletons should not be cloneable
-  void operator =(const Logger&) = delete;    //! Singletons should not be assignable
-  static Logger* GetInstance();               //! Singleton Constructor
+  Logger(Logger&) = delete;                   //!< Singletons should not be cloneable
+  void operator =(const Logger&) = delete;    //!< Singletons should not be assignable
+  static Logger* GetInstance();               //!< Singleton Constructor
   void raw_log(std::string);
   void timed_log(std::string);
   void named_log(std::string, std::string); 

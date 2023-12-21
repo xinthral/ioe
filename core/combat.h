@@ -13,6 +13,11 @@
 enum Condition { EvE, PvE, PvP };
 
 class Combat {
+protected:
+  void eVe();
+  void pVe();
+  void pVp();
+  
 private:
   BalanceController*  bal;
   ConfigManager*      cnf;

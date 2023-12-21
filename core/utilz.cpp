@@ -92,8 +92,12 @@ void Utilz::Strip(std::string& input) {
   input.erase(pos, input.end());
 }
 
+/*!
+ * @brief   Helper Hook used in CLI Help System
+*/
 void Utilz::_help() {
-  char* helpline = (char*)"Utilz Helpline!";
+  std::string helpline = "\nUtilz Helpline!\n";
+  helpline += "\n";
   Logger::GetInstance()->named_log(__FILE__, helpline);
 }
 

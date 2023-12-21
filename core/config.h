@@ -20,12 +20,14 @@ protected:
   ConfigManager();
 
 private:
-  std::unordered_map<std::string, std::string> settings;
-  std::string             delim = "=";
+  std::unordered_map<
+    std::string, std::string
+  > settings;                                       //!< Lookup Map for Settings by Key,Value
+  std::string             delim = "=";              //!< Delimer seperating Key and Value
   static ConfigManager*   _singleton;
   static std::mutex       _mutex;
   Logger*                 log;
-  char buf[128];                                    //!< Buffer Value for Logger outputs
+  char                    buf[128];                 //!< Buffer Value for Logger outputs
 
 public:
   std::ifstream conf;
