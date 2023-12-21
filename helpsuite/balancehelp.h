@@ -5,7 +5,7 @@
 
 class HelpBalance : public BaseHelp {
 protected:
-BalanceController* bal;
+  BalanceController* bal;
 private:
 public:
   HelpBalance();

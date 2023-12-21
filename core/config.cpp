@@ -159,7 +159,8 @@ bool ConfigManager::load_config(bool _debug) {
  * @brief   Helper Hook used in CLI Help System
 */
 void ConfigManager::_help() {
-  char* helpline = (char*)"ConfigManager Helpline!";
+  std::string helpline = "\nConfigManager Helpline!\n";
+  helpline += "\n";
   log->named_log(__FILE__, helpline);
 }
 

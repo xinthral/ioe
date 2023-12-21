@@ -46,7 +46,11 @@ Player::Player(std::string name, int level, int power, int block) :
  * @brief   Helper Hook used in CLI Help System
 */
 void Player::_help() {
-  char* helpline = (char*)"LeaderBoard Helpline!";
+  std::string helpline = "\nPlayer Helpline!\n";
+  helpline += "\n\tThe player class is meant to be the primary class object that holds player data.";
+  helpline += "\nThinking that it would be initiated as is, but instantiated by another class, this would";
+  helpline += "\nallow for character specializations.";
+  helpline += "\n";
   log->named_log(__FILE__, helpline);
 }
 

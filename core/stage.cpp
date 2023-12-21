@@ -54,9 +54,9 @@ void StageManager::casting_call(int size, std::vector<Toon*>& npcs) {
  * @brief   Helper Hook used in CLI Help System
 */
 void StageManager::_help() {
-  char* helpline = (char*)"LeaderBoard Helpline!";
+  std::string helpline = "\nLeaderBoard Helpline!\n";
+  helpline += "\n";
   log->named_log(__FILE__, helpline);
-
 }
 
 /**

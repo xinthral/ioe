@@ -43,7 +43,8 @@ Battle::Battle(std::vector<Toon*>& gang1, std::vector<Toon*>& gang2) : Battle() 
  * @brief   Helper Hook used in CLI Help System
 */
 void Battle::_help() {
-  char* helpline = (char*)"Battle Helpline!";
+  std::string helpline = "\nBattle Helpline!\n";
+  helpline += "\n";
   log->named_log(__FILE__, helpline);
 }
 

@@ -105,7 +105,7 @@ int main(int argc, const char *argv[]) {
   Logger* _log = Logger::GetInstance();                 //!< Establish Logger Object
   size_t found;
   bool vshContinue = false;
-  std::string prompt = "> ";
+  std::string prompt = ">";
   std::string rawInput;
   _log->named_log(__FILE__, "CLI Suite Loaded!");
 
@@ -126,10 +126,10 @@ int main(int argc, const char *argv[]) {
   //! Interactive Shell
   /* ********************************** */
   while (vshContinue == true) {
-    printf("%s", prompt.c_str());                   //! Display Message Prompt
+    printf("%s ", prompt.c_str());                  //! Display Message Prompt
     std::getline(std::cin, rawInput);               //! Get User Input
-    vshContinue = parse_input(rawInput, "!exit");   //! Conditional to end Shell
     parse_user_input(rawInput);
+    vshContinue = parse_input(rawInput, "!exit");   //! Conditional to end Shell
   }
   /* ********************************** */
 

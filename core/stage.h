@@ -19,9 +19,9 @@ private:
   int maxCrew = 10;
   char buf[128];
 public:
-  StageManager(StageManager&) = delete;                   //! Singletons should not be cloneable
-  void operator = (const StageManager&) = delete;         //! Singletons should not be assignable
-  static StageManager *GetInstance(const std::string&);   //! Singleton Constructor
+  StageManager(StageManager&) = delete;                   //!< Singletons should not be cloneable
+  void operator = (const StageManager&) = delete;         //!< Singletons should not be assignable
+  static StageManager *GetInstance(const std::string&);   //!< Singleton Constructor
   std::string get_name();
   void casting_call(int, std::vector<Toon*>&);
   void _help();

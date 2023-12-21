@@ -89,12 +89,15 @@ void Combat::begin_combat() {
   switch(this->matchup) {
     case Condition::EvE: {
       log->named_log(__FILE__, "EvE Combat!");
+      this->eVe();
     } break;
     case Condition::PvE: {
       log->named_log(__FILE__, "PvE Combat!");
+      this->pVe();
     } break;
     case Condition::PvP: {
       log->named_log(__FILE__, "PvP Combat!");
+      this->pVp();
     } break;
     default: break;
   } 
@@ -104,10 +107,37 @@ void Combat::begin_combat() {
 }
 
 /*!
+ * @brief   Environment Vs Environment Combat Call
+*/
+void Combat::eVe() {
+  sprintf(buf, "NPC Combat!");
+  log->named_log(__FILE__, buf);
+}
+
+/*!
+ * @brief   Player Vs Environment Combat Call
+*/
+void Combat::pVe() {
+  sprintf(buf, "Mob Combat!");
+  log->named_log(__FILE__, buf);
+}
+
+/*!
+ * @brief   Player Vs Player Combat Call
+*/
+void Combat::pVp() {
+  sprintf(buf, "Player Combat!");
+  log->named_log(__FILE__, buf);
+}
+
+/*!
  * @brief   Helper Hook used in CLI Help System
 */
 void Combat::_help() {
-  char* helpline = (char*)"Combat Helpline!";
+  std::string helpline = "\nCombat Helpline!\n";
+  helpline += "\n\tThis combat module got out of hand quickly and took an excessive amount of";
+  helpline += "\nover head to get it under control. Took a long break to let my brain digest.";
+  helpline += "\n";
   log->named_log(__FILE__, helpline);
 }
 

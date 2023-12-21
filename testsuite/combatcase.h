@@ -2,13 +2,17 @@
 #define TESTCOMBAT_H
 
 #include "basecase.h"
-#include "../core/actor.h"
 
 class TestCombat : public BaseCase {
 protected:
 private:
+  int _idx;
 public:
   TestCombat();
+  void test_all();
+  void test_eve();
+  void test_pve();
+  void test_pvp();
   ~TestCombat();
 };
 

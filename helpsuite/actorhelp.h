@@ -2,11 +2,10 @@
 #define HELPACTOR_H 
 
 #include "basehelp.h"
-#include "../core/actor.h"
 
 class HelpActor : public BaseHelp {
 protected:
-  Actor*            dummy;
+  Actor* dummy;
 private:
 public:
   HelpActor();

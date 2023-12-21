@@ -173,7 +173,10 @@ void Actor::set_health_dead() { this->set_healthstate(DEAD); }
  * @brief   Helper Hook used in CLI Help System
 */
 void Actor::_help() {
-  char* helpline = (char*)"Actor Helpline!";
+  std::string helpline = "\nActor HelpLine!\n";
+  helpline += "\n\tThis is the base class for all Actor's in the scene. NPC's, Players, and all";
+  helpline += "\nspecialty mobs are derived from this class"; 
+  helpline += "\n";
   log->named_log(__FILE__, helpline);
 }
 

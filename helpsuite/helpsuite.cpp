@@ -30,6 +30,12 @@ void HelpSuite::HelpAll() {
   this->_help();
   this->ActorHelp();
   this->BalanceHelp();
+  this->BattleHelp();
+  this->CombatHelp();
+  this->PlayerHelp();
+  this->StageHelp();
+  this->ToonHelp();
+  this->UtilzHelp();
 }
 
 /*!
@@ -40,7 +46,37 @@ void HelpSuite::ActorHelp() { HelpActor* ha = new HelpActor(); }
 /*!
  * @brief   FIXME: Needs desc
 */
-void HelpSuite::BalanceHelp() { HelpBalance* ha = new HelpBalance(); }
+void HelpSuite::BalanceHelp() { HelpBalance* hb = new HelpBalance(); }
+
+/*!
+ * @brief   FIXME: Needs desc
+*/
+void HelpSuite::BattleHelp() { HelpBattle* hb = new HelpBattle(); }
+
+/*!
+ * @brief   FIXME: Needs desc
+*/
+void HelpSuite::CombatHelp() { HelpCombat* hc = new HelpCombat(); }
+
+/*!
+ * @brief   FIXME: Needs desc
+*/
+void HelpSuite::PlayerHelp() { HelpPlayer* hp = new HelpPlayer(); }
+
+/*!
+ * @brief   FIXME: Needs desc
+*/
+void HelpSuite::StageHelp() { HelpStage* hs = new HelpStage(); }
+
+/*!
+ * @brief   FIXME: Needs desc
+*/
+void HelpSuite::ToonHelp() { HelpToon* hs = new HelpToon(); }
+
+/*!
+ * @brief   FIXME: Needs desc
+*/
+void HelpSuite::UtilzHelp() { HelpUtilz* hs = new HelpUtilz(); }
 
 /*!
  * @brief   Helper hook for CLI Tool to display help details
@@ -66,9 +102,15 @@ void print_help() {
     " a quality-of-life option for hunting down all my stupid." \
     " This can be used in conjuction with the TestSuite in order to"\
     " maximize the benefit of the CLI Debugging Suite.\n");
-  log->raw_log("\t[1] - HelpSuit details");
-  log->raw_log("\t[2] - Actor details");
-  log->raw_log("\t[3] - BalanceController details");
+  log->raw_log("\t[1] - Actor details");
+  log->raw_log("\t[2] - BalanceController details");
+  log->raw_log("\t[3] - Battle details");
+  log->raw_log("\t[4] - Combat details");
+  log->raw_log("\t[5] - HelpSuit details");
+  log->raw_log("\t[6] - Player details");
+  log->raw_log("\t[7] - StageManager details");
+  log->raw_log("\t[8] - Toon details");
+  log->raw_log("\t[9] - Utilz details");
   log->raw_log("\t[0] - Default Help to rule them all\n");
 }
 
@@ -89,6 +131,12 @@ int main(int argc, char const *argv[]) {
       break;
     case 3: //! Display Balance Help Details
       hs.BalanceHelp();
+      break;
+    case 4: //! Display Combat Help Details
+      hs.CombatHelp();
+      break;
+    case 5: //! Display Player Help Details
+      hs.PlayerHelp();
       break;
     default:
       log->named_log(__FILE__, "Displaying full HelpSuite");
