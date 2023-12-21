@@ -123,20 +123,32 @@ int main(int argc, char const *argv[]) {
   Logger* log = Logger::GetInstance();
   int idx = atoi(argv[1]);
   switch(idx) {
-    case 1: //! Display HelpSuite Helper Details
-      hs._help();
-      break;
-    case 2: //! Display Actor Help Details
+    case 1: //! Display Actor Help Details
       hs.ActorHelp();
       break;
-    case 3: //! Display Balance Help Details
+    case 2: //! Display Balance Help Details
       hs.BalanceHelp();
+      break;
+    case 3: //! Display Battle Help Details
+      hs.BattleHelp();
       break;
     case 4: //! Display Combat Help Details
       hs.CombatHelp();
       break;
-    case 5: //! Display Player Help Details
+    case 5: //! Display HelpSuite Helper Details
+      hs._help();
+      break;
+    case 6: //! Display Player Help Details
       hs.PlayerHelp();
+      break;
+    case 7: //! Display Stage Help Details
+      hs.StageHelp();
+      break;
+    case 8: //! Display Toon Help Details
+      hs.ToonHelp();
+      break;
+    case 9: //! Display Utilz Help Details
+      hs.UtilzHelp();
       break;
     default:
       log->named_log(__FILE__, "Displaying full HelpSuite");

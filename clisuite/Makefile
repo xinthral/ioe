@@ -40,8 +40,7 @@ CXFLAGS = -Wall -pedantic -O3 -fPIC
 # Extra Compiler Options
 CXXFLAGS = -shared -Wl,-soname,
 
-#
-# compiler flags:
+# Emscripten compiler flags:
 # -EXIT_RUNTIME to display output to console
 # Emscriten Compiler Options
 EFLAGS = -0s -g1 -sEXIT_RUNTIME=1 -sWASM=1 -sMODULARIZE=1 -sMALLOC=emmalloc -sALLOW_MEMORY_GROWTH=1 -sEXPORT_ES6 --bind
@@ -50,11 +49,10 @@ EFLAGS = -0s -g1 -sEXIT_RUNTIME=1 -sWASM=1 -sMODULARIZE=1 -sMALLOC=emmalloc -sAL
 EXEC    := engine
 ifeq ($(OS), Windows_NT)
 EXECLOC := ..\\$(EXEC)
-# CXFLAGS := $(EFLAGS)
 else
 EXECLOC := ../$(EXEC)
 endif
-UTIL    := actor balance battle combat config logger player stage toon utilz
+UTIL    := actor balance battle combat config leader logger player stage toon utilz
 
 # GNU Make Compilation Macros: 
 # https://stackoverflow.com/questions/3220277/what-do-the-makefile-symbols-and-mean#3220288
