@@ -70,11 +70,9 @@ int main(int argc, char* argv[]) {
     if (argc > 1) { 
         input += argv[1];
         input += ".wav"; 
-    } else {
-        input += "movie_impact.wav";
-    }
+    } else { input += "mixkit-retro-game-over.wav"; }
     
-    // Replace "your_audio_file.wav" with the path to your WAV file
+    // Instantiate Audio Module 
     SimpleWavReader wavReader(input);
 
     // Access audio data and other information

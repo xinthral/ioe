@@ -52,7 +52,7 @@ EXECLOC := ..\\$(EXEC)
 else
 EXECLOC := ../$(EXEC)
 endif
-UTIL := actor balance battle combat config leader logger player stage toon utilz
+UTIL := #actor balance battle combat config leader logger player stage toon utilz
 MOD1 := wavsampling
 
 # GNU Make Compilation Macros: 
