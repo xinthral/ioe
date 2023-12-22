@@ -102,7 +102,7 @@ int main(int argc, char const *argv[]) {
   TestSuite ts;
   Logger* log = Logger::GetInstance();
   std::vector<std::thread> threadList;
-  char buf[32];
+  char buf[64];
   int choice = 0;
   choice = atoi(argv[1]);
   std::thread cact, cbal, ccom, ccon, clea, cpla, csta, ctoo, cuti;
