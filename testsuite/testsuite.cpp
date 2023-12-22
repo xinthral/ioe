@@ -77,6 +77,7 @@ void print_help() {
     " a quality-of-life option for hunting down all my stupid." \
     " This can be used in conjuction with the HelpSuite in order to"\
     " maximize the benefit of the CLI Debugging Suite.\n");
+  log->raw_log("\t[0] - Default Test to rule them all");
   log->raw_log("\t[1] - Test Actor Module");
   log->raw_log("\t[2] - Test BalanceController Module");
   log->raw_log("\t[3] - Test Combat Module");
@@ -86,7 +87,7 @@ void print_help() {
   log->raw_log("\t[7] - Test Stage Module");
   log->raw_log("\t[8] - Test Toon Module");
   log->raw_log("\t[9] - Test Utilz Module");
-  log->raw_log("\t[0] - Default Test to rule them all\n");
+  log->raw_log("\n");
   exit(0);
 }
 
@@ -107,6 +108,27 @@ int main(int argc, char const *argv[]) {
   std::thread cact, cbal, ccom, ccon, clea, cpla, csta, ctoo, cuti;
   
   switch (choice) {
+    case 0: 
+      sprintf(buf, "All TestCases' Completed...");
+      cact = std::thread(&TestSuite::CaseActor, &ts);
+      threadList.emplace_back(std::move(cact));
+      cbal = std::thread(&TestSuite::CaseBalance, &ts);
+      threadList.emplace_back(std::move(cbal));
+      ccom = std::thread(&TestSuite::CaseCombat, &ts);
+      threadList.emplace_back(std::move(ccom));
+      ccon = std::thread(&TestSuite::CaseConfig, &ts);
+      threadList.emplace_back(std::move(ccon));
+      clea = std::thread(&TestSuite::CaseLeader, &ts);
+      threadList.emplace_back(std::move(clea));
+      cpla = std::thread(&TestSuite::CasePlayer, &ts);
+      threadList.emplace_back(std::move(cpla));
+      csta = std::thread(&TestSuite::CaseStage, &ts);
+      threadList.emplace_back(std::move(csta));
+      ctoo = std::thread(&TestSuite::CaseToon, &ts);
+      threadList.emplace_back(std::move(ctoo));
+      cuti = std::thread(&TestSuite::CaseUtilz, &ts);
+      threadList.emplace_back(std::move(cuti));
+      break;
     case 1:
       sprintf(buf, "Actor TestCase Completed...");
       cact = std::thread(&TestSuite::CaseActor, &ts);
@@ -157,25 +179,7 @@ int main(int argc, char const *argv[]) {
     case 12:
     case 13:
     default:
-      sprintf(buf, "All TestCases' Completed...");
-      cact = std::thread(&TestSuite::CaseActor, &ts);
-      threadList.emplace_back(std::move(cact));
-      cbal = std::thread(&TestSuite::CaseBalance, &ts);
-      threadList.emplace_back(std::move(cbal));
-      ccom = std::thread(&TestSuite::CaseCombat, &ts);
-      threadList.emplace_back(std::move(ccom));
-      ccon = std::thread(&TestSuite::CaseConfig, &ts);
-      threadList.emplace_back(std::move(ccon));
-      clea = std::thread(&TestSuite::CaseLeader, &ts);
-      threadList.emplace_back(std::move(clea));
-      cpla = std::thread(&TestSuite::CasePlayer, &ts);
-      threadList.emplace_back(std::move(cpla));
-      csta = std::thread(&TestSuite::CaseStage, &ts);
-      threadList.emplace_back(std::move(csta));
-      ctoo = std::thread(&TestSuite::CaseToon, &ts);
-      threadList.emplace_back(std::move(ctoo));
-      cuti = std::thread(&TestSuite::CaseUtilz, &ts);
-      threadList.emplace_back(std::move(cuti));
+      sprintf(buf, "\nWarn :: Unknown Test, please review the list and try again.\n");
   }
   
   for (auto& t : threadList) { t.join(); }

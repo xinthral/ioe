@@ -46,7 +46,8 @@ TEST = test
 HELP = help
 DOCS = doc
 CLIS = cli 
-LIBRARIES := core helpsuite testsuite clisuite
+AUDI = audio
+LIBRARIES := core audiosuite clisuite helpsuite testsuite 
 
 # GNU Make Compilation Macros: 
 # https://stackoverflow.com/questions/3220277/what-do-the-makefile-symbols-and-mean#3220288
@@ -58,21 +59,25 @@ LIBRARIES := core helpsuite testsuite clisuite
 # Compile Full porgram
 all: $(DOCS) $(ENGN) $(TEST) $(HELP) $(CLIS) 
 
-# Compile CLISuite
-$(CLIS):
-	$(MAKE) -C clisuite
-
 # Compile Engine
 $(ENGN): 
 	$(MAKE) -C core 
 
-# Compile TestSuite
-$(TEST): 
-	$(MAKE) -C testsuite
+# Compile CLISuite
+$(CLIS):
+	$(MAKE) -C clisuite
+
+# Compile Audio
+$(AUDI):
+	$(MAKE) -C audiosuite 
 
 # Compile HelpSuite
 $(HELP): 
 	$(MAKE) -C helpsuite
+
+# Compile TestSuite
+$(TEST): 
+	$(MAKE) -C testsuite
 
 # Compile Documents 
 $(DOCS): docs/conf.dox
@@ -96,7 +101,6 @@ endif
 
 cleanall:
 	$(RM) *.exe
-	$(MAKE) cleandoc
 	$(MAKE) clean
 	$(foreach d, $(LIBRARIES), $(MAKE) cleanall -C $d &&) true 2>&1 >/dev/null
 

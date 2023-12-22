@@ -15,7 +15,7 @@ TestToon::TestToon() : BaseCase(__FILE__) {
 }
 
 /*!
- * @brief   
+ * @brief   Validate the entire Toon module
 */
 void TestToon::test_all() {
   this->test_toonCreation();
@@ -25,45 +25,45 @@ void TestToon::test_all() {
 }
 
 /*!
- * @brief   
+ * @brief   Validate Instantiation of default Class
 */
 void TestToon::test_toonCreation() {
-  Toon* _toon = new Toon();
-  char* _name = (char*)"Toon_#-1";
-  assert( strcmp(_name, _toon->get_name().c_str()) == 0 );
+  Toon* toon = new Toon();
+  char* name = (char*)"Toon_#-1";
+  assert( strcmp(name, toon->get_name().c_str()) == 0 );
   sprintf(buf, "%s [%s] %s", msgHead, "instantiation", msgTail);
   BaseCase::log->named_log(__FILE__, buf);
 }
 
 /*!
- * @brief   
+ * @brief   Validate Numerical Instantiation
 */
 void TestToon::test_toonCreation_id() {
-  Toon* _toon = new Toon(3);
-  char* _name = (char*)"Toon_#3";
-  assert( strcmp(_name, _toon->get_name().c_str()) == 0 );
+  Toon* toon = new Toon(3);
+  char* name = (char*)"Toon_#3";
+  assert( strcmp(name, toon->get_name().c_str()) == 0 );
   sprintf(buf, "%s [%s] %s", msgHead, "id instantiation", msgTail);
   BaseCase::log->named_log(__FILE__, buf);
 }
 
 /*!
- * @brief   
+ * @brief   Validate Alphabetical Instantiation
 */
 void TestToon::test_toonCreation_name() {
-  Toon* _toon = new Toon("Maji");
-  char* _name = (char*)"Maji";
-  assert( strcmp(_name, _toon->get_name().c_str()) == 0 );
+  Toon* toon = new Toon("Maji");
+  char* name = (char*)"Maji";
+  assert( strcmp(name, toon->get_name().c_str()) == 0 );
   sprintf(buf, "%s [%s] %s", msgHead, "name instantiation", msgTail);
   BaseCase::log->named_log(__FILE__, buf);
 }
 
 /*!
- * @brief   
+ * @brief   Validate AlphaNumerica Instatiation
 */
 void TestToon::test_toonCreation_both() {
-  Toon* _toon = new Toon(4, "Jesse");
-  char* _name = (char*)"Jesse";
-  assert( strcmp(_name, _toon->get_name().c_str()) == 0 );
+  Toon* toon = new Toon(4, "Jesse");
+  char* name = (char*)"Jesse";
+  assert( strcmp(name, toon->get_name().c_str()) == 0 );
   sprintf(buf, "%s [%s] %s", msgHead, "both instantiation", msgTail);
   BaseCase::log->named_log(__FILE__, buf);
 }

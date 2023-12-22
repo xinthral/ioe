@@ -39,7 +39,7 @@ Player::Player(int level, int power, int block) : Player() {
 */
 Player::Player(std::string name, int level, int power, int block) : 
   Player(level, power, block) {
-    this->name = name;
+    this->set_name(name);
 }
 
 /*!
