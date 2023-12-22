@@ -66,7 +66,7 @@ private:
 };
 
 int main(int argc, char* argv[]) {
-    std::string input = "./audiosuite/wavs/";
+    std::string input = "./audiosuite/samples/";
     if (argc > 1) { 
         input += argv[1];
         input += ".wav"; 
