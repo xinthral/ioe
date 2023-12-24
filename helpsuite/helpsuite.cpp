@@ -32,6 +32,7 @@ void HelpSuite::HelpAll() {
   this->BalanceHelp();
   this->BattleHelp();
   this->CombatHelp();
+  this->ItemHelp();
   this->PlayerHelp();
   this->StageHelp();
   this->ToonHelp();
@@ -57,6 +58,11 @@ void HelpSuite::BattleHelp() { HelpBattle* hb = new HelpBattle(); }
  * @brief   FIXME: Needs desc
 */
 void HelpSuite::CombatHelp() { HelpCombat* hc = new HelpCombat(); }
+
+/*!
+ * @brief   FIXME: Needs desc
+*/
+void HelpSuite::ItemHelp() { HelpItem* hi = new HelpItem(); }
 
 /*!
  * @brief   FIXME: Needs desc
@@ -102,16 +108,18 @@ void print_help() {
     " a quality-of-life option for hunting down all my stupid." \
     " This can be used in conjuction with the TestSuite in order to"\
     " maximize the benefit of the CLI Debugging Suite.\n");
-  log->raw_log("\t[1] - Actor details");
-  log->raw_log("\t[2] - BalanceController details");
-  log->raw_log("\t[3] - Battle details");
-  log->raw_log("\t[4] - Combat details");
-  log->raw_log("\t[5] - HelpSuit details");
-  log->raw_log("\t[6] - Player details");
-  log->raw_log("\t[7] - StageManager details");
-  log->raw_log("\t[8] - Toon details");
-  log->raw_log("\t[9] - Utilz details");
-  log->raw_log("\t[0] - Default Help to rule them all\n");
+  log->raw_log("\t [0] - Default Help to rule them all");
+  log->raw_log("\t [1] - Actor details");
+  log->raw_log("\t [2] - BalanceController details");
+  log->raw_log("\t [3] - Battle details");
+  log->raw_log("\t [4] - Combat details");
+  log->raw_log("\t [5] - HelpSuit details");
+  log->raw_log("\t [6] - Item details");
+  log->raw_log("\t [7] - Player details");
+  log->raw_log("\t [8] - StageManager details");
+  log->raw_log("\t [9] - Toon details");
+  log->raw_log("\t[10] - Utilz details");
+  log->raw_log("\n");
 }
 
 /*!
@@ -123,20 +131,35 @@ int main(int argc, char const *argv[]) {
   Logger* log = Logger::GetInstance();
   int idx = atoi(argv[1]);
   switch(idx) {
-    case 1: //! Display HelpSuite Helper Details
-      hs._help();
-      break;
-    case 2: //! Display Actor Help Details
+    case 1: //! Display Actor Help Details
       hs.ActorHelp();
       break;
-    case 3: //! Display Balance Help Details
+    case 2: //! Display Balance Help Details
       hs.BalanceHelp();
+      break;
+    case 3: //! Display Battle Help Details
+      hs.BattleHelp();
       break;
     case 4: //! Display Combat Help Details
       hs.CombatHelp();
       break;
-    case 5: //! Display Player Help Details
+    case 5: //! Display HelpSuite Helper Details
+      hs._help();
+      break;
+    case 6: //! Display Item Help Details
+      hs.ItemHelp();
+      break;
+    case 7: //! Display Player Help Details
       hs.PlayerHelp();
+      break;
+    case 8: //! Display Stage Help Details
+      hs.StageHelp();
+      break;
+    case 9: //! Display Toon Help Details
+      hs.ToonHelp();
+      break;
+    case 10: //! Display Utilz Help Details
+      hs.UtilzHelp();
       break;
     default:
       log->named_log(__FILE__, "Displaying full HelpSuite");

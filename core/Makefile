@@ -20,7 +20,6 @@ ifeq ($(OS), Windows_NT)
 # CC = emcc
 CC = c++
 RM = del
-
 endif
 
 # https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html

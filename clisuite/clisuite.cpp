@@ -6,6 +6,7 @@
 
 //! Extern Variable Declaration
 std::string  __cnf_ = "docs/engine.ini";
+bool vshContinue = false;
 
 /*!
  * @brief   Function to parse user input for a command 
@@ -74,7 +75,9 @@ void run_command(const std::string input, std::vector<std::string>& cmdline) {
       cli_help();
       break;
     case 1:   //! Exit Shell
-      exit(0);
+      vshContinue = false;
+      // exit(0);
+      break;
     case 2:   //! Reload Config Options
       _cnf->reload_state();
       break;
@@ -104,7 +107,6 @@ int main(int argc, const char *argv[]) {
   //! Declare Variables
   Logger* _log = Logger::GetInstance();                 //!< Establish Logger Object
   size_t found;
-  bool vshContinue = false;
   std::string prompt = ">";
   std::string rawInput;
   _log->named_log(__FILE__, "CLI Suite Loaded!");
@@ -128,8 +130,8 @@ int main(int argc, const char *argv[]) {
   while (vshContinue == true) {
     printf("%s ", prompt.c_str());                  //! Display Message Prompt
     std::getline(std::cin, rawInput);               //! Get User Input
-    parse_user_input(rawInput);
-    vshContinue = parse_input(rawInput, "!exit");   //! Conditional to end Shell
+    parse_user_input(rawInput);                     //! Parse User Input
+    // vshContinue = parse_input(rawInput, "!exit");   //! Conditional to end Shell
   }
   /* ********************************** */
 

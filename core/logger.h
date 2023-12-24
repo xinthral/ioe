@@ -21,9 +21,10 @@ public:
   Logger(Logger&) = delete;                   //!< Singletons should not be cloneable
   void operator =(const Logger&) = delete;    //!< Singletons should not be assignable
   static Logger* GetInstance();               //!< Singleton Constructor
+  void alert_log(std::string,std::string);
+  void named_log(std::string,std::string); 
   void raw_log(std::string);
   void timed_log(std::string);
-  void named_log(std::string, std::string); 
   void _help();
   ~Logger();
 };

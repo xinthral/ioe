@@ -10,6 +10,7 @@
 #include "../core/battle.h"
 #include "../core/combat.h"
 #include "../core/config.h"
+#include "../core/item.h"
 #include "../core/leader.h"
 #include "../core/logger.h"
 #include "../core/player.h"
@@ -25,7 +26,7 @@ protected:
   BalanceController*  bal;    //!< Instantiated BalanceController Object
   ConfigManager*      cnf;    //!< Instantiated ConfigManager Object
   Logger*             log;    //!< Instantiated Logger Object
-  char buf[256];
+  char                buf[1024];
 
 public:
   BaseCase();

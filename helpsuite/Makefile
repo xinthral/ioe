@@ -54,7 +54,7 @@ EXECLOC := ..\\$(EXEC)
 else
 EXECLOC := ../$(EXEC)
 endif
-UTIL := actor balance battle combat config leader logger player stage toon utilz
+UTIL := actor balance battle combat config item leader logger player stage toon utilz
 
 # Ask gnuMake to return a list of *.o files from their source counterpart
 SRCFILES := $(patsubst %.cpp, %.o, $(wildcard *.cpp))

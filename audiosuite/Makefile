@@ -17,7 +17,7 @@ CC = g++
 
 # Windows Variants
 ifeq ($(OS), Windows_NT)
-# CC = em++
+# CC = emcc
 CC = c++
 RM = del
 endif
@@ -32,27 +32,28 @@ endif
 #  	-no-pie 								- do not produce a position-independent executable
 #	-fPIC									- Format position-independent code
 # Standard Compiler Options
-CFLAGS = -g -Wno-format -Wno-sign-compare -Wno-uninitialized -Wno-unused-variable -std=c++17
+CFLAGS = -g -Wno-unused-variable -Wno-format -Wno-sign-compare -Wno-uninitialized -std=c++17
 
 # Extended Compiler Options
 CXFLAGS = -Wall -pedantic -O3 -fPIC
 
 # Extra Compiler Options
-CXXFLAGS = -shared -Wl,-soname,
+CXXFLAGS = 
 
 # Emscripten compiler flags:
 # -EXIT_RUNTIME to display output to console
 # Emscriten Compiler Options
-EFLAGS = -0s -g1 -sEXIT_RUNTIME=1 -sWASM=1 -sMODULARIZE=1 -sMALLOC=emmalloc -sALLOW_MEMORY_GROWTH=1 -sEXPORT_ES6 --bind
+EFLAGS = -sEXIT_RUNTIME=1
 
 # Build targets
-EXEC    := engine
+EXEC    := sound
 ifeq ($(OS), Windows_NT)
 EXECLOC := ..\\$(EXEC)
 else
 EXECLOC := ../$(EXEC)
 endif
-UTIL    := actor balance battle combat config item leader logger player stage toon utilz
+UTIL := #actor balance battle combat config leader logger player stage toon utilz
+MOD1 := wavsampling
 
 # GNU Make Compilation Macros: 
 # https://stackoverflow.com/questions/3220277/what-do-the-makefile-symbols-and-mean#3220288
@@ -64,14 +65,13 @@ UTIL    := actor balance battle combat config item leader logger player stage to
 # Ask gnuMake to return a list of *.o files from their source counterpart
 SRCFILES := $(patsubst %.cpp, %.o, $(wildcard *.cpp))
 SRCFILES += $(foreach d, $(UTIL), ../core/$d.o)
-SHAREDFL := libxclisuite.so.1
 
-# Compile Full TestSuite 
-clisuite: $(SRCFILES) 
-	$(CC) $(CFLAGS) $(CXFLAGS) $^ -o $(EXECLOC).exe 
+# Compile Full HelpSuite 
+audio: $(SRCFILES)
+	$(CC) $(CFLAGS) $(CXFLAGS) $^ -o $(EXECLOC).exe
 
-library: $(SRCFILES)
-	$(CC) $(CFLAGS) -o $(SHAREDFL).1 $^ $(CXXFLAGS)$(SHAREDFL)
+$(MOD1): $(MOD1).o
+	$(CC) $(CFLAGS) $(CXFLAGS) $^ -o $(EXECLOC)_$(MOD1).exe
 
 build: $(SRCFILES)
 
@@ -81,7 +81,7 @@ build: $(SRCFILES)
 	$(CC) $(CFLAGS) $(CXFLAGS) -c $< -o $@
 
 clean:
-	$(RM) *.o *.so *.a *.i *.js *.html *.wasm *.stackdump
+	$(RM) *.o *.so *.a *.i *.js *.html *.wasm *.stackdump 
 
 cleanall:
 	$(RM) $(EXECLOC) $(EXECLOC).*

@@ -28,6 +28,26 @@ Logger* Logger::GetInstance() {
 }
 
 /*!
+ * @brief   Log attach with an alert level
+*/
+void Logger::alert_log(std::string level, std::string message) {}
+
+/*!
+ * @brief   Labeled and Stamped Logging
+*/
+void Logger::named_log(std::string fileName, std::string message) {
+  std::string time = Utilz::TimeStamp();
+  char tmp[1024];
+  std::sprintf(tmp, 
+    "%s :: _%s_ :: %s", 
+    time.c_str(), 
+    Utilz::FileName(fileName.c_str()).c_str(),
+    message.c_str()
+  );
+  this->raw_log(tmp);
+}
+
+/*!
  * @brief   Raw Unformatted Logging
 */
 void Logger::raw_log(std::string message) {
@@ -41,21 +61,6 @@ void Logger::timed_log(std::string message) {
   std::string time = Utilz::TimeStamp();
   char tmp[1024];
   std::sprintf(tmp, "%s :: %s", time.c_str(), message.c_str());
-  this->raw_log(tmp);
-}
-
-/*!
- * @brief   Labeled and Stamped Logging
-*/
-void Logger::named_log(std::string fileName, std::string message) {
-  std::string time = Utilz::TimeStamp();
-  char tmp[1024];
-  std::sprintf(tmp, 
-    "%s :: _%s_ :: %s", 
-    time.c_str(), 
-    Utilz::FileName(fileName.c_str()).c_str(), 
-    message.c_str()
-  );
   this->raw_log(tmp);
 }
 

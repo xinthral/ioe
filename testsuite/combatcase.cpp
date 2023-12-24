@@ -36,7 +36,7 @@ void TestCombat::test_eve() {
  * @brief   Player Vs Environment Combat
 */
 void TestCombat::test_pve() {
-  Player* _player = new Player(++_idx, 1, 1);
+  Player* _player = new Player("P",++_idx, 1, 1);
   Toon* _toon = new Toon(++_idx);
   Combat* cc = new Combat(*_player, *_toon);
   cc->begin_combat();
@@ -46,8 +46,8 @@ void TestCombat::test_pve() {
  * @brief   Player Vs Player Combat
 */
 void TestCombat::test_pvp() {
-  Player* _player1 = new Player(++_idx, 1, 1);
-  Player* _player2 = new Player(++_idx, 1, 1);
+  Player* _player1 = new Player("M",++_idx, 1, 1);
+  Player* _player2 = new Player("A",++_idx, 1, 1);
   Combat* cc = new Combat(*_player1, *_player2);
   cc->begin_combat();
 }
