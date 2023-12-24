@@ -85,12 +85,18 @@ $(DOCS): docs/conf.dox
 
 # PreCompile Object Files
 build:
-	$(foreach d, $(LIBRARIES), $(MAKE) build -C $d &&) true 2>&1 >/dev/null
+	$(foreach d,$(LIBRARIES), $(MAKE) build -C $d &&) true 2>&1 >/dev/null
 
 clean:
 	$(RM) *.stackdump $(EXEC) 
 	$(RM) *.o *.so *.a *.i *.js *.html *.wasm 
 	$(foreach d, $(LIBRARIES), $(MAKE) clean -C $d &&) true 2>&1 >/dev/null
+
+cleanaudio:
+	$(MAKE) clean -C audiosuite
+
+cleancore:
+	$(MAKE) clean -C core 
 
 cleandoc:
 ifeq ($(OS), Windows_NT)
@@ -99,9 +105,15 @@ else
 	find docs/html/ docs/latex/ docs/out/ ! -name .gitkeep -type f -delete
 endif
 
+cleanhelp:
+	$(MAKE) clean -C helpsuite
+
+cleantest:
+	$(MAKE) clean -C testsuite
+
 cleanall:
 	$(RM) *.exe
 	$(MAKE) clean
 	$(foreach d, $(LIBRARIES), $(MAKE) cleanall -C $d &&) true 2>&1 >/dev/null
 
-.PHONY: all audio build cleanall cleandoc clean engine helper tester 
+.PHONY: all audio build cleanall cleanaudio cleancore cleandoc cleanhelp cleantest clean engine helper tester 

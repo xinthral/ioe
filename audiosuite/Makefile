@@ -46,7 +46,7 @@ CXXFLAGS =
 EFLAGS = -sEXIT_RUNTIME=1
 
 # Build targets
-EXEC    := audio
+EXEC    := sound
 ifeq ($(OS), Windows_NT)
 EXECLOC := ..\\$(EXEC)
 else

@@ -108,6 +108,7 @@ void print_help() {
     " a quality-of-life option for hunting down all my stupid." \
     " This can be used in conjuction with the TestSuite in order to"\
     " maximize the benefit of the CLI Debugging Suite.\n");
+  log->raw_log("\t [0] - Default Help to rule them all");
   log->raw_log("\t [1] - Actor details");
   log->raw_log("\t [2] - BalanceController details");
   log->raw_log("\t [3] - Battle details");
@@ -118,7 +119,7 @@ void print_help() {
   log->raw_log("\t [8] - StageManager details");
   log->raw_log("\t [9] - Toon details");
   log->raw_log("\t[10] - Utilz details");
-  log->raw_log("\t [0] - Default Help to rule them all\n");
+  log->raw_log("\n");
 }
 
 /*!
