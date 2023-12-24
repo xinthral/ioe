@@ -54,7 +54,7 @@ EXECLOC := ..\$(EXEC)
 else
 EXECLOC := ../$(EXEC)
 endif
-UTIL    := actor balance battle combat config leader logger player stage toon utilz
+UTIL    := actor balance battle combat config item leader logger player stage toon utilz
 
 # GNU Make Compilation Macros: 
 # https://stackoverflow.com/questions/3220277/what-do-the-makefile-symbols-and-mean#3220288

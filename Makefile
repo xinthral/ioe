@@ -57,7 +57,7 @@ LIBRARIES := core audiosuite clisuite helpsuite testsuite
 # $^ evaluates to library.cpp main.cpp
 	
 # Compile Full porgram
-all: $(DOCS) $(ENGN) $(TEST) $(HELP) $(CLIS) 
+all: $(DOCS) $(ENGN) $(TEST) $(HELP) $(CLIS) $(AUDI) 
 
 # Compile Engine
 $(ENGN): 
@@ -104,4 +104,4 @@ cleanall:
 	$(MAKE) clean
 	$(foreach d, $(LIBRARIES), $(MAKE) cleanall -C $d &&) true 2>&1 >/dev/null
 
-.PHONY: all build cleanall cleandoc clean engine helper tester 
+.PHONY: all audio build cleanall cleandoc clean engine helper tester 

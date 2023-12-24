@@ -8,6 +8,7 @@
 #include "../core/battle.h"
 #include "../core/combat.h"
 #include "../core/config.h"
+#include "../core/item.h"
 #include "../core/leader.h"
 #include "../core/logger.h"
 #include "../core/player.h"
@@ -19,6 +20,7 @@
 #include "battlehelp.h"
 #include "combathelp.h"
 #include "confighelp.h"
+#include "itemhelp.h"
 #include "leaderhelp.h"
 #include "playerhelp.h"
 #include "stagehelp.h"
@@ -38,6 +40,7 @@ public:
   void BalanceHelp();
   void CombatHelp();
   void ConfigHelp();
+  void ItemHelp();
   void LeaderHelp();
   void PlayerHelp();
   void StageHelp();

@@ -71,4 +71,4 @@ void TestToon::test_toonCreation_both() {
 /*!
  * @brief   Default Deconstructor
 */
-TestToon::~TestToon() {}
+TestToon::~TestToon() { }

@@ -13,6 +13,7 @@ Combat::Combat() {
   cnf = ConfigManager::GetInstance();
   log = Logger::GetInstance();
   log->named_log(__FILE__, "Combat has been initiated!");
+  std::srand(std::time(NULL));
 }
 
 /*!
@@ -28,11 +29,30 @@ Combat::Combat(Toon& combatant1, Toon& combatant2) : Combat() {
   //! Set Combat State
   combatant1.set_combat_fight();
   combatant2.set_combat_fight();
-  sprintf(
-    buf, "%s is fighting %s", 
-    combatant1.get_name().c_str(), 
-    combatant2.get_name().c_str()
-  );
+  sprintf(buf, "%s is fighting %s", combatant1.get_name().c_str(), combatant2.get_name().c_str());
+  log->named_log(__FILE__, buf);
+  
+  //! Temporary Combat Logic
+  int r = 0;
+  int health1 = combatant1.get_health();
+  int health2 = combatant2.get_health(); 
+  int step = 0;
+  while (combatant1.isAlive() && combatant2.isAlive()) {
+    r = rand() % 5 + 1;
+    if (step % 2 == 0) { 
+      sprintf(buf, "%s hits %s for %d/%d.", combatant1.get_name().c_str(), combatant2.get_name().c_str(), r, health2);
+      health2 -= r;
+      if (health2 <= 0) { combatant2.set_health_dead(); }
+    } else { 
+      sprintf(buf, "%s hits %s for %d/%d.", combatant2.get_name().c_str(), combatant1.get_name().c_str(), r, health1);
+      health1 -= r; 
+      if (health1 <= 0) { combatant1.set_health_dead(); }
+    }
+    step++;
+    log->named_log(__FILE__, buf);
+  }
+
+  sprintf(buf, "EvE Combat Ended! %s Won", (health1 > 0) ? combatant1.get_name().c_str() : combatant2.get_name().c_str());
   log->named_log(__FILE__, buf);
 }
 
@@ -84,50 +104,22 @@ Combat::Combat(Player& combatant1, Player& combatant2) : Combat() {
 */
 void Combat::begin_combat() {
   //! Seed and Generate Random Number
-  std::srand(std::time(0));
   int r = rand() % 5 + 1;
-  switch(this->matchup) {
+  switch (this->matchup) {
     case Condition::EvE: {
       log->named_log(__FILE__, "EvE Combat!");
-      this->eVe();
     } break;
     case Condition::PvE: {
       log->named_log(__FILE__, "PvE Combat!");
-      this->pVe();
     } break;
     case Condition::PvP: {
       log->named_log(__FILE__, "PvP Combat!");
-      this->pVp();
     } break;
     default: break;
   } 
   sprintf(buf, "Sleeping for %d", r);
   log->named_log(__FILE__, buf);
   // sleep(r);
-}
-
-/*!
- * @brief   Environment Vs Environment Combat Call
-*/
-void Combat::eVe() {
-  sprintf(buf, "NPC Combat!");
-  log->named_log(__FILE__, buf);
-}
-
-/*!
- * @brief   Player Vs Environment Combat Call
-*/
-void Combat::pVe() {
-  sprintf(buf, "Mob Combat!");
-  log->named_log(__FILE__, buf);
-}
-
-/*!
- * @brief   Player Vs Player Combat Call
-*/
-void Combat::pVp() {
-  sprintf(buf, "Player Combat!");
-  log->named_log(__FILE__, buf);
 }
 
 /*!
