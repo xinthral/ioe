@@ -1,6 +1,7 @@
 /*!
  * @class   ConfigManager config.h config.cpp
- * @brief   ConfigManager Docstring
+ * @brief   ConfigManager handles configuration loading
+ *          and managing throughout the engine. 
  */
 #include "config.h"
 
@@ -30,23 +31,23 @@ ConfigManager* ConfigManager::GetInstance() {
 
 /*!
  * @brief   Injest Setting into struct, and return struct size.
- * @param[in] option The Key value for lookup
- * @param[in] value  The data value associated with the key
+ * @param[in] option - The Key value for lookup
+ * @param[in] value  - The data value associated with the key
  * @return  Returns current config queue size 
 */
 size_t ConfigManager::add_setting(const std::string& option, const std::string& value) {
-    this->settings[option] = value;
-    return this->settings.size();
+  this->settings[option] = value;
+  return this->settings.size();
 }
 
 /*!
  * @brief   Remove Setting from injested list
- * @param[in] option 
+ * @param[in] option - The name of the Configuration Option 
  * @return  Current Size of Settings List
 */
 size_t ConfigManager::rem_setting(const std::string& option) {
-    this->settings.erase(option);
-    return this->settings.size();
+  this->settings.erase(option);
+  return this->settings.size();
 }
 
 /*!
@@ -58,11 +59,20 @@ void ConfigManager::reload_state() { this->load_config(true); }
 
 /*!
  * @brief   Return the Value of a Configuration Option 
- * @param[in] option The name of the Configuration Option
+ * @param[in] option - The name of the Configuration Option
  * @return  The value related to input key
  */
 std::string ConfigManager::raw_config(const std::string& option) { return this->settings[option]; }
 
+/*!
+ * @brief   Return the list of authorized commands for the 
+ *          CLI Suite
+ * @param[out] option - A string array to recieve the commands
+*/
+void ConfigManager::get_authorizedCommands(std::vector<std::string>& input) { 
+  std::string inp = this->raw_config("CMDLIST");
+  Utilz::StringToArray(inp, input);
+}
 
 /*!
  * @brief   Helper Function: Attack 
@@ -114,41 +124,44 @@ std::string ConfigManager::get_version() { return this->raw_config("VERSION"); }
 
 /*!
  * @brief   Reads in Config File and Parses Options
- * @param[in] _debug Debugging Option
+ * @param[in] _debug - Debugging Option
  * @return  Confirmation that all values were loaded
  */
 bool ConfigManager::load_config(bool _debug) {
-    char buf[64];
-    std::size_t pos;                                //! Positional Pointer for delimeter
-    std::string row;                                //! Temporary File Row Storage
-    std::string opt;                                //! Settings Option
-    std::string val;                                //! Settings Value
-    std::size_t qsize = 0;                          //! Current Size of Queue
-    int cnt = 0;
-    conf.open("docs/engine.ini");                   //! Open INI file for reading
-    while (std::getline(conf, row)) {
-        // DEBUG Line
-        if (_debug) { 
-            sprintf(buf, "%d: %s\n", cnt++, row.c_str()); 
-            log->named_log(__FILE__, buf);
-        }
-        pos = row.find(delim);                      //! Locate Position of Delimiter
-        if (pos != std::string::npos){
-            opt = row.substr(0, pos);               //! Grab Option Name
-            Utilz::Strip(opt);
-            val = row.substr(pos+1, row.size()-1);  //! Grab Option Value
-            Utilz::Strip(val);
-            qsize = this->add_setting(opt, val);    //! Load Setting
-            cnt++;                                  //! Increment Settings counter
-        }
+  char buf[64];
+  std::size_t pos;                            //! Positional Pointer for delimeter
+  std::string row;                            //! Temporary File Row Storage
+  std::string opt;                            //! Settings Option
+  std::string val;                            //! Settings Value
+  std::size_t qsize = 0;                      //! Current Size of Queue
+  int cnt = 0;
+  conf.open("docs/engine.ini");               //! Open INI file for reading
+  while (std::getline(conf, row)) {
+    // DEBUG Line
+    if (_debug) { 
+      sprintf(buf, "%s", row.c_str()); 
+      log->named_log(__FILE__, buf);
     }
-    conf.close();                                   //! Close INI file descriptor
-    return cnt == qsize;
+    pos = row.find(delim);                    //! Locate Position of Delimiter
+    if (pos != std::string::npos){
+      opt = row.substr(0, pos);               //! Grab Option Name
+      Utilz::Strip(opt);
+      val = row.substr(pos+2, row.size()-1);  //! Grab Option Value
+      qsize = this->add_setting(opt, val);    //! Load Setting
+      cnt++;                                  //! Increment Settings counter
+    }
+  }
+  conf.close();                               //! Close INI file descriptor
+  return cnt == qsize;
 }
 
 /*!
  * @brief   Helper Hook used in CLI Help System
 */
-void ConfigManager::_help() { }
+void ConfigManager::_help() {
+  std::string helpline = "\nConfigManager Helpline!\n";
+  helpline += "\n";
+  log->named_log(__FILE__, helpline);
+}
 
-ConfigManager::~ConfigManager() {}
+ConfigManager::~ConfigManager() { }

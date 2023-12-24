@@ -32,7 +32,7 @@ endif
 #  	-no-pie 								- do not produce a position-independent executable
 #	-fPIC									- Format position-independent code
 # Standard Compiler Options
-CFLAGS = -g -Wno-format -Wno-sign-compare -Wno-uninitialized -std=c++17
+CFLAGS = -g -Wno-unused-variable -Wno-format -Wno-sign-compare -Wno-uninitialized -std=c++17
 
 # Extended Compiler Options
 CXFLAGS = -Wall -pedantic -O3 -fPIC
@@ -54,7 +54,7 @@ EXECLOC := ..\\$(EXEC)
 else
 EXECLOC := ../$(EXEC)
 endif
-UTIL := actor balance combat config logger stage toon utilz
+UTIL := actor balance battle combat config item leader logger player stage toon utilz
 
 # Ask gnuMake to return a list of *.o files from their source counterpart
 SRCFILES := $(patsubst %.cpp, %.o, $(wildcard *.cpp))
@@ -75,7 +75,7 @@ SHAREDFL := libhelpsuite.so.1
 
 # Compile Full HelpSuite 
 helpsuite: $(SRCFILES) 
-	$(CC) $(CFLAGS) $(CXFLAGS) $^ -o $(EXECLOC)
+	$(CC) $(CFLAGS) $(CXFLAGS) $^ -o $(EXECLOC).exe
 
 library: $(SRCFILES)
 	$(CC) $(CFLAGS) -o $(SHAREDFL).1 $^ $(CXXFLAGS)$(SHAREDFL)

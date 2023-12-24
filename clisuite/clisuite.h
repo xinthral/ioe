@@ -1,9 +1,8 @@
 #ifndef XENGINE_H
 #define XENGINE_H
 
-
 #include <iostream>
-#include <string>
+#include <string.h>
 #include <vector>
 #include "../core/actor.h"
 #include "../core/balance.h"
@@ -15,7 +14,16 @@
 #include "../core/stage.h"
 #include "../core/toon.h"
 
-bool parse_input();
-void print_help();
+std::unordered_map<std::string, int> _CMDMAP = {
+  {"help",    0},
+  {"exit",    1},
+  {"reload",  2},
+  {"test",    3},
+};
 
-#endif // XENGINE_H //`
+void parse_user_input(std::string);
+bool parse_input(const std::string, const std::string);
+void print_help();
+void run_command(const std::string, std::vector<std::string>&);
+
+#endif // XENGINE_H //

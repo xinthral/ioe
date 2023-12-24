@@ -7,14 +7,17 @@
 /*!
  * @brief   Default Constructor
 */
-Toon::Toon() : Toon(-1, "Toon") { }
+Toon::Toon() : Toon(-1, "Toon_#-1") { }
 
 /*!
  * @overload
  * @brief   Constructor Initializor
  * @param[in] id - Character Identity Number
 */
-Toon::Toon(int id) : Toon(id, "Toon") { }
+Toon::Toon(int id) : Toon(id, "Toon") { 
+  sprintf(buf, "Toon_#%d", id); 
+  this->set_name(buf); 
+}
 
 /*!
  * @overload
@@ -31,8 +34,8 @@ Toon::Toon(std::string name) : Toon(-1, name) { }
  * @param[in] name - Name of the Character
 */
 Toon::Toon(int id, std::string name) { 
-    this->set_id(id);
-    this->set_name(name);
+  this->set_id(id);
+  this->set_name(name);
 }
 
 /*!
@@ -58,9 +61,13 @@ void Toon::set_name(std::string name) { this->name = name; }
 /*!
  * @brief   Helper Hook used in CLI Help System
 */
-void Toon::_help() {}
+void Toon::_help() {
+  std::string helpline = "\nToon Helpline!\n";
+  helpline += "\n";
+  log->named_log(__FILE__, helpline);
+}
 
 /*!
  * @brief   Default Deconstructor
 */
-Toon::~Toon() {}
+Toon::~Toon() { }

@@ -8,14 +8,14 @@
  * @brief   Default Constructor 
 */
 Actor::Actor() {
-    cnf = ConfigManager::GetInstance();
-    this->aiState = IDLE;
-    this->condition = HEALTHY;
-    this->baseAttack = cnf->get_attack();
-    this->baseDefense = cnf->get_defense();
-    this->baseHealth = cnf->get_health();
-    this->baseFlux = cnf->get_flux();
-    this->name = "Actor_" + Utilz::TailString(2, Utilz::TimeStamp());
+  cnf = ConfigManager::GetInstance();
+  this->aiState = IDLE;
+  this->condition = HEALTHY;
+  this->baseAttack = cnf->get_attack();
+  this->baseDefense = cnf->get_defense();
+  this->baseHealth = cnf->get_health();
+  this->baseFlux = cnf->get_flux();
+  this->name = "Actor_" + Utilz::TailString(2, Utilz::TimeStamp());
 }
 
 /*!
@@ -168,6 +168,17 @@ void Actor::set_health_sick() { this->set_healthstate(SICK); }
  * @brief   Set Health State to Dead 
 */
 void Actor::set_health_dead() { this->set_healthstate(DEAD); }
+
+/*!
+ * @brief   Helper Hook used in CLI Help System
+*/
+void Actor::_help() {
+  std::string helpline = "\nActor HelpLine!\n";
+  helpline += "\n\tThis is the base class for all Actor's in the scene. NPC's, Players, and all";
+  helpline += "\nspecialty mobs are derived from this class"; 
+  helpline += "\n";
+  log->named_log(__FILE__, helpline);
+}
 
 /*!
  * @brief   Default Deconstructor 

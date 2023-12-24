@@ -1,6 +1,6 @@
 /*!
  * @class   HelpHelping helping.h helping.cpp
- * @brief   Help details about the help system itself. 
+ * @brief   Help details about the HelpSuite itself. 
  * @details Includes features like how it works, hints 
  *          working with the engine and more.
 */

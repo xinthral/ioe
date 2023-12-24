@@ -8,6 +8,7 @@ protected:
     std::string name;
     int attack;
     int defense;
+    char buf[128];
 public:
     Toon();
     Toon(int);

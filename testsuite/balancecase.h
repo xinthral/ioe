@@ -7,16 +7,16 @@
 
 class TestBalance : public BaseCase {
 protected:
-    int baseAtk;
-    int baseDef;
-    int baseHlt;
+  int baseAtk;
+  int baseDef;
+  int baseHlt;
 public:
-    TestBalance();
-    void test_balance();
-    void def_atk_ratio();
-    void difficulty_level();
-    void difficulty_range();
-    ~TestBalance();
+  TestBalance();
+  void test_all();
+  void def_atk_ratio();
+  void difficulty_level();
+  void difficulty_range();
+  ~TestBalance();
 };
 
 #endif // TESTBALANCE_H //

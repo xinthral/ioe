@@ -1,6 +1,6 @@
 /*!
  * @class   HelpTesting testing.h testing.cpp
- * @brief   Help details about Testing Features of Engine 
+ * @brief   Help details about TestSuite Features of Engine 
  * @details Help details about the testing system used 
  *          to perform unit testing and it's functionality.
 */

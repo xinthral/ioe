@@ -1,7 +1,77 @@
 TODO: 
+x Docstrings motherfucker, do you use them!?
 _ Configure Debug
 _ Update modules to implement Helper system
-x Docstrings motherfucker, do you use them!?
+
+: HelpSuite
+_ <---Do More
+
+: TestSuite
+_ <---Do More
+_ TestActor
+  * _ isFighting 
+  * _ isAlive 
+  * _ get_attack 
+  * _ get_defense
+  * _ get_flux
+  * _ get_health
+  * _ get_id
+  * _ get_name
+  * _ get_combatstate
+  * _ set_combatstate
+  * _ set_combat_idle
+  * _ set_combat_patrol
+  * _ set_combat_fight
+  * _ set_combat_flee
+  * _ set_combat_follow
+  * _ get_healthstate
+  * _ set_healthstate
+  * _ set_health_healthy
+  * _ set_health_hurting
+  * _ set_health_critical
+  * _ set_health_sick
+  * _ set_health_dead
+_ TestBalance
+  * _ scalar 
+  * _ get_base
+  * _ get_difficulty
+  * _ get_difficulty_str
+_ TestBattle
+  * _ EvE
+  * _ PvE
+  * _ PvP
+_ TestCombat
+  * _ EvE
+  * _ PvE
+  * _ PvP
+  * _ begin_combat  
+_ TestConfig
+  * _ load_config
+  * _ reload_state
+  * _ add_setting 
+  * _ rem_setting
+  * _ raw_config 
+  * _ get_authorized_cli_commands
+  * _ get_attack
+  * _ get_base
+  * _ get_defense
+  * _ get_difficulty
+  * _ get_flux
+  * _ get_health
+  * _ get_settingsSize
+  * _ get_version
+_ TestPlayer
+  * _ 
+_ TestStage
+  * _  
+_ TestToon
+  * _  
+_ TestUtilz
+  * _ StringToArray
+  * _ HeadString
+  * _ TailString
+  * _ TimeStamp
+  * _ Strip
 
 : Actors
 _ <---Do More
@@ -9,26 +79,23 @@ _ <---Do More
 : BalanceController
 _ <---Do More
 
+: Battle
+_ <---Do More
+
 : Combat
 _ <---Do More
 
 : ConfigManager
+_ <---Do More
 X Parse Sections, and Keys into an object
-_ <---Do More
-
-: Engine
-_ <---Do More
-
-: HelpSuite
-_ <---Do More
 
 : LeaderBoard
-_ Make the leader board
 _ <---Do More
+_ Make the leader board
 
 : Logger
-x Add Logging
 _ <---Do More
+x Add Logging
 
 : Players
 _ <---Do More
@@ -36,17 +103,22 @@ _ <---Do More
 : StageManager
 _ <---Do More
 
-: TestSuite
-_ <---Do More
-
 : Toons
 _ <---Do More
 
 : Utilz
 _ <---Do More
+x FileName Parser
+x Formatted TimeStamps
+x StringToArray Conversion
+x Truncation Features (HeadString, TailString)
+x String Strip() functionality
 
 :FrontEnd
 https://www.w3schools.com/react/react_getstarted.asp
 
-:Embedded Compiler
+:Embedded Compiler (Doesn't handle advanced CPP features)
 https://emscripten.org/docs/getting_started/Tutorial.html
+
+: URLs
+https://mixkit.co/free-sound-effects/

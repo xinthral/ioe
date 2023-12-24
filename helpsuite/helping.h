@@ -1,5 +1,5 @@
-#ifndef HELPHELPSUITE_H
-#define HELPHELPSUITE_H
+#ifndef HELPHELPING_H
+#define HELPHELPING_H
 
 #include "basehelp.h"
 
@@ -7,8 +7,8 @@ class HelpHelping : public BaseHelp {
 protected:
 private:
 public:
-    HelpHelping();
-    ~HelpHelping();
+  HelpHelping();
+  ~HelpHelping();
 };
 
-#endif // HELPHELPSUITE_H //
+#endif // HELPHELPING_H //
