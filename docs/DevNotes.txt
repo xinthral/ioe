@@ -76,16 +76,16 @@ _ TestUtilz
 : Actors
 _ <---Do More
 
-: Balance
+: BalanceController
 _ <---Do More
 
-: Battle 
+: Battle
 _ <---Do More
 
 : Combat
 _ <---Do More
 
-: Config
+: ConfigManager
 _ <---Do More
 X Parse Sections, and Keys into an object
 
