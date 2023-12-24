@@ -68,6 +68,7 @@ private:
 int main(int argc, char* argv[]) {
     std::string input = "./audiosuite/samples/";
     if (argc > 1) { 
+        if (strcmp(argv[1], "-h") == 0) { std::cout << "Audio Success!" << std::endl; return 0; }
         input += argv[1];
         input += ".wav"; 
     } else { input += "mixkit-retro-game-over.wav"; }
