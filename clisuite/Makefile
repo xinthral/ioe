@@ -52,7 +52,7 @@ EXECLOC := ..\\$(EXEC)
 else
 EXECLOC := ../$(EXEC)
 endif
-UTIL    := actor balance battle combat config item leader logger player stage toon utilz
+MODS    := actor audio balance battle clock combat config item leader logger player stage toon utilz
 
 # GNU Make Compilation Macros: 
 # https://stackoverflow.com/questions/3220277/what-do-the-makefile-symbols-and-mean#3220288
@@ -63,7 +63,7 @@ UTIL    := actor balance battle combat config item leader logger player stage to
 
 # Ask gnuMake to return a list of *.o files from their source counterpart
 SRCFILES := $(patsubst %.cpp, %.o, $(wildcard *.cpp))
-SRCFILES += $(foreach d, $(UTIL), ../core/$d.o)
+SRCFILES += $(foreach d, $(MODS), ../core/$d.o)
 SHAREDFL := libxclisuite.so.1
 
 # Compile Full TestSuite 

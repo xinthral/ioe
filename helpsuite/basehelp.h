@@ -2,6 +2,7 @@
 #define HELPBASE_H
 
 #include "../core/actor.h"
+#include "../core/audio.h"
 #include "../core/balance.h"
 #include "../core/battle.h"
 #include "../core/config.h"

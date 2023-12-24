@@ -15,3 +15,4 @@ HelpLeader::HelpLeader() { }
  * @brief   Default Deconstructor
 */
 HelpLeader::~HelpLeader() { }
+

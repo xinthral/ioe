@@ -85,7 +85,7 @@ $(DOCS): docs/conf.dox
 
 # PreCompile Object Files
 build:
-	$(foreach d,$(LIBRARIES), $(MAKE) build -C $d &&) true 2>&1 >/dev/null
+	$(foreach d, $(LIBRARIES), $(MAKE) build -C $d &&) true 2>&1 >/dev/null
 
 clean:
 	$(RM) *.stackdump $(EXEC) 

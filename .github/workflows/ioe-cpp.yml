@@ -1,4 +1,4 @@
-name: C/C++ CI
+name: IoE Workflow 
 
 on:
   push:
@@ -13,17 +13,21 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-      name: make engine
-    - run: make engine
-      name: make cli
-    - run: make cli
-      name: clisuite
-    - run: /home/runner/work/ioe/ioe/engine.exe 0
-      name: make test
-    - run: make test
-      name: testsuite
-    - run: /home/runner/work/ioe/ioe/tester.exe 0
-      name: make help
-    - run: make help
-      name: helpsuite
-    - run: /home/runner/work/ioe/ioe/helper.exe 0
+    - name: build engine 
+      run: make engine
+    - name: build audiosuite
+      run: make audio
+    - name: test audiosuite
+      run: /home/runner/work/ioe/ioe/mixer.exe
+    - name: build cli 
+      run: make cli
+    - name: test clisuite 
+      run: /home/runner/work/ioe/ioe/engine.exe 0
+    - name: build testsuite
+      run: make test
+    - name: test testsuite
+      run: /home/runner/work/ioe/ioe/tester.exe 0
+    - name: build helpsuite
+      run: make help
+    - name: test helpsuite
+      run: /home/runner/work/ioe/ioe/helper.exe 0

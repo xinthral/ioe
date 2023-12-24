@@ -5,6 +5,7 @@
 #include <string.h>
 #include <thread>
 #include "actorcase.h"
+#include "audiocase.h"
 #include "balancecase.h"
 #include "combatcase.h"
 #include "configcase.h"
@@ -21,6 +22,7 @@ private:
 public:
     TestSuite();
     void CaseActor();
+    void CaseAudio();
     void CaseBalance();
     void CaseCombat();
     void CaseConfig();
