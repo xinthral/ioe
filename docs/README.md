@@ -13,12 +13,12 @@ make doc
 #### Core Engine, vrooom: 
 ```bash
 make engine 
-./audio.exe -h
 ```
 
 #### AudioSuite Allows for sound testing
 ```bash
 make audio
+./mixer.exe -h
 ```
 
 #### CLISuite Interfacing with that Line Command

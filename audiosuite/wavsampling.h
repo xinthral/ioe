@@ -8,6 +8,7 @@
 class WaveSampler {
 protected:
 private:
+  Logger* log;
 public:
   AudioDriver* wavReader;
   WaveSampler();

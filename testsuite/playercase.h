@@ -9,7 +9,7 @@ protected:
   Player* dummy;
   char msgHead[32];
   char msgTail[16];
-  char msgNote[64];
+  char msgNote[128];
 
 private:
 public:

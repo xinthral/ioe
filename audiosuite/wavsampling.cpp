@@ -1,14 +1,16 @@
 #include "wavsampling.h"
 
-WaveSampler::WaveSampler() { }
+WaveSampler::WaveSampler() {
+  log = Logger::GetInstance();
+}
 
 void WaveSampler::sampleFile(const std::string& filename) {
   //! Scoped Variables
-  Logger* log = Logger::GetInstance();
   char buf[128];
 
   //! Instantiate Audio Module 
-  wavReader = new AudioDriver(filename);
+  wavReader = new AudioDriver();
+  wavReader->readWavData(filename);
 
   //! Access audio data and other information
   if (!wavReader->getAudioData().empty()) {

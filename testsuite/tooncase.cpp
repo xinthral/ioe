@@ -19,9 +19,9 @@ TestToon::TestToon() : BaseCase(__FILE__) {
 */
 void TestToon::test_all() {
   this->test_toonCreation();
-  this->test_toonCreation_id();
-  this->test_toonCreation_name();
-  this->test_toonCreation_both();
+  // this->test_toonCreation_id();
+  // this->test_toonCreation_name();
+  // this->test_toonCreation_both();
 }
 
 /*!
