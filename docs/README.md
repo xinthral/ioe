@@ -13,12 +13,6 @@ make doc
 #### Core Engine, vrooom: 
 ```bash
 make engine 
-./audio.exe -h
-```
-
-#### AudioSuite Allows for sound testing
-```bash
-make audio
 ```
 
 #### AudioSuite Allows for sound testing
