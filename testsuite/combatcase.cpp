@@ -30,13 +30,15 @@ void TestCombat::test_eve() {
   Toon* _toon2 = new Toon(++_idx);
   Combat* cc = new Combat(*_toon1, *_toon2);
   cc->begin_combat();
+  log->named_log(__FILE__, "EvE Combat Tested!");
 }
 
 /*! 
  * @brief   Player Vs Environment Combat
 */
 void TestCombat::test_pve() {
-  Player* _player = new Player("P",++_idx, 1, 1);
+  Player* _player = new Player("Player", ++_idx, 1, 1);
+  log->named_log(__FILE__, "PvE Combat Tested!");
   Toon* _toon = new Toon(++_idx);
   Combat* cc = new Combat(*_player, *_toon);
   cc->begin_combat();
@@ -46,10 +48,11 @@ void TestCombat::test_pve() {
  * @brief   Player Vs Player Combat
 */
 void TestCombat::test_pvp() {
-  Player* _player1 = new Player("M",++_idx, 1, 1);
-  Player* _player2 = new Player("A",++_idx, 1, 1);
+  Player* _player1 = new Player("Max", ++_idx, 1, 1);
+  Player* _player2 = new Player("Min", ++_idx, 1, 1);
   Combat* cc = new Combat(*_player1, *_player2);
   cc->begin_combat();
+  log->named_log(__FILE__, "PvP Combat Tested!");
 }
 
 /*! 

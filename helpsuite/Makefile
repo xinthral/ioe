@@ -54,12 +54,8 @@ EXECLOC := ..\\$(EXEC)
 else
 EXECLOC := ../$(EXEC)
 endif
-UTIL := actor balance battle combat config item leader logger player stage toon utilz
+MODS 		:= actor audio balance battle clock combat config item leader logger player stage toon utilz
 
-# Ask gnuMake to return a list of *.o files from their source counterpart
-SRCFILES := $(patsubst %.cpp, %.o, $(wildcard *.cpp))
-SRCFILES += $(foreach d, $(UTIL), ../$d.o)
-SHAREDFL := libhelpsuite.so.1
 
 # GNU Make Compilation Macros: 
 # https://stackoverflow.com/questions/3220277/what-do-the-makefile-symbols-and-mean#3220288
@@ -70,7 +66,10 @@ SHAREDFL := libhelpsuite.so.1
 
 # Ask gnuMake to return a list of *.o files from their source counterpart
 SRCFILES := $(patsubst %.cpp, %.o, $(wildcard *.cpp))
-SRCFILES += $(foreach d, $(UTIL), ../core/$d.o)
+SRCFILES += $(foreach d, $(MODS), ../$d.o)
+# Ask gnuMake to return a list of *.o files from the engine core 
+SRCFILES := $(patsubst %.cpp, %.o, $(wildcard *.cpp))
+SRCFILES += $(foreach d, $(MODS), ../core/$d.o)
 SHAREDFL := libhelpsuite.so.1
 
 # Compile Full HelpSuite 

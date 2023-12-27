@@ -44,8 +44,9 @@ CXXFLAGS = $(CXFLAGS) -Wall -pedantic -O3
 EFLAGS = -sEXIT_RUNTIME=1
 
 # Build targets
-EXEC = engine
-MOD1 = utilz
+EXEC := engine
+#MODS := actor audio balance battle clock combat config item leader logger player stage toon utilz
+
 ifeq ($(OS), Windows_NT)
 EXECLOC := ..\\$(EXEC)
 # EXECLOC = $(EFLAGS)

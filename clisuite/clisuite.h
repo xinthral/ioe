@@ -5,6 +5,7 @@
 #include <string.h>
 #include <vector>
 #include "../core/actor.h"
+#include "../core/audio.h"
 #include "../core/balance.h"
 #include "../core/battle.h"
 #include "../core/combat.h"
@@ -18,7 +19,8 @@ std::unordered_map<std::string, int> _CMDMAP = {
   {"help",    0},
   {"exit",    1},
   {"reload",  2},
-  {"test",    3},
+  {"chain",   3},
+  {"create",  4},
 };
 
 void parse_user_input(std::string);

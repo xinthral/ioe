@@ -11,7 +11,7 @@
 /*!
  * @brief   Default Constructor
 */
-HelpPlayer::HelpPlayer() { ptest = new Player(); ptest->_help(); }
+HelpPlayer::HelpPlayer() { ptest = new Player("HelpPlayer", 1, 1, 1); ptest->_help(); }
 
 /*!
  * @brief   Default Deconstructor

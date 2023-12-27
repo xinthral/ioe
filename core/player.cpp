@@ -10,10 +10,11 @@
  * @details If no values are provided, then default
  *          values are initialized as (1, 1, 1).
 */
-Player::Player() {
+Player::Player() : Player("P1", 1, 1, 1) {
   log = Logger::GetInstance();
-  sprintf(buf, "Level %d Player initiated.", level);
-  log->named_log(__FILE__, buf);
+  const std::string fbuff = __FILE__;
+  sprintf(buf, "%s Level %d Player initiated.", level);
+  log->named_log(fbuff, buf);
 }
 
 /*!
@@ -23,11 +24,7 @@ Player::Player() {
  * @param[in] power - Cummulative Power of Player
  * @param[in] block - Defense of the Player
 */
-Player::Player(int level, int power, int block) : Player() { 
-  this->level = level;
-  this->power = power;
-  this->block = block;
-}
+Player::Player(int level, int power, int block) : Player("Player" + level, level, power, block) { }
 
 /*!
  * @overload
@@ -37,9 +34,18 @@ Player::Player(int level, int power, int block) : Player() {
  * @param[in] power - Cummulative Power of Player
  * @param[in] block - Defense of the Player
 */
-Player::Player(std::string name, int level, int power, int block) : 
-  Player(level, power, block) {
-    this->set_name(name);
+Player::Player(std::string name, int level, int power, int block) {
+  // Get the current time
+  auto currentTime = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
+
+  // Convert the current time to a local time structure
+  std::tm* localTime = std::localtime(&currentTime);
+
+  // Extract seconds from the local time structure
+  int seconds = localTime->tm_sec;
+
+  this->set_id(seconds);
+  this->set_name(name);
 }
 
 /*!

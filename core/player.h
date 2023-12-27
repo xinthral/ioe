@@ -1,13 +1,15 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
+#include <chrono>
+#include <ctime>
 #include "actor.h"
 #include "logger.h"
 
 class Player : public Actor {
 private:
   Logger* log;                          //!< Log Manager Instantiation
-  char buf[128];                        //!< Buffer Value for Logger outputs
+  char buf[256];                        //!< Buffer Value for Logger outputs
   int bhealth  = Actor::baseHealth;     //!< Base Value inherited from Actor
   int bdefense = Actor::baseDefense;    //!< Base Value inherited from Actor
   int bflux    = Actor::baseFlux;       //!< Base Value inherited from Actor

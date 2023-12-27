@@ -46,14 +46,15 @@ CXXFLAGS =
 EFLAGS = -sEXIT_RUNTIME=1
 
 # Build targets
-EXEC    := audio
+
+EXEC	:= mixer
 ifeq ($(OS), Windows_NT)
-EXECLOC := ..\\$(EXEC)
+EXECLOC	:= ..\\$(EXEC)
 else
-EXECLOC := ../$(EXEC)
+EXECLOC	:= ../$(EXEC)
 endif
-UTIL := #actor balance battle combat config leader logger player stage toon utilz
-MOD1 := wavsampling
+MODS	:= actor audio balance battle clock combat config leader logger player stage toon utilz
+MOD1	:= wavsampling
 
 # GNU Make Compilation Macros: 
 # https://stackoverflow.com/questions/3220277/what-do-the-makefile-symbols-and-mean#3220288
@@ -64,7 +65,7 @@ MOD1 := wavsampling
 
 # Ask gnuMake to return a list of *.o files from their source counterpart
 SRCFILES := $(patsubst %.cpp, %.o, $(wildcard *.cpp))
-SRCFILES += $(foreach d, $(UTIL), ../core/$d.o)
+SRCFILES += $(foreach d, $(MODS), ../core/$d.o)
 
 # Compile Full HelpSuite 
 audio: $(SRCFILES)

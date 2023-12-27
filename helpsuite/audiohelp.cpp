@@ -1,18 +1,18 @@
 /*!
- * @class   HelpLeader leaderhelp.h leaderhelp.cpp
- * @brief   Help details about the LeaderBoard module. 
+ * @class   HelpAudio audiohelp.h audiohelp.cpp
+ * @brief   Help details about the Audio module. 
  * @details Includes features like how it works, hints 
  *          working with the engine and more.
 */
-#include "leaderhelp.h"
+#include "audiohelp.h"
 
 /*!
  * @brief   Default Constructor
 */
-HelpLeader::HelpLeader() { }
+HelpAudio::HelpAudio() { }
 
 /*!
  * @brief   Default Deconstructor
 */
-HelpLeader::~HelpLeader() { }
+HelpAudio::~HelpAudio() { }
 
