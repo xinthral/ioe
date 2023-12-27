@@ -1,3 +1,4 @@
+
 #include "wavsampling.h"
 
 WaveSampler::WaveSampler() {

@@ -46,6 +46,7 @@ CXXFLAGS =
 EFLAGS = -sEXIT_RUNTIME=1
 
 # Build targets
+
 EXEC	:= mixer
 ifeq ($(OS), Windows_NT)
 EXECLOC	:= ..\\$(EXEC)
