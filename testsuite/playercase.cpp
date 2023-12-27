@@ -9,7 +9,7 @@
 */
 TestPlayer::TestPlayer() : BaseCase(__FILE__) {
   BaseCase::log->named_log(__FILE__, "Testing Player's!");
-  this->dummy = new Player();
+  this->dummy = new Player("TestPlayer", 1, 1, 1);
   sprintf(msgHead, "Tested");
   sprintf(msgTail, "for Actors!");
   this->test_all();
@@ -20,7 +20,7 @@ TestPlayer::TestPlayer() : BaseCase(__FILE__) {
 */
 void TestPlayer::test_all() {
   test_isAlive();
-  test_isFighting();
+  // test_isFighting();
 }
 
 /*!

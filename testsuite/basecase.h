@@ -2,10 +2,10 @@
 #define BASECASE_H
 
 #include <cassert>
-#include <iostream>
 #include <string.h>
 #include <vector>
 #include "../core/actor.h"
+#include "../core/audio.h"
 #include "../core/balance.h"
 #include "../core/battle.h"
 #include "../core/combat.h"

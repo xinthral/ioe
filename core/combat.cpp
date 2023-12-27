@@ -29,8 +29,14 @@ Combat::Combat(Toon& combatant1, Toon& combatant2) : Combat() {
   //! Set Combat State
   combatant1.set_combat_fight();
   combatant2.set_combat_fight();
-  sprintf(buf, "%s is fighting %s", combatant1.get_name().c_str(), combatant2.get_name().c_str());
-  log->named_log(__FILE__, buf);
+  sprintf(buf, 
+    "%s is fighting %s", 
+    combatant1.get_name().c_str(), 
+    combatant2.get_name().c_str()
+  );
+  injest_combatants(combatant1, combatant2);
+  const std::string fbuff = __FILE__;
+  log->named_log(fbuff, buf);
   
   //! Temporary Combat Logic
   int r = 0;
@@ -40,20 +46,20 @@ Combat::Combat(Toon& combatant1, Toon& combatant2) : Combat() {
   while (combatant1.isAlive() && combatant2.isAlive()) {
     r = rand() % 5 + 1;
     if (step % 2 == 0) { 
-      sprintf(buf, "%s hits %s for %d/%d.", combatant1.get_name().c_str(), combatant2.get_name().c_str(), r, health2);
+      // sprintf(buf, "%s hits %s for %d/%d.", combatant1.get_name().c_str(), combatant2.get_name().c_str(), r, health2);
       health2 -= r;
       if (health2 <= 0) { combatant2.set_health_dead(); }
     } else { 
-      sprintf(buf, "%s hits %s for %d/%d.", combatant2.get_name().c_str(), combatant1.get_name().c_str(), r, health1);
+      // sprintf(buf, "%s hits %s for %d/%d.", combatant2.get_name().c_str(), combatant1.get_name().c_str(), r, health1);
       health1 -= r; 
       if (health1 <= 0) { combatant1.set_health_dead(); }
     }
     step++;
-    log->named_log(__FILE__, buf);
+    // log->named_log(fbuff, buf);
   }
 
   sprintf(buf, "EvE Combat Ended! %s Won", (health1 > 0) ? combatant1.get_name().c_str() : combatant2.get_name().c_str());
-  log->named_log(__FILE__, buf);
+  log->named_log(fbuff, buf);
 }
 
 /*!
@@ -74,6 +80,7 @@ Combat::Combat(Player& combatant1, Toon& combatant2) : Combat() {
     combatant1.get_name().c_str(), 
     combatant2.get_name().c_str()
   );
+  injest_combatants(combatant1, combatant2);
   log->named_log(__FILE__, buf);
 }
 
@@ -96,7 +103,20 @@ Combat::Combat(Player& combatant1, Player& combatant2) : Combat() {
     combatant1.get_name().c_str(), 
     combatant2.get_name().c_str()
   );
+  // injest_combatants(combatant1, combatant2);
   log->named_log(__FILE__, buf);
+}
+
+/*!
+ * @brief   Initiates Combat
+*/
+void Combat::injest_combatants(Actor& combatant1, Actor& combatant2) {
+  f1.health  = combatant1.get_health();
+  f1.attack  = combatant1.get_attack();
+  f1.defense = combatant1.get_defense();
+  f2.health  = combatant2.get_health();
+  f2.attack  = combatant2.get_attack();
+  f2.defense = combatant2.get_defense();
 }
 
 /*!

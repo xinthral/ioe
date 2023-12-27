@@ -9,13 +9,13 @@
 */
 Actor::Actor() {
   cnf = ConfigManager::GetInstance();
-  this->aiState = IDLE;
-  this->condition = HEALTHY;
-  this->baseAttack = cnf->get_attack();
+  this->aiState     = IDLE;
+  this->condition   = HEALTHY;
+  this->baseAttack  = cnf->get_attack();
   this->baseDefense = cnf->get_defense();
-  this->baseHealth = cnf->get_health();
-  this->baseFlux = cnf->get_flux();
-  this->name = "Actor_" + Utilz::TailString(2, Utilz::TimeStamp());
+  this->baseHealth  = cnf->get_health();
+  this->baseFlux    = cnf->get_flux();
+  this->name        = "Actor_" + Utilz::TailString(2, Utilz::TimeStamp());
 }
 
 /*!

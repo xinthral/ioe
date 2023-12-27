@@ -14,21 +14,20 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: build engine 
-      run: make engine
+      run: make -j8 engine
     - name: build audiosuite
-      run: make audio
-    - name: test audiosuite
-      run: /home/runner/work/ioe/ioe/audio.exe
+      run: make -j8 audio
     - name: build cli 
-      run: make cli
+      run: make -j8 cli
+    - name: build helpsuite
+      run: make -j8 help
+    - name: build testsuite
+      run: make -j8 test
+    - name: test audiosuite
+      run: /home/runner/work/ioe/ioe/mixer.exe
     - name: test clisuite 
       run: /home/runner/work/ioe/ioe/engine.exe 0
-    - name: build testsuite
-      run: make test
     - name: test testsuite
       run: /home/runner/work/ioe/ioe/tester.exe 0
-    - name: build helpsuite
-      run: make help
     - name: test helpsuite
       run: /home/runner/work/ioe/ioe/helper.exe 0
-      

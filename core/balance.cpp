@@ -53,12 +53,12 @@ BalanceController::BalanceController() {
 /*!
  * @brief   Singleton Constructor 
 */
-BalanceController *BalanceController::GetInstance() {
-    //! Acquire Instance Mutex
-    std::lock_guard<std::mutex> lock(_mutex);
-    //! If singleton already exists, return instance
-    if (_singleton == NULL) { _singleton = new BalanceController(); }
-    return _singleton;
+BalanceController* BalanceController::GetInstance() {
+  //! Acquire Instance Mutex
+  std::lock_guard<std::mutex> lock(_mutex);
+  //! If singleton already exists, return instance
+  if (_singleton == NULL) { _singleton = new BalanceController(); }
+  return _singleton;
 }
 
 /*!

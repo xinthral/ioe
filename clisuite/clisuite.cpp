@@ -64,6 +64,7 @@ void cli_help() {
  * @brief   Run Engine Commands
 */
 void run_command(const std::string input, std::vector<std::string>& cmdline) {
+  Player *p1;
   Logger* _log = Logger::GetInstance();                 //!< Establish Logger Object
   ConfigManager* _cnf = ConfigManager::GetInstance();   //!< Establish ConfigManager Object
   std::vector<std::string> cmds;
@@ -85,6 +86,8 @@ void run_command(const std::string input, std::vector<std::string>& cmdline) {
       for (std::string c : cmdline) { printf("_ : %s\n", c.c_str()); }
       break;
     case 4:   //! Unimplemented Command 
+      p1 = new Player(1, 1, 1);
+      break;
     case 5:   //! Unimplemented Command 
     case 6:   //! Unimplemented Command 
     case 8:   //! Unimplemented Command 

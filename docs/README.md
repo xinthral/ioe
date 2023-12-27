@@ -21,6 +21,12 @@ make engine
 make audio
 ```
 
+#### AudioSuite Allows for sound testing
+```bash
+make audio
+./mixer.exe -h
+```
+
 #### CLISuite Interfacing with that Line Command
 ```bash
 make cli 
