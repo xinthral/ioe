@@ -5,6 +5,12 @@
 #include "toon.h"
 
 /*!
+ * @def     __FILENAME__ 
+ * @brief   Translate Filename to reusable macro
+*/
+#define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
+
+/*!
  * @brief   Default Constructor
 */
 Toon::Toon() : Toon(-1, "Toon_#-1") { }
@@ -64,7 +70,7 @@ void Toon::set_name(std::string name) { this->name = name; }
 void Toon::_help() {
   std::string helpline = "\nToon Helpline!\n";
   helpline += "\n";
-  log->named_log(__FILE__, helpline);
+  log->named_log(__FILENAME__, helpline);
 }
 
 /*!

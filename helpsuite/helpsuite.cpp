@@ -8,12 +8,18 @@
 #include "helpsuite.h"
 
 /*!
+ * @def     __FILENAME__ 
+ * @brief   Translate Filename to reusable macro
+*/
+#define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
+
+/*!
  * @brief   Default Constructor
 */
 HelpSuite::HelpSuite() { 
   cnf = ConfigManager::GetInstance();
   log = Logger::GetInstance();
-  log->named_log(__FILE__, "Helper Loaded!");
+  log->named_log(__FILENAME__, "Helper Loaded!");
 }
 
 /*!
@@ -99,7 +105,7 @@ HelpSuite::~HelpSuite() {}
 */
 void print_help() {
   Logger* log = Logger::GetInstance();
-  std::string fileName = Utilz::FileName(__FILE__);
+  std::string fileName = Utilz::FileName(__FILENAME__);
   char buf[64];
   sprintf(buf, "Usage: %s.exe [option]\n", fileName.c_str()); 
   log->raw_log(buf);
@@ -162,7 +168,7 @@ int main(int argc, char const *argv[]) {
       hs.UtilzHelp();
       break;
     default:
-      log->named_log(__FILE__, "Displaying full HelpSuite");
+      log->named_log(__FILENAME__, "Displaying full HelpSuite");
       hs.HelpAll();
   }
   return 0;

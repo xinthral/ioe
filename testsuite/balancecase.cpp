@@ -5,10 +5,16 @@
 #include "balancecase.h"
 
 /*!
+ * @def     __FILENAME__ 
+ * @brief   Translate Filename to reusable macro
+*/
+#define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
+
+/*!
  * @brief   Default Constructor
 */
-TestBalance::TestBalance() : BaseCase(__FILE__) {
-  BaseCase::log->named_log(__FILE__, "Testing the BalanceController!");
+TestBalance::TestBalance() : BaseCase(__FILENAME__) {
+  BaseCase::log->named_log(__FILENAME__, "Testing the BalanceController!");
   this->baseAtk = BaseCase::cnf->get_attack();
   this->baseDef = BaseCase::cnf->get_defense();
   this->baseHlt = BaseCase::cnf->get_health();
@@ -33,7 +39,7 @@ void TestBalance::def_atk_ratio() {
   double posRatio = numerator / denominator;
   assert(preRatio == posRatio);
   sprintf(buf, "Tested [DAF: %.4f] (Defense/Attack Ratio) at Scale.", posRatio);
-  BaseCase::log->named_log(__FILE__, buf);
+  BaseCase::log->named_log(__FILENAME__, buf);
 }
 
 /*!
@@ -45,7 +51,7 @@ void TestBalance::difficulty_level() {
   std::string diff = bal->get_difficulty_str();
   assert(dif.compare(diff));
   sprintf(buf, "Tested [Difficulty] level assigned.");
-  BaseCase::log->named_log(__FILE__, buf);
+  BaseCase::log->named_log(__FILENAME__, buf);
 }
 
 /*!

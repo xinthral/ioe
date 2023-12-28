@@ -1,5 +1,14 @@
-
+/*!
+ * @class   AudioMixer audiosuite.cpp audiosuite.h
+ * @brief   needs desc
+*/
 #include "audiosuite.h"
+
+/*!
+ * @def     __FILENAME__ 
+ * @brief   Translate Filename to reusable macro
+*/
+#define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
 
 /*!
  * @brief   Default constructor
@@ -12,7 +21,7 @@ AudioMixer::AudioMixer() {
  * @brief   needs desc
 */
 void AudioMixer::print_help() {
-  std::string filename = Utilz::FileName(__FILE__);
+  std::string filename = Utilz::FileName(__FILENAME__);
   sprintf(buf, "Usage: %s.exe [option]\n", filename.c_str());
   log->raw_log(buf);
   log->raw_log("\n");
@@ -24,7 +33,7 @@ void AudioMixer::print_help() {
 void AudioMixer::_help() {
   std::string helpline = "Mixer Help!";
   helpline += "\n";
-  log->named_log(__FILE__, helpline);
+  log->named_log(__FILENAME__, helpline);
 }
 
 /*!

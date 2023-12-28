@@ -5,10 +5,16 @@
 #include "configcase.h"
 
 /*!
+ * @def     __FILENAME__ 
+ * @brief   Translate Filename to reusable macro
+*/
+#define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
+
+/*!
  * @brief   Default Constructor
 */
-TestConfig::TestConfig() : BaseCase(__FILE__) {
-  BaseCase::log->named_log(__FILE__, "Testing the ConfigManager!");
+TestConfig::TestConfig() : BaseCase(__FILENAME__) {
+  BaseCase::log->named_log(__FILENAME__, "Testing the ConfigManager!");
   sprintf(msgHead, "Tested");
   sprintf(msgTail, "for the ConfigManager!");
   this->test_all();
@@ -32,7 +38,7 @@ void TestConfig::test_mapping() {
   size_t finalSize = BaseCase::cnf->get_settingsSize();
   assertm(finalSize - initialSize == 0, "ConfigManager failed config mappings");
   sprintf(buf, "%s %s %s", this->msgHead, "[mapping] of config options", this->msgTail);
-  BaseCase::log->named_log(__FILE__, buf);
+  BaseCase::log->named_log(__FILENAME__, buf);
 }
 
 /*!
@@ -44,7 +50,7 @@ void TestConfig::test_addConfig() {
   size_t finalSize = BaseCase::cnf->get_settingsSize();
   assertm(finalSize - initialSize == 1, "ConfigManager failed to add a test config");
   sprintf(buf, "%s %s %s", this->msgHead, "[adding] a config option", this->msgTail);
-  BaseCase::log->named_log(__FILE__, buf);
+  BaseCase::log->named_log(__FILENAME__, buf);
 }
 
 /*!
@@ -56,7 +62,7 @@ void TestConfig::test_remConfig() {
   size_t finalSize = BaseCase::cnf->get_settingsSize();
   assertm(initialSize - finalSize == 1, "ConfigManager failed to remove a test config");
   sprintf(buf, "%s %s %s", this->msgHead, "[removing] a config option", this->msgTail);
-  BaseCase::log->named_log(__FILE__, buf);
+  BaseCase::log->named_log(__FILENAME__, buf);
 }
 
 /*!
@@ -67,7 +73,7 @@ void TestConfig::test_listOfCommands() {
   BaseCase::cnf->get_authorizedCommands(commands);
   assertm((commands.size() > 1), "ConfigManager failed to return the list of commands");
   sprintf(buf, "%s %s %s", this->msgHead, "[valid] authorized commands config option", this->msgTail);
-  BaseCase::log->named_log(__FILE__, buf);
+  BaseCase::log->named_log(__FILENAME__, buf);
 }
 
 /*!

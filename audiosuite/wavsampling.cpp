@@ -1,9 +1,16 @@
 
 #include "wavsampling.h"
 
-WaveSampler::WaveSampler() {
-  log = Logger::GetInstance();
-}
+/*!
+ * @def     __FILENAME__ 
+ * @brief   Translate Filename to reusable macro
+*/
+#define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
+
+/*!
+ * @brief   Default Constructor
+*/
+WaveSampler::WaveSampler() { log = Logger::GetInstance(); }
 
 void WaveSampler::sampleFile(const std::string& filename) {
   //! Scoped Variables
@@ -16,7 +23,7 @@ void WaveSampler::sampleFile(const std::string& filename) {
   //! Access audio data and other information
   if (!wavReader->getAudioData().empty()) {
     sprintf(buf, "\n  Sample Rate: %d Hz", wavReader->getSampleRate());
-    log->named_log(__FILE__, buf);
+    log->named_log(__FILENAME__, buf);
     sprintf(buf, "  Channels: %d", wavReader->getNumChannels());
     log->raw_log(buf);
 
@@ -28,4 +35,7 @@ void WaveSampler::sampleFile(const std::string& filename) {
   }
 }
 
+/*!
+ * @brief   Default Deconstructor
+*/
 WaveSampler::~WaveSampler() { }

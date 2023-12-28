@@ -15,6 +15,12 @@
 */
 #include "balance.h"
 
+/*!
+ * @def     __FILENAME__ 
+ * @brief   Translate Filename to reusable macro
+*/
+#define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
+
 //! Singleton Instance
 BalanceController* BalanceController::_singleton = NULL;
 //! Lock Mutex 
@@ -28,7 +34,7 @@ BalanceController::BalanceController() {
   cnf  = ConfigManager::GetInstance();
   log  = Logger::GetInstance();
   base = cnf->get_base();
-  log->named_log(__FILE__, "BalanceController Loaded!");
+  log->named_log(__FILENAME__, "BalanceController Loaded!");
 
   //! Conditional Check: Confirm Range
   int difficulty = cnf->get_difficulty();
@@ -83,12 +89,12 @@ void BalanceController::display_state() {
   int attack = this->atk;
   int defense = this->def;
   
-  sprintf(buf, "%*s :: %*s :: %*s", 4, "Lvl", spn, "Attack", spn, "Defense");
-  log->named_log(__FILE__, buf);
+  sprintf(buf, "%*s :: %*s :: %*s", 3, "Lvl", spn, "Attack", spn, "Defense");
+  log->named_log(__FILENAME__, buf);
   for (int i = 0; i < MAXLVL; i++) {
     scl = this->scalar(i);
-    sprintf(buf, "%*d :: %*.4f :: %*.4f", 4, i, spn, (scl*attack), spn, (scl*defense));
-    log->named_log(__FILE__, buf);
+    sprintf(buf, "%*d :: %*.2f :: %*.2f", 3, i+1, spn, (scl*attack), spn, (scl*defense));
+    log->named_log(__FILENAME__, buf);
   }
 }
 
@@ -123,12 +129,13 @@ std::string BalanceController::get_difficulty_str() {
  * @brief   Helper Hook used in CLI Help System
 */
 void BalanceController::_help() { 
+  this->display_state();
   std::string helpline = "\nBalanceController Helpline!\n";
   helpline += "\n\tThe BalanceController is meant to be the module that rules them all.";
   helpline += "\nBy forcing an interjection algorithm I am introducing a slow down in calls";
   helpline += "\nbut adding an immense amount of control over equivelancy test.";
   helpline += "\n";
-  log->named_log(__FILE__, helpline);
+  log->named_log(__FILENAME__, helpline);
 }
 
 /*!

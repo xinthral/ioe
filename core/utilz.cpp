@@ -5,6 +5,12 @@
 #include "utilz.h"
 
 /*!
+ * @def     __FILENAME__ 
+ * @brief   Translate Filename to reusable macro
+*/
+#define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
+
+/*!
  * @brief   Strips away the file extension 
  * @param[in] __FILE__ - the file extension
  * @return   A new string with the tld stripped.
@@ -98,7 +104,7 @@ void Utilz::Strip(std::string& input) {
 void Utilz::_help() {
   std::string helpline = "\nUtilz Helpline!\n";
   helpline += "\n";
-  Logger::GetInstance()->named_log(__FILE__, helpline);
+  Logger::GetInstance()->named_log(__FILENAME__, helpline);
 }
 
 extern "C" {
