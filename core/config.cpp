@@ -5,6 +5,12 @@
  */
 #include "config.h"
 
+/*!
+ * @def     __FILENAME__ 
+ * @brief   Translate Filename to reusable macro
+*/
+#define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
+
 //! Singleton Instance 
 ConfigManager* ConfigManager::_singleton = NULL;
 std::mutex ConfigManager::_mutex;
@@ -140,7 +146,7 @@ bool ConfigManager::load_config(bool _debug) {
     // DEBUG Line
     if (_debug) { 
       sprintf(buf, "%s", row.c_str()); 
-      log->named_log(__FILE__, buf);
+      log->named_log(__FILENAME__, buf);
     }
     pos = row.find(delim);                    //! Locate Position of Delimiter
     if (pos != std::string::npos){
@@ -161,7 +167,7 @@ bool ConfigManager::load_config(bool _debug) {
 void ConfigManager::_help() {
   std::string helpline = "\nConfigManager Helpline!\n";
   helpline += "\n";
-  log->named_log(__FILE__, helpline);
+  log->named_log(__FILENAME__, helpline);
 }
 
 ConfigManager::~ConfigManager() { }

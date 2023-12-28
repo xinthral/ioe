@@ -5,10 +5,16 @@
 #include "tooncase.h"
 
 /*!
+ * @def     __FILENAME__ 
+ * @brief   Translate Filename to reusable macro
+*/
+#define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
+
+/*!
  * @brief   Default Constructor
 */
-TestToon::TestToon() : BaseCase(__FILE__) {
-  BaseCase::log->named_log(__FILE__, "Testing the Toon's!");
+TestToon::TestToon() : BaseCase(__FILENAME__) {
+  BaseCase::log->named_log(__FILENAME__, "Testing the Toon's!");
   sprintf(msgHead, "Tested Toon");
   sprintf(msgTail, "successfully.");
   this->test_all();
@@ -19,9 +25,9 @@ TestToon::TestToon() : BaseCase(__FILE__) {
 */
 void TestToon::test_all() {
   this->test_toonCreation();
-  // this->test_toonCreation_id();
-  // this->test_toonCreation_name();
-  // this->test_toonCreation_both();
+  this->test_toonCreation_id();
+  this->test_toonCreation_name();
+  this->test_toonCreation_both();
 }
 
 /*!
@@ -32,7 +38,7 @@ void TestToon::test_toonCreation() {
   char* name = (char*)"Toon_#-1";
   assert( strcmp(name, toon->get_name().c_str()) == 0 );
   sprintf(buf, "%s [%s] %s", msgHead, "instantiation", msgTail);
-  BaseCase::log->named_log(__FILE__, buf);
+  BaseCase::log->named_log(__FILENAME__, buf);
 }
 
 /*!
@@ -43,7 +49,7 @@ void TestToon::test_toonCreation_id() {
   char* name = (char*)"Toon_#3";
   assert( strcmp(name, toon->get_name().c_str()) == 0 );
   sprintf(buf, "%s [%s] %s", msgHead, "id instantiation", msgTail);
-  BaseCase::log->named_log(__FILE__, buf);
+  BaseCase::log->named_log(__FILENAME__, buf);
 }
 
 /*!
@@ -54,7 +60,7 @@ void TestToon::test_toonCreation_name() {
   char* name = (char*)"Maji";
   assert( strcmp(name, toon->get_name().c_str()) == 0 );
   sprintf(buf, "%s [%s] %s", msgHead, "name instantiation", msgTail);
-  BaseCase::log->named_log(__FILE__, buf);
+  BaseCase::log->named_log(__FILENAME__, buf);
 }
 
 /*!
@@ -65,7 +71,7 @@ void TestToon::test_toonCreation_both() {
   char* name = (char*)"Jesse";
   assert( strcmp(name, toon->get_name().c_str()) == 0 );
   sprintf(buf, "%s [%s] %s", msgHead, "both instantiation", msgTail);
-  BaseCase::log->named_log(__FILE__, buf);
+  BaseCase::log->named_log(__FILENAME__, buf);
 }
 
 /*!

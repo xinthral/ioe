@@ -5,10 +5,16 @@
 #include "playercase.h"
 
 /*!
+ * @def     __FILENAME__ 
+ * @brief   Translate Filename to reusable macro
+*/
+#define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
+
+/*!
  * @brief   Default Constructor
 */
-TestPlayer::TestPlayer() : BaseCase(__FILE__) {
-  BaseCase::log->named_log(__FILE__, "Testing Player's!");
+TestPlayer::TestPlayer() : BaseCase(__FILENAME__) {
+  BaseCase::log->named_log(__FILENAME__, "Testing Player's!");
   this->dummy = new Player("TestPlayer", 1, 1, 1);
   sprintf(msgHead, "Tested");
   sprintf(msgTail, "for Actors!");
@@ -20,7 +26,7 @@ TestPlayer::TestPlayer() : BaseCase(__FILE__) {
 */
 void TestPlayer::test_all() {
   test_isAlive();
-  // test_isFighting();
+  test_isFighting();
 }
 
 /*!
@@ -33,7 +39,7 @@ void TestPlayer::test_isAlive() {
   isAlive = dummy->isAlive();
   assertm(isAlive == false, "Has Risen from the Dead");
   sprintf(buf, "%s %s %s", msgHead, "[Alive] Value", msgTail);
-  BaseCase::log->named_log(__FILE__, buf);
+  BaseCase::log->named_log(__FILENAME__, buf);
 }
 
 /*!

@@ -5,6 +5,12 @@
 
 #include "leader.h"
 
+/*!
+ * @def     __FILENAME__ 
+ * @brief   Translate Filename to reusable macro
+*/
+#define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
+
 //! Singleton Instance 
 LeaderBoard* LeaderBoard::_singleton = NULL;
 std::mutex LeaderBoard::_mutex;
@@ -14,7 +20,7 @@ std::mutex LeaderBoard::_mutex;
 */
 LeaderBoard::LeaderBoard() { 
     log = Logger::GetInstance();
-    log->named_log(__FILE__, "LeaderBoard Established.");
+    log->named_log(__FILENAME__, "LeaderBoard Established.");
 }
 
 /*!
@@ -34,7 +40,7 @@ LeaderBoard* LeaderBoard::GetInstance() {
 void LeaderBoard::_help() { 
   std::string helpline = "\nLeaderBoard Helpline!\n";
   helpline += "\n";
-  log->named_log(__FILE__, helpline);
+  log->named_log(__FILENAME__, helpline);
 }
 
 LeaderBoard::~LeaderBoard() { }

@@ -4,6 +4,12 @@
 */
 #include "clisuite.h"
 
+/*!
+ * @def     __FILENAME__ 
+ * @brief   Translate Filename to reusable macro
+*/
+#define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
+
 //! Extern Variable Declaration
 std::string  __cnf_ = "docs/engine.ini";
 bool vshContinue = false;
@@ -21,7 +27,7 @@ void parse_user_input(std::string input) {
   char buf[64];
   if (std::find(cmds.begin(), cmds.end(), token) != cmds.end()) {
     // sprintf(buf, "Authorized command: %s!", token);
-    // _log->named_log(__FILE__, buf);
+    // _log->named_log(__FILENAME__, buf);
     run_command(token, cmdline);
   }
 }
@@ -43,7 +49,7 @@ void print_help() {
   //! Establish Logger Object
   Logger* _log = Logger::GetInstance();
   //! Get File Name
-  std::string fileName = Utilz::FileName(__FILE__);
+  std::string fileName = Utilz::FileName(__FILENAME__);
 
   //! Display Help 
   char buf[64];
@@ -94,7 +100,7 @@ void run_command(const std::string input, std::vector<std::string>& cmdline) {
     case 9:   //! Unimplemented Command 
     default:
       sprintf(buf, "Unimplemented Command: %s", input.c_str());
-      _log->named_log(__FILE__, buf);
+      _log->named_log(__FILENAME__, buf);
       break;
   }
 }
@@ -112,7 +118,7 @@ int main(int argc, const char *argv[]) {
   size_t found;
   std::string prompt = ">";
   std::string rawInput;
-  _log->named_log(__FILE__, "CLI Suite Loaded!");
+  _log->named_log(__FILENAME__, "CLI Suite Loaded!");
 
   //! Input Switch Case
   char _input = argv[1][0];
@@ -120,7 +126,7 @@ int main(int argc, const char *argv[]) {
     case '0': 
       return 0;
     case '1':
-      _log->named_log(__FILE__, "Engine Firing up...");
+      _log->named_log(__FILENAME__, "Engine Firing up...");
       vshContinue = true;
       break;
     default: 
@@ -138,7 +144,7 @@ int main(int argc, const char *argv[]) {
   }
   /* ********************************** */
 
-  _log->named_log(__FILE__, "Engine Winding down...");
-  _log->named_log(__FILE__, "Summary:\n(Output Event Analysis)");
+  _log->named_log(__FILENAME__, "Engine Winding down...");
+  _log->named_log(__FILENAME__, "Summary:\n(Output Event Analysis)");
   return 0;
 }

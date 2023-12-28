@@ -9,6 +9,12 @@
 #include "testsuite.h"
 
 /*!
+ * @def     __FILENAME__ 
+ * @brief   Translate Filename to reusable macro
+*/
+#define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
+
+/*!
  * @brief   Default Constructor
 */
 TestSuite::TestSuite() { }
@@ -79,7 +85,7 @@ TestSuite::~TestSuite() { }
 void print_help() { 
   Logger* log = Logger::GetInstance();
   char buf[32];
-  std::string fileName = Utilz::FileName(__FILE__);
+  std::string fileName = Utilz::FileName(__FILENAME__);
   sprintf(buf, "Usage: %s.exe [NUMBER]\n", fileName.c_str()); 
   log->raw_log(buf);
   log->raw_log("TestSuite CLI Tool\n");
@@ -211,6 +217,6 @@ int main(int argc, char const *argv[]) {
       sprintf(buf, "\nWarn :: Unknown Test, please review the list and try again.\n");
   }
   
-  log->named_log(__FILE__, buf);
+  log->named_log(__FILENAME__, buf);
   return 0;
 }

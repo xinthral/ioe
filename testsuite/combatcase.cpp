@@ -4,11 +4,17 @@
 */
 #include "combatcase.h"
 
+/*!
+ * @def     __FILENAME__ 
+ * @brief   Translate Filename to reusable macro
+*/
+#define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
+
 /*! 
  * @brief   Default Constructor
 */
-TestCombat::TestCombat() : BaseCase(__FILE__) {
-  BaseCase::log->named_log(__FILE__, "Testing Combat!");
+TestCombat::TestCombat() : BaseCase(__FILENAME__) {
+  BaseCase::log->named_log(__FILENAME__, "Testing Combat!");
   _idx = 0;
   this->test_all();
 }
@@ -30,7 +36,7 @@ void TestCombat::test_eve() {
   Toon* _toon2 = new Toon(++_idx);
   Combat* cc = new Combat(*_toon1, *_toon2);
   cc->begin_combat();
-  log->named_log(__FILE__, "EvE Combat Tested!");
+  log->named_log(__FILENAME__, "EvE Combat Tested!");
 }
 
 /*! 
@@ -38,10 +44,10 @@ void TestCombat::test_eve() {
 */
 void TestCombat::test_pve() {
   Player* _player = new Player("Player", ++_idx, 1, 1);
-  log->named_log(__FILE__, "PvE Combat Tested!");
   Toon* _toon = new Toon(++_idx);
   Combat* cc = new Combat(*_player, *_toon);
   cc->begin_combat();
+  log->named_log(__FILENAME__, "PvE Combat Tested!");
 }
 
 /*! 
@@ -52,7 +58,7 @@ void TestCombat::test_pvp() {
   Player* _player2 = new Player("Min", ++_idx, 1, 1);
   Combat* cc = new Combat(*_player1, *_player2);
   cc->begin_combat();
-  log->named_log(__FILE__, "PvP Combat Tested!");
+  log->named_log(__FILENAME__, "PvP Combat Tested!");
 }
 
 /*! 

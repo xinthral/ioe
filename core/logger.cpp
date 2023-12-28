@@ -4,6 +4,12 @@
 */
 #include "logger.h"
 
+/*!
+ * @def     __FILENAME__ 
+ * @brief   Translate Filename to reusable macro
+*/
+#define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
+
 //! Global Variables
 const std::string Logger::DELIM = " :=: ";
 
@@ -71,7 +77,7 @@ void Logger::_help() {
   std::string helpline = "\nLogger Helpline!\n";
   helpline += "\n\tUnimplemented";
   helpline += "\n";
-  this->named_log(__FILE__, helpline);
+  this->named_log(__FILENAME__, helpline);
 }
 
 /*!

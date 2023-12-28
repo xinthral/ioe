@@ -6,10 +6,16 @@
 #include "audiocase.h"
 
 /*!
+ * @def     __FILENAME__ 
+ * @brief   Translate Filename to reusable macro
+*/
+#define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
+
+/*!
  * @brief   Default Constructor
 */
-TestAudio::TestAudio() : BaseCase(__FILE__) {
-  BaseCase::log->named_log(__FILE__, "Testing the Audio!");
+TestAudio::TestAudio() : BaseCase(__FILENAME__) {
+  BaseCase::log->named_log(__FILENAME__, "Testing the Audio!");
   this->test_all();
 }
 
@@ -27,7 +33,7 @@ void TestAudio::test_wavSampling() {
   audio = new AudioDriver();
   audio->readWavData("./audiosuite/samples/mixkit-retro-game-over.wav");
   assert(audio->getSampleRate() == 44100);
-  BaseCase::log->named_log(__FILE__, "Sample Rate Success!");
+  BaseCase::log->named_log(__FILENAME__, "Sample Rate Success!");
 }
 
 /*!
