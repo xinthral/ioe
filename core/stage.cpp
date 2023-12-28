@@ -5,6 +5,12 @@
 */
 #include "stage.h"
 
+/*!
+ * @def     __FILENAME__ 
+ * @brief   Translate Filename to reusable macro
+*/
+#define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
+
 //! Singleton Instance
 StageManager* StageManager::_singleton = NULL;
 std::mutex StageManager::_mutex;
@@ -15,7 +21,7 @@ std::mutex StageManager::_mutex;
 StageManager::StageManager(const std::string _name) : name(_name) {
   log = Logger::GetInstance();
   sprintf(buf, "StageManager Established: %s", this->name.c_str());
-  log->named_log(Utilz::FileName(__FILE__), buf);
+  log->named_log(Utilz::FileName(__FILENAME__), buf);
 }
 
 
@@ -56,7 +62,7 @@ void StageManager::casting_call(int size, std::vector<Toon*>& npcs) {
 void StageManager::_help() {
   std::string helpline = "\nStageManager Helpline!\n";
   helpline += "\n";
-  log->named_log(__FILE__, helpline);
+  log->named_log(__FILENAME__, helpline);
 }
 
 /**

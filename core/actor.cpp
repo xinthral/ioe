@@ -5,6 +5,12 @@
 #include "actor.h"
 
 /*!
+ * @def     __FILENAME__ 
+ * @brief   Translate Filename to reusable macro
+*/
+#define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
+
+/*!
  * @brief   Default Constructor 
 */
 Actor::Actor() {
@@ -177,7 +183,7 @@ void Actor::_help() {
   helpline += "\n\tThis is the base class for all Actor's in the scene. NPC's, Players, and all";
   helpline += "\nspecialty mobs are derived from this class"; 
   helpline += "\n";
-  log->named_log(__FILE__, helpline);
+  log->named_log(__FILENAME__, helpline);
 }
 
 /*!

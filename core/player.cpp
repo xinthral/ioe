@@ -6,15 +6,20 @@
 #include "player.h"
 
 /*!
+ * @def     __FILENAME__ 
+ * @brief   Translate Filename to reusable macro
+*/
+#define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
+
+/*!
  * @brief   Default Constructor
  * @details If no values are provided, then default
  *          values are initialized as (1, 1, 1).
 */
 Player::Player() : Player("P1", 1, 1, 1) {
   log = Logger::GetInstance();
-  const std::string fbuff = __FILE__;
   sprintf(buf, "%s Level %d Player initiated.", level);
-  log->named_log(fbuff, buf);
+  log->named_log(__FILENAME__, buf);
 }
 
 /*!
@@ -57,7 +62,7 @@ void Player::_help() {
   helpline += "\nThinking that it would be initiated as is, but instantiated by another class, this would";
   helpline += "\nallow for character specializations.";
   helpline += "\n";
-  log->named_log(__FILE__, helpline);
+  log->named_log(__FILENAME__, helpline);
 }
 
 /*!

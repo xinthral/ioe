@@ -6,11 +6,17 @@
 #include "item.h"
 
 /*!
+ * @def     __FILENAME__ 
+ * @brief   Translate Filename to reusable macro
+*/
+#define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
+
+/*!
  * @brief   Default Constructor 
 */
 Item::Item() { 
     log = Logger::GetInstance();
-    log->named_log(__FILE__, "New Item Established.");
+    log->named_log(__FILENAME__, "New Item Established.");
 }
 
 
@@ -20,7 +26,7 @@ Item::Item() {
 void Item::_help() { 
   std::string helpline = "\nItem Helpline!\n";
   helpline += "\n";
-  log->named_log(__FILE__, helpline);
+  log->named_log(__FILENAME__, helpline);
 }
 
 Item::~Item() { }

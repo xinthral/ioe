@@ -4,6 +4,12 @@
  */
 #include "battle.h"
 
+/*!
+ * @def     __FILENAME__ 
+ * @brief   Translate Filename to reusable macro
+*/
+#define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
+
 /*! 
  * @brief   Default Constructor
 */
@@ -45,7 +51,7 @@ Battle::Battle(std::vector<Toon*>& gang1, std::vector<Toon*>& gang2) : Battle() 
 void Battle::_help() {
   std::string helpline = "\nBattle Helpline!\n";
   helpline += "\n";
-  log->named_log(__FILE__, helpline);
+  log->named_log(__FILENAME__, helpline);
 }
 
 /*! 

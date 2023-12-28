@@ -5,10 +5,16 @@
 #include "utilzcase.h"
 
 /*!
+ * @def     __FILENAME__ 
+ * @brief   Translate Filename to reusable macro
+*/
+#define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
+
+/*!
  * @brief   Default Constructor
 */
-TestUtilz::TestUtilz() : BaseCase(__FILE__) {
-  BaseCase::log->named_log(__FILE__, "Testing the Utilz Functionality!");
+TestUtilz::TestUtilz() : BaseCase(__FILENAME__) {
+  BaseCase::log->named_log(__FILENAME__, "Testing the Utilz Functionality!");
   sprintf(this->msgHead, "Tested");
   sprintf(this->msgTail, "for Actors!");
   this->test_all();
@@ -30,7 +36,7 @@ void TestUtilz::test_StringToArray() {
   std::vector<std::string> cmds;
   Utilz::StringToArray(testline, cmds);
   assert(cmds.size() == 4);
-  BaseCase::log->named_log(__FILE__, "Tested [StringToArray]");
+  BaseCase::log->named_log(__FILENAME__, "Tested [StringToArray]");
 }
 
 /*!
@@ -41,7 +47,7 @@ void TestUtilz::test_StringToArray_TrailingSpace() {
   std::vector<std::string> cmds;
   Utilz::StringToArray(testline, cmds);
   assert(cmds.size() == 4);
-  BaseCase::log->named_log(__FILE__, "Tested [StringToArray Trailing Space]");
+  BaseCase::log->named_log(__FILENAME__, "Tested [StringToArray Trailing Space]");
 }
 
 /*!
