@@ -7,9 +7,9 @@
 class TestActors : public BaseCase {
 protected:
   Actor* dummy;
-  char msgHead[32];
-  char msgTail[16];
-  char msgNote[64];
+  // char msgHead[32];
+  // char msgTail[16];
+  // char msgNote[64];
 
 public:
   //! Constructors
@@ -17,12 +17,14 @@ public:
 
   //! Feet to the fire
   void test_all();
+  void test_basevalues();
   void test_combatstate();
   void test_healthstate();
 
   //! Test Stats
   void base_attack();
   void base_defense(); 
+  void base_flux();
   void base_health();
 
   //! Test Combat States

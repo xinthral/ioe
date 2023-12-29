@@ -19,6 +19,11 @@ TestLeader::TestLeader() : BaseCase(__FILENAME__) {
 }
 
 /*!
+ * @brief   Run full set of test on module 
+*/
+void TestLeader::test_all() { }
+
+/*!
  * @brief   Default Deconstructor
 */
 TestLeader::~TestLeader() { }

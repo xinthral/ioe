@@ -27,6 +27,9 @@ protected:
   ConfigManager*      cnf;    //!< Instantiated ConfigManager Object
   Logger*             log;    //!< Instantiated Logger Object
   char                buf[1024];
+  char                msgHead[32];
+  char                msgTail[16];
+  char                msgNote[64];
 
 public:
   BaseCase();

@@ -48,9 +48,9 @@ EFLAGS = -0s -g1 -sEXIT_RUNTIME=1 -sWASM=1 -sMODULARIZE=1 -sMALLOC=emmalloc -sAL
 # Build targets
 EXEC    := engine
 ifeq ($(OS), Windows_NT)
-EXECLOC := ..\\$(EXEC)
+EXECLOC	:= ..\\bin\\$(EXEC)
 else
-EXECLOC := ../$(EXEC)
+EXECLOC	:= ../bin/$(EXEC)
 endif
 MODS    := actor audio balance battle clock combat config item leader logger player stage toon utilz
 

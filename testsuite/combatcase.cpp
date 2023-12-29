@@ -23,15 +23,15 @@ TestCombat::TestCombat() : BaseCase(__FILENAME__) {
  * @brief   Validate the entire Combat Module
 */
 void TestCombat::test_all() {
-  this->test_eve();
-  this->test_pve();
-  this->test_pvp();
+  this->EVECombat();
+  this->PVECombat();
+  this->PVPCombat();
 }
 
 /*! 
  * @brief   Evironment Vs Environment Combat
 */
-void TestCombat::test_eve() {
+void TestCombat::EVECombat() {
   Toon* _toon1 = new Toon(++_idx);
   Toon* _toon2 = new Toon(++_idx);
   Combat* cc = new Combat(*_toon1, *_toon2);
@@ -42,7 +42,7 @@ void TestCombat::test_eve() {
 /*! 
  * @brief   Player Vs Environment Combat
 */
-void TestCombat::test_pve() {
+void TestCombat::PVECombat() {
   Player* _player = new Player("Player", ++_idx, 1, 1);
   Toon* _toon = new Toon(++_idx);
   Combat* cc = new Combat(*_player, *_toon);
@@ -53,7 +53,7 @@ void TestCombat::test_pve() {
 /*! 
  * @brief   Player Vs Player Combat
 */
-void TestCombat::test_pvp() {
+void TestCombat::PVPCombat() {
   Player* _player1 = new Player("Max", ++_idx, 1, 1);
   Player* _player2 = new Player("Min", ++_idx, 1, 1);
   Combat* cc = new Combat(*_player1, *_player2);

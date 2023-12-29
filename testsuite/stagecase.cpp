@@ -19,6 +19,11 @@ TestStage::TestStage() : BaseCase(__FILENAME__) {
 }
 
 /*!
+ * @brief   Run full set of test on module 
+*/
+void TestStage::test_all() { }
+
+/*!
  * @brief   Default Deconstructor
 */
 TestStage::~TestStage() { }

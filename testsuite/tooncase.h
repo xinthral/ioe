@@ -6,9 +6,6 @@
 class TestToon : public BaseCase {
 protected:
 private:
-  char buf[1024];
-  char msgHead[32];
-  char msgTail[64];
 public:
   TestToon();
   void test_all();

@@ -14,10 +14,10 @@ private:
 public:
   TestConfig();
   void test_all();
-  void test_mapping();
-  void test_addConfig();
-  void test_remConfig();
-  void test_listOfCommands();
+  void mapping();
+  void addConfig();
+  void remConfig();
+  void listOfCommands();
   ~TestConfig();
 };
 

@@ -21,7 +21,7 @@ TestUtilz::TestUtilz() : BaseCase(__FILENAME__) {
 }
 
 /*!
- * @brief   
+ * @brief   Run full set of test on module 
 */
 void TestUtilz::test_all() {
   this->test_StringToArray();

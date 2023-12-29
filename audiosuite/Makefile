@@ -49,12 +49,13 @@ EFLAGS = -sEXIT_RUNTIME=1
 
 EXEC	:= mixer
 ifeq ($(OS), Windows_NT)
-EXECLOC	:= ..\\$(EXEC)
+EXECLOC	:= ..\\bin\\$(EXEC)
 else
-EXECLOC	:= ../$(EXEC)
+EXECLOC	:= ../bin/$(EXEC)
 endif
 MODS	:= actor audio balance battle clock combat config leader logger player stage toon utilz
 MOD1	:= wavsampling
+MOD2  := wavplayer
 
 # GNU Make Compilation Macros: 
 # https://stackoverflow.com/questions/3220277/what-do-the-makefile-symbols-and-mean#3220288
@@ -67,11 +68,17 @@ MOD1	:= wavsampling
 SRCFILES := $(patsubst %.cpp, %.o, $(wildcard *.cpp))
 SRCFILES += $(foreach d, $(MODS), ../core/$d.o)
 
+SRCWAVES := $(MOD1) $(MOD2)
+
+ifeq ($(OS), Windows_NT)
+SRCWAVES += $(MOD3)
+endif
+
 # Compile Full HelpSuite 
 audio: $(SRCFILES)
 	$(CC) $(CFLAGS) $(CXFLAGS) $^ -o $(EXECLOC).exe
 
-$(MOD1): $(MOD1).o
+$(MOD1): 
 	$(CC) $(CFLAGS) $(CXFLAGS) $^ -o $(EXECLOC)_$(MOD1).exe
 
 build: $(SRCFILES)
