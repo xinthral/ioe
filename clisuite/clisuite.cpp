@@ -16,6 +16,7 @@ bool vshContinue = false;
 
 /*!
  * @brief   Function to parse user input for a command 
+ * @param[in] input - Command string from the command line
 */
 void parse_user_input(std::string input) {
   ConfigManager* _cnf = ConfigManager::GetInstance();
@@ -34,6 +35,8 @@ void parse_user_input(std::string input) {
 
 /*!
  * @brief   Helper Function to parse input
+ * @param[in] input - String to be searched through
+ * @param[in] criteria - String being searched for
 */
 bool parse_input(const std::string input, const std::string criteria) {
   //! Establish Variables 
@@ -58,6 +61,9 @@ void print_help() {
   _log->raw_log("\tdebug - Debugging Flag\n");
 }
 
+/*!
+ * @brief   Static Helper File for the CLISuite
+*/
 void cli_help() {
   ConfigManager* _cnf = ConfigManager::GetInstance();
   std::vector<std::string> cmds;

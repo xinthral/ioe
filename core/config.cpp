@@ -1,7 +1,10 @@
 /*!
  * @class   ConfigManager config.h config.cpp
- * @brief   ConfigManager handles configuration loading
- *          and managing throughout the engine. 
+ * @brief   ConfigManager manages configuration loading and updating throughout the engine.
+ * @details In order to handle the number of customizable options for the engine, a config
+ *          file system has been implemented. This class will manage the configuration file
+ *          and return it's content to the engine. 
+ * @note    values can be reloaded without having to restart the engine.
  */
 #include "config.h"
 

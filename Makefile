@@ -62,7 +62,7 @@ EXECLOC	:= ./bin/
 endif
 	
 # Compile Full porgram (order matters)
-all: $(DOCS) $(ENGN) $(AUDI) $(CLIS) $(HELP) $(TEST)
+all: $(ENGN) $(AUDI) $(CLIS) $(HELP) $(TEST) #$(DOCS)
 
 # Compile Engine
 $(ENGN): 
