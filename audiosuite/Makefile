@@ -24,13 +24,13 @@ endif
 
 # https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html
 # compiler flags:
-#  	-g										- adds debugging information to the executable file
-#  	-Wall									- is used to turn on most compiler warnings
-#  	-Wextra									- turns on extra compiler checks unchecked by -Wall
-# 	-O										- optimization level (ie -O3)
-#  	-std									- compile with version compatibility
-#  	-no-pie 								- do not produce a position-independent executable
-#	-fPIC									- Format position-independent code
+# -g										- adds debugging information to the executable file
+# -Wall									- is used to turn on most compiler warnings
+# -Wextra								- turns on extra compiler checks unchecked by -Wall
+# -O										- optimization level (ie -O3)
+# -std									- compile with version compatibility
+# -no-pie								- do not produce a position-independent executable
+# -fPIC									- Format position-independent code
 # Standard Compiler Options
 CFLAGS = -g -Wno-unused-variable -Wno-format -Wno-sign-compare -Wno-uninitialized -std=c++17
 
@@ -53,7 +53,7 @@ EXECLOC	:= ..\\bin\\$(EXEC)
 else
 EXECLOC	:= ../bin/$(EXEC)
 endif
-MODS	:= actor audio balance battle clock combat config leader logger player stage toon utilz
+MODS	:= audio clock config logger utilz
 MOD1	:= wavsampling
 MOD2  := wavplayer
 

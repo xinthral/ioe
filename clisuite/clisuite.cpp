@@ -99,6 +99,7 @@ void run_command(const std::string input, std::vector<std::string>& cmdline) {
       break;
     case 4:   //! Unimplemented Command 
       p1 = new Player(1, 1, 1);
+      p1->get_id();
       break;
     case 5:   //! Unimplemented Command 
     case 6:   //! Unimplemented Command 

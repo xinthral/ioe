@@ -46,7 +46,7 @@ HELP = help
 DOCS = doc
 CLIS = cli 
 AUDI = audio
-LIBRARIES := core audiosuite clisuite helpsuite testsuite 
+LIBRARIES := core audiosuite clisuite helpsuite testsuite
 
 # GNU Make Compilation Macros: 
 # https://stackoverflow.com/questions/3220277/what-do-the-makefile-symbols-and-mean#3220288
@@ -62,7 +62,7 @@ EXECLOC	:= ./bin/
 endif
 	
 # Compile Full porgram (order matters)
-all: $(ENGN) $(AUDI) $(CLIS) $(HELP) $(TEST) #$(DOCS)
+all: $(ENGN) $(AUDI) $(CLIS) $(HELP) $(TEST)
 
 # Compile Engine
 $(ENGN): 

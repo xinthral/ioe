@@ -8,10 +8,12 @@
 #include "../core/audio.h"
 #include "../core/balance.h"
 #include "../core/battle.h"
+#include "../core/ciphers.h"
 #include "../core/combat.h"
 #include "../core/config.h"
 #include "../core/item.h"
 #include "../core/leader.h"
+#include "../core/lexicon.h"
 #include "../core/logger.h"
 #include "../core/player.h"
 #include "../core/stage.h"
@@ -28,7 +30,7 @@ protected:
   Logger*             log;    //!< Instantiated Logger Object
   char                buf[1024];
   char                msgHead[32];
-  char                msgTail[16];
+  char                msgTail[32];
   char                msgNote[64];
 
 public:

@@ -36,7 +36,8 @@ void TestUtilz::test_StringToArray() {
   std::vector<std::string> cmds;
   Utilz::StringToArray(testline, cmds);
   assert(cmds.size() == 4);
-  BaseCase::log->named_log(__FILENAME__, "Tested [StringToArray]");
+  sprintf(buf, "%s [%s] %s", msgHead, "StringToArray", msgTail);
+  BaseCase::log->named_log(__FILENAME__, buf);
 }
 
 /*!
@@ -47,7 +48,8 @@ void TestUtilz::test_StringToArray_TrailingSpace() {
   std::vector<std::string> cmds;
   Utilz::StringToArray(testline, cmds);
   assert(cmds.size() == 4);
-  BaseCase::log->named_log(__FILENAME__, "Tested [StringToArray Trailing Space]");
+  sprintf(buf, "%s [%s] %s", msgHead, "StringToArray Trailing Space", msgTail);
+  BaseCase::log->named_log(__FILENAME__, buf);
 }
 
 /*!

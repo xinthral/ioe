@@ -53,7 +53,7 @@ EXECLOC	:= ..\\bin\\$(EXEC)
 else
 EXECLOC	:= ../bin/$(EXEC)
 endif
-MODS 		:= actor audio balance battle clock combat config item leader logger player stage toon utilz
+MODS 		:= actor audio balance battle clock combat config item leader lexicon logger player stage toon utilz
 
 
 # GNU Make Compilation Macros: 

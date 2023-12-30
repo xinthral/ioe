@@ -24,10 +24,10 @@ jobs:
     - name: build testsuite
       run: make -j8 test
     - name: test audiosuite
-      run: /home/runner/work/ioe/ioe/mixer.exe
+      run: /home/runner/work/ioe/ioe/bin/mixer.exe
     - name: test clisuite 
-      run: /home/runner/work/ioe/ioe/engine.exe 0
+      run: /home/runner/work/ioe/ioe/bin/engine.exe
     - name: test testsuite
-      run: /home/runner/work/ioe/ioe/tester.exe 0
+      run: /home/runner/work/ioe/ioe/bin/tester.exe 0
     - name: test helpsuite
-      run: /home/runner/work/ioe/ioe/helper.exe 0
+      run: /home/runner/work/ioe/ioe/bin/helper.exe
