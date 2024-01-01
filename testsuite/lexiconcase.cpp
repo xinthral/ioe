@@ -32,8 +32,9 @@ void TestLexicon::test_all() {
  * @brief   Validate the Name Generation feature
 */
 void TestLexicon::generateName() {
-  std::string response = lex->generateName(3);
-  assertm(response.size() > 0, "Name Responded with Zero Length");
+  int len = 3;
+  std::string response = lex->generateName(len);
+  assertm(response.size() > (2*len), "Name Responded with Insufficient Length");
   sprintf(buf, "%s [%s] %s (%s)", msgHead, "name generation", msgTail, response.c_str());
   BaseCase::log->named_log(__FILENAME__, buf);
 }

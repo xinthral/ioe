@@ -36,7 +36,6 @@ Battle::Battle(int size, Player* player, std::vector<Toon*>& team) : Battle() {
 
   cc = new Combat(*player, *t);
   cc->begin_combat();
-  
 }
 
 /*!
