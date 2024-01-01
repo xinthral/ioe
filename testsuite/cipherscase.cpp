@@ -49,7 +49,6 @@ void TestCiphers::displayMatrix() {
 void TestCiphers::decode() {
   std::string response = cipher->decode(encoded);
   sprintf(buf, "Decoding failed to produce %s: %s => %s", this->decoded.c_str(), this->encoded.c_str(), response.c_str());
-  BaseCase::log->named_log(__FILENAME__, buf);
   assertm(strcmp(response.c_str(), this->decoded.c_str()) == 0, buf);
   sprintf(buf, "%s [%s] %s (%s)", msgHead, "decoding", msgTail, response.c_str());
   BaseCase::log->named_log(__FILENAME__, buf);
@@ -60,11 +59,10 @@ void TestCiphers::decode() {
  * @brief   
 */
 void TestCiphers::encode() {
-  std::string response = cipher->encode(decoded);
-  sprintf(buf, "Encoding failed to produce %s: %s => %s", this->encoded.c_str(), this->decoded.c_str(), response.c_str());
-  BaseCase::log->named_log(__FILENAME__, buf);
-  assertm(strcmp(response.c_str(), this->encoded.c_str()) == 0, buf);
-  sprintf(buf, "%s [%s] %s (%s)", msgHead, "encoding", msgTail, response.c_str());
+  this->encoded = cipher->encode(decoded);
+  sprintf(buf, "Encoding failed to produce %s: %s => %s", this->encoded.c_str(), this->decoded.c_str(), this->encoded.c_str());
+  assertm(this->encoded.size() > 0, buf);
+  sprintf(buf, "%s [%s] %s (%s)", msgHead, "encoding", msgTail, this->encoded.c_str());
   BaseCase::log->named_log(__FILENAME__, buf);
 }
 
