@@ -5,8 +5,6 @@
 
 class TestUtilz : public BaseCase {
 protected:
-  char msgHead[64];
-  char msgTail[128];
 private:
 public:
   TestUtilz();

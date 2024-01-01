@@ -35,6 +35,11 @@ void TestSuite::CaseAudio() { TestAudio* ta = new TestAudio(); }
 void TestSuite::CaseBalance() { TestBalance* tb = new TestBalance(); }
 
 /*!
+ * @brief   Initiates the Test for the Ciphers Module
+*/
+void TestSuite::CaseCiphers() { TestCiphers* tc = new TestCiphers(); }
+
+/*!
  * @brief   Initiates the Test for the Combat Module
 */
 void TestSuite::CaseCombat() { TestCombat* tc = new TestCombat(); }
@@ -42,7 +47,7 @@ void TestSuite::CaseCombat() { TestCombat* tc = new TestCombat(); }
 /*!
  * @brief   Initiates the Test for the ConfigManager Module
 */
-void TestSuite::CaseConfig() { TestConfig* tf = new TestConfig(); }
+void TestSuite::CaseConfig() { TestConfig* tc = new TestConfig(); }
 
 /*!
  * @brief   Initiates the Test for the Item Module
@@ -53,6 +58,11 @@ void TestSuite::CaseItem() { TestItem* ti = new TestItem(); }
  * @brief   Initiates the Test for the LeaderBoard Module 
 */
 void TestSuite::CaseLeader() { TestLeader* tl = new TestLeader(); }
+
+/*!
+ * @brief   Initiates the Test for the Lexicon Module 
+*/
+void TestSuite::CaseLexicon() { TestLexicon* tl = new TestLexicon(); }
 
 /*!
  * @brief   Initiates the Test for the Player Module
@@ -85,6 +95,7 @@ TestSuite::~TestSuite() { }
 void print_help() { 
   Logger* log = Logger::GetInstance();
   char buf[32];
+  int idx = -1;
   std::string fileName = Utilz::FileName(__FILENAME__);
   sprintf(buf, "Usage: %s.exe [NUMBER]\n", fileName.c_str()); 
   log->raw_log(buf);
@@ -93,19 +104,21 @@ void print_help() {
     " a quality-of-life option for hunting down all my stupid." \
     " This can be used in conjuction with the HelpSuite in order to"\
     " maximize the benefit of the CLI Debugging Suite.\n");
-  log->raw_log("\t[-1] - Threaded Test of Full Suite");
-  log->raw_log("\t [0] - Default Test to rule them all");
-  log->raw_log("\t [1] - Test Actor Module");
-  log->raw_log("\t [2] - Test Audio Module");
-  log->raw_log("\t [3] - Test BalanceController Module");
-  log->raw_log("\t [4] - Test Combat Module");
-  log->raw_log("\t [5] - Test ConfigManager Module");
-  log->raw_log("\t [6] - Test Item Module");
-  log->raw_log("\t [7] - Test LeaderBoard Module");
-  log->raw_log("\t [8] - Test Player Module");
-  log->raw_log("\t [9] - Test Stage Module");
-  log->raw_log("\t[10] - Test Toon Module");
-  log->raw_log("\t[11] - Test Utilz Module");
+  sprintf(buf, "\t[%d] - Threaded Test of Full Suite", idx); log->raw_log(buf);
+  sprintf(buf, "\t [%d] - Default Test to rule them all", ++idx); log->raw_log(buf);
+  sprintf(buf, "\t [%d] - Test Actor Module", ++idx); log->raw_log(buf);
+  sprintf(buf, "\t [%d] - Test Audio Module", ++idx); log->raw_log(buf);
+  sprintf(buf, "\t [%d] - Test BalanceController Module", ++idx); log->raw_log(buf);
+  sprintf(buf, "\t [%d] - Test Ciphers Module", ++idx); log->raw_log(buf);
+  sprintf(buf, "\t [%d] - Test Combat Module", ++idx); log->raw_log(buf);
+  sprintf(buf, "\t [%d] - Test ConfigManager Module", ++idx); log->raw_log(buf);
+  sprintf(buf, "\t [%d] - Test Item Module", ++idx); log->raw_log(buf);
+  sprintf(buf, "\t [%d] - Test LeaderBoard Module", ++idx); log->raw_log(buf);
+  sprintf(buf, "\t [%d] - Test Lexicon Module", ++idx); log->raw_log(buf);
+  sprintf(buf, "\t[%d] - Test Player Module", ++idx); log->raw_log(buf);
+  sprintf(buf, "\t[%d] - Test Stage Module", ++idx); log->raw_log(buf);
+  sprintf(buf, "\t[%d] - Test Toon Module", ++idx); log->raw_log(buf);
+  sprintf(buf, "\t[%d] - Test Utilz Module", ++idx); log->raw_log(buf);
   log->raw_log("\n");
   exit(0);
 }
@@ -124,7 +137,7 @@ int main(int argc, char const *argv[]) {
   char buf[64];
   int choice = 0;
   choice = atoi(argv[1]);
-  std::thread cact, caud, cbal, ccom, ccon, cite, clea, cpla, csta, ctoo, cuti;
+  std::thread cact, caud, cbal, ccip, ccom, ccon, cite, clea, clex, cpla, csta, ctoo, cuti;
   
   switch (choice) {
     case -1:
@@ -135,6 +148,8 @@ int main(int argc, char const *argv[]) {
       threadList.emplace_back(std::move(caud));
       cbal = std::thread(&TestSuite::CaseBalance, &ts);
       threadList.emplace_back(std::move(cbal));
+      ccip = std::thread(&TestSuite::CaseCiphers, &ts);
+      threadList.emplace_back(std::move(ccip));
       ccom = std::thread(&TestSuite::CaseCombat, &ts);
       threadList.emplace_back(std::move(ccom));
       ccon = std::thread(&TestSuite::CaseConfig, &ts);
@@ -143,6 +158,8 @@ int main(int argc, char const *argv[]) {
       threadList.emplace_back(std::move(cite));
       clea = std::thread(&TestSuite::CaseLeader, &ts);
       threadList.emplace_back(std::move(clea));
+      clex = std::thread(&TestSuite::CaseLexicon, &ts);
+      threadList.emplace_back(std::move(clex));
       cpla = std::thread(&TestSuite::CasePlayer, &ts);
       threadList.emplace_back(std::move(cpla));
       csta = std::thread(&TestSuite::CaseStage, &ts);
@@ -158,10 +175,12 @@ int main(int argc, char const *argv[]) {
       ts.CaseActor();
       ts.CaseAudio();
       ts.CaseBalance();
+      ts.CaseCiphers();
       ts.CaseCombat();
       ts.CaseConfig();
       ts.CaseItem();
       ts.CaseLeader();
+      ts.CaseLexicon();
       ts.CasePlayer();
       ts.CaseStage();
       ts.CaseToon();
@@ -180,39 +199,45 @@ int main(int argc, char const *argv[]) {
       ts.CaseBalance();
       break;
     case 4:
+      sprintf(buf, "Ciphers TestCase Completed...");
+      ts.CaseCiphers();
+      break;
+    case 5:
       sprintf(buf, "Combat TestCase Completed...");
       ts.CaseCombat();
       break;
-    case 5:
+    case 6:
       sprintf(buf, "Config TestCase Completed...");
       ts.CaseConfig();
       break;
-    case 6:
+    case 7:
       sprintf(buf, "Item TestCase Completed...");
       ts.CaseItem();
       break;
-    case 7:
+    case 8:
       sprintf(buf, "Leader TestCase Completed...");
       ts.CaseLeader();
       break;
-    case 8:
+    case 9:
+      sprintf(buf, "Lexicon TestCase Completed...");
+      ts.CaseLexicon();
+      break;
+    case 10:
       sprintf(buf, "Player TestCase Completed...");
       ts.CasePlayer();
       break;
-    case 9:
+    case 11:
       sprintf(buf, "Stage TestCase Completed...");
       ts.CaseStage();
       break;
-    case 10:
+    case 12:
       sprintf(buf, "Toon TestCase Completed...");
       ts.CaseToon();
       break;
-    case 11:
+    case 13:
       sprintf(buf, "Utilz TestCase Completed...");
       ts.CaseUtilz();
       break;
-    case 12:
-    case 13:
     default:
       sprintf(buf, "\nWarn :: Unknown Test, please review the list and try again.\n");
   }

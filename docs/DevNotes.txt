@@ -1,3 +1,19 @@
+:FrontEnd
+https://www.w3schools.com/react/react_getstarted.asp
+
+:Embedded Compiler (Doesn't handle advanced CPP features)
+https://emscripten.org/docs/getting_started/Tutorial.html
+
+: URLs
+https://mixkit.co/free-sound-effects/
+
+* Character has lore for playing
+* Corporation that's running thing is the bad-guy
+* Resistance factions fighting against Corporation
+* Start in a safe, warm green grassy / foresty area
+* Attribute Tree - Skill Point System
+* Remote Sytem would give additional skill points
+
 TODO: 
 x Docstrings motherfucker, do you use them!?
 _ Configure Debug
@@ -113,12 +129,3 @@ x Formatted TimeStamps
 x StringToArray Conversion
 x Truncation Features (HeadString, TailString)
 x String Strip() functionality
-
-:FrontEnd
-https://www.w3schools.com/react/react_getstarted.asp
-
-:Embedded Compiler (Doesn't handle advanced CPP features)
-https://emscripten.org/docs/getting_started/Tutorial.html
-
-: URLs
-https://mixkit.co/free-sound-effects/

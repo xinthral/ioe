@@ -14,7 +14,6 @@
 //! External Varables
 extern std::string _CNF_;
 
-//! Class Declarations
 class ConfigManager {
 protected:
   ConfigManager();

@@ -15,6 +15,9 @@
 */
 TestBalance::TestBalance() : BaseCase(__FILENAME__) {
   BaseCase::log->named_log(__FILENAME__, "Testing the BalanceController!");
+  sprintf(this->msgHead, "Tested");
+  sprintf(this->msgTail, "at scale for Balance!");
+
   this->baseAtk = BaseCase::cnf->get_attack();
   this->baseDef = BaseCase::cnf->get_defense();
   this->baseHlt = BaseCase::cnf->get_health();
@@ -38,7 +41,7 @@ void TestBalance::def_atk_ratio() {
   double denominator = this->baseDef * bal->scalar(100);
   double posRatio = numerator / denominator;
   assert(preRatio == posRatio);
-  sprintf(buf, "Tested [DAF: %.4f] (Defense/Attack Ratio) at Scale.", posRatio);
+  sprintf(buf, "%s [DAF: %.4f] (Defense/Attack Ratio) %s", msgHead, posRatio, msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);
 }
 
@@ -50,7 +53,7 @@ void TestBalance::difficulty_level() {
   std::string dif  = cnf->raw_config("DIF");
   std::string diff = bal->get_difficulty_str();
   assert(dif.compare(diff));
-  sprintf(buf, "Tested [Difficulty] level assigned.");
+  sprintf(buf, "%s [Difficulty] %s", msgHead, msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);
 }
 

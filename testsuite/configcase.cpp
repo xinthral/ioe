@@ -24,17 +24,17 @@ TestConfig::TestConfig() : BaseCase(__FILENAME__) {
  * @brief   Run full set of test on module 
 */
 void TestConfig::test_all() {
-  test_mapping();
-  test_listOfCommands();
+  mapping();
+  listOfCommands();
 }
 
 /*!
  * @brief   Test All of Key-Value Mappings for Settings
 */
-void TestConfig::test_mapping() { 
+void TestConfig::mapping() { 
   size_t initialSize = BaseCase::cnf->get_settingsSize();
-  this->test_addConfig(); 
-  this->test_remConfig(); 
+  this->addConfig(); 
+  this->remConfig(); 
   size_t finalSize = BaseCase::cnf->get_settingsSize();
   assertm(finalSize - initialSize == 0, "ConfigManager failed config mappings");
   sprintf(buf, "%s %s %s", this->msgHead, "[mapping] of config options", this->msgTail);
@@ -44,7 +44,7 @@ void TestConfig::test_mapping() {
 /*!
  * @brief   Add a new config 
 */
-void TestConfig::test_addConfig() {
+void TestConfig::addConfig() {
   size_t initialSize = BaseCase::cnf->get_settingsSize();
   BaseCase::cnf->add_setting("test", "added");
   size_t finalSize = BaseCase::cnf->get_settingsSize();
@@ -56,7 +56,7 @@ void TestConfig::test_addConfig() {
 /*!
  * @brief   Remove a config option
 */
-void TestConfig::test_remConfig() {
+void TestConfig::remConfig() {
   size_t initialSize = BaseCase::cnf->get_settingsSize();
   BaseCase::cnf->rem_setting("test");
   size_t finalSize = BaseCase::cnf->get_settingsSize();
@@ -68,7 +68,7 @@ void TestConfig::test_remConfig() {
 /*!
  * @brief   Evaluate return type for get_authorized_cli_commands()
 */
-void TestConfig::test_listOfCommands() {
+void TestConfig::listOfCommands() {
   std::vector<std::string> commands;
   BaseCase::cnf->get_authorizedCommands(commands);
   assertm((commands.size() > 1), "ConfigManager failed to return the list of commands");

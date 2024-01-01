@@ -48,10 +48,10 @@ EXEC := engine
 #MODS := actor audio balance battle clock combat config item leader logger player stage toon utilz
 
 ifeq ($(OS), Windows_NT)
-EXECLOC := ..\\$(EXEC)
+EXECLOC	:= ..\\bin\\$(EXEC)
 # EXECLOC = $(EFLAGS)
 else
-EXECLOC := ../$(EXEC)
+EXECLOC	:= ../bin/$(EXEC)
 endif
 
 # Ask gnuMake to return a list of *.o files from their source counterpart
@@ -67,10 +67,6 @@ SHAREDFL := libxengine.so.1
 
 # Build Object files
 build: $(SRCFILES)
-
-# Compile Engine
-engine: $(SRCFILES)
-	$(CC) $(CXXFLAGS) $^ -o $(EXECLOC)$(EXEC)
 
 # Template function to compile defined objects files
 # Dynamically assign *.o to be compiled from its source counterpart

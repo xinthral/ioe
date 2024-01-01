@@ -32,17 +32,15 @@ protected:
   Logger* log;              //!< Logging Handler
   CombatState aiState;      //!< Current AI CombatState
   HealthState condition;    //!< Current Health State
-
   std::string name;         //!< Name of Actor
   int id;                   //!< ID of Actor
   int baseAttack;           //!< Attack Damage (@override)
   int baseDefense;          //!< Defense Value (@override)
   int baseHealth;           //!< Health Value (@override)
   int baseFlux;             //!< Flux Value (@override)
-
-private:
   char buf[128];            //!< Buffer Value for Logger outputs
 
+private:
 public:
   //! Constructors
   Actor();
@@ -59,7 +57,7 @@ public:
   int get_health();
   int get_id();
   std::string get_name();
-  
+
   //! Setters
   void set_flux(int);
   void set_id(int);
