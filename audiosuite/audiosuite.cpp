@@ -45,6 +45,8 @@ int main(int argc, char const *argv[]) {
   // Logger* _log = Logger::GetInstance();
   AudioMixer* audio = new AudioMixer();
   WaveSampler* sampler = new WaveSampler();
+  WavPlayer* player = new WavPlayer();
+
   std::string input = "./audiosuite/samples/";
   if (argc < 2) { audio->print_help(); return 0; }
   if (argc > 1) { 
@@ -56,6 +58,6 @@ int main(int argc, char const *argv[]) {
     input += ".wav"; 
   } else { input += "mixkit-retro-game-over.wav"; }
   sampler->sampleFile(input);
-  // audio->print_help();
+  player->playwav(input);
   return 0;
 }

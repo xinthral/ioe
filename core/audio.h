@@ -11,6 +11,7 @@ class AudioDriver {
 protected:
   ConfigManager*    cnf;
   Logger*           log;
+  char              buf[1024];
 private:
   struct WavHeader {
     char chunkId[4];

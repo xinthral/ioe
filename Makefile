@@ -16,7 +16,6 @@ ifeq ($(OS), Windows_NT)
 DOXYGEN := doxygen.exe
 RM := del
 RRM := del /S /Q /f
-
 endif
 
 # https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html
@@ -47,7 +46,7 @@ HELP = help
 DOCS = doc
 CLIS = cli 
 AUDI = audio
-LIBRARIES := core audiosuite clisuite helpsuite testsuite 
+LIBRARIES := core audiosuite clisuite helpsuite testsuite
 
 # GNU Make Compilation Macros: 
 # https://stackoverflow.com/questions/3220277/what-do-the-makefile-symbols-and-mean#3220288
@@ -55,9 +54,15 @@ LIBRARIES := core audiosuite clisuite helpsuite testsuite
 # $@ evaluates to all
 # $< evaluates to library.cpp
 # $^ evaluates to library.cpp main.cpp
+
+ifeq ($(OS), Windows_NT)
+EXECLOC	:= .\\bin\\
+else
+EXECLOC	:= ./bin/
+endif
 	
-# Compile Full porgram
-all: $(DOCS) $(ENGN) $(TEST) $(HELP) $(CLIS) $(AUDI) 
+# Compile Full porgram (order matters)
+all: $(ENGN) $(AUDI) $(CLIS) $(HELP) $(TEST)
 
 # Compile Engine
 $(ENGN): 
@@ -112,8 +117,8 @@ cleantest:
 	$(MAKE) clean -C testsuite
 
 cleanall:
-	$(RM) *.exe
+	$(RM) $(EXECLOC)helper.exe $(EXECLOC)mixer.exe $(EXECLOC)tester.exe $(EXECLOC)engine.exe
 	$(MAKE) clean
 	$(foreach d, $(LIBRARIES), $(MAKE) cleanall -C $d &&) true 2>&1 >/dev/null
 
-.PHONY: all audio build cleanall cleanaudio cleancore cleandoc cleanhelp cleantest clean engine helper tester 
+.PHONY: all audio build clean cleanaudio cleancore cleandoc cleanhelp cleantest cleanall engine helper mixer tester 

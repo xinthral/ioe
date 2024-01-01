@@ -5,12 +5,15 @@
 
 class TestAudio : public BaseCase {
 protected:
+  char msgHead[32];
+  char msgTail[16];
+  char msgNote[64];
 private:
   AudioDriver* audio;
 public:
   TestAudio();
   void test_all();
-  void test_wavSampling();
+  void wavSampling();
   ~TestAudio();
 };
 

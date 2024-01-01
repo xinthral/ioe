@@ -24,11 +24,20 @@ TestActors::TestActors() : BaseCase(__FILENAME__) {
  * @brief   Run full set of test on module 
 */
 void TestActors::test_all() {
-  base_attack();        //! Test Base Attack Value
-  base_defense();       //! Test Base Defense Value
-  base_health();        //! Test Base Health Value
+  test_basevalues();    //! Testing Base Values
   test_combatstate();   //! Testing Combat States
   test_healthstate();   //! Testing Health States
+}
+
+/*!
+ * @brief   Run full set of test on Base Values 
+*/
+void TestActors::test_basevalues() {
+  sprintf(this->msgNote, "Actor Base Value Mismatch");
+  base_attack();        //! Test Base Attack Value
+  base_defense();       //! Test Base Defense Value
+  base_flux();          //! Test Base Flux Value
+  base_health();        //! Test Base Health Value
 }
 
 /*!
@@ -76,6 +85,18 @@ void TestActors::base_defense() {
   dummy = new Actor();
   assertm(cnf_def == dummy->get_defense(), "Actor Defense Mismatch");
   sprintf(buf, "%s %s %s", msgHead, "Base [Defense] Value", msgTail);
+  BaseCase::log->named_log(__FILENAME__, buf);
+}
+
+/*!
+ * @brief   Validate Initial Condition: Flux Value
+ * @note    Are actors getting proper base values?
+*/
+void TestActors::base_flux() {
+  int cnf_flx = cnf->get_flux();
+  dummy = new Actor();
+  assertm(cnf_flx == dummy->get_flux(), "Actor Flux Mismatch");
+  sprintf(buf, "%s %s %s", msgHead, "Base [Flux] Value", msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);
 }
 

@@ -16,13 +16,13 @@
 TestPlayer::TestPlayer() : BaseCase(__FILENAME__) {
   BaseCase::log->named_log(__FILENAME__, "Testing Player's!");
   this->dummy = new Player("TestPlayer", 1, 1, 1);
-  sprintf(msgHead, "Tested");
-  sprintf(msgTail, "for Actors!");
+  sprintf(this->msgHead, "Tested");
+  sprintf(this->msgTail, "for Players!");
   this->test_all();
 }
 
 /*!
- * @brief   Test if Player Alive State holds
+ * @brief   Run full set of test on module 
 */
 void TestPlayer::test_all() {
   test_isAlive();
@@ -38,7 +38,8 @@ void TestPlayer::test_isAlive() {
   dummy->set_health_dead();
   isAlive = dummy->isAlive();
   assertm(isAlive == false, "Has Risen from the Dead");
-  sprintf(buf, "%s %s %s", msgHead, "[Alive] Value", msgTail);
+  sprintf(this->msgNote, "[Alive] Value");
+  sprintf(buf, "%s %s %s", msgHead, msgNote, msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);
 }
 

@@ -15,13 +15,13 @@
 */
 TestToon::TestToon() : BaseCase(__FILENAME__) {
   BaseCase::log->named_log(__FILENAME__, "Testing the Toon's!");
-  sprintf(msgHead, "Tested Toon");
-  sprintf(msgTail, "successfully.");
+  sprintf(this->msgHead, "Tested Toon");
+  sprintf(this->msgTail, "successfully.");
   this->test_all();
 }
 
 /*!
- * @brief   Validate the entire Toon module
+ * @brief   Run full set of test on module 
 */
 void TestToon::test_all() {
   this->test_toonCreation();
@@ -37,7 +37,8 @@ void TestToon::test_toonCreation() {
   Toon* toon = new Toon();
   char* name = (char*)"Toon_#-1";
   assert( strcmp(name, toon->get_name().c_str()) == 0 );
-  sprintf(buf, "%s [%s] %s", msgHead, "instantiation", msgTail);
+  sprintf(this->msgNote, "instantiation");
+  sprintf(buf, "%s [%s] %s", msgHead, msgNote, msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);
 }
 
@@ -48,7 +49,8 @@ void TestToon::test_toonCreation_id() {
   Toon* toon = new Toon(3);
   char* name = (char*)"Toon_#3";
   assert( strcmp(name, toon->get_name().c_str()) == 0 );
-  sprintf(buf, "%s [%s] %s", msgHead, "id instantiation", msgTail);
+  sprintf(this->msgNote, "id instantiation");
+  sprintf(buf, "%s [%s] %s", msgHead, msgNote, msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);
 }
 
@@ -59,7 +61,8 @@ void TestToon::test_toonCreation_name() {
   Toon* toon = new Toon("Maji");
   char* name = (char*)"Maji";
   assert( strcmp(name, toon->get_name().c_str()) == 0 );
-  sprintf(buf, "%s [%s] %s", msgHead, "name instantiation", msgTail);
+  sprintf(this->msgNote, "name instantiation");
+  sprintf(buf, "%s [%s] %s", msgHead, msgNote, msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);
 }
 
@@ -70,7 +73,8 @@ void TestToon::test_toonCreation_both() {
   Toon* toon = new Toon(4, "Jesse");
   char* name = (char*)"Jesse";
   assert( strcmp(name, toon->get_name().c_str()) == 0 );
-  sprintf(buf, "%s [%s] %s", msgHead, "both instantiation", msgTail);
+  sprintf(this->msgNote, "both instantiation");
+  sprintf(buf, "%s [%s] %s", msgHead, msgNote, msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);
 }
 

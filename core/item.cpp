@@ -1,8 +1,9 @@
 /*!
  * @class   Item item.cpp item.h
- * @brief   Item stuff
+ * @brief   BaseClass for Items
+ * @details Items will be inherited from this class, which will include consumables
+ *          weapons, armor, quest items, keys, and any other items I come up with.
 */
-
 #include "item.h"
 
 /*!

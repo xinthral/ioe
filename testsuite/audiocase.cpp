@@ -16,24 +16,27 @@
 */
 TestAudio::TestAudio() : BaseCase(__FILENAME__) {
   BaseCase::log->named_log(__FILENAME__, "Testing the Audio!");
+  sprintf(this->msgHead, "Tested");
+  sprintf(this->msgTail, "for Audio!");
   this->test_all();
 }
 
 /*!
- * @brief   needs desc
+ * @brief   Run full set of test on module 
 */
 void TestAudio::test_all() {
-  // this->test_wavSampling();  // #FIXME Disabled for GitHubActions because audio files missing
+  this->wavSampling();  // #FIXME Disabled for GitHubActions because audio files missing
 }
 
 /*!
  * @brief   needs desc
 */
-void TestAudio::test_wavSampling() {
+void TestAudio::wavSampling() {
   audio = new AudioDriver();
-  audio->readWavData("./audiosuite/samples/mixkit-retro-game-over.wav");
-  assert(audio->getSampleRate() == 44100);
-  BaseCase::log->named_log(__FILENAME__, "Sample Rate Success!");
+  audio->readWavData("./audiosuite/samples/game-over.wav");
+  assertm(audio->getSampleRate() == 44100, "Audio Wav SampleRate Mismatch");
+  sprintf(buf, "%s %s %s", msgHead, "[44100] Sample Rate", msgTail);
+  BaseCase::log->named_log(__FILENAME__, buf);
 }
 
 /*!

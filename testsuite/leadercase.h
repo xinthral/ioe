@@ -8,6 +8,7 @@ protected:
 private:
 public:
   TestLeader();
+  void test_all();
   ~TestLeader();
 };
 

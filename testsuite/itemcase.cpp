@@ -19,6 +19,18 @@ TestItem::TestItem() : BaseCase(__FILENAME__) {
 }
 
 /*!
+ * @brief   Run full set of test on module 
+*/
+void TestItem::test_all() {
+
+}
+
+/*!
+ * @brief   Run full set of test on module 
+*/
+// void TestItem::() {}
+
+/*!
  * @brief   Default Deconstructor
 */
 TestItem::~TestItem() { }

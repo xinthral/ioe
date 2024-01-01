@@ -40,7 +40,6 @@ CXFLAGS = -Wall -pedantic -O3 -fPIC
 # Extra Compiler Options
 CXXFLAGS = -shared -Wl,-soname,
 
-#
 # compiler flags:
 # -EXIT_RUNTIME to display output to console
 # Emscriten Compiler Options
@@ -49,12 +48,12 @@ EFLAGS = -sEXIT_RUNTIME=1
 # Build targets
 EXEC    := tester
 ifeq ($(OS), Windows_NT)
-EXECLOC := ..\$(EXEC)
+EXECLOC	:= ..\\bin\\$(EXEC)
 # CXFLAGS := $(EFLAGS)
 else
-EXECLOC := ../$(EXEC)
+EXECLOC	:= ../bin/$(EXEC)
 endif
-MODS    := actor audio balance battle clock combat config item leader logger player stage toon utilz
+MODS    := actor audio balance battle ciphers clock combat config item leader lexicon logger player stage toon utilz
 
 # GNU Make Compilation Macros: 
 # https://stackoverflow.com/questions/3220277/what-do-the-makefile-symbols-and-mean#3220288

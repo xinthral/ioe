@@ -7,6 +7,7 @@
 #include "../core/logger.h"
 #include "../core/utilz.h"
 #include "wavsampling.h"
+#include "wavplayer.h"
 
 class AudioMixer {
 protected:

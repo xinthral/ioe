@@ -1,6 +1,8 @@
 /*!
  * @class   LeaderBoard leader.cpp leader.h
- * @brief   LeaderBoard stuff
+ * @brief   LeaderBoard is a statistical culmination of player interactions in any
+ *          given session. Evaluate interesting data points like largest or fastest
+ *          damage, or people who hit the hardest/were hit the hardest, etc...
 */
 
 #include "leader.h"

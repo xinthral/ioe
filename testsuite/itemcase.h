@@ -8,6 +8,7 @@ protected:
 private:
 public:
   TestItem();
+  void test_all();
   ~TestItem();
 };
 

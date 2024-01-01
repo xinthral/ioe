@@ -8,6 +8,7 @@ protected:
 private:
 public:
   TestStage();
+  void test_all();
   ~TestStage();
 };
 
