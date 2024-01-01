@@ -11,7 +11,7 @@
 #define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
 
 //! Extern Variable Declaration
-std::string  __cnf_ = "docs/engine.ini";
+std::string  _cnf_ = "docs/engine.ini";
 bool vshContinue = false;
 
 /*!
@@ -19,18 +19,14 @@ bool vshContinue = false;
  * @param[in] input - Command string from the command line
 */
 void parse_user_input(std::string input) {
-  ConfigManager* _cnf = ConfigManager::GetInstance();
+  ConfigManager* cnf = ConfigManager::GetInstance();
   std::vector<std::string> cmds;
   std::vector<std::string> cmdline;
   Utilz::StringToArray(input, cmdline);
   char* token = strtok((char*)input.c_str(), " \n");
-  _cnf->get_authorizedCommands(cmds);
+  cnf->get_authorizedCommands(cmds);
   char buf[64];
-  if (std::find(cmds.begin(), cmds.end(), token) != cmds.end()) {
-    // sprintf(buf, "Authorized command: %s!", token);
-    // _log->named_log(__FILENAME__, buf);
-    run_command(token, cmdline);
-  }
+  if (std::find(cmds.begin(), cmds.end(), token) != cmds.end()) { run_command(token, cmdline); }
 }
 
 /*!
@@ -50,24 +46,24 @@ bool parse_input(const std::string input, const std::string criteria) {
 */
 void print_help() {
   //! Establish Logger Object
-  Logger* _log = Logger::GetInstance();
+  Logger* log = Logger::GetInstance();
   //! Get File Name
   std::string fileName = Utilz::FileName(__FILENAME__);
 
   //! Display Help 
   char buf[64];
   sprintf(buf, "\nUsage: %s.exe [bool|debug]", fileName.c_str()); 
-  _log->raw_log(buf);
-  _log->raw_log("\tdebug - Debugging Flag\n");
+  log->raw_log(buf);
+  log->raw_log("\tdebug - Debugging Flag\n");
 }
 
 /*!
  * @brief   Static Helper File for the CLISuite
 */
 void cli_help() {
-  ConfigManager* _cnf = ConfigManager::GetInstance();
+  ConfigManager* cnf = ConfigManager::GetInstance();
   std::vector<std::string> cmds;
-  _cnf->get_authorizedCommands(cmds);
+  cnf->get_authorizedCommands(cmds);
   printf("Commands:\n");
   for (auto c : cmds) { printf(": %s\n", c.c_str()); }
 }
@@ -76,13 +72,16 @@ void cli_help() {
  * @brief   Run Engine Commands
 */
 void run_command(const std::string input, std::vector<std::string>& cmdline) {
-  Player *p1;
-  Logger* _log = Logger::GetInstance();                 //!< Establish Logger Object
-  ConfigManager* _cnf = ConfigManager::GetInstance();   //!< Establish ConfigManager Object
-  std::vector<std::string> cmds;
-  _cnf->get_authorizedCommands(cmds);
+  ConfigManager* cnf = ConfigManager::GetInstance();   //!< Establish ConfigManager Object
+  Lexicon* lex = new Lexicon();                        //!< Establish Lexicon Object
+  Logger* log = Logger::GetInstance();                 //!< Establish Logger Object
+  int value;
   char buf[256];
+  std::string tmp;
+  std::vector<std::string> cmds;
+  cnf->get_authorizedCommands(cmds);
   int idx = _CMDMAP[input];
+
   switch(idx) {
     case 0:   //! Help Info
       cli_help();
@@ -92,14 +91,19 @@ void run_command(const std::string input, std::vector<std::string>& cmdline) {
       // exit(0);
       break;
     case 2:   //! Reload Config Options
-      _cnf->reload_state();
+      cnf->reload_state();
       break;
     case 3:   //! Test Command 
+      cmdline.erase(cmdline.begin());
       for (std::string c : cmdline) { printf("_ : %s\n", c.c_str()); }
       break;
-    case 4:   //! Unimplemented Command 
-      p1 = new Player(1, 1, 1);
-      p1->get_id();
+    case 4:   //! Generate Name 
+      value = atoi(cmdline[1].c_str());
+      for (int i = 0; i < value; i++) {
+        tmp = lex->generateName(1);
+        printf("%s", tmp.c_str()); 
+      }
+      printf("\n"); 
       break;
     case 5:   //! Unimplemented Command 
     case 6:   //! Unimplemented Command 
@@ -107,7 +111,7 @@ void run_command(const std::string input, std::vector<std::string>& cmdline) {
     case 9:   //! Unimplemented Command 
     default:
       sprintf(buf, "Unimplemented Command: %s", input.c_str());
-      _log->named_log(__FILENAME__, buf);
+      log->named_log(__FILENAME__, buf);
       break;
   }
 }
@@ -121,11 +125,11 @@ int main(int argc, const char *argv[]) {
   if (strcmp(argv[1], "-h") == 0) { print_help(); return 0; }
 
   //! Declare Variables
-  Logger* _log = Logger::GetInstance();                 //!< Establish Logger Object
+  Logger* log = Logger::GetInstance();                 //!< Establish Logger Object
   size_t found;
   std::string prompt = ">";
   std::string rawInput;
-  _log->named_log(__FILENAME__, "CLI Suite Loaded!");
+  log->named_log(__FILENAME__, "CLI Suite Loaded!");
 
   //! Input Switch Case
   char _input = argv[1][0];
@@ -133,7 +137,7 @@ int main(int argc, const char *argv[]) {
     case '0': 
       return 0;
     case '1':
-      _log->named_log(__FILENAME__, "Engine Firing up...");
+      log->named_log(__FILENAME__, "Engine Firing up...");
       vshContinue = true;
       break;
     default: 
@@ -151,7 +155,7 @@ int main(int argc, const char *argv[]) {
   }
   /* ********************************** */
 
-  _log->named_log(__FILENAME__, "Engine Winding down...");
-  _log->named_log(__FILENAME__, "Summary:\n(Output Event Analysis)");
+  log->named_log(__FILENAME__, "Engine Winding down...");
+  log->named_log(__FILENAME__, "Summary:\n(Output Event Analysis)");
   return 0;
 }

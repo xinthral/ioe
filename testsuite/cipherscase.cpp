@@ -35,7 +35,7 @@ void TestCiphers::test_all() {
 }
 
 /*!
- * @brief   
+ * @brief   FIXME
 */
 void TestCiphers::displayMatrix() {
   cipher->displayMatrix(false);
@@ -44,7 +44,8 @@ void TestCiphers::displayMatrix() {
 }
 
 /*!
- * @brief   
+ * @brief   Ensuring that the cipher can properly decode a message
+ * @note    TestCiphers::encode() needs to take place before TestCiphers::decode()
 */
 void TestCiphers::decode() {
   std::string response = cipher->decode(encoded);
@@ -52,11 +53,11 @@ void TestCiphers::decode() {
   assertm(strcmp(response.c_str(), this->decoded.c_str()) == 0, buf);
   sprintf(buf, "%s [%s] %s (%s)", msgHead, "decoding", msgTail, response.c_str());
   BaseCase::log->named_log(__FILENAME__, buf);
-
 }
 
 /*!
- * @brief   
+ * @brief   Ensuring that the cipher can properly encode a message
+ * @note    TestCiphers::encode() needs to take place before TestCiphers::decode()
 */
 void TestCiphers::encode() {
   this->encoded = cipher->encode(decoded);
@@ -67,7 +68,7 @@ void TestCiphers::encode() {
 }
 
 /*!
- * @brief   
+ * @brief   Generates Cipher Matrices'
 */
 void TestCiphers::generateMatrix() {
   int mSize = cipher->getMatrixSize();

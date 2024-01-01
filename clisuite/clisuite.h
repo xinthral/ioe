@@ -22,7 +22,7 @@ std::unordered_map<std::string, int> _CMDMAP = {
   {"exit",    1},
   {"reload",  2},
   {"chain",   3},
-  {"create",  4},
+  {"name",  4},
 };
 
 void parse_user_input(std::string);
