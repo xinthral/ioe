@@ -11,7 +11,8 @@ private:
 public:
   TestLexicon();
   void test_all();
-  void generateName();
+  void generateName(int);
+  void lexigraphChangeSize();
   ~TestLexicon();
 };
 

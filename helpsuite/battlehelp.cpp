@@ -15,7 +15,7 @@
 /*!
  * @brief   Default Constructor
 */
-HelpBattle::HelpBattle() { }
+HelpBattle::HelpBattle() { battlefield = new Battle(); battlefield->_help(); }
 
 /*!
  * @brief   Default Deconstructor

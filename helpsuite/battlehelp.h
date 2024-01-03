@@ -5,6 +5,7 @@
 
 class HelpBattle : public BaseHelp {
 protected:
+  Battle* battlefield;
 private:
 public:
   HelpBattle();

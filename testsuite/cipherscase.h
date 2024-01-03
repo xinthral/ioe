@@ -18,6 +18,7 @@ public:
   void encode();
   void decode();
   void generateMatrix();
+  void swappedLexigraph();
   ~TestCiphers();
 };
 

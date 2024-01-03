@@ -1,3 +1,51 @@
+* Character has lore for playing
+  ```
+  A summoning ritual performed by <mamajama> calling forth souls to be sacrificed, pulled individuals from our 
+  world into the world of <terfeldier>. However, in the process of traversing the void between realms these 
+  ritual cede were touched by with the flux.
+  ```
+
+* Corporation that's running thing is the bad-guy
+  ```
+  <mamajama> is performing a summoning ritual to increase the number of sacrifices. The ritual reached across the void
+  instead of across the realm, pulling outworlders in mass. The sacrifice is for some ancient evil, that's resides deep
+  beneath <Death Mountain>
+  ```
+
+* Resistance factions fighting against Corporation
+  ```
+  * Inherently, survival becomes the game because you are the target of the sacrifice. And because you were touched by flux,
+  the powers you begin to exibit can be put to use against those who have wronged you. You are now part of a group of people
+  known as the Astral Nomad; and unbenounced to the player they are what's called "Touched" due to the flux now inside you.
+
+  * The Syndicated is a faction that arises from those who were Touched, but when they arrived began to hear the call of the
+  evil lurking below; choosing to join the sacrificial cause.
+  ```
+
+* Start in a safe, warm green grassy / foresty area
+  ```
+  Beginning in the regular world, player can choose a profession. Each profession has attribute and ability bonuses.
+   * < The following are just place-holders and need to be balanced in some numerical way > *
+   * Security     : Additional Perception and Defense, but reduced Health.
+   * Dancer       : Increased Speed and Flux, but reduced Health.
+   * Engineer     : Increased Speed and Health, but reduced Flux.
+   * Streamer     : Increased Defense and Luck, but reduced Health.
+   * Musician     : Increased Health and Luck, but reduced Defense.
+   * Gardener     : Increased Perception and Defense, but reduced Flux.
+   * Trainer      : Increased Speed and Defense, but reduced Flux.
+  ```
+
+* Attribute Tree - Skill Point System
+  ```
+  Combat / Flux / Environment
+  skills / abilities / rolls
+  ```
+
+** Player gets put into the world and the tutorial area that explains basic mechanics and actions.
+    Then leading to being pulled through the void to <Ilenal Field>, and then attacked. Eventually waking up in <Helios>, a 
+    lucious and vibrant area.
+** 
+
 :FrontEnd
 https://www.w3schools.com/react/react_getstarted.asp
 
@@ -6,13 +54,6 @@ https://emscripten.org/docs/getting_started/Tutorial.html
 
 : URLs
 https://mixkit.co/free-sound-effects/
-
-* Character has lore for playing
-* Corporation that's running thing is the bad-guy
-* Resistance factions fighting against Corporation
-* Start in a safe, warm green grassy / foresty area
-* Attribute Tree - Skill Point System
-* Remote Sytem would give additional skill points
 
 TODO: 
 x Docstrings motherfucker, do you use them!?

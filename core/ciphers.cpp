@@ -58,7 +58,7 @@ void xCiphers::generateMatrix(char code) {
 
 /*!
  * @brief   Gets the size of the matrix
- * @return  size of the matrix
+ * @return  Size of the matrix
 */
 int xCiphers::getMatrixSize() { return outputMatrix.size(); }
 

@@ -17,6 +17,7 @@ namespace Utilz {
   std::string HeadString(int, std::string);
   std::string TailString(int, std::string);
   void Strip(std::string&);
+  std::string Utilz::randomString(int);
   void _help();
 } // namespace Utilz
 
