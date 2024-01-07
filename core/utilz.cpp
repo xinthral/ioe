@@ -107,6 +107,21 @@ void Utilz::_help() {
   Logger::GetInstance()->named_log(__FILENAME__, helpline);
 }
 
+/*!
+ * @brief   Returns a randomly generated string
+*/
+std::string Utilz::randomString(int length) {
+  std::srand(std::time(nullptr));
+  std::string lexigraph = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz";
+  std::string output = "";
+  int idx = -1;
+  for (int i = 0; i < length; i++) {
+    idx = rand() % lexigraph.size() + 1;
+    output += lexigraph[idx];
+  }
+  return output;
+}
+
 extern "C" {
   int addIt(int a, int b) {
     return a + b;

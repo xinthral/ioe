@@ -36,7 +36,6 @@ Battle::Battle(int size, Player* player, std::vector<Toon*>& team) : Battle() {
 
   cc = new Combat(*player, *t);
   cc->begin_combat();
-  
 }
 
 /*!
@@ -50,6 +49,10 @@ Battle::Battle(std::vector<Toon*>& gang1, std::vector<Toon*>& gang2) : Battle() 
 */
 void Battle::_help() {
   std::string helpline = "\nBattle Helpline!\n";
+  helpline += "\t";
+  helpline += "The Battle Module is attempting to handle battlefield logic. This will essentially handle ";
+  helpline += "upscaled Combat, maintaining the battlefield. I wanted Player V Player combat as well as ";
+  helpline += "Player V Toon, Toon V Toon, and any group Combat that is interrelated.";
   helpline += "\n";
   log->named_log(__FILENAME__, helpline);
 }
