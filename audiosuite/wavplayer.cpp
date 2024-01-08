@@ -1,7 +1,3 @@
-/*!
- * @class   WavPlayer wavplayer.cpp waveplayer.h
- * @brief   WavPlayer Class
-*/
 #include "wavplayer.h"
 #include <cstdlib>
 
@@ -11,9 +7,7 @@
 */
 #define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
 
-/*!
- * @brief   Default Constructor
-*/
+/*! @todo    Default Constructor */
 WavPlayer::WavPlayer() {
   log = Logger::GetInstance();
   cnf = ConfigManager::GetInstance();
@@ -21,8 +15,9 @@ WavPlayer::WavPlayer() {
   log->named_log(__FILENAME__, buf);
 }
 
+/*! @todo    needs desc */
 void WavPlayer::playwav(const std::string& inFile) {
-  // Replace "your_sound_file.wav" with the actual path to your sound file
+  // Actual path to sound file
   const char* soundFile = ("C:\\Users\\PC\\GitHub\\ioe\\" + inFile).c_str(); 
 
   // Build the aplay command
@@ -37,7 +32,5 @@ void WavPlayer::playwav(const std::string& inFile) {
   log->named_log(__FILENAME__, buf);
 }
 
-/*!
- * @brief   Default Deconstructor
-*/
+/*! @todo    Default Deconstructor */
 WavPlayer::~WavPlayer() { }

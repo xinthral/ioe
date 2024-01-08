@@ -29,7 +29,7 @@ extern enum HealthState healthState;
 class Actor {
 protected:
   ConfigManager* cnf;       //!< ConfigManager Instantiation
-  Logger* log;              //!< Logging Handler
+  Logger* log;              //!< Logging Handler Instantiation
   CombatState aiState;      //!< Current AI CombatState
   HealthState condition;    //!< Current Health State
   std::string name;         //!< Name of Actor

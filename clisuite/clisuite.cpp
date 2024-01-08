@@ -14,10 +14,7 @@
 std::string  _cnf_ = "docs/engine.ini";
 bool vshContinue = false;
 
-/*!
- * @brief   Function to parse user input for a command 
- * @param[in] input - Command string from the command line
-*/
+/*! @todo   Function to parse user input for a command */
 void parse_user_input(std::string input) {
   ConfigManager* cnf = ConfigManager::GetInstance();
   std::vector<std::string> cmds;
@@ -41,9 +38,7 @@ bool parse_input(const std::string input, const std::string criteria) {
   return true;
 }
 
-/*!
- * @brief   Helper Function to display help
-*/
+/*! @todo    Helper Function to display help */
 void print_help() {
   //! Establish Logger Object
   Logger* log = Logger::GetInstance();
@@ -57,9 +52,7 @@ void print_help() {
   log->raw_log("\tdebug - Debugging Flag\n");
 }
 
-/*!
- * @brief   Static Helper File for the CLISuite
-*/
+/*! @todo    Static Helper File for the CLISuite */
 void cli_help() {
   ConfigManager* cnf = ConfigManager::GetInstance();
   std::vector<std::string> cmds;
@@ -68,9 +61,7 @@ void cli_help() {
   for (auto c : cmds) { printf(": %s\n", c.c_str()); }
 }
 
-/*!
- * @brief   Run Engine Commands
-*/
+/*! @todo    Run Engine Commands */
 void run_command(const std::string input, std::vector<std::string>& cmdline) {
   ConfigManager* cnf = ConfigManager::GetInstance();   //!< Establish ConfigManager Object
   Lexicon* lex = new Lexicon();                        //!< Establish Lexicon Object
