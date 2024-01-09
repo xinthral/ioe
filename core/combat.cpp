@@ -1,7 +1,3 @@
-/*!
- * @class   Combat combat.h combat.cpp
- * @brief   Handle the interactive logic for Combat
-*/
 #include "combat.h"
 
 /*!
@@ -11,7 +7,7 @@
 #define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
 
 /*!
- * @brief   Default Constructor
+ * @todo    Default Constructor
 */
 Combat::Combat() {
   //! Establish Singletons 
@@ -23,8 +19,7 @@ Combat::Combat() {
 }
 
 /*!
- * @overload
- * @brief   EvE Constructor
+ * @todo    EvE Constructor
 */
 Combat::Combat(Toon& combatant1, Toon& combatant2) : Combat() { 
   //! Check Health State
@@ -68,8 +63,7 @@ Combat::Combat(Toon& combatant1, Toon& combatant2) : Combat() {
 }
 
 /*!
- * @overload
- * @brief   PvE Constructor
+ * @todo    PvE Constructor
 */
 Combat::Combat(Player& combatant1, Toon& combatant2) : Combat() { 
   //! Check Health State
@@ -90,8 +84,7 @@ Combat::Combat(Player& combatant1, Toon& combatant2) : Combat() {
 }
 
 /*!
- * @overload
- * @brief   PvP Constructor
+ * @todo    PvP Constructor
 */
 Combat::Combat(Player& combatant1, Player& combatant2) : Combat() { 
   //! Check Health State
@@ -113,7 +106,7 @@ Combat::Combat(Player& combatant1, Player& combatant2) : Combat() {
 }
 
 /*!
- * @brief   Initiates Combat
+ * @todo    Intakes Combatants
 */
 void Combat::injest_combatants(Actor& combatant1, Actor& combatant2) {
   f1.health  = combatant1.get_health();
@@ -125,7 +118,7 @@ void Combat::injest_combatants(Actor& combatant1, Actor& combatant2) {
 }
 
 /*!
- * @brief   Initiates Combat
+ * @todo    Initiates Combat
 */
 void Combat::begin_combat() {
   //! Seed and Generate Random Number
@@ -148,7 +141,7 @@ void Combat::begin_combat() {
 }
 
 /*!
- * @brief   Helper Hook used in CLI Help System
+ * @todo    Helper Hook used in CLI Help System
 */
 void Combat::_help() {
   std::string helpline = "\nCombat Helpline!\n";
@@ -159,6 +152,6 @@ void Combat::_help() {
 }
 
 /*!
- * @brief   Default Deconstructor
+ * @todo    Default Deconstructor
 */
 Combat::~Combat() { }
