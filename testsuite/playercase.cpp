@@ -1,7 +1,3 @@
-/*!
- * @class   TestPlayer testplayer.cpp testplayer.h
- * @brief   Test Case for testing Player objects
-*/
 #include "playercase.h"
 
 /*!
@@ -11,7 +7,7 @@
 #define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
 
 /*!
- * @brief   Default Constructor
+ * @todo    Default Constructor
 */
 TestPlayer::TestPlayer() : BaseCase(__FILENAME__) {
   BaseCase::log->named_log(__FILENAME__, "Testing Player's!");
@@ -22,7 +18,7 @@ TestPlayer::TestPlayer() : BaseCase(__FILENAME__) {
 }
 
 /*!
- * @brief   Run full set of test on module 
+ * @todo    Run full set of test on module 
 */
 void TestPlayer::test_all() {
   test_isAlive();
@@ -30,7 +26,7 @@ void TestPlayer::test_all() {
 }
 
 /*!
- * @brief   Test if Player Alive State holds
+ * @todo    Test if Player Alive State holds
 */
 void TestPlayer::test_isAlive() {
   bool isAlive = dummy->isAlive();
@@ -44,11 +40,11 @@ void TestPlayer::test_isAlive() {
 }
 
 /*!
- * @brief   Test if Player Combat State holds
+ * @todo    Test if Player Combat State holds
 */
 void TestPlayer::test_isFighting() { }
 
 /*!
- * @brief   Default Deconstructor
+ * @todo    Default Deconstructor
 */
 TestPlayer::~TestPlayer() { }

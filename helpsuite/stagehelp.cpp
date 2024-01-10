@@ -1,9 +1,3 @@
-/*!
- * @class   HelpStage stagehelp.h stagehelp.cpp
- * @brief   Help details about the StageManager itself. 
- * @details Includes features like how it works, hints 
- *          working with the engine and more.
-*/
 #include "stagehelp.h"
 
 /*!

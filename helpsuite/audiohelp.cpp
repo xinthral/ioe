@@ -1,9 +1,3 @@
-/*!
- * @class   HelpAudio audiohelp.h audiohelp.cpp
- * @brief   Help details about the Audio module. 
- * @details Includes features like how it works, hints 
- *          working with the engine and more.
-*/
 #include "audiohelp.h"
 
 /*!
@@ -13,12 +7,11 @@
 #define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
 
 /*!
- * @brief   Default Constructor
+ * @todo    Default Constructor
 */
 HelpAudio::HelpAudio() { }
 
 /*!
- * @brief   Default Deconstructor
+ * @todo    Default Deconstructor
 */
 HelpAudio::~HelpAudio() { }
-

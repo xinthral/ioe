@@ -1,4 +1,3 @@
-
 #include "wavsampling.h"
 
 /*!
@@ -7,12 +6,11 @@
 */
 #define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
 
-/*!
- * @brief   Default Constructor
-*/
-WaveSampler::WaveSampler() { log = Logger::GetInstance(); }
+/*! @todo    Default Constructor */
+WavSampler::WavSampler() { log = Logger::GetInstance(); }
 
-void WaveSampler::sampleFile(const std::string& filename) {
+/*! @todo    needs desc */
+void WavSampler::sampleFile(const std::string& filename) {
   //! Scoped Variables
   char buf[128];
 
@@ -35,7 +33,5 @@ void WaveSampler::sampleFile(const std::string& filename) {
   }
 }
 
-/*!
- * @brief   Default Deconstructor
-*/
-WaveSampler::~WaveSampler() { }
+/*! @todo    Default Deconstructor */
+WavSampler::~WavSampler() { }

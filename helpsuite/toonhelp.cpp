@@ -1,9 +1,3 @@
-/*!
- * @class   HelpToon toonhelp.h toonhelp.cpp
- * @brief   Help details about the Toon module. 
- * @details Includes features like how it works, hints 
- *          working with the engine and more.
-*/
 #include "toonhelp.h"
 
 /*!
@@ -13,11 +7,11 @@
 #define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
 
 /*!
- * @brief   Default Constructor
+ * @todo    Default Constructor
 */
 HelpToon::HelpToon() { }
 
 /*!
- * @brief   Default Deconstructor
+ * @todo    Default Deconstructor
 */
 HelpToon::~HelpToon() { }

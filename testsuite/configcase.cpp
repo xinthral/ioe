@@ -1,7 +1,3 @@
-/*!
- * @class   TestConfig configcase.cpp configcase.h
- * @brief   Testing for the ConfigManager 
-*/
 #include "configcase.h"
 
 /*!
@@ -11,7 +7,7 @@
 #define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
 
 /*!
- * @brief   Default Constructor
+ * @todo    Default Constructor
 */
 TestConfig::TestConfig() : BaseCase(__FILENAME__) {
   BaseCase::log->named_log(__FILENAME__, "Testing the ConfigManager!");
@@ -21,7 +17,7 @@ TestConfig::TestConfig() : BaseCase(__FILENAME__) {
 }
 
 /*!
- * @brief   Run full set of test on module 
+ * @todo    Run full set of test on module 
 */
 void TestConfig::test_all() {
   mapping();
@@ -29,7 +25,7 @@ void TestConfig::test_all() {
 }
 
 /*!
- * @brief   Test All of Key-Value Mappings for Settings
+ * @todo    Test All of Key-Value Mappings for Settings
 */
 void TestConfig::mapping() { 
   size_t initialSize = BaseCase::cnf->get_settingsSize();
@@ -42,7 +38,7 @@ void TestConfig::mapping() {
 }
 
 /*!
- * @brief   Add a new config 
+ * @todo    Add a new config 
 */
 void TestConfig::addConfig() {
   size_t initialSize = BaseCase::cnf->get_settingsSize();
@@ -54,7 +50,7 @@ void TestConfig::addConfig() {
 }
 
 /*!
- * @brief   Remove a config option
+ * @todo    Remove a config option
 */
 void TestConfig::remConfig() {
   size_t initialSize = BaseCase::cnf->get_settingsSize();
@@ -66,7 +62,7 @@ void TestConfig::remConfig() {
 }
 
 /*!
- * @brief   Evaluate return type for get_authorized_cli_commands()
+ * @todo    Evaluate return type for get_authorized_cli_commands()
 */
 void TestConfig::listOfCommands() {
   std::vector<std::string> commands;
@@ -77,6 +73,6 @@ void TestConfig::listOfCommands() {
 }
 
 /*!
- * @brief   Default Deconstructor
+ * @todo    Default Deconstructor
 */
 TestConfig::~TestConfig() {}

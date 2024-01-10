@@ -1,18 +1,3 @@
-/*! 
- * @class   BalanceController balance.h balance.cpp
- * @brief   BalanceController handles balancing engine mechanics
- *          in a consistant, scalable and easily changeable way.
- * @details Like in life, so to in games do we need balance
- *          In order to maintain consistency in a game, you 
- *          need a universal scale in which you operate from. 
- *          This module creates a mathematical scalar curve 
- *          that all statistics can be derived from. 
- * @note  \f$y = δ\f$^[\f$x/(π^π)\f$]
- * @note  \f$δ :=\f$ Constant based on game difficulty
- * @note  \f$x :=\f$ Character's Current Level
- * @note  \f$π :=\f$ Pi....mmmm Pi
- * @note  \f$y :=\f$ The scalar value
-*/
 #include "balance.h"
 
 /*!
@@ -57,7 +42,7 @@ BalanceController::BalanceController() {
 }
 
 /*!
- * @brief   Singleton Constructor 
+ * @todo    Singleton Constructor 
 */
 BalanceController* BalanceController::GetInstance() {
   //! Acquire Instance Mutex
@@ -68,11 +53,8 @@ BalanceController* BalanceController::GetInstance() {
 }
 
 /*!
- * @brief   Scales The Universe
- * @details Scalar Function to keep the entire universe 
- *          in balance.
+ * @todo    Scaled value based on level
  * @note    y = δ^(χ/[π^π])
- * @return  Scaled value based on level
 */
 double BalanceController::scalar(int level) {
   double x = level * 1.0;
@@ -80,8 +62,7 @@ double BalanceController::scalar(int level) {
 }
 
 /*!
- * @brief   Log Game State
- * @details Display the current state of the base game attributes
+ * @todo    Display the current state of the base game attributes
 */
 void BalanceController::display_state() {
   double scl = 0.0;
@@ -99,20 +80,17 @@ void BalanceController::display_state() {
 }
 
 /*!
- * @brief   Helper Function: Base Scalar Value 
- * @return  Returns Base Scalar Value
+ * @todo    Helper Function: Base Scalar Value 
 */
 double BalanceController::get_base() { return base; }
 
 /*!
- * @brief   Helper Function: Game Difficulty 
- * @return  Returns difficulty level
+ * @todo    Helper Function: Game Difficulty 
 */
 Hardness BalanceController::get_difficulty() { return this->DIF; }
 
 /*!
- * @brief   Converts the difficulty to a string 
- * @return  Difficulty as a string 
+ * @todo    Converts the difficulty to a string 
 */
 std::string BalanceController::get_difficulty_str() {
   switch(this->get_difficulty()) {
@@ -126,7 +104,7 @@ std::string BalanceController::get_difficulty_str() {
 }
 
 /*!
- * @brief   Helper Hook used in CLI Help System
+ * @todo    Helper Hook used in CLI Help System
 */
 void BalanceController::_help() { 
   this->display_state();
@@ -139,6 +117,6 @@ void BalanceController::_help() {
 }
 
 /*!
- * @brief   Default Deconstructor
+ * @todo    Default Deconstructor
 */
 BalanceController::~BalanceController() { }

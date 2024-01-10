@@ -1,7 +1,3 @@
-/*!
- * @class   TestLexicon lexiconcase.cpp lexiconcase.h
- * @brief   Test for the Lexicon
-*/
 #include "lexiconcase.h"
 
 /*!
@@ -11,7 +7,7 @@
 #define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
 
 /*!
- * @brief   Default Constructor
+ * @todo    Default Constructor
 */
 TestLexicon::TestLexicon() : BaseCase(__FILENAME__) {
   BaseCase::log->named_log(__FILENAME__, "Testing the Lexicon!");
@@ -22,23 +18,34 @@ TestLexicon::TestLexicon() : BaseCase(__FILENAME__) {
 }
 
 /*!
- * @brief   Run full set of test on module 
+ * @todo    Run full set of test on module 
 */
 void TestLexicon::test_all() { 
-  this->generateName();
+  this->generateName(3);
+  this->lexigraphChangeSize();
 }
 
 /*!
- * @brief   Validate the Name Generation feature
+ * @todo    Validate the name generation feature
 */
-void TestLexicon::generateName() {
-  std::string response = lex->generateName(3);
-  assertm(response.size() > 0, "Name Responded with Zero Length");
+void TestLexicon::generateName(int len) {
+  std::string response = lex->generateName(len);
+  assertm(response.size() > (2*len), "Name Responded with Insufficient Length");
   sprintf(buf, "%s [%s] %s (%s)", msgHead, "name generation", msgTail, response.c_str());
   BaseCase::log->named_log(__FILENAME__, buf);
 }
 
 /*!
- * @brief   Default Deconstructor
+ * @todo  Validate the Lexicon swap still holds true
+*/
+void TestLexicon::lexigraphChangeSize() {
+  lex->setLexigraph("1234567890ABCDEFGHIJKLMNOQRSTUVWXYZ");
+  assertm(35 == lex->getLexigraphSize(), "New Lexigraph has mismatched Size");
+  sprintf(buf, "%s [%s] %s (%d)", msgHead, "changing lexigraph", msgTail, lex->getLexigraphSize());
+  BaseCase::log->named_log(__FILENAME__, buf);
+}
+
+/*!
+ * @todo    Default Deconstructor
 */
 TestLexicon::~TestLexicon() { }

@@ -1,32 +1,24 @@
-/*!
- * @class   xCiphers ciphers.cpp ciphers.h
- * @brief   The cipher suite will handle logical lexiconal shifting
- *          and word translations
-*/
 #include "ciphers.h"
 
 /*!
- * @brief   Default Constructor
+ * @todo    Default Constructor
 */
 xCiphers::xCiphers() {
-  this->rows =lexigraph.size();
-  this->cols =lexigraph.size();
-  this->keySize = (int)sizeof(keyArray) / sizeof(keyArray[0]);
+  rows = lexigraph.size();
+  cols = lexigraph.size();
+  keySize = (int)sizeof(keyArray) / sizeof(keyArray[0]);
 }
 
 /*!
- * @brief   Overloaded Constructor
- * @param[in] code - Character to start the cipher
- * @param[in] key  - Salt for the cipher
+ * @todo    Overloaded Constructor
 */
 xCiphers::xCiphers(char code, std::string key) : xCiphers() {
-  this->keyArray = key.c_str();
-  this->generateMatrix(code);
+  keyArray = key.c_str();
+  generateMatrix(code);
 }
 
 /*!
- * @brief   Locates the index of the given letter in the lexigraph 
- * @param[in] letter - Character to be looked up
+ * @todo    Locates the index of the given letter in the lexigraph 
 */
 int xCiphers::getIndex(char letter) {
   for (int i = 0; i < Lexicon::getLexigraphSize(); i++) {
@@ -36,7 +28,7 @@ int xCiphers::getIndex(char letter) {
 }
 
 /*!
- * @brief   Generates an N x N matrix where N := Number of elements
+ * @todo    Generates an N x N matrix where N := Number of elements
  *          in the lexigraph.
 */
 void xCiphers::generateMatrix(char code) {
@@ -57,13 +49,12 @@ void xCiphers::generateMatrix(char code) {
 }
 
 /*!
- * @brief   Gets the size of the matrix
- * @return  size of the matrix
+ * @todo    Gets the size of the matrix
 */
 int xCiphers::getMatrixSize() { return outputMatrix.size(); }
 
 /*!
- * @brief   
+ * @todo    
 */
 std::string xCiphers::encode(std::string input) {
   std::string output = "";
@@ -82,7 +73,7 @@ std::string xCiphers::encode(std::string input) {
 }
 
 /*!
- * @brief   
+ * @todo    
 */
 std::string xCiphers::decode(std::string input) {
   std::string output = "";
@@ -101,7 +92,7 @@ std::string xCiphers::decode(std::string input) {
 }
 
 /*!
- * @brief   
+ * @todo    
 */
 void xCiphers::displayMatrix(bool blackOut) {
   std::string matrixStr = "";
@@ -144,6 +135,6 @@ void xCiphers::displayMatrix(bool blackOut) {
 }
 
 /*!
- * @brief   Default Deconstructor
+ * @todo    Default Deconstructor
 */
 xCiphers::~xCiphers() { }

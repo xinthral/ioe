@@ -5,21 +5,44 @@
 #include "balance.h"
 #include "config.h"
 
+/*!
+ * @class   xClock clock.h clock.cpp
+ * @brief   xClock handles timing amongst the chaos and 
+ *          otherwise manipulating the temporal dimension.
+ * @details needs desc
+*/
 class xClock {
 protected:
+  /*!
+   * @brief   Singleton Constructor 
+  */
   xClock();
-  static xClock* _singleton;
-  static std::mutex _mutex;
-
 private:
-  char            buf[256];
-  ConfigManager*  cnf;
-  Logger*         log;
+  static xClock* _singleton;  //!< Singleton Instance
+  static std::mutex _mutex;   //!< Lock Mutex 
+  ConfigManager*  cnf;        //!< ConfigManager Instantiation
+  Logger*         log;        //!< Logging Handler Instantiation
+  char            buf[1024];  //!< Buffer Value for Logger outputs
 public:
+  //! Singletons should not be cloneable
   xClock(xClock&) = delete;
+
+  //! Singletons should not be assignable
   void operator = (const xClock&) = delete;
+
+  /*!
+   * @brief   Singleton Constructor 
+  */
   static xClock* GetInstance();
+
+  /*!
+   * @brief   Helper Hook used in CLI Help System
+  */
   void _help();
+
+  /*!
+   * @brief   Default Deconstructor 
+  */
   ~xClock();
 };
 

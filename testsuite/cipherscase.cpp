@@ -1,8 +1,3 @@
-/*!
- * @class   TestCiphers leadercase.cpp leadercase.h
- * @brief   Test for the TestCiphers
-*/
-
 #include "cipherscase.h"
 
 /*!
@@ -12,7 +7,7 @@
 #define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
 
 /*!
- * @brief   Default Constructor
+ * @todo    Default Constructor
 */
 TestCiphers::TestCiphers() : BaseCase(__FILENAME__) {
   BaseCase::log->named_log(__FILENAME__, "Testing the Ciphers!");
@@ -25,17 +20,17 @@ TestCiphers::TestCiphers() : BaseCase(__FILENAME__) {
 }
 
 /*!
- * @brief   Run full set of test on module 
+ * @todo    Run full set of test on module 
 */
 void TestCiphers::test_all() {
   this->generateMatrix();
   this->encode();
   this->decode();
-  // this->displayMatrix(); // FIXME
+  // this->swappedLexigraph(); 
 }
 
 /*!
- * @brief   
+ * @todo    FIXME
 */
 void TestCiphers::displayMatrix() {
   cipher->displayMatrix(false);
@@ -44,19 +39,19 @@ void TestCiphers::displayMatrix() {
 }
 
 /*!
- * @brief   
+ * @todo    Ensuring that the cipher can properly decode a message
 */
 void TestCiphers::decode() {
   std::string response = cipher->decode(encoded);
   sprintf(buf, "Decoding failed to produce %s: %s => %s", this->decoded.c_str(), this->encoded.c_str(), response.c_str());
+  BaseCase::log->named_log(__FILENAME__, buf);
   assertm(strcmp(response.c_str(), this->decoded.c_str()) == 0, buf);
   sprintf(buf, "%s [%s] %s (%s)", msgHead, "decoding", msgTail, response.c_str());
   BaseCase::log->named_log(__FILENAME__, buf);
-
 }
 
 /*!
- * @brief   
+ * @todo    Ensuring that the cipher can properly encode a message
 */
 void TestCiphers::encode() {
   this->encoded = cipher->encode(decoded);
@@ -67,7 +62,7 @@ void TestCiphers::encode() {
 }
 
 /*!
- * @brief   
+ * @todo    Generates Cipher Matrices'
 */
 void TestCiphers::generateMatrix() {
   int mSize = cipher->getMatrixSize();
@@ -78,6 +73,19 @@ void TestCiphers::generateMatrix() {
 }
 
 /*!
- * @brief   Default Deconstructor
+ * @todo    Generates Cipher after changing the lexigraph
+*/
+void TestCiphers::swappedLexigraph() {
+  cipher->setLexigraph("1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+  this->encode();
+  this->decode();
+  sprintf(buf, "Dec: %s", this->decoded.c_str());
+  BaseCase::log->named_log(__FILENAME__, buf);
+  sprintf(buf, "%s [%s] %s (%d)", msgHead, "new lexigraph", msgTail, cipher->getLexigraphSize());
+  BaseCase::log->named_log(__FILENAME__, buf);
+}
+
+/*!
+ * @todo    Default Deconstructor
 */
 TestCiphers::~TestCiphers() { }

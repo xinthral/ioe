@@ -1,15 +1,9 @@
-/*!
- * @class   Lexicon lexicon.cpp lexicon.h
- * @brief   The Lexicon will handle ciphers, names, word generations and hold
- *          the names generated for lookup
-*/
 #include "lexicon.h"
 
 /*!
- * @brief   Default Constructor
+ * @todo    Default Constructor
 */
 Lexicon::Lexicon() {
-  std::srand(std::time(NULL));
   lexigraph = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   syllables = {
     "th", "el", "ar", "en", "ka", 
@@ -24,11 +18,11 @@ Lexicon::Lexicon() {
     "tal", "nai", "syth", "ke", "zen"
   };
   // Initialize random number generator
+  std::srand(std::time({}));
 }
 
 /*!
- * @brief   Generate A random Name based on Syllable count
- * @param[in] count - Number of Syllables in desired name
+ * @todo    Generate A random Name based on Syllable count
 */
 std::string Lexicon::generateName(int count) { 
   std::string name;
@@ -40,18 +34,16 @@ std::string Lexicon::generateName(int count) {
 }
 
 /*!
- * @brief   Returns the current size of the Lexigraph
- * @return  Size of Current Lexigraph
+ * @todo    Returns the current size of the Lexigraph
 */
 int Lexicon::getLexigraphSize() { return lexigraph.size(); }
 
 /*!
- * @brief   Returns the current size of the Lexigraph
- * @return  Size of Current Lexigraph
+ * @todo    Returns the current size of the Lexigraph
 */
 void Lexicon::setLexigraph(std::string lexigraph) { this->lexigraph = lexigraph; }
 
 /*!
- * @brief   Default Deconstructor
+ * @todo    Default Deconstructor
 */
 Lexicon::~Lexicon() { }

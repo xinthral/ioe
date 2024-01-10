@@ -1,7 +1,3 @@
-/*! 
- * @class   TestActors actorcase.h actorcase.cpp
- * @brief   Case for testing Actor functionality
-*/
 #include "actorcase.h"
 
 /*!
@@ -11,7 +7,7 @@
 #define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
 
 /*!
- * @brief   Default Constructor
+ * @todo    Default Constructor
 */
 TestActors::TestActors() : BaseCase(__FILENAME__) {
   BaseCase::log->named_log(__FILENAME__, "Testing Actor's!");
@@ -21,7 +17,7 @@ TestActors::TestActors() : BaseCase(__FILENAME__) {
 }
 
 /*!
- * @brief   Run full set of test on module 
+ * @todo    Run full set of test on module 
 */
 void TestActors::test_all() {
   test_basevalues();    //! Testing Base Values
@@ -30,7 +26,7 @@ void TestActors::test_all() {
 }
 
 /*!
- * @brief   Run full set of test on Base Values 
+ * @todo    Run full set of test on Base Values 
 */
 void TestActors::test_basevalues() {
   sprintf(this->msgNote, "Actor Base Value Mismatch");
@@ -41,7 +37,7 @@ void TestActors::test_basevalues() {
 }
 
 /*!
- * @brief   Run full set of test on Combat States 
+ * @todo    Run full set of test on Combat States 
 */
 void TestActors::test_combatstate() {
   sprintf(this->msgNote, "Actor CombatState Mismatch");
@@ -53,7 +49,7 @@ void TestActors::test_combatstate() {
 }
 
 /*!
- * @brief   Run full set of test on Health States 
+ * @todo    Run full set of test on Health States 
 */
 void TestActors::test_healthstate() {
   sprintf(this->msgNote, "Actor HealthState Mismatch");
@@ -65,8 +61,7 @@ void TestActors::test_healthstate() {
 }
 
 /*!
- * @brief   Validate Initial Condition: Attack Value
- * @note    Are actors getting proper base values?
+ * @todo    Validate Initial Condition: Attack Value
 */
 void TestActors::base_attack() {
   int cnf_atk = cnf->get_attack();
@@ -77,8 +72,7 @@ void TestActors::base_attack() {
 }
 
 /*!
- * @brief   Validate Initial Condition: Defense Value
- * @note    Are actors getting proper base values?
+ * @todo    Validate Initial Condition: Defense Value
 */
 void TestActors::base_defense() {
   int cnf_def = cnf->get_defense();
@@ -89,8 +83,7 @@ void TestActors::base_defense() {
 }
 
 /*!
- * @brief   Validate Initial Condition: Flux Value
- * @note    Are actors getting proper base values?
+ * @todo    Validate Initial Condition: Flux Value
 */
 void TestActors::base_flux() {
   int cnf_flx = cnf->get_flux();
@@ -101,8 +94,7 @@ void TestActors::base_flux() {
 }
 
 /*!
- * @brief   Validate Initial Condition: Health Value
- * @note    Are actors getting proper base values?
+ * @todo    Validate Initial Condition: Health Value
 */
 void TestActors::base_health() {
   int cnf_hlt = cnf->get_health();
@@ -113,8 +105,7 @@ void TestActors::base_health() {
 }
 
 /*!
- * @brief   Validate Initial Condition: Combat Idle
- * @note    Are actors states getting set properly?
+ * @todo    Validate Initial Condition: Combat Idle
 */
 void TestActors::combatstate_idle() { 
   dummy = new Actor();
@@ -125,8 +116,7 @@ void TestActors::combatstate_idle() {
 }
 
 /*!
- * @brief   Validate Initial Condition: Combat Patrol
- * @note    Are actors states getting set properly?
+ * @todo    Validate Initial Condition: Combat Patrol
 */
 void TestActors::combatstate_patrol() { 
   dummy = new Actor();
@@ -137,8 +127,7 @@ void TestActors::combatstate_patrol() {
 }
 
 /*!
- * @brief   Validate Initial Condition: Combat Fight
- * @note    Are actors states getting set properly?
+ * @todo    Validate Initial Condition: Combat Fight
 */
 void TestActors::combatstate_fight() { 
   dummy = new Actor();
@@ -149,8 +138,7 @@ void TestActors::combatstate_fight() {
 }
 
 /*!
- * @brief   Validate Initial Condition: Combat Flee
- * @note    Are actors states getting set properly?
+ * @todo    Validate Initial Condition: Combat Flee
 */
 void TestActors::combatstate_flee() { 
   dummy = new Actor();
@@ -161,8 +149,7 @@ void TestActors::combatstate_flee() {
 }
 
 /*!
- * @brief   Validate Initial Condition: Combat Follow
- * @note    Are actors states getting set properly?
+ * @todo    Validate Initial Condition: Combat Follow
 */
 void TestActors::combatstate_follow() { 
   dummy = new Actor();
@@ -173,8 +160,7 @@ void TestActors::combatstate_follow() {
 }
 
 /*!
- * @brief   Validate Initial Condition: Health Healthy
- * @note    Are actors states getting set properly?
+ * @todo    Validate Initial Condition: Health Healthy
 */
 void TestActors::healthstate_healthy() { 
   dummy = new Actor();
@@ -185,8 +171,7 @@ void TestActors::healthstate_healthy() {
 }
 
 /*!
- * @brief   Validate Initial Condition: Health Hurting
- * @note    Are actors states getting set properly?
+ * @todo    Validate Initial Condition: Health Hurting
 */
 void TestActors::healthstate_hurting() { 
   dummy = new Actor();
@@ -196,9 +181,8 @@ void TestActors::healthstate_hurting() {
   BaseCase::log->named_log(__FILENAME__, buf);
 }
 
-/**
- * @brief   Validate Initial Condition: Health Critical 
- * @note    Are actors states getting set properly?
+/*!
+ * @todo    Validate Initial Condition: Health Critical 
 */
 void TestActors::healthstate_critical() { 
   dummy = new Actor();
@@ -208,9 +192,8 @@ void TestActors::healthstate_critical() {
   BaseCase::log->named_log(__FILENAME__, buf);
 }
 
-/**
- * @brief   Validate Initial Condition: Health Sick 
- * @note    Are actors states getting set properly?
+/*!
+ * @todo    Validate Initial Condition: Health Sick 
 */
 void TestActors::healthstate_sick() { 
   dummy = new Actor();
@@ -220,9 +203,8 @@ void TestActors::healthstate_sick() {
   BaseCase::log->named_log(__FILENAME__, buf);
 }
 
-/**
- * @brief   Validate Initial Condition: Health Dead 
- * @note    Are actors states getting set properly?
+/*!
+ * @todo    Validate Initial Condition: Health Dead 
 */
 void TestActors::healthstate_dead() { 
   dummy = new Actor();
@@ -233,6 +215,6 @@ void TestActors::healthstate_dead() {
 }
 
 /*!
- * @brief   Default Deconstructor
+ * @todo    Default Deconstructor
 */
 TestActors::~TestActors() { }

@@ -1,7 +1,3 @@
-/*!
- * @class   TestUtilz utilzcase.cpp utilzcase.h
- * @brief   Testing for the Utilz Functions 
-*/
 #include "utilzcase.h"
 
 /*!
@@ -11,7 +7,7 @@
 #define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
 
 /*!
- * @brief   Default Constructor
+ * @todo    Default Constructor
 */
 TestUtilz::TestUtilz() : BaseCase(__FILENAME__) {
   BaseCase::log->named_log(__FILENAME__, "Testing the Utilz Functionality!");
@@ -21,7 +17,7 @@ TestUtilz::TestUtilz() : BaseCase(__FILENAME__) {
 }
 
 /*!
- * @brief   Run full set of test on module 
+ * @todo    Run full set of test on module 
 */
 void TestUtilz::test_all() {
   this->test_StringToArray();
@@ -29,7 +25,7 @@ void TestUtilz::test_all() {
 }
 
 /*!
- * @brief   Test Utilz StringToArray feature
+ * @todo    Test Utilz StringToArray feature
 */
 void TestUtilz::test_StringToArray() {
   std::string testline = "this is a test";
@@ -41,7 +37,7 @@ void TestUtilz::test_StringToArray() {
 }
 
 /*!
- * @brief   Test Utilz StringToArray feature with trailing spaces
+ * @todo    Test Utilz StringToArray feature with trailing spaces
 */
 void TestUtilz::test_StringToArray_TrailingSpace() {
   std::string testline = "this is a test ";
@@ -53,6 +49,6 @@ void TestUtilz::test_StringToArray_TrailingSpace() {
 }
 
 /*!
- * @brief   Default Deconstructor
+ * @todo    Default Deconstructor
 */
 TestUtilz::~TestUtilz() { }

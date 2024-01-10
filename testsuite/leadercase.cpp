@@ -1,8 +1,3 @@
-/*!
- * @class   TestLeader leadercase.cpp leadercase.h
- * @brief   Test for the LeaderBoard
-*/
-
 #include "leadercase.h"
 
 /*!
@@ -12,18 +7,18 @@
 #define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
 
 /*!
- * @brief   Default Constructor
+ * @todo    Default Constructor
 */
 TestLeader::TestLeader() : BaseCase(__FILENAME__) {
   BaseCase::log->named_log(__FILENAME__, "Testing the LeaderBoard!");
 }
 
 /*!
- * @brief   Run full set of test on module 
+ * @todo    Run full set of test on module 
 */
 void TestLeader::test_all() { }
 
 /*!
- * @brief   Default Deconstructor
+ * @todo    Default Deconstructor
 */
 TestLeader::~TestLeader() { }

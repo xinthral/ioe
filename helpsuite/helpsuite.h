@@ -27,12 +27,30 @@
 #include "toonhelp.h"
 #include "utilzhelp.h"
 
+/*!
+ * @class   HelpSuite helpsuite.h helpsuite.cpp
+ * @brief   Command Line Tool (CLI) for the HelpSuite
+ * @details Helper Suite is meant to parse Doxygen outputs, and 
+ *      provide a commandline utility for quick reference 
+ *      while developing or debugging.
+*/
 class HelpSuite {
 protected:
   ConfigManager*    cnf;  //!< Instantiated ConfigManager Object
   Logger*           log;  //!< Instantiated Logger Object
+
+private:
 public:
+  /*!
+   * @brief   Default Constructor
+  */
   HelpSuite();
+
+  /*!
+   * @overload
+   * @brief   Debugging Constructor
+   * @param[in] _debug Debugging option 
+  */
   HelpSuite(bool);
   void HelpAll();
   void ActorHelp();
@@ -46,11 +64,21 @@ public:
   void StageHelp();
   void ToonHelp();
   void UtilzHelp();
+
+  /*!
+   * @brief   Helper hook for CLI Tool to display help details
+  */
   void _help();
+
+  /*!
+   * @brief   Default Deconstructor
+  */
   ~HelpSuite();
 };
 
-//! Static Display Function
+/*!
+ * @brief   Static Function to display help details
+*/
 void print_help();
 
 #endif // HELPER_H //

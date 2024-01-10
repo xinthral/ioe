@@ -1,11 +1,3 @@
-/*!
- * @class   TestSuite testsuite.h testsuite.cpp
- * @brief   Command Line Tool (CLI) for the TestSuite
- * @details Test Suite is meant to be a collection of unit testing
- *          with the idea of reaching 100% coverage of testing, 
- *          while providing a command line utility for reference 
- *          when developing or debugging.
-*/
 #include "testsuite.h"
 
 /*!
@@ -15,77 +7,77 @@
 #define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
 
 /*!
- * @brief   Default Constructor
+ * @todo    Default Constructor
 */
 TestSuite::TestSuite() { }
 
 /*!
- * @brief   Initiates the Test for the Actor Module
+ * @todo    Initiates the Test for the Actor Module
 */
 void TestSuite::CaseActor() { TestActors* ta = new TestActors(); }
 
 /*!
- * @brief   Initiates the Test for the Actor Module
+ * @todo    Initiates the Test for the Actor Module
 */
 void TestSuite::CaseAudio() { TestAudio* ta = new TestAudio(); }
 
 /*!
- * @brief   Initiates the Test for the BalanceController Module
+ * @todo    Initiates the Test for the BalanceController Module
 */
 void TestSuite::CaseBalance() { TestBalance* tb = new TestBalance(); }
 
 /*!
- * @brief   Initiates the Test for the Ciphers Module
+ * @todo    Initiates the Test for the Ciphers Module
 */
 void TestSuite::CaseCiphers() { TestCiphers* tc = new TestCiphers(); }
 
 /*!
- * @brief   Initiates the Test for the Combat Module
+ * @todo    Initiates the Test for the Combat Module
 */
 void TestSuite::CaseCombat() { TestCombat* tc = new TestCombat(); }
 
 /*!
- * @brief   Initiates the Test for the ConfigManager Module
+ * @todo    Initiates the Test for the ConfigManager Module
 */
 void TestSuite::CaseConfig() { TestConfig* tc = new TestConfig(); }
 
 /*!
- * @brief   Initiates the Test for the Item Module
+ * @todo    Initiates the Test for the Item Module
 */
 void TestSuite::CaseItem() { TestItem* ti = new TestItem(); }
 
 /*!
- * @brief   Initiates the Test for the LeaderBoard Module 
+ * @todo    Initiates the Test for the LeaderBoard Module 
 */
 void TestSuite::CaseLeader() { TestLeader* tl = new TestLeader(); }
 
 /*!
- * @brief   Initiates the Test for the Lexicon Module 
+ * @todo    Initiates the Test for the Lexicon Module 
 */
 void TestSuite::CaseLexicon() { TestLexicon* tl = new TestLexicon(); }
 
 /*!
- * @brief   Initiates the Test for the Player Module
+ * @todo    Initiates the Test for the Player Module
 */
 void TestSuite::CasePlayer() { TestPlayer* tp = new TestPlayer(); }
 
 /*!
- * @brief   Initiates the Test for the StageManager Module
+ * @todo    Initiates the Test for the StageManager Module
 */
 void TestSuite::CaseStage() { TestStage* tg = new TestStage(); }
 
 /*!
- * @brief   Initiates the Test for the Toon Module
+ * @todo    Initiates the Test for the Toon Module
 */
 void TestSuite::CaseToon() { TestToon* tt = new TestToon(); }
 
 /*!
- * @brief   Initiates the Test for the Utilz Module
+ * @todo    Initiates the Test for the Utilz Module
 */
 void TestSuite::CaseUtilz() { TestUtilz* tu = new TestUtilz(); }
 
 /*!
- * @brief   Default Deconstructor
+ * @todo    Default Deconstructor
 */
 TestSuite::~TestSuite() { }
 
