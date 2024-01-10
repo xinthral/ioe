@@ -1,7 +1,3 @@
-/*!
- * @class   TestLexicon lexiconcase.cpp lexiconcase.h
- * @brief   Test for the Lexicon
-*/
 #include "lexiconcase.h"
 
 /*!
@@ -11,7 +7,7 @@
 #define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
 
 /*!
- * @brief   Default Constructor
+ * @todo    Default Constructor
 */
 TestLexicon::TestLexicon() : BaseCase(__FILENAME__) {
   BaseCase::log->named_log(__FILENAME__, "Testing the Lexicon!");
@@ -22,7 +18,7 @@ TestLexicon::TestLexicon() : BaseCase(__FILENAME__) {
 }
 
 /*!
- * @brief   Run full set of test on module 
+ * @todo    Run full set of test on module 
 */
 void TestLexicon::test_all() { 
   this->generateName(3);
@@ -30,7 +26,7 @@ void TestLexicon::test_all() {
 }
 
 /*!
- * @brief   Validate the name generation feature
+ * @todo    Validate the name generation feature
 */
 void TestLexicon::generateName(int len) {
   std::string response = lex->generateName(len);
@@ -40,7 +36,7 @@ void TestLexicon::generateName(int len) {
 }
 
 /*!
- * @brief Validate the Lexicon swap still holds true
+ * @todo  Validate the Lexicon swap still holds true
 */
 void TestLexicon::lexigraphChangeSize() {
   lex->setLexigraph("1234567890ABCDEFGHIJKLMNOQRSTUVWXYZ");
@@ -50,6 +46,6 @@ void TestLexicon::lexigraphChangeSize() {
 }
 
 /*!
- * @brief   Default Deconstructor
+ * @todo    Default Deconstructor
 */
 TestLexicon::~TestLexicon() { }

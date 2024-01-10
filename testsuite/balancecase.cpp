@@ -1,7 +1,3 @@
-/*!
- * @class   TestBalance balancecase.h balancecase.cpp
- * @brief   Test BalanceController Module 
-*/
 #include "balancecase.h"
 
 /*!
@@ -11,7 +7,7 @@
 #define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
 
 /*!
- * @brief   Default Constructor
+ * @todo    Default Constructor
 */
 TestBalance::TestBalance() : BaseCase(__FILENAME__) {
   BaseCase::log->named_log(__FILENAME__, "Testing the BalanceController!");
@@ -25,7 +21,7 @@ TestBalance::TestBalance() : BaseCase(__FILENAME__) {
 }
 
 /*!
- * @brief   Validate the entire Balance Module
+ * @todo    Validate the entire Balance Module
 */
 void TestBalance::test_all() { 
   this->def_atk_ratio();      //!< Test Atk/Def Ration
@@ -33,7 +29,7 @@ void TestBalance::test_all() {
 }
 
 /*!
- * @brief   Validate Scaling factors against attack and defense
+ * @todo    Validate Scaling factors against attack and defense
 */
 void TestBalance::def_atk_ratio() { 
   double preRatio = (this->baseAtk * 1.0) / this->baseDef;
@@ -46,8 +42,7 @@ void TestBalance::def_atk_ratio() {
 }
 
 /*!
- * @brief   Validate that the appropriate difficulty level is
- *          is being assigned. 
+ * @todo    Validate that the appropriate difficulty level is being assigned. 
 */
 void TestBalance::difficulty_level() {
   std::string dif  = cnf->raw_config("DIF");
@@ -58,6 +53,6 @@ void TestBalance::difficulty_level() {
 }
 
 /*!
- * @brief   Default Deconstructor
+ * @todo    Default Deconstructor
 */
 TestBalance::~TestBalance() { }

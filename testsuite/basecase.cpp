@@ -1,7 +1,3 @@
-/*!
- * @class   BaseCase basecase.h basecase.cpp
- * @brief   Base Testing Case for TestSuite Module  
-*/
 #include "basecase.h"
 
 /*!
@@ -11,7 +7,7 @@
 #define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
 
 /*!
- * @brief   Default Constructor 
+ * @todo    Default Constructor 
 */
 BaseCase::BaseCase() {
   this->bal = BalanceController::GetInstance();   //!< Instantiated BalanceController Object
@@ -20,14 +16,13 @@ BaseCase::BaseCase() {
 }
 
 /*!
- * @brief   Overloaded Constructor
- * @param[in] casename - Name of Case being initiated
+ * @todo    Overloaded Constructor
 */
 BaseCase::BaseCase(const char * casename) : BaseCase() {
   this->log->named_log(casename, "TestCase Initiated!");
 }
 
 /*!
- * @brief   Default Deconstructor 
+ * @todo    Default Deconstructor 
 */
 BaseCase::~BaseCase() { }

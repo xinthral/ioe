@@ -1,7 +1,3 @@
-/*!
- * @class   AudioMixer audiosuite.cpp audiosuite.h
- * @brief   needs desc
-*/
 #include "audiosuite.h"
 
 /*!
@@ -11,14 +7,14 @@
 #define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
 
 /*!
- * @brief   Default constructor
+ * @todo    Default constructor
 */
 AudioMixer::AudioMixer() {
   log = Logger::GetInstance();
 }
 
 /*!
- * @brief   needs desc
+ * @todo    needs desc
 */
 void AudioMixer::print_help() {
   std::string filename = Utilz::FileName(__FILENAME__);
@@ -28,7 +24,7 @@ void AudioMixer::print_help() {
 }
 
 /*!
- * @brief   needs desc
+ * @todo    needs desc
 */
 void AudioMixer::_help() {
   std::string helpline = "Mixer Help!";
@@ -36,15 +32,13 @@ void AudioMixer::_help() {
   log->named_log(__FILENAME__, helpline);
 }
 
-/*!
- * @brief   Default Deconstructor
-*/
+/*! @todo    Default Deconstructor */
 AudioMixer::~AudioMixer() { }
 
 int main(int argc, char const *argv[]) {
   // Logger* _log = Logger::GetInstance();
   AudioMixer* audio = new AudioMixer();
-  WaveSampler* sampler = new WaveSampler();
+  WavSampler* sampler = new WavSampler();
   WavPlayer* player = new WavPlayer();
 
   std::string input = "./audiosuite/samples/";

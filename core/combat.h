@@ -16,26 +16,64 @@ struct fighter {
   // int speed; 
 };
 
+/*!
+ * @class   Combat combat.h combat.cpp
+ * @brief   Handle the interactive logic for Combat
+*/
 class Combat {
 protected:
   struct fighter f1;
   struct fighter f2;
 
 private:
-  BalanceController*  bal;
-  ConfigManager*      cnf;
-  Logger*             log;
+  BalanceController*  bal;      //!< BalanceController Instantiation
+  ConfigManager*      cnf;      //!< ConfigManager Instantiation
+  Logger*             log;      //!< Logging Handler Instantiation
   Condition           matchup;
   char                buf[256];
 
 public:
+  /*!
+   * @brief   Default Constructor
+  */
   Combat();
+
+  /*!
+   * @overload
+   * @brief   EvE Constructor
+  */
   Combat(Toon&, Toon&);
+
+  /*!
+   * @overload
+   * @brief   PvE Constructor
+  */
   Combat(Player&, Toon&);
+
+  /*!
+   * @overload
+   * @brief   PvP Constructor
+  */
   Combat(Player&, Player&);
+  
+  /*!
+   * @brief   Initiates Combat
+  */
   void begin_combat();
+
+  /*!
+   * @brief   Intakes Combatants
+  */
   void injest_combatants(Actor&, Actor&);
+
+  /*!
+   * @brief   Helper Hook used in CLI Help System
+  */
   void _help();
+
+  /*!
+   * @brief   Default Deconstructor
+  */
   ~Combat();
 };
 

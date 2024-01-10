@@ -1,8 +1,3 @@
-/*!
- * @class   StageManager stage.h stage.cpp
- * @brief   StageManager controls the entirety of whom
- *          is active on the stage for any given scene.
-*/
 #include "stage.h"
 
 /*!
@@ -13,20 +8,22 @@
 
 //! Singleton Instance
 StageManager* StageManager::_singleton = NULL;
+//! Mutex Lock
 std::mutex StageManager::_mutex;
 
 /*!
- * @brief   Protected Constructor
+ * @todo    Protected Constructor
 */
 StageManager::StageManager(const std::string _name) : name(_name) {
   log = Logger::GetInstance();
+  maxCrew = 10;
   sprintf(buf, "StageManager Established: %s", this->name.c_str());
   log->named_log(Utilz::FileName(__FILENAME__), buf);
 }
 
 
 /*!
- * @brief   Singleton Constructor
+ * @todo    Singleton Constructor
 */
 StageManager* StageManager::GetInstance(const std::string& name) {
   //! Acquire Instance Mutex
@@ -37,13 +34,12 @@ StageManager* StageManager::GetInstance(const std::string& name) {
 }
 
 /*!
- * @brief   Returns the name attribute
- * @return  Name Value
+ * @todo    Returns the name attribute
 */
 std::string StageManager::get_name() { return this->name; }
 
 /*!
- * @brief   StageManager Loads the Scene with Actors
+ * @todo    StageManager Loads the Scene with Actors
  * @note    FIXME
 */
 void StageManager::casting_call(int size, std::vector<Toon*>& npcs) { 
@@ -57,7 +53,7 @@ void StageManager::casting_call(int size, std::vector<Toon*>& npcs) {
 
 
 /*!
- * @brief   Helper Hook used in CLI Help System
+ * @todo    Helper Hook used in CLI Help System
 */
 void StageManager::_help() {
   std::string helpline = "\nStageManager Helpline!\n";
@@ -65,7 +61,7 @@ void StageManager::_help() {
   log->named_log(__FILENAME__, helpline);
 }
 
-/**
- * @brief   Default Constructor
+/*!
+ * @todo    Default Constructor
 */
 StageManager::~StageManager() { }

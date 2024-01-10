@@ -1,7 +1,3 @@
-/*! 
- * @class   Battle battle.h battle.cpp
- * @brief   Interweaving Combat events
- */
 #include "battle.h"
 
 /*!
@@ -13,13 +9,10 @@
 /*! 
  * @brief   Default Constructor
 */
-Battle::Battle() {
-  log = Logger::GetInstance();
-}
+Battle::Battle() { log = Logger::GetInstance(); }
 
 /*! 
- * @overload
- * @brief   Player v Team Constructor
+ * @todo    Player v Team Constructor
 */
 Battle::Battle(int size, Player* player, std::vector<Toon*>& team) : Battle() {
   Toon* t = new Toon();
@@ -39,13 +32,12 @@ Battle::Battle(int size, Player* player, std::vector<Toon*>& team) : Battle() {
 }
 
 /*!
- * @overload
- * @brief    Gang v Gang Constructor
+ * @todo     Gang v Gang Constructor
 */
 Battle::Battle(std::vector<Toon*>& gang1, std::vector<Toon*>& gang2) : Battle() { }
 
 /*!
- * @brief   Helper Hook used in CLI Help System
+ * @todo    Helper Hook used in CLI Help System
 */
 void Battle::_help() {
   std::string helpline = "\nBattle Helpline!\n";
@@ -58,6 +50,6 @@ void Battle::_help() {
 }
 
 /*! 
- * @brief   Default Deconstructor
+ * @todo    Default Deconstructor
 */
 Battle::~Battle() { }

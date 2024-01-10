@@ -1,11 +1,3 @@
-/*!
- * @class   ConfigManager config.h config.cpp
- * @brief   ConfigManager manages configuration loading and updating throughout the engine.
- * @details In order to handle the number of customizable options for the engine, a config
- *          file system has been implemented. This class will manage the configuration file
- *          and return it's content to the engine. 
- * @note    values can be reloaded without having to restart the engine.
- */
 #include "config.h"
 
 /*!
@@ -16,10 +8,11 @@
 
 //! Singleton Instance 
 ConfigManager* ConfigManager::_singleton = NULL;
+//! Lock Mutex
 std::mutex ConfigManager::_mutex;
 
 /*!
- * @brief   Protected Constructor 
+ * @todo    Protected Constructor 
 */
 ConfigManager::ConfigManager() { 
     log = Logger::GetInstance();
@@ -28,7 +21,7 @@ ConfigManager::ConfigManager() {
 }
 
 /*!
- * @brief   Singleton Constructor 
+ * @todo    Singleton Constructor 
 */
 ConfigManager* ConfigManager::GetInstance() {
     // Acquire Instance Mutex
@@ -39,103 +32,8 @@ ConfigManager* ConfigManager::GetInstance() {
 }
 
 /*!
- * @brief   Injest Setting into struct, and return struct size.
- * @param[in] option - The Key value for lookup
- * @param[in] value  - The data value associated with the key
- * @return  Returns current config queue size 
+ * @todo    Reads in Config File and Parses Options
 */
-size_t ConfigManager::add_setting(const std::string& option, const std::string& value) {
-  this->settings[option] = value;
-  return this->settings.size();
-}
-
-/*!
- * @brief   Remove Setting from injested list
- * @param[in] option - The name of the Configuration Option 
- * @return  Current Size of Settings List
-*/
-size_t ConfigManager::rem_setting(const std::string& option) {
-  this->settings.erase(option);
-  return this->settings.size();
-}
-
-/*!
- * @brief   Reload Settings
- * @details Forces a reload of the injested settings list,
- *          and outputs the configs to the logs.
-*/
-void ConfigManager::reload_state() { this->load_config(true); }
-
-/*!
- * @brief   Return the Value of a Configuration Option 
- * @param[in] option - The name of the Configuration Option
- * @return  The value related to input key
- */
-std::string ConfigManager::raw_config(const std::string& option) { return this->settings[option]; }
-
-/*!
- * @brief   Return the list of authorized commands for the 
- *          CLI Suite
- * @param[out] option - A string array to recieve the commands
-*/
-void ConfigManager::get_authorizedCommands(std::vector<std::string>& input) { 
-  std::string inp = this->raw_config("CMDLIST");
-  Utilz::StringToArray(inp, input);
-}
-
-/*!
- * @brief   Helper Function: Attack 
- * @return  Return base attack value 
- */
-int ConfigManager::get_attack() { return atoi(this->raw_config("ATK").c_str()); }
-
-/*!
- * @brief   Helper Function: Base Scalar
- * @return  Return base scalar value 
-*/
-int ConfigManager::get_base() { return atoi(this->raw_config("BAS").c_str()); }
-
-/*!
- * @brief   Helper Function: Defense 
- * @return  Return base defense value 
- */
-int ConfigManager::get_defense() { return atoi(this->raw_config("DEF").c_str()); }
-
-/*!
- * @brief   Helper Function: Difficulty
- * @return  Return base difficulty value
-*/
-int ConfigManager::get_difficulty() { return atoi(this->raw_config("DIF").c_str()); }
-
-/*!
- * @brief   Helper Function: Flux 
- * @return  Return base flux value 
- */
-int ConfigManager::get_flux() { return atoi(this->raw_config("FLX").c_str()); }
-
-/*!
- * @brief   Helper Function: Health
- * @return  Return base health value 
- */
-int ConfigManager::get_health() { return atoi(this->raw_config("HLT").c_str()); }
-
-/*!
- * @brief   Helper Function: Settings 
- * @return  Return size of settings vector 
- */
-size_t ConfigManager::get_settingsSize() { return this->settings.size(); }
-
-/*!
- * @brief   Helper Function: Version
- * @return  Return game version
-*/
-std::string ConfigManager::get_version() { return this->raw_config("VERSION"); }
-
-/*!
- * @brief   Reads in Config File and Parses Options
- * @param[in] _debug - Debugging Option
- * @return  Confirmation that all values were loaded
- */
 bool ConfigManager::load_config(bool _debug) {
   char buf[64];
   std::size_t pos;                            //! Positional Pointer for delimeter
@@ -165,7 +63,81 @@ bool ConfigManager::load_config(bool _debug) {
 }
 
 /*!
- * @brief   Helper Hook used in CLI Help System
+ * @todo    Reload Settings
+*/
+void ConfigManager::reload_state() { this->load_config(true); }
+
+/*!
+ * @todo    Injest Setting into struct, and return struct size.
+*/
+size_t ConfigManager::add_setting(const std::string& option, const std::string& value) {
+  this->settings[option] = value;
+  return this->settings.size();
+}
+
+/*!
+ * @todo    Remove Setting from injested list
+*/
+size_t ConfigManager::rem_setting(const std::string& option) {
+  this->settings.erase(option);
+  return this->settings.size();
+}
+
+/*!
+ * @todo    Return the Value of a Configuration Option 
+*/
+std::string ConfigManager::raw_config(const std::string& option) { return this->settings[option]; }
+
+/*!
+ * @todo    Return the list of authorized commands for the CLI Suite
+*/
+void ConfigManager::get_authorizedCommands(std::vector<std::string>& input) { 
+  std::string inp = this->raw_config("CMDLIST");
+  Utilz::StringToArray(inp, input);
+}
+
+/*!
+ * @todo    Helper Function: Attack 
+*/
+int ConfigManager::get_attack() { return atoi(this->raw_config("ATK").c_str()); }
+
+/*!
+ * @todo    Helper Function: Base Scalar
+*/
+int ConfigManager::get_base() { return atoi(this->raw_config("BAS").c_str()); }
+
+/*!
+ * @todo    Helper Function: Defense 
+*/
+int ConfigManager::get_defense() { return atoi(this->raw_config("DEF").c_str()); }
+
+/*!
+ * @todo    Helper Function: Difficulty
+*/
+int ConfigManager::get_difficulty() { return atoi(this->raw_config("DIF").c_str()); }
+
+/*!
+ * @todo    Helper Function: Flux 
+ */
+int ConfigManager::get_flux() { return atoi(this->raw_config("FLX").c_str()); }
+
+/*!
+ * @todo    Helper Function: Health
+*/
+int ConfigManager::get_health() { return atoi(this->raw_config("HLT").c_str()); }
+
+/*!
+ * @todo    Helper Function: Settings 
+*/
+size_t ConfigManager::get_settingsSize() { return this->settings.size(); }
+
+/*!
+ * @todo    Helper Function: Version
+*/
+std::string ConfigManager::get_version() { return this->raw_config("VERSION"); }
+
+/*!
+ * @todo    Helper Hook used in CLI Help System
 */
 void ConfigManager::_help() {
   std::string helpline = "\nConfigManager Helpline!\n";
@@ -173,4 +145,7 @@ void ConfigManager::_help() {
   log->named_log(__FILENAME__, helpline);
 }
 
+/*!
+ * @todo    Default Deconstructor
+*/
 ConfigManager::~ConfigManager() { }

@@ -1,8 +1,3 @@
-/*!
- * @class   TestItem itemcase.cpp itemcase.h
- * @brief   Test for the Base Item 
-*/
-
 #include "itemcase.h"
 
 /*!
@@ -12,25 +7,25 @@
 #define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
 
 /*!
- * @brief   Default Constructor
+ * @todo    Default Constructor
 */
 TestItem::TestItem() : BaseCase(__FILENAME__) {
   BaseCase::log->named_log(__FILENAME__, "Testing Base Items!");
 }
 
 /*!
- * @brief   Run full set of test on module 
+ * @todo    Run full set of test on module 
 */
 void TestItem::test_all() {
 
 }
 
 /*!
- * @brief   Run full set of test on module 
+ * @todo    Run full set of test on module 
 */
 // void TestItem::() {}
 
 /*!
- * @brief   Default Deconstructor
+ * @todo    Default Deconstructor
 */
 TestItem::~TestItem() { }

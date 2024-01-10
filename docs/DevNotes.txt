@@ -46,14 +46,17 @@
     lucious and vibrant area.
 ** 
 
-:FrontEnd
+: FrontEnd
 https://www.w3schools.com/react/react_getstarted.asp
 
-:Embedded Compiler (Doesn't handle advanced CPP features)
+: Embedded Compiler (Doesn't handle advanced CPP features)
 https://emscripten.org/docs/getting_started/Tutorial.html
 
 : URLs
 https://mixkit.co/free-sound-effects/
+
+: WavWriting
+https://www.youtube.com/watch?v=8nOi-0kBv2Y&t=305s
 
 TODO: 
 x Docstrings motherfucker, do you use them!?

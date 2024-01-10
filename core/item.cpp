@@ -1,9 +1,4 @@
-/*!
- * @class   Item item.cpp item.h
- * @brief   BaseClass for Items
- * @details Items will be inherited from this class, which will include consumables
- *          weapons, armor, quest items, keys, and any other items I come up with.
-*/
+
 #include "item.h"
 
 /*!
@@ -13,16 +8,15 @@
 #define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
 
 /*!
- * @brief   Default Constructor 
+ * @todo    Default Constructor 
 */
 Item::Item() { 
     log = Logger::GetInstance();
     log->named_log(__FILENAME__, "New Item Established.");
 }
 
-
 /*!
- * @brief   Helper Hook used in CLI Help System
+ * @todo    Helper Hook used in CLI Help System
 */
 void Item::_help() { 
   std::string helpline = "\nItem Helpline!\n";
@@ -30,4 +24,7 @@ void Item::_help() {
   log->named_log(__FILENAME__, helpline);
 }
 
+/*!
+ * @todo    Default Deconstructor 
+*/
 Item::~Item() { }

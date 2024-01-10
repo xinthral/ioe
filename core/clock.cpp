@@ -1,9 +1,4 @@
-/*!
- * @class   xClock clock.h clock.cpp
- * @brief   xClock handles timing amongst the chaos and 
- *          otherwise manipulating the temporal dimension.
- * @details needs desc
-*/
+
 #include "clock.h"
 
 /*!
@@ -18,7 +13,7 @@ xClock* xClock::_singleton = NULL;
 std::mutex xClock::_mutex;
 
 /*!
- * @brief   
+ * @todo    Protected Constructor
 */
 xClock::xClock() {
   cnf  = ConfigManager::GetInstance();
@@ -26,9 +21,8 @@ xClock::xClock() {
   log->named_log(__FILENAME__, "xClock Loaded!");
 }
 
-
 /*!
- * @brief   
+ * @todo    Singleton Constructor
 */
 xClock* xClock::GetInstance() { 
   //! Acquire Instance Mutex
@@ -40,7 +34,7 @@ xClock* xClock::GetInstance() {
 
 
 /*!
- * @brief   
+ * @todo    Helper Hook used in CLI Help System
 */
 void xClock::_help() {
   std::string helpline = "\nClock Helpline!\n";
@@ -51,6 +45,6 @@ void xClock::_help() {
 
 
 /*!
- * @brief   Default Deconstructor
+ * @todo    Default Deconstructor
 */
 xClock::~xClock() { }
