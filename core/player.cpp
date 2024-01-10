@@ -1,8 +1,3 @@
-/*!
- * @class   Player player.h player.cpp
- * @brief   Construct containing Player data representing the
- *          virtual avatar within the engine.
-*/
 #include "player.h"
 
 /*!
@@ -12,9 +7,7 @@
 #define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
 
 /*!
- * @brief   Default Constructor
- * @details If no values are provided, then default
- *          values are initialized as (1, 1, 1).
+ * @todo    Default Constructor
 */
 Player::Player() : Player("P1", 1, 1, 1) {
   log = Logger::GetInstance();
@@ -23,21 +16,12 @@ Player::Player() : Player("P1", 1, 1, 1) {
 }
 
 /*!
- * @overload
- * @brief   Level Intialized Constructor
- * @param[in] level - Level of the Player
- * @param[in] power - Cummulative Power of Player
- * @param[in] block - Defense of the Player
+ * @todo    Level Intialized Constructor
 */
 Player::Player(int level, int power, int block) : Player("Player" + level, level, power, block) { }
 
 /*!
- * @overload
- * @brief   Constructor Initializor
- * @param[in] name  - Name of the Player
- * @param[in] level - Level of the Player
- * @param[in] power - Cummulative Power of Player
- * @param[in] block - Defense of the Player
+ * @todo    Constructor Initializor
 */
 Player::Player(std::string name, int level, int power, int block) {
   // Get the current time
@@ -54,7 +38,7 @@ Player::Player(std::string name, int level, int power, int block) {
 }
 
 /*!
- * @brief   Helper Hook used in CLI Help System
+ * @todo    Helper Hook used in CLI Help System
 */
 void Player::_help() {
   std::string helpline = "\nPlayer Helpline!\n";
@@ -66,6 +50,6 @@ void Player::_help() {
 }
 
 /*!
- * @brief   Default Deconstructor
+ * @todo    Default Deconstructor
 */
 Player::~Player() { }

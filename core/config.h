@@ -39,7 +39,7 @@ private:
   std::string             delim = "=";            //!< Delimer seperating Key and Value
   static ConfigManager*   _singleton;             //!< Singleton Instance
   static std::mutex       _mutex;                 //!< Lock Mutex
-  char                    buf[128];               //!< Buffer Value for Logger outputs
+  char                   buf[1024];               //!< Buffer Value for Logger outputs
 
 public:
   ConfigManager(ConfigManager&) = delete;         //!< Singletons should not be cloneable

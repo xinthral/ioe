@@ -4,17 +4,17 @@
  * @todo    Default Constructor
 */
 xCiphers::xCiphers() {
-  this->rows =lexigraph.size();
-  this->cols =lexigraph.size();
-  this->keySize = (int)sizeof(keyArray) / sizeof(keyArray[0]);
+  rows = lexigraph.size();
+  cols = lexigraph.size();
+  keySize = (int)sizeof(keyArray) / sizeof(keyArray[0]);
 }
 
 /*!
  * @todo    Overloaded Constructor
 */
 xCiphers::xCiphers(char code, std::string key) : xCiphers() {
-  this->keyArray = key.c_str();
-  this->generateMatrix(code);
+  keyArray = key.c_str();
+  generateMatrix(code);
 }
 
 /*!

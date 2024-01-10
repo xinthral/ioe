@@ -1,7 +1,3 @@
-/*!
- * @class   Toon toon.h toon.cpp
- * @brief   Toon class is for all non-player characters  
-*/
 #include "toon.h"
 
 /*!
@@ -11,14 +7,12 @@
 #define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
 
 /*!
- * @brief   Default Constructor
+ * @todo    Default Constructor
 */
 Toon::Toon() : Toon(-1, "Toon_#-1") { }
 
 /*!
- * @overload
- * @brief   Constructor Initializor
- * @param[in] id - Character Identity Number
+ * @todo    Constructor Initializor
 */
 Toon::Toon(int id) : Toon(id, "Toon") { 
   sprintf(buf, "Toon_#%d", id); 
@@ -26,18 +20,13 @@ Toon::Toon(int id) : Toon(id, "Toon") {
 }
 
 /*!
- * @overload
- * @brief   Constructor Initializ
- * @param[in] name - Name of the Character
+ * @todo    Constructor Initializor
  * 
 */
 Toon::Toon(std::string name) : Toon(-1, name) { }
 
 /*!
- * @overload
- * @brief   Constructor Initializor
- * @param[in] id   - Character Identity Number
- * @param[in] name - Name of the Character
+ * @todo    Constructor Initializor
 */
 Toon::Toon(int id, std::string name) { 
   this->set_id(id);
@@ -45,27 +34,27 @@ Toon::Toon(int id, std::string name) {
 }
 
 /*!
- * @copydoc Actor::get_name()
+ * @todo    Actor::get_name()
 */
 std::string Toon::get_name() { return this->name; }
 
 /*!
- * @copydoc Actor::get_attack()
+ * @todo    Actor::get_attack()
 */
 int Toon::get_attack() { return this->attack; }
 
 /*!
- * @copydoc Actor::get_defense()
+ * @todo    Actor::get_defense()
 */
 int Toon::get_defense() { return this->defense; }
 
 /*!
- * @copydoc Actor::set_name()
+ * @todo    Actor::set_name()
 */
 void Toon::set_name(std::string name) { this->name = name; }
 
 /*!
- * @brief   Helper Hook used in CLI Help System
+ * @todo    Helper Hook used in CLI Help System
 */
 void Toon::_help() {
   std::string helpline = "\nToon Helpline!\n";
@@ -74,6 +63,6 @@ void Toon::_help() {
 }
 
 /*!
- * @brief   Default Deconstructor
+ * @todo    Default Deconstructor
 */
 Toon::~Toon() { }

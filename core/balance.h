@@ -36,8 +36,8 @@ protected:
 
 private:
   static BalanceController* _singleton; //!< Singleton Instance
-  static std::mutex _mutex;             //!< Lock Mutex 
-  Hardness       DIF;                   //!< Difficulty Level 
+  static std::mutex _mutex;             //!< Lock Mutex
+  Hardness       DIF;                   //!< Difficulty Level
   char           buf[128];              //!< Buffer Value for Logger outputs
   ConfigManager* cnf;                   //!< ConfigManager Instantiation
   Logger*        log;                   //!< Logging Handler Instantiation
@@ -50,10 +50,10 @@ private:
 
 public:
   //! Singletons should not be cloneable
-  BalanceController(BalanceController&) = delete;         
+  BalanceController(BalanceController&) = delete;
 
   //! Singletons should not be assignable
-  void operator = (const BalanceController&) = delete;    
+  void operator = (const BalanceController&) = delete;
 
   /*!
    * @brief   Singleton Constructor 

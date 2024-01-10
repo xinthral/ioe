@@ -1,7 +1,3 @@
-/*!
- * @class   Utilz utilz.h utilz.cpp
- * @brief   Utility functions I find useful.
-*/
 #include "utilz.h"
 
 /*!
@@ -11,9 +7,7 @@
 #define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
 
 /*!
- * @brief   Strips away the file extension 
- * @param[in] __FILE__ - the file extension
- * @return   A new string with the tld stripped.
+ * @todo    Strips away the file extension 
 */
 std::string Utilz::FileName(const char* file) {
   std::string fileName = file;
@@ -22,10 +16,7 @@ std::string Utilz::FileName(const char* file) {
 }
 
 /*!
- * @brief   Truncating method to strip away file extension 
- * @param[in] length   - Size of return string
- * @param[in] __FILE__ - the file extension
- * @return   A new string containing a truncated Filename 
+ * @todo    Truncating method to strip away file extension 
 */
 std::string Utilz::FileName(int length, const char* file) {
   std::string output = Utilz::FileName(file);
@@ -33,9 +24,7 @@ std::string Utilz::FileName(int length, const char* file) {
 }
 
 /*!
- * @brief   Formatted Timestamp for uniformity
- * @return  A string containing the time in a pre-formatted
- *          way.
+ * @todo    Formatted Timestamp for uniformity
 */
 std::string Utilz::TimeStamp() {
   std::time_t time = std::time({});
@@ -51,10 +40,8 @@ std::string Utilz::TimeStamp() {
 }
 
 /*!
- * @brief   Converts a string containing multiple words into
+ * @todo    Converts a string containing multiple words into
  *          into an array of strings.
- * @param[in]   input - String to be parsed
- * @param[out] output - Vector of strings to put parsed words  
 */
 void Utilz::StringToArray(std::string input, std::vector<std::string>& output) {
   char* token = strtok(const_cast<char*>(input.c_str()), " \r\n");
@@ -65,10 +52,7 @@ void Utilz::StringToArray(std::string input, std::vector<std::string>& output) {
 }
 
 /*!
- * @brief   Truncates a string from the beginning of a string
- * @param[in] length  - Size of return string
- * @param[in] message - String to be truncated
- * @return  A new string truncated from the front 
+ * @todo    Truncates a string from the beginning of a string
 */
 std::string Utilz::HeadString(int length, std::string input) {
   std::string output = input;
@@ -77,10 +61,7 @@ std::string Utilz::HeadString(int length, std::string input) {
 }
 
 /*!
- * @brief   Truncates a string from the ending of a string
- * @param[in] length  - Size of return string
- * @param[in] message - String to be truncated
- * @return  A new string truncated from the back
+ * @todo    Truncates a string from the ending of a string
 */
 std::string Utilz::TailString(int length, std::string input) {
   std::string output;
@@ -90,8 +71,7 @@ std::string Utilz::TailString(int length, std::string input) {
 }
 
 /*!
- * @brief   Removes whitespace from string
- * @param[in] message - String to be crunched
+ * @todo    Removes whitespace from string
 */
 void Utilz::Strip(std::string& input) {
   std::string::iterator pos = std::remove(input.begin(), input.end(), ' ');
@@ -99,16 +79,7 @@ void Utilz::Strip(std::string& input) {
 }
 
 /*!
- * @brief   Helper Hook used in CLI Help System
-*/
-void Utilz::_help() {
-  std::string helpline = "\nUtilz Helpline!\n";
-  helpline += "\n";
-  Logger::GetInstance()->named_log(__FILENAME__, helpline);
-}
-
-/*!
- * @brief   Returns a randomly generated string
+ * @todo    Returns a randomly generated string
 */
 std::string Utilz::randomString(int length) {
   std::srand(std::time(nullptr));
@@ -120,6 +91,15 @@ std::string Utilz::randomString(int length) {
     output += lexigraph[idx];
   }
   return output;
+}
+
+/*!
+ * @todo    Helper Hook used in CLI Help System
+*/
+void Utilz::_help() {
+  std::string helpline = "\nUtilz Helpline!\n";
+  helpline += "\n";
+  Logger::GetInstance()->named_log(__FILENAME__, helpline);
 }
 
 extern "C" {
