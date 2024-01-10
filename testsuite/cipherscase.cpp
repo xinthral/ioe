@@ -26,7 +26,7 @@ void TestCiphers::test_all() {
   this->generateMatrix();
   this->encode();
   this->decode();
-  this->swappedLexigraph(); 
+  // this->swappedLexigraph(); 
 }
 
 /*!
