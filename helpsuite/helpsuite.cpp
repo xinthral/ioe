@@ -1,10 +1,3 @@
-/*!
- * @class   HelpSuite helpsuite.h helpsuite.cpp
- * @brief   Command Line Tool (CLI) for the HelpSuite
- * @details Helper Suite is meant to parse Doxygen outputs, and 
- *      provide a commandline utility for quick reference 
- *      while developing or debugging.
-*/
 #include "helpsuite.h"
 
 /*!
@@ -14,7 +7,7 @@
 #define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
 
 /*!
- * @brief   Default Constructor
+ * @todo    Default Constructor
 */
 HelpSuite::HelpSuite() { 
   cnf = ConfigManager::GetInstance();
@@ -23,14 +16,12 @@ HelpSuite::HelpSuite() {
 }
 
 /*!
- * @overload
- * @brief   Debugging Constructor
- * @param[in] _debug Debugging option 
+ * @todo    Debugging Constructor
 */
 HelpSuite::HelpSuite(bool _debug) : HelpSuite() { }
 
 /*!
- * @brief   FIXME: Needs desc
+ * @todo    FIXME: Needs desc
 */
 void HelpSuite::HelpAll() { 
   this->_help();
@@ -46,62 +37,62 @@ void HelpSuite::HelpAll() {
 }
 
 /*!
- * @brief   FIXME: Needs desc
+ * @todo    FIXME: Needs desc
 */
 void HelpSuite::ActorHelp() { HelpActor* ha = new HelpActor(); }
 
 /*!
- * @brief   FIXME: Needs desc
+ * @todo    FIXME: Needs desc
 */
 void HelpSuite::BalanceHelp() { HelpBalance* hb = new HelpBalance(); }
 
 /*!
- * @brief   FIXME: Needs desc
+ * @todo    FIXME: Needs desc
 */
 void HelpSuite::BattleHelp() { HelpBattle* hb = new HelpBattle(); }
 
 /*!
- * @brief   FIXME: Needs desc
+ * @todo    FIXME: Needs desc
 */
 void HelpSuite::CombatHelp() { HelpCombat* hc = new HelpCombat(); }
 
 /*!
- * @brief   FIXME: Needs desc
+ * @todo    FIXME: Needs desc
 */
 void HelpSuite::ItemHelp() { HelpItem* hi = new HelpItem(); }
 
 /*!
- * @brief   FIXME: Needs desc
+ * @todo    FIXME: Needs desc
 */
 void HelpSuite::PlayerHelp() { HelpPlayer* hp = new HelpPlayer(); }
 
 /*!
- * @brief   FIXME: Needs desc
+ * @todo    FIXME: Needs desc
 */
 void HelpSuite::StageHelp() { HelpStage* hs = new HelpStage(); }
 
 /*!
- * @brief   FIXME: Needs desc
+ * @todo    FIXME: Needs desc
 */
 void HelpSuite::ToonHelp() { HelpToon* hs = new HelpToon(); }
 
 /*!
- * @brief   FIXME: Needs desc
+ * @todo    FIXME: Needs desc
 */
 void HelpSuite::UtilzHelp() { HelpUtilz* hs = new HelpUtilz(); }
 
 /*!
- * @brief   Helper hook for CLI Tool to display help details
+ * @todo    Helper hook for CLI Tool to display help details
 */
 void HelpSuite::_help() { print_help(); }
 
 /*!
- * @brief   Default Deconstructor
+ * @todo    Default Deconstructor
 */
 HelpSuite::~HelpSuite() {}
 
 /*!
- * @brief   Static Function to display help details
+ * @todo    Static Function to display help details
 */
 void print_help() {
   Logger* log = Logger::GetInstance();

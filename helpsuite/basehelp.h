@@ -13,16 +13,27 @@
 #include "../core/toon.h"
 #include "../core/utilz.h"
 
+/*!
+ * @class   BaseHelp helpbase.h helpbase.cpp 
+ * @brief   Base Class for the HelpSuite Module
+*/
 class BaseHelp {
 protected:
-  BalanceController*  bal;  //!< Instantiated BalanceController Object
-  ConfigManager*      cnf;  //!< Instantiated ConfigManager Object
-  Logger*             log;  //!< Instantiated Logger Object
-  char                buf[1024];
+  BalanceController*  bal;        //!< Instantiated BalanceController Object
+  ConfigManager*      cnf;        //!< Instantiated ConfigManager Object
+  Logger*             log;        //!< Instantiated Logger Object
+  char                buf[1024];  //!< Buffer Value for Logger outputs
 
 private:
 public:
+  /*!
+   * @brief   Default Constructor
+  */
   BaseHelp();
+
+  /*!
+   * @brief   Default Deconstructor
+  */
   ~BaseHelp();
 };
 

@@ -1,8 +1,3 @@
-/*!
- * @class   BaseHelp helpbase.h helpbase.cpp 
- * @brief   Base Class for the HelpSuite Module
-*/
-
 #include "basehelp.h"
 
 /*!
@@ -12,11 +7,11 @@
 #define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
 
 /*!
- * @brief   Default Constructor
+ * @todo    Default Constructor
 */
 BaseHelp::BaseHelp() { }
 
 /*!
- * @brief   Default Deconstructor
+ * @todo    Default Deconstructor
 */
 BaseHelp::~BaseHelp() { }
