@@ -1,8 +1,3 @@
-/*!
- * @class   TestCiphers leadercase.cpp leadercase.h
- * @brief   Test for the TestCiphers
-*/
-
 #include "cipherscase.h"
 
 /*!
@@ -12,7 +7,7 @@
 #define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
 
 /*!
- * @brief   Default Constructor
+ * @todo    Default Constructor
 */
 TestCiphers::TestCiphers() : BaseCase(__FILENAME__) {
   BaseCase::log->named_log(__FILENAME__, "Testing the Ciphers!");
@@ -25,7 +20,7 @@ TestCiphers::TestCiphers() : BaseCase(__FILENAME__) {
 }
 
 /*!
- * @brief   Run full set of test on module 
+ * @todo    Run full set of test on module 
 */
 void TestCiphers::test_all() {
   this->generateMatrix();
@@ -35,7 +30,7 @@ void TestCiphers::test_all() {
 }
 
 /*!
- * @brief   FIXME
+ * @todo    FIXME
 */
 void TestCiphers::displayMatrix() {
   cipher->displayMatrix(false);
@@ -44,8 +39,7 @@ void TestCiphers::displayMatrix() {
 }
 
 /*!
- * @brief   Ensuring that the cipher can properly decode a message
- * @note    TestCiphers::encode() needs to take place before TestCiphers::decode()
+ * @todo    Ensuring that the cipher can properly decode a message
 */
 void TestCiphers::decode() {
   std::string response = cipher->decode(encoded);
@@ -57,8 +51,7 @@ void TestCiphers::decode() {
 }
 
 /*!
- * @brief   Ensuring that the cipher can properly encode a message
- * @note    TestCiphers::encode() needs to take place before TestCiphers::decode()
+ * @todo    Ensuring that the cipher can properly encode a message
 */
 void TestCiphers::encode() {
   this->encoded = cipher->encode(decoded);
@@ -69,7 +62,7 @@ void TestCiphers::encode() {
 }
 
 /*!
- * @brief   Generates Cipher Matrices'
+ * @todo    Generates Cipher Matrices'
 */
 void TestCiphers::generateMatrix() {
   int mSize = cipher->getMatrixSize();
@@ -80,7 +73,7 @@ void TestCiphers::generateMatrix() {
 }
 
 /*!
- * @brief   Generates Cipher after changing the lexigraph
+ * @todo    Generates Cipher after changing the lexigraph
 */
 void TestCiphers::swappedLexigraph() {
   cipher->setLexigraph("1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ");
@@ -93,6 +86,6 @@ void TestCiphers::swappedLexigraph() {
 }
 
 /*!
- * @brief   Default Deconstructor
+ * @todo    Default Deconstructor
 */
 TestCiphers::~TestCiphers() { }

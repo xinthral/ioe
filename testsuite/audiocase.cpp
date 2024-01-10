@@ -1,8 +1,3 @@
-/*!
- * @class   TestAudio audiocase.cpp audiocase.h
- * @brief   Test for the LeaderBoard
-*/
-
 #include "audiocase.h"
 
 /*!
@@ -12,7 +7,7 @@
 #define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
 
 /*!
- * @brief   Default Constructor
+ * @todo    Default Constructor
 */
 TestAudio::TestAudio() : BaseCase(__FILENAME__) {
   BaseCase::log->named_log(__FILENAME__, "Testing the Audio!");
@@ -22,14 +17,14 @@ TestAudio::TestAudio() : BaseCase(__FILENAME__) {
 }
 
 /*!
- * @brief   Run full set of test on module 
+ * @todo    Run full set of test on module 
 */
 void TestAudio::test_all() {
-  this->wavSampling();  // #FIXME Disabled for GitHubActions because audio files missing
+  // this->wavSampling();  // #FIXME Disabled for GitHubActions because audio files missing
 }
 
 /*!
- * @brief   needs desc
+ * @todo    Sample a Wavfile
 */
 void TestAudio::wavSampling() {
   audio = new AudioDriver();
@@ -40,6 +35,6 @@ void TestAudio::wavSampling() {
 }
 
 /*!
- * @brief   Default Deconstructor
+ * @todo    Default Deconstructor
 */
 TestAudio::~TestAudio() { }

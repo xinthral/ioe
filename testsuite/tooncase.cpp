@@ -1,7 +1,3 @@
-/*!
- * @class   TestToon tooncase.cpp tooncase.h
- * @brief   Testing for the Toon Module 
-*/
 #include "tooncase.h"
 
 /*!
@@ -11,7 +7,7 @@
 #define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
 
 /*!
- * @brief   Default Constructor
+ * @todo    Default Constructor
 */
 TestToon::TestToon() : BaseCase(__FILENAME__) {
   BaseCase::log->named_log(__FILENAME__, "Testing the Toon's!");
@@ -21,7 +17,7 @@ TestToon::TestToon() : BaseCase(__FILENAME__) {
 }
 
 /*!
- * @brief   Run full set of test on module 
+ * @todo    Run full set of test on module 
 */
 void TestToon::test_all() {
   this->test_toonCreation();
@@ -31,7 +27,7 @@ void TestToon::test_all() {
 }
 
 /*!
- * @brief   Validate Instantiation of default Class
+ * @todo    Validate Instantiation of default Class
 */
 void TestToon::test_toonCreation() {
   Toon* toon = new Toon();
@@ -43,7 +39,7 @@ void TestToon::test_toonCreation() {
 }
 
 /*!
- * @brief   Validate Numerical Instantiation
+ * @todo    Validate Numerical Instantiation
 */
 void TestToon::test_toonCreation_id() {
   Toon* toon = new Toon(3);
@@ -55,7 +51,7 @@ void TestToon::test_toonCreation_id() {
 }
 
 /*!
- * @brief   Validate Alphabetical Instantiation
+ * @todo    Validate Alphabetical Instantiation
 */
 void TestToon::test_toonCreation_name() {
   Toon* toon = new Toon("Maji");
@@ -67,7 +63,7 @@ void TestToon::test_toonCreation_name() {
 }
 
 /*!
- * @brief   Validate AlphaNumerica Instatiation
+ * @todo    Validate AlphaNumerica Instatiation
 */
 void TestToon::test_toonCreation_both() {
   Toon* toon = new Toon(4, "Jesse");
@@ -79,6 +75,6 @@ void TestToon::test_toonCreation_both() {
 }
 
 /*!
- * @brief   Default Deconstructor
+ * @todo    Default Deconstructor
 */
 TestToon::~TestToon() { }

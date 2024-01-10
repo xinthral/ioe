@@ -18,25 +18,92 @@
 #include "tooncase.h"
 #include "utilzcase.h"
 
+/*!
+ * @class   TestSuite testsuite.h testsuite.cpp
+ * @brief   Command Line Tool (CLI) for the TestSuite
+ * @details Test Suite is meant to be a collection of unit testing
+ *          with the idea of reaching 100% coverage of testing, 
+ *          while providing a command line utility for reference 
+ *          when developing or debugging.
+*/
 class TestSuite {
 protected:
 private:
 public:
-    TestSuite();
-    void CaseActor();
-    void CaseAudio();
-    void CaseBalance();
-    void CaseCiphers();
-    void CaseCombat();
-    void CaseConfig();
-    void CaseItem();
-    void CaseLeader();
-    void CaseLexicon();
-    void CasePlayer();
-    void CaseStage();
-    void CaseToon();
-    void CaseUtilz();
-    ~TestSuite();
+  /*!
+   * @brief   Default Constructor
+  */
+  TestSuite();
+
+  /*!
+   * @brief   Initiates the Test for the Actor Module
+  */
+  void CaseActor();
+
+  /*!
+   * @brief   Initiates the Test for the Actor Module
+  */
+  void CaseAudio();
+
+  /*!
+   * @brief   Initiates the Test for the BalanceController Module
+  */
+  void CaseBalance();
+
+  /*!
+   * @brief   Initiates the Test for the Ciphers Module
+  */
+  void CaseCiphers();
+
+  /*!
+   * @brief   Initiates the Test for the Combat Module
+  */
+  void CaseCombat();
+
+  /*!
+   * @brief   Initiates the Test for the ConfigManager Module
+  */
+  void CaseConfig();
+
+  /*!
+   * @brief   Initiates the Test for the Item Module
+  */
+  void CaseItem();
+
+  /*!
+   * @brief   Initiates the Test for the LeaderBoard Module 
+  */
+  void CaseLeader();
+
+  /*!
+   * @brief   Initiates the Test for the Lexicon Module 
+  */
+  void CaseLexicon();
+
+  /*!
+   * @brief   Initiates the Test for the Player Module
+  */
+  void CasePlayer();
+
+  /*!
+   * @brief   Initiates the Test for the StageManager Module
+  */
+  void CaseStage();
+
+  /*!
+   * @brief   Initiates the Test for the Toon Module
+  */
+  void CaseToon();
+
+  /*!
+   * @brief   Initiates the Test for the Utilz Module
+  */
+  void CaseUtilz();
+
+  /*!
+   * @brief   Default Deconstructor
+  */
+  ~TestSuite();
 };
 
 #endif // TESTER_H //

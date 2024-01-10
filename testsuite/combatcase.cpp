@@ -1,7 +1,4 @@
-/*!
- * @class   TestCombat combatcase.h combatcase.cpp
- * @brief   Test Class for Combat interactions
-*/
+
 #include "combatcase.h"
 
 /*!
@@ -11,7 +8,7 @@
 #define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
 
 /*! 
- * @brief   Default Constructor
+ * @todo    Default Constructor
 */
 TestCombat::TestCombat() : BaseCase(__FILENAME__) {
   BaseCase::log->named_log(__FILENAME__, "Testing Combat!");
@@ -20,7 +17,7 @@ TestCombat::TestCombat() : BaseCase(__FILENAME__) {
 }
 
 /*! 
- * @brief   Validate the entire Combat Module
+ * @todo    Validate the entire Combat Module
 */
 void TestCombat::test_all() {
   this->EVECombat();
@@ -29,7 +26,7 @@ void TestCombat::test_all() {
 }
 
 /*! 
- * @brief   Evironment Vs Environment Combat
+ * @todo    Evironment Vs Environment Combat
 */
 void TestCombat::EVECombat() {
   Toon* _toon1 = new Toon(++_idx);
@@ -40,7 +37,7 @@ void TestCombat::EVECombat() {
 }
 
 /*! 
- * @brief   Player Vs Environment Combat
+ * @todo    Player Vs Environment Combat
 */
 void TestCombat::PVECombat() {
   Player* _player = new Player("Player", ++_idx, 1, 1);
@@ -51,7 +48,7 @@ void TestCombat::PVECombat() {
 }
 
 /*! 
- * @brief   Player Vs Player Combat
+ * @todo    Player Vs Player Combat
 */
 void TestCombat::PVPCombat() {
   Player* _player1 = new Player("Max", ++_idx, 1, 1);
@@ -62,6 +59,6 @@ void TestCombat::PVPCombat() {
 }
 
 /*! 
- * @brief   Default Deconstructor
+ * @todo    Default Deconstructor
 */
 TestCombat::~TestCombat() { }
