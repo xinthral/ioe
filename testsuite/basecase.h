@@ -35,10 +35,10 @@ protected:
   char                buf[1024];    //!< Buffer Value for Logger outputs
   char                msgHead[32];  //!< Unified prefix for test
   char                msgNote[64];  //!< Unified buffer for test
-  char                msgTail[16];  //!< Unified suffix for test
+  char                msgTail[32];  //!< Unified suffix for test
 
+private:
 public:
-
   /*!
    * @brief   Default Constructor 
   */
