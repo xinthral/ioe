@@ -13,21 +13,21 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: build engine 
-      run: make -j8 engine
+    - name: build core
+      run: make -j8 core
     - name: build audiosuite
-      run: make -j8 audio
-    - name: build cli 
-      run: make -j8 cli
+      run: make -j8 audiosuite
+    - name: build clisuite
+      run: make -j8 clisuite
     - name: build helpsuite
-      run: make -j8 help
+      run: make -j8 helpsuite
     - name: build testsuite
-      run: make -j8 test
+      run: make -j8 testsuite
     - name: test audiosuite
-      run: /home/runner/work/ioe/ioe/bin/mixer.exe
+      run: /home/runner/work/ioe/ioe/bin/audiosuite.exe
     - name: test clisuite 
-      run: /home/runner/work/ioe/ioe/bin/engine.exe
+      run: /home/runner/work/ioe/ioe/bin/clisuite.exe
     - name: test testsuite
-      run: /home/runner/work/ioe/ioe/bin/tester.exe 0
+      run: /home/runner/work/ioe/ioe/bin/testsuite.exe 0
     - name: test helpsuite
-      run: /home/runner/work/ioe/ioe/bin/helper.exe
+      run: /home/runner/work/ioe/ioe/bin/helpsuite.exe
