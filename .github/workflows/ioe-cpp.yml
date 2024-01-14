@@ -24,10 +24,10 @@ jobs:
     - name: build testsuite
       run: make -j8 testsuite
     - name: test audiosuite
-      run: ./bin/audiosuite.exe
+      run: ./audiosuite.exe
     - name: test clisuite 
-      run: ./bin/clisuite.exe
+      run: ./clisuite.exe
     - name: test testsuite
-      run: ./bin/testsuite.exe 0
+      run: ./testsuite.exe 0
     - name: test helpsuite
-      run: ./bin/helpsuite.exe
+      run: ./helpsuite.exe
