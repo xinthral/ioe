@@ -10,7 +10,7 @@
 CC := g++
 DOXYGEN := doxygen
 RRM := rm -rf
-BIN := .\\bin
+BIN := .\\bin\\
 
 # Windows Variants
 ifeq ($(OS), Windows_NT)
@@ -38,7 +38,7 @@ CXFLAGS = $(CFLAGS) -std=c++17
 CXXFLAGS = $(CXFLAGS) -Wall -pedantic -O3
 
 # Set GNU Shell
-SHELL := /bin/bash
+# SHELL := /bin/bash
 
 # Build targets
 CORE := core
@@ -77,19 +77,19 @@ $(CORE): $(CORESRC)
 
 # Compile CLISuite
 $(CLIS): $(CORESRC) $(CLISSRC)
-	$(CC) $(CFLAGS) $(CXFLAGS) $^ -o $(BIN)/$@.exe
+	$(CC) $(CFLAGS) $(CXFLAGS) $^ -o $@.exe
 
 # Compile Audio
 $(AUDI): $(CORESRC) $(AUDISRC) 
-	$(CC) $(CFLAGS) $(CXFLAGS) $^ -o $(BIN)/$@.exe
+	$(CC) $(CFLAGS) $(CXFLAGS) $^ -o $@.exe
 
 # Compile HelpSuite
 $(HELP): $(CORESRC) $(HELPSRC)
-	$(CC) $(CFLAGS) $(CXFLAGS) $^ -o $(BIN)/$@.exe
+	$(CC) $(CFLAGS) $(CXFLAGS) $^ -o $@.exe
 
 # Compile TestSuite
 $(TEST): $(CORESRC) $(TESTSRC)
-	$(CC) $(CFLAGS) $(CXFLAGS) $^ -o $(BIN)/$@.exe
+	$(CC) $(CFLAGS) $(CXFLAGS) $^ -o $@.exe
 
 # Compile Documents 
 $(DOCS): docs/conf.dox
@@ -113,7 +113,7 @@ cleanaudio:
 	$(RRM) $(AUDI)\\*.o
 
 cleanbin:
-	$(RRM) $(BIN)\\*.exe
+	$(RM) *.exe
 
 cleancli:
 	$(RRM) $(CLIS)\\*.o
