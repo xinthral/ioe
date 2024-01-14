@@ -19,31 +19,31 @@ make doc
 
 ### Core Engine, vrooom: 
 ```bash
-make engine 
+make core
 ```
 
 ### AudioSuite Allows for sound testing
 ```bash
-make audio
-./bin/mixer.exe -h
+make audiosuite
+./audiosuite.exe -h
 ```
 
 ### CLISuite Interfacing with that Line Command
 ```bash
-make cli 
-./bin/engine.exe -h
+make clisuite
+./clisuite.exe -h
 ```
 
 ### TestSuite and debuggers delight:
 ```bash
-make test
-./bin/tester.exe -h
+make testsuite
+./testsuite.exe -h
 ```
 
 ### HelpSuite, thar be treasure: 
 ```bash
-make help
-./bin/helper.exe -h
+make helpsuite
+./helpsuite.exe -h
 ```
 
 # Conceptual Overview
