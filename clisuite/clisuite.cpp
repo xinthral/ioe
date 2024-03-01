@@ -79,7 +79,6 @@ void run_command(const std::string input, std::vector<std::string>& cmdline) {
       break;
     case 1:   //! Exit Shell
       vshContinue = false;
-      // exit(0);
       break;
     case 2:   //! Reload Config Options
       cnf->reload_state();

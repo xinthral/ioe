@@ -27,10 +27,11 @@
 */
 std::unordered_map<std::string, int> _CMDMAP = {
   {"help",    0},
+	{"quit",    1},
   {"exit",    1},
   {"reload",  2},
   {"chain",   3},
-  {"name",  4},
+  {"name",    4},
 };
 
 /*!
