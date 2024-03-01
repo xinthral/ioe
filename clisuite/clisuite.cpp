@@ -83,17 +83,17 @@ void run_command(const std::string input, std::vector<std::string>& cmdline) {
     case 2:   //! Reload Config Options
       cnf->reload_state();
       break;
-    case 3:   //! Test Command 
-      cmdline.erase(cmdline.begin());
-      for (std::string c : cmdline) { printf("_ : %s\n", c.c_str()); }
-      break;
-    case 4:   //! Generate Name 
+    case 3:   //! Generate Name 
       value = atoi(cmdline[1].c_str());
       for (int i = 0; i < value; i++) {
         tmp = lex->generateName(1);
         printf("%s", tmp.c_str()); 
       }
       printf("\n"); 
+      break;
+    case 4:   //! Test Command 
+      cmdline.erase(cmdline.begin());
+      for (std::string c : cmdline) { printf("_ : %s\n", c.c_str()); }
       break;
     case 5:   //! Unimplemented Command 
     case 6:   //! Unimplemented Command 

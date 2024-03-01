@@ -17,18 +17,23 @@ WavPlayer::WavPlayer() {
 
 /*! @todo    needs desc */
 void WavPlayer::playwav(const std::string& inFile) {
-  // Actual path to sound file
-  const char* soundFile = ("C:\\Users\\PC\\GitHub\\ioe\\" + inFile).c_str(); 
-
   // Build the aplay command
-  std::string command = cnf->raw_config("VLCPATH") + " --qt-start-minimized --play-and-exit " + std::string(soundFile);
+  char command[16];
+  sprintf(command, "%s", cnf->raw_config("VLCPATH").c_str());
+  char cmdline[64];
+#if defined(_WIN32)
+  sprintf(cmdline, "%s --qt-start-minimized --play-and-exit %s", command, inFile.c_str());
+#else
+  sprintf(cmdline, "%s --play-and-exit --audiofile-wav %s", command, inFile.c_str());
+#endif
+  printf("_______ %s\n", cmdline);
 
   // Call aplay using the system command
-  int result = std::system(command.c_str());
+  int result = std::system(cmdline);
 
   // Check the result
   if (result == 0) { sprintf(buf, "WavFile executed successfully."); } 
-  else { sprintf(buf, "Error executing WavFile: %s.", command.c_str()); }
+  else { sprintf(buf, "Error executing WavFile: %s.", cmdline); }
   log->named_log(__FILENAME__, buf);
 }
 

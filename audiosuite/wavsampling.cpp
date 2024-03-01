@@ -16,7 +16,7 @@ void WavSampler::sampleFile(const std::string& filename) {
 
   //! Instantiate Audio Module 
   wavReader = new AudioDriver();
-  wavReader->readWavData(filename);
+  wavReader->readWavData(filename.c_str());
 
   //! Access audio data and other information
   if (!wavReader->getAudioData().empty()) {

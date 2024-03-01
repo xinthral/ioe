@@ -30,8 +30,8 @@ std::unordered_map<std::string, int> _CMDMAP = {
 	{"quit",    1},
   {"exit",    1},
   {"reload",  2},
-  {"chain",   3},
-  {"name",    4},
+  {"name",    3},
+  {"chain",   4},
 };
 
 /*!

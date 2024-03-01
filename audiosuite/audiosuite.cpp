@@ -50,7 +50,7 @@ int main(int argc, char const *argv[]) {
     }
     input += argv[1];
     input += ".wav"; 
-  } else { input += "mixkit-retro-game-over.wav"; }
+  } else { input += "game-over.wav"; }
   sampler->sampleFile(input);
   player->playwav(input);
   return 0;
