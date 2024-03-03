@@ -1,5 +1,7 @@
 # internal
 *.secret
+*.o
+*.exe
 
 # Avoid CopyWrite by not uploading files
 mixkit-*.wav

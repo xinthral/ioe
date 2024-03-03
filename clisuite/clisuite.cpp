@@ -14,6 +14,18 @@
 std::string  _cnf_ = "docs/engine.ini";
 bool vshContinue = false;
 
+CLISuite::CLISuite() { 
+  this->log = Logger::GetInstance();
+  this->combat = new Combat();
+  this->start_time = std::clock(); 
+}
+
+CLISuite::~CLISuite() {
+  char buf[512];
+  sprintf(buf, "Experiment Duration: %.02fm\n", float(std::clock() - this->start_time) / 60'000);
+  this->log->named_log(__FILENAME__, buf);
+}
+
 /*! @todo   Function to parse user input for a command */
 void parse_user_input(std::string input) {
   ConfigManager* cnf = ConfigManager::GetInstance();
@@ -116,6 +128,7 @@ int main(int argc, const char *argv[]) {
 
   //! Declare Variables
   Logger* log = Logger::GetInstance();                 //!< Establish Logger Object
+  CLISuite* cli;
   size_t found;
   std::string prompt = ">";
   std::string rawInput;
@@ -129,6 +142,7 @@ int main(int argc, const char *argv[]) {
     case '1':
       log->named_log(__FILENAME__, "Engine Firing up...");
       vshContinue = true;
+      cli = new CLISuite();
       break;
     default: 
       print_help();
@@ -147,5 +161,6 @@ int main(int argc, const char *argv[]) {
 
   log->named_log(__FILENAME__, "Engine Winding down...");
   log->named_log(__FILENAME__, "Summary:\n(Output Event Analysis)");
+  if (cli) { delete cli; }
   return 0;
 }

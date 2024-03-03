@@ -1,6 +1,7 @@
 #ifndef XENGINE_H
 #define XENGINE_H
 
+#include <time.h>
 #include <iostream>
 #include <string.h>
 #include <vector>
@@ -21,6 +22,19 @@
  * @class   CLISuite clisuite.cpp clisuite.h
  * @brief   Command Line Interface (CLI) for Engine.
 */
+
+class CLISuite {
+protected:
+private:
+  clock_t start_time;
+  Player *p1, *p2;
+  Toon *t1, *t2;
+  Combat *combat;
+  Logger *log;
+public:
+  CLISuite();
+  ~CLISuite();
+};
 
 /*!
  * @brief   Map

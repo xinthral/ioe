@@ -18,15 +18,14 @@ WavPlayer::WavPlayer() {
 /*! @todo    needs desc */
 void WavPlayer::playwav(const std::string& inFile) {
   // Build the aplay command
-  char command[16];
+  char command[64], cmdline[128];
   sprintf(command, "%s", cnf->raw_config("VLCPATH").c_str());
-  char cmdline[64];
 #if defined(_WIN32)
   sprintf(cmdline, "%s --qt-start-minimized --play-and-exit %s", command, inFile.c_str());
 #else
   sprintf(cmdline, "%s --play-and-exit --audiofile-wav %s", command, inFile.c_str());
 #endif
-  printf("_______ %s\n", cmdline);
+  // printf("_______ %s\n", cmdline);
 
   // Call aplay using the system command
   int result = std::system(cmdline);
