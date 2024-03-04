@@ -1,7 +1,3 @@
-/*! 
- * @class   CLISuite clisuite.cpp clisuite.h
- * @brief   Command Line Interface (CLI) for Engine.
-*/
 #include "clisuite.h"
 
 /*!
@@ -17,12 +13,23 @@ bool vshContinue = false;
 CLISuite::CLISuite() { 
   this->log = Logger::GetInstance();
   this->combat = new Combat();
-  this->start_time = std::clock(); 
+  this->start_time = std::chrono::steady_clock::now();
 }
+
+int CLISuite::appendCommandHistory(std::string incoming) {
+  this->history.push_back(incoming);
+  return this->history.size();
+}
+
+void CLISuite::displayCommandHistory() {
+  this->log->named_log(__FILENAME__, "Command History Summation:");
+}
+
 
 CLISuite::~CLISuite() {
   char buf[512];
-  sprintf(buf, "Experiment Duration: %.02fmin\n", float(std::clock() - this->start_time) / 60'000);
+  std::chrono::duration<double> time_d = (std::chrono::steady_clock::now() - this->start_time);
+  sprintf(buf, "Experiment Duration: %.02fmin\n", (time_d / 60.00)); 
   this->log->named_log(__FILENAME__, buf);
 }
 

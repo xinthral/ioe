@@ -1,7 +1,7 @@
 #ifndef XENGINE_H
 #define XENGINE_H
 
-#include <time.h>
+#include <chrono>
 #include <iostream>
 #include <string.h>
 #include <vector>
@@ -26,13 +26,17 @@
 class CLISuite {
 protected:
 private:
-  clock_t start_time;
   Player *p1, *p2;
   Toon *t1, *t2;
   Combat *combat;
   Logger *log;
+	std::vector<std::string> history;
+
+  std::chrono::time_point<std::chrono::steady_clock> start_time;
 public:
   CLISuite();
+  int appendCommandHistory(std::string);
+	void displayCommandHistory();
   ~CLISuite();
 };
 
