@@ -22,7 +22,7 @@ CLISuite::CLISuite() {
 
 CLISuite::~CLISuite() {
   char buf[512];
-  sprintf(buf, "Experiment Duration: %.02fm\n", float(std::clock() - this->start_time) / 60'000);
+  sprintf(buf, "Experiment Duration: %.02fmin\n", float(std::clock() - this->start_time) / 60'000);
   this->log->named_log(__FILENAME__, buf);
 }
 
@@ -141,8 +141,8 @@ int main(int argc, const char *argv[]) {
       return 0;
     case '1':
       log->named_log(__FILENAME__, "Engine Firing up...");
-      vshContinue = true;
       cli = new CLISuite();
+      vshContinue = true;
       break;
     default: 
       print_help();
