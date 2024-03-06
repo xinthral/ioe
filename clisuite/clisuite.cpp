@@ -28,8 +28,10 @@ int CLISuite::appendCommandHistory(std::string incoming) {
 
 void CLISuite::displayCommandHistory() {
   this->log->named_log(__FILENAME__, "Command History Summation:");
+  int lead = 12;
   for (auto s : this->history) {
-    this->log->named_log(__FILENAME__, s);
+    sprintf(this->buf, "\t[\t%-*s]", lead, s.c_str());
+    this->log->named_log(__FILENAME__, this->buf);
   }
 }
 
