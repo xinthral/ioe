@@ -10,13 +10,15 @@
 CC := g++
 DOXYGEN := doxygen
 RRM := rm -rf
-BIN := .\\bin\\
+SEPR := /
 
 # Windows Variants
 ifeq ($(OS), Windows_NT)
 DOXYGEN := doxygen.exe
 RM := del
 RRM := del /S /Q /f
+SEPR := \\
+
 endif
 
 # https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html
@@ -110,22 +112,22 @@ clean:
 	$(MAKE) cleantest
 
 cleanaudio:
-	$(RRM) $(AUDI)\\*.o
+	$(RRM) $(AUDI)$(SEPR)*.o
 
 cleanbin:
 	$(RM) *.exe
 
 cleancli:
-	$(RRM) $(CLIS)\\*.o
+	$(RRM) $(CLIS)$(SEPR)*.o
 
 cleancore:
-	$(RRM) $(CORE)\\*.o
+	$(RRM) $(CORE)$(SEPR)*.o
 
 cleanhelp:
-	$(RRM) $(HELP)\\*.o
+	$(RRM) $(HELP)$(SEPR)*.o
 
 cleantest:
-	$(RRM) $(TEST)\\*.o
+	$(RRM) $(TEST)$(SEPR)*.o
 
 cleandoc:
 ifeq ($(OS), Windows_NT)

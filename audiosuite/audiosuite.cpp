@@ -20,6 +20,8 @@ void AudioMixer::print_help() {
   std::string filename = Utilz::FileName(__FILENAME__);
   sprintf(buf, "Usage: %s.exe [option]\n", filename.c_str());
   log->raw_log(buf);
+  log->raw_log("  [-h]        - displays help details");
+  log->raw_log("  [filename]  - Name of WAV file");
   log->raw_log("\n");
 }
 
@@ -50,8 +52,8 @@ int main(int argc, char const *argv[]) {
     }
     input += argv[1];
     input += ".wav"; 
-  } else { input += "mixkit-retro-game-over.wav"; }
-  sampler->sampleFile(input);
+  } else { input += "game-over.wav"; }
   player->playwav(input);
+  sampler->sampleFile(input);
   return 0;
 }
