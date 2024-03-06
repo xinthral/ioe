@@ -26,17 +26,69 @@
 class CLISuite {
 protected:
 private:
+	ConfigManager *cnf;                     //!< Establish ConfigManager Object
+	Lexicon *lex;                           //!< Establish Lexicon Object
   Player *p1, *p2;
   Toon *t1, *t2;
   Combat *combat;
   Logger *log;
-	std::vector<std::string> history;
 
+  std::vector<std::string> history;
   std::chrono::time_point<std::chrono::steady_clock> start_time;
+  std::string prompt;
+  char buf[128];
+
 public:
+
+  /*!
+   * @brief   Helper Function to display help
+  */
   CLISuite();
+
+  std::string getPrompt();
+
+  /*!
+   * @brief   Helper Function to display help
+  */
   int appendCommandHistory(std::string);
-	void displayCommandHistory();
+
+  /*!
+   * @brief   Helper Function to display help
+  */
+  void displayCommandHistory();
+
+  /*!
+   * @brief   Helper Function to display help
+  */
+  void runningTimeStamp();
+
+  /*!
+  * @brief   Function to parse user input for a command 
+  * @param[in] input - Command string from the command line
+  */
+  void parse_user_input(std::string);
+
+  /*!
+   * @brief   Helper Function to parse input
+   * @param[in] input - String to be searched through
+   * @param[in] criteria - String being searched for
+  */
+  bool parse_input(const std::string, const std::string);
+
+  /*!
+   * @brief   Helper Function to display help
+  */
+  void run_command(const std::string,std::vector<std::string>&);
+
+  /*!
+   * @brief   Helper Function to display help
+  */
+  static void print_help();
+
+  /*!
+   * @brief   Static Helper File for the CLISuite
+  */
+  void cli_help();
   ~CLISuite();
 };
 
@@ -50,34 +102,7 @@ std::unordered_map<std::string, int> _CMDMAP = {
   {"reload",  2},
   {"name",    3},
   {"chain",   4},
+	{"runtime", 5}
 };
-
-/*!
- * @brief   Function to parse user input for a command 
- * @param[in] input - Command string from the command line
-*/
-void parse_user_input(std::string);
-
-/*!
- * @brief   Helper Function to parse input
- * @param[in] input - String to be searched through
- * @param[in] criteria - String being searched for
-*/
-bool parse_input(const std::string, const std::string);
-
-/*!
- * @brief   Helper Function to display help
-*/
-void print_help();
-
-/*!
- * @brief   Static Helper File for the CLISuite
-*/
-void cli_help();
-
-/*!
- * @brief   Run Engine Commands
-*/
-void run_command(const std::string, std::vector<std::string>&);
 
 #endif // XENGINE_H //

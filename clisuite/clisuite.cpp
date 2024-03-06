@@ -11,10 +11,15 @@ std::string  _cnf_ = "docs/engine.ini";
 bool vshContinue = false;
 
 CLISuite::CLISuite() { 
+  this->cnf = ConfigManager::GetInstance();
+  this->lex = new Lexicon();
   this->log = Logger::GetInstance();
   this->combat = new Combat();
   this->start_time = std::chrono::steady_clock::now();
+  this->prompt = ">";
 }
+
+std::string CLISuite::getPrompt() { return this->prompt; }
 
 int CLISuite::appendCommandHistory(std::string incoming) {
   this->history.push_back(incoming);
@@ -25,72 +30,34 @@ void CLISuite::displayCommandHistory() {
   this->log->named_log(__FILENAME__, "Command History Summation:");
 }
 
-
-CLISuite::~CLISuite() {
-  char buf[512];
+void CLISuite::runningTimeStamp() {
   std::chrono::duration<double> time_d = (std::chrono::steady_clock::now() - this->start_time);
-  sprintf(buf, "Experiment Duration: %.02fmin\n", (time_d / 60.00)); 
+  sprintf(this->buf, "Experiment Duration: %.02fmin", (time_d / 60.00)); 
   this->log->named_log(__FILENAME__, buf);
 }
 
-/*! @todo   Function to parse user input for a command */
-void parse_user_input(std::string input) {
-  ConfigManager* cnf = ConfigManager::GetInstance();
-  std::vector<std::string> cmds;
-  std::vector<std::string> cmdline;
-  Utilz::StringToArray(input, cmdline);
-  char* token = strtok((char*)input.c_str(), " \n");
-  cnf->get_authorizedCommands(cmds);
-  char buf[64];
-  if (std::find(cmds.begin(), cmds.end(), token) != cmds.end()) { run_command(token, cmdline); }
-}
-
-/*!
- * @brief   Helper Function to parse input
- * @param[in] input - String to be searched through
- * @param[in] criteria - String being searched for
-*/
-bool parse_input(const std::string input, const std::string criteria) {
-  //! Establish Variables 
-  size_t found = input.find(criteria);
-  if (found != std::string::npos) { return false; }
-  return true;
-}
-
 /*! @todo    Helper Function to display help */
-void print_help() {
+void CLISuite::print_help() {
   //! Establish Logger Object
   Logger* log = Logger::GetInstance();
   //! Get File Name
   std::string fileName = Utilz::FileName(__FILENAME__);
 
   //! Display Help 
-  char buf[64];
+  char buf[128];
   sprintf(buf, "\nUsage: %s.exe [bool|debug]", fileName.c_str()); 
   log->raw_log(buf);
   log->raw_log("\tdebug - Debugging Flag\n");
 }
 
-/*! @todo    Static Helper File for the CLISuite */
-void cli_help() {
-  ConfigManager* cnf = ConfigManager::GetInstance();
-  std::vector<std::string> cmds;
-  cnf->get_authorizedCommands(cmds);
-  printf("Commands:\n");
-  for (auto c : cmds) { printf(": %s\n", c.c_str()); }
-}
-
 /*! @todo    Run Engine Commands */
-void run_command(const std::string input, std::vector<std::string>& cmdline) {
-  ConfigManager* cnf = ConfigManager::GetInstance();   //!< Establish ConfigManager Object
-  Lexicon* lex = new Lexicon();                        //!< Establish Lexicon Object
+void CLISuite::run_command(const std::string input, std::vector<std::string>& cmdline) {
   Logger* log = Logger::GetInstance();                 //!< Establish Logger Object
-  int value;
-  char buf[256];
+  int value = 0, idx = -1;
   std::string tmp;
   std::vector<std::string> cmds;
-  cnf->get_authorizedCommands(cmds);
-  int idx = _CMDMAP[input];
+  this->cnf->get_authorizedCommands(cmds);
+  idx = _CMDMAP[input];
 
   switch(idx) {
     case 0:   //! Help Info
@@ -100,7 +67,7 @@ void run_command(const std::string input, std::vector<std::string>& cmdline) {
       vshContinue = false;
       break;
     case 2:   //! Reload Config Options
-      cnf->reload_state();
+      this->cnf->reload_state();
       break;
     case 3:   //! Generate Name 
       value = atoi(cmdline[1].c_str());
@@ -110,32 +77,63 @@ void run_command(const std::string input, std::vector<std::string>& cmdline) {
       }
       printf("\n"); 
       break;
-    case 4:   //! Test Command 
+    case 4:   //! Chain Command 
       cmdline.erase(cmdline.begin());
       for (std::string c : cmdline) { printf("_ : %s\n", c.c_str()); }
       break;
-    case 5:   //! Unimplemented Command 
+    case 5:   //! Run Time
+      this->runningTimeStamp();
+      printf("\n");
+      break;
     case 6:   //! Unimplemented Command 
+    case 7:   //! Unimplemented Command 
     case 8:   //! Unimplemented Command 
-    case 9:   //! Unimplemented Command 
     default:
-      sprintf(buf, "Unimplemented Command: %s", input.c_str());
-      log->named_log(__FILENAME__, buf);
+      sprintf(this->buf, "Unimplemented Command: %s", input.c_str());
+      log->named_log(__FILENAME__, this->buf);
       break;
   }
 }
+
+/*! @todo    Static Helper File for the CLISuite */
+void CLISuite::cli_help() {
+  ConfigManager* cnf = ConfigManager::GetInstance();
+  std::vector<std::string> cmds;
+  cnf->get_authorizedCommands(cmds);
+  printf("Commands:\n");
+  for (auto c : cmds) { printf(": %s\n", c.c_str()); }
+}
+
+/*! @todo   Function to parse user input for a command */
+void CLISuite::parse_user_input(std::string input) {
+  std::vector<std::string> cmds;
+  std::vector<std::string> cmdline;
+  Utilz::StringToArray(input, cmdline);
+  char* token = strtok((char*)input.c_str(), " \n");
+  cnf->get_authorizedCommands(cmds);
+  if (std::find(cmds.begin(), cmds.end(), token) != cmds.end()) { this->run_command(token, cmdline); }
+}
+
+bool CLISuite::parse_input(const std::string input, const std::string criteria) {
+  //! Establish Variables 
+  size_t found = input.find(criteria);
+  if (found != std::string::npos) { return false; }
+  return true;
+}
+
+CLISuite::~CLISuite() { this->runningTimeStamp(); }
 
 /*!
  * @brief   Module Entry Point
 */
 int main(int argc, const char *argv[]) {
   //! Conditional Check
-  if (argc < 2) { print_help(); return 0; }
-  if (strcmp(argv[1], "-h") == 0) { print_help(); return 0; }
+  if (argc < 2) { CLISuite::print_help(); return 0; }
+  if (strcmp(argv[1], "-h") == 0) { CLISuite::print_help(); return 0; }
 
   //! Declare Variables
+  CLISuite* cli = new CLISuite();
   Logger* log = Logger::GetInstance();                 //!< Establish Logger Object
-  CLISuite* cli;
   size_t found;
   std::string prompt = ">";
   std::string rawInput;
@@ -148,21 +146,19 @@ int main(int argc, const char *argv[]) {
       return 0;
     case '1':
       log->named_log(__FILENAME__, "Engine Firing up...");
-      cli = new CLISuite();
       vshContinue = true;
       break;
     default: 
-      print_help();
+      CLISuite::print_help();
       return 0;
   }
 
   //! Interactive Shell
   /* ********************************** */
   while (vshContinue == true) {
-    printf("%s ", prompt.c_str());                  //! Display Message Prompt
+    printf("%s ", cli->getPrompt().c_str());        //! Display Message Prompt
     std::getline(std::cin, rawInput);               //! Get User Input
-    parse_user_input(rawInput);                     //! Parse User Input
-    // vshContinue = parse_input(rawInput, "!exit");   //! Conditional to end Shell
+    cli->parse_user_input(rawInput);                //! Parse User Input
   }
   /* ********************************** */
 
