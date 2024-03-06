@@ -60,7 +60,7 @@ public:
   /*!
    * @brief   Helper Function to display help
   */
-  void runningTimeStamp();
+  void displayRunTime();
 
   /*!
   * @brief   Function to parse user input for a command 

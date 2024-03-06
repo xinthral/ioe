@@ -28,9 +28,12 @@ int CLISuite::appendCommandHistory(std::string incoming) {
 
 void CLISuite::displayCommandHistory() {
   this->log->named_log(__FILENAME__, "Command History Summation:");
+  for (auto s : this->history) {
+    this->log->named_log(__FILENAME__, s);
+  }
 }
 
-void CLISuite::runningTimeStamp() {
+void CLISuite::displayRunTime() {
   std::chrono::duration<double> time_d = (std::chrono::steady_clock::now() - this->start_time);
   sprintf(this->buf, "Experiment Duration: %.02fmin", (time_d / 60.00)); 
   this->log->named_log(__FILENAME__, buf);
@@ -52,11 +55,8 @@ void CLISuite::print_help() {
 
 /*! @todo    Run Engine Commands */
 void CLISuite::run_command(const std::string input, std::vector<std::string>& cmdline) {
-  Logger* log = Logger::GetInstance();                 //!< Establish Logger Object
-  int value = 0, idx = -1;
   std::string tmp;
-  std::vector<std::string> cmds;
-  this->cnf->get_authorizedCommands(cmds);
+  int value = 0, idx = -1;
   idx = _CMDMAP[input];
 
   switch(idx) {
@@ -82,8 +82,7 @@ void CLISuite::run_command(const std::string input, std::vector<std::string>& cm
       for (std::string c : cmdline) { printf("_ : %s\n", c.c_str()); }
       break;
     case 5:   //! Run Time
-      this->runningTimeStamp();
-      printf("\n");
+      this->displayRunTime();
       break;
     case 6:   //! Unimplemented Command 
     case 7:   //! Unimplemented Command 
@@ -93,6 +92,7 @@ void CLISuite::run_command(const std::string input, std::vector<std::string>& cm
       log->named_log(__FILENAME__, this->buf);
       break;
   }
+  this->history.push_back(input);
 }
 
 /*! @todo    Static Helper File for the CLISuite */
@@ -121,7 +121,10 @@ bool CLISuite::parse_input(const std::string input, const std::string criteria) 
   return true;
 }
 
-CLISuite::~CLISuite() { this->runningTimeStamp(); }
+CLISuite::~CLISuite() { 
+  this->displayRunTime(); 
+  this->displayCommandHistory();
+}
 
 /*!
  * @brief   Module Entry Point
@@ -163,7 +166,7 @@ int main(int argc, const char *argv[]) {
   /* ********************************** */
 
   log->named_log(__FILENAME__, "Engine Winding down...");
-  log->named_log(__FILENAME__, "Summary:\n(Output Event Analysis)");
+  log->named_log(__FILENAME__, "Summary: (Output Event Analysis)");
   if (cli) { delete cli; }
   return 0;
 }
