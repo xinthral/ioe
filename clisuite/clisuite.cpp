@@ -20,6 +20,7 @@ CLISuite::CLISuite() {
 }
 
 std::string CLISuite::getPrompt() { return this->prompt; }
+void CLISuite::setPrompt(std::string input) { this->prompt = input; }
 
 int CLISuite::appendCommandHistory(std::string incoming) {
   this->history.push_back(incoming);
@@ -86,7 +87,9 @@ void CLISuite::run_command(const std::string input, std::vector<std::string>& cm
     case 5:   //! Run Time
       this->displayRunTime();
       break;
-    case 6:   //! Unimplemented Command 
+    case 6:   //! Change Prompt 
+      this->setPrompt(cmdline[1]);
+      break;
     case 7:   //! Unimplemented Command 
     case 8:   //! Unimplemented Command 
     default:
