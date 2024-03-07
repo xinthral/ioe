@@ -100,11 +100,10 @@ void CLISuite::run_command(const std::string input, std::vector<std::string>& cm
   this->history.push_back(input);
 }
 
-/*! @todo    Static Helper File for the CLISuite */
+/*! @todo   Static Helper File for the CLISuite */
 void CLISuite::cli_help() {
-  ConfigManager* cnf = ConfigManager::GetInstance();
   std::vector<std::string> cmds;
-  cnf->get_authorizedCommands(cmds);
+  this->cnf->get_authorizedCommands(cmds);
   printf("Commands:\n");
   for (auto c : cmds) { printf(": %s\n", c.c_str()); }
 }
