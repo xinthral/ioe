@@ -79,19 +79,19 @@ $(CORE): $(CORESRC)
 
 # Compile CLISuite
 $(CLIS): $(CORESRC) $(CLISSRC)
-	$(CC) $(CFLAGS) $(CXFLAGS) $^ -o $@.exe
+	$(CC) $(CXFLAGS) $^ -o $@.exe
 
 # Compile Audio
-$(AUDI): $(CORESRC) $(AUDISRC) 
-	$(CC) $(CFLAGS) $(CXFLAGS) $^ -o $@.exe
+$(AUDI): $(CORESRC) $(AUDISRC)
+	$(CC) $(CXFLAGS) -I/usr/include/python3.11 $^ -o $@.exe
 
 # Compile HelpSuite
 $(HELP): $(CORESRC) $(HELPSRC)
-	$(CC) $(CFLAGS) $(CXFLAGS) $^ -o $@.exe
+	$(CC) $(CXFLAGS) $^ -o $@.exe
 
 # Compile TestSuite
 $(TEST): $(CORESRC) $(TESTSRC)
-	$(CC) $(CFLAGS) $(CXFLAGS) $^ -o $@.exe
+	$(CC) $(CXFLAGS) $^ -o $@.exe
 
 # Compile Documents 
 $(DOCS): docs/conf.dox

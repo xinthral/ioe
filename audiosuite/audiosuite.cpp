@@ -35,7 +35,7 @@ void AudioMixer::_help() {
 }
 
 /*! @todo    Default Deconstructor */
-AudioMixer::~AudioMixer() { }
+AudioMixer::~AudioMixer() {}
 
 int main(int argc, char const *argv[]) {
   // Logger* _log = Logger::GetInstance();
