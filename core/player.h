@@ -14,7 +14,6 @@
 class Player : public Actor {
 private:
   Logger* log;                          //!< Log Manager Instantiation
-  char buf[256];                        //!< Buffer Value for Logger outputs
   int bhealth  = Actor::baseHealth;     //!< Base Value inherited from Actor
   int bdefense = Actor::baseDefense;    //!< Base Value inherited from Actor
   int bflux    = Actor::baseFlux;       //!< Base Value inherited from Actor

@@ -11,6 +11,7 @@ class TestClock : public BaseCase {
 protected:
 private:
   xClock* clock;
+  Battle* battle;
 
 public:
   /*!

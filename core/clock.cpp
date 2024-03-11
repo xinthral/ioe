@@ -45,6 +45,7 @@ bool xClock::getPendingWorkState() {
 */
 void xClock::doCycleWork() {
   bool pendingBattles = true;
+  log->raw_log("Clock Cycle Work!");
   do {
     battle->doCycleWork(pendingBattles);
     isPendingWork = pendingBattles && true;

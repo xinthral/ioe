@@ -20,8 +20,9 @@ private:
 
   static Battle*    _singleton;     //!< Singleton Instance
   static std::mutex _mutex;         //!< Lock Mutex
-  Logger*           log;            //!< Logging Handler Instantiation
-  int tempTracker;
+  Logger*   log;                    //!< Logging Handler Instantiation
+  Combat*   combat;
+  int       cycleCompletionTracker;
 
 public:
   //! Singletons should not be cloneable
@@ -39,6 +40,8 @@ public:
    * @brief   Handles Cycle Actions
   */
   void doCycleWork(bool&);
+
+  void startPVE(Player&, Toon&);
 
   /*!
    * @brief   Helper Hook used in CLI Help System

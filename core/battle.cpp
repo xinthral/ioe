@@ -15,8 +15,8 @@ std::mutex Battle::_mutex;
  * @brief   Default Constructor
 */
 Battle::Battle() { 
-  log = Logger::GetInstance(); 
-  tempTracker = 5;
+  log = Logger::GetInstance();
+  cycleCompletionTracker = 5;
 }
 
 /*! 
@@ -28,26 +28,15 @@ Battle* Battle::GetInstance() {
   //! If singleton already exists, return instance
   if (_singleton == NULL) { _singleton = new Battle(); }
   return _singleton;
-  // Toon* t = new Toon();
-  // Toon* v;
-  // Combat* cc;
-  // while (team.size() > 1) {
-  //   t = team[team.size() - 1];
-  //   v = team[team.size() - 2];
-  //   team.pop_back();
-  //   team.pop_back();
-  //   cc = new Combat(*t, *v);
-  //   cc->begin_combat();
-  // }
-
-  // cc = new Combat(*player, *t);
-  // cc->begin_combat();
 }
 
 void Battle::doCycleWork(bool &isPendingWork) {
   this->log->named_log(__FILENAME__, "Battle Cycle Work");
-  if (tempTracker--<1) { isPendingWork = false; }
+  if (this->combat) { this->combat->begin_combat(); this->combat = NULL; }
+  if (cycleCompletionTracker--<1) { isPendingWork = false; }
 }
+
+void Battle::startPVE(Player &player, Toon &t) { this->combat = new Combat(player, t); }
 
 /*!
  * @todo    Helper Hook used in CLI Help System

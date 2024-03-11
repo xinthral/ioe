@@ -42,7 +42,7 @@ protected:
   int baseDefense;          //!< Defense Value (@override)
   int baseHealth;           //!< Health Value (@override)
   int baseFlux;             //!< Flux Value (@override)
-  char buf[128];            //!< Buffer Value for Logger outputs
+  char buf[256];            //!< Buffer Value for Logger outputs
 
 private:
 public:
