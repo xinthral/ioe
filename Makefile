@@ -62,7 +62,7 @@ DOCS := doc
 DOCSSRC := $(patsubst $(DOCS)/%.cpp, $(DOCS)/%.o, $(wildcard $(DOCS)/*.cpp))
 
 MODULES := $(CORE) $(AUDI) $(CLIS) $(HELP) $(TEST)
-SOURCES := $($(CORESRC) $(CLISSRC) $(AUDISRC) $(HELPSRC) $(TESTSRC))
+SOURCES := $(CORESRC) $(CLISSRC) $(AUDISRC) $(HELPSRC) $(TESTSRC)
 
 # GNU Make Compilation Macros: 
 # https://stackoverflow.com/questions/3220277/what-do-the-makefile-symbols-and-mean#3220288
@@ -72,7 +72,10 @@ SOURCES := $($(CORESRC) $(CLISSRC) $(AUDISRC) $(HELPSRC) $(TESTSRC))
 # $^ evaluates to library.cpp main.cpp
 
 # Compile Full porgram (order matters)
-all: $(MODULES)
+#all: $(MODULES)
+
+# PreCompile Object Files
+build: $(SOURCES)
 
 # Compile Engine
 $(CORE): $(CORESRC) 
@@ -100,8 +103,6 @@ $(DOCS): docs/conf.dox
 %.o: %.cpp %.h
 	$(CC) $(CXFLAGS) -c $< -o $@
 
-# PreCompile Object Files
-build: $(SOURCES)
 
 # $(RRM) $(foreach d, $(MODULES),$d\\*.o $d\\*.so $d\\*.wasm) 2>&1 >/dev/null
 clean:

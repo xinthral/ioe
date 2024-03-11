@@ -7,6 +7,7 @@
 #include "actorcase.h"
 #include "audiocase.h"
 #include "balancecase.h"
+#include "clockcase.h"
 #include "cipherscase.h"
 #include "combatcase.h"
 #include "configcase.h"
@@ -49,6 +50,11 @@ public:
    * @brief   Initiates the Test for the BalanceController Module
   */
   void CaseBalance();
+
+  /*!
+   * @brief   Initiates the Test for the Engine's Clock
+  */
+  void CaseClock();
 
   /*!
    * @brief   Initiates the Test for the Ciphers Module
