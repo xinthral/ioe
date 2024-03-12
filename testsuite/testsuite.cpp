@@ -112,7 +112,7 @@ void print_help() {
   sprintf(buf, "\t [%d] - Test ConfigManager Module", ++idx); log->raw_log(buf);
   sprintf(buf, "\t [%d] - Test Item Module", ++idx); log->raw_log(buf);
   sprintf(buf, "\t [%d] - Test LeaderBoard Module", ++idx); log->raw_log(buf);
-  sprintf(buf, "\t [%d] - Test Lexicon Module", ++idx); log->raw_log(buf);
+  sprintf(buf, "\t[%d] - Test Lexicon Module", ++idx); log->raw_log(buf);
   sprintf(buf, "\t[%d] - Test Player Module", ++idx); log->raw_log(buf);
   sprintf(buf, "\t[%d] - Test Stage Module", ++idx); log->raw_log(buf);
   sprintf(buf, "\t[%d] - Test Toon Module", ++idx); log->raw_log(buf);

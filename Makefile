@@ -72,7 +72,7 @@ SOURCES := $(CORESRC) $(CLISSRC) $(AUDISRC) $(HELPSRC) $(TESTSRC)
 # $^ evaluates to library.cpp main.cpp
 
 # Compile Full porgram (order matters)
-#all: $(MODULES)
+all: $(MODULES)
 
 # PreCompile Object Files
 build: $(SOURCES)

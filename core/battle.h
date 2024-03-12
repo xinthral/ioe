@@ -42,6 +42,7 @@ public:
   void doCycleWork(bool&);
 
   void startPVE(Player&, Toon&);
+  void startPVP(Player&, Player&);
 
   /*!
    * @brief   Helper Hook used in CLI Help System

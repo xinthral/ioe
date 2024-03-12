@@ -37,6 +37,7 @@ void Battle::doCycleWork(bool &isPendingWork) {
 }
 
 void Battle::startPVE(Player &player, Toon &t) { this->combat = new Combat(player, t); }
+void Battle::startPVP(Player &player1, Player &player2) { this->combat = new Combat(player1, player2); }
 
 /*!
  * @todo    Helper Hook used in CLI Help System
@@ -54,4 +55,4 @@ void Battle::_help() {
 /*! 
  * @todo    Default Deconstructor
 */
-Battle::~Battle() { }
+Battle::~Battle() {}
