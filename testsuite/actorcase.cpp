@@ -58,6 +58,7 @@ void TestActors::test_healthstate() {
   healthstate_critical(); //!< Test Health State Critical 
   healthstate_sick();     //!< Test Health State Sick 
   healthstate_dead();     //!< Test Health State Dead 
+  starting_health();      //!< Test Health Initial Value
 }
 
 /*!
@@ -213,6 +214,15 @@ void TestActors::healthstate_dead() {
   sprintf(buf, "%s %s %s", msgHead, "[Dead] Healthstate", msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);
 }
+
+void TestActors::starting_health() {
+  dummy = new Actor();
+  // assertm(32 == dummy->get_health(), "Actor failed to initialize");
+  assertm(cnf->get_health() == dummy->get_health(), "Actor failed to initialize");
+  sprintf(buf, "%s [%s] %s", msgHead, "Initial Health", msgTail);
+  BaseCase::log->named_log(__FILENAME__, buf);
+}
+
 
 /*!
  * @todo    Default Deconstructor

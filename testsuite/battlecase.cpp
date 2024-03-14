@@ -34,9 +34,8 @@ void TestBattle::l1_pve() {
     this->battle->doCycleWork(pendingWork);
   } while(pendingWork);
 
-  sprintf(buf, "P:{%d} T:{%d}", player1->get_healthstate(), toon1->get_healthstate());
-  BaseCase::log->raw_log(buf);
-  assertm(player1->get_healthstate() == 4 || toon1->get_healthstate() == 4, "Combat ended while health remained.");
+  // assertm(player1->get_healthstate() == 0 || toon1->get_healthstate() == 0, "Combat ended while health remained.");
+  assertm(player1->get_healthstate() == 0 || toon1->get_healthstate() == 0, "Combat ended while health remained.");
   sprintf(buf, "%s [%s] %s", msgHead, "PVE", msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);
 
