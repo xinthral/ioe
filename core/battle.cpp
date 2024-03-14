@@ -36,6 +36,10 @@ void Battle::doCycleWork(bool &isPendingWork) {
   if (cycleCompletionTracker--<1) { isPendingWork = false; }
 }
 
+void Battle::startEVE(Toon &t1, Toon &t2) { 
+  this->combat = new Combat(t1, t2); 
+}
+
 void Battle::startPVE(Player &player, Toon &t) { 
   this->combat = new Combat(player, t); 
 }

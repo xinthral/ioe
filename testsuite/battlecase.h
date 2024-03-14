@@ -29,7 +29,15 @@ public:
   */
   void test_all();
 
-	void l1_pve();
+  /*!
+   * @brief   EVE Combat test on level 1 combatants
+  */
+  void level1_eve();
+
+  /*!
+   * @brief   PVE Combat test on level 1 combatants
+  */
+  void level1_pve();
 
   /*!
    * @brief   Default Deconstructor

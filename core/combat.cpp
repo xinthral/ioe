@@ -46,16 +46,16 @@ Combat::Combat(Toon& combatant1, Toon& combatant2) : Combat() {
   while (combatant1.isAlive() && combatant2.isAlive()) {
     r = rand() % 5 + 1;
     if (step % 2 == 0) { 
-      // sprintf(buf, "%s hits %s for %d/%d.", combatant1.get_name().c_str(), combatant2.get_name().c_str(), r, health2);
+      sprintf(buf, "%s hits %s for %d/%d.", combatant1.get_name().c_str(), combatant2.get_name().c_str(), r, health2);
       health2 -= r;
       if (health2 <= 0) { combatant2.set_health_dead(); }
     } else { 
-      // sprintf(buf, "%s hits %s for %d/%d.", combatant2.get_name().c_str(), combatant1.get_name().c_str(), r, health1);
+      sprintf(buf, "%s hits %s for %d/%d.", combatant2.get_name().c_str(), combatant1.get_name().c_str(), r, health1);
       health1 -= r; 
       if (health1 <= 0) { combatant1.set_health_dead(); }
     }
     step++;
-    // log->named_log(fbuff, buf);
+    log->named_log(__FILENAME__, buf);
   }
 
   sprintf(buf, "EvE Combat Ended! %s Won", (health1 > 0) ? combatant1.get_name().c_str() : combatant2.get_name().c_str());
