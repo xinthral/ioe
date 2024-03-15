@@ -37,7 +37,6 @@ Combat::Combat(Toon& combatant1, Toon& combatant2) : Combat() {
   );
   injest_combatants(combatant1, combatant2);
   log->named_log(__FILENAME__, buf);
-  
 }
 
 /*!
