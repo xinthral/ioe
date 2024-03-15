@@ -1,0 +1,45 @@
+\doxysection{stage.\+h}
+\hypertarget{stage_8h_source}{}\label{stage_8h_source}\index{core/stage.h@{core/stage.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ STAGE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ STAGE\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <mutex>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}logger.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}toon.h"{}}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_stage_manager}{StageManager}}\ \{}
+\DoxyCodeLine{00017\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00021\ \ \ \mbox{\hyperlink{class_stage_manager}{StageManager}}(\textcolor{keyword}{const}\ std::string);}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00024\ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_stage_manager}{StageManager}}*\ \ \_singleton;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00025\ \ \ \textcolor{keyword}{static}\ std::mutex\ \ \ \ \ \_mutex;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00026\ \ \ \mbox{\hyperlink{class_logger}{Logger}}*\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ log;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00027\ \ \ std::string\ \ \ \ \ \ \ \ \ \ \ name;}
+\DoxyCodeLine{00028\ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ maxCrew;}
+\DoxyCodeLine{00029\ \ \ \textcolor{keywordtype}{char}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ buf[1024];\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00033\ \ \ \mbox{\hyperlink{class_stage_manager_a7044f497e4a2e6a2b30f33363353335c}{StageManager}}(\mbox{\hyperlink{class_stage_manager}{StageManager}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00036\ \ \ \textcolor{keywordtype}{void}\ operator\ =\ (\textcolor{keyword}{const}\ \mbox{\hyperlink{class_stage_manager}{StageManager}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00041\ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_stage_manager}{StageManager}}\ *\mbox{\hyperlink{class_stage_manager_abdafd27d1ae0617c361d400a4d82e2bf}{GetInstance}}(\textcolor{keyword}{const}\ std::string\&);}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00047\ \ \ std::string\ \mbox{\hyperlink{class_stage_manager_a6d08dfabf7c6f226d199c5f1ea5795a1}{get\_name}}();}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00052\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stage_manager_a722554b211b217b48085541184f587c4}{casting\_call}}(\textcolor{keywordtype}{int},\ std::vector<Toon*>\&);}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00057\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stage_manager_a42193b56652ca4776e046c63b5518b03}{\_help}}();}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00062\ \ \ \mbox{\hyperlink{class_stage_manager_aa869d285467620baacfdf244491122d8}{\string~StageManager}}();}
+\DoxyCodeLine{00063\ \};}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ STAGE\_H\ //}}
+
+\end{DoxyCode}

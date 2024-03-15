@@ -1,0 +1,61 @@
+\doxysection{balance.\+h}
+\hypertarget{balance_8h_source}{}\label{balance_8h_source}\index{core/balance.h@{core/balance.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ BALANCE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ BALANCE\_H}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#define\ \_USE\_MATH\_DEFINES}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}config.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}logger.h"{}}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{enum}\ Hardness\ \{\ Vasy,\ Easy,\ Norm,\ Hard,\ Vard\ \};}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ LEVELS[]\ =\ \{1,\ 3,\ 5,\ 8,\ 13,\ 21\};}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_balance_controller}{BalanceController}}\ \{}
+\DoxyCodeLine{00031\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00035\ \ \ \mbox{\hyperlink{class_balance_controller_a525efc25f5f4876cbff5ca052d7c55f6}{BalanceController}}();}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00038\ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_balance_controller}{BalanceController}}*\ \_singleton;\ }
+\DoxyCodeLine{00039\ \ \ \textcolor{keyword}{static}\ std::mutex\ \_mutex;\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00040\ \ \ Hardness\ \ \ \ \ \ \ DIF;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00041\ \ \ \textcolor{keywordtype}{char}\ \ \ \ \ \ \ \ \ \ \ buf[128];\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00042\ \ \ \mbox{\hyperlink{class_config_manager}{ConfigManager}}*\ cnf;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00043\ \ \ \mbox{\hyperlink{class_logger}{Logger}}*\ \ \ \ \ \ \ \ log;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00044\ \ \ \textcolor{keywordtype}{int}\ MAXLVL\ \ \ \ \ =\ 80;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00045\ \ \ \textcolor{keywordtype}{double}\ base\ \ \ \ =\ 5.0;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00046\ \ \ \textcolor{keywordtype}{int}\ span\ \ \ \ \ \ \ =\ 8;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00047\ \ \ \textcolor{keywordtype}{int}\ atk\ \ \ \ \ \ \ \ =\ 24;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00048\ \ \ \textcolor{keywordtype}{int}\ def\ \ \ \ \ \ \ \ =\ 32;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00049\ \ \ \textcolor{keywordtype}{int}\ hlt\ \ \ \ \ \ \ \ =\ 100;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00053\ \ \ \mbox{\hyperlink{class_balance_controller_ad03029a693705a0adc90bd6cc426aa96}{BalanceController}}(\mbox{\hyperlink{class_balance_controller}{BalanceController}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00056\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_balance_controller_af8b3ab3ca188003176f33161800c7991}{operator\ =\ }}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_balance_controller}{BalanceController}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00061\ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_balance_controller}{BalanceController}}\ *\mbox{\hyperlink{class_balance_controller_a570c607b223a0a9c033603e833458251}{GetInstance}}();}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00069\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_balance_controller_a89402d9a7abd85a4fa522f3ad642b6ce}{scalar}}(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00075\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_balance_controller_a13eb2d765e0aa528b131b32dd1940fac}{display\_state}}();}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00081\ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{class_balance_controller_a68f4371ae68f48c5040906949cab77b4}{get\_base}}();}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00087\ \ \ Hardness\ \mbox{\hyperlink{class_balance_controller_ab533d0f17d9e616c208049dc318a9dc8}{get\_difficulty}}();}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00093\ \ \ std::string\ \mbox{\hyperlink{class_balance_controller_a882a510066a59049b37bacd83a303267}{get\_difficulty\_str}}();}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00098\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_balance_controller_a8936276becef1b520f9b92984e9cf46f}{\_help}}();}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00103\ \ \ \mbox{\hyperlink{class_balance_controller_a59d36764e3b3c8121577eb9d699a2d49}{\string~BalanceController}}();}
+\DoxyCodeLine{00104\ \};}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ BALANCE\_H\ //}}
+
+\end{DoxyCode}

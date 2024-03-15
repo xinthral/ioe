@@ -1,0 +1,35 @@
+\doxysection{leader.\+h}
+\hypertarget{leader_8h_source}{}\label{leader_8h_source}\index{core/leader.h@{core/leader.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ LEADERBOARD\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ LEADERBOARD\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <mutex>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}logger.h"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_leader_board}{LeaderBoard}}\ \{}
+\DoxyCodeLine{00014\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00018\ \ \ \mbox{\hyperlink{class_leader_board_adc7b14c64cca2cddc9cb951f1d5779db}{LeaderBoard}}();}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00021\ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_leader_board}{LeaderBoard}}*\ \_singleton;\ }
+\DoxyCodeLine{00022\ \ \ \textcolor{keyword}{static}\ std::mutex\ \ \ \_mutex;\ \ \ \ \ }
+\DoxyCodeLine{00023\ \ \ \mbox{\hyperlink{class_logger}{Logger}}*\ \ \ \ \ \ \ \ \ \ \ \ \ log;\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00024\ \ \ \textcolor{keywordtype}{char}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ buf[1024];\ \ }
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00028\ \ \ \mbox{\hyperlink{class_leader_board_a2ccbda58fd6f0cbabadccaebe3b40897}{LeaderBoard}}(\mbox{\hyperlink{class_leader_board}{LeaderBoard}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00031\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_leader_board_a9c60567e89cd49091016967cbce1b06c}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_leader_board}{LeaderBoard}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00034\ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_leader_board}{LeaderBoard}}*\ \mbox{\hyperlink{class_leader_board_aebe49d7db586da22af691f712f56b2e4}{GetInstance}}();}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00039\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_leader_board_a4c7d4ece1084fcc73e76da99b6960150}{\_help}}();}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00044\ \ \ \mbox{\hyperlink{class_leader_board_a135eac07151d1aadaba6f49226e1832c}{\string~LeaderBoard}}();}
+\DoxyCodeLine{00045\ \};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ LEADERBOARD\_H\ //}}
+
+\end{DoxyCode}

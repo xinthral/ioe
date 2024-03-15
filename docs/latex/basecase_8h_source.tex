@@ -1,0 +1,51 @@
+\doxysection{basecase.\+h}
+\hypertarget{basecase_8h_source}{}\label{basecase_8h_source}\index{testsuite/basecase.h@{testsuite/basecase.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ BASECASE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ BASECASE\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <cassert>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}../core/actor.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}../core/audio.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}../core/balance.h"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}../core/battle.h"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}../core/clock.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}../core/ciphers.h"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}../core/combat.h"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}../core/config.h"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}../core/item.h"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}../core/leader.h"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}../core/lexicon.h"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}../core/logger.h"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}../core/player.h"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}../core/stage.h"{}}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}../core/toon.h"{}}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ "{}../core/utilz.h"{}}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ assertm(exp,\ msg)\ assert(((void)msg,\ exp))}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_base_case}{BaseCase}}\ \{}
+\DoxyCodeLine{00032\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00033\ \ \ \mbox{\hyperlink{class_balance_controller}{BalanceController}}*\ \ \mbox{\hyperlink{class_base_case_a44426b38567fc61d12e1aae076c35b9e}{bal}};\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00034\ \ \ \mbox{\hyperlink{class_config_manager}{ConfigManager}}*\ \ \ \ \ \ \mbox{\hyperlink{class_base_case_adc80349f0a572c6abbd083211cbcc0b7}{cnf}};\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00035\ \ \ \mbox{\hyperlink{class_logger}{Logger}}*\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_case_a0af99c6c9c85ffbb14af5aa0d44a46eb}{log}};\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00036\ \ \ \textcolor{keywordtype}{char}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_case_a599e0a4d9b14720669c8d6fa602bdaaa}{buf}}[1024];\ \ \ \ }
+\DoxyCodeLine{00037\ \ \ \textcolor{keywordtype}{char}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_case_a6fe7484d02c2fb0635c2ec05ff7fcacc}{msgHead}}[32];\ \ }
+\DoxyCodeLine{00038\ \ \ \textcolor{keywordtype}{char}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_case_abdab20c21c18e6e27d7d672a3933bb3f}{msgNote}}[64];\ \ }
+\DoxyCodeLine{00039\ \ \ \textcolor{keywordtype}{char}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_case_a73da7e5a17c62c688584efb5b55da9eb}{msgTail}}[32];\ \ }
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00042\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00046\ \ \ \mbox{\hyperlink{class_base_case_a3a66491e633d93e6fbdca84f9189fb8d}{BaseCase}}();}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00052\ \ \ \mbox{\hyperlink{class_base_case_a3a66491e633d93e6fbdca84f9189fb8d}{BaseCase}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*);}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00057\ \ \ \mbox{\hyperlink{class_base_case_acb6a604a3bfe207cc03b3ccb6a550af2}{\string~BaseCase}}();}
+\DoxyCodeLine{00058\ \};}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ BASECASE\_H\ //}}
+
+\end{DoxyCode}

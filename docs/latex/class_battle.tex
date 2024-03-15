@@ -1,0 +1,94 @@
+\doxysection{Battle Class Reference}
+\hypertarget{class_battle}{}\label{class_battle}\index{Battle@{Battle}}
+
+
+Interweaving \doxylink{class_combat}{Combat} events.  
+
+
+
+
+{\ttfamily \#include $<$battle.\+cpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_battle_af52bdbccc551eebf697139b35e2dfc14}\label{class_battle_af52bdbccc551eebf697139b35e2dfc14} 
+{\bfseries Battle} (\mbox{\hyperlink{class_battle}{Battle}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Singletons should not be cloneable. \end{DoxyCompactList}\item 
+\Hypertarget{class_battle_a8ed77ad4d105fc16d20c6a45e6afaa60}\label{class_battle_a8ed77ad4d105fc16d20c6a45e6afaa60} 
+void {\bfseries operator=} (const \mbox{\hyperlink{class_battle}{Battle}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Singletons should not be assignable. \end{DoxyCompactList}\item 
+\Hypertarget{class_battle_a1f88d4ea68f4ab4a569aa0fcaa6cfc95}\label{class_battle_a1f88d4ea68f4ab4a569aa0fcaa6cfc95} 
+void {\bfseries do\+Cycle\+Work} (bool \&)
+\begin{DoxyCompactList}\small\item\em Handles Cycle Actions. \end{DoxyCompactList}\item 
+\Hypertarget{class_battle_a6172e9ad5a0289a2fbc972480f0a52b9}\label{class_battle_a6172e9ad5a0289a2fbc972480f0a52b9} 
+void {\bfseries start\+EVE} (\mbox{\hyperlink{class_toon}{Toon}} \&, \mbox{\hyperlink{class_toon}{Toon}} \&)
+\item 
+\Hypertarget{class_battle_a9aaf3c0b6ec6d8e114ce53d39960de59}\label{class_battle_a9aaf3c0b6ec6d8e114ce53d39960de59} 
+void {\bfseries start\+PVE} (\mbox{\hyperlink{class_player}{Player}} \&, \mbox{\hyperlink{class_toon}{Toon}} \&)
+\item 
+\Hypertarget{class_battle_a70488a83a0335e0d7862326a98de1250}\label{class_battle_a70488a83a0335e0d7862326a98de1250} 
+void {\bfseries start\+PVP} (\mbox{\hyperlink{class_player}{Player}} \&, \mbox{\hyperlink{class_player}{Player}} \&)
+\item 
+void \mbox{\hyperlink{class_battle_ab3b7ba9bc156ee20d8d41a19d60ae894}{\+\_\+help}} ()
+\begin{DoxyCompactList}\small\item\em Helper Hook used in CLI Help System. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_battle_ae44141e587836ba84243cad46b17c228}{\texorpdfstring{$\sim$}{\string~}\+Battle}} ()
+\begin{DoxyCompactList}\small\item\em Default Deconstructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_battle}{Battle}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_battle_a5cf5668e8fd144f0b0b85674f6fa2d24}{Get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Singleton Constructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interweaving \doxylink{class_combat}{Combat} events. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_battle_ae44141e587836ba84243cad46b17c228}\label{class_battle_ae44141e587836ba84243cad46b17c228} 
+\index{Battle@{Battle}!````~Battle@{\texorpdfstring{$\sim$}{\string~}Battle}}
+\index{````~Battle@{\texorpdfstring{$\sim$}{\string~}Battle}!Battle@{Battle}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Battle()}{\string~Battle()}}
+{\footnotesize\ttfamily Battle\+::\texorpdfstring{$\sim$}{\string~}\+Battle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Default Deconstructor. 
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000059}{Todo}}]Default Deconstructor \end{DoxyRefDesc}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_battle_ab3b7ba9bc156ee20d8d41a19d60ae894}\label{class_battle_ab3b7ba9bc156ee20d8d41a19d60ae894} 
+\index{Battle@{Battle}!\_help@{\_help}}
+\index{\_help@{\_help}!Battle@{Battle}}
+\doxysubsubsection{\texorpdfstring{\_help()}{\_help()}}
+{\footnotesize\ttfamily void Battle\+::\+\_\+help (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Helper Hook used in CLI Help System. 
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000058}{Todo}}]Helper Hook used in CLI Help System \end{DoxyRefDesc}
+\Hypertarget{class_battle_a5cf5668e8fd144f0b0b85674f6fa2d24}\label{class_battle_a5cf5668e8fd144f0b0b85674f6fa2d24} 
+\index{Battle@{Battle}!GetInstance@{GetInstance}}
+\index{GetInstance@{GetInstance}!Battle@{Battle}}
+\doxysubsubsection{\texorpdfstring{GetInstance()}{GetInstance()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_battle}{Battle}} \texorpdfstring{$\ast$}{*} Battle\+::\+Get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Singleton Constructor. 
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000057}{Todo}}]\doxylink{class_player}{Player} v Team Constructor \end{DoxyRefDesc}
+Acquire Instance Mutex
+
+If singleton already exists, return instance
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+core/battle.\+h\item 
+core/battle.\+cpp\end{DoxyCompactItemize}

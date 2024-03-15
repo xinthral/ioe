@@ -1,0 +1,37 @@
+\doxysection{ciphers.\+h}
+\hypertarget{ciphers_8h_source}{}\label{ciphers_8h_source}\index{core/ciphers.h@{core/ciphers.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ XCIPHERS\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ XCIPHERS\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}lexicon.h"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classx_ciphers}{xCiphers}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_lexicon}{Lexicon}}\ \{}
+\DoxyCodeLine{00012\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00017\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classx_ciphers_a6262463a0e235edc15f9e9669ce1acfe}{getIndex}}(\textcolor{keywordtype}{char});}
+\DoxyCodeLine{00018\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00019\ \ \ std::vector<std::string>\ shadowMatrix;}
+\DoxyCodeLine{00020\ \ \ std::vector<std::string>\ outputMatrix;}
+\DoxyCodeLine{00021\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *keyArray;}
+\DoxyCodeLine{00022\ \ \ \textcolor{keywordtype}{int}\ rows;}
+\DoxyCodeLine{00023\ \ \ \textcolor{keywordtype}{int}\ cols;}
+\DoxyCodeLine{00024\ \ \ \textcolor{keywordtype}{int}\ keySize;}
+\DoxyCodeLine{00025\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00029\ \ \ \mbox{\hyperlink{classx_ciphers_ac3cb3f87a08a7cfb39395ef2bf31aad6}{xCiphers}}();}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00036\ \ \ \mbox{\hyperlink{classx_ciphers_ac3cb3f87a08a7cfb39395ef2bf31aad6}{xCiphers}}(\textcolor{keywordtype}{char},std::string);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00042\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classx_ciphers_adec10429127b58b5980d76f5364f7470}{generateMatrix}}(\textcolor{keywordtype}{char});}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00048\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classx_ciphers_aeaf0cc6df8f4311e7d78bf20fa43367c}{getMatrixSize}}();}
+\DoxyCodeLine{00049\ \ \ std::string\ \mbox{\hyperlink{classx_ciphers_afc5d4868225cb94707706f21bca970d9}{encode}}(std::string);}
+\DoxyCodeLine{00050\ \ \ std::string\ \mbox{\hyperlink{classx_ciphers_a64667e6eb9f59bfa5a9f773e546e38f2}{decode}}(std::string);}
+\DoxyCodeLine{00051\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classx_ciphers_a1a762689d6c91e06d935ce577dd39f86}{displayMatrix}}(\textcolor{keywordtype}{bool});}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00056\ \ \ \mbox{\hyperlink{classx_ciphers_a38ade0d7701361e1132711d1c25b4d00}{\string~xCiphers}}();}
+\DoxyCodeLine{00057\ \};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ XCIPHERS\_H\ //}}
+
+\end{DoxyCode}

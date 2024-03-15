@@ -1,0 +1,164 @@
+\doxysection{Logger Class Reference}
+\hypertarget{class_logger}{}\label{class_logger}\index{Logger@{Logger}}
+
+
+\doxylink{class_logger}{Logger} Management module.  
+
+
+
+
+{\ttfamily \#include $<$logger.\+cpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_logger_a96a909eca2542e2f1e9cb5ec73798be7}{Logger}} (\mbox{\hyperlink{class_logger}{Logger}} \&)=delete
+\begin{DoxyCompactList}\small\item\em \texorpdfstring{$<$}{<} Singletons should not be cloneable \end{DoxyCompactList}\item 
+\Hypertarget{class_logger_af7266f0b4cc9b6c05a20fb76b96c4ada}\label{class_logger_af7266f0b4cc9b6c05a20fb76b96c4ada} 
+void {\bfseries operator=} (const \mbox{\hyperlink{class_logger}{Logger}} \&)=delete
+\item 
+void \mbox{\hyperlink{class_logger_a2c05fb76cb7383df07e34a0795f69217}{alert\+\_\+log}} (std\+::string, std\+::string)
+\begin{DoxyCompactList}\small\item\em Log attach with an alert level. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_logger_aa645cb6ba80081339f01b92d4738f196}{named\+\_\+log}} (std\+::string, std\+::string)
+\begin{DoxyCompactList}\small\item\em Labeled and Stamped Logging. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_logger_a850c792e9a22c5bde830b3ea672ee52f}{raw\+\_\+log}} (std\+::string)
+\begin{DoxyCompactList}\small\item\em Raw Unformatted Logging. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_logger_a031840b005d6689cb7994695036b0921}{timed\+\_\+log}} (std\+::string)
+\begin{DoxyCompactList}\small\item\em Time\+Stamped Logging. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_logger_a4074bf3a723b9d886ef93bd9f55999ec}{\+\_\+help}} ()
+\begin{DoxyCompactList}\small\item\em Helper Hook used in CLI Help System. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_logger_acb668a9e186a25fbaad2e4af6d1ed00a}{\texorpdfstring{$\sim$}{\string~}\+Logger}} ()
+\begin{DoxyCompactList}\small\item\em Default Deconstructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_logger}{Logger}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_logger_a58ba0fb326628410e7d67fe18d2e1fbf}{Get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Singleton Constructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_logger_abc41bfb031d896170c7675fa96a6b30c}{Logger}} ()
+\begin{DoxyCompactList}\small\item\em Protected Constructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{class_logger}{Logger} Management module. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_logger_abc41bfb031d896170c7675fa96a6b30c}\label{class_logger_abc41bfb031d896170c7675fa96a6b30c} 
+\index{Logger@{Logger}!Logger@{Logger}}
+\index{Logger@{Logger}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{Logger()}{Logger()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Logger\+::\+Logger (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Protected Constructor. 
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000111}{Todo}}]Protected Constructor \end{DoxyRefDesc}
+\Hypertarget{class_logger_a96a909eca2542e2f1e9cb5ec73798be7}\label{class_logger_a96a909eca2542e2f1e9cb5ec73798be7} 
+\index{Logger@{Logger}!Logger@{Logger}}
+\index{Logger@{Logger}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{Logger()}{Logger()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Logger\+::\+Logger (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_logger}{Logger}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+\texorpdfstring{$<$}{<} Singletons should not be cloneable 
+
+Singletons should not be assignable \Hypertarget{class_logger_acb668a9e186a25fbaad2e4af6d1ed00a}\label{class_logger_acb668a9e186a25fbaad2e4af6d1ed00a} 
+\index{Logger@{Logger}!````~Logger@{\texorpdfstring{$\sim$}{\string~}Logger}}
+\index{````~Logger@{\texorpdfstring{$\sim$}{\string~}Logger}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Logger()}{\string~Logger()}}
+{\footnotesize\ttfamily Logger\+::\texorpdfstring{$\sim$}{\string~}\+Logger (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Default Deconstructor. 
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000118}{Todo}}]Default Deconstructor \end{DoxyRefDesc}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_logger_a4074bf3a723b9d886ef93bd9f55999ec}\label{class_logger_a4074bf3a723b9d886ef93bd9f55999ec} 
+\index{Logger@{Logger}!\_help@{\_help}}
+\index{\_help@{\_help}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{\_help()}{\_help()}}
+{\footnotesize\ttfamily void Logger\+::\+\_\+help (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Helper Hook used in CLI Help System. 
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000117}{Todo}}]Helper Hook used in CLI Help System \end{DoxyRefDesc}
+\Hypertarget{class_logger_a2c05fb76cb7383df07e34a0795f69217}\label{class_logger_a2c05fb76cb7383df07e34a0795f69217} 
+\index{Logger@{Logger}!alert\_log@{alert\_log}}
+\index{alert\_log@{alert\_log}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{alert\_log()}{alert\_log()}}
+{\footnotesize\ttfamily void Logger\+::alert\+\_\+log (\begin{DoxyParamCaption}\item[{std\+::string}]{level,  }\item[{std\+::string}]{message }\end{DoxyParamCaption})}
+
+
+
+Log attach with an alert level. 
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000113}{Todo}}]Log attach with an alert level \end{DoxyRefDesc}
+\Hypertarget{class_logger_a58ba0fb326628410e7d67fe18d2e1fbf}\label{class_logger_a58ba0fb326628410e7d67fe18d2e1fbf} 
+\index{Logger@{Logger}!GetInstance@{GetInstance}}
+\index{GetInstance@{GetInstance}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{GetInstance()}{GetInstance()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_logger}{Logger}} \texorpdfstring{$\ast$}{*} Logger\+::\+Get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Singleton Constructor. 
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000112}{Todo}}]Singleton Constructor \end{DoxyRefDesc}
+Acquire Instance Mutex
+
+If singleton already exists, return instance\Hypertarget{class_logger_aa645cb6ba80081339f01b92d4738f196}\label{class_logger_aa645cb6ba80081339f01b92d4738f196} 
+\index{Logger@{Logger}!named\_log@{named\_log}}
+\index{named\_log@{named\_log}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{named\_log()}{named\_log()}}
+{\footnotesize\ttfamily void Logger\+::named\+\_\+log (\begin{DoxyParamCaption}\item[{std\+::string}]{file\+Name,  }\item[{std\+::string}]{message }\end{DoxyParamCaption})}
+
+
+
+Labeled and Stamped Logging. 
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000114}{Todo}}]Labeled and Stamped Logging \end{DoxyRefDesc}
+\Hypertarget{class_logger_a850c792e9a22c5bde830b3ea672ee52f}\label{class_logger_a850c792e9a22c5bde830b3ea672ee52f} 
+\index{Logger@{Logger}!raw\_log@{raw\_log}}
+\index{raw\_log@{raw\_log}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{raw\_log()}{raw\_log()}}
+{\footnotesize\ttfamily void Logger\+::raw\+\_\+log (\begin{DoxyParamCaption}\item[{std\+::string}]{message }\end{DoxyParamCaption})}
+
+
+
+Raw Unformatted Logging. 
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000115}{Todo}}]Raw Unformatted Logging \end{DoxyRefDesc}
+\Hypertarget{class_logger_a031840b005d6689cb7994695036b0921}\label{class_logger_a031840b005d6689cb7994695036b0921} 
+\index{Logger@{Logger}!timed\_log@{timed\_log}}
+\index{timed\_log@{timed\_log}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{timed\_log()}{timed\_log()}}
+{\footnotesize\ttfamily void Logger\+::timed\+\_\+log (\begin{DoxyParamCaption}\item[{std\+::string}]{message }\end{DoxyParamCaption})}
+
+
+
+Time\+Stamped Logging. 
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000116}{Todo}}]Time\+Stamped Logging \end{DoxyRefDesc}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+core/logger.\+h\item 
+core/logger.\+cpp\end{DoxyCompactItemize}

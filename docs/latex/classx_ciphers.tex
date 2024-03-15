@@ -1,0 +1,195 @@
+\doxysection{x\+Ciphers Class Reference}
+\hypertarget{classx_ciphers}{}\label{classx_ciphers}\index{xCiphers@{xCiphers}}
+
+
+The cipher suite will handle logical lexiconal shifting and word translations.  
+
+
+
+
+{\ttfamily \#include $<$ciphers.\+h$>$}
+
+Inheritance diagram for x\+Ciphers\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classx_ciphers}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classx_ciphers_ac3cb3f87a08a7cfb39395ef2bf31aad6}{x\+Ciphers}} ()
+\begin{DoxyCompactList}\small\item\em Default Constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classx_ciphers_a00a0f817604750bb2695f2e23143cf51}{x\+Ciphers}} (char, std\+::string)
+\begin{DoxyCompactList}\small\item\em Overloaded Constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classx_ciphers_adec10429127b58b5980d76f5364f7470}{generate\+Matrix}} (char)
+\begin{DoxyCompactList}\small\item\em Generates an N x N matrix where N \+:= Number of elements in the lexigraph. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classx_ciphers_aeaf0cc6df8f4311e7d78bf20fa43367c}{get\+Matrix\+Size}} ()
+\begin{DoxyCompactList}\small\item\em Gets the size of the matrix. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classx_ciphers_afc5d4868225cb94707706f21bca970d9}{encode}} (std\+::string)
+\item 
+std\+::string \mbox{\hyperlink{classx_ciphers_a64667e6eb9f59bfa5a9f773e546e38f2}{decode}} (std\+::string)
+\item 
+void \mbox{\hyperlink{classx_ciphers_a1a762689d6c91e06d935ce577dd39f86}{display\+Matrix}} (bool)
+\item 
+\mbox{\hyperlink{classx_ciphers_a38ade0d7701361e1132711d1c25b4d00}{\texorpdfstring{$\sim$}{\string~}x\+Ciphers}} ()
+\begin{DoxyCompactList}\small\item\em Default Deconstructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_lexicon}{Lexicon}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_lexicon_aa62f83480879f9c6489633cb83a0736f}{Lexicon}} ()
+\begin{DoxyCompactList}\small\item\em Default Constructor. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_lexicon_a0f490446d8e01b2e814f37b66f0e093a}{generate\+Name}} (int)
+\begin{DoxyCompactList}\small\item\em Generate A random Name based on Syllable count. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_lexicon_afd43c6e75ae64e241631d6d8d4d47350}{get\+Lexigraph\+Size}} ()
+\begin{DoxyCompactList}\small\item\em Returns the current size of the Lexigraph. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_lexicon_a3b19ad271a38917ebb7547ea3e6586dc}{set\+Lexigraph}} (std\+::string)
+\begin{DoxyCompactList}\small\item\em Returns the current size of the Lexigraph. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_lexicon_a3c7224c29de2b05503992938986fd665}{\texorpdfstring{$\sim$}{\string~}\+Lexicon}} ()
+\begin{DoxyCompactList}\small\item\em Default Deconstructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classx_ciphers_a6262463a0e235edc15f9e9669ce1acfe}{get\+Index}} (char)
+\begin{DoxyCompactList}\small\item\em Locates the index of the given letter in the lexigraph. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_lexicon}{Lexicon}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_config_manager}{Config\+Manager}} \texorpdfstring{$\ast$}{*} {\bfseries cnf}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_config_manager}{Config\+Manager} Instantiation. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_logger}{Logger}} \texorpdfstring{$\ast$}{*} {\bfseries log}
+\begin{DoxyCompactList}\small\item\em Logging Handler Instantiation. \end{DoxyCompactList}\item 
+std\+::string {\bfseries lexigraph}
+\begin{DoxyCompactList}\small\item\em Lexigraph for Language (symbols) \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::string $>$ {\bfseries syllables}
+\begin{DoxyCompactList}\small\item\em Common Language Syllables. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The cipher suite will handle logical lexiconal shifting and word translations. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classx_ciphers_ac3cb3f87a08a7cfb39395ef2bf31aad6}\label{classx_ciphers_ac3cb3f87a08a7cfb39395ef2bf31aad6} 
+\index{xCiphers@{xCiphers}!xCiphers@{xCiphers}}
+\index{xCiphers@{xCiphers}!xCiphers@{xCiphers}}
+\doxysubsubsection{\texorpdfstring{xCiphers()}{xCiphers()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily x\+Ciphers\+::x\+Ciphers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Default Constructor. 
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000060}{Todo}}]Default Constructor \end{DoxyRefDesc}
+\Hypertarget{classx_ciphers_a00a0f817604750bb2695f2e23143cf51}\label{classx_ciphers_a00a0f817604750bb2695f2e23143cf51} 
+\index{xCiphers@{xCiphers}!xCiphers@{xCiphers}}
+\index{xCiphers@{xCiphers}!xCiphers@{xCiphers}}
+\doxysubsubsection{\texorpdfstring{xCiphers()}{xCiphers()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily x\+Ciphers\+::x\+Ciphers (\begin{DoxyParamCaption}\item[{char}]{code,  }\item[{std\+::string}]{key }\end{DoxyParamCaption})}
+
+
+
+Overloaded Constructor. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em code} & -\/ Character to start the cipher \\
+\hline
+\mbox{\texttt{ in}}  & {\em key} & -\/ Salt for the cipher\\
+\hline
+\end{DoxyParams}
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000061}{Todo}}]Overloaded Constructor \end{DoxyRefDesc}
+\Hypertarget{classx_ciphers_a38ade0d7701361e1132711d1c25b4d00}\label{classx_ciphers_a38ade0d7701361e1132711d1c25b4d00} 
+\index{xCiphers@{xCiphers}!````~xCiphers@{\texorpdfstring{$\sim$}{\string~}xCiphers}}
+\index{````~xCiphers@{\texorpdfstring{$\sim$}{\string~}xCiphers}!xCiphers@{xCiphers}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}xCiphers()}{\string~xCiphers()}}
+{\footnotesize\ttfamily x\+Ciphers\+::\texorpdfstring{$\sim$}{\string~}x\+Ciphers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Default Deconstructor. 
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000068}{Todo}}]Default Deconstructor \end{DoxyRefDesc}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classx_ciphers_a64667e6eb9f59bfa5a9f773e546e38f2}\label{classx_ciphers_a64667e6eb9f59bfa5a9f773e546e38f2} 
+\index{xCiphers@{xCiphers}!decode@{decode}}
+\index{decode@{decode}!xCiphers@{xCiphers}}
+\doxysubsubsection{\texorpdfstring{decode()}{decode()}}
+{\footnotesize\ttfamily std\+::string x\+Ciphers\+::decode (\begin{DoxyParamCaption}\item[{std\+::string}]{input }\end{DoxyParamCaption})}
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000066}{Todo}}]~\newline
+ \end{DoxyRefDesc}
+\Hypertarget{classx_ciphers_a1a762689d6c91e06d935ce577dd39f86}\label{classx_ciphers_a1a762689d6c91e06d935ce577dd39f86} 
+\index{xCiphers@{xCiphers}!displayMatrix@{displayMatrix}}
+\index{displayMatrix@{displayMatrix}!xCiphers@{xCiphers}}
+\doxysubsubsection{\texorpdfstring{displayMatrix()}{displayMatrix()}}
+{\footnotesize\ttfamily void x\+Ciphers\+::display\+Matrix (\begin{DoxyParamCaption}\item[{bool}]{black\+Out }\end{DoxyParamCaption})}
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000067}{Todo}}]~\newline
+ \end{DoxyRefDesc}
+\Hypertarget{classx_ciphers_afc5d4868225cb94707706f21bca970d9}\label{classx_ciphers_afc5d4868225cb94707706f21bca970d9} 
+\index{xCiphers@{xCiphers}!encode@{encode}}
+\index{encode@{encode}!xCiphers@{xCiphers}}
+\doxysubsubsection{\texorpdfstring{encode()}{encode()}}
+{\footnotesize\ttfamily std\+::string x\+Ciphers\+::encode (\begin{DoxyParamCaption}\item[{std\+::string}]{input }\end{DoxyParamCaption})}
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000065}{Todo}}]~\newline
+ \end{DoxyRefDesc}
+\Hypertarget{classx_ciphers_adec10429127b58b5980d76f5364f7470}\label{classx_ciphers_adec10429127b58b5980d76f5364f7470} 
+\index{xCiphers@{xCiphers}!generateMatrix@{generateMatrix}}
+\index{generateMatrix@{generateMatrix}!xCiphers@{xCiphers}}
+\doxysubsubsection{\texorpdfstring{generateMatrix()}{generateMatrix()}}
+{\footnotesize\ttfamily void x\+Ciphers\+::generate\+Matrix (\begin{DoxyParamCaption}\item[{char}]{code }\end{DoxyParamCaption})}
+
+
+
+Generates an N x N matrix where N \+:= Number of elements in the lexigraph. 
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000063}{Todo}}]Generates an N x N matrix where N \+:= Number of elements in the lexigraph. \end{DoxyRefDesc}
+\Hypertarget{classx_ciphers_a6262463a0e235edc15f9e9669ce1acfe}\label{classx_ciphers_a6262463a0e235edc15f9e9669ce1acfe} 
+\index{xCiphers@{xCiphers}!getIndex@{getIndex}}
+\index{getIndex@{getIndex}!xCiphers@{xCiphers}}
+\doxysubsubsection{\texorpdfstring{getIndex()}{getIndex()}}
+{\footnotesize\ttfamily int x\+Ciphers\+::get\+Index (\begin{DoxyParamCaption}\item[{char}]{letter }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Locates the index of the given letter in the lexigraph. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em letter} & -\/ Character to be looked up\\
+\hline
+\end{DoxyParams}
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000062}{Todo}}]Locates the index of the given letter in the lexigraph \end{DoxyRefDesc}
+\Hypertarget{classx_ciphers_aeaf0cc6df8f4311e7d78bf20fa43367c}\label{classx_ciphers_aeaf0cc6df8f4311e7d78bf20fa43367c} 
+\index{xCiphers@{xCiphers}!getMatrixSize@{getMatrixSize}}
+\index{getMatrixSize@{getMatrixSize}!xCiphers@{xCiphers}}
+\doxysubsubsection{\texorpdfstring{getMatrixSize()}{getMatrixSize()}}
+{\footnotesize\ttfamily int x\+Ciphers\+::get\+Matrix\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the size of the matrix. 
+
+\begin{DoxyReturn}{Returns}
+Size of the matrix
+\end{DoxyReturn}
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000064}{Todo}}]Gets the size of the matrix \end{DoxyRefDesc}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+core/ciphers.\+h\item 
+core/ciphers.\+cpp\end{DoxyCompactItemize}

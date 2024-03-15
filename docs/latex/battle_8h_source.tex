@@ -1,0 +1,44 @@
+\doxysection{battle.\+h}
+\hypertarget{battle_8h_source}{}\label{battle_8h_source}\index{core/battle.h@{core/battle.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ BATTLE\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ BATTLE\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <mutex>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}combat.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}player.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}toon.h"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_battle}{Battle}}\ \{}
+\DoxyCodeLine{00014\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00015\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00019\ \ \ \mbox{\hyperlink{class_battle}{Battle}}();}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_battle}{Battle}}*\ \ \ \ \_singleton;\ \ \ \ \ }
+\DoxyCodeLine{00022\ \ \ \textcolor{keyword}{static}\ std::mutex\ \_mutex;\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00023\ \ \ \mbox{\hyperlink{class_logger}{Logger}}*\ \ \ log;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00024\ \ \ \mbox{\hyperlink{class_combat}{Combat}}*\ \ \ combat;}
+\DoxyCodeLine{00025\ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ cycleCompletionTracker;}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00029\ \ \ \mbox{\hyperlink{class_battle_af52bdbccc551eebf697139b35e2dfc14}{Battle}}(\mbox{\hyperlink{class_battle}{Battle}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00032\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_battle_a8ed77ad4d105fc16d20c6a45e6afaa60}{operator\ =\ }}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_battle}{Battle}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00037\ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_battle}{Battle}}*\ \mbox{\hyperlink{class_battle_a5cf5668e8fd144f0b0b85674f6fa2d24}{GetInstance}}();}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00042\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_battle_a1f88d4ea68f4ab4a569aa0fcaa6cfc95}{doCycleWork}}(\textcolor{keywordtype}{bool}\&);}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \textcolor{keywordtype}{void}\ startEVE(\mbox{\hyperlink{class_toon}{Toon}}\&,\mbox{\hyperlink{class_toon}{Toon}}\&);}
+\DoxyCodeLine{00045\ \ \ \textcolor{keywordtype}{void}\ startPVE(\mbox{\hyperlink{class_player}{Player}}\&,\mbox{\hyperlink{class_toon}{Toon}}\&);}
+\DoxyCodeLine{00046\ \ \ \textcolor{keywordtype}{void}\ startPVP(\mbox{\hyperlink{class_player}{Player}}\&,\mbox{\hyperlink{class_player}{Player}}\&);}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00051\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_battle_ab3b7ba9bc156ee20d8d41a19d60ae894}{\_help}}();}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00056\ \ \ \mbox{\hyperlink{class_battle_ae44141e587836ba84243cad46b17c228}{\string~Battle}}();}
+\DoxyCodeLine{00057\ \};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ BATTLE\_H\ //}}
+
+\end{DoxyCode}

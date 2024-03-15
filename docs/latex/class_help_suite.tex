@@ -1,0 +1,207 @@
+\doxysection{Help\+Suite Class Reference}
+\hypertarget{class_help_suite}{}\label{class_help_suite}\index{HelpSuite@{HelpSuite}}
+
+
+Command Line Tool (CLI) for the \doxylink{class_help_suite}{Help\+Suite}.  
+
+
+
+
+{\ttfamily \#include $<$helpsuite.\+cpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_help_suite_ad859c688219b1c5a9be784824ebf6ee3}{Help\+Suite}} ()
+\begin{DoxyCompactList}\small\item\em Default Constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_help_suite_a63ce00b20708ab06e62f8cb0061ad47e}{Help\+Suite}} (bool)
+\begin{DoxyCompactList}\small\item\em Debugging Constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_help_suite_a822e14c21f359c93ee97774ac58a48a7}{Help\+All}} ()
+\item 
+void \mbox{\hyperlink{class_help_suite_a83d8aceeefa33fe8b985464754cb51c6}{Actor\+Help}} ()
+\item 
+void \mbox{\hyperlink{class_help_suite_a122d302a4cbac4efb6760ef36d8a3c26}{Battle\+Help}} ()
+\item 
+void \mbox{\hyperlink{class_help_suite_ae4213d0430b7b36d2fe0f27c3144c8d7}{Balance\+Help}} ()
+\item 
+void \mbox{\hyperlink{class_help_suite_a77fff93a8852e6feaf895236b18316b1}{Combat\+Help}} ()
+\item 
+\Hypertarget{class_help_suite_a0f0c4d77c2d7715f8ec9230a8d990871}\label{class_help_suite_a0f0c4d77c2d7715f8ec9230a8d990871} 
+void {\bfseries Config\+Help} ()
+\item 
+void \mbox{\hyperlink{class_help_suite_a99a150e13f33c718cf26c1b2f762e436}{Item\+Help}} ()
+\item 
+\Hypertarget{class_help_suite_a588a19d6d1a588989def5c54f97ad067}\label{class_help_suite_a588a19d6d1a588989def5c54f97ad067} 
+void {\bfseries Leader\+Help} ()
+\item 
+void \mbox{\hyperlink{class_help_suite_a70a993324427fd4747ed9e2457e61d16}{Player\+Help}} ()
+\item 
+void \mbox{\hyperlink{class_help_suite_a96eab03906e88449b180fd93b27bf537}{Stage\+Help}} ()
+\item 
+void \mbox{\hyperlink{class_help_suite_a05f2588ec0f9f5711ed2b370356bdc7b}{Toon\+Help}} ()
+\item 
+void \mbox{\hyperlink{class_help_suite_ad1ed6e34021d138f8b02d3b9503f30bb}{Utilz\+Help}} ()
+\item 
+void \mbox{\hyperlink{class_help_suite_ae0f3c1a652bbb4f4817ad0c25fa14452}{\+\_\+help}} ()
+\begin{DoxyCompactList}\small\item\em Helper hook for CLI Tool to display help details. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_help_suite_a1b9b75d382cd4eb9e5e46e51bb6064e7}{\texorpdfstring{$\sim$}{\string~}\+Help\+Suite}} ()
+\begin{DoxyCompactList}\small\item\em Default Deconstructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_help_suite_a2689c216454718b929274b205817cb16}\label{class_help_suite_a2689c216454718b929274b205817cb16} 
+\mbox{\hyperlink{class_config_manager}{Config\+Manager}} \texorpdfstring{$\ast$}{*} {\bfseries cnf}
+\begin{DoxyCompactList}\small\item\em Instantiated \doxylink{class_config_manager}{Config\+Manager} Object. \end{DoxyCompactList}\item 
+\Hypertarget{class_help_suite_a7e5fc902215df750b0d638492c692d2c}\label{class_help_suite_a7e5fc902215df750b0d638492c692d2c} 
+\mbox{\hyperlink{class_logger}{Logger}} \texorpdfstring{$\ast$}{*} {\bfseries log}
+\begin{DoxyCompactList}\small\item\em Instantiated \doxylink{class_logger}{Logger} Object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Command Line Tool (CLI) for the \doxylink{class_help_suite}{Help\+Suite}. 
+
+Helper Suite is meant to parse Doxygen outputs, and provide a commandline utility for quick reference while developing or debugging. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_help_suite_ad859c688219b1c5a9be784824ebf6ee3}\label{class_help_suite_ad859c688219b1c5a9be784824ebf6ee3} 
+\index{HelpSuite@{HelpSuite}!HelpSuite@{HelpSuite}}
+\index{HelpSuite@{HelpSuite}!HelpSuite@{HelpSuite}}
+\doxysubsubsection{\texorpdfstring{HelpSuite()}{HelpSuite()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Help\+Suite\+::\+Help\+Suite (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Default Constructor. 
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000165}{Todo}}]Default Constructor \end{DoxyRefDesc}
+\Hypertarget{class_help_suite_a63ce00b20708ab06e62f8cb0061ad47e}\label{class_help_suite_a63ce00b20708ab06e62f8cb0061ad47e} 
+\index{HelpSuite@{HelpSuite}!HelpSuite@{HelpSuite}}
+\index{HelpSuite@{HelpSuite}!HelpSuite@{HelpSuite}}
+\doxysubsubsection{\texorpdfstring{HelpSuite()}{HelpSuite()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Help\+Suite\+::\+Help\+Suite (\begin{DoxyParamCaption}\item[{bool}]{\+\_\+debug }\end{DoxyParamCaption})}
+
+
+
+Debugging Constructor. 
+
+This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em \+\_\+debug} & Debugging option\\
+\hline
+\end{DoxyParams}
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000166}{Todo}}]Debugging Constructor \end{DoxyRefDesc}
+\Hypertarget{class_help_suite_a1b9b75d382cd4eb9e5e46e51bb6064e7}\label{class_help_suite_a1b9b75d382cd4eb9e5e46e51bb6064e7} 
+\index{HelpSuite@{HelpSuite}!````~HelpSuite@{\texorpdfstring{$\sim$}{\string~}HelpSuite}}
+\index{````~HelpSuite@{\texorpdfstring{$\sim$}{\string~}HelpSuite}!HelpSuite@{HelpSuite}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}HelpSuite()}{\string~HelpSuite()}}
+{\footnotesize\ttfamily Help\+Suite\+::\texorpdfstring{$\sim$}{\string~}\+Help\+Suite (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Default Deconstructor. 
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000178}{Todo}}]Default Deconstructor \end{DoxyRefDesc}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_help_suite_ae0f3c1a652bbb4f4817ad0c25fa14452}\label{class_help_suite_ae0f3c1a652bbb4f4817ad0c25fa14452} 
+\index{HelpSuite@{HelpSuite}!\_help@{\_help}}
+\index{\_help@{\_help}!HelpSuite@{HelpSuite}}
+\doxysubsubsection{\texorpdfstring{\_help()}{\_help()}}
+{\footnotesize\ttfamily void Help\+Suite\+::\+\_\+help (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Helper hook for CLI Tool to display help details. 
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000177}{Todo}}]Helper hook for CLI Tool to display help details \end{DoxyRefDesc}
+\Hypertarget{class_help_suite_a83d8aceeefa33fe8b985464754cb51c6}\label{class_help_suite_a83d8aceeefa33fe8b985464754cb51c6} 
+\index{HelpSuite@{HelpSuite}!ActorHelp@{ActorHelp}}
+\index{ActorHelp@{ActorHelp}!HelpSuite@{HelpSuite}}
+\doxysubsubsection{\texorpdfstring{ActorHelp()}{ActorHelp()}}
+{\footnotesize\ttfamily void Help\+Suite\+::\+Actor\+Help (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000168}{Todo}}]FIXME\+: Needs desc \end{DoxyRefDesc}
+\Hypertarget{class_help_suite_ae4213d0430b7b36d2fe0f27c3144c8d7}\label{class_help_suite_ae4213d0430b7b36d2fe0f27c3144c8d7} 
+\index{HelpSuite@{HelpSuite}!BalanceHelp@{BalanceHelp}}
+\index{BalanceHelp@{BalanceHelp}!HelpSuite@{HelpSuite}}
+\doxysubsubsection{\texorpdfstring{BalanceHelp()}{BalanceHelp()}}
+{\footnotesize\ttfamily void Help\+Suite\+::\+Balance\+Help (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000169}{Todo}}]FIXME\+: Needs desc \end{DoxyRefDesc}
+\Hypertarget{class_help_suite_a122d302a4cbac4efb6760ef36d8a3c26}\label{class_help_suite_a122d302a4cbac4efb6760ef36d8a3c26} 
+\index{HelpSuite@{HelpSuite}!BattleHelp@{BattleHelp}}
+\index{BattleHelp@{BattleHelp}!HelpSuite@{HelpSuite}}
+\doxysubsubsection{\texorpdfstring{BattleHelp()}{BattleHelp()}}
+{\footnotesize\ttfamily void Help\+Suite\+::\+Battle\+Help (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000170}{Todo}}]FIXME\+: Needs desc \end{DoxyRefDesc}
+\Hypertarget{class_help_suite_a77fff93a8852e6feaf895236b18316b1}\label{class_help_suite_a77fff93a8852e6feaf895236b18316b1} 
+\index{HelpSuite@{HelpSuite}!CombatHelp@{CombatHelp}}
+\index{CombatHelp@{CombatHelp}!HelpSuite@{HelpSuite}}
+\doxysubsubsection{\texorpdfstring{CombatHelp()}{CombatHelp()}}
+{\footnotesize\ttfamily void Help\+Suite\+::\+Combat\+Help (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000171}{Todo}}]FIXME\+: Needs desc \end{DoxyRefDesc}
+\Hypertarget{class_help_suite_a822e14c21f359c93ee97774ac58a48a7}\label{class_help_suite_a822e14c21f359c93ee97774ac58a48a7} 
+\index{HelpSuite@{HelpSuite}!HelpAll@{HelpAll}}
+\index{HelpAll@{HelpAll}!HelpSuite@{HelpSuite}}
+\doxysubsubsection{\texorpdfstring{HelpAll()}{HelpAll()}}
+{\footnotesize\ttfamily void Help\+Suite\+::\+Help\+All (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000167}{Todo}}]FIXME\+: Needs desc \end{DoxyRefDesc}
+\Hypertarget{class_help_suite_a99a150e13f33c718cf26c1b2f762e436}\label{class_help_suite_a99a150e13f33c718cf26c1b2f762e436} 
+\index{HelpSuite@{HelpSuite}!ItemHelp@{ItemHelp}}
+\index{ItemHelp@{ItemHelp}!HelpSuite@{HelpSuite}}
+\doxysubsubsection{\texorpdfstring{ItemHelp()}{ItemHelp()}}
+{\footnotesize\ttfamily void Help\+Suite\+::\+Item\+Help (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000172}{Todo}}]FIXME\+: Needs desc \end{DoxyRefDesc}
+\Hypertarget{class_help_suite_a70a993324427fd4747ed9e2457e61d16}\label{class_help_suite_a70a993324427fd4747ed9e2457e61d16} 
+\index{HelpSuite@{HelpSuite}!PlayerHelp@{PlayerHelp}}
+\index{PlayerHelp@{PlayerHelp}!HelpSuite@{HelpSuite}}
+\doxysubsubsection{\texorpdfstring{PlayerHelp()}{PlayerHelp()}}
+{\footnotesize\ttfamily void Help\+Suite\+::\+Player\+Help (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000173}{Todo}}]FIXME\+: Needs desc \end{DoxyRefDesc}
+\Hypertarget{class_help_suite_a96eab03906e88449b180fd93b27bf537}\label{class_help_suite_a96eab03906e88449b180fd93b27bf537} 
+\index{HelpSuite@{HelpSuite}!StageHelp@{StageHelp}}
+\index{StageHelp@{StageHelp}!HelpSuite@{HelpSuite}}
+\doxysubsubsection{\texorpdfstring{StageHelp()}{StageHelp()}}
+{\footnotesize\ttfamily void Help\+Suite\+::\+Stage\+Help (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000174}{Todo}}]FIXME\+: Needs desc \end{DoxyRefDesc}
+\Hypertarget{class_help_suite_a05f2588ec0f9f5711ed2b370356bdc7b}\label{class_help_suite_a05f2588ec0f9f5711ed2b370356bdc7b} 
+\index{HelpSuite@{HelpSuite}!ToonHelp@{ToonHelp}}
+\index{ToonHelp@{ToonHelp}!HelpSuite@{HelpSuite}}
+\doxysubsubsection{\texorpdfstring{ToonHelp()}{ToonHelp()}}
+{\footnotesize\ttfamily void Help\+Suite\+::\+Toon\+Help (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000175}{Todo}}]FIXME\+: Needs desc \end{DoxyRefDesc}
+\Hypertarget{class_help_suite_ad1ed6e34021d138f8b02d3b9503f30bb}\label{class_help_suite_ad1ed6e34021d138f8b02d3b9503f30bb} 
+\index{HelpSuite@{HelpSuite}!UtilzHelp@{UtilzHelp}}
+\index{UtilzHelp@{UtilzHelp}!HelpSuite@{HelpSuite}}
+\doxysubsubsection{\texorpdfstring{UtilzHelp()}{UtilzHelp()}}
+{\footnotesize\ttfamily void Help\+Suite\+::\+Utilz\+Help (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000176}{Todo}}]FIXME\+: Needs desc \end{DoxyRefDesc}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+helpsuite/helpsuite.\+h\item 
+helpsuite/helpsuite.\+cpp\end{DoxyCompactItemize}

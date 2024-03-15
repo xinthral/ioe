@@ -1,0 +1,129 @@
+\doxysection{x\+Clock Class Reference}
+\hypertarget{classx_clock}{}\label{classx_clock}\index{xClock@{xClock}}
+
+
+\doxylink{classx_clock}{x\+Clock} handles timing amongst the chaos and otherwise manipulating the temporal dimension.  
+
+
+
+
+{\ttfamily \#include $<$clock.\+cpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classx_clock_a90658afb7a752a9352536b887af67c63}\label{classx_clock_a90658afb7a752a9352536b887af67c63} 
+{\bfseries x\+Clock} (\mbox{\hyperlink{classx_clock}{x\+Clock}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Singletons should not be cloneable. \end{DoxyCompactList}\item 
+\Hypertarget{classx_clock_a5602dc9e379e5e0405c7dfc179167add}\label{classx_clock_a5602dc9e379e5e0405c7dfc179167add} 
+void {\bfseries operator=} (const \mbox{\hyperlink{classx_clock}{x\+Clock}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Singletons should not be assignable. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classx_clock_a287dd4484683620263e1dd0deaeb63e4}{get\+Pending\+Work\+State}} ()
+\item 
+void \mbox{\hyperlink{classx_clock_a3b6d8cf061eb54a9f98914825cb54936}{do\+Cycle\+Work}} ()
+\item 
+void \mbox{\hyperlink{classx_clock_a4d86925f4754c28273d109c96445fd88}{\+\_\+help}} ()
+\begin{DoxyCompactList}\small\item\em Helper Hook used in CLI Help System. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classx_clock_a48548a87fc20d734d49d069f821c29de}{\texorpdfstring{$\sim$}{\string~}x\+Clock}} ()
+\begin{DoxyCompactList}\small\item\em Default Deconstructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classx_clock}{x\+Clock}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classx_clock_a5afe719005df1e0e5636074aca239722}{Get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Singleton Constructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classx_clock_a5ca92a56b37b60eaa5bea735348017b1}{x\+Clock}} ()
+\begin{DoxyCompactList}\small\item\em Singleton Constructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{classx_clock}{x\+Clock} handles timing amongst the chaos and otherwise manipulating the temporal dimension. 
+
+needs desc 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classx_clock_a5ca92a56b37b60eaa5bea735348017b1}\label{classx_clock_a5ca92a56b37b60eaa5bea735348017b1} 
+\index{xClock@{xClock}!xClock@{xClock}}
+\index{xClock@{xClock}!xClock@{xClock}}
+\doxysubsubsection{\texorpdfstring{xClock()}{xClock()}}
+{\footnotesize\ttfamily x\+Clock\+::x\+Clock (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Singleton Constructor. 
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000069}{Todo}}]Protected Constructor \end{DoxyRefDesc}
+\Hypertarget{classx_clock_a48548a87fc20d734d49d069f821c29de}\label{classx_clock_a48548a87fc20d734d49d069f821c29de} 
+\index{xClock@{xClock}!````~xClock@{\texorpdfstring{$\sim$}{\string~}xClock}}
+\index{````~xClock@{\texorpdfstring{$\sim$}{\string~}xClock}!xClock@{xClock}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}xClock()}{\string~xClock()}}
+{\footnotesize\ttfamily x\+Clock\+::\texorpdfstring{$\sim$}{\string~}x\+Clock (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Default Deconstructor. 
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000074}{Todo}}]Default Deconstructor \end{DoxyRefDesc}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classx_clock_a4d86925f4754c28273d109c96445fd88}\label{classx_clock_a4d86925f4754c28273d109c96445fd88} 
+\index{xClock@{xClock}!\_help@{\_help}}
+\index{\_help@{\_help}!xClock@{xClock}}
+\doxysubsubsection{\texorpdfstring{\_help()}{\_help()}}
+{\footnotesize\ttfamily void x\+Clock\+::\+\_\+help (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Helper Hook used in CLI Help System. 
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000073}{Todo}}]Helper Hook used in CLI Help System \end{DoxyRefDesc}
+\Hypertarget{classx_clock_a3b6d8cf061eb54a9f98914825cb54936}\label{classx_clock_a3b6d8cf061eb54a9f98914825cb54936} 
+\index{xClock@{xClock}!doCycleWork@{doCycleWork}}
+\index{doCycleWork@{doCycleWork}!xClock@{xClock}}
+\doxysubsubsection{\texorpdfstring{doCycleWork()}{doCycleWork()}}
+{\footnotesize\ttfamily void x\+Clock\+::do\+Cycle\+Work (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000076}{Todo}}]Perform Cycle Work \end{DoxyRefDesc}
+
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000072}{Todo}}]Singleton Constructor \end{DoxyRefDesc}
+\Hypertarget{classx_clock_a5afe719005df1e0e5636074aca239722}\label{classx_clock_a5afe719005df1e0e5636074aca239722} 
+\index{xClock@{xClock}!GetInstance@{GetInstance}}
+\index{GetInstance@{GetInstance}!xClock@{xClock}}
+\doxysubsubsection{\texorpdfstring{GetInstance()}{GetInstance()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classx_clock}{x\+Clock}} \texorpdfstring{$\ast$}{*} x\+Clock\+::\+Get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Singleton Constructor. 
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000070}{Todo}}]Singleton Constructor \end{DoxyRefDesc}
+Acquire Instance Mutex
+
+If singleton already exists, return instance\Hypertarget{classx_clock_a287dd4484683620263e1dd0deaeb63e4}\label{classx_clock_a287dd4484683620263e1dd0deaeb63e4} 
+\index{xClock@{xClock}!getPendingWorkState@{getPendingWorkState}}
+\index{getPendingWorkState@{getPendingWorkState}!xClock@{xClock}}
+\doxysubsubsection{\texorpdfstring{getPendingWorkState()}{getPendingWorkState()}}
+{\footnotesize\ttfamily bool x\+Clock\+::get\+Pending\+Work\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000075}{Todo}}]Returns if cycle work is still pending \end{DoxyRefDesc}
+
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000071}{Todo}}]Returns if cycle work is still pending \end{DoxyRefDesc}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+core/clock.\+h\item 
+core/clock.\+cpp\end{DoxyCompactItemize}

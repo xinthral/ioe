@@ -1,0 +1,108 @@
+\doxysection{actor.\+h}
+\hypertarget{actor_8h_source}{}\label{actor_8h_source}\index{core/actor.h@{core/actor.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ ACTOR\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ ACTOR\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}config.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}utilz.h"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{enum}\ CombatState\ \{\ }
+\DoxyCodeLine{00010\ \ \ IDLE,\ }
+\DoxyCodeLine{00011\ \ \ PATROL,\ }
+\DoxyCodeLine{00012\ \ \ FIGHT,\ }
+\DoxyCodeLine{00013\ \ \ FLEE,\ }
+\DoxyCodeLine{00014\ \ \ HIDE,\ }
+\DoxyCodeLine{00015\ \ \ FOLLOW\ }
+\DoxyCodeLine{00016\ \};}
+\DoxyCodeLine{00017\ \textcolor{keyword}{extern}\ \textcolor{keyword}{enum}\ CombatState\ combatState;}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{enum}\ HealthState\ \{\ }
+\DoxyCodeLine{00021\ \ \ HEALTHY,\ }
+\DoxyCodeLine{00022\ \ \ HURTING,\ }
+\DoxyCodeLine{00023\ \ \ CRITICAL,\ }
+\DoxyCodeLine{00024\ \ \ SICK,\ }
+\DoxyCodeLine{00025\ \ \ DEAD\ }
+\DoxyCodeLine{00026\ \};}
+\DoxyCodeLine{00027\ \textcolor{keyword}{extern}\ \textcolor{keyword}{enum}\ HealthState\ healthState;}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00033\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_actor}{Actor}}\ \{}
+\DoxyCodeLine{00034\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00035\ \ \ \mbox{\hyperlink{class_config_manager}{ConfigManager}}*\ \mbox{\hyperlink{class_actor_ad8a8c1ffec1bd95560bfa4a85d0cc057}{cnf}};\ \ \ \ \ \ \ }
+\DoxyCodeLine{00036\ \ \ \mbox{\hyperlink{class_logger}{Logger}}*\ \mbox{\hyperlink{class_actor_ad4cfdcae1e013dcca72f4042923070f8}{log}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00037\ \ \ CombatState\ \mbox{\hyperlink{class_actor_a5e0fd27e191f60bd9f4a7bbe27d65a3a}{aiState}};\ \ \ \ \ \ }
+\DoxyCodeLine{00038\ \ \ HealthState\ \mbox{\hyperlink{class_actor_af5807d0cf4ed92c7f0d324d5e7940b36}{condition}};\ \ \ \ }
+\DoxyCodeLine{00039\ \ \ std::string\ \mbox{\hyperlink{class_actor_ae99855a0b1eb2cb0ff78eb32e98e487f}{name}};\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00040\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_actor_a0d2b93f5baefded4573b9f89aa5bda9a}{id}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00041\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_actor_a60ebb0a994dbaa1f6e6f3d96faaabcec}{baseAttack}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00042\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_actor_a0ad19cf932aa7e2fae32264271c2d2bf}{baseDefense}};\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00043\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_actor_abef2883e3d1e88a29c64123983e7c605}{baseHealth}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00044\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_actor_ae696ae51f2ab291fda2473ebacc89b8c}{baseFlux}};\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00045\ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{class_actor_a73f68ed3143584fb45b53aca1d14414f}{buf}}[256];\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00048\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00052\ \ \ \mbox{\hyperlink{class_actor_a2a0ff4335a1ee9096df90f288c026c8b}{Actor}}();}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00059\ \ \ \mbox{\hyperlink{class_actor_a2a0ff4335a1ee9096df90f288c026c8b}{Actor}}(std::string);}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00066\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_actor_a8836e8c2b76103a8dc47ff408d89ce3e}{isFighting}}();}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00073\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_actor_aee8e4efcd61cfc994a232730d89a4fef}{isAlive}}();}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00079\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_actor_a10f4cbdafcc6aea7d3a9a4cfa78ef15f}{get\_attack}}();}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00085\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_actor_a9ad76549333736c7b76a4b78bf46cc17}{get\_defense}}();}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00091\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_actor_a52501e68b097abd5f8cc4b05d175c867}{get\_flux}}();}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00097\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_actor_a32de439dc3ba0d36ae913b173b4b633f}{get\_health}}();}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00103\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_actor_aa6a652e6ced2aad8f848ea7324365d69}{get\_id}}();}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00109\ \ \ std::string\ \mbox{\hyperlink{class_actor_a55a6dcdcec5931619506b2a76ccb9db5}{get\_name}}();}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00116\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_actor_a0f2f655c639d1518c00da018db8cb33c}{set\_flux}}(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00123\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_actor_a252bc0e75933e7e3062d54b8e1f8fafb}{set\_id}}(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00130\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_actor_a7bf5eaa29d6275591d35fd43f67dd7be}{set\_name}}(std::string);}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00136\ \ \ CombatState\ \mbox{\hyperlink{class_actor_a15f8173b7ac5479a1547f842d5fc474b}{get\_combatstate}}();}
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00142\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_actor_ae15ef7e10551ee95f482ac12b1d33aed}{set\_combatstate}}(CombatState);}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00147\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_actor_a760913da638e0e92b2ec47d0764a4028}{set\_combat\_idle}}();}
+\DoxyCodeLine{00148\ }
+\DoxyCodeLine{00152\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_actor_a313f15612961c7468b4b7283be8dc87c}{set\_combat\_patrol}}();}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00157\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_actor_ada813b8eb87215f047e8a76a4a46f4b1}{set\_combat\_fight}}();}
+\DoxyCodeLine{00158\ }
+\DoxyCodeLine{00162\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_actor_a0fb7d6f1a49c27bac45adb6d4454dff7}{set\_combat\_flee}}();}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00167\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_actor_af5cf54d05eebc614a009d7209d1ada65}{set\_combat\_follow}}();}
+\DoxyCodeLine{00168\ }
+\DoxyCodeLine{00173\ \ \ HealthState\ \mbox{\hyperlink{class_actor_ab3db004321ad4d3ce4195b1e6173dbfb}{get\_healthstate}}();}
+\DoxyCodeLine{00174\ }
+\DoxyCodeLine{00178\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_actor_a6cc3e20a87778ba62cfd5e2940fde6d0}{set\_healthstate}}(HealthState);}
+\DoxyCodeLine{00179\ }
+\DoxyCodeLine{00183\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_actor_a1ba58c4ac487e92bfe9c576af2ee4c49}{set\_health\_healthy}}();}
+\DoxyCodeLine{00184\ }
+\DoxyCodeLine{00188\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_actor_a2fd292d5fbf5d3cb9be4093c819b2b27}{set\_health\_hurting}}();}
+\DoxyCodeLine{00189\ }
+\DoxyCodeLine{00193\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_actor_a8a9c36002bd9c16263f71998db342f43}{set\_health\_critical}}();}
+\DoxyCodeLine{00194\ }
+\DoxyCodeLine{00198\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_actor_aa50ea98f77ccff3d887942e5dbafcc5f}{set\_health\_sick}}();}
+\DoxyCodeLine{00199\ }
+\DoxyCodeLine{00203\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_actor_a1c070ef8e7e3e26a31180ad1553f0740}{set\_health\_dead}}();}
+\DoxyCodeLine{00204\ }
+\DoxyCodeLine{00208\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_actor_a33cfc1b2a9f377217df02703e6acc4b5}{\_help}}();}
+\DoxyCodeLine{00209\ }
+\DoxyCodeLine{00213\ \ \ \mbox{\hyperlink{class_actor_ad807fe8f85e72ab263a0c05e3231cb39}{\string~Actor}}();}
+\DoxyCodeLine{00214\ \};}
+\DoxyCodeLine{00215\ }
+\DoxyCodeLine{00216\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ ACTOR\_H\ //}}
+
+\end{DoxyCode}

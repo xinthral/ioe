@@ -1,0 +1,68 @@
+\chapter{IoE}
+\hypertarget{md_docs_2_r_e_a_d_m_e}{}\label{md_docs_2_r_e_a_d_m_e}\index{IoE@{IoE}}
+\label{md_docs_2_r_e_a_d_m_e_autotoc_md27}%
+\Hypertarget{md_docs_2_r_e_a_d_m_e_autotoc_md27}%
+\hypertarget{md_docs_2_r_e_a_d_m_e_autotoc_md28}{}\doxysection{\texorpdfstring{Isles of Eris}{Isles of Eris}}\label{md_docs_2_r_e_a_d_m_e_autotoc_md28}
+This game engine is nothing more than a passion project for me. My intentions are to one day compile this into a game. Until then, the grind for a feature rich, highly modulated, but easily customizable game engine is more than an over-\/reach however I am undeterred. Taking my lumps along the way, we press on....more to come.\hypertarget{md_docs_2_r_e_a_d_m_e_autotoc_md29}{}\doxysection{\texorpdfstring{Prerequisites\+:}{Prerequisites:}}\label{md_docs_2_r_e_a_d_m_e_autotoc_md29}
+
+\begin{DoxyItemize}
+\item \href{https://www.doxygen.nl/index.html}{\texttt{ Doxygen}} is a generative documentating software. It takes the comments and translates them to HTML for navigation.
+\item \href{https://cplusplus.com/doc/tutorial/}{\texttt{ C++}} v17 or newer.
+\end{DoxyItemize}\hypertarget{md_docs_2_r_e_a_d_m_e_autotoc_md30}{}\doxysection{\texorpdfstring{Development Options\+:}{Development Options:}}\label{md_docs_2_r_e_a_d_m_e_autotoc_md30}
+
+\begin{DoxyItemize}
+\item \href{https://chocolatey.org}{\texttt{ Chocolatey}} on Windows11. I prefer gnu\+Make and g++ over cmake and clang\textquotesingle{}s c++, and chocolatey makes this convenient and seamless.
+\item \href{https://code.visualstudio.com}{\texttt{ VSCode}} Handles basically every language, great wealth of extensions and pluggability, plus you can use \href{https://stackoverflow.com/questions/68517231/vcpkg-install-in-vs-code}{\texttt{ vcpkg}} to point to the chocolatey libraries so the dev environment can read it.
+\end{DoxyItemize}\hypertarget{md_docs_2_r_e_a_d_m_e_autotoc_md31}{}\doxysection{\texorpdfstring{Documentation in HTML format\+:}{Documentation in HTML format:}}\label{md_docs_2_r_e_a_d_m_e_autotoc_md31}
+Using Doxygen document generation, you can make a library of web browsable documents detailing the entirety of the project.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{make\ doc}
+
+\end{DoxyCode}
+\hypertarget{md_docs_2_r_e_a_d_m_e_autotoc_md32}{}\doxysubsection{\texorpdfstring{Core Engine, vrooom\+:}{Core Engine, vrooom:}}\label{md_docs_2_r_e_a_d_m_e_autotoc_md32}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{make\ core}
+
+\end{DoxyCode}
+\hypertarget{md_docs_2_r_e_a_d_m_e_autotoc_md33}{}\doxysubsection{\texorpdfstring{Audio\+Suite Allows for sound testing}{AudioSuite Allows for sound testing}}\label{md_docs_2_r_e_a_d_m_e_autotoc_md33}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{make\ audiosuite}
+\DoxyCodeLine{./audiosuite.exe\ -\/h}
+
+\end{DoxyCode}
+\hypertarget{md_docs_2_r_e_a_d_m_e_autotoc_md34}{}\doxysubsection{\texorpdfstring{CLISuite Interfacing with that Line Command}{CLISuite Interfacing with that Line Command}}\label{md_docs_2_r_e_a_d_m_e_autotoc_md34}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{make\ clisuite}
+\DoxyCodeLine{./clisuite.exe\ -\/h}
+
+\end{DoxyCode}
+\hypertarget{md_docs_2_r_e_a_d_m_e_autotoc_md35}{}\doxysubsection{\texorpdfstring{Test\+Suite and debuggers delight\+:}{TestSuite and debuggers delight:}}\label{md_docs_2_r_e_a_d_m_e_autotoc_md35}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{make\ testsuite}
+\DoxyCodeLine{./testsuite.exe\ -\/h}
+
+\end{DoxyCode}
+\hypertarget{md_docs_2_r_e_a_d_m_e_autotoc_md36}{}\doxysubsection{\texorpdfstring{Help\+Suite, thar be treasure\+:}{HelpSuite, thar be treasure:}}\label{md_docs_2_r_e_a_d_m_e_autotoc_md36}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{make\ helpsuite}
+\DoxyCodeLine{./helpsuite.exe\ -\/h}
+
+\end{DoxyCode}
+\hypertarget{md_docs_2_r_e_a_d_m_e_autotoc_md37}{}\doxysection{\texorpdfstring{Conceptual Overview}{Conceptual Overview}}\label{md_docs_2_r_e_a_d_m_e_autotoc_md37}
+Creating a game engine in C++ and integrating it with a web frontend using Django involves a multi-\/step process.\hypertarget{md_docs_2_r_e_a_d_m_e_autotoc_md38}{}\doxysubsection{\texorpdfstring{Design the Game Engine\+:}{Design the Game Engine:}}\label{md_docs_2_r_e_a_d_m_e_autotoc_md38}
+Define the architecture of the game engine, including components such as rendering, physics, input handling, and game logic. Implement the core functionality of the game engine in C++.\hypertarget{md_docs_2_r_e_a_d_m_e_autotoc_md39}{}\doxysubsection{\texorpdfstring{Create a Web API\+:}{Create a Web API:}}\label{md_docs_2_r_e_a_d_m_e_autotoc_md39}
+Develop a web API in C++ that exposes endpoints for interacting with the game engine. I could use a framework like Cpp\+RESTSDK for building RESTful APIs in C++. The API should handle requests related to game state, player actions, etc.\hypertarget{md_docs_2_r_e_a_d_m_e_autotoc_md40}{}\doxysubsection{\texorpdfstring{Build a Web Frontend with Django\+:}{Build a Web Frontend with Django:}}\label{md_docs_2_r_e_a_d_m_e_autotoc_md40}
+Use Django to create a web application that will serve as the frontend. Implement views, templates, and static files to create the user interface. Use Django\textquotesingle{}s ORM to interact with the database.\hypertarget{md_docs_2_r_e_a_d_m_e_autotoc_md41}{}\doxysubsection{\texorpdfstring{Integrate Web Frontend with C++ API\+:}{Integrate Web Frontend with C++ API:}}\label{md_docs_2_r_e_a_d_m_e_autotoc_md41}
+Use AJAX or other asynchronous techniques to make requests from the frontend to the C++ API. Handle responses and update the frontend dynamically based on the game state.\hypertarget{md_docs_2_r_e_a_d_m_e_autotoc_md42}{}\doxysubsection{\texorpdfstring{Web\+Sockets for Real-\/\+Time Communication\+:}{WebSockets for Real-Time Communication:}}\label{md_docs_2_r_e_a_d_m_e_autotoc_md42}
+For real-\/time updates, consider using Web\+Sockets. Django Channels is an extension that adds Web\+Sockets support to Django. Implement Web\+Sockets in both the frontend and the C++ backend to enable bidirectional communication.\hypertarget{md_docs_2_r_e_a_d_m_e_autotoc_md43}{}\doxysubsection{\texorpdfstring{Compile C++ Code for the Web\+:}{Compile C++ Code for the Web:}}\label{md_docs_2_r_e_a_d_m_e_autotoc_md43}
+Use tools like Emscripten to compile your C++ code to Web\+Assembly (Wasm), which can be run in modern web browsers. This step involves modifying your C++ code to work within the constraints of the web environment.\hypertarget{md_docs_2_r_e_a_d_m_e_autotoc_md44}{}\doxysubsection{\texorpdfstring{Deploy\+:}{Deploy:}}\label{md_docs_2_r_e_a_d_m_e_autotoc_md44}
+Deploy your Django application and the compiled C++ code to a web server.\hypertarget{md_docs_2_r_e_a_d_m_e_autotoc_md45}{}\doxysubsection{\texorpdfstring{Security Considerations\+:}{Security Considerations:}}\label{md_docs_2_r_e_a_d_m_e_autotoc_md45}
+Be aware of security risks associated with executing native code on the web. Make sure to properly sanitize inputs, validate requests, and secure your API.\hypertarget{md_docs_2_r_e_a_d_m_e_autotoc_md46}{}\doxysubsubsection{\texorpdfstring{Testing\+:}{Testing:}}\label{md_docs_2_r_e_a_d_m_e_autotoc_md46}
+Thoroughly test entire system to ensure that it works correctly. This includes testing the C++ game engine, the C++ API, and the Django frontend. Creating a game engine is a complex task, and integrating it with web technologies adds another layer of complexity. Be prepared for a learning curve, especially if you are new to web development or game engine development. Additionally, there may be alternative approaches and technologies that suit your specific requirements, so consider exploring different options based on your project\textquotesingle{}s needs. 

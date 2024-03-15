@@ -1,0 +1,66 @@
+\doxysection{helpsuite.\+h}
+\hypertarget{helpsuite_8h_source}{}\label{helpsuite_8h_source}\index{helpsuite/helpsuite.h@{helpsuite/helpsuite.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ HELPER\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ HELPER\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}../core/actor.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}../core/balance.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}../core/battle.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}../core/combat.h"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}../core/config.h"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}../core/item.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}../core/leader.h"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}../core/logger.h"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}../core/player.h"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}../core/stage.h"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}../core/toon.h"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}../core/utilz.h"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}actorhelp.h"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}balancehelp.h"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}battlehelp.h"{}}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}combathelp.h"{}}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ "{}confighelp.h"{}}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ "{}itemhelp.h"{}}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ "{}leaderhelp.h"{}}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ "{}playerhelp.h"{}}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ "{}stagehelp.h"{}}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#include\ "{}toonhelp.h"{}}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#include\ "{}utilzhelp.h"{}}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00037\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_help_suite}{HelpSuite}}\ \{}
+\DoxyCodeLine{00038\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00039\ \ \ \mbox{\hyperlink{class_config_manager}{ConfigManager}}*\ \ \ \ \mbox{\hyperlink{class_help_suite_a2689c216454718b929274b205817cb16}{cnf}};\ \ }
+\DoxyCodeLine{00040\ \ \ \mbox{\hyperlink{class_logger}{Logger}}*\ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_help_suite_a7e5fc902215df750b0d638492c692d2c}{log}};\ \ }
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00043\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00047\ \ \ \mbox{\hyperlink{class_help_suite_ad859c688219b1c5a9be784824ebf6ee3}{HelpSuite}}();}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00054\ \ \ \mbox{\hyperlink{class_help_suite_ad859c688219b1c5a9be784824ebf6ee3}{HelpSuite}}(\textcolor{keywordtype}{bool});}
+\DoxyCodeLine{00055\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_help_suite_a822e14c21f359c93ee97774ac58a48a7}{HelpAll}}();}
+\DoxyCodeLine{00056\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_help_suite_a83d8aceeefa33fe8b985464754cb51c6}{ActorHelp}}();}
+\DoxyCodeLine{00057\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_help_suite_a122d302a4cbac4efb6760ef36d8a3c26}{BattleHelp}}();}
+\DoxyCodeLine{00058\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_help_suite_ae4213d0430b7b36d2fe0f27c3144c8d7}{BalanceHelp}}();}
+\DoxyCodeLine{00059\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_help_suite_a77fff93a8852e6feaf895236b18316b1}{CombatHelp}}();}
+\DoxyCodeLine{00060\ \ \ \textcolor{keywordtype}{void}\ ConfigHelp();}
+\DoxyCodeLine{00061\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_help_suite_a99a150e13f33c718cf26c1b2f762e436}{ItemHelp}}();}
+\DoxyCodeLine{00062\ \ \ \textcolor{keywordtype}{void}\ LeaderHelp();}
+\DoxyCodeLine{00063\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_help_suite_a70a993324427fd4747ed9e2457e61d16}{PlayerHelp}}();}
+\DoxyCodeLine{00064\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_help_suite_a96eab03906e88449b180fd93b27bf537}{StageHelp}}();}
+\DoxyCodeLine{00065\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_help_suite_a05f2588ec0f9f5711ed2b370356bdc7b}{ToonHelp}}();}
+\DoxyCodeLine{00066\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_help_suite_ad1ed6e34021d138f8b02d3b9503f30bb}{UtilzHelp}}();}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00071\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_help_suite_ae0f3c1a652bbb4f4817ad0c25fa14452}{\_help}}();}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00076\ \ \ \mbox{\hyperlink{class_help_suite_a1b9b75d382cd4eb9e5e46e51bb6064e7}{\string~HelpSuite}}();}
+\DoxyCodeLine{00077\ \};}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00082\ \textcolor{keywordtype}{void}\ print\_help();}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ HELPER\_H\ //}}
+
+\end{DoxyCode}

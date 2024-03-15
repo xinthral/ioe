@@ -1,0 +1,42 @@
+\doxysection{utilz.\+h}
+\hypertarget{utilz_8h_source}{}\label{utilz_8h_source}\index{core/utilz.h@{core/utilz.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ UTILZ\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ UTILZ\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <ctime>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <iterator>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}logger.h"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{class_utilz}{Utilz}}\ \{}
+\DoxyCodeLine{00022\ \ \ std::string\ FileName(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *);}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00030\ \ \ std::string\ FileName(\textcolor{keywordtype}{int},\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *);}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00037\ \ \ std::string\ TimeStamp();}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00045\ \ \ \textcolor{keywordtype}{void}\ StringToArray(std::string,\ std::vector<std::string>\&);}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00053\ \ \ std::string\ HeadString(\textcolor{keywordtype}{int},\ std::string);}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00061\ \ \ std::string\ TailString(\textcolor{keywordtype}{int},\ std::string);}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00067\ \ \ \textcolor{keywordtype}{void}\ Strip(std::string\&);}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00072\ \ \ std::string\ randomString(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00077\ \ \ \textcolor{keywordtype}{void}\ \_help();}
+\DoxyCodeLine{00078\ \}\ \textcolor{comment}{//\ namespace\ Utilz}}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00081\ \ \ \textcolor{keywordtype}{int}\ addIt(\textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int});}
+\DoxyCodeLine{00082\ \}}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ UTILZ\_H\ //}}
+
+\end{DoxyCode}

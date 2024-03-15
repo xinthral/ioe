@@ -1,0 +1,77 @@
+\doxysection{config.\+h}
+\hypertarget{config_8h_source}{}\label{config_8h_source}\index{core/config.h@{core/config.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ CONFIG\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ CONFIG\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <mutex>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <regex>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}logger.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}utilz.h"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{extern}\ std::string\ \_CNF\_;}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_config_manager}{ConfigManager}}\ \{}
+\DoxyCodeLine{00027\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00031\ \ \ \mbox{\hyperlink{class_config_manager_a7d3d7c10423d969f7544509f6fcca32f}{ConfigManager}}();}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00034\ \ \ \mbox{\hyperlink{class_logger}{Logger}}*\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ log;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00035\ \ \ std::ifstream\ \ \ \ \ \ \ \ \ \ \ conf;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00036\ \ \ std::unordered\_map<}
+\DoxyCodeLine{00037\ \ \ \ \ std::string,\ std::string}
+\DoxyCodeLine{00038\ \ \ >\ settings;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00039\ \ \ std::string\ \ \ \ \ \ \ \ \ \ \ \ \ delim\ =\ \textcolor{stringliteral}{"{}="{}};\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00040\ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_config_manager}{ConfigManager}}*\ \ \ \_singleton;\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00041\ \ \ \textcolor{keyword}{static}\ std::mutex\ \ \ \ \ \ \ \_mutex;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00042\ \ \ \textcolor{keywordtype}{char}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ buf[1024];\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00045\ \ \ \mbox{\hyperlink{class_config_manager_a57ec58031b3b5caa0ce9f1833c45b2a1}{ConfigManager}}(\mbox{\hyperlink{class_config_manager}{ConfigManager}}\&)\ =\ \textcolor{keyword}{delete};\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00046\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_config_manager_a09a5d07060b4433a1b628ede8a49235d}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_config_manager}{ConfigManager}}\&)\ =\ \textcolor{keyword}{delete};\ \ }
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00051\ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_config_manager}{ConfigManager}}*\ \mbox{\hyperlink{class_config_manager_a7184fa362acea064d406c6efa026a0f4}{GetInstance}}();\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00058\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_config_manager_a15a06af24f82a421d287501d3c28ec53}{load\_config}}(\textcolor{keywordtype}{bool});}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00065\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_config_manager_ad9571dcb459dc4e5f8da36106de0be8a}{reload\_state}}();}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00073\ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{class_config_manager_a20f7cccf9a79f3c95a493660d4ba5919}{add\_setting}}(\textcolor{keyword}{const}\ std::string\&,\ \textcolor{keyword}{const}\ std::string\&);}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00080\ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{class_config_manager_afa581faf4c9329722a807cdb49e14381}{rem\_setting}}(\textcolor{keyword}{const}\ std::string\&);}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00087\ \ \ std::string\ \mbox{\hyperlink{class_config_manager_a2dac3f46c52eb3c53843abca84a74793}{raw\_config}}(\textcolor{keyword}{const}\ std::string\&);}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00094\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_config_manager_ae3382cfdaf7e3821de61c118303ff778}{get\_authorizedCommands}}(std::vector<std::string>\&);}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00100\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_config_manager_a328ee1b9545e093db2f7569a4022b476}{get\_attack}}();}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00106\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_config_manager_a57b0095138267495fa6da6c2147bf70e}{get\_base}}();}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00112\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_config_manager_a7da8012593610ab3558103a5f8e0a3cb}{get\_defense}}();}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00118\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_config_manager_a93ea2b6222eb97fd706db88f36e3d237}{get\_difficulty}}();}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00124\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_config_manager_a49bae2cd26a9003f5610a99880fb6422}{get\_flux}}();}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00130\ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_config_manager_af04d8201e892ce16381403a365f77cae}{get\_health}}();}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00136\ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{class_config_manager_a15099e62619917e37f6ba8a61e075c43}{get\_settingsSize}}();}
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00142\ \ \ std::string\ \mbox{\hyperlink{class_config_manager_a7b6225b85d5d0766069cdcaf5e05186c}{get\_version}}();}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00147\ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_config_manager_a7835eee23acb1765a5fb10d2c2b2df0b}{\_help}}();}
+\DoxyCodeLine{00148\ }
+\DoxyCodeLine{00152\ \ \ \mbox{\hyperlink{class_config_manager_a7fa65fdff98bdd5bbbf72196bd9ccf17}{\string~ConfigManager}}();}
+\DoxyCodeLine{00153\ \};}
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00155\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ CONFIG\_H\ //}}
+
+\end{DoxyCode}
