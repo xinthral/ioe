@@ -10,6 +10,7 @@
 //! Combat Condition
 enum Condition { EvE, PvE, PvP };
 struct fighter {
+  std::string name;
   int health;
   int attack;
   int defense;

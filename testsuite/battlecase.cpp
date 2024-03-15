@@ -41,7 +41,7 @@ void TestBattle::level1_eve() {
   sprintf(buf, "T1:[ %d ] T2:[ %d ]", toon1->get_healthstate(), toon2->get_healthstate());
   BaseCase::log->timed_log(buf);
   assertm(toon1->get_healthstate() == 0 || toon2->get_healthstate() == 0, "Combat ended while health remained.");
-  sprintf(buf, "%s [%s] %s", msgHead, "PVE", msgTail);
+  sprintf(buf, "%s [%s] %s", msgHead, "EVE", msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);
 }
 
@@ -51,7 +51,7 @@ void TestBattle::level1_eve() {
 void TestBattle::level1_pve() {
   bool pendingWork = true;
   this->player1 = new Player();
-  this->toon1 = new Toon();
+  this->toon1 = new Toon("Toon1");
   this->battle->startPVE(*player1, *toon1);
 
   do {
@@ -68,4 +68,4 @@ void TestBattle::level1_pve() {
 /*!
  * @todo    Default Deconstructor
 */
-TestBattle::~TestBattle() { }
+TestBattle::~TestBattle() {}
