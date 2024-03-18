@@ -21,63 +21,40 @@ Combat::Combat() {
 /*!
  * @todo    EvE Constructor
 */
-Combat::Combat(Toon& combatant1, Toon& combatant2) : Combat() { 
+Combat::Combat(Toon* combatant1, Toon* combatant2) : Combat() { 
   //! Check Health State
-  if (combatant1.get_health() < 1 && combatant2.get_health() < 1) { exit(-1); }
+  if (combatant1->get_health() < 1 || combatant2->get_health() < 1) { exit(-1); }
   //! Check Combat State
-  if (!combatant1.isAlive() || !combatant2.isAlive()) { exit(-1); }
+  if (!combatant1->isAlive() || !combatant2->isAlive()) { exit(-1); }
   this->matchup = Condition::EvE;
   //! Set Combat State
-  combatant1.set_combat_fight();
-  combatant2.set_combat_fight();
+  combatant1->set_combat_fight();
+  combatant2->set_combat_fight();
   sprintf(buf, 
     "%s is fighting %s", 
-    combatant1.get_name().c_str(), 
-    combatant2.get_name().c_str()
+    combatant1->get_name().c_str(), 
+    combatant2->get_name().c_str()
   );
   injest_combatants(combatant1, combatant2);
-  log->named_log(__FILENAME__, buf);
-  
-  //! Temporary Combat Logic
-  int r = 0;
-  int health1 = combatant1.get_health();
-  int health2 = combatant2.get_health(); 
-  int step = 0;
-  while (combatant1.isAlive() && combatant2.isAlive()) {
-    r = rand() % 5 + 1;
-    if (step % 2 == 0) { 
-      // sprintf(buf, "%s hits %s for %d/%d.", combatant1.get_name().c_str(), combatant2.get_name().c_str(), r, health2);
-      health2 -= r;
-      if (health2 <= 0) { combatant2.set_health_dead(); }
-    } else { 
-      // sprintf(buf, "%s hits %s for %d/%d.", combatant2.get_name().c_str(), combatant1.get_name().c_str(), r, health1);
-      health1 -= r; 
-      if (health1 <= 0) { combatant1.set_health_dead(); }
-    }
-    step++;
-    // log->named_log(fbuff, buf);
-  }
-
-  sprintf(buf, "EvE Combat Ended! %s Won", (health1 > 0) ? combatant1.get_name().c_str() : combatant2.get_name().c_str());
   log->named_log(__FILENAME__, buf);
 }
 
 /*!
  * @todo    PvE Constructor
 */
-Combat::Combat(Player& combatant1, Toon& combatant2) : Combat() { 
+Combat::Combat(Player* combatant1, Toon* combatant2) : Combat() { 
   //! Check Health State
-  if (combatant1.get_health() < 1 && combatant2.get_health() < 1) { exit(-1); }
+  if (combatant1->get_health() < 1 || combatant2->get_health() < 1) { exit(-1); }
   //! Check Combat State
-  if (!combatant1.isAlive() || !combatant2.isAlive()) { exit(-1); }
+  if (!combatant1->isAlive() || !combatant2->isAlive()) { exit(-1); }
   this->matchup = Condition::PvE; 
   //! Set Combat State
-  combatant1.set_combat_fight();
-  combatant2.set_combat_fight();
+  combatant1->set_combat_fight();
+  combatant2->set_combat_fight();
   sprintf(
     buf, "%s is fighting %s", 
-    combatant1.get_name().c_str(), 
-    combatant2.get_name().c_str()
+    combatant1->get_name().c_str(), 
+    combatant2->get_name().c_str()
   );
   injest_combatants(combatant1, combatant2);
   log->named_log(__FILENAME__, buf);
@@ -86,43 +63,34 @@ Combat::Combat(Player& combatant1, Toon& combatant2) : Combat() {
 /*!
  * @todo    PvP Constructor
 */
-Combat::Combat(Player& combatant1, Player& combatant2) : Combat() { 
+Combat::Combat(Player* combatant1, Player* combatant2) : Combat() { 
   //! Check Health State
-  if (combatant1.get_health() < 1 && combatant2.get_health() < 1) { exit(-1); }
+  if (combatant1->get_health() < 1 || combatant2->get_health() < 1) { exit(-1); }
   //! Check Combat State
-  if (!combatant1.isAlive() || !combatant2.isAlive()) { exit(-1); }
+  if (!combatant1->isAlive() || !combatant2->isAlive()) { exit(-1); }
   this->matchup = Condition::PvP; 
 
   //! Set Combat State
-  combatant1.set_combat_fight();
-  combatant2.set_combat_fight();
+  combatant1->set_combat_fight();
+  combatant2->set_combat_fight();
   sprintf(
     buf, "%s is fighting %s", 
-    combatant1.get_name().c_str(), 
-    combatant2.get_name().c_str()
+    combatant1->get_name().c_str(), 
+    combatant2->get_name().c_str()
   );
-  // injest_combatants(combatant1, combatant2);
+  injest_combatants(combatant1, combatant2);
   log->named_log(__FILENAME__, buf);
+}
+
+bool Combat::inCombat() {
+  return (combatant1->isFighting() && combatant2->isFighting());
 }
 
 /*!
  * @todo    Intakes Combatants
 */
-void Combat::injest_combatants(Actor& combatant1, Actor& combatant2) {
-  f1.health  = combatant1.get_health();
-  f1.attack  = combatant1.get_attack();
-  f1.defense = combatant1.get_defense();
-  f2.health  = combatant2.get_health();
-  f2.attack  = combatant2.get_attack();
-  f2.defense = combatant2.get_defense();
-}
-
-/*!
- * @todo    Initiates Combat
-*/
-void Combat::begin_combat() {
-  //! Seed and Generate Random Number
-  int r = rand() % 5 + 1;
+void Combat::injest_combatants(Actor* combatant1, Actor* combatant2) {
+  // Establish Combat Type
   switch (this->matchup) {
     case Condition::EvE: {
       log->named_log(__FILENAME__, "EvE Combat!");
@@ -134,10 +102,57 @@ void Combat::begin_combat() {
       log->named_log(__FILENAME__, "PvP Combat!");
     } break;
     default: break;
-  } 
-  sprintf(buf, "Sleeping for %d", r);
-  log->named_log(__FILENAME__, buf);
+  }
+
+  // Injested Combatant1
+  this->combatant1 = combatant1;
+  combatant1->set_combat_fight();
+
+  // Injested Combatant2
+  this->combatant2 = combatant2;
+  combatant2->set_combat_fight();
+}
+
+/*!
+ * @todo    Initiates Combat
+*/
+void Combat::cycle_combat() {
+  //! Seed and Generate Random Number
+  int r, x, y;
+  // r = rand() % 5 + 1;
+  // sprintf(buf, "Sleeping for %d", r);
+  // log->named_log(__FILENAME__, buf);
   // sleep(r);
+
+  //! Temporary Combat Logic
+  if (combatant1->isAlive() && combatant2->isAlive()) {
+    // Combatant 1 Turn
+    x = rand() % combatant1->output_damage() + 1;
+    r = combatant1->get_health();
+    sprintf(buf, "%s hits %s for %d<->%d.",
+      combatant1->get_name().c_str(), combatant2->get_name().c_str(), x, combatant2->get_health()
+    );
+    combatant2->receive_damage(x);
+    log->named_log(__FILENAME__, buf);
+    if (combatant2->get_health() < 1) { combatant2->set_health_dead(); }
+    // std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+
+    // Combatant 2 Turn
+    y = rand() % combatant2->output_damage() + 1;
+    sprintf(buf, "%s hits %s for %d<->%d!", 
+      combatant2->get_name().c_str(), combatant1->get_name().c_str(), y, r
+    );
+    combatant1->receive_damage(y); 
+    log->named_log(__FILENAME__, buf);
+    if (combatant1->get_health() < 1) { combatant1->set_health_dead(); }
+    // std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+
+  } else {
+    sprintf(buf, "Combat Ended, [%s] Won!", combatant1->isAlive() ?
+      combatant1->get_name().c_str() : combatant2->get_name().c_str()
+    );
+    log->named_log(__FILENAME__, buf);
+  }
 }
 
 /*!

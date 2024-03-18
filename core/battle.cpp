@@ -6,35 +6,48 @@
 */
 #define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
 
+//! Singleton Instance
+Battle* Battle::_singleton = NULL;
+//! Lock Mutex 
+std::mutex Battle::_mutex;
+
 /*! 
  * @brief   Default Constructor
 */
-Battle::Battle() { log = Logger::GetInstance(); }
+Battle::Battle() { 
+  log = Logger::GetInstance();
+  cycleCompletionTracker = 25;
+}
 
 /*! 
  * @todo    Player v Team Constructor
 */
-Battle::Battle(int size, Player* player, std::vector<Toon*>& team) : Battle() {
-  Toon* t = new Toon();
-  Toon* v;
-  Combat* cc;
-  while (team.size() > 1) {
-    t = team[team.size() - 1];
-    v = team[team.size() - 2];
-    team.pop_back();
-    team.pop_back();
-    cc = new Combat(*t, *v);
-    cc->begin_combat();
-  }
-
-  cc = new Combat(*player, *t);
-  cc->begin_combat();
+Battle* Battle::GetInstance() {
+  //! Acquire Instance Mutex
+  std::lock_guard<std::mutex> lock(_mutex);
+  //! If singleton already exists, return instance
+  if (_singleton == NULL) { _singleton = new Battle(); }
+  return _singleton;
 }
 
-/*!
- * @todo     Gang v Gang Constructor
-*/
-Battle::Battle(std::vector<Toon*>& gang1, std::vector<Toon*>& gang2) : Battle() { }
+void Battle::doCycleWork(bool &isPendingWork) {
+  this->log->named_log(__FILENAME__, "Battle Cycle Work");
+  if (this->combat) { this->combat->cycle_combat(); }
+  // if (cycleCompletionTracker--<1) { isPendingWork = false; this->combat = NULL; }
+  if (!this->combat->inCombat()) { isPendingWork = false; this->combat = NULL; }
+}
+
+void Battle::startEVE(Toon *t1, Toon *t2) { 
+  this->combat = new Combat(t1, t2); 
+}
+
+void Battle::startPVE(Player *player, Toon *t) { 
+  this->combat = new Combat(player, t); 
+}
+
+void Battle::startPVP(Player *player1, Player *player2) {
+  this->combat = new Combat(player1, player2);
+}
 
 /*!
  * @todo    Helper Hook used in CLI Help System
@@ -52,4 +65,4 @@ void Battle::_help() {
 /*! 
  * @todo    Default Deconstructor
 */
-Battle::~Battle() { }
+Battle::~Battle() {}

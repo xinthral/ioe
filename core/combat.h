@@ -1,6 +1,7 @@
 #ifndef COMBAT_H
 #define COMBAT_H
 
+#include <thread>
 #include "balance.h"
 #include "config.h"
 #include "logger.h"
@@ -10,6 +11,7 @@
 //! Combat Condition
 enum Condition { EvE, PvE, PvP };
 struct fighter {
+  std::string name;
   int health;
   int attack;
   int defense;
@@ -22,14 +24,16 @@ struct fighter {
 */
 class Combat {
 protected:
-  struct fighter f1;
-  struct fighter f2;
+  // struct fighter f1;
+  // struct fighter f2;
 
 private:
   BalanceController*  bal;      //!< BalanceController Instantiation
   ConfigManager*      cnf;      //!< ConfigManager Instantiation
   Logger*             log;      //!< Logging Handler Instantiation
   Condition           matchup;
+  Actor*              combatant1;
+  Actor*              combatant2;
   char                buf[256];
 
 public:
@@ -42,29 +46,31 @@ public:
    * @overload
    * @brief   EvE Constructor
   */
-  Combat(Toon&, Toon&);
+  Combat(Toon*, Toon*);
 
   /*!
    * @overload
    * @brief   PvE Constructor
   */
-  Combat(Player&, Toon&);
+  Combat(Player*, Toon*);
 
   /*!
    * @overload
    * @brief   PvP Constructor
   */
-  Combat(Player&, Player&);
+  Combat(Player*, Player*);
+
+  bool inCombat();
   
   /*!
    * @brief   Initiates Combat
   */
-  void begin_combat();
+  void cycle_combat();
 
   /*!
    * @brief   Intakes Combatants
   */
-  void injest_combatants(Actor&, Actor&);
+  void injest_combatants(Actor*, Actor*);
 
   /*!
    * @brief   Helper Hook used in CLI Help System

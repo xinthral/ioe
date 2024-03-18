@@ -7,20 +7,6 @@
 #define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
 
 /*!
- * @todo    Default Constructor
-*/
-Player::Player() : Player("P1", 1, 1, 1) {
-  log = Logger::GetInstance();
-  sprintf(buf, "%s Level %d Player initiated.", level);
-  log->named_log(__FILENAME__, buf);
-}
-
-/*!
- * @todo    Level Intialized Constructor
-*/
-Player::Player(int level, int power, int block) : Player("Player" + level, level, power, block) { }
-
-/*!
  * @todo    Constructor Initializor
 */
 Player::Player(std::string name, int level, int power, int block) {
@@ -36,6 +22,29 @@ Player::Player(std::string name, int level, int power, int block) {
   this->set_id(seconds);
   this->set_name(name);
 }
+
+/*!
+ * @todo    Default Constructor
+*/
+Player::Player() : Player("Player1", 1, 1, 1) {
+  log = Logger::GetInstance();
+  sprintf(buf, "%s Level %d Player initiated.", "Player1", level);
+  log->named_log(__FILENAME__, buf);
+}
+
+/*!
+ * @todo    Level Intialized Constructor
+*/
+Player::Player(int level, int power, int block) : Player("Player" + level, level, power, block) { }
+
+// /*!
+//  * @note    
+// */
+// int Player::receive_damage(int damage) {
+//   int energy = damage;
+//   this->health = this->health - energy;
+//   return energy;
+// }
 
 /*!
  * @todo    Helper Hook used in CLI Help System

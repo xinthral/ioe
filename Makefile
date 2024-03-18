@@ -10,13 +10,15 @@
 CC := g++
 DOXYGEN := doxygen
 RRM := rm -rf
-BIN := .\\bin\\
+SEPR := /
 
 # Windows Variants
 ifeq ($(OS), Windows_NT)
 DOXYGEN := doxygen.exe
 RM := del
 RRM := del /S /Q /f
+SEPR := \\
+
 endif
 
 # https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html
@@ -60,7 +62,7 @@ DOCS := doc
 DOCSSRC := $(patsubst $(DOCS)/%.cpp, $(DOCS)/%.o, $(wildcard $(DOCS)/*.cpp))
 
 MODULES := $(CORE) $(AUDI) $(CLIS) $(HELP) $(TEST)
-SOURCES := $($(CORESRC) $(CLISSRC) $(AUDISRC) $(HELPSRC) $(TESTSRC))
+SOURCES := $(CORESRC) $(CLISSRC) $(AUDISRC) $(HELPSRC) $(TESTSRC)
 
 # GNU Make Compilation Macros: 
 # https://stackoverflow.com/questions/3220277/what-do-the-makefile-symbols-and-mean#3220288
@@ -72,24 +74,27 @@ SOURCES := $($(CORESRC) $(CLISSRC) $(AUDISRC) $(HELPSRC) $(TESTSRC))
 # Compile Full porgram (order matters)
 all: $(MODULES)
 
+# PreCompile Object Files
+build: $(SOURCES)
+
 # Compile Engine
 $(CORE): $(CORESRC) 
 
 # Compile CLISuite
 $(CLIS): $(CORESRC) $(CLISSRC)
-	$(CC) $(CFLAGS) $(CXFLAGS) $^ -o $@.exe
+	$(CC) $(CXFLAGS) $^ -o $@.exe
 
 # Compile Audio
-$(AUDI): $(CORESRC) $(AUDISRC) 
-	$(CC) $(CFLAGS) $(CXFLAGS) $^ -o $@.exe
+$(AUDI): $(CORESRC) $(AUDISRC)
+	$(CC) $(CXFLAGS) -I/usr/include/python3.11 $^ -o $@.exe
 
 # Compile HelpSuite
 $(HELP): $(CORESRC) $(HELPSRC)
-	$(CC) $(CFLAGS) $(CXFLAGS) $^ -o $@.exe
+	$(CC) $(CXFLAGS) $^ -o $@.exe
 
 # Compile TestSuite
 $(TEST): $(CORESRC) $(TESTSRC)
-	$(CC) $(CFLAGS) $(CXFLAGS) $^ -o $@.exe
+	$(CC) $(CXFLAGS) $^ -o $@.exe
 
 # Compile Documents 
 $(DOCS): docs/conf.dox
@@ -98,8 +103,6 @@ $(DOCS): docs/conf.dox
 %.o: %.cpp %.h
 	$(CC) $(CXFLAGS) -c $< -o $@
 
-# PreCompile Object Files
-build: $(SOURCES)
 
 # $(RRM) $(foreach d, $(MODULES),$d\\*.o $d\\*.so $d\\*.wasm) 2>&1 >/dev/null
 clean:
@@ -110,22 +113,22 @@ clean:
 	$(MAKE) cleantest
 
 cleanaudio:
-	$(RRM) $(AUDI)\\*.o
+	$(RRM) $(AUDI)$(SEPR)*.o
 
 cleanbin:
 	$(RM) *.exe
 
 cleancli:
-	$(RRM) $(CLIS)\\*.o
+	$(RRM) $(CLIS)$(SEPR)*.o
 
 cleancore:
-	$(RRM) $(CORE)\\*.o
+	$(RRM) $(CORE)$(SEPR)*.o
 
 cleanhelp:
-	$(RRM) $(HELP)\\*.o
+	$(RRM) $(HELP)$(SEPR)*.o
 
 cleantest:
-	$(RRM) $(TEST)\\*.o
+	$(RRM) $(TEST)$(SEPR)*.o
 
 cleandoc:
 ifeq ($(OS), Windows_NT)

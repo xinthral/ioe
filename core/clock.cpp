@@ -16,9 +16,10 @@ std::mutex xClock::_mutex;
  * @todo    Protected Constructor
 */
 xClock::xClock() {
+  battle = Battle::GetInstance();
   cnf  = ConfigManager::GetInstance();
   log  = Logger::GetInstance();
-  log->named_log(__FILENAME__, "xClock Loaded!");
+  log->named_log(__FILENAME__, "Clock Loaded!");
 }
 
 /*!
@@ -32,6 +33,24 @@ xClock* xClock::GetInstance() {
   return _singleton;
 }
 
+/*!
+ * @todo    Returns if cycle work is still pending
+*/
+bool xClock::getPendingWorkState() {
+  return this->isPendingWork;
+}
+
+/*!
+ * @todo    Singleton Constructor
+*/
+void xClock::doCycleWork() {
+  bool pendingBattles = true;
+  log->raw_log("Clock Cycle Work!");
+  do {
+    battle->doCycleWork(pendingBattles);
+    isPendingWork = pendingBattles || false;
+  } while (isPendingWork);
+}
 
 /*!
  * @todo    Helper Hook used in CLI Help System

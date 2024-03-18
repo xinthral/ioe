@@ -58,6 +58,7 @@ void TestActors::test_healthstate() {
   healthstate_critical(); //!< Test Health State Critical 
   healthstate_sick();     //!< Test Health State Sick 
   healthstate_dead();     //!< Test Health State Dead 
+  starting_health();      //!< Test Health Initial Value
 }
 
 /*!
@@ -66,7 +67,7 @@ void TestActors::test_healthstate() {
 void TestActors::base_attack() {
   int cnf_atk = cnf->get_attack();
   dummy = new Actor();
-  assertm(cnf_atk == dummy->get_attack(), "Actor Attack Mismatch");
+  assertm(cnf_atk == dummy->get_baseAttack(), "Actor Attack Mismatch");
   sprintf(buf, "%s %s %s", msgHead, "Base [Attack] Value", msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);
 }
@@ -77,7 +78,7 @@ void TestActors::base_attack() {
 void TestActors::base_defense() {
   int cnf_def = cnf->get_defense();
   dummy = new Actor();
-  assertm(cnf_def == dummy->get_defense(), "Actor Defense Mismatch");
+  assertm(cnf_def == dummy->get_baseDefense(), "Actor Defense Mismatch");
   sprintf(buf, "%s %s %s", msgHead, "Base [Defense] Value", msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);
 }
@@ -88,7 +89,7 @@ void TestActors::base_defense() {
 void TestActors::base_flux() {
   int cnf_flx = cnf->get_flux();
   dummy = new Actor();
-  assertm(cnf_flx == dummy->get_flux(), "Actor Flux Mismatch");
+  assertm(cnf_flx == dummy->get_baseFlux(), "Actor Flux Mismatch");
   sprintf(buf, "%s %s %s", msgHead, "Base [Flux] Value", msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);
 }
@@ -99,7 +100,7 @@ void TestActors::base_flux() {
 void TestActors::base_health() {
   int cnf_hlt = cnf->get_health();
   dummy = new Actor();
-  assertm(cnf_hlt == dummy->get_health(), this->msgNote);
+  assertm(cnf_hlt == dummy->get_baseHealth(), this->msgNote);
   sprintf(buf, "%s %s %s", msgHead, "Base [Health] Value", msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);
 }
@@ -213,6 +214,15 @@ void TestActors::healthstate_dead() {
   sprintf(buf, "%s %s %s", msgHead, "[Dead] Healthstate", msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);
 }
+
+void TestActors::starting_health() {
+  dummy = new Actor();
+  // assertm(32 == dummy->get_health(), "Actor failed to initialize");
+  assertm(cnf->get_health() == dummy->get_health(), "Actor failed to initialize");
+  sprintf(buf, "%s [%s] %s", msgHead, "Initial Health", msgTail);
+  BaseCase::log->named_log(__FILENAME__, buf);
+}
+
 
 /*!
  * @todo    Default Deconstructor

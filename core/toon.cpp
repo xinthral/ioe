@@ -33,25 +33,14 @@ Toon::Toon(int id, std::string name) {
   this->set_name(name);
 }
 
-/*!
- * @todo    Actor::get_name()
-*/
-std::string Toon::get_name() { return this->name; }
-
-/*!
- * @todo    Actor::get_attack()
-*/
-int Toon::get_attack() { return this->attack; }
-
-/*!
- * @todo    Actor::get_defense()
-*/
-int Toon::get_defense() { return this->defense; }
-
-/*!
- * @todo    Actor::set_name()
-*/
-void Toon::set_name(std::string name) { this->name = name; }
+// /*!
+//  * @note    
+// */
+// int Toon::receive_damage(int damage) {
+//   int energy = damage;
+//   this->health =  this->get_health() - energy;
+//   return energy;
+// }
 
 /*!
  * @todo    Helper Hook used in CLI Help System

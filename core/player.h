@@ -14,7 +14,6 @@
 class Player : public Actor {
 private:
   Logger* log;                          //!< Log Manager Instantiation
-  char buf[256];                        //!< Buffer Value for Logger outputs
   int bhealth  = Actor::baseHealth;     //!< Base Value inherited from Actor
   int bdefense = Actor::baseDefense;    //!< Base Value inherited from Actor
   int bflux    = Actor::baseFlux;       //!< Base Value inherited from Actor
@@ -48,6 +47,15 @@ public:
    * @param[in] block - Defense of the Player
   */
   Player(std::string, int, int, int);
+
+  // /*!
+  //  * @override
+  //  * @brief   Calculates and adjust damage received
+  //  *          including multiplier and reducers
+  //  * @param[in] damage - Amount of incoming damage
+  //  * @returns Final Damage Value
+  // */
+  // int receive_damage(int);
 
   /*!
    * @brief   Helper Hook used in CLI Help System
