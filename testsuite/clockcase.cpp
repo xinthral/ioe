@@ -17,7 +17,7 @@ TestClock::TestClock() : BaseCase(__FILENAME__) {
   Player* p = new Player();
   Toon* t = new Toon();
   this->battle = Battle::GetInstance();
-  this->battle->startPVE(*p, *t);
+  this->battle->startPVE(p, t);
   this->test_all();
 }
 

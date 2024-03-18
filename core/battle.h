@@ -41,9 +41,9 @@ public:
   */
   void doCycleWork(bool&);
 
-  void startEVE(Toon&,Toon&);
-  void startPVE(Player&,Toon&);
-  void startPVP(Player&,Player&);
+  void startEVE(Toon*,Toon*);
+  void startPVE(Player*,Toon*);
+  void startPVP(Player*,Player*);
 
   /*!
    * @brief   Helper Hook used in CLI Help System

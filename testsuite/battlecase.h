@@ -40,6 +40,11 @@ public:
   void level1_pve();
 
   /*!
+   * @brief   PVP Combat test on level 1 combatants
+  */
+  void level1_pvp();
+
+  /*!
    * @brief   Default Deconstructor
   */
   ~TestBattle();

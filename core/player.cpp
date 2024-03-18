@@ -37,6 +37,15 @@ Player::Player() : Player("Player1", 1, 1, 1) {
 */
 Player::Player(int level, int power, int block) : Player("Player" + level, level, power, block) { }
 
+// /*!
+//  * @note    
+// */
+// int Player::receive_damage(int damage) {
+//   int energy = damage;
+//   this->health = this->health - energy;
+//   return energy;
+// }
+
 /*!
  * @todo    Helper Hook used in CLI Help System
 */

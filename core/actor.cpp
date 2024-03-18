@@ -7,106 +7,141 @@
 #define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
 
 /*!
- * @todo    Default Constructor 
+ * @note    Default Constructor 
 */
 Actor::Actor() {
   cnf = ConfigManager::GetInstance();
   this->aiState     = IDLE;
   this->condition   = HEALTHY;
   this->baseAttack  = cnf->get_attack();
+  this->attack      = this->baseAttack;
   this->baseDefense = cnf->get_defense();
+  this->defense     = this->baseDefense;
   this->baseHealth  = cnf->get_health();
+  this->health      = this->baseHealth;
   this->baseFlux    = cnf->get_flux();
-  this->name        = "Actor_" + Utilz::TailString(2, Utilz::TimeStamp());
+  this->flux        = this->baseFlux;
+  std::string cnvt  = std::to_string(
+    std::chrono::duration_cast<std::chrono::milliseconds>(
+      std::chrono::system_clock::now().time_since_epoch()
+    ).count() % 100
+  );
+  this->name = "Actor_" + cnvt;
 }
 
 /*!
- * @todo    Named Constructor 
+ * @note    Named Constructor 
 */
 Actor::Actor(std::string name) : Actor() { this->name = name; }
 
 /*!
- * @todo    Conditional Combat Check 
+ * @note    Conditional Combat Check 
 */
 bool Actor::isFighting() { return (this->aiState == FIGHT); }
 
 /*!
- * @todo    Conditional Health Check 
+ * @note    Conditional Health Check 
 */
 bool Actor::isAlive() { return (this->condition != DEAD); }
 
 /*!
- * @todo    Return Attack Attribute
+ * @note    Return Attack Attribute
 */
-int Actor::get_attack() { return this->baseAttack; }
+int Actor::get_baseAttack() { return this->baseAttack; }
 
 /*!
- * @todo    Return Defense Attribute
+ * @note    Return Attack Attribute
 */
-int Actor::get_defense() { return this->baseDefense; }
+int Actor::get_attack() { return this->attack; }
 
 /*!
- * @todo    Return Flux Attribute
+ * @note    Return Defense Attribute
 */
-int Actor::get_flux() { return this->baseFlux; }
+int Actor::get_baseDefense() { return this->baseDefense; }
 
 /*!
- * @todo    Return Health Attribute
+ * @note    Return Defense Attribute
 */
-int Actor::get_health() { return this->baseHealth; }
+int Actor::get_defense() { return this->defense; }
 
 /*!
- * @todo    Return ID Attribute
+ * @note    Return Flux Attribute
+*/
+int Actor::get_baseFlux() { return this->baseFlux; }
+
+/*!
+ * @note    Return Flux Attribute
+*/
+int Actor::get_flux() { return this->flux; }
+
+/*!
+ * @note    Return Health Attribute
+*/
+int Actor::get_baseHealth() { return this->baseHealth; }
+
+/*!
+ * @note    Return Health Attribute
+*/
+int Actor::get_health() { return this->health; }
+
+/*!
+ * @note    Return ID Attribute
 */
 int Actor::get_id() { return this->id; }
 
 /*!
- * @todo    Return Name Attribute
+ * @note    Return Name Attribute
 */
 std::string Actor::get_name() { return this->name; }
 
 /*!
- * @todo    ReAssign Actor Flux Value
+ * @note    ReAssign Actor Flux Value
 */
 void Actor::set_flux(int flux) { this->baseFlux = flux; }
 
 /*!
- * @todo    ReAssign Actor ID number
+ * @note    ReAssign Actor ID number
 */
 void Actor::set_id(int id) { this->id = id; }
 
 /*!
- * @todo    ReAssign Actor Name
+ * @note    ReAssign Actor Name
 */
 void Actor::set_name(std::string name) { this->name = name; }
 
 /*!
- * @todo    Return Combat State 
+ * @note    Return Combat State 
 */
 CombatState Actor::get_combatstate() { return this->aiState; }
 
 /*!
- * @todo    ReAssign Combat State
+ * @note    ReAssign Combat State
 */
 void Actor::set_combatstate(CombatState state) { this->aiState = state; }
 
 /*!
- * @todo    Set Combat State to Idling
+ * @note    Meant to be overwritten by inhereted class
+ *          including multiplier and reducers
+*/
+int Actor::output_damage() { return this->baseAttack; }
+
+/*!
+ * @note    Set Combat State to Idling
 */
 void Actor::set_combat_idle() { this->set_combatstate(IDLE); }
 
 /*!
- * @todo    Set Combat State to Patrolling 
+ * @note    Set Combat State to Patrolling 
 */
 void Actor::set_combat_patrol() { this->set_combatstate(PATROL); }
 
 /*!
- * @todo    Set Combat State to Fighting 
+ * @note    Set Combat State to Fighting 
 */
 void Actor::set_combat_fight() { this->set_combatstate(FIGHT); }
 
 /*!
- * @todo    Set Combat State to Fleeing 
+ * @note    Set Combat State to Fleeing 
 */
 void Actor::set_combat_flee() { this->set_combatstate(FLEE); }
 
@@ -116,52 +151,61 @@ void Actor::set_combat_flee() { this->set_combatstate(FLEE); }
 void Actor::set_combat_follow() { this->set_combatstate(FOLLOW); }
 
 /*!
- * @todo    Return Health State
+ * @note    Return Health State
 */
 HealthState Actor::get_healthstate() { return this->condition; }
 
 /*!
- * @todo    ReAssign Health State
+ * @note    ReAssign Health State
 */
 void Actor::set_healthstate(HealthState state) { this->condition = state; }
 
 /*!
- * @todo    Set Health State to Healthy
+ * @note    Meant to be overwritten by inhereted class
+ *          including multiplier and reducers
+*/
+int Actor::receive_damage(int damage) {
+  this->health = this->health - damage;
+  return damage;
+}
+
+/*!
+ * @note    Set Health State to Healthy
 */
 void Actor::set_health_healthy() { this->set_healthstate(HEALTHY); }
 
 /*!
- * @todo    Set Health State to Hurting
+ * @note    Set Health State to Hurting
 */
 void Actor::set_health_hurting() { this->set_healthstate(HURTING); }
 
 /*!
- * @todo    Set Health State to Critical 
+ * @note    Set Health State to Critical 
 */
 void Actor::set_health_critical() { this->set_healthstate(CRITICAL); }
 
 /*!
- * @todo    Set Health State to Sick 
+ * @note    Set Health State to Sick 
 */
 void Actor::set_health_sick() { this->set_healthstate(SICK); }
 
 /*!
- * @todo    Set Health State to Dead 
+ * @note    Set Health State to Dead 
 */
 void Actor::set_health_dead() { this->set_healthstate(DEAD); }
 
 /*!
- * @todo    Helper Hook used in CLI Help System
+ * @note    Helper Hook used in CLI Help System
 */
 void Actor::_help() {
   std::string helpline = "\nActor HelpLine!\n";
   helpline += "\n\tThis is the base class for all Actor's in the scene. NPC's, Players, and all";
-  helpline += "\nspecialty mobs are derived from this class"; 
+  helpline += "\nspecialty mobs are derived from this class";
   helpline += "\n";
   log->named_log(__FILENAME__, helpline);
 }
 
 /*!
- * @todo    Default Deconstructor 
+ * @note    Default Deconstructor 
 */
-Actor::~Actor() { }
+Actor::~Actor() {}

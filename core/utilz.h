@@ -6,6 +6,7 @@
 #include <iterator>
 #include <stdio.h>
 #include <string.h>
+#include <unistd.h>
 #include <vector>
 #include "logger.h"
 
