@@ -10,8 +10,6 @@
 class Toon : public Actor {
 protected:
     std::string name;
-    int attack;
-    int defense;
     char buf[128];
 public:
   /*!
@@ -42,25 +40,10 @@ public:
   */
   Toon(int,std::string);
 
-  /*!
-   * @copydoc Actor::get_name()
-  */
-  std::string get_name();
-
-  /*!
-   * @copydoc Actor::get_attack()
-  */
-  int get_attack();
-
-  /*!
-   * @copydoc Actor::get_defense()
-  */
-  int get_defense();
-
-  /*!
-   * @copydoc Actor::set_name()
-  */
-  void set_name(std::string);
+  // /*!
+  //  * @copydoc Actor::receive_damage()
+  // */
+  // int receive_damage(int);
 
   /*!
    * @brief   Helper Hook used in CLI Help System

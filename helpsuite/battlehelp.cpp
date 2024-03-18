@@ -9,7 +9,10 @@
 /*!
  * @todo    Default Constructor
 */
-HelpBattle::HelpBattle() { battlefield = new Battle(); battlefield->_help(); }
+HelpBattle::HelpBattle() { 
+  battlefield = Battle::GetInstance(); 
+  battlefield->_help(); 
+}
 
 /*!
  * @todo    Default Deconstructor

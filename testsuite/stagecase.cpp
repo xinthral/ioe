@@ -11,6 +11,7 @@
 */
 TestStage::TestStage() : BaseCase(__FILENAME__) {
   BaseCase::log->named_log(__FILENAME__, "Testing the StageManager!");
+  this->test_all();
 }
 
 /*!

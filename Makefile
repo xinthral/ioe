@@ -62,7 +62,7 @@ DOCS := doc
 DOCSSRC := $(patsubst $(DOCS)/%.cpp, $(DOCS)/%.o, $(wildcard $(DOCS)/*.cpp))
 
 MODULES := $(CORE) $(AUDI) $(CLIS) $(HELP) $(TEST)
-SOURCES := $($(CORESRC) $(CLISSRC) $(AUDISRC) $(HELPSRC) $(TESTSRC))
+SOURCES := $(CORESRC) $(CLISSRC) $(AUDISRC) $(HELPSRC) $(TESTSRC)
 
 # GNU Make Compilation Macros: 
 # https://stackoverflow.com/questions/3220277/what-do-the-makefile-symbols-and-mean#3220288
@@ -74,24 +74,27 @@ SOURCES := $($(CORESRC) $(CLISSRC) $(AUDISRC) $(HELPSRC) $(TESTSRC))
 # Compile Full porgram (order matters)
 all: $(MODULES)
 
+# PreCompile Object Files
+build: $(SOURCES)
+
 # Compile Engine
 $(CORE): $(CORESRC) 
 
 # Compile CLISuite
 $(CLIS): $(CORESRC) $(CLISSRC)
-	$(CC) $(CFLAGS) $(CXFLAGS) $^ -o $@.exe
+	$(CC) $(CXFLAGS) $^ -o $@.exe
 
 # Compile Audio
-$(AUDI): $(CORESRC) $(AUDISRC) 
-	$(CC) $(CFLAGS) $(CXFLAGS) $^ -o $@.exe
+$(AUDI): $(CORESRC) $(AUDISRC)
+	$(CC) $(CXFLAGS) -I/usr/include/python3.11 $^ -o $@.exe
 
 # Compile HelpSuite
 $(HELP): $(CORESRC) $(HELPSRC)
-	$(CC) $(CFLAGS) $(CXFLAGS) $^ -o $@.exe
+	$(CC) $(CXFLAGS) $^ -o $@.exe
 
 # Compile TestSuite
 $(TEST): $(CORESRC) $(TESTSRC)
-	$(CC) $(CFLAGS) $(CXFLAGS) $^ -o $@.exe
+	$(CC) $(CXFLAGS) $^ -o $@.exe
 
 # Compile Documents 
 $(DOCS): docs/conf.dox
@@ -100,8 +103,6 @@ $(DOCS): docs/conf.dox
 %.o: %.cpp %.h
 	$(CC) $(CXFLAGS) -c $< -o $@
 
-# PreCompile Object Files
-build: $(SOURCES)
 
 # $(RRM) $(foreach d, $(MODULES),$d\\*.o $d\\*.so $d\\*.wasm) 2>&1 >/dev/null
 clean:

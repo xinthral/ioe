@@ -7,22 +7,22 @@
 
 //! Actor Combat States
 enum CombatState { 
-  IDLE, 
-  PATROL, 
-  FIGHT, 
-  FLEE, 
-  HIDE, 
-  FOLLOW 
+  IDLE,
+  PATROL,
+  FIGHT,
+  FLEE,
+  HIDE,
+  FOLLOW
 };
 extern enum CombatState combatState;
 
 //! Actor Health States
 enum HealthState { 
-  HEALTHY, 
-  HURTING, 
-  CRITICAL, 
-  SICK, 
-  DEAD 
+  HEALTHY,
+  HURTING,
+  CRITICAL,
+  SICK,
+  DEAD
 };
 extern enum HealthState healthState;
 
@@ -38,11 +38,15 @@ protected:
   HealthState condition;    //!< Current Health State
   std::string name;         //!< Name of Actor
   int id;                   //!< ID of Actor
-  int baseAttack;           //!< Attack Damage (@override)
-  int baseDefense;          //!< Defense Value (@override)
-  int baseHealth;           //!< Health Value (@override)
-  int baseFlux;             //!< Flux Value (@override)
-  char buf[128];            //!< Buffer Value for Logger outputs
+  int baseAttack;           //!< Attack Damage
+  int attack;               //!< Attack Value  (@override)
+  int baseDefense;          //!< Defense Value
+  int defense;              //!< Defense Value (@override)
+  int baseHealth;           //!< Health Value
+  int health;               //!< Health Value  (@override)
+  int baseFlux;             //!< Flux Value
+  int flux;                 //!< Flux Value    (@override)
+  char buf[256];            //!< Buffer Value for Logger outputs
 
 private:
 public:
@@ -61,50 +65,54 @@ public:
   /*!
    * @brief   Conditional Combat Check 
    * @details Confirm if Actor is currently fighting
-   * @return  Boolean answer 
+   * @returns Boolean answer 
   */
   bool isFighting();
 
   /*!
    * @brief   Conditional Health Check 
    * @details Confirm if Actor is not dead
-   * @return  Boolean answer 
+   * @returns Boolean answer 
   */
   bool isAlive();
 
   /*!
    * @brief   Return Attack Attribute
-   * @return  Base Attack Value 
+   * @returns Base Attack Value 
   */
+  int get_baseAttack();
   int get_attack();
 
   /*!
    * @brief   Return Defense Attribute
-   * @return  Base Defense Value 
+   * @returns Base Defense Value 
   */
+  int get_baseDefense();
   int get_defense();
 
   /*!
    * @brief   Return Flux Attribute
-   * @return  Flux Value
+   * @returns Flux Value
   */
+  int get_baseFlux();
   int get_flux();
 
   /*!
    * @brief   Return Health Attribute
-   * @return  Base Health Value 
+   * @returns Base Health Value 
   */
+  int get_baseHealth();
   int get_health();
 
   /*!
    * @brief   Return ID Attribute
-   * @return  Identity Reference Number
+   * @returns Identity Reference Number
   */
   int get_id();
 
   /*!
    * @brief   Return Name Attribute
-   * @return  Name Value 
+   * @returns Name Value 
   */
   std::string get_name();
 
@@ -131,7 +139,7 @@ public:
 
   /*!
    * @brief   Return Combat State 
-   * @return  Current Combat State of the character.
+   * @returns Current Combat State of the character.
   */
   CombatState get_combatstate();
 
@@ -140,6 +148,13 @@ public:
    * @param[in] state Current State of the Combat AI 
   */
   void set_combatstate(CombatState);
+
+  /*!
+   * @brief   Calculates Current Damage Output
+   *          including multipliers and reducers
+   * @returns Final Damage Value
+  */
+  int output_damage();
 
   /*!
    * @brief   Set Combat State to Idling
@@ -168,7 +183,7 @@ public:
 
   /*!
    * @brief   Return Health State
-   * @return  Current Health State of the character.
+   * @returns Current Health State of the character.
   */
   HealthState get_healthstate();
 
@@ -176,6 +191,13 @@ public:
    * @brief   ReAssign Health State
   */
   void set_healthstate(HealthState);
+
+  /*!
+   * @brief   Calculates and adjust damage received
+   *          including multiplier and reducers
+   * @returns Final Damage Value
+  */
+  int receive_damage(int);
 
   /*!
    * @brief   Set Health State to Healthy

@@ -46,6 +46,8 @@ public:
   CLISuite();
 
   std::string getPrompt();
+  void setPrompt(std::string);
+
 
   /*!
    * @brief   Helper Function to display help
@@ -60,7 +62,7 @@ public:
   /*!
    * @brief   Helper Function to display help
   */
-  void runningTimeStamp();
+  void displayRunTime();
 
   /*!
   * @brief   Function to parse user input for a command 
@@ -102,7 +104,8 @@ std::unordered_map<std::string, int> _CMDMAP = {
   {"reload",  2},
   {"name",    3},
   {"chain",   4},
-	{"runtime", 5}
+	{"runtime", 5},
+  {"prompt",  6}
 };
 
 #endif // XENGINE_H //

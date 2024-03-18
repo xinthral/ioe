@@ -124,6 +124,12 @@ public:
   void healthstate_dead();
 
   /*!
+   * @brief   Validate Initial Condition: Health Value
+   * @note    Are actors states getting set properly?
+  */
+  void starting_health();
+
+  /*!
    * @brief   Default Deconstructor
   */
   ~TestActors();

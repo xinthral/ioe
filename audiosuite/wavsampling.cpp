@@ -17,6 +17,7 @@ void WavSampler::sampleFile(const std::string& filename) {
   //! Instantiate Audio Module 
   wavReader = new AudioDriver();
   wavReader->readWavData(filename.c_str());
+	auto data = wavReader->getAudioData();
 
   //! Access audio data and other information
   if (!wavReader->getAudioData().empty()) {
@@ -26,8 +27,8 @@ void WavSampler::sampleFile(const std::string& filename) {
     log->raw_log(buf);
 
     //! Sample some audio data (for demonstration purposes)
-    for (int i = 0; i < std::min(10, static_cast<int>(wavReader->getAudioData().size())); ++i) {
-      sprintf(buf, "  Sample %d: %d", i, wavReader->getAudioData()[i]);
+    for (int i = 0; i < std::max(10, static_cast<int>(data.size())); ++i) {
+      sprintf(buf, "  Sample %d: %u", i, data[i]);
       log->raw_log(buf);
     }
   }

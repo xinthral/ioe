@@ -1,6 +1,7 @@
 #ifndef BATTLE_H
 #define BATTLE_H
 
+#include <mutex>
 #include "combat.h"
 #include "player.h"
 #include "toon.h"
@@ -11,25 +12,38 @@
 */
 class Battle {
 protected:
-  Logger*   log;  //!< Logging Handler Instantiation
 private:
-public:
   /*! 
-   * @brief   Default Constructor
+   * @brief   Singleton Constructor
   */
   Battle();
 
-  /*! 
-   * @overload
-   * @brief   Player v Team Constructor
-  */
-  Battle(int, Player*, std::vector<Toon*>&);
+  static Battle*    _singleton;     //!< Singleton Instance
+  static std::mutex _mutex;         //!< Lock Mutex
+  Logger*   log;                    //!< Logging Handler Instantiation
+  Combat*   combat;
+  int       cycleCompletionTracker;
+
+public:
+  //! Singletons should not be cloneable
+  Battle(Battle&) = delete;
+
+  //! Singletons should not be assignable
+  void operator = (const Battle&) = delete;
 
   /*!
-   * @overload
-   * @brief    Gang v Gang Constructor
+   * @brief   Singleton Constructor 
   */
-  Battle(std::vector<Toon*>&, std::vector<Toon*>&);
+  static Battle* GetInstance();
+
+  /*!
+   * @brief   Handles Cycle Actions
+  */
+  void doCycleWork(bool&);
+
+  void startEVE(Toon*,Toon*);
+  void startPVE(Player*,Toon*);
+  void startPVP(Player*,Player*);
 
   /*!
    * @brief   Helper Hook used in CLI Help System

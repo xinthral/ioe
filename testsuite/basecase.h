@@ -8,6 +8,7 @@
 #include "../core/audio.h"
 #include "../core/balance.h"
 #include "../core/battle.h"
+#include "../core/clock.h"
 #include "../core/ciphers.h"
 #include "../core/combat.h"
 #include "../core/config.h"
