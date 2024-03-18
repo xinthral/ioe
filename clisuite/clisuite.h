@@ -48,7 +48,6 @@ public:
   std::string getPrompt();
   void setPrompt(std::string);
 
-
   /*!
    * @brief   Helper Function to display help
   */

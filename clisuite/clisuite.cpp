@@ -22,6 +22,7 @@ CLISuite::CLISuite() {
 std::string CLISuite::getPrompt() { return this->prompt; }
 void CLISuite::setPrompt(std::string input) { this->prompt = input; }
 
+
 int CLISuite::appendCommandHistory(std::string incoming) {
   this->history.push_back(incoming);
   return this->history.size();
@@ -37,6 +38,7 @@ void CLISuite::displayCommandHistory() {
 }
 
 void CLISuite::displayRunTime() {
+
   std::chrono::duration<double> time_d = (std::chrono::steady_clock::now() - this->start_time);
   sprintf(this->buf, "Experiment Duration: %.02fmin", (time_d / 60.00)); 
   this->log->named_log(__FILENAME__, buf);
@@ -60,6 +62,7 @@ void CLISuite::print_help() {
 void CLISuite::run_command(const std::string input, std::vector<std::string>& cmdline) {
   std::string tmp;
   int value = 0, idx = -1;
+
   idx = _CMDMAP[input];
 
   switch(idx) {
@@ -129,6 +132,34 @@ CLISuite::~CLISuite() {
   this->displayRunTime(); 
   this->displayCommandHistory();
 }
+
+/*! @todo    Static Helper File for the CLISuite */
+void CLISuite::cli_help() {
+  ConfigManager* cnf = ConfigManager::GetInstance();
+  std::vector<std::string> cmds;
+  cnf->get_authorizedCommands(cmds);
+  printf("Commands:\n");
+  for (auto c : cmds) { printf(": %s\n", c.c_str()); }
+}
+
+/*! @todo   Function to parse user input for a command */
+void CLISuite::parse_user_input(std::string input) {
+  std::vector<std::string> cmds;
+  std::vector<std::string> cmdline;
+  Utilz::StringToArray(input, cmdline);
+  char* token = strtok((char*)input.c_str(), " \n");
+  cnf->get_authorizedCommands(cmds);
+  if (std::find(cmds.begin(), cmds.end(), token) != cmds.end()) { this->run_command(token, cmdline); }
+}
+
+bool CLISuite::parse_input(const std::string input, const std::string criteria) {
+  //! Establish Variables 
+  size_t found = input.find(criteria);
+  if (found != std::string::npos) { return false; }
+  return true;
+}
+
+CLISuite::~CLISuite() { this->runningTimeStamp(); }
 
 /*!
  * @brief   Module Entry Point

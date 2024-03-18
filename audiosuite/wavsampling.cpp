@@ -19,6 +19,7 @@ void WavSampler::sampleFile(const std::string& filename) {
   wavReader->readWavData(filename.c_str());
 	auto data = wavReader->getAudioData();
 
+
   //! Access audio data and other information
   if (!wavReader->getAudioData().empty()) {
     sprintf(buf, "\n  Sample Rate: %d Hz", wavReader->getSampleRate());
