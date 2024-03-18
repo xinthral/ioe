@@ -100,7 +100,7 @@ void Combat::injest_combatants(Actor* combatant1, Actor* combatant2) {
 */
 void Combat::begin_combat() {
   //! Seed and Generate Random Number
-  int r = rand() % 5 + 1;
+  int r, x, y;
   switch (this->matchup) {
     case Condition::EvE: {
       log->named_log(__FILENAME__, "EvE Combat!");
@@ -112,32 +112,35 @@ void Combat::begin_combat() {
       log->named_log(__FILENAME__, "PvP Combat!");
     } break;
     default: break;
-  } 
-  sprintf(buf, "Sleeping for %d", r);
-  log->named_log(__FILENAME__, buf);
+  }
+  // r = rand() % 5 + 1;
+  // sprintf(buf, "Sleeping for %d", r);
+  // log->named_log(__FILENAME__, buf);
   // sleep(r);
 
   //! Temporary Combat Logic
-  int x = 0, y = 0;
-  while (combatant1->isAlive() && combatant2->isAlive()) {
-    x = rand() % 5 + 1;
-    sprintf(buf, "%s hits %s for %d\\/%d.", combatant1->get_name().c_str(), combatant2->get_name().c_str(), x, combatant2->get_health());
+  if (combatant1->isAlive() && combatant2->isAlive()) {
+    x = rand() % combatant1->output_damage() + 1;
+    sprintf(buf, "%s hits %s for %d<->%d.", combatant1->get_name().c_str(), combatant2->get_name().c_str(), x, combatant2->get_health());
     combatant2->receive_damage(x);
     log->named_log(__FILENAME__, buf);
     if (combatant1->get_health() < 1) { combatant1->set_health_dead(); }
+    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 
-    y = rand() % 5 + 1;
-    sprintf(buf, "%s hits %s for %d\\/%d.", combatant2->get_name().c_str(), combatant1->get_name().c_str(), y, combatant1->get_health());
+
+    y = rand() % combatant2->output_damage() + 1;
+    sprintf(buf, "%s hits %s for %d<->%d.", combatant2->get_name().c_str(), combatant1->get_name().c_str(), y, combatant1->get_health());
     combatant1->receive_damage(y); 
     log->named_log(__FILENAME__, buf);
     if (combatant2->get_health() < 1) { combatant2->set_health_dead(); }
+    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+
+  } else {
+    sprintf(buf, "Combat Ended, [%s] Won!", combatant1->isAlive() ?
+      combatant1->get_name().c_str() : combatant2->get_name().c_str()
+    );
+    log->named_log(__FILENAME__, buf);
   }
-
-
-  sprintf(buf, "Combat Ended, [%s] Won!", combatant1->isAlive() ?
-    combatant1->get_name().c_str() : combatant2->get_name().c_str()
-  );
-  log->named_log(__FILENAME__, buf);
 }
 
 /*!

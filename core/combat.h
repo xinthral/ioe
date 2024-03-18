@@ -1,6 +1,10 @@
 #ifndef COMBAT_H
 #define COMBAT_H
 
+#include <chrono>
+// #include <mutex>
+#include <stdlib.h>
+#include <thread>
 #include "balance.h"
 #include "config.h"
 #include "logger.h"
