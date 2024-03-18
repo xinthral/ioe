@@ -14,10 +14,6 @@ TestClock::TestClock() : BaseCase(__FILENAME__) {
   sprintf(this->msgHead, "Clock");
   sprintf(this->msgTail, "has been tested.");
   this->clock = xClock::GetInstance();
-  Player* p = new Player();
-  Toon* t = new Toon();
-  this->battle = Battle::GetInstance();
-  this->battle->startPVE(p, t);
   this->test_all();
 }
 
@@ -32,6 +28,13 @@ void TestClock::test_all() {
  * @todo    Confirm Cycle ends in valid state
 */
 void TestClock::doCycleWork() {
+  // Setup Combat
+  Player* p = new Player();
+  Toon* t = new Toon();
+  this->battle = Battle::GetInstance();
+  this->battle->startPVE(p, t);
+
+  // Run Test
   this->clock->doCycleWork();
   assertm(false == this->clock->getPendingWorkState(), "Clock Completed Cycle while work still pending.");
   sprintf(buf, "%s [%s] %s", msgHead, "cycle state", msgTail);
