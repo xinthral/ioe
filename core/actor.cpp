@@ -192,7 +192,10 @@ void Actor::set_health_sick() { this->set_healthstate(SICK); }
 /*!
  * @note    Set Health State to Dead 
 */
-void Actor::set_health_dead() { this->set_healthstate(DEAD); }
+void Actor::set_health_dead() { 
+  this->set_healthstate(DEAD);
+  this->set_combatstate(HIDE);
+}
 
 /*!
  * @note    Helper Hook used in CLI Help System

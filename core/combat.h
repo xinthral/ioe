@@ -62,11 +62,13 @@ public:
    * @brief   PvP Constructor
   */
   Combat(Player*, Player*);
+
+  bool inCombat();
   
   /*!
    * @brief   Initiates Combat
   */
-  void begin_combat();
+  void cycle_combat();
 
   /*!
    * @brief   Intakes Combatants

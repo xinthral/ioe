@@ -48,7 +48,7 @@ void xClock::doCycleWork() {
   log->raw_log("Clock Cycle Work!");
   do {
     battle->doCycleWork(pendingBattles);
-    isPendingWork = pendingBattles && true;
+    isPendingWork = pendingBattles || false;
     std::this_thread::sleep_for(std::chrono::milliseconds(1000));
   } while (isPendingWork);
 }

@@ -32,7 +32,7 @@ void TestCombat::EVECombat() {
   Toon* _toon1 = new Toon(++_idx);
   Toon* _toon2 = new Toon(++_idx);
   Combat* cc = new Combat(_toon1, _toon2);
-  cc->begin_combat();
+  cc->cycle_combat();
   log->named_log(__FILENAME__, "EvE Combat Tested!");
 }
 
@@ -43,7 +43,7 @@ void TestCombat::PVECombat() {
   Player* _player = new Player("Player", ++_idx, 1, 1);
   Toon* _toon = new Toon(++_idx);
   Combat* cc = new Combat(_player, _toon);
-  cc->begin_combat();
+  cc->cycle_combat();
   log->named_log(__FILENAME__, "PvE Combat Tested!");
 }
 
@@ -54,7 +54,7 @@ void TestCombat::PVPCombat() {
   Player* _player1 = new Player("Max", ++_idx, 1, 1);
   Player* _player2 = new Player("Min", ++_idx, 1, 1);
   Combat* cc = new Combat(_player1, _player2);
-  cc->begin_combat();
+  cc->cycle_combat();
   log->named_log(__FILENAME__, "PvP Combat Tested!");
 }
 

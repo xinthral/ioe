@@ -23,7 +23,7 @@ Combat::Combat() {
 */
 Combat::Combat(Toon* combatant1, Toon* combatant2) : Combat() { 
   //! Check Health State
-  if (combatant1->get_health() < 1 && combatant2->get_health() < 1) { exit(-1); }
+  if (combatant1->get_health() < 1 || combatant2->get_health() < 1) { exit(-1); }
   //! Check Combat State
   if (!combatant1->isAlive() || !combatant2->isAlive()) { exit(-1); }
   this->matchup = Condition::EvE;
@@ -44,7 +44,7 @@ Combat::Combat(Toon* combatant1, Toon* combatant2) : Combat() {
 */
 Combat::Combat(Player* combatant1, Toon* combatant2) : Combat() { 
   //! Check Health State
-  if (combatant1->get_health() < 1 && combatant2->get_health() < 1) { exit(-1); }
+  if (combatant1->get_health() < 1 || combatant2->get_health() < 1) { exit(-1); }
   //! Check Combat State
   if (!combatant1->isAlive() || !combatant2->isAlive()) { exit(-1); }
   this->matchup = Condition::PvE; 
@@ -65,7 +65,7 @@ Combat::Combat(Player* combatant1, Toon* combatant2) : Combat() {
 */
 Combat::Combat(Player* combatant1, Player* combatant2) : Combat() { 
   //! Check Health State
-  if (combatant1->get_health() < 1 && combatant2->get_health() < 1) { exit(-1); }
+  if (combatant1->get_health() < 1 || combatant2->get_health() < 1) { exit(-1); }
   //! Check Combat State
   if (!combatant1->isAlive() || !combatant2->isAlive()) { exit(-1); }
   this->matchup = Condition::PvP; 
@@ -82,25 +82,15 @@ Combat::Combat(Player* combatant1, Player* combatant2) : Combat() {
   log->named_log(__FILENAME__, buf);
 }
 
+bool Combat::inCombat() {
+  return (combatant1->isFighting() && combatant2->isFighting());
+}
+
 /*!
  * @todo    Intakes Combatants
 */
 void Combat::injest_combatants(Actor* combatant1, Actor* combatant2) {
-  // Injested Combatant1
-  this->combatant1 = combatant1;
-  combatant1->set_combat_fight();
-
-  // Injested Combatant2
-  this->combatant2 = combatant2;
-  combatant2->set_combat_fight();
-}
-
-/*!
- * @todo    Initiates Combat
-*/
-void Combat::begin_combat() {
-  //! Seed and Generate Random Number
-  int r, x, y;
+  // Establish Combat Type
   switch (this->matchup) {
     case Condition::EvE: {
       log->named_log(__FILENAME__, "EvE Combat!");
@@ -113,6 +103,22 @@ void Combat::begin_combat() {
     } break;
     default: break;
   }
+
+  // Injested Combatant1
+  this->combatant1 = combatant1;
+  combatant1->set_combat_fight();
+
+  // Injested Combatant2
+  this->combatant2 = combatant2;
+  combatant2->set_combat_fight();
+}
+
+/*!
+ * @todo    Initiates Combat
+*/
+void Combat::cycle_combat() {
+  //! Seed and Generate Random Number
+  int r, x, y;
   // r = rand() % 5 + 1;
   // sprintf(buf, "Sleeping for %d", r);
   // log->named_log(__FILENAME__, buf);
@@ -120,20 +126,26 @@ void Combat::begin_combat() {
 
   //! Temporary Combat Logic
   if (combatant1->isAlive() && combatant2->isAlive()) {
+    // Combatant 1 Turn
     x = rand() % combatant1->output_damage() + 1;
-    sprintf(buf, "%s hits %s for %d<->%d.", combatant1->get_name().c_str(), combatant2->get_name().c_str(), x, combatant2->get_health());
+    r = combatant1->get_health();
+    sprintf(buf, "%s hits %s for %d<->%d.",
+      combatant1->get_name().c_str(), combatant2->get_name().c_str(), x, combatant2->get_health()
+    );
     combatant2->receive_damage(x);
-    log->named_log(__FILENAME__, buf);
-    if (combatant1->get_health() < 1) { combatant1->set_health_dead(); }
-    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-
-
-    y = rand() % combatant2->output_damage() + 1;
-    sprintf(buf, "%s hits %s for %d<->%d.", combatant2->get_name().c_str(), combatant1->get_name().c_str(), y, combatant1->get_health());
-    combatant1->receive_damage(y); 
     log->named_log(__FILENAME__, buf);
     if (combatant2->get_health() < 1) { combatant2->set_health_dead(); }
     std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+
+    // Combatant 2 Turn
+    y = rand() % combatant2->output_damage() + 1;
+    sprintf(buf, "%s hits %s for %d<->%d!", 
+      combatant2->get_name().c_str(), combatant1->get_name().c_str(), y, r
+    );
+    combatant1->receive_damage(y); 
+    log->named_log(__FILENAME__, buf);
+    if (combatant1->get_health() < 1) { combatant1->set_health_dead(); }
+    // std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 
   } else {
     sprintf(buf, "Combat Ended, [%s] Won!", combatant1->isAlive() ?

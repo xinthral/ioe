@@ -7,22 +7,22 @@
 
 //! Actor Combat States
 enum CombatState { 
-  IDLE, 
-  PATROL, 
-  FIGHT, 
-  FLEE, 
-  HIDE, 
-  FOLLOW 
+  IDLE,
+  PATROL,
+  FIGHT,
+  FLEE,
+  HIDE,
+  FOLLOW
 };
 extern enum CombatState combatState;
 
 //! Actor Health States
 enum HealthState { 
-  HEALTHY, 
-  HURTING, 
-  CRITICAL, 
-  SICK, 
-  DEAD 
+  HEALTHY,
+  HURTING,
+  CRITICAL,
+  SICK,
+  DEAD
 };
 extern enum HealthState healthState;
 
