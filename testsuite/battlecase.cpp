@@ -22,8 +22,11 @@ TestBattle::TestBattle() : BaseCase(__FILENAME__) {
 */
 void TestBattle::test_all() {
 	this->level1_eve();
+  std::this_thread::sleep_for(std::chrono::milliseconds(1000));
   this->level1_pve();
+  std::this_thread::sleep_for(std::chrono::milliseconds(1000));
   this->level1_pvp();
+  // std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 }
 
 /*!

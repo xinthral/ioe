@@ -1,6 +1,8 @@
 #ifndef TESTBATTLE_H
 #define TESTBATTLE_H
 
+#include <chrono>
+#include <stdlib.h>
 #include "basecase.h"
 
 /*!

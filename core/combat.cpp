@@ -135,7 +135,7 @@ void Combat::cycle_combat() {
     combatant2->receive_damage(x);
     log->named_log(__FILENAME__, buf);
     if (combatant2->get_health() < 1) { combatant2->set_health_dead(); }
-    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+    // std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 
     // Combatant 2 Turn
     y = rand() % combatant2->output_damage() + 1;
