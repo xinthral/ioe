@@ -47,6 +47,20 @@ public:
   void level1_pvp();
 
   /*!
+   * @brief   EVE Combat test on level 80 combatants
+  */
+  void level80_eve();
+
+  /*!
+   * @brief   PVE Combat test on level 80 combatants
+  */
+  void level80_pve();
+
+  /*!
+   * @brief   PVP Combat test on level 80 combatants
+  */
+  void level80_pvp();
+  /*!
    * @brief   Default Deconstructor
   */
   ~TestBattle();

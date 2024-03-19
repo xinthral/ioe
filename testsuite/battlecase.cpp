@@ -21,12 +21,13 @@ TestBattle::TestBattle() : BaseCase(__FILENAME__) {
  * @todo    Run full set of test on module 
 */
 void TestBattle::test_all() {
-	this->level1_eve();
-  std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-  this->level1_pve();
-  std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-  this->level1_pvp();
-  // std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+	int ms_delay = 1000;
+  this->level1_eve(); std::this_thread::sleep_for(std::chrono::milliseconds(ms_delay));
+  this->level1_pve(); std::this_thread::sleep_for(std::chrono::milliseconds(ms_delay));
+  this->level1_pvp(); std::this_thread::sleep_for(std::chrono::milliseconds(ms_delay));
+  // this->level80_eve(); std::this_thread::sleep_for(std::chrono::milliseconds(ms_delay));
+  // this->level80_pve(); std::this_thread::sleep_for(std::chrono::milliseconds(ms_delay));
+  this->level80_pvp(); std::this_thread::sleep_for(std::chrono::milliseconds(ms_delay));
 }
 
 /*!
@@ -45,7 +46,7 @@ void TestBattle::level1_eve() {
   sprintf(buf, "T1 :: T2 :: [ %d ] : [ %d ]", toon1->get_health(), toon2->get_health());
   BaseCase::log->timed_log(buf);
   assertm(toon1->get_healthstate() == 4 || toon2->get_healthstate() == 4, "Combat ended while health remained.");
-  sprintf(buf, "%s [%s] %s", msgHead, "EVE", msgTail);
+  sprintf(buf, "%s [%s] %s", msgHead, "Level1 EVE", msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);
 }
 
@@ -65,7 +66,7 @@ void TestBattle::level1_pve() {
   sprintf(buf, "P1 :: T1 :: [ %d ] : [ %d ]", player1->get_health(), toon1->get_health());
   BaseCase::log->timed_log(buf);
   assertm(player1->get_healthstate() == 4 || toon1->get_healthstate() == 4, "Combat ended while health remained.");
-  sprintf(buf, "%s [%s] %s", msgHead, "PVE", msgTail);
+  sprintf(buf, "%s [%s] %s", msgHead, "Level1 PVE", msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);
 }
 
@@ -84,8 +85,41 @@ void TestBattle::level1_pvp() {
 
   sprintf(buf, "P1 :: P2 :: [ %d ] : [ %d ]", player1->get_health(), player2->get_health());
   BaseCase::log->timed_log(buf);
-  assertm(player1->get_healthstate() == 4 || toon1->get_healthstate() == 4, "Combat ended while health remained.");
-  sprintf(buf, "%s [%s] %s", msgHead, "PVP", msgTail);
+  assertm(player1->get_healthstate() == 4 || player2->get_healthstate() == 4, "Combat ended while health remained.");
+  sprintf(buf, "%s [%s] %s", msgHead, "Level1 PVP", msgTail);
+  BaseCase::log->named_log(__FILENAME__, buf);
+}
+
+/*!
+ * @todo    PVP Combat test on level 80 combatants
+*/
+void TestBattle::level80_eve() {
+  sprintf(buf, "%s [%s] %s", msgHead, "Level80 EVE", msgTail);
+  BaseCase::log->named_log(__FILENAME__, buf);
+}
+
+/*!
+ * @todo    PVP Combat test on level 80 combatants
+*/
+void TestBattle::level80_pve() {
+  sprintf(buf, "%s [%s] %s", msgHead, "Level80 PVE", msgTail);
+  BaseCase::log->named_log(__FILENAME__, buf);
+}
+
+/*!
+ * @todo    PVP Combat test on level 80 combatants
+*/
+void TestBattle::level80_pvp() {
+  bool pendingWork = true;
+  this->player1 = new Player("PLAYER1", 80, 1, 1);
+  this->player2 = new Player("PLAYER2", 80, 1, 1);
+	this->battle->startPVP(player1, player2);
+
+  do {
+    this->battle->doCycleWork(pendingWork);
+  } while(pendingWork);
+
+  sprintf(buf, "%s [%s] %s", msgHead, "Level80 PVP", msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);
 }
 

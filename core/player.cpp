@@ -21,6 +21,9 @@ Player::Player(std::string name, int level, int power, int block) {
 
   this->set_id(seconds);
   this->set_name(name);
+  this->set_attack(level * this->get_baseAttack());
+  this->set_defense(level * this->get_baseDefense());
+	this->set_health(level * this->get_baseHealth());
 }
 
 /*!
@@ -35,7 +38,7 @@ Player::Player() : Player("Player1", 1, 1, 1) {
 /*!
  * @todo    Level Intialized Constructor
 */
-Player::Player(int level, int power, int block) : Player("Player" + level, level, power, block) { }
+Player::Player(int level, int power, int block) : Player("Player" + level, level, power, block) {}
 
 // /*!
 //  * @note    
@@ -61,4 +64,4 @@ void Player::_help() {
 /*!
  * @todo    Default Deconstructor
 */
-Player::~Player() { }
+Player::~Player() {}

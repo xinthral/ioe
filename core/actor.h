@@ -82,6 +82,7 @@ public:
   */
   int get_baseAttack();
   int get_attack();
+  void set_attack(int);
 
   /*!
    * @brief   Return Defense Attribute
@@ -89,6 +90,7 @@ public:
   */
   int get_baseDefense();
   int get_defense();
+  void set_defense(int);
 
   /*!
    * @brief   Return Flux Attribute
@@ -103,6 +105,7 @@ public:
   */
   int get_baseHealth();
   int get_health();
+  void set_health(int);
 
   /*!
    * @brief   Return ID Attribute

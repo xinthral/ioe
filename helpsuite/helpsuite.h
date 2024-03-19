@@ -18,6 +18,7 @@
 #include "actorhelp.h"
 #include "balancehelp.h"
 #include "battlehelp.h"
+#include "clockhelp.h"
 #include "combathelp.h"
 #include "confighelp.h"
 #include "itemhelp.h"
@@ -56,6 +57,7 @@ public:
   void ActorHelp();
   void BattleHelp();
   void BalanceHelp();
+  void ClockHelp();
   void CombatHelp();
   void ConfigHelp();
   void ItemHelp();
