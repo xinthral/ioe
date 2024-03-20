@@ -119,10 +119,6 @@ void Combat::injest_combatants(Actor* combatant1, Actor* combatant2) {
 void Combat::cycle_combat() {
   //! Seed and Generate Random Number
   int r, x, y;
-  // r = rand() % 5 + 1;
-  // sprintf(buf, "Sleeping for %d", r);
-  // log->named_log(__FILENAME__, buf);
-  // sleep(r);
 
   //! Temporary Combat Logic
   if (combatant1->isAlive() && combatant2->isAlive()) {
@@ -135,7 +131,6 @@ void Combat::cycle_combat() {
     combatant2->receive_damage(x);
     log->named_log(__FILENAME__, buf);
     if (combatant2->get_health() < 1) { combatant2->set_health_dead(); }
-    // std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 
     // Combatant 2 Turn
     y = rand() % combatant2->output_damage() + 1;
@@ -145,8 +140,6 @@ void Combat::cycle_combat() {
     combatant1->receive_damage(y); 
     log->named_log(__FILENAME__, buf);
     if (combatant1->get_health() < 1) { combatant1->set_health_dead(); }
-    // std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-
   } else {
     sprintf(buf, "Combat Ended, [%s] Won!", combatant1->isAlive() ?
       combatant1->get_name().c_str() : combatant2->get_name().c_str()
