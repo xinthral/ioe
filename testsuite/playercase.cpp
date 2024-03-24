@@ -11,7 +11,7 @@
 */
 TestPlayer::TestPlayer() : BaseCase(__FILENAME__) {
   BaseCase::log->named_log(__FILENAME__, "Testing Player's!");
-  this->dummy = new Player("TestPlayer", 1, 1, 1);
+  this->dummy = new Player("TestPlayer", 1);
   sprintf(this->msgHead, "Tested");
   sprintf(this->msgTail, "for Players!");
   this->test_all();

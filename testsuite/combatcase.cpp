@@ -40,7 +40,7 @@ void TestCombat::EVECombat() {
  * @todo    Player Vs Environment Combat
 */
 void TestCombat::PVECombat() {
-  Player* _player = new Player("Player", ++_idx, 1, 1);
+  Player* _player = new Player("Player", ++_idx);
   Toon* _toon = new Toon(++_idx);
   Combat* cc = new Combat(_player, _toon);
   cc->cycle_combat();
@@ -51,8 +51,8 @@ void TestCombat::PVECombat() {
  * @todo    Player Vs Player Combat
 */
 void TestCombat::PVPCombat() {
-  Player* _player1 = new Player("Max", ++_idx, 1, 1);
-  Player* _player2 = new Player("Min", ++_idx, 1, 1);
+  Player* _player1 = new Player("Max", ++_idx);
+  Player* _player2 = new Player("Min", ++_idx);
   Combat* cc = new Combat(_player1, _player2);
   cc->cycle_combat();
   log->named_log(__FILENAME__, "PvP Combat Tested!");

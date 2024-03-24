@@ -38,6 +38,7 @@ protected:
   HealthState condition;    //!< Current Health State
   std::string name;         //!< Name of Actor
   int id;                   //!< ID of Actor
+  int level;                //!< Level of Actor
   int baseAttack;           //!< Attack Damage
   int attack;               //!< Attack Value  (@override)
   int baseDefense;          //!< Defense Value
@@ -113,6 +114,8 @@ public:
   */
   int get_id();
 
+  int get_level();
+
   /*!
    * @brief   Return Name Attribute
    * @returns Name Value 
@@ -132,6 +135,13 @@ public:
    * @param[in] id - Identity Reference Number
   */
   void set_id(int);
+
+  /*!
+   * @brief   ReAssign Actor Level number
+   * @details Set Level Attribute
+   * @param[in] level - New Level Value
+  */
+  void set_level(int);
 
   /*!
    * @brief   ReAssign Actor Name

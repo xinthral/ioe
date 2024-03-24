@@ -13,6 +13,7 @@ Actor::Actor() {
   cnf = ConfigManager::GetInstance();
   this->aiState     = IDLE;
   this->condition   = HEALTHY;
+  this->level       = 0;
   this->baseAttack  = cnf->get_attack();
   this->attack      = this->baseAttack;
   this->baseDefense = cnf->get_defense();
@@ -105,6 +106,11 @@ void Actor::set_health(int input) { this->health = input; }
 int Actor::get_id() { return this->id; }
 
 /*!
+ * @note    Return Level Attribute
+*/
+int Actor::get_level() { return this->level; }
+
+/*!
  * @note    Return Name Attribute
 */
 std::string Actor::get_name() { return this->name; }
@@ -118,6 +124,11 @@ void Actor::set_flux(int flux) { this->baseFlux = flux; }
  * @note    ReAssign Actor ID number
 */
 void Actor::set_id(int id) { this->id = id; }
+
+/*!
+ * @note    ReAssign Actor Level
+*/
+void Actor::set_level(int level) { this->level = level; }
 
 /*!
  * @note    ReAssign Actor Name
@@ -180,8 +191,10 @@ void Actor::set_healthstate(HealthState state) { this->condition = state; }
  *          including multiplier and reducers
 */
 int Actor::receive_damage(int damage) {
-  this->health = this->health - damage;
-  return damage;
+  int new_value = damage;
+  if (this->defense < damage) { new_value = damage * (damage / this->defense); }
+  this->health -= new_value;
+  return new_value;
 }
 
 /*!

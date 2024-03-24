@@ -53,21 +53,21 @@ void AudioDriver::readWavData(const std::string& filename) {
  * @todo    Return audio data
 */
 std::vector<short> AudioDriver::getAudioData() {
-    return audioData;
+  return audioData;
 }
 
 /*!
  * @todo    Return sample rate 
 */
 int AudioDriver::getSampleRate() {
-    return header.sampleRate;
+  return header.sampleRate;
 }
 
 /*!
  * @todo    Return channel count 
 */
 int AudioDriver::getNumChannels() {
-    return header.numChannels;
+  return header.numChannels;
 }
 
 /*!

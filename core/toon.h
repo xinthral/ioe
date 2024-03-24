@@ -40,6 +40,11 @@ public:
   */
   Toon(int,std::string);
 
+  /*!
+   * @brief   Constructor Initializor
+  */
+  Toon(std::string,int);
+
   // /*!
   //  * @copydoc Actor::receive_damage()
   // */

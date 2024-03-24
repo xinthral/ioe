@@ -33,6 +33,27 @@ Toon::Toon(int id, std::string name) {
   this->set_name(name);
 }
 
+/*!
+ * @todo    Constructor Initializor
+*/
+Toon::Toon(std::string name, int level) : Toon(name) {
+  // Get the current time
+  auto currentTime = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
+
+  // Convert the current time to a local time structure
+  std::tm* localTime = std::localtime(&currentTime);
+
+  // Extract seconds from the local time structure
+  int seconds = localTime->tm_sec;
+
+  this->set_id(seconds);
+  this->set_name(name);
+  this->set_level(level);
+  this->set_attack(level * this->get_baseAttack());
+  this->set_defense(level * this->get_baseDefense());
+  this->set_health(level * this->get_baseHealth());
+}
+
 // /*!
 //  * @note    
 // */

@@ -9,7 +9,7 @@
 /*!
  * @todo    Constructor Initializor
 */
-Player::Player(std::string name, int level, int power, int block) {
+Player::Player(std::string name, int level) {
   // Get the current time
   auto currentTime = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
 
@@ -21,15 +21,16 @@ Player::Player(std::string name, int level, int power, int block) {
 
   this->set_id(seconds);
   this->set_name(name);
+  this->set_level(level);
   this->set_attack(level * this->get_baseAttack());
   this->set_defense(level * this->get_baseDefense());
-	this->set_health(level * this->get_baseHealth());
+  this->set_health(level * this->get_baseHealth());
 }
 
 /*!
  * @todo    Default Constructor
 */
-Player::Player() : Player("Player1", 1, 1, 1) {
+Player::Player() : Player("Player1", 1) {
   log = Logger::GetInstance();
   sprintf(buf, "%s Level %d Player initiated.", "Player1", level);
   log->named_log(__FILENAME__, buf);
@@ -38,7 +39,7 @@ Player::Player() : Player("Player1", 1, 1, 1) {
 /*!
  * @todo    Level Intialized Constructor
 */
-Player::Player(int level, int power, int block) : Player("Player" + level, level, power, block) {}
+Player::Player(int level) : Player("Player" + level, level) {}
 
 // /*!
 //  * @note    

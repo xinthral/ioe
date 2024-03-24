@@ -22,11 +22,11 @@ TestBattle::TestBattle() : BaseCase(__FILENAME__) {
 */
 void TestBattle::test_all() {
 	int ms_delay = 1000;
-  this->level1_eve(); std::this_thread::sleep_for(std::chrono::milliseconds(ms_delay));
-  this->level1_pve(); std::this_thread::sleep_for(std::chrono::milliseconds(ms_delay));
-  this->level1_pvp(); std::this_thread::sleep_for(std::chrono::milliseconds(ms_delay));
-  // this->level80_eve(); std::this_thread::sleep_for(std::chrono::milliseconds(ms_delay));
-  // this->level80_pve(); std::this_thread::sleep_for(std::chrono::milliseconds(ms_delay));
+  this->level1_eve();  std::this_thread::sleep_for(std::chrono::milliseconds(ms_delay));
+  this->level1_pve();  std::this_thread::sleep_for(std::chrono::milliseconds(ms_delay));
+  this->level1_pvp();  std::this_thread::sleep_for(std::chrono::milliseconds(ms_delay));
+  this->level80_eve(); std::this_thread::sleep_for(std::chrono::milliseconds(ms_delay));
+  this->level80_pve(); std::this_thread::sleep_for(std::chrono::milliseconds(ms_delay));
   this->level80_pvp(); std::this_thread::sleep_for(std::chrono::milliseconds(ms_delay));
 }
 
@@ -75,8 +75,8 @@ void TestBattle::level1_pve() {
 */
 void TestBattle::level1_pvp() {
   bool pendingWork = true;
-  this->player1 = new Player("Player1", 1, 1, 1);
-  this->player2 = new Player("Player2", 1, 1, 1);
+  this->player1 = new Player("Player1", 1);
+  this->player2 = new Player("Player2", 1);
   this->battle->startPVP(player1, player2);
 
   do {
@@ -94,6 +94,15 @@ void TestBattle::level1_pvp() {
  * @todo    PVP Combat test on level 80 combatants
 */
 void TestBattle::level80_eve() {
+  bool pendingWork = true;
+  this->toon1 = new Toon("Toon1", 80);
+  this->toon2 = new Toon("Toon2", 80);
+  this->battle->startEVE(toon1, toon2);
+
+  do {
+    this->battle->doCycleWork(pendingWork);
+  } while(pendingWork);
+
   sprintf(buf, "%s [%s] %s", msgHead, "Level80 EVE", msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);
 }
@@ -102,6 +111,15 @@ void TestBattle::level80_eve() {
  * @todo    PVP Combat test on level 80 combatants
 */
 void TestBattle::level80_pve() {
+  bool pendingWork = true;
+  this->toon1 = new Toon("Toon1", 80);
+  this->player1 = new Player("Player1", 80);
+  this->battle->startPVE(player1, toon1);
+
+  do {
+    this->battle->doCycleWork(pendingWork);
+  } while(pendingWork);
+
   sprintf(buf, "%s [%s] %s", msgHead, "Level80 PVE", msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);
 }
@@ -111,9 +129,9 @@ void TestBattle::level80_pve() {
 */
 void TestBattle::level80_pvp() {
   bool pendingWork = true;
-  this->player1 = new Player("PLAYER1", 80, 1, 1);
-  this->player2 = new Player("PLAYER2", 80, 1, 1);
-	this->battle->startPVP(player1, player2);
+  this->player1 = new Player("PLAYER1", 80);
+  this->player2 = new Player("PLAYER2", 80);
+  this->battle->startPVP(player1, player2);
 
   do {
     this->battle->doCycleWork(pendingWork);

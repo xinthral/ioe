@@ -118,26 +118,29 @@ void Combat::injest_combatants(Actor* combatant1, Actor* combatant2) {
 */
 void Combat::cycle_combat() {
   //! Seed and Generate Random Number
-  int r, x, y;
+  int r, s, x, y;
 
   //! Temporary Combat Logic
   if (combatant1->isAlive() && combatant2->isAlive()) {
+    // Store Initial State Values
+    r = combatant1->get_health();
+    s = combatant2->get_health();
+
     // Combatant 1 Turn
     x = rand() % combatant1->output_damage() + 1;
-    r = combatant1->get_health();
+    x = combatant2->receive_damage(x);
     sprintf(buf, "%s hits %s for %d<->%d.",
-      combatant1->get_name().c_str(), combatant2->get_name().c_str(), x, combatant2->get_health()
+      combatant1->get_name().c_str(), combatant2->get_name().c_str(), x, s
     );
-    combatant2->receive_damage(x);
     log->named_log(__FILENAME__, buf);
     if (combatant2->get_health() < 1) { combatant2->set_health_dead(); }
 
     // Combatant 2 Turn
     y = rand() % combatant2->output_damage() + 1;
+    y = combatant1->receive_damage(y); 
     sprintf(buf, "%s hits %s for %d<->%d!", 
       combatant2->get_name().c_str(), combatant1->get_name().c_str(), y, r
     );
-    combatant1->receive_damage(y); 
     log->named_log(__FILENAME__, buf);
     if (combatant1->get_health() < 1) { combatant1->set_health_dead(); }
   } else {
