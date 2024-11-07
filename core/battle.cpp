@@ -16,7 +16,7 @@ std::mutex Battle::_mutex;
 */
 Battle::Battle() { 
   log = Logger::GetInstance();
-  cycleCompletionTracker = 25;
+  cycleCompletionTracker = 10;
 }
 
 /*! 
@@ -31,14 +31,15 @@ Battle* Battle::GetInstance() {
 }
 
 void Battle::doCycleWork(bool &isPendingWork) {
-  this->log->named_log(__FILENAME__, "Battle Cycle Work");
+  std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+  // this->log->named_log(__FILENAME__, "Battle Cycle Work");
   if (this->combat) { this->combat->cycle_combat(); }
   // if (cycleCompletionTracker--<1) { isPendingWork = false; this->combat = NULL; }
   if (!this->combat->inCombat()) { isPendingWork = false; this->combat = NULL; }
 }
 
 void Battle::startEVE(Toon *t1, Toon *t2) { 
-  this->combat = new Combat(t1, t2); 
+  this->combat = new Combat(t1, t2);
 }
 
 void Battle::startPVE(Player *player, Toon *t) { 

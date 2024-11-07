@@ -21,7 +21,7 @@ private:
   static Battle*    _singleton;     //!< Singleton Instance
   static std::mutex _mutex;         //!< Lock Mutex
   Logger*   log;                    //!< Logging Handler Instantiation
-  Combat*   combat;
+  Combat*   combat;                 //!< Combat Handler
   int       cycleCompletionTracker;
 
 public:
