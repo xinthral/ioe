@@ -9,7 +9,7 @@
 /*!
  * @todo    Default Constructor
 */
-HelpPlayer::HelpPlayer() { ptest = new Player("HelpPlayer", 1, 1, 1); ptest->_help(); }
+HelpPlayer::HelpPlayer() { ptest = new Player("HelpPlayer", 1); ptest->_help(); }
 
 /*!
  * @todo    Default Deconstructor
