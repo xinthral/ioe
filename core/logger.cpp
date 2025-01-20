@@ -18,7 +18,9 @@ std::mutex Logger::_mutex;
 /*!
  * @todo    Protected Constructor
 */
-Logger::Logger() {}
+Logger::Logger() {
+  PROFILE_FUNCTION();
+}
 
 /*!
  * @todo    Singleton Constructor
@@ -55,6 +57,7 @@ void Logger::named_log(std::string fileName, std::string message) {
  * @todo    Raw Unformatted Logging
 */
 void Logger::raw_log(std::string message) {
+  PROFILE_FUNCTION();
   printf("%s\n", message.c_str());
 }
 

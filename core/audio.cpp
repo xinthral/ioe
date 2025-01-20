@@ -10,12 +10,16 @@
 /*!
  * @todo    Default Constructor
 */
-AudioDriver::AudioDriver() { log = Logger::GetInstance(); }
+AudioDriver::AudioDriver() {
+  PROFILE_FUNCTION();
+  log = Logger::GetInstance();
+}
 
 /*!
  * @todo    Injest Wav File
 */
 void AudioDriver::readWavData(const std::string& filename) {
+  PROFILE_FUNCTION();
   std::ifstream file(filename, std::ios::binary);
 
   if (!file.is_open()) {

@@ -15,6 +15,7 @@ std::mutex BalanceController::_mutex;
  * @brief   Default Constructor 
 */
 BalanceController::BalanceController() {
+  PROFILE_FUNCTION();
   //! Load Configurations Objects
   cnf  = ConfigManager::GetInstance();
   log  = Logger::GetInstance();

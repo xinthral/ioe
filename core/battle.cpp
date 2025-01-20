@@ -14,7 +14,8 @@ std::mutex Battle::_mutex;
 /*! 
  * @brief   Default Constructor
 */
-Battle::Battle() { 
+Battle::Battle() {
+  PROFILE_FUNCTION();
   log = Logger::GetInstance();
   cycleCompletionTracker = 10;
 }

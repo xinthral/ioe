@@ -10,9 +10,10 @@
 /*!
  * @todo    Default Constructor 
 */
-Item::Item() { 
-    log = Logger::GetInstance();
-    log->named_log(__FILENAME__, "New Item Established.");
+Item::Item() {
+  PROFILE_FUNCTION();
+  log = Logger::GetInstance();
+  log->named_log(__FILENAME__, "New Item Established.");
 }
 
 /*!

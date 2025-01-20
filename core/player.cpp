@@ -10,6 +10,7 @@
  * @todo    Constructor Initializor
 */
 Player::Player(std::string name, int level) {
+  PROFILE_FUNCTION();
   // Get the current time
   auto currentTime = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
 

@@ -4,6 +4,7 @@
  * @todo    Default Constructor
 */
 xCiphers::xCiphers() {
+  PROFILE_FUNCTION();
   rows = lexigraph.size();
   cols = lexigraph.size();
   keySize = (int)sizeof(keyArray) / sizeof(keyArray[0]);

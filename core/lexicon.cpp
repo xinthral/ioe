@@ -4,6 +4,7 @@
  * @todo    Default Constructor
 */
 Lexicon::Lexicon() {
+  PROFILE_FUNCTION();
   lexigraph = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   syllables = {
     "th", "el", "ar", "en", "ka", 
@@ -24,7 +25,8 @@ Lexicon::Lexicon() {
 /*!
  * @todo    Generate A random Name based on Syllable count
 */
-std::string Lexicon::generateName(int count) { 
+std::string Lexicon::generateName(int count) {
+  PROFILE_FUNCTION();
   std::string name;
   for (int i = 0; i < count; ++i) {
     int randomIndex = rand() % syllables.size();

@@ -10,6 +10,7 @@
  * @note    Default Constructor 
 */
 Actor::Actor() {
+  PROFILE_FUNCTION();
   cnf = ConfigManager::GetInstance();
   this->aiState     = IDLE;
   this->condition   = HEALTHY;

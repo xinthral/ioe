@@ -14,27 +14,30 @@ std::mutex ConfigManager::_mutex;
 /*!
  * @todo    Protected Constructor 
 */
-ConfigManager::ConfigManager() { 
-    log = Logger::GetInstance();
-    log->named_log(__FILE__, "ConfigManager Established.");
-    load_config(false); 
+ConfigManager::ConfigManager() {
+  PROFILE_FUNCTION();
+
+  log = Logger::GetInstance();
+  log->named_log(__FILE__, "ConfigManager Established.");
+  load_config(false); 
 }
 
 /*!
  * @todo    Singleton Constructor 
 */
 ConfigManager* ConfigManager::GetInstance() {
-    // Acquire Instance Mutex
-    std::lock_guard<std::mutex> lock(_mutex);
-    // If singleton already exists, return instance
-    if (_singleton == NULL) { _singleton = new ConfigManager(); }
-    return _singleton;
+  // Acquire Instance Mutex
+  std::lock_guard<std::mutex> lock(_mutex);
+  // If singleton already exists, return instance
+  if (_singleton == NULL) { _singleton = new ConfigManager(); }
+  return _singleton;
 }
 
 /*!
  * @todo    Reads in Config File and Parses Options
 */
 bool ConfigManager::load_config(bool _debug) {
+  PROFILE_FUNCTION();
   char buf[64];
   std::size_t pos;                            //! Positional Pointer for delimeter
   std::string row;                            //! Temporary File Row Storage
