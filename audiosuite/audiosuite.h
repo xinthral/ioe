@@ -23,7 +23,7 @@ public:
   /*! @brief   Default constructor */
   AudioMixer();
 
-  /*! @brief   Helper Hook used in CLI Audio System */
+  /*! @brief   Help details for the CLI Audio System */
   void print_help();
 
   /*! @brief   Helper Hook used in CLI Help System */

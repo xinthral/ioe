@@ -32,6 +32,7 @@ int xCiphers::getIndex(char letter) {
  *          in the lexigraph.
 */
 void xCiphers::generateMatrix(char code) {
+  PROFILE_FUNCTION();
   int startIdx = getIndex(code);
   int diff = 0;
   int lexSize = Lexicon::getLexigraphSize();
@@ -57,6 +58,7 @@ int xCiphers::getMatrixSize() { return outputMatrix.size(); }
  * @todo    
 */
 std::string xCiphers::encode(std::string input) {
+  PROFILE_FUNCTION();
   std::string output = "";
   int keyIdx = 0;
   for (int i = 0; i < input.size(); i++) {
@@ -76,6 +78,7 @@ std::string xCiphers::encode(std::string input) {
  * @todo    
 */
 std::string xCiphers::decode(std::string input) {
+  PROFILE_FUNCTION();
   std::string output = "";
   int keyIdx = 0;
   for(int i = 0; i < input.size(); i++) { 

@@ -1,4 +1,3 @@
-
 #include "combatcase.h"
 
 /*!
@@ -29,10 +28,11 @@ void TestCombat::test_all() {
  * @todo    Evironment Vs Environment Combat
 */
 void TestCombat::EVECombat() {
+  PROFILE_FUNCTION();
   Toon* _toon1 = new Toon(++_idx);
   Toon* _toon2 = new Toon(++_idx);
   Combat* cc = new Combat(_toon1, _toon2);
-  cc->cycle_combat();
+  cc->cycleCombat();
   log->named_log(__FILENAME__, "EvE Combat Tested!");
 }
 
@@ -40,10 +40,11 @@ void TestCombat::EVECombat() {
  * @todo    Player Vs Environment Combat
 */
 void TestCombat::PVECombat() {
+  PROFILE_FUNCTION();
   Player* _player = new Player("Player", ++_idx);
   Toon* _toon = new Toon(++_idx);
   Combat* cc = new Combat(_player, _toon);
-  cc->cycle_combat();
+  cc->cycleCombat();
   log->named_log(__FILENAME__, "PvE Combat Tested!");
 }
 
@@ -51,14 +52,15 @@ void TestCombat::PVECombat() {
  * @todo    Player Vs Player Combat
 */
 void TestCombat::PVPCombat() {
+  PROFILE_FUNCTION();
   Player* _player1 = new Player("Max", ++_idx);
   Player* _player2 = new Player("Min", ++_idx);
   Combat* cc = new Combat(_player1, _player2);
-  cc->cycle_combat();
+  cc->cycleCombat();
   log->named_log(__FILENAME__, "PvP Combat Tested!");
 }
 
 /*! 
  * @todo    Default Deconstructor
 */
-TestCombat::~TestCombat() { }
+TestCombat::~TestCombat() {}

@@ -23,13 +23,13 @@ protected:
   xClock();
 
 private:
-  static xClock* _singleton;      //!< Singleton Instance
-  static std::mutex _mutex;       //!< Lock Mutex 
-  Battle*         battle;         //!< Battle Instantiation
-  ConfigManager*  cnf;            //!< ConfigManager Instantiation
-  Logger*         log;            //!< Logging Handler Instantiation
-  char            buf[128];       //!< Buffer Value for Logger outputs
-  bool            isPendingWork;  //!< Tracks if there is Cycle Work Pending
+  static xClock*    _singleton;     //!< Singleton Instance
+  static std::mutex _mutex;         //!< Lock Mutex 
+  Battle*           battle;         //!< Battle Instantiation
+  ConfigManager*    cnf;            //!< ConfigManager Instantiation
+  Logger*           log;            //!< Logging Handler Instantiation
+  char              buf[128];       //!< Buffer Value for Logger outputs
+  bool              isPendingWork;  //!< Tracks if there is Cycle Work Pending
 
 public:
   //! Singletons should not be cloneable

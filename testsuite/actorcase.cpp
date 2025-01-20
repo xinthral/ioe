@@ -65,6 +65,7 @@ void TestActors::test_healthstate() {
  * @todo    Validate Initial Condition: Attack Value
 */
 void TestActors::base_attack() {
+  PROFILE_FUNCTION();
   int cnf_atk = cnf->get_attack();
   dummy = new Actor();
   assertm(cnf_atk == dummy->get_baseAttack(), "Actor Attack Mismatch");
@@ -76,6 +77,7 @@ void TestActors::base_attack() {
  * @todo    Validate Initial Condition: Defense Value
 */
 void TestActors::base_defense() {
+  PROFILE_FUNCTION();
   int cnf_def = cnf->get_defense();
   dummy = new Actor();
   assertm(cnf_def == dummy->get_baseDefense(), "Actor Defense Mismatch");
@@ -87,6 +89,7 @@ void TestActors::base_defense() {
  * @todo    Validate Initial Condition: Flux Value
 */
 void TestActors::base_flux() {
+  PROFILE_FUNCTION();
   int cnf_flx = cnf->get_flux();
   dummy = new Actor();
   assertm(cnf_flx == dummy->get_baseFlux(), "Actor Flux Mismatch");
@@ -98,6 +101,7 @@ void TestActors::base_flux() {
  * @todo    Validate Initial Condition: Health Value
 */
 void TestActors::base_health() {
+  PROFILE_FUNCTION();
   int cnf_hlt = cnf->get_health();
   dummy = new Actor();
   assertm(cnf_hlt == dummy->get_baseHealth(), this->msgNote);
@@ -108,7 +112,8 @@ void TestActors::base_health() {
 /*!
  * @todo    Validate Initial Condition: Combat Idle
 */
-void TestActors::combatstate_idle() { 
+void TestActors::combatstate_idle() {
+  PROFILE_FUNCTION();
   dummy = new Actor();
   dummy->set_combat_idle();
   assertm(IDLE == dummy->get_combatstate(), this->msgNote);
@@ -119,7 +124,8 @@ void TestActors::combatstate_idle() {
 /*!
  * @todo    Validate Initial Condition: Combat Patrol
 */
-void TestActors::combatstate_patrol() { 
+void TestActors::combatstate_patrol() {
+  PROFILE_FUNCTION();
   dummy = new Actor();
   dummy->set_combat_patrol();
   assertm(PATROL == dummy->get_combatstate(), this->msgNote);
@@ -130,7 +136,8 @@ void TestActors::combatstate_patrol() {
 /*!
  * @todo    Validate Initial Condition: Combat Fight
 */
-void TestActors::combatstate_fight() { 
+void TestActors::combatstate_fight() {
+  PROFILE_FUNCTION();
   dummy = new Actor();
   dummy->set_combat_fight();
   assertm(FIGHT == dummy->get_combatstate(), this->msgNote);
@@ -141,7 +148,8 @@ void TestActors::combatstate_fight() {
 /*!
  * @todo    Validate Initial Condition: Combat Flee
 */
-void TestActors::combatstate_flee() { 
+void TestActors::combatstate_flee() {
+  PROFILE_FUNCTION();
   dummy = new Actor();
   dummy->set_combat_flee();
   assertm(FLEE == dummy->get_combatstate(), this->msgNote);
@@ -152,7 +160,8 @@ void TestActors::combatstate_flee() {
 /*!
  * @todo    Validate Initial Condition: Combat Follow
 */
-void TestActors::combatstate_follow() { 
+void TestActors::combatstate_follow() {
+  PROFILE_FUNCTION();
   dummy = new Actor();
   dummy->set_combat_follow();
   assertm(FOLLOW == dummy->get_combatstate(), this->msgNote);
@@ -163,7 +172,8 @@ void TestActors::combatstate_follow() {
 /*!
  * @todo    Validate Initial Condition: Health Healthy
 */
-void TestActors::healthstate_healthy() { 
+void TestActors::healthstate_healthy() {
+  PROFILE_FUNCTION();
   dummy = new Actor();
   dummy->set_health_healthy();
   assertm(HEALTHY == dummy->get_healthstate(), this->msgNote);
@@ -174,7 +184,8 @@ void TestActors::healthstate_healthy() {
 /*!
  * @todo    Validate Initial Condition: Health Hurting
 */
-void TestActors::healthstate_hurting() { 
+void TestActors::healthstate_hurting() {
+  PROFILE_FUNCTION();
   dummy = new Actor();
   dummy->set_health_hurting();
   assertm(HURTING == dummy->get_healthstate(), this->msgNote);
@@ -185,7 +196,8 @@ void TestActors::healthstate_hurting() {
 /*!
  * @todo    Validate Initial Condition: Health Critical 
 */
-void TestActors::healthstate_critical() { 
+void TestActors::healthstate_critical() {
+  PROFILE_FUNCTION();
   dummy = new Actor();
   dummy->set_health_critical();
   assertm(CRITICAL == dummy->get_healthstate(), this->msgNote);
@@ -196,7 +208,8 @@ void TestActors::healthstate_critical() {
 /*!
  * @todo    Validate Initial Condition: Health Sick 
 */
-void TestActors::healthstate_sick() { 
+void TestActors::healthstate_sick() {
+  PROFILE_FUNCTION();
   dummy = new Actor();
   dummy->set_health_sick();
   assertm(SICK == dummy->get_healthstate(), this->msgNote);
@@ -207,7 +220,8 @@ void TestActors::healthstate_sick() {
 /*!
  * @todo    Validate Initial Condition: Health Dead 
 */
-void TestActors::healthstate_dead() { 
+void TestActors::healthstate_dead() {
+  PROFILE_FUNCTION();
   dummy = new Actor();
   dummy->set_health_dead();
   assertm(DEAD == dummy->get_healthstate(), this->msgNote);
@@ -216,6 +230,7 @@ void TestActors::healthstate_dead() {
 }
 
 void TestActors::starting_health() {
+  PROFILE_FUNCTION();
   dummy = new Actor();
   // assertm(32 == dummy->get_health(), "Actor failed to initialize");
   assertm(cnf->get_health() == dummy->get_health(), "Actor failed to initialize");

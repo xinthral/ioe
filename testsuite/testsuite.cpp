@@ -11,6 +11,25 @@
 */
 TestSuite::TestSuite() { }
 
+
+void TestSuite::TestAll() {
+  this->CaseActor();
+  this->CaseAudio();
+  this->CaseBalance();
+  this->CaseBattle();
+  this->CaseClock();
+  this->CaseCiphers();
+  this->CaseCombat();
+  this->CaseConfig();
+  this->CaseItem();
+  this->CaseLeader();
+  this->CaseLexicon();
+  this->CasePlayer();
+  this->CaseStage();
+  this->CaseToon();
+  this->CaseUtilz();
+}
+
 /*!
  * @todo    Initiates the Test for the Actor Module
 */
@@ -180,21 +199,7 @@ int main(int argc, char const *argv[]) {
       break;
     case 0: 
       sprintf(buf, "All TestCases' Completed...");
-      ts.CaseActor();
-      ts.CaseAudio();
-      ts.CaseBalance();
-      ts.CaseBattle();
-      ts.CaseClock();
-      ts.CaseCiphers();
-      ts.CaseCombat();
-      ts.CaseConfig();
-      ts.CaseItem();
-      ts.CaseLeader();
-      ts.CaseLexicon();
-      ts.CasePlayer();
-      ts.CaseStage();
-      ts.CaseToon();
-      ts.CaseUtilz();
+      ts.TestAll();
       break;
     case 1:
       sprintf(buf, "Actor TestCase Completed...");
@@ -259,7 +264,7 @@ int main(int argc, char const *argv[]) {
     default:
       sprintf(buf, "\nWarn :: Unknown Test, please review the list and try again.\n");
   }
-  
+  Profiler::report();
   log->named_log(__FILENAME__, buf);
   return 0;
 }
