@@ -28,6 +28,7 @@ void HelpSuite::HelpAll() {
   this->ActorHelp();
   this->BalanceHelp();
   this->BattleHelp();
+  this->ClockHelp();
   this->CombatHelp();
   this->ItemHelp();
   this->PlayerHelp();
@@ -50,6 +51,11 @@ void HelpSuite::BalanceHelp() { HelpBalance* hb = new HelpBalance(); }
  * @todo    FIXME: Needs desc
 */
 void HelpSuite::BattleHelp() { HelpBattle* hb = new HelpBattle(); }
+
+/*!
+ * @todo    FIXME: Needs desc
+*/
+void HelpSuite::ClockHelp() { HelpClock* hc = new HelpClock(); }
 
 /*!
  * @todo    FIXME: Needs desc
@@ -98,6 +104,7 @@ void print_help() {
   Logger* log = Logger::GetInstance();
   std::string fileName = Utilz::FileName(__FILENAME__);
   char buf[64];
+	int i = 0;
   sprintf(buf, "Usage: %s.exe [option]\n", fileName.c_str()); 
   log->raw_log(buf);
   log->raw_log("HelpSuite CLI Tool\n");
@@ -105,18 +112,20 @@ void print_help() {
     " a quality-of-life option for hunting down all my stupid." \
     " This can be used in conjuction with the TestSuite in order to"\
     " maximize the benefit of the CLI Debugging Suite.\n");
-  log->raw_log("\t [0] - Default Help to rule them all");
-  log->raw_log("\t [1] - Actor details");
-  log->raw_log("\t [2] - BalanceController details");
-  log->raw_log("\t [3] - Battle details");
-  log->raw_log("\t [4] - Combat details");
-  log->raw_log("\t [5] - HelpSuit details");
-  log->raw_log("\t [6] - Item details");
-  log->raw_log("\t [7] - Player details");
-  log->raw_log("\t [8] - StageManager details");
-  log->raw_log("\t [9] - Toon details");
-  log->raw_log("\t[10] - Utilz details");
-  log->raw_log("\n");
+  sprintf(buf, "\t [%d] - Default Help to rule them all", i++); log->raw_log(buf);
+  sprintf(buf, "\t [%d] - Actor details", i++); log->raw_log(buf);
+  sprintf(buf, "\t [%d] - BalanceController details", i++); log->raw_log(buf);
+  sprintf(buf, "\t [%d] - Battle details", i++); log->raw_log(buf);
+  sprintf(buf, "\t [%d] - Clock details", i++); log->raw_log(buf);
+  sprintf(buf, "\t [%d] - Combat details", i++); log->raw_log(buf);
+  sprintf(buf, "\t [%d] - HelpSuit details", i++); log->raw_log(buf);
+  sprintf(buf, "\t [%d] - Item details", i++); log->raw_log(buf);
+  sprintf(buf, "\t [%d] - Player details", i++); log->raw_log(buf);
+  sprintf(buf, "\t [%d] - StageManager details", i++); log->raw_log(buf);
+  sprintf(buf, "\t[%d] - Toon details", i++); log->raw_log(buf);
+  sprintf(buf, "\t[%d] - Utilz details", i++); log->raw_log(buf);
+  sprintf(buf, "\n");
+  log->raw_log(buf);
 }
 
 /*!
@@ -137,25 +146,28 @@ int main(int argc, char const *argv[]) {
     case 3: //! Display Battle Help Details
       hs.BattleHelp();
       break;
-    case 4: //! Display Combat Help Details
+    case 4: //! Display Clock Help Details
+      hs.ClockHelp();
+      break;
+    case 5: //! Display Combat Help Details
       hs.CombatHelp();
       break;
-    case 5: //! Display HelpSuite Helper Details
+    case 6: //! Display HelpSuite Helper Details
       hs._help();
       break;
-    case 6: //! Display Item Help Details
+    case 7: //! Display Item Help Details
       hs.ItemHelp();
       break;
-    case 7: //! Display Player Help Details
+    case 8: //! Display Player Help Details
       hs.PlayerHelp();
       break;
-    case 8: //! Display Stage Help Details
+    case 9: //! Display Stage Help Details
       hs.StageHelp();
       break;
-    case 9: //! Display Toon Help Details
+    case 10: //! Display Toon Help Details
       hs.ToonHelp();
       break;
-    case 10: //! Display Utilz Help Details
+    case 11: //! Display Utilz Help Details
       hs.UtilzHelp();
       break;
     default:

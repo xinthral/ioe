@@ -62,7 +62,8 @@ DOCS := doc
 DOCSSRC := $(patsubst $(DOCS)/%.cpp, $(DOCS)/%.o, $(wildcard $(DOCS)/*.cpp))
 
 MODULES := $(CORE) $(AUDI) $(CLIS) $(HELP) $(TEST)
-SOURCES := $(CORESRC) $(CLISSRC) $(AUDISRC) $(HELPSRC) $(TESTSRC)
+SOURCES := $(CORESRC) $(CLISSRC) $(AUDISRC) $(HELPSRC) $(TESTSRC) 
+CORESRC += testsuite/profiler.o
 
 # GNU Make Compilation Macros: 
 # https://stackoverflow.com/questions/3220277/what-do-the-makefile-symbols-and-mean#3220288
@@ -71,11 +72,27 @@ SOURCES := $(CORESRC) $(CLISSRC) $(AUDISRC) $(HELPSRC) $(TESTSRC)
 # $< evaluates to library.cpp
 # $^ evaluates to library.cpp main.cpp
 
+info:
+	@echo "##################################################################"
+	@echo "Build Information for the Isles of Eris engine"
+	@echo "Usage: make <str:option>"
+	@echo "  audiosuite - Compiles the audio engine into a binary"
+	@echo "  build      - Builds the entire project into object files"
+	@echo "  core       - Builds the core engine into object files"
+	@echo "  clisuite   - Compiles the core engine and the command line tool"
+	@echo "  helpsuite  - Compiles the help command line tool (developer details)"
+	@echo "  testsuite  - Compiles the test command line tool"
+	@echo "##################################################################"
+
 # Compile Full porgram (order matters)
 all: $(MODULES)
 
 # PreCompile Object Files
 build: $(SOURCES)
+
+# Compile Audio
+$(AUDI): $(CORESRC) $(AUDISRC)
+	$(CC) $(CXFLAGS) -I/usr/include/python3.11 $^ -o $@.exe
 
 # Compile Engine
 $(CORE): $(CORESRC) 
@@ -83,10 +100,6 @@ $(CORE): $(CORESRC)
 # Compile CLISuite
 $(CLIS): $(CORESRC) $(CLISSRC)
 	$(CC) $(CXFLAGS) $^ -o $@.exe
-
-# Compile Audio
-$(AUDI): $(CORESRC) $(AUDISRC)
-	$(CC) $(CXFLAGS) -I/usr/include/python3.11 $^ -o $@.exe
 
 # Compile HelpSuite
 $(HELP): $(CORESRC) $(HELPSRC)

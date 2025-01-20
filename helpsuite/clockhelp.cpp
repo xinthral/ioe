@@ -1,4 +1,4 @@
-#include "playerhelp.h"
+#include "clockhelp.h"
 
 /*!
  * @def     __FILENAME__ 
@@ -7,11 +7,14 @@
 #define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
 
 /*!
- * @todo    Default Constructor
+ * @brief   Default Constructor
 */
-HelpPlayer::HelpPlayer() { ptest = new Player("HelpPlayer", 1); ptest->_help(); }
+HelpClock::HelpClock() { 
+  clock = xClock::GetInstance();
+  clock->_help(); 
+}
 
 /*!
- * @todo    Default Deconstructor
+ * @brief   Default Deconstructor
 */
-HelpPlayer::~HelpPlayer() { }
+HelpClock::~HelpClock() { }

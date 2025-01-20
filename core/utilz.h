@@ -9,6 +9,7 @@
 #include <unistd.h>
 #include <vector>
 #include "logger.h"
+#include "../testsuite/profiler.h"
 
 /*!
  * @class   Utilz utilz.h utilz.cpp

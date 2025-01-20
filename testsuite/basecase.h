@@ -4,6 +4,7 @@
 #include <cassert>
 #include <string.h>
 #include <vector>
+#include "profiler.h"
 #include "../core/actor.h"
 #include "../core/audio.h"
 #include "../core/balance.h"

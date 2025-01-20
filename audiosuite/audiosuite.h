@@ -6,6 +6,7 @@
 #include "../core/config.h"
 #include "../core/logger.h"
 #include "../core/utilz.h"
+#include "../testsuite/profiler.h"
 #include "wavsampling.h"
 #include "wavplayer.h"
 
@@ -23,7 +24,7 @@ public:
   /*! @brief   Default constructor */
   AudioMixer();
 
-  /*! @brief   Helper Hook used in CLI Audio System */
+  /*! @brief   Help details for the CLI Audio System */
   void print_help();
 
   /*! @brief   Helper Hook used in CLI Help System */

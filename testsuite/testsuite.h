@@ -16,6 +16,7 @@
 #include "leadercase.h"
 #include "lexiconcase.h"
 #include "playercase.h"
+#include "profiler.h"
 #include "stagecase.h"
 #include "tooncase.h"
 #include "utilzcase.h"
@@ -36,6 +37,8 @@ public:
    * @brief   Default Constructor
   */
   TestSuite();
+
+  void TestAll();
 
   /*!
    * @brief   Initiates the Test for the Actor Module
