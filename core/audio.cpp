@@ -23,7 +23,7 @@ void AudioDriver::readWavData(const std::string& filename) {
   std::ifstream file(filename, std::ios::binary);
 
   if (!file.is_open()) {
-    sprintf(buf, "Failed to open WAV file: %s", filename);
+    sprintf(buf, "Failed to open WAV file: %s", filename.c_str());
     //!//////// Should be Error
     log->named_log(__FILENAME__, buf);
     return;
