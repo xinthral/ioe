@@ -9,6 +9,26 @@
 #include <iomanip>
 #include <mutex>
 
+// std::mutex memMutex;
+// size_t totalAllocated = 0;
+// size_t peakAllocated = 0;
+
+// void* operator new(size_t size) {
+//     std::lock_guard<std::mutex> lock(memMutex);
+//     totalAllocated += size;
+//     peakAllocated = std::max(peakAllocated, totalAllocated);
+//     std::cout << "Allocated: " << size << " bytes, Total: " << totalAllocated << " bytes\n";
+//     return malloc(size);
+// }
+
+// void operator delete(void* ptr, size_t size) noexcept {
+//     std::lock_guard<std::mutex> lock(memMutex);
+//     totalAllocated -= size;
+//     std::cout << "Freed: " << size << " bytes, Total: " << totalAllocated << " bytes\n";
+//     free(ptr);
+// }
+
+
 // Class for memory tracking
 class MemoryProfiler {
 private:
@@ -42,6 +62,17 @@ public:
     }
 };
 
+class MemoryTracker {
+    size_t startAlloc;
+    size_t totalAllocated;
+public:
+    MemoryTracker() { startAlloc = totalAllocated; }
+    ~MemoryTracker() {
+        size_t endAlloc = totalAllocated;
+        std::cout << "Memory used by function: " << (endAlloc - startAlloc) << " bytes\n";
+    }
+};
+
 // Profiler class for timing and memory profiling
 class Profiler {
 private:
@@ -58,14 +89,7 @@ private:
 
     static inline std::unordered_map<std::string, ProfileData> profileData_;
 
-    static void logProfileData(const std::string& functionName, double duration, size_t memoryUsed) {
-        auto& data = profileData_[functionName];
-        data.calls++;
-        data.totalTime += duration;
-        if (memoryUsed > data.maxMemoryUsage) {
-            data.maxMemoryUsage = memoryUsed;
-        }
-    }
+    static void logProfileData(const std::string&, double, size_t);
 
 public:
     // Constructor starts the timer and memory tracking

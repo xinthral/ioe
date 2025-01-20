@@ -6,6 +6,7 @@
 #include "../core/config.h"
 #include "../core/logger.h"
 #include "../core/utilz.h"
+#include "../testsuite/profiler.h"
 #include "wavsampling.h"
 #include "wavplayer.h"
 

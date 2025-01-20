@@ -7,11 +7,13 @@ Profiler::Profiler(const std::string& functionName) :
   startMemory_(memoryProfiler_.getCurrentMemoryUsage()) {  
 }
 
-Profiler::~Profiler() {
-  auto endTime = std::chrono::high_resolution_clock::now();
-  auto duration = std::chrono::duration<double, std::milli>(endTime - startTime_).count();
-  size_t memoryUsed = memoryProfiler_.getCurrentMemoryUsage() - startMemory_;
-  Profiler::logProfileData(functionName_, duration, memoryUsed);
+void Profiler::logProfileData(const std::string& functionName, double duration, size_t memoryUsed) {
+  auto& data = profileData_[functionName];
+  data.calls++;
+  data.totalTime += duration;
+  if (memoryUsed > data.maxMemoryUsage) {
+    data.maxMemoryUsage = memoryUsed;
+  }
 }
 
 void Profiler::report() {
@@ -31,4 +33,11 @@ void Profiler::report() {
               << std::setw(20) << avgTime
               << std::setw(20) << data.maxMemoryUsage << "\n";
   }
+}
+
+Profiler::~Profiler() {
+  auto endTime = std::chrono::high_resolution_clock::now();
+  auto duration = std::chrono::duration<double, std::milli>(endTime - startTime_).count();
+  size_t memoryUsed = memoryProfiler_.getCurrentMemoryUsage() - startMemory_;
+  Profiler::logProfileData(functionName_, duration, memoryUsed);
 }

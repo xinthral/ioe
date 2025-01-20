@@ -4,6 +4,7 @@
         "C:/Users/PC/GitHub/emsdk/upstream/emscripten/system/**"
     ],
     "files.associations": {
+        "Makefile": "makefile",
         "xhash": "cpp",
         "xstring": "cpp",
         "algorithm": "cpp",
@@ -80,7 +81,8 @@
         "sstream": "cpp",
         "chrono": "cpp",
         "map": "cpp",
-        "optional": "cpp"
+        "optional": "cpp",
+        "iomanip": "cpp"
     },
     "editor.renderWhitespace": "all",
 }
