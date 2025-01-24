@@ -1,13 +1,14 @@
 #ifndef PROFILER_H
 #define PROFILER_H
 
-#include <iostream>
 #include <chrono>
+#include <iomanip>
+#include <iostream>
+#include <mutex>
+#include <regex>
 #include <string>
 #include <unordered_map>
 #include <vector>
-#include <iomanip>
-#include <mutex>
 
 // Class for memory tracking
 class MemoryProfiler {
