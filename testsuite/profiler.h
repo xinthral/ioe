@@ -124,7 +124,7 @@ public:
 };
 
 // Macros to simplify usage
-#define PROFILE_FUNCTION() Profiler profiler(__FUNCTION__)
+#define PROFILE_FUNCTION() Profiler profiler(__PRETTY_FUNCTION__)
 #define PROFILE_FUNCTION_MEMORY() MemoryTracker memoryTracker;
 
 #endif // PROFILER_H //

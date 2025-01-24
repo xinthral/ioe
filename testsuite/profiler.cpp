@@ -85,9 +85,12 @@ size_t MemoryProfiler::getPeakMemoryUsage() const {
 Profiler::Profiler(const std::string& functionName) :
   startTime_(std::chrono::high_resolution_clock::now()),
   startMemory_(memoryProfiler_.getCurrentMemoryUsage()) {  
-    std::regex rgx("\\w+(?=::).*");
+    // std::regex rgx("(?<!std::string )(\\w+(?=::).*)");
+    std::regex rgx1("\\w+(?=::).*");
+    std::regex rgx2("(std::\\w+ )");
     std::smatch m;
-    std::regex_search(functionName, m, rgx);
+    std::regex_search(functionName, m, rgx1);
+    std::regex_replace(m.str(), rgx2, "");
     functionName_ = m.str();
 }
 
@@ -112,7 +115,7 @@ void Profiler::report() {
 
   for (const auto& [name, data] : profileData_) {
     double avgTime = data.totalTime / data.calls;
-    std::cout << std::setw(40) << name
+    std::cout << std::setw(40) << name.substr(0, 35)
               << std::setw(15) << data.calls
               << std::setw(20) << data.totalTime
               << std::setw(20) << avgTime
