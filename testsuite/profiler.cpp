@@ -85,13 +85,12 @@ size_t MemoryProfiler::getPeakMemoryUsage() const {
 Profiler::Profiler(const std::string& functionName) :
   startTime_(std::chrono::high_resolution_clock::now()),
   startMemory_(memoryProfiler_.getCurrentMemoryUsage()) {  
-    // std::regex rgx("(?<!std::string )(\\w+(?=::).*)");
-    std::regex rgx1("\\w+(?=::).*");
-    std::regex rgx2("(std::\\w+ )");
     std::smatch m;
+    std::regex rgx1("\\w+(?=::).*");
+    std::regex rgx2("(std::\\w+\\s)");
     std::regex_search(functionName, m, rgx1);
-    std::regex_replace(m.str(), rgx2, "");
-    functionName_ = m.str();
+    std::string match = std::regex_replace(m.str(), rgx2, "");
+    functionName_ = match;
 }
 
 void Profiler::logProfileData(const std::string& functionName, double duration, size_t memoryUsage) {
