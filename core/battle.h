@@ -18,11 +18,12 @@ private:
   */
   Battle();
 
-  static Battle*    _singleton;     //!< Singleton Instance
-  static std::mutex _mutex;         //!< Lock Mutex
-  Logger*   log;                    //!< Logging Handler Instantiation
-  Combat*   combat;                 //!< Combat Handler
-  int       cycleCompletionTracker;
+  Combat*           combat;                 //!< Combat Handler
+  Logger*           log;                    //!< Logging Handler Instantiation
+  static Battle*    _singleton;             //!< Singleton Instance
+  static std::mutex _mutex;                 //!< Lock Mutex
+  int               cycleCompletionTracker;
+  int               cycleDelay;             //!< Delay between battle operations
 
 public:
   //! Singletons should not be cloneable
