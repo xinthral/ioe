@@ -128,7 +128,7 @@ bool CLISuite::parse_input(const std::string input, const std::string criteria) 
 CLISuite::~CLISuite() { 
   this->displayRunTime(); 
   this->displayCommandHistory();
-  Profiler::report();
+  // Profiler::report();
 }
 
 /*!
