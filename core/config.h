@@ -70,7 +70,7 @@ public:
    * @param[in] value  - The data value associated with the key
    * @return  Returns current config queue size 
   */
-  size_t add_setting(const std::string&, const std::string&);
+  size_t add_setting(const std::string&,const std::string&);
 
   /*!
    * @brief   Remove Setting from injested list

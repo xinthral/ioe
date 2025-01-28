@@ -17,7 +17,7 @@ std::mutex Battle::_mutex;
 Battle::Battle() {
   log = Logger::GetInstance();
   cycleCompletionTracker = 10;
-  cycleDelay = 1000;
+  cycleDelay = 500;
 }
 
 /*! 

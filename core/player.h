@@ -36,7 +36,7 @@ public:
    * @param[in] name  - Name of the Player
    * @param[in] level - Level of the Player
   */
-  Player(std::string, int);
+  Player(std::string,int);
 
   // /*!
   //  * @override

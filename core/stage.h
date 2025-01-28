@@ -49,7 +49,7 @@ public:
   /*!
    * @brief   StageManager Loads the Scene with Actors
   */
-  void casting_call(int, std::vector<Toon*>&);
+  void casting_call(int,std::vector<Toon*>&);
 
   /*!
    * @brief   Helper Hook used in CLI Help System

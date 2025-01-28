@@ -20,19 +20,27 @@ TestItem::TestItem() : BaseCase(__FILENAME__) {
  * @todo    Run full set of test on module 
 */
 void TestItem::test_all() {
+  this->test_rarity();
   this->test_type();
 }
 
 /*!
  * @todo    Run full set of test on module 
 */
-void TestItem::test_rarity() {}
-
-void TestItem::test_type() {
+void TestItem::test_rarity() {
   ItemRarity junk = ItemRarity::JUNK;
   Item* check = new Item("TestItem");
   check->set_rarity(junk);
-  assertm(check->get_rarity() == junk, "Item Type does not match creation type");
+  assertm(check->get_rarity() == junk, "Item rarity does not match creation type");
+  sprintf(buf, "%s [%s] %s", msgHead, "item rarity", msgTail);
+  BaseCase::log->named_log(__FILENAME__, buf);
+}
+
+void TestItem::test_type() {
+  ItemType ring = ItemType::RING;
+  Item* check = new Item("TestItem");
+  check->set_type(ring);
+  assertm(check->get_type() == ring, "Item Type does not match creation type");
   sprintf(buf, "%s [%s] %s", msgHead, "item type", msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);
 }

@@ -59,7 +59,7 @@ public:
    * @param[in] toon2 - A pointer to the second Toon character participating in the combat.
    * @return None
   */
-  Combat(Toon*, Toon*);
+  Combat(Toon*,Toon*);
 
   /*!
    * @overload
@@ -72,7 +72,7 @@ public:
    * @param[in] toon   - A pointer to the Toon character participating in the combat.
    * @return None
   */
-  Combat(Player*, Toon*);
+  Combat(Player*,Toon*);
 
   /*!
    * @overload
@@ -86,7 +86,7 @@ public:
    *
    * @return None
    */
-  Combat(Player*, Player*);
+  Combat(Player*,Player*);
 
   /*!
    * @brief Checks if there is an ongoing combat.
@@ -98,7 +98,7 @@ public:
   */
   bool inCombat();
 
-  bool validFighters(Actor*, Actor*);
+  bool validFighters(Actor*,Actor*);
 
   /*!
    * @brief Initiates Combat
@@ -113,7 +113,7 @@ public:
   /*!
    * @brief   Intakes Combatants
   */
-  void injestCombatants(Actor*, Actor*);
+  void injestCombatants(Actor*,Actor*);
 
   /*!
    * @brief   Helper Hook used in CLI Help System
