@@ -22,7 +22,9 @@ public:
   */
   void test_all();
   void test_rarity();
+  void test_rarity_invalid_rarity();
   void test_type();
+  void test_type_invalid_type();
 
   /*!
    * @brief   Default Deconstructor

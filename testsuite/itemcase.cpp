@@ -21,6 +21,7 @@ TestItem::TestItem() : BaseCase(__FILENAME__) {
 */
 void TestItem::test_all() {
   this->test_rarity();
+  this->test_rarity_invalid_rarity();
   this->test_type();
 }
 
@@ -36,12 +37,30 @@ void TestItem::test_rarity() {
   BaseCase::log->named_log(__FILENAME__, buf);
 }
 
+void TestItem::test_rarity_invalid_rarity() {
+  ItemRarity junk = static_cast<ItemRarity>(-2);
+  Item* check = new Item("TestItem");
+  check->set_rarity(junk);
+  assertm(check->get_rarity() != junk, "Item rarity should not allow negatives");
+  sprintf(buf, "%s [%s] %s", msgHead, "item rarity invalidation", msgTail);
+  BaseCase::log->named_log(__FILENAME__, buf);
+}
+
 void TestItem::test_type() {
   ItemType ring = ItemType::RING;
   Item* check = new Item("TestItem");
   check->set_type(ring);
   assertm(check->get_type() == ring, "Item Type does not match creation type");
   sprintf(buf, "%s [%s] %s", msgHead, "item type", msgTail);
+  BaseCase::log->named_log(__FILENAME__, buf);
+}
+
+void TestItem::test_type_invalid_type() {
+  ItemType ring = static_cast<ItemType>(-1);
+  Item* check = new Item("TestItem");
+  check->set_type(ring);
+  assertm(check->get_type() != ring, "Item Type should not allow negatives");
+  sprintf(buf, "%s [%s] %s", msgHead, "item type invalidation", msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);
 }
 

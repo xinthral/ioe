@@ -29,7 +29,7 @@ ItemType Item::get_type() {
 void Item::set_rarity(ItemRarity rarity) {
   int lower = static_cast<int>(ItemRarity::JUNK);
   int upper = static_cast<int>(ItemRarity::UNIQUE);
-  if (rarity >= lower && rarity < upper) {
+  if (lower <= rarity && rarity < upper) {
     this->_rarity = rarity;
   }
 }
@@ -37,7 +37,7 @@ void Item::set_rarity(ItemRarity rarity) {
 void Item::set_type(ItemType itemType) {
   int lower = static_cast<int>(ItemType::RELIC);
   int upper = static_cast<int>(ItemType::SWORD);
-  if (itemType >= lower && itemType < upper) {
+  if (lower <= itemType && itemType < upper) {
     this->_type = itemType;
   }
 }
