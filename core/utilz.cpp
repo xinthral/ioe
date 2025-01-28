@@ -27,7 +27,6 @@ std::string Utilz::FileName(int length, const char* file) {
  * @todo    Formatted Timestamp for uniformity
 */
 std::string Utilz::TimeStamp() {
-  PROFILE_FUNCTION();
   std::time_t time = std::time({});
   char output[std::size("ddd mmm dd hh:mm:ss")];
   std::string fmtString = "%a %b %d %T";
@@ -45,7 +44,6 @@ std::string Utilz::TimeStamp() {
  *          into an array of strings.
 */
 void Utilz::StringToArray(std::string input, std::vector<std::string>& output) {
-  PROFILE_FUNCTION();
   char* token = strtok(const_cast<char*>(input.c_str()), " \r\n");
   while (token != NULL) {
     output.push_back(token);
@@ -57,7 +55,6 @@ void Utilz::StringToArray(std::string input, std::vector<std::string>& output) {
  * @todo    Truncates a string from the beginning of a string
 */
 std::string Utilz::HeadString(int length, std::string input) {
-  PROFILE_FUNCTION();
   std::string output = input;
   output.resize(length);
   return output;
@@ -67,7 +64,6 @@ std::string Utilz::HeadString(int length, std::string input) {
  * @todo    Truncates a string from the ending of a string
 */
 std::string Utilz::TailString(int length, std::string input) {
-  PROFILE_FUNCTION();
   std::string output;
   size_t l = input.size() - length;
   for (size_t i = l; i < input.size(); i++) { output += input[i]; }
@@ -78,7 +74,6 @@ std::string Utilz::TailString(int length, std::string input) {
  * @todo    Removes whitespace from string
 */
 void Utilz::Strip(std::string& input) {
-  PROFILE_FUNCTION();
   std::string::iterator pos = std::remove(input.begin(), input.end(), ' ');
   input.erase(pos, input.end());
 }
@@ -87,7 +82,6 @@ void Utilz::Strip(std::string& input) {
  * @todo    Returns a randomly generated string
 */
 std::string Utilz::randomString(int length) {
-  PROFILE_FUNCTION();
   std::srand(std::time(nullptr));
   std::string lexigraph = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz";
   std::string output = "";

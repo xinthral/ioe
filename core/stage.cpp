@@ -15,7 +15,6 @@ std::mutex StageManager::_mutex;
  * @todo    Protected Constructor
 */
 StageManager::StageManager(const std::string _name) : name(_name) {
-  PROFILE_FUNCTION();
   log = Logger::GetInstance();
   maxCrew = 10;
   sprintf(buf, "StageManager Established: %s", this->name.c_str());
@@ -44,7 +43,6 @@ std::string StageManager::get_name() { return this->name; }
  * @note    FIXME
 */
 void StageManager::casting_call(int size, std::vector<Toon*>& npcs) {
-  PROFILE_FUNCTION();
   Toon* t;
   for (int i = 0; i < size; i++) {
     sprintf(buf, "Toon_%d", i);

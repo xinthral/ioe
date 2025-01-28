@@ -14,7 +14,6 @@
 //! External Varables
 extern std::string _CNF_;
 
-
 /*!
  * @class   ConfigManager config.h config.cpp
  * @brief   ConfigManager manages configuration loading and updating throughout the engine.

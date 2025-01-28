@@ -10,7 +10,6 @@
  * @todo    Default Constructor
 */
 Combat::Combat() {
-  PROFILE_FUNCTION();
   //! Establish Singletons 
   bal = BalanceController::GetInstance();
   cnf = ConfigManager::GetInstance();
@@ -65,7 +64,6 @@ bool Combat::validFighters(Actor* combatant1, Actor* combatant2) {
  * @todo    Initiates Combat
 */
 void Combat::cycleCombat() {
-  PROFILE_FUNCTION();
   //! Seed and Generate Random Number
   int r, s, x, y;
 

@@ -15,7 +15,6 @@ std::mutex BalanceController::_mutex;
  * @brief   Default Constructor 
 */
 BalanceController::BalanceController() {
-  PROFILE_FUNCTION();
   //! Load Configurations Objects
   cnf  = ConfigManager::GetInstance();
   log  = Logger::GetInstance();
@@ -58,7 +57,6 @@ BalanceController* BalanceController::GetInstance() {
  * @note    y = δ^(χ/[π^π])
 */
 double BalanceController::scalar(int level) {
-  PROFILE_FUNCTION();
   double x = level * 1.0;
   return pow(base, (x / pow(M_PI, M_PI)));
 }

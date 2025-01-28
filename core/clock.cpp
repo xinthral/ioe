@@ -16,7 +16,6 @@ std::mutex xClock::_mutex;
  * @todo    Protected Constructor
 */
 xClock::xClock() {
-  PROFILE_FUNCTION();
   battle = Battle::GetInstance();
   cnf  = ConfigManager::GetInstance();
   log  = Logger::GetInstance();
@@ -45,7 +44,6 @@ bool xClock::getPendingWorkState() {
  * @todo    Singleton Constructor
 */
 void xClock::doCycleWork() {
-  PROFILE_FUNCTION();
   bool pendingBattles = true;
   log->raw_log("Clock Cycle Work!");
   do {

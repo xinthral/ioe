@@ -15,7 +15,6 @@ std::mutex ConfigManager::_mutex;
  * @todo    Protected Constructor 
 */
 ConfigManager::ConfigManager() {
-  PROFILE_FUNCTION();
 
   log = Logger::GetInstance();
   log->named_log(__FILE__, "ConfigManager Established.");
@@ -37,7 +36,6 @@ ConfigManager* ConfigManager::GetInstance() {
  * @todo    Reads in Config File and Parses Options
 */
 bool ConfigManager::load_config(bool _debug) {
-  PROFILE_FUNCTION();
   char buf[64];
   std::size_t pos;                            //! Positional Pointer for delimeter
   std::string row;                            //! Temporary File Row Storage
@@ -74,7 +72,6 @@ void ConfigManager::reload_state() { this->load_config(true); }
  * @todo    Injest Setting into struct, and return struct size.
 */
 size_t ConfigManager::add_setting(const std::string& option, const std::string& value) {
-  PROFILE_FUNCTION();
   this->settings[option] = value;
   return this->settings.size();
 }
@@ -83,7 +80,6 @@ size_t ConfigManager::add_setting(const std::string& option, const std::string& 
  * @todo    Remove Setting from injested list
 */
 size_t ConfigManager::rem_setting(const std::string& option) {
-  PROFILE_FUNCTION();
   this->settings.erase(option);
   return this->settings.size();
 }
@@ -92,7 +88,6 @@ size_t ConfigManager::rem_setting(const std::string& option) {
  * @todo    Return the Value of a Configuration Option 
 */
 std::string ConfigManager::raw_config(const std::string& option) {
-  PROFILE_FUNCTION();
   return this->settings[option];
 }
 
@@ -100,7 +95,6 @@ std::string ConfigManager::raw_config(const std::string& option) {
  * @todo    Return the list of authorized commands for the CLI Suite
 */
 void ConfigManager::get_authorizedCommands(std::vector<std::string>& input) { 
-  PROFILE_FUNCTION();
   std::string inp = this->raw_config("CMDLIST");
   Utilz::StringToArray(inp, input);
 }

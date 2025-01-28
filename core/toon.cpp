@@ -29,7 +29,6 @@ Toon::Toon(std::string name) : Toon(-1, name) { }
  * @todo    Constructor Initializor
 */
 Toon::Toon(int id, std::string name) {
-  PROFILE_FUNCTION();
   this->set_id(id);
   this->set_name(name);
 }
@@ -38,7 +37,6 @@ Toon::Toon(int id, std::string name) {
  * @todo    Constructor Initializor
 */
 Toon::Toon(std::string name, int level) : Toon(name) {
-  PROFILE_FUNCTION();
   // Get the current time
   auto currentTime = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
 

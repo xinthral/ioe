@@ -13,7 +13,6 @@
 Item::Item() : Item::Item("Items") {}
 
 Item::Item(const char itemName[]) {
-  PROFILE_FUNCTION();
   log = Logger::GetInstance();
   log->named_log(__FILENAME__, "New Item Established.");
 }

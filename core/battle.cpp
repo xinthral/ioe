@@ -32,7 +32,6 @@ Battle* Battle::GetInstance() {
 }
 
 void Battle::doCycleWork(bool &isPendingWork) {
-  PROFILE_FUNCTION();
   std::this_thread::sleep_for(std::chrono::milliseconds(cycleDelay));
   // this->log->named_log(__FILENAME__, "Battle Cycle Work");
   if (this->combat) { this->combat->cycleCombat(); }
