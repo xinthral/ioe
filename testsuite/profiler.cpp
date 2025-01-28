@@ -103,23 +103,27 @@ void Profiler::logProfileData(const std::string& functionName, double duration, 
 }
 
 void Profiler::report() {
+  int width = 120;
   std::cout << "\nProfiling Report:\n";
-  std::cout << std::setw(40) << std::left << "Function" 
-            << std::setw(15) << "Calls" 
-            << std::setw(20) << "Total (ms)" 
-            << std::setw(20) << "Average (ms)"
-            << std::setw(20) << "Peak Mem (bytes)"
+  std::cout << std::setw(width / 3) << std::left << "Function" 
+            << std::setw(width / 8) << "Calls" 
+            << std::setw(width / 6) << "Total (ms)" 
+            << std::setw(width / 6) << "Average (ms)"
+            << std::setw(width / 6) << "Peak Mem (bytes)"
             << std::endl;
-  std::cout << std::string(115, '-') << "\n";
+  std::cout << std::string(width, '-') << "\n";
 
-  for (const auto& [name, data] : profileData_) {
+  std::map<std::string, ProfileData> sortedMap(profileData_.begin(), profileData_.end());
+
+  for (const auto& [name, data] : sortedMap) {
     double avgTime = data.totalTime / data.calls;
-    std::cout << std::setw(40) << name.substr(0, 35)
-              << std::setw(15) << data.calls
-              << std::setw(20) << data.totalTime
-              << std::setw(20) << avgTime
-              << std::setw(20) << data.maxMemoryUsage << "\n";
+    std::cout << std::setw(width / 3) << name.substr(0, width / 3.2)
+              << std::setw(width / 8) << data.calls
+              << std::setw(width / 6) << data.totalTime
+              << std::setw(width / 6) << avgTime
+              << std::setw(width / 6) << data.maxMemoryUsage << "\n";
   }
+  std::cout << std::string(width, '-') << "\n" << std::endl;
 }
 
 Profiler::~Profiler() {
