@@ -63,7 +63,6 @@ DOCSSRC := $(patsubst $(DOCS)/%.cpp, $(DOCS)/%.o, $(wildcard $(DOCS)/*.cpp))
 
 MODULES := $(CORE) $(AUDI) $(CLIS) $(HELP) $(TEST)
 SOURCES := $(CORESRC) $(CLISSRC) $(AUDISRC) $(HELPSRC) $(TESTSRC) 
-CORESRC += testsuite/profiler.o
 
 # GNU Make Compilation Macros: 
 # https://stackoverflow.com/questions/3220277/what-do-the-makefile-symbols-and-mean#3220288
