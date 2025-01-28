@@ -33,6 +33,7 @@ void TestCiphers::test_all() {
  * @todo    FIXME
 */
 void TestCiphers::displayMatrix() {
+  PROFILE_FUNCTION();
   cipher->displayMatrix(false);
   sprintf(buf, "%s [%s] %s", msgHead, "matrix display", msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);
@@ -42,6 +43,7 @@ void TestCiphers::displayMatrix() {
  * @todo    Ensuring that the cipher can properly decode a message
 */
 void TestCiphers::decode() {
+  PROFILE_FUNCTION();
   std::string response = cipher->decode(encoded);
   sprintf(buf, "Decoding failed to produce %s: %s => %s", this->decoded.c_str(), this->encoded.c_str(), response.c_str());
   assertm(strcmp(response.c_str(), this->decoded.c_str()) == 0, buf);
@@ -53,6 +55,7 @@ void TestCiphers::decode() {
  * @todo    Ensuring that the cipher can properly encode a message
 */
 void TestCiphers::encode() {
+  PROFILE_FUNCTION();
   this->encoded = cipher->encode(decoded);
   sprintf(buf, "Encoding failed to produce %s: %s => %s", this->encoded.c_str(), this->decoded.c_str(), this->encoded.c_str());
   assertm(this->encoded.size() > 0, buf);
@@ -64,6 +67,7 @@ void TestCiphers::encode() {
  * @todo    Generates Cipher Matrices'
 */
 void TestCiphers::generateMatrix() {
+  PROFILE_FUNCTION();
   int mSize = cipher->getMatrixSize();
   int lSize = cipher->getLexigraphSize();
   assertm(mSize == lSize, "Matrix size mismatch");
@@ -75,6 +79,7 @@ void TestCiphers::generateMatrix() {
  * @todo    Generates Cipher after changing the lexigraph
 */
 void TestCiphers::swappedLexigraph() {
+  PROFILE_FUNCTION();
   cipher->setLexigraph("1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ");
   this->encode();
   this->decode();

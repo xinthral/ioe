@@ -28,6 +28,7 @@ void TestUtilz::test_all() {
  * @todo    Test Utilz StringToArray feature
 */
 void TestUtilz::test_StringToArray() {
+  PROFILE_FUNCTION();
   std::string testline = "this is a test";
   std::vector<std::string> cmds;
   Utilz::StringToArray(testline, cmds);
@@ -40,6 +41,7 @@ void TestUtilz::test_StringToArray() {
  * @todo    Test Utilz StringToArray feature with trailing spaces
 */
 void TestUtilz::test_StringToArray_TrailingSpace() {
+  PROFILE_FUNCTION();
   std::string testline = "this is a test ";
   std::vector<std::string> cmds;
   Utilz::StringToArray(testline, cmds);

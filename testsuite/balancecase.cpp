@@ -13,7 +13,6 @@ TestBalance::TestBalance() : BaseCase(__FILENAME__) {
   BaseCase::log->named_log(__FILENAME__, "Testing the BalanceController!");
   sprintf(this->msgHead, "Tested");
   sprintf(this->msgTail, "at scale for Balance!");
-
   this->baseAtk = BaseCase::cnf->get_attack();
   this->baseDef = BaseCase::cnf->get_defense();
   this->baseHlt = BaseCase::cnf->get_health();
@@ -32,6 +31,7 @@ void TestBalance::test_all() {
  * @todo    Validate Scaling factors against attack and defense
 */
 void TestBalance::def_atk_ratio() { 
+  PROFILE_FUNCTION();
   double preRatio = (this->baseAtk * 1.0) / this->baseDef;
   double numerator = this->baseAtk * bal->scalar(100);
   double denominator = this->baseDef * bal->scalar(100);
@@ -45,6 +45,7 @@ void TestBalance::def_atk_ratio() {
  * @todo    Validate that the appropriate difficulty level is being assigned. 
 */
 void TestBalance::difficulty_level() {
+  PROFILE_FUNCTION();
   std::string dif  = cnf->raw_config("DIF");
   std::string diff = bal->get_difficulty_str();
   assert(dif.compare(diff));

@@ -20,15 +20,16 @@ TestItem::TestItem() : BaseCase(__FILENAME__) {
  * @todo    Run full set of test on module 
 */
 void TestItem::test_all() {
-  this->test_rarity();
-  this->test_rarity_invalid_rarity();
-  this->test_type();
+  this->itemrarity();
+  this->rarity_invalidation();
+  this->itemtype();
 }
 
 /*!
  * @todo    Run full set of test on module 
 */
-void TestItem::test_rarity() {
+void TestItem::itemrarity() {
+  PROFILE_FUNCTION();
   ItemRarity junk = ItemRarity::JUNK;
   Item* check = new Item("TestItem");
   check->set_rarity(junk);
@@ -37,7 +38,8 @@ void TestItem::test_rarity() {
   BaseCase::log->named_log(__FILENAME__, buf);
 }
 
-void TestItem::test_rarity_invalid_rarity() {
+void TestItem::rarity_invalidation() {
+  PROFILE_FUNCTION();
   ItemRarity junk = static_cast<ItemRarity>(-2);
   Item* check = new Item("TestItem");
   check->set_rarity(junk);
@@ -46,7 +48,8 @@ void TestItem::test_rarity_invalid_rarity() {
   BaseCase::log->named_log(__FILENAME__, buf);
 }
 
-void TestItem::test_type() {
+void TestItem::itemtype() {
+  PROFILE_FUNCTION();
   ItemType ring = ItemType::RING;
   Item* check = new Item("TestItem");
   check->set_type(ring);
@@ -55,7 +58,8 @@ void TestItem::test_type() {
   BaseCase::log->named_log(__FILENAME__, buf);
 }
 
-void TestItem::test_type_invalid_type() {
+void TestItem::type_invalidation() {
+  PROFILE_FUNCTION();
   ItemType ring = static_cast<ItemType>(-1);
   Item* check = new Item("TestItem");
   check->set_type(ring);

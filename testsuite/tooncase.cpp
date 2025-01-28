@@ -30,6 +30,7 @@ void TestToon::test_all() {
  * @todo    Validate Instantiation of default Class
 */
 void TestToon::test_toonCreation() {
+  PROFILE_FUNCTION();
   Toon* toon = new Toon();
   char* name = (char*)"Toon_#-1";
   assert( strcmp(name, toon->get_name().c_str()) == 0 );
@@ -42,6 +43,7 @@ void TestToon::test_toonCreation() {
  * @todo    Validate Numerical Instantiation
 */
 void TestToon::test_toonCreation_id() {
+  PROFILE_FUNCTION();
   Toon* toon = new Toon(3);
   char* name = (char*)"Toon_#3";
   assert( strcmp(name, toon->get_name().c_str()) == 0 );
@@ -54,6 +56,7 @@ void TestToon::test_toonCreation_id() {
  * @todo    Validate Alphabetical Instantiation
 */
 void TestToon::test_toonCreation_name() {
+  PROFILE_FUNCTION();
   Toon* toon = new Toon("Maji");
   char* name = (char*)"Maji";
   assert( strcmp(name, toon->get_name().c_str()) == 0 );
@@ -66,6 +69,7 @@ void TestToon::test_toonCreation_name() {
  * @todo    Validate AlphaNumerica Instatiation
 */
 void TestToon::test_toonCreation_both() {
+  PROFILE_FUNCTION();
   Toon* toon = new Toon(4, "Jesse");
   char* name = (char*)"Jesse";
   assert( strcmp(name, toon->get_name().c_str()) == 0 );
