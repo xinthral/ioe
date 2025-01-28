@@ -45,9 +45,11 @@ public:
   Item();
   Item(const char[]); 
 
+  char * get_label();
   ItemRarity get_rarity();
   ItemType get_type();
   void set_rarity(ItemRarity);
+  void set_label(const char*);
   void set_type(ItemType);
 
   /*!
