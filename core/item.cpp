@@ -10,11 +10,38 @@
 /*!
  * @todo    Default Constructor 
 */
-Item::Item() {
+Item::Item() : Item::Item("Items") {}
+
+Item::Item(const char itemName[]) {
   PROFILE_FUNCTION();
   log = Logger::GetInstance();
   log->named_log(__FILENAME__, "New Item Established.");
 }
+
+ItemRarity Item::get_rarity() {
+  return _rarity;
+}
+
+ItemType Item::get_type() {
+  return _type;
+}
+
+void Item::set_rarity(ItemRarity rarity) {
+  int lower = static_cast<int>(ItemRarity::JUNK);
+  int upper = static_cast<int>(ItemRarity::UNIQUE);
+  if (rarity >= lower && rarity < upper) {
+    this->_rarity = rarity;
+  }
+}
+
+void Item::set_type(ItemType itemType) {
+  int lower = static_cast<int>(ItemType::RELIC);
+  int upper = static_cast<int>(ItemType::SWORD);
+  if (itemType >= lower && itemType < upper) {
+    this->_type = itemType;
+  }
+}
+
 
 /*!
  * @todo    Helper Hook used in CLI Help System

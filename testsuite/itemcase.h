@@ -2,6 +2,7 @@
 #define TESTITEM_H
 
 #include "basecase.h"
+#include "../core/item.h"
 
 /*!
  * @class   TestItem itemcase.cpp itemcase.h
@@ -20,6 +21,8 @@ public:
    * @brief   Run full set of test on module 
   */
   void test_all();
+  void test_rarity();
+  void test_type();
 
   /*!
    * @brief   Default Deconstructor
