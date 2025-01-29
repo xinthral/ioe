@@ -120,7 +120,7 @@ void xCiphers::displayMatrix(bool blackOut) {
     tbuf = tchar;
     header += tbuf;
     printf("%s\n", header);
-    log->raw_log(header);
+    this->log->raw_log(header);
   }
 
   printf("%s\n", header);
@@ -130,8 +130,13 @@ void xCiphers::displayMatrix(bool blackOut) {
     sprintf(tchar, "%c", blackOut ? shadowStr[l] : matrixStr[l]);
     tbuf = tchar;
     printf("%s\n", header);
-    log->raw_log(tbuf);
+    this->log->raw_log(tbuf);
   }
+}
+
+void xCiphers::_help() {
+  std::string helpline = "\nCiphers Help File\n";
+  this->log->named_log(__FILENAME__, helpline);
 }
 
 /*!

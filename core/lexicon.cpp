@@ -1,6 +1,12 @@
 #include "lexicon.h"
 
 /*!
+ * @def     __FILENAME__ 
+ * @brief   Translate Filename to reusable macro
+*/
+#define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
+
+/*!
  * @todo    Default Constructor
 */
 Lexicon::Lexicon() {
@@ -36,12 +42,19 @@ std::string Lexicon::generateName(int count) {
 /*!
  * @todo    Returns the current size of the Lexigraph
 */
-int Lexicon::getLexigraphSize() { return lexigraph.size(); }
+int Lexicon::getLexigraphSize() {
+  return lexigraph.size();
+}
 
 /*!
  * @todo    Returns the current size of the Lexigraph
 */
 void Lexicon::setLexigraph(std::string lexigraph) { this->lexigraph = lexigraph; }
+
+void Lexicon::_help() {
+  std::string helpline = "\nLexicon Help File\n";
+  this->log->named_log(__FILENAME__, helpline);
+}
 
 /*!
  * @todo    Default Deconstructor

@@ -4,6 +4,12 @@
 #include "lexicon.h"
 
 /*!
+ * @def     __FILENAME__ 
+ * @brief   Translate Filename to reusable macro
+*/
+#define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
+
+/*!
  * @class   xCiphers ciphers.cpp ciphers.h
  * @brief   The cipher suite will handle logical lexiconal shifting
  *          and word translations
@@ -49,7 +55,7 @@ public:
   std::string encode(std::string);
   std::string decode(std::string);
   void displayMatrix(bool);
-
+  void _help();
   /*!
    * @brief   Default Deconstructor
   */

@@ -107,13 +107,17 @@ std::string BalanceController::get_difficulty_str() {
  * @brief   Helper Hook used in CLI Help System
 */
 void BalanceController::_help() { 
+  std::string helpline = "\nBalanceController Helpline!\n"
+    "\n\tThe BalanceController is meant to be the module that rules them all. By forcing an interjection algorithm"
+    "\nI am introducing a slow down in calls but adding an immense amount of control over equivelancy test. Pretty"
+    "\nproud of this over-engineered piece of code, because the customization should allow for rapid changes for live"
+    "\ntweaking, consistant changes across base values, and if all goes right will allow easy integration for a learning"
+    "\nmodel to automate performance tweaking."
+    "\n"
+    "\nListed below is the scaling model:"
+    "\n";
+  this->log->named_log(__FILENAME__, helpline);
   this->display_state();
-  std::string helpline = "\nBalanceController Helpline!\n";
-  helpline += "\n\tThe BalanceController is meant to be the module that rules them all.";
-  helpline += "\nBy forcing an interjection algorithm I am introducing a slow down in calls";
-  helpline += "\nbut adding an immense amount of control over equivelancy test.";
-  helpline += "\n";
-  log->named_log(__FILENAME__, helpline);
 }
 
 /*!

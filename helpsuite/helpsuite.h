@@ -6,10 +6,13 @@
 #include "../core/actor.h"
 #include "../core/balance.h"
 #include "../core/battle.h"
+#include "../core/ciphers.h"
+#include "../core/clock.h"
 #include "../core/combat.h"
 #include "../core/config.h"
 #include "../core/item.h"
 #include "../core/leader.h"
+#include "../core/lexicon.h"
 #include "../core/logger.h"
 #include "../core/player.h"
 #include "../core/stage.h"
@@ -18,13 +21,16 @@
 #include "actorhelp.h"
 #include "balancehelp.h"
 #include "battlehelp.h"
+#include "cipherhelp.h"
 #include "clockhelp.h"
 #include "combathelp.h"
 #include "confighelp.h"
 #include "itemhelp.h"
 #include "leaderhelp.h"
+#include "lexiconhelp.h"
 #include "playerhelp.h"
 #include "stagehelp.h"
+#include "testhelp.h"
 #include "toonhelp.h"
 #include "utilzhelp.h"
 
@@ -57,13 +63,16 @@ public:
   void ActorHelp();
   void BattleHelp();
   void BalanceHelp();
+  void CipherHelp();
   void ClockHelp();
   void CombatHelp();
   void ConfigHelp();
   void ItemHelp();
   void LeaderHelp();
+  void LexiconHelp();
   void PlayerHelp();
   void StageHelp();
+  void TestHelp();
   void ToonHelp();
   void UtilzHelp();
 

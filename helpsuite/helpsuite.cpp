@@ -55,6 +55,11 @@ void HelpSuite::BattleHelp() { HelpBattle* hb = new HelpBattle(); }
 /*!
  * @todo    FIXME: Needs desc
 */
+void HelpSuite::CipherHelp() { HelpCipher* hf = new HelpCipher(); }
+
+/*!
+ * @todo    FIXME: Needs desc
+*/
 void HelpSuite::ClockHelp() { HelpClock* hc = new HelpClock(); }
 
 /*!
@@ -70,12 +75,22 @@ void HelpSuite::ItemHelp() { HelpItem* hi = new HelpItem(); }
 /*!
  * @todo    FIXME: Needs desc
 */
+void HelpSuite::LexiconHelp() { HelpLexicon* hi = new HelpLexicon(); }
+
+/*!
+ * @todo    FIXME: Needs desc
+*/
 void HelpSuite::PlayerHelp() { HelpPlayer* hp = new HelpPlayer(); }
 
 /*!
  * @todo    FIXME: Needs desc
 */
 void HelpSuite::StageHelp() { HelpStage* hs = new HelpStage(); }
+
+/*!
+ * @todo    FIXME: Needs desc
+*/
+void HelpSuite::TestHelp() { HelpTest* ht = new HelpTest(); }
 
 /*!
  * @todo    FIXME: Needs desc
@@ -116,16 +131,18 @@ void print_help() {
   sprintf(buf, "\t [%d] - Actor details", i++); log->raw_log(buf);
   sprintf(buf, "\t [%d] - BalanceController details", i++); log->raw_log(buf);
   sprintf(buf, "\t [%d] - Battle details", i++); log->raw_log(buf);
+  sprintf(buf, "\t [%d] - Cipher details", i++); log->raw_log(buf);
   sprintf(buf, "\t [%d] - Clock details", i++); log->raw_log(buf);
   sprintf(buf, "\t [%d] - Combat details", i++); log->raw_log(buf);
   sprintf(buf, "\t [%d] - HelpSuit details", i++); log->raw_log(buf);
   sprintf(buf, "\t [%d] - Item details", i++); log->raw_log(buf);
-  sprintf(buf, "\t [%d] - Player details", i++); log->raw_log(buf);
-  sprintf(buf, "\t [%d] - StageManager details", i++); log->raw_log(buf);
+  sprintf(buf, "\t [%d] - Lexicon details", i++); log->raw_log(buf);
+  sprintf(buf, "\t[%d] - Player details", i++); log->raw_log(buf);
+  sprintf(buf, "\t[%d] - StageManager details", i++); log->raw_log(buf);
+  sprintf(buf, "\t[%d] - Testing details", i++); log->raw_log(buf);
   sprintf(buf, "\t[%d] - Toon details", i++); log->raw_log(buf);
   sprintf(buf, "\t[%d] - Utilz details", i++); log->raw_log(buf);
-  sprintf(buf, "\n");
-  log->raw_log(buf);
+  sprintf(buf, "\n"); log->raw_log(buf);
 }
 
 /*!
@@ -146,28 +163,37 @@ int main(int argc, char const *argv[]) {
     case 3: //! Display Battle Help Details
       hs.BattleHelp();
       break;
-    case 4: //! Display Clock Help Details
+    case 4: //! Display Cipher Help Details
+      hs.CipherHelp();
+      break;
+    case 5: //! Display Clock Help Details
       hs.ClockHelp();
       break;
-    case 5: //! Display Combat Help Details
+    case 6: //! Display Combat Help Details
       hs.CombatHelp();
       break;
-    case 6: //! Display HelpSuite Helper Details
+    case 7: //! Display HelpSuite Helper Details
       hs._help();
       break;
-    case 7: //! Display Item Help Details
+    case 8: //! Display Item Help Details
       hs.ItemHelp();
       break;
-    case 8: //! Display Player Help Details
+    case 9: //! Display Lexicon Help Details
+      hs.LexiconHelp();
+      break;
+    case 10: //! Display Player Help Details
       hs.PlayerHelp();
       break;
-    case 9: //! Display Stage Help Details
+    case 11: //! Display Stage Help Details
       hs.StageHelp();
       break;
-    case 10: //! Display Toon Help Details
+    case 12: //! Display Test Help Details
+      hs.TestHelp();
+      break;
+    case 13: //! Display Toon Help Details
       hs.ToonHelp();
       break;
-    case 11: //! Display Utilz Help Details
+    case 14: //! Display Utilz Help Details
       hs.UtilzHelp();
       break;
     default:

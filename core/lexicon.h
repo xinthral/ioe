@@ -49,6 +49,8 @@ public:
   */
   void setLexigraph(std::string);
 
+  void _help();
+
   /*!
    * @brief   Default Deconstructor
   */

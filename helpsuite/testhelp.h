@@ -2,26 +2,27 @@
 #define HELPTESTSUIT_H
 
 #include "basehelp.h"
+#include "../testsuite/testsuite.h"
 
 /*!
- * @class   HelpTesting testing.h testing.cpp
+ * @class   HelpTest testhelp.h testhelp.cpp
  * @brief   Help details about TestSuite Features of Engine 
  * @details Help details about the testing system used 
  *          to perform unit testing and it's functionality.
 */
-class HelpTesting : public BaseHelp {
+class HelpTest : public BaseHelp {
 protected:
 private:
 public:
   /*!
    * @brief   Default Constructor
   */
-  HelpTesting();
+  HelpTest();
 
   /*!
    * @brief   Default Deconstructor
   */
-  ~HelpTesting();
+  ~HelpTest();
 };
 
 #endif // HELPTESTSUIT_H //

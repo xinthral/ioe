@@ -1,4 +1,4 @@
-#include "testing.h"
+#include "testhelp.h"
 
 /*!
  * @def     __FILENAME__ 
@@ -9,9 +9,12 @@
 /*!
  * @brief   Default Constructor
 */
-HelpTesting::HelpTesting() { }
+HelpTest::HelpTest() {
+  TestSuite* ts = new TestSuite();
+  ts->_help();
+}
 
 /*!
  * @brief   Default Deconstructor
 */
-HelpTesting::~HelpTesting() { }
+HelpTest::~HelpTest() { }

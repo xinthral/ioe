@@ -31,6 +31,8 @@
 */
 class TestSuite {
 protected:
+  Logger* log;
+  char buf[32];
 private:
 public:
   /*!
@@ -114,6 +116,8 @@ public:
    * @brief   Initiates the Test for the Utilz Module
   */
   void CaseUtilz();
+
+  void _help();
 
   /*!
    * @brief   Default Deconstructor
