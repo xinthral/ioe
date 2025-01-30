@@ -90,11 +90,6 @@ void HelpSuite::StageHelp() { HelpStage* hs = new HelpStage(); }
 /*!
  * @todo    FIXME: Needs desc
 */
-void HelpSuite::TestHelp() { HelpTest* ht = new HelpTest(); }
-
-/*!
- * @todo    FIXME: Needs desc
-*/
 void HelpSuite::ToonHelp() { HelpToon* hs = new HelpToon(); }
 
 /*!
@@ -139,7 +134,6 @@ void print_help() {
   sprintf(buf, "\t [%d] - Lexicon details", i++); log->raw_log(buf);
   sprintf(buf, "\t[%d] - Player details", i++); log->raw_log(buf);
   sprintf(buf, "\t[%d] - StageManager details", i++); log->raw_log(buf);
-  sprintf(buf, "\t[%d] - Testing details", i++); log->raw_log(buf);
   sprintf(buf, "\t[%d] - Toon details", i++); log->raw_log(buf);
   sprintf(buf, "\t[%d] - Utilz details", i++); log->raw_log(buf);
   sprintf(buf, "\n"); log->raw_log(buf);
@@ -187,13 +181,10 @@ int main(int argc, char const *argv[]) {
     case 11: //! Display Stage Help Details
       hs.StageHelp();
       break;
-    case 12: //! Display Test Help Details
-      hs.TestHelp();
-      break;
-    case 13: //! Display Toon Help Details
+    case 12: //! Display Toon Help Details
       hs.ToonHelp();
       break;
-    case 14: //! Display Utilz Help Details
+    case 13: //! Display Utilz Help Details
       hs.UtilzHelp();
       break;
     default:

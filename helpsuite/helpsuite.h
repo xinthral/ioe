@@ -30,7 +30,6 @@
 #include "lexiconhelp.h"
 #include "playerhelp.h"
 #include "stagehelp.h"
-#include "testhelp.h"
 #include "toonhelp.h"
 #include "utilzhelp.h"
 
@@ -72,7 +71,6 @@ public:
   void LexiconHelp();
   void PlayerHelp();
   void StageHelp();
-  void TestHelp();
   void ToonHelp();
   void UtilzHelp();
 

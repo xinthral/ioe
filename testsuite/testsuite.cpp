@@ -142,10 +142,6 @@ void TestSuite::CaseToon() { TestToon* tt = new TestToon(); }
 */
 void TestSuite::CaseUtilz() { TestUtilz* tu = new TestUtilz(); }
 
-void TestSuite::_help() {
-  print_help();
-}
-
 /*!
  * @todo    Default Deconstructor
 */

@@ -117,8 +117,6 @@ public:
   */
   void CaseUtilz();
 
-  void _help();
-
   /*!
    * @brief   Default Deconstructor
   */

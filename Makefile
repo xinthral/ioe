@@ -34,7 +34,7 @@ endif
 CFLAGS = -g -Wno-format -Wno-sign-compare -Wno-uninitialized
 
 # Extended Compiler Options
-CXFLAGS = $(CFLAGS) -std=c++17
+CXFLAGS = $(CFLAGS) -std=c++20
 
 # Extra Compiler Options
 CXXFLAGS = $(CXFLAGS) -Wall -pedantic -O3
@@ -62,7 +62,7 @@ DOCS := doc
 DOCSSRC := $(patsubst $(DOCS)/%.cpp, $(DOCS)/%.o, $(wildcard $(DOCS)/*.cpp))
 
 MODULES := $(CORE) $(AUDI) $(CLIS) $(HELP) $(TEST)
-SOURCES := $(CORESRC) $(CLISSRC) $(AUDISRC) $(HELPSRC) $(TESTSRC) 
+SOURCES := $(CORESRC) $(CLISSRC) $(AUDISRC) $(HELPSRC) $(TESTSRC)
 
 # GNU Make Compilation Macros: 
 # https://stackoverflow.com/questions/3220277/what-do-the-makefile-symbols-and-mean#3220288
