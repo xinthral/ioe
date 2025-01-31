@@ -9,12 +9,13 @@ This game engine is nothing more than a passion project for me. My intentions ar
 ## Development Options: 
 * [Chocolatey](https://chocolatey.org) on Windows11. I prefer gnuMake and g++ over cmake and clang's c++, and chocolatey makes this convenient and seamless. 
 * [VSCode](https://code.visualstudio.com) Handles basically every language, great wealth of extensions and pluggability, plus you can use [vcpkg](https://stackoverflow.com/questions/68517231/vcpkg-install-in-vs-code) to point to the chocolatey libraries so the dev environment can read it.
+* [GNUPlot](http://www.gnuplot.info) GNUPlot is a plot system used to plot graphs based on datasets.
 
 ## Documentation in HTML format: 
 Using Doxygen document generation, you can make a library of web browsable documents detailing the entirety of the project.
 
 ```bash
-make doc
+make docs
 ```
 
 ### Core Engine, vrooom: 
