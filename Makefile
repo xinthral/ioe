@@ -48,6 +48,7 @@ CORESRC := $(patsubst $(CORE)/%.cpp, $(CORE)/%.o, $(wildcard $(CORE)/*.cpp))
 
 AUDI := audiosuite
 AUDISRC := $(patsubst $(AUDI)/%.cpp, $(AUDI)/%.o, $(wildcard $(AUDI)/*.cpp))
+AUDISRC += $(CORE)/audio.o $(CORE)/logger.o $(CORE)/config.o $(CORE)/utilz.o
 
 CLIS := clisuite
 CLISSRC := $(patsubst $(CLIS)/%.cpp, $(CLIS)/%.o, $(wildcard $(CLIS)/*.cpp))
@@ -89,7 +90,7 @@ all: $(MODULES)
 build: $(SOURCES)
 
 # Compile Audio
-$(AUDI): $(CORESRC) $(AUDISRC)
+$(AUDI): $(AUDISRC) core/audio.o
 	$(CC) $(CXFLAGS) -I/usr/include/python3.11 $^ -o $@.exe
 
 # Compile Engine
