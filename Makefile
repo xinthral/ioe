@@ -46,20 +46,19 @@ CXXFLAGS = $(CXFLAGS) -Wall -pedantic -O3
 CORE := core
 CORESRC := $(patsubst $(CORE)/%.cpp, $(CORE)/%.o, $(wildcard $(CORE)/*.cpp))
 
-CLIS := clisuite
-CLISSRC := $(patsubst $(CLIS)/%.cpp, $(CLIS)/%.o, $(wildcard $(CLIS)/*.cpp))
-
 AUDI := audiosuite
 AUDISRC := $(patsubst $(AUDI)/%.cpp, $(AUDI)/%.o, $(wildcard $(AUDI)/*.cpp))
 
-TEST := testsuite
-TESTSRC := $(patsubst $(TEST)/%.cpp, $(TEST)/%.o, $(wildcard $(TEST)/*.cpp))
+CLIS := clisuite
+CLISSRC := $(patsubst $(CLIS)/%.cpp, $(CLIS)/%.o, $(wildcard $(CLIS)/*.cpp))
+
+DOCS := docs
 
 HELP := helpsuite
 HELPSRC := $(patsubst $(HELP)/%.cpp, $(HELP)/%.o, $(wildcard $(HELP)/*.cpp))
 
-DOCS := doc
-DOCSSRC := $(patsubst $(DOCS)/%.cpp, $(DOCS)/%.o, $(wildcard $(DOCS)/*.cpp))
+TEST := testsuite
+TESTSRC := $(patsubst $(TEST)/%.cpp, $(TEST)/%.o, $(wildcard $(TEST)/*.cpp))
 
 MODULES := $(CORE) $(AUDI) $(CLIS) $(HELP) $(TEST)
 SOURCES := $(CORESRC) $(CLISSRC) $(AUDISRC) $(HELPSRC) $(TESTSRC)
@@ -126,6 +125,9 @@ clean:
 
 cleanaudio:
 	$(RRM) $(AUDI)$(SEPR)*.o
+	$(RM) $(DOCS)$(SEPR)out$(SEPR)*.txt
+	$(RM) $(DOCS)$(SEPR)out$(SEPR)*.png
+	$(RM) $(DOCS)$(SEPR)out$(SEPR)*.gp
 
 cleanbin:
 	$(RM) *.exe
