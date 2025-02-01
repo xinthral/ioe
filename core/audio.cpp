@@ -72,6 +72,13 @@ int AudioDriver::getNumChannels() {
   return header.numChannels;
 }
 
+void AudioDriver::_help() {
+  std::string helpline = "\nAudioDriver Help File"
+  "\n\nThis is a singleton object (https://www.geeksforgeeks.org/implementation-of-singleton-class-in-cpp/)"
+  "\n";
+  this->log->named_log(__FILENAME__, helpline);
+}
+
 /*!
  * @todo    Default Deconstructor
 */

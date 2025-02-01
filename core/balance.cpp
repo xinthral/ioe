@@ -107,8 +107,9 @@ std::string BalanceController::get_difficulty_str() {
  * @brief   Helper Hook used in CLI Help System
 */
 void BalanceController::_help() { 
-  std::string helpline = "\nBalanceController Helpline!\n"
-    "\n\tThe BalanceController is meant to be the module that rules them all. By forcing an interjection algorithm"
+  std::string helpline = "\nBalanceController Helpline!"
+    "\n\nThis is a singleton object (https://www.geeksforgeeks.org/implementation-of-singleton-class-in-cpp/)"
+    "\n\n\tThe BalanceController is meant to be the module that rules them all. By forcing an interjection algorithm"
     "\nI am introducing a slow down in calls but adding an immense amount of control over equivelancy test. Pretty"
     "\nproud of this over-engineered piece of code, because the customization should allow for rapid changes for live"
     "\ntweaking, consistant changes across base values, and if all goes right will allow easy integration for a learning"

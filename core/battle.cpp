@@ -55,8 +55,9 @@ void Battle::startPVP(Player *player1, Player *player2) {
  * @todo    Helper Hook used in CLI Help System
 */
 void Battle::_help() {
-  std::string helpline = "\nBattle Helpline!\n"
-    "\n\tThe Battle Module is attempting to handle battlefield logic. This will essentially handle upscaled Combat,"
+  std::string helpline = "\nBattle Helpline!"
+    "\n\nThis is a singleton object (https://www.geeksforgeeks.org/implementation-of-singleton-class-in-cpp/)"
+    "\n\n\tThe Battle Module is attempting to handle battlefield logic. This will essentially handle upscaled Combat,"
     "\nmaintaining the battlefield. I wanted Player V Player combat as well as Player V Toon, Toon V Toon, and any"
     "\ngroup Combat that is interrelated."
     "\n";

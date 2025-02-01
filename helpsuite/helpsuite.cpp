@@ -70,6 +70,11 @@ void HelpSuite::CombatHelp() { HelpCombat* hc = new HelpCombat(); }
 /*!
  * @todo    FIXME: Needs desc
 */
+void HelpSuite::ConfigHelp() { HelpConfig * hc = new HelpConfig(); }
+
+/*!
+ * @todo    FIXME: Needs desc
+*/
 void HelpSuite::ItemHelp() { HelpItem* hi = new HelpItem(); }
 
 /*!
@@ -129,6 +134,7 @@ void print_help() {
   sprintf(buf, "\t [%d] - Cipher details", i++); log->raw_log(buf);
   sprintf(buf, "\t [%d] - Clock details", i++); log->raw_log(buf);
   sprintf(buf, "\t [%d] - Combat details", i++); log->raw_log(buf);
+  sprintf(buf, "\t [%d] - Config details", i++); log->raw_log(buf);
   sprintf(buf, "\t [%d] - HelpSuit details", i++); log->raw_log(buf);
   sprintf(buf, "\t [%d] - Item details", i++); log->raw_log(buf);
   sprintf(buf, "\t [%d] - Lexicon details", i++); log->raw_log(buf);
@@ -166,25 +172,28 @@ int main(int argc, char const *argv[]) {
     case 6: //! Display Combat Help Details
       hs.CombatHelp();
       break;
-    case 7: //! Display HelpSuite Helper Details
+    case 7: //! Display Combat Help Details
+      hs.ConfigHelp();
+      break;
+    case 8: //! Display HelpSuite Helper Details
       hs._help();
       break;
-    case 8: //! Display Item Help Details
+    case 9: //! Display Item Help Details
       hs.ItemHelp();
       break;
-    case 9: //! Display Lexicon Help Details
+    case 10: //! Display Lexicon Help Details
       hs.LexiconHelp();
       break;
-    case 10: //! Display Player Help Details
+    case 11: //! Display Player Help Details
       hs.PlayerHelp();
       break;
-    case 11: //! Display Stage Help Details
+    case 12: //! Display Stage Help Details
       hs.StageHelp();
       break;
-    case 12: //! Display Toon Help Details
+    case 13: //! Display Toon Help Details
       hs.ToonHelp();
       break;
-    case 13: //! Display Utilz Help Details
+    case 14: //! Display Utilz Help Details
       hs.UtilzHelp();
       break;
     default:

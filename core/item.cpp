@@ -61,8 +61,8 @@ void Item::set_type(ItemType itemType) {
  * @todo    Helper Hook used in CLI Help System
 */
 void Item::_help() { 
-  std::string helpline = "\nItem Helpline!\n";
-  helpline += "\n";
+  std::string helpline = "\nItem Helpline!"
+  "\n";
   log->named_log(__FILENAME__, helpline);
 }
 

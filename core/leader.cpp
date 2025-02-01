@@ -33,8 +33,8 @@ LeaderBoard* LeaderBoard::GetInstance() {
  * @brief   Helper Hook used in CLI Help System
 */
 void LeaderBoard::_help() { 
-  std::string helpline = "\nLeaderBoard Helpline!\n";
-  helpline += "\n";
+  std::string helpline = "\nLeaderBoard Helpline!"
+  "\n";
   log->named_log(__FILENAME__, helpline);
 }
 

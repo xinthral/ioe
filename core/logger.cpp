@@ -73,9 +73,9 @@ void Logger::timed_log(std::string message) {
  * @todo    Helper Hook used in CLI Help System
 */
 void Logger::_help() {
-  std::string helpline = "\nLogger Helpline!\n";
-  helpline += "\n\tUnimplemented";
-  helpline += "\n";
+  std::string helpline = "\nLogger Helpline!"
+  "\n\n\tUnimplemented"
+  "\n";
   this->named_log(__FILENAME__, helpline);
 }
 

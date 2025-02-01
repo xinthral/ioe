@@ -52,7 +52,8 @@ int Lexicon::getLexigraphSize() {
 void Lexicon::setLexigraph(std::string lexigraph) { this->lexigraph = lexigraph; }
 
 void Lexicon::_help() {
-  std::string helpline = "\nLexicon Help File\n";
+  std::string helpline = "\nLexicon Help File"
+  "\n";
   this->log->named_log(__FILENAME__, helpline);
 }
 

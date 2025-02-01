@@ -9,7 +9,10 @@
 /*!
  * @todo    Default Constructor
 */
-HelpConfig::HelpConfig() { _cnf = ConfigManager::GetInstance(); _cnf->_help(); }
+HelpConfig::HelpConfig() { 
+  _cnf = ConfigManager::GetInstance(); 
+  _cnf->_help();
+}
 
 /*!
  * @todo    Default Deconstructor
