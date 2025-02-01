@@ -1,108 +1,130 @@
 #ifndef PROFILER_H
 #define PROFILER_H
 
-#include <iostream>
 #include <chrono>
+#include <iomanip>
+#include <iostream>
+#include <mutex>
+#include <regex>
 #include <string>
 #include <unordered_map>
 #include <vector>
-#include <iomanip>
-#include <mutex>
-
-// std::mutex memMutex;
-// size_t totalAllocated = 0;
-// size_t peakAllocated = 0;
-
-// void* operator new(size_t size) {
-//     std::lock_guard<std::mutex> lock(memMutex);
-//     totalAllocated += size;
-//     peakAllocated = std::max(peakAllocated, totalAllocated);
-//     std::cout << "Allocated: " << size << " bytes, Total: " << totalAllocated << " bytes\n";
-//     return malloc(size);
-// }
-
-// void operator delete(void* ptr, size_t size) noexcept {
-//     std::lock_guard<std::mutex> lock(memMutex);
-//     totalAllocated -= size;
-//     std::cout << "Freed: " << size << " bytes, Total: " << totalAllocated << " bytes\n";
-//     free(ptr);
-// }
-
 
 // Class for memory tracking
 class MemoryProfiler {
 private:
-    size_t currentMemoryUsage_;
-    size_t peakMemoryUsage_;
+  size_t currentMemoryUsage_;
+  size_t peakMemoryUsage_;
 
 public:
-    MemoryProfiler() : currentMemoryUsage_(0), peakMemoryUsage_(0) {}
+  /*!
+   * @brief   Constructor for the MemoryProfiler class.
+   *
+   * @details Initializes the current and peak memory usage to 0.
+   */
+  MemoryProfiler() : currentMemoryUsage_(0), peakMemoryUsage_(0) {}
 
-    // Track allocation and memory usage
-    void* allocate(size_t size) {
-        currentMemoryUsage_ += size;
-        if (currentMemoryUsage_ > peakMemoryUsage_) {
-            peakMemoryUsage_ = currentMemoryUsage_;
-        }
-        return malloc(size);
-    }
 
-    // Track deallocation and memory usage
-    void deallocate(void* ptr, size_t size) {
-        currentMemoryUsage_ -= size;
-        free(ptr);
-    }
+  /*!
+   * @brief   Allocates memory of the specified size and updates the current and peak memory usage.
+   *
+   * @details This function uses the malloc function to allocate memory of the given size. It also updates
+   *          the current memory usage by adding the specified size to it. If the current memory usage
+   *          exceeds the peak memory usage, the peak memory usage is updated accordingly.
+   *
+   * @param[in] size The size of the memory to be allocated.
+   * @return  A pointer to the allocated memory.
+  */
+  void* allocate(size_t);
 
-    size_t getCurrentMemoryUsage() const {
-        return currentMemoryUsage_;
-    }
+  /*!
+   * @brief   Deallocates memory previously allocated using the MemoryProfiler::allocate function.
+   *
+   * @details This function decreases the current memory usage by the given size and then frees the memory
+   *          pointed to by the provided pointer.
+   *
+   * @param[in] ptr   Pointer to the memory block to be deallocated.
+   * @param[in] size  Size of the memory block to be deallocated.
+   *
+   * @return void
+  */
+  void deallocate(void* ptr, size_t size);
 
-    size_t getPeakMemoryUsage() const {
-        return peakMemoryUsage_;
-    }
+  /*!
+   * @brief   Get the current memory usage tracked by the profiler.
+   *
+   * @details This function returns the current memory usage in bytes. The memory usage is tracked by
+   *          incrementing it whenever memory is allocated and decrementing it whenever memory is deallocated.
+   *
+   * @return  The current memory usage in bytes.
+  */
+  size_t getCurrentMemoryUsage() const;
+
+  /*!
+   * @brief   Get the peak memory usage tracked by the profiler.
+   *
+   * @details This function returns the maximum amount of memory (in bytes) that has been allocated
+   *          since the profiler was created or since the peak memory usage was last reset.
+   *
+   * @return  The peak memory usage in bytes.
+  */
+  size_t getPeakMemoryUsage() const;
 };
 
 class MemoryTracker {
-    size_t startAlloc;
-    size_t totalAllocated;
+  size_t startAlloc;
 public:
-    MemoryTracker() { startAlloc = totalAllocated; }
-    ~MemoryTracker() {
-        size_t endAlloc = totalAllocated;
-        std::cout << "Memory used by function: " << (endAlloc - startAlloc) << " bytes\n";
-    }
+  /*!
+   * @brief   Constructor for the MemoryTracker class.
+   *
+   * @details Initializes the startAlloc member variable with the current total allocated memory.
+   *          This value is used to track the memory usage of a specific function or block of code.
+  */
+  MemoryTracker();
+
+  /*!
+   * @brief   Destructor for MemoryTracker.
+   *
+   * @details This function calculates and prints the memory used by the function that created this MemoryTracker instance.
+   *          It does this by subtracting the startAlloc value from the totalAllocated value at the time of destruction.
+   *          The result is then printed to the console.
+   *
+   * @note    This destructor is automatically called when the MemoryTracker instance goes out of scope.
+  */
+  ~MemoryTracker();
 };
 
 // Profiler class for timing and memory profiling
 class Profiler {
 private:
-    std::string functionName_;
-    std::chrono::time_point<std::chrono::high_resolution_clock> startTime_;
-    MemoryProfiler memoryProfiler_; // Memory profiling for each function
-    size_t startMemory_;
+  std::string functionName_;
+  std::chrono::time_point<std::chrono::high_resolution_clock> startTime_;
+  MemoryProfiler memoryProfiler_; // Memory profiling for each function
+  size_t startMemory_;
 
-    struct ProfileData {
-        int calls = 0;
-        double totalTime = 0.0;
-        size_t maxMemoryUsage = 0;
-    };
+  struct ProfileData {
+    int calls = 0;
+    double totalTime = 0.0;
+    size_t maxMemoryUsage = 0;
+  };
 
-    static inline std::unordered_map<std::string, ProfileData> profileData_;
+  static inline std::unordered_map<std::string, ProfileData> profileData_;
 
-    static void logProfileData(const std::string&, double, size_t);
+  static void logProfileData(const std::string&, double, size_t);
 
 public:
-    // Constructor starts the timer and memory tracking
-    Profiler(const std::string& functionName);
+  // Constructor starts the timer and memory tracking
+  Profiler(const std::string& functionName);
 
-    // Destructor stops the timer and logs the duration and memory usage
-    ~Profiler();
+  // Function to display the profiling report
+  static void report();
 
-    // Function to display the profiling report
-    static void report();
+  // Destructor stops the timer and logs the duration and memory usage
+  ~Profiler();
 };
 
-// Macro to simplify usage
-#define PROFILE_FUNCTION() Profiler profiler(__FUNCTION__)
+// Macros to simplify usage
+#define PROFILE_FUNCTION() Profiler profiler(__PRETTY_FUNCTION__)
+#define PROFILE_FUNCTION_MEMORY() MemoryTracker memoryTracker;
 
-#endif // PROFILER_H
+#endif // PROFILER_H //

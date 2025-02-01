@@ -32,7 +32,6 @@ int xCiphers::getIndex(char letter) {
  *          in the lexigraph.
 */
 void xCiphers::generateMatrix(char code) {
-  PROFILE_FUNCTION();
   int startIdx = getIndex(code);
   int diff = 0;
   int lexSize = Lexicon::getLexigraphSize();
@@ -58,7 +57,6 @@ int xCiphers::getMatrixSize() { return outputMatrix.size(); }
  * @todo    
 */
 std::string xCiphers::encode(std::string input) {
-  PROFILE_FUNCTION();
   std::string output = "";
   int keyIdx = 0;
   for (int i = 0; i < input.size(); i++) {
@@ -78,7 +76,6 @@ std::string xCiphers::encode(std::string input) {
  * @todo    
 */
 std::string xCiphers::decode(std::string input) {
-  PROFILE_FUNCTION();
   std::string output = "";
   int keyIdx = 0;
   for(int i = 0; i < input.size(); i++) { 
@@ -123,7 +120,7 @@ void xCiphers::displayMatrix(bool blackOut) {
     tbuf = tchar;
     header += tbuf;
     printf("%s\n", header);
-    log->raw_log(header);
+    this->log->raw_log(header);
   }
 
   printf("%s\n", header);
@@ -133,8 +130,13 @@ void xCiphers::displayMatrix(bool blackOut) {
     sprintf(tchar, "%c", blackOut ? shadowStr[l] : matrixStr[l]);
     tbuf = tchar;
     printf("%s\n", header);
-    log->raw_log(tbuf);
+    this->log->raw_log(tbuf);
   }
+}
+
+void xCiphers::_help() {
+  std::string helpline = "\nCiphers Help File\n";
+  this->log->named_log(__FILENAME__, helpline);
 }
 
 /*!

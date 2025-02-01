@@ -31,6 +31,8 @@
 */
 class TestSuite {
 protected:
+  Logger* log;
+  char buf[32];
 private:
 public:
   /*!

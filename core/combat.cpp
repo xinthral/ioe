@@ -137,10 +137,14 @@ void Combat::injestCombatants(Actor* combatant1, Actor* combatant2) {
  * @todo    Helper Hook used in CLI Help System
 */
 void Combat::_help() {
-  std::string helpline = "\nCombat Helpline!\n";
-  helpline += "\n\tThis combat module got out of hand quickly and took an excessive amount of";
-  helpline += "\nover head to get it under control. Took a long break to let my brain digest.";
-  helpline += "\n";
+  std::string helpline = "\nCombat Helpline!\n"
+  "\n\tThis combat module got out of hand quickly and took an excessive amount of over"
+  "\nhead to get it under control. Took a long break to let my brain digest. Eventually,"
+  "\nI got my shit together and was able to strip the code and reprototype the combat."
+  "\n\tI envisioned this being used as a turn-based combat system, but allowing for Player"
+  "\nvs Player, Player vs NPC, and NPC vs NPC. This works in conjunction with the battle"
+  "\nsystem to provide multiple combatants."
+  "\n";
   log->named_log(__FILENAME__, helpline);
 }
 

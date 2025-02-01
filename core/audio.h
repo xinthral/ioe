@@ -63,6 +63,8 @@ public:
   */
   int getNumChannels();
 
+  void _help();
+
   /*!
    * @brief   Default Deconstructor
   */

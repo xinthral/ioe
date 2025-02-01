@@ -28,6 +28,7 @@ void TestConfig::test_all() {
  * @todo    Test All of Key-Value Mappings for Settings
 */
 void TestConfig::mapping() { 
+  PROFILE_FUNCTION();
   size_t initialSize = BaseCase::cnf->get_settingsSize();
   this->addConfig(); 
   this->remConfig(); 
@@ -41,6 +42,7 @@ void TestConfig::mapping() {
  * @todo    Add a new config 
 */
 void TestConfig::addConfig() {
+  PROFILE_FUNCTION();
   size_t initialSize = BaseCase::cnf->get_settingsSize();
   BaseCase::cnf->add_setting("test", "added");
   size_t finalSize = BaseCase::cnf->get_settingsSize();
@@ -53,6 +55,7 @@ void TestConfig::addConfig() {
  * @todo    Remove a config option
 */
 void TestConfig::remConfig() {
+  PROFILE_FUNCTION();
   size_t initialSize = BaseCase::cnf->get_settingsSize();
   BaseCase::cnf->rem_setting("test");
   size_t finalSize = BaseCase::cnf->get_settingsSize();
@@ -65,6 +68,7 @@ void TestConfig::remConfig() {
  * @todo    Evaluate return type for get_authorized_cli_commands()
 */
 void TestConfig::listOfCommands() {
+  PROFILE_FUNCTION();
   std::vector<std::string> commands;
   BaseCase::cnf->get_authorizedCommands(commands);
   assertm((commands.size() > 1), "ConfigManager failed to return the list of commands");

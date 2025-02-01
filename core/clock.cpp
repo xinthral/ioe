@@ -56,9 +56,14 @@ void xClock::doCycleWork() {
  * @todo    Helper Hook used in CLI Help System
 */
 void xClock::_help() {
-  std::string helpline = "\nClock Helpline!\n";
-  helpline += "\n\tThe Clock is meant to be the module that keeps them all in time.";
-  helpline += "\n";
+  std::string helpline = "\nClock Helpline!"
+  "\n\nThis is a singleton object (https://www.geeksforgeeks.org/implementation-of-singleton-class-in-cpp/)"
+  "\n\n\tThe Clock is meant to be the module that keeps them all in time. This is particularly"
+  "\nuseful in the areas of combat, and actions. The clock provides an immense amount of control"
+  "\nover these areas because the iterative step and delay between them is an established variable."
+  "\nThis could be iterated through manually for debugging or a unique gaming experience of time"
+  "\ndialation."
+  "\n";
   log->named_log(__FILENAME__, helpline);
 }
 

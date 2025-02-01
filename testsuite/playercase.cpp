@@ -22,13 +22,14 @@ TestPlayer::TestPlayer() : BaseCase(__FILENAME__) {
 */
 void TestPlayer::test_all() {
   test_isAlive();
-  test_isFighting();
+  // test_isFighting();
 }
 
 /*!
  * @todo    Test if Player Alive State holds
 */
 void TestPlayer::test_isAlive() {
+  PROFILE_FUNCTION();
   bool isAlive = dummy->isAlive();
   assertm(isAlive == true, "Is Not Alive");
   dummy->set_health_dead();
@@ -42,7 +43,9 @@ void TestPlayer::test_isAlive() {
 /*!
  * @todo    Test if Player Combat State holds
 */
-void TestPlayer::test_isFighting() { }
+void TestPlayer::test_isFighting() {
+  PROFILE_FUNCTION();
+}
 
 /*!
  * @todo    Default Deconstructor

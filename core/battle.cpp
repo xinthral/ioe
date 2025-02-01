@@ -14,9 +14,10 @@ std::mutex Battle::_mutex;
 /*! 
  * @brief   Default Constructor
 */
-Battle::Battle() { 
+Battle::Battle() {
   log = Logger::GetInstance();
   cycleCompletionTracker = 10;
+  cycleDelay = 500;
 }
 
 /*! 
@@ -31,7 +32,7 @@ Battle* Battle::GetInstance() {
 }
 
 void Battle::doCycleWork(bool &isPendingWork) {
-  std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+  // std::this_thread::sleep_for(std::chrono::milliseconds(cycleDelay));
   // this->log->named_log(__FILENAME__, "Battle Cycle Work");
   if (this->combat) { this->combat->cycleCombat(); }
   // if (cycleCompletionTracker--<1) { isPendingWork = false; this->combat = NULL; }
@@ -54,13 +55,13 @@ void Battle::startPVP(Player *player1, Player *player2) {
  * @todo    Helper Hook used in CLI Help System
 */
 void Battle::_help() {
-  std::string helpline = "\nBattle Helpline!\n";
-  helpline += "\t";
-  helpline += "The Battle Module is attempting to handle battlefield logic. This will essentially handle ";
-  helpline += "upscaled Combat, maintaining the battlefield. I wanted Player V Player combat as well as ";
-  helpline += "Player V Toon, Toon V Toon, and any group Combat that is interrelated.";
-  helpline += "\n";
-  log->named_log(__FILENAME__, helpline);
+  std::string helpline = "\nBattle Helpline!"
+    "\n\nThis is a singleton object (https://www.geeksforgeeks.org/implementation-of-singleton-class-in-cpp/)"
+    "\n\n\tThe Battle Module is attempting to handle battlefield logic. This will essentially handle upscaled Combat,"
+    "\nmaintaining the battlefield. I wanted Player V Player combat as well as Player V Toon, Toon V Toon, and any"
+    "\ngroup Combat that is interrelated."
+    "\n";
+  this->log->named_log(__FILENAME__, helpline);
 }
 
 /*! 

@@ -29,6 +29,7 @@ void TestLexicon::test_all() {
  * @todo    Validate the name generation feature
 */
 void TestLexicon::generateName(int len) {
+  PROFILE_FUNCTION();
   std::string response = lex->generateName(len);
   assertm(response.size() >= (2*len), "Name Responded with Insufficient Length");
   sprintf(buf, "%s [%s] %s (%s)", msgHead, "name generation", msgTail, response.c_str());
@@ -39,6 +40,7 @@ void TestLexicon::generateName(int len) {
  * @todo  Validate the Lexicon swap still holds true
 */
 void TestLexicon::lexigraphChangeSize() {
+  PROFILE_FUNCTION();
   lex->setLexigraph("1234567890ABCDEFGHIJKLMNOQRSTUVWXYZ");
   assertm(35 == lex->getLexigraphSize(), "New Lexigraph has mismatched Size");
   sprintf(buf, "%s [%s] %s (%d)", msgHead, "changing lexigraph", msgTail, lex->getLexigraphSize());

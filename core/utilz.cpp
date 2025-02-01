@@ -97,8 +97,8 @@ std::string Utilz::randomString(int length) {
  * @todo    Helper Hook used in CLI Help System
 */
 void Utilz::_help() {
-  std::string helpline = "\nUtilz Helpline!\n";
-  helpline += "\n";
+  std::string helpline = "\nUtilz Helpline!"
+  "\n";
   Logger::GetInstance()->named_log(__FILENAME__, helpline);
 }
 
