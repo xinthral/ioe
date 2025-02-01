@@ -45,10 +45,6 @@ Combat::Combat(Player* combatant1, Player* combatant2) : Combat() {
   injestCombatants(combatant1, combatant2);
 }
 
-bool Combat::inCombat() {
-  return (combatant1->isFighting() && combatant2->isFighting());
-}
-
 /*!
  * @todo   Checks combat state 
 */
