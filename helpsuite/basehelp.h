@@ -5,6 +5,7 @@
 #include "../core/audio.h"
 #include "../core/balance.h"
 #include "../core/battle.h"
+#include "../core/ciphers.h"
 #include "../core/clock.h"
 #include "../core/config.h"
 #include "../core/item.h"

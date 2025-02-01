@@ -34,7 +34,7 @@ endif
 CFLAGS = -g -Wno-format -Wno-sign-compare -Wno-uninitialized
 
 # Extended Compiler Options
-CXFLAGS = $(CFLAGS) -std=c++17
+CXFLAGS = $(CFLAGS) -std=c++20
 
 # Extra Compiler Options
 CXXFLAGS = $(CXFLAGS) -Wall -pedantic -O3
@@ -46,24 +46,23 @@ CXXFLAGS = $(CXFLAGS) -Wall -pedantic -O3
 CORE := core
 CORESRC := $(patsubst $(CORE)/%.cpp, $(CORE)/%.o, $(wildcard $(CORE)/*.cpp))
 
+AUDI := audiosuite
+AUDISRC := $(patsubst $(AUDI)/%.cpp, $(AUDI)/%.o, $(wildcard $(AUDI)/*.cpp))
+AUDISRC += $(CORE)/audio.o $(CORE)/logger.o $(CORE)/config.o $(CORE)/utilz.o
+
 CLIS := clisuite
 CLISSRC := $(patsubst $(CLIS)/%.cpp, $(CLIS)/%.o, $(wildcard $(CLIS)/*.cpp))
 
-AUDI := audiosuite
-AUDISRC := $(patsubst $(AUDI)/%.cpp, $(AUDI)/%.o, $(wildcard $(AUDI)/*.cpp))
-
-TEST := testsuite
-TESTSRC := $(patsubst $(TEST)/%.cpp, $(TEST)/%.o, $(wildcard $(TEST)/*.cpp))
+DOCS := docs
 
 HELP := helpsuite
 HELPSRC := $(patsubst $(HELP)/%.cpp, $(HELP)/%.o, $(wildcard $(HELP)/*.cpp))
 
-DOCS := doc
-DOCSSRC := $(patsubst $(DOCS)/%.cpp, $(DOCS)/%.o, $(wildcard $(DOCS)/*.cpp))
+TEST := testsuite
+TESTSRC := $(patsubst $(TEST)/%.cpp, $(TEST)/%.o, $(wildcard $(TEST)/*.cpp))
 
 MODULES := $(CORE) $(AUDI) $(CLIS) $(HELP) $(TEST)
-SOURCES := $(CORESRC) $(CLISSRC) $(AUDISRC) $(HELPSRC) $(TESTSRC) 
-CORESRC += testsuite/profiler.o
+SOURCES := $(CORESRC) $(CLISSRC) $(AUDISRC) $(HELPSRC) $(TESTSRC)
 
 # GNU Make Compilation Macros: 
 # https://stackoverflow.com/questions/3220277/what-do-the-makefile-symbols-and-mean#3220288
@@ -76,9 +75,9 @@ info:
 	@echo "##################################################################"
 	@echo "Build Information for the Isles of Eris engine"
 	@echo "Usage: make <str:option>"
-	@echo "  audiosuite - Compiles the audio engine into a binary"
 	@echo "  build      - Builds the entire project into object files"
 	@echo "  core       - Builds the core engine into object files"
+	@echo "  audiosuite - Compiles the audio engine into a binary"
 	@echo "  clisuite   - Compiles the core engine and the command line tool"
 	@echo "  helpsuite  - Compiles the help command line tool (developer details)"
 	@echo "  testsuite  - Compiles the test command line tool"
@@ -91,7 +90,7 @@ all: $(MODULES)
 build: $(SOURCES)
 
 # Compile Audio
-$(AUDI): $(CORESRC) $(AUDISRC)
+$(AUDI): $(AUDISRC) core/audio.o
 	$(CC) $(CXFLAGS) -I/usr/include/python3.11 $^ -o $@.exe
 
 # Compile Engine
@@ -127,6 +126,9 @@ clean:
 
 cleanaudio:
 	$(RRM) $(AUDI)$(SEPR)*.o
+	$(RM) $(DOCS)$(SEPR)out$(SEPR)*.txt
+	$(RM) $(DOCS)$(SEPR)out$(SEPR)*.png
+	$(RM) $(DOCS)$(SEPR)out$(SEPR)*.gp
 
 cleanbin:
 	$(RM) *.exe

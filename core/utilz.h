@@ -21,7 +21,7 @@ namespace Utilz {
    * @param[in] __FILE__ - the file extension
    * @return   A new string with the tld stripped.
   */
-  std::string FileName(const char *);
+  std::string FileName(const char*);
 
   /*!
    * @brief   Truncating method to strip away file extension 
@@ -29,7 +29,7 @@ namespace Utilz {
    * @param[in] __FILE__ - the file extension
    * @return   A new string containing a truncated Filename 
   */
-  std::string FileName(int, const char *);
+  std::string FileName(int,const char*);
 
   /*!
    * @brief   Formatted Timestamp for uniformity
@@ -44,7 +44,7 @@ namespace Utilz {
    * @param[in]   input - String to be parsed
    * @param[out] output - Vector of strings to put parsed words  
   */
-  void StringToArray(std::string, std::vector<std::string>&);
+  void StringToArray(std::string,std::vector<std::string>&);
 
   /*!
    * @brief   Truncates a string from the beginning of a string
@@ -52,7 +52,7 @@ namespace Utilz {
    * @param[in] message - String to be truncated
    * @return  A new string truncated from the front 
   */
-  std::string HeadString(int, std::string);
+  std::string HeadString(int,std::string);
 
   /*!
    * @brief   Truncates a string from the ending of a string
@@ -60,7 +60,7 @@ namespace Utilz {
    * @param[in] message - String to be truncated
    * @return  A new string truncated from the back
   */
-  std::string TailString(int, std::string);
+  std::string TailString(int,std::string);
 
   /*!
    * @brief   Removes whitespace from string
@@ -80,7 +80,7 @@ namespace Utilz {
 } // namespace Utilz
 
 extern "C" {
-  int addIt(int, int);
+  int addIt(int,int);
 }
 
 #endif // UTILZ_H //

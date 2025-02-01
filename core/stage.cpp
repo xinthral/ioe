@@ -42,7 +42,7 @@ std::string StageManager::get_name() { return this->name; }
  * @todo    StageManager Loads the Scene with Actors
  * @note    FIXME
 */
-void StageManager::casting_call(int size, std::vector<Toon*>& npcs) { 
+void StageManager::casting_call(int size, std::vector<Toon*>& npcs) {
   Toon* t;
   for (int i = 0; i < size; i++) {
     sprintf(buf, "Toon_%d", i);
@@ -56,8 +56,9 @@ void StageManager::casting_call(int size, std::vector<Toon*>& npcs) {
  * @todo    Helper Hook used in CLI Help System
 */
 void StageManager::_help() {
-  std::string helpline = "\nStageManager Helpline!\n";
-  helpline += "\n";
+  std::string helpline = "\nStageManager Helpline!"
+  "\n\nThis is a singleton object (https://www.geeksforgeeks.org/implementation-of-singleton-class-in-cpp/)"
+  "\n";
   log->named_log(__FILENAME__, helpline);
 }
 

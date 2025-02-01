@@ -10,7 +10,9 @@
 /*!
  * @todo    Default Constructor
 */
-AudioDriver::AudioDriver() { log = Logger::GetInstance(); }
+AudioDriver::AudioDriver() {
+  log = Logger::GetInstance();
+}
 
 /*!
  * @todo    Injest Wav File
@@ -19,7 +21,7 @@ void AudioDriver::readWavData(const std::string& filename) {
   std::ifstream file(filename, std::ios::binary);
 
   if (!file.is_open()) {
-    sprintf(buf, "Failed to open WAV file: %s", filename);
+    sprintf(buf, "Failed to open WAV file: %s", filename.c_str());
     //!//////// Should be Error
     log->named_log(__FILENAME__, buf);
     return;
@@ -68,6 +70,13 @@ int AudioDriver::getSampleRate() {
 */
 int AudioDriver::getNumChannels() {
   return header.numChannels;
+}
+
+void AudioDriver::_help() {
+  std::string helpline = "\nAudioDriver Help File"
+  "\n\nThis is a singleton object (https://www.geeksforgeeks.org/implementation-of-singleton-class-in-cpp/)"
+  "\n";
+  this->log->named_log(__FILENAME__, helpline);
 }
 
 /*!

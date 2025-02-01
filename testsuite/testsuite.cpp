@@ -7,10 +7,47 @@
 #define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
 
 /*!
+ * @brief   Static Function to display help details
+*/
+void print_help() { 
+  Logger* log = Logger::GetInstance();
+  char buf[32];
+  int idx = -1;
+  std::string fileName = Utilz::FileName(__FILENAME__);
+  sprintf(buf, "Usage: %s.exe [NUMBER]\n", fileName.c_str()); 
+  log->raw_log(buf);
+  log->raw_log("TestSuite CLI Tool\n");
+  log->raw_log("A testing system, to give the developer/debugger" \
+    " a quality-of-life option for hunting down all my stupid." \
+    " This can be used in conjuction with the HelpSuite in order to"\
+    " maximize the benefit of the CLI Debugging Suite.\n");
+  sprintf(buf, "\t[%d] - Threaded Test of Full Suite", idx); log->raw_log(buf);
+  sprintf(buf, "\t [%d] - Default Test to rule them all", ++idx); log->raw_log(buf);
+  sprintf(buf, "\t [%d] - Test Actor Module", ++idx); log->raw_log(buf);
+  sprintf(buf, "\t [%d] - Test Audio Module", ++idx); log->raw_log(buf);
+  sprintf(buf, "\t [%d] - Test BalanceController Module", ++idx); log->raw_log(buf);
+  sprintf(buf, "\t [%d] - Test Battle Module", ++idx); log->raw_log(buf);
+  sprintf(buf, "\t [%d] - Test Clock Module", ++idx); log->raw_log(buf);
+  sprintf(buf, "\t [%d] - Test Ciphers Module", ++idx); log->raw_log(buf);
+  sprintf(buf, "\t [%d] - Test Combat Module", ++idx); log->raw_log(buf);
+  sprintf(buf, "\t [%d] - Test ConfigManager Module", ++idx); log->raw_log(buf);
+  sprintf(buf, "\t [%d] - Test Item Module", ++idx); log->raw_log(buf);
+  sprintf(buf, "\t[%d] - Test LeaderBoard Module", ++idx); log->raw_log(buf);
+  sprintf(buf, "\t[%d] - Test Lexicon Module", ++idx); log->raw_log(buf);
+  sprintf(buf, "\t[%d] - Test Player Module", ++idx); log->raw_log(buf);
+  sprintf(buf, "\t[%d] - Test Stage Module", ++idx); log->raw_log(buf);
+  sprintf(buf, "\t[%d] - Test Toon Module", ++idx); log->raw_log(buf);
+  sprintf(buf, "\t[%d] - Test Utilz Module", ++idx); log->raw_log(buf);
+  log->raw_log("\n");
+  exit(0);
+}
+
+/*!
  * @todo    Default Constructor
 */
-TestSuite::TestSuite() { }
-
+TestSuite::TestSuite() {
+  log = Logger::GetInstance();
+}
 
 void TestSuite::TestAll() {
   this->CaseActor();
@@ -109,42 +146,6 @@ void TestSuite::CaseUtilz() { TestUtilz* tu = new TestUtilz(); }
  * @todo    Default Deconstructor
 */
 TestSuite::~TestSuite() { }
-
-/*!
- * @brief   Static Function to display help details
-*/
-void print_help() { 
-  Logger* log = Logger::GetInstance();
-  char buf[32];
-  int idx = -1;
-  std::string fileName = Utilz::FileName(__FILENAME__);
-  sprintf(buf, "Usage: %s.exe [NUMBER]\n", fileName.c_str()); 
-  log->raw_log(buf);
-  log->raw_log("TestSuite CLI Tool\n");
-  log->raw_log("A testing system, to give the developer/debugger" \
-    " a quality-of-life option for hunting down all my stupid." \
-    " This can be used in conjuction with the HelpSuite in order to"\
-    " maximize the benefit of the CLI Debugging Suite.\n");
-  sprintf(buf, "\t[%d] - Threaded Test of Full Suite", idx); log->raw_log(buf);
-  sprintf(buf, "\t [%d] - Default Test to rule them all", ++idx); log->raw_log(buf);
-  sprintf(buf, "\t [%d] - Test Actor Module", ++idx); log->raw_log(buf);
-  sprintf(buf, "\t [%d] - Test Audio Module", ++idx); log->raw_log(buf);
-  sprintf(buf, "\t [%d] - Test BalanceController Module", ++idx); log->raw_log(buf);
-  sprintf(buf, "\t [%d] - Test Battle Module", ++idx); log->raw_log(buf);
-  sprintf(buf, "\t [%d] - Test Clock Module", ++idx); log->raw_log(buf);
-  sprintf(buf, "\t [%d] - Test Ciphers Module", ++idx); log->raw_log(buf);
-  sprintf(buf, "\t [%d] - Test Combat Module", ++idx); log->raw_log(buf);
-  sprintf(buf, "\t [%d] - Test ConfigManager Module", ++idx); log->raw_log(buf);
-  sprintf(buf, "\t [%d] - Test Item Module", ++idx); log->raw_log(buf);
-  sprintf(buf, "\t[%d] - Test LeaderBoard Module", ++idx); log->raw_log(buf);
-  sprintf(buf, "\t[%d] - Test Lexicon Module", ++idx); log->raw_log(buf);
-  sprintf(buf, "\t[%d] - Test Player Module", ++idx); log->raw_log(buf);
-  sprintf(buf, "\t[%d] - Test Stage Module", ++idx); log->raw_log(buf);
-  sprintf(buf, "\t[%d] - Test Toon Module", ++idx); log->raw_log(buf);
-  sprintf(buf, "\t[%d] - Test Utilz Module", ++idx); log->raw_log(buf);
-  log->raw_log("\n");
-  exit(0);
-}
 
 /*!
  * @brief   Module Entry Point

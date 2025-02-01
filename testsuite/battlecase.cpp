@@ -34,6 +34,7 @@ void TestBattle::test_all() {
  * @todo    EVE Combat test on level 1 combatants
 */
 void TestBattle::level1_eve() {
+  PROFILE_FUNCTION();
   bool pendingWork = true;
   this->toon1 = new Toon("Toon1");
   this->toon2 = new Toon("Toon2");
@@ -54,6 +55,7 @@ void TestBattle::level1_eve() {
  * @todo    PVE Combat test on level 1 combatants
 */
 void TestBattle::level1_pve() {
+  PROFILE_FUNCTION();
   bool pendingWork = true;
   this->player1 = new Player();
   this->toon1 = new Toon("Toon1");
@@ -74,6 +76,7 @@ void TestBattle::level1_pve() {
  * @todo    PVP Combat test on level 1 combatants
 */
 void TestBattle::level1_pvp() {
+  PROFILE_FUNCTION();
   bool pendingWork = true;
   this->player1 = new Player("Player1", 1);
   this->player2 = new Player("Player2", 1);
@@ -94,6 +97,7 @@ void TestBattle::level1_pvp() {
  * @todo    PVP Combat test on level 80 combatants
 */
 void TestBattle::level80_eve() {
+  PROFILE_FUNCTION();
   bool pendingWork = true;
   this->toon1 = new Toon("Toon1", 80);
   this->toon2 = new Toon("Toon2", 80);
@@ -111,6 +115,7 @@ void TestBattle::level80_eve() {
  * @todo    PVP Combat test on level 80 combatants
 */
 void TestBattle::level80_pve() {
+  PROFILE_FUNCTION();
   bool pendingWork = true;
   this->toon1 = new Toon("Toon1", 80);
   this->player1 = new Player("Player1", 80);
@@ -128,6 +133,7 @@ void TestBattle::level80_pve() {
  * @todo    PVP Combat test on level 80 combatants
 */
 void TestBattle::level80_pvp() {
+  PROFILE_FUNCTION();
   bool pendingWork = true;
   this->player1 = new Player("PLAYER1", 80);
   this->player2 = new Player("PLAYER2", 80);

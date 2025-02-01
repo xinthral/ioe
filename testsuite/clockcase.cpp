@@ -28,6 +28,7 @@ void TestClock::test_all() {
  * @todo    Confirm Cycle ends in valid state
 */
 void TestClock::doCycleWork() {
+  PROFILE_FUNCTION();
   // Setup Combat
   Player* p = new Player();
   Toon* t = new Toon();

@@ -28,7 +28,7 @@ Toon::Toon(std::string name) : Toon(-1, name) { }
 /*!
  * @todo    Constructor Initializor
 */
-Toon::Toon(int id, std::string name) { 
+Toon::Toon(int id, std::string name) {
   this->set_id(id);
   this->set_name(name);
 }
@@ -67,8 +67,8 @@ Toon::Toon(std::string name, int level) : Toon(name) {
  * @todo    Helper Hook used in CLI Help System
 */
 void Toon::_help() {
-  std::string helpline = "\nToon Helpline!\n";
-  helpline += "\n";
+  std::string helpline = "\nToon Helpline!"
+  "\n";
   log->named_log(__FILENAME__, helpline);
 }
 

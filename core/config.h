@@ -14,7 +14,6 @@
 //! External Varables
 extern std::string _CNF_;
 
-
 /*!
  * @class   ConfigManager config.h config.cpp
  * @brief   ConfigManager manages configuration loading and updating throughout the engine.
@@ -70,7 +69,7 @@ public:
    * @param[in] value  - The data value associated with the key
    * @return  Returns current config queue size 
   */
-  size_t add_setting(const std::string&, const std::string&);
+  size_t add_setting(const std::string&,const std::string&);
 
   /*!
    * @brief   Remove Setting from injested list
