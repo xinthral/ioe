@@ -20,6 +20,7 @@
 #include "stagecase.h"
 #include "tooncase.h"
 #include "utilzcase.h"
+#include "weaponcase.h"
 
 /*!
  * @class   TestSuite testsuite.h testsuite.cpp
@@ -48,7 +49,7 @@ public:
   void CaseActor();
 
   /*!
-   * @brief   Initiates the Test for the Actor Module
+   * @brief   Initiates the Test for the Audio Module
   */
   void CaseAudio();
 
@@ -116,6 +117,11 @@ public:
    * @brief   Initiates the Test for the Utilz Module
   */
   void CaseUtilz();
+
+  /*!
+   * @brief   Initiates the Test for the Weapon Module
+  */
+  void CaseWeapon();
 
   /*!
    * @brief   Default Deconstructor

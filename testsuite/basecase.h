@@ -21,6 +21,7 @@
 #include "../core/stage.h"
 #include "../core/toon.h"
 #include "../core/utilz.h"
+#include "../core/weapon.h"
 
 //! Compiler/Linter hint
 #define assertm(exp, msg) assert(((void)msg, exp))

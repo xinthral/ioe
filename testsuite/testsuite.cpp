@@ -38,6 +38,7 @@ void print_help() {
   sprintf(buf, "\t[%d] - Test Stage Module", ++idx); log->raw_log(buf);
   sprintf(buf, "\t[%d] - Test Toon Module", ++idx); log->raw_log(buf);
   sprintf(buf, "\t[%d] - Test Utilz Module", ++idx); log->raw_log(buf);
+  sprintf(buf, "\t[%d] - Test Weapon Module", ++idx); log->raw_log(buf);
   log->raw_log("\n");
   exit(0);
 }
@@ -65,6 +66,7 @@ void TestSuite::TestAll() {
   this->CaseStage();
   this->CaseToon();
   this->CaseUtilz();
+  this->CaseWeapon();
 }
 
 /*!
@@ -141,6 +143,11 @@ void TestSuite::CaseToon() { TestToon* tt = new TestToon(); }
  * @todo    Initiates the Test for the Utilz Module
 */
 void TestSuite::CaseUtilz() { TestUtilz* tu = new TestUtilz(); }
+
+/*!
+ * @todo    Initiates the Test for the Utilz Module
+*/
+void TestSuite::CaseWeapon() { TestWeapon* tw = new TestWeapon(); }
 
 /*!
  * @todo    Default Deconstructor
@@ -261,6 +268,10 @@ int main(int argc, char const *argv[]) {
     case 15:
       sprintf(buf, "Utilz TestCase Completed...");
       ts.CaseUtilz();
+      break;
+    case 16:
+      sprintf(buf, "Weapon TestCase Completed...");
+      ts.CaseWeapon();
       break;
     default:
       sprintf(buf, "\nWarn :: Unknown Test, please review the list and try again.\n");
