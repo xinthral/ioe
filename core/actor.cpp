@@ -36,14 +36,9 @@ Actor::Actor() {
 Actor::Actor(std::string name) : Actor() { this->name = name; }
 
 /*!
- * @note    Conditional Combat Check 
+ * @note    Return Attack Attribute
 */
-bool Actor::isFighting() { return (this->aiState == FIGHT); }
-
-/*!
- * @note    Conditional Health Check 
-*/
-bool Actor::isAlive() { return (this->condition != DEAD); }
+int Actor::get_attack() { return this->attack; }
 
 /*!
  * @note    Return Attack Attribute
@@ -51,34 +46,29 @@ bool Actor::isAlive() { return (this->condition != DEAD); }
 int Actor::get_baseAttack() { return this->baseAttack; }
 
 /*!
- * @note    Return Attack Attribute
-*/
-int Actor::get_attack() { return this->attack; }
-
-/*!
- * @note
-*/
-void Actor::set_attack(int input) { this->attack = input; }
-
-/*!
  * @note    Return Defense Attribute
 */
 int Actor::get_baseDefense() { return this->baseDefense; }
 
 /*!
- * @note    Return Defense Attribute
-*/
-int Actor::get_defense() { return this->defense; }
-
-/*!
- * @note    
-*/
-void Actor::set_defense(int input) { this->defense = input; }
-
-/*!
  * @note    Return Flux Attribute
 */
 int Actor::get_baseFlux() { return this->baseFlux; }
+
+/*!
+ * @note    Return Health Attribute
+*/
+int Actor::get_baseHealth() { return this->baseHealth; }
+
+/*!
+ * @note    Return Combat State 
+*/
+CombatState Actor::get_combatstate() { return this->aiState; }
+
+/*!
+ * @note    Return Defense Attribute
+*/
+int Actor::get_defense() { return this->defense; }
 
 /*!
  * @note    Return Flux Attribute
@@ -88,17 +78,12 @@ int Actor::get_flux() { return this->flux; }
 /*!
  * @note    Return Health Attribute
 */
-int Actor::get_baseHealth() { return this->baseHealth; }
-
-/*!
- * @note    Return Health Attribute
-*/
 int Actor::get_health() { return this->health; }
 
 /*!
- * @note    
+ * @note    Return Health State
 */
-void Actor::set_health(int input) { this->health = input; }
+HealthState Actor::get_healthstate() { return this->condition; }
 
 /*!
  * @note    Return ID Attribute
@@ -116,40 +101,56 @@ int Actor::get_level() { return this->level; }
 std::string Actor::get_name() { return this->name; }
 
 /*!
- * @note    ReAssign Actor Flux Value
+ * @note    Conditional Combat Check 
 */
-void Actor::set_flux(int flux) { this->baseFlux = flux; }
+bool Actor::isFighting() { return (this->aiState == FIGHT); }
 
 /*!
- * @note    ReAssign Actor ID number
+ * @note    Conditional Health Check 
 */
-void Actor::set_id(int id) { this->id = id; }
-
-/*!
- * @note    ReAssign Actor Level
-*/
-void Actor::set_level(int level) { this->level = level; }
-
-/*!
- * @note    ReAssign Actor Name
-*/
-void Actor::set_name(std::string name) { this->name = name; }
-
-/*!
- * @note    Return Combat State 
-*/
-CombatState Actor::get_combatstate() { return this->aiState; }
-
-/*!
- * @note    ReAssign Combat State
-*/
-void Actor::set_combatstate(CombatState state) { this->aiState = state; }
+bool Actor::isAlive() { return (this->condition != DEAD); }
 
 /*!
  * @note    Meant to be overwritten by inhereted class
  *          including multiplier and reducers
 */
 int Actor::output_damage() { return this->attack; }
+
+/*!
+ * @note    Meant to be overwritten by inhereted class
+ *          including multiplier and reducers
+*/
+int Actor::receive_damage(int damage) {
+  int new_value = damage;
+  if (this->defense < damage) { new_value = damage * (damage / this->defense); }
+  this->health -= new_value;
+  return new_value;
+}
+
+/*!
+ * @note
+*/
+void Actor::set_attack(int input) { this->attack = input; }
+
+/*!
+ * @note    
+*/
+void Actor::set_defense(int input) { this->defense = input; }
+
+/*!
+ * @note    ReAssign Actor Flux Value
+*/
+void Actor::set_flux(int flux) { this->baseFlux = flux; }
+
+/*!
+ * @note    
+*/
+void Actor::set_health(int input) { this->health = input; }
+
+/*!
+ * @note    ReAssign Combat State
+*/
+void Actor::set_combatstate(CombatState state) { this->aiState = state; }
 
 /*!
  * @note    Set Combat State to Idling
@@ -177,24 +178,21 @@ void Actor::set_combat_flee() { this->set_combatstate(FLEE); }
 void Actor::set_combat_follow() { this->set_combatstate(FOLLOW); }
 
 /*!
- * @note    Return Health State
-*/
-HealthState Actor::get_healthstate() { return this->condition; }
-
-/*!
  * @note    ReAssign Health State
 */
 void Actor::set_healthstate(HealthState state) { this->condition = state; }
 
 /*!
- * @note    Meant to be overwritten by inhereted class
- *          including multiplier and reducers
+ * @note    Set Health State to Critical 
 */
-int Actor::receive_damage(int damage) {
-  int new_value = damage;
-  if (this->defense < damage) { new_value = damage * (damage / this->defense); }
-  this->health -= new_value;
-  return new_value;
+void Actor::set_health_critical() { this->set_healthstate(CRITICAL); }
+
+/*!
+ * @note    Set Health State to Dead 
+*/
+void Actor::set_health_dead() { 
+  this->set_healthstate(DEAD);
+  this->set_combatstate(IDLE);
 }
 
 /*!
@@ -208,22 +206,24 @@ void Actor::set_health_healthy() { this->set_healthstate(HEALTHY); }
 void Actor::set_health_hurting() { this->set_healthstate(HURTING); }
 
 /*!
- * @note    Set Health State to Critical 
-*/
-void Actor::set_health_critical() { this->set_healthstate(CRITICAL); }
-
-/*!
  * @note    Set Health State to Sick 
 */
 void Actor::set_health_sick() { this->set_healthstate(SICK); }
 
 /*!
- * @note    Set Health State to Dead 
+ * @note    ReAssign Actor ID number
 */
-void Actor::set_health_dead() { 
-  this->set_healthstate(DEAD);
-  this->set_combatstate(IDLE);
-}
+void Actor::set_id(int id) { this->id = id; }
+
+/*!
+ * @note    ReAssign Actor Level
+*/
+void Actor::set_level(int level) { this->level = level; }
+
+/*!
+ * @note    ReAssign Actor Name
+*/
+void Actor::set_name(std::string name) { this->name = name; }
 
 /*!
  * @note    Helper Hook used in CLI Help System
