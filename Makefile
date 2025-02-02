@@ -90,33 +90,37 @@ all: $(MODULES)
 build: $(SOURCES)
 
 # Compile Audio
-$(AUDI): $(AUDISRC) core/audio.o
-	$(CC) $(CXFLAGS) -I/usr/include/python3.11 $^ -o $@.exe
+$(AUDI).exe: $(AUDISRC) core/audio.o
+	$(CC) $(CXFLAGS) -I/usr/include/python3.11 $^ -o $@
+$(AUDI): $(AUDI).exe
 
 # Compile Engine
 $(CORE): $(CORESRC) 
 
 # Compile CLISuite
-$(CLIS): $(CORESRC) $(CLISSRC)
-	$(CC) $(CXFLAGS) $^ -o $@.exe
+$(CLIS).exe: $(CORESRC) $(CLISSRC)
+	$(CC) $(CXFLAGS) $^ -o $@
+$(CLIS): $(CLIS).exe
 
 # Compile HelpSuite
-$(HELP): $(CORESRC) $(HELPSRC)
-	$(CC) $(CXFLAGS) $^ -o $@.exe
+$(HELP).exe: $(CORESRC) $(HELPSRC)
+	$(CC) $(CXFLAGS) $^ -o $@
+$(HELP): $(HELP).exe
 
 # Compile TestSuite
-$(TEST): $(CORESRC) $(TESTSRC)
-	$(CC) $(CXFLAGS) $^ -o $@.exe
+$(TEST).exe: $(CORESRC) $(TESTSRC)
+	$(CC) $(CXFLAGS) $^ -o $@
+$(TEST): $(TEST).exe
 
 # Compile Documents 
 $(DOCS): docs/conf.dox
 	$(DOXYGEN) $<
 
+# Dynamically Compile any object file requested
 %.o: %.cpp %.h
 	$(CC) $(CXFLAGS) -c $< -o $@
 
-
-# $(RRM) $(foreach d, $(MODULES),$d\\*.o $d\\*.so $d\\*.wasm) 2>&1 >/dev/null
+# Clean up Object Files
 clean:
 	$(MAKE) cleanaudio
 	$(MAKE)	cleancli
@@ -124,12 +128,14 @@ clean:
 	$(MAKE) cleanhelp
 	$(MAKE) cleantest
 
+# Clean up audiosuite and graph data
 cleanaudio:
 	$(RRM) $(AUDI)$(SEPR)*.o
 	$(RM) $(DOCS)$(SEPR)out$(SEPR)*.txt
 	$(RM) $(DOCS)$(SEPR)out$(SEPR)*.png
 	$(RM) $(DOCS)$(SEPR)out$(SEPR)*.gp
 
+# Clean up binary files
 cleanbin:
 	$(RM) *.exe
 
