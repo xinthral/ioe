@@ -36,10 +36,11 @@ private:
   std::unordered_map<
     std::string, std::string
   > settings;                                     //!< Lookup Map for Settings by Key,Value
-  std::string             delim = "=";            //!< Delimer seperating Key and Value
   static ConfigManager*   _singleton;             //!< Singleton Instance
   static std::mutex       _mutex;                 //!< Lock Mutex
-  char                   buf[1024];               //!< Buffer Value for Logger outputs
+  std::string             delim = "=";            //!< Delimer seperating Key and Value
+  char                    buf[1024];              //!< Buffer Value for Logger outputs
+  bool                    _debug;                 //!< Display debugger information and profiling data
 
 public:
   ConfigManager(ConfigManager&) = delete;         //!< Singletons should not be cloneable
@@ -51,20 +52,6 @@ public:
   static ConfigManager* GetInstance();              
 
   /*!
-   * @brief   Reads in Config File and Parses Options
-   * @param[in] _debug - Debugging Option
-   * @return  Confirmation that all values were loaded
-  */
-  bool load_config(bool);
-
-  /*!
-   * @brief   Reload Settings
-   * @details Forces a reload of the injested settings list,
-   *          and outputs the configs to the logs.
-  */
-  void reload_state();
-
-  /*!
    * @brief   Injest Setting into struct, and return struct size.
    * @param[in] option - The Key value for lookup
    * @param[in] value  - The data value associated with the key
@@ -73,18 +60,16 @@ public:
   size_t add_setting(const std::string&,const std::string&);
 
   /*!
-   * @brief   Remove Setting from injested list
-   * @param[in] option - The name of the Configuration Option 
-   * @return  Current Size of Settings List
+   * @brief   Helper Function: Debug Details
+   * @return  Return on debugging state
   */
-  size_t rem_setting(const std::string&);
+  bool debugEnabled();
 
   /*!
-   * @brief   Return the Value of a Configuration Option 
-   * @param[in] option - The name of the Configuration Option
-   * @return  The value related to input key
+   * @brief   Helper Function: Attack 
+   * @return  Return base attack value 
   */
-  std::string raw_config(const std::string&);
+  int get_attack();
 
   /*!
    * @brief   Return the list of authorized commands for the 
@@ -92,12 +77,6 @@ public:
    * @param[out] option - A string array to recieve the commands
   */
   void get_authorizedCommands(std::vector<std::string>&);
-
-  /*!
-   * @brief   Helper Function: Attack 
-   * @return  Return base attack value 
-  */
-  int get_attack();
 
   /*!
    * @brief   Helper Function: Base Scalar
@@ -140,6 +119,34 @@ public:
    * @return  Return game version
   */
   std::string get_version();
+
+  /*!
+   * @brief   Reads in Config File and Parses Options
+   * @param[in] _debug - Debugging Option
+   * @return  Confirmation that all values were loaded
+  */
+  bool load_config(bool);
+
+  /*!
+   * @brief   Return the Value of a Configuration Option 
+   * @param[in] option - The name of the Configuration Option
+   * @return  The value related to input key
+  */
+  std::string raw_config(const std::string&);
+
+  /*!
+   * @brief   Reload Settings
+   * @details Forces a reload of the injested settings list,
+   *          and outputs the configs to the logs.
+  */
+  void reload_state();
+
+  /*!
+   * @brief   Remove Setting from injested list
+   * @param[in] option - The name of the Configuration Option 
+   * @return  Current Size of Settings List
+  */
+  size_t rem_setting(const std::string&);
 
   /*!
    * @brief   Helper Hook used in CLI Help System

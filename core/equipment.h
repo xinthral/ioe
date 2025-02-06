@@ -15,6 +15,7 @@ private:
 
 public:
   Equipment();
+  Equipment(const char *);
   /*!
    * @brief   Get the damage multiplier of the equipment.
    * @details This function returns the damage multiplier of the equipment.

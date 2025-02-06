@@ -1,9 +1,9 @@
 #ifndef XWEAPON_H
 #define XWEAPON_H
 
-#include "item.h"
+#include "equipment.h"
 
-class Weapon : public Item {
+class Weapon : public Equipment {
 private:
 public:
   Weapon();

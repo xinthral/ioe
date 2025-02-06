@@ -6,6 +6,7 @@
 */
 #define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
 
+Equipment::Equipment(const char *itemType) : Item(itemType) {}
 Equipment::Equipment() {}
 
 /*!
