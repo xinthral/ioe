@@ -121,6 +121,7 @@ int Actor::output_damage() { return this->attack; }
  *          including multiplier and reducers
 */
 int Actor::receive_damage(int damage) {
+  if (this->cnf->debugEnabled()) { PROFILE_FUNCTION(); }
   int new_value = damage;
   if (this->defense < damage) { new_value = damage * (damage / this->defense); }
   this->health -= new_value;

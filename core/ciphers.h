@@ -1,6 +1,7 @@
 #ifndef XCIPHERS_H
 #define XCIPHERS_H
 
+#include "config.h"
 #include "lexicon.h"
 
 /*!
@@ -22,6 +23,7 @@ protected:
   */
   int getIndex(char);
 private:
+  ConfigManager* cnf;
   std::vector<std::string> shadowMatrix;
   std::vector<std::string> outputMatrix;
   const char *keyArray;

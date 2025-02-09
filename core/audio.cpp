@@ -18,6 +18,7 @@ AudioDriver::AudioDriver() {
  * @todo    Injest Wav File
 */
 void AudioDriver::readWavData(const std::string& filename) {
+  if (this->cnf->debugEnabled()) { PROFILE_FUNCTION(); }
   std::ifstream file(filename, std::ios::binary);
 
   if (!file.is_open()) {

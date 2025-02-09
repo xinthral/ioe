@@ -11,6 +11,7 @@
 #include <vector>
 #include "logger.h"
 #include "utilz.h"
+#include "../testsuite/profiler.h"
 
 //! External Varables
 extern std::string _CNF_;
@@ -147,6 +148,8 @@ public:
    * @return  Current Size of Settings List
   */
   size_t rem_setting(const std::string&);
+
+  bool toggleDebug();
 
   /*!
    * @brief   Helper Hook used in CLI Help System

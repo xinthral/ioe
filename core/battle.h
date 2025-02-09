@@ -3,6 +3,7 @@
 
 #include <mutex>
 #include "combat.h"
+#include "config.h"
 #include "player.h"
 #include "toon.h"
 
@@ -19,6 +20,7 @@ private:
   Battle();
 
   Combat*           combat;                 //!< Combat Handler
+  ConfigManager*    cnf;                    //!< Configuration Manager
   Logger*           log;                    //!< Logging Handler Instantiation
   static Battle*    _singleton;             //!< Singleton Instance
   static std::mutex _mutex;                 //!< Lock Mutex

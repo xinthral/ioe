@@ -144,6 +144,13 @@ size_t ConfigManager::rem_setting(const std::string& option) {
   return this->settings.size();
 }
 
+bool ConfigManager::toggleDebug() {
+  if (this->_debug) {
+    this->_debug = false;
+  } else { this->_debug = true; }
+  return this->_debug;
+}
+
 /*!
  * @todo    Helper Hook used in CLI Help System
 */

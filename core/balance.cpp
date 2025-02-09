@@ -18,13 +18,14 @@ BalanceController::BalanceController() {
   //! Load Configurations Objects
   cnf  = ConfigManager::GetInstance();
   log  = Logger::GetInstance();
-  base = cnf->get_base();
   log->named_log(__FILENAME__, "BalanceController Loaded!");
+  base = this->cnf->get_base();
+  if (this->cnf->debugEnabled()) { PROFILE_FUNCTION(); }
 
   //! Conditional Check: Confirm Range
   int difficulty = cnf->get_difficulty();
   if (difficulty < 0 || difficulty > 5) {
-    sprintf(buf, "level %d. Please Enter a value between 0 and 5\n", difficulty);
+    sprintf(buf, "level %d. Please Enter an integer from 0 to 5, inclusively.\n", difficulty);
     log->timed_log(buf);
     log->raw_log(": Instatiating Balance Controller with invalid difficulty\n");
     exit(-1);
@@ -57,6 +58,7 @@ BalanceController* BalanceController::GetInstance() {
  * @note    y = δ^(χ/[π^π])
 */
 double BalanceController::scalar(int level) {
+  if (this->cnf->debugEnabled()) { PROFILE_FUNCTION(); }
   double x = level * 1.0;
   return pow(base, (x / pow(M_PI, M_PI)));
 }
@@ -65,6 +67,7 @@ double BalanceController::scalar(int level) {
  * @todo    Display the current state of the base game attributes
 */
 void BalanceController::display_state() {
+  if (this->cnf->debugEnabled()) { PROFILE_FUNCTION(); }
   double scl = 0.0;
   int spn = this->span;
   int attack = this->atk;

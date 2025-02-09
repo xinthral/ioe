@@ -4,6 +4,7 @@
  * @todo    Default Constructor
 */
 xCiphers::xCiphers() {
+  cnf = ConfigManager::GetInstance();
   rows = lexigraph.size();
   cols = lexigraph.size();
   keySize = (int)sizeof(keyArray) / sizeof(keyArray[0]);
@@ -32,6 +33,7 @@ int xCiphers::getIndex(char letter) {
  *          in the lexigraph.
 */
 void xCiphers::generateMatrix(char code) {
+  if (this->cnf->debugEnabled()) { PROFILE_FUNCTION(); }
   int startIdx = getIndex(code);
   int diff = 0;
   int lexSize = Lexicon::getLexigraphSize();
@@ -57,6 +59,7 @@ int xCiphers::getMatrixSize() { return outputMatrix.size(); }
  * @todo    
 */
 std::string xCiphers::encode(std::string input) {
+  if (this->cnf->debugEnabled()) { PROFILE_FUNCTION(); }
   std::string output = "";
   int keyIdx = 0;
   for (int i = 0; i < input.size(); i++) {
@@ -76,6 +79,7 @@ std::string xCiphers::encode(std::string input) {
  * @todo    
 */
 std::string xCiphers::decode(std::string input) {
+  if (this->cnf->debugEnabled()) { PROFILE_FUNCTION(); }
   std::string output = "";
   int keyIdx = 0;
   for(int i = 0; i < input.size(); i++) { 
@@ -95,6 +99,7 @@ std::string xCiphers::decode(std::string input) {
  * @todo    
 */
 void xCiphers::displayMatrix(bool blackOut) {
+  if (this->cnf->debugEnabled()) { PROFILE_FUNCTION(); }
   std::string matrixStr = "";
   std::string shadowStr = "";
   std::string header = "[ ] ";

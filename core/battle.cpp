@@ -15,7 +15,9 @@ std::mutex Battle::_mutex;
  * @brief   Default Constructor
 */
 Battle::Battle() {
+  cnf = ConfigManager::GetInstance();
   log = Logger::GetInstance();
+  if (cnf->debugEnabled()) { PROFILE_FUNCTION(); }
   cycleCompletionTracker = 10;
   cycleDelay = 500;
 }
@@ -33,6 +35,7 @@ Battle* Battle::GetInstance() {
 
 void Battle::doCycleWork(bool &isPendingWork) {
   // std::this_thread::sleep_for(std::chrono::milliseconds(cycleDelay));
+  if (cnf->debugEnabled()) { PROFILE_FUNCTION(); }
   // this->log->named_log(__FILENAME__, "Battle Cycle Work");
   if (this->combat) { this->combat->cycleCombat(); }
   // if (cycleCompletionTracker--<1) { isPendingWork = false; this->combat = NULL; }
