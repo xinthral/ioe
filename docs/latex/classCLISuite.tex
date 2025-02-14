@@ -1,0 +1,147 @@
+\hypertarget{classCLISuite}{}\doxysection{CLISuite Class Reference}
+\label{classCLISuite}\index{CLISuite@{CLISuite}}
+
+
+Command Line Interface (CLI) for Engine.  
+
+
+
+
+{\ttfamily \#include $<$clisuite.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classCLISuite_abff4089b3d2a0df4f95f42fc1721bad6}\label{classCLISuite_abff4089b3d2a0df4f95f42fc1721bad6}} 
+\mbox{\hyperlink{classCLISuite_abff4089b3d2a0df4f95f42fc1721bad6}{CLISuite}} ()
+\begin{DoxyCompactList}\small\item\em Helper Function to display help. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCLISuite_ae059ad7db9ea94c37efd48c720c79419}\label{classCLISuite_ae059ad7db9ea94c37efd48c720c79419}} 
+std\+::string {\bfseries get\+Prompt} ()
+\item 
+\mbox{\Hypertarget{classCLISuite_affbaf9cb255af25007cce18bad001544}\label{classCLISuite_affbaf9cb255af25007cce18bad001544}} 
+void {\bfseries set\+Prompt} (std\+::string)
+\item 
+\mbox{\Hypertarget{classCLISuite_ae6ba97ba7a342f8bc2b49e25f336b1e2}\label{classCLISuite_ae6ba97ba7a342f8bc2b49e25f336b1e2}} 
+int \mbox{\hyperlink{classCLISuite_ae6ba97ba7a342f8bc2b49e25f336b1e2}{append\+Command\+History}} (std\+::string)
+\begin{DoxyCompactList}\small\item\em Helper Function to display help. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCLISuite_a820a5d0db398d1d9829db03a5945572b}\label{classCLISuite_a820a5d0db398d1d9829db03a5945572b}} 
+void \mbox{\hyperlink{classCLISuite_a820a5d0db398d1d9829db03a5945572b}{display\+Command\+History}} ()
+\begin{DoxyCompactList}\small\item\em Helper Function to display help. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCLISuite_a5d31e6dd802d757f62b6ca41e6efb6a5}\label{classCLISuite_a5d31e6dd802d757f62b6ca41e6efb6a5}} 
+void \mbox{\hyperlink{classCLISuite_a5d31e6dd802d757f62b6ca41e6efb6a5}{display\+Run\+Time}} ()
+\begin{DoxyCompactList}\small\item\em Helper Function to display help. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCLISuite_a1838a2ee343b787752ad746981afceba}{parse\+\_\+user\+\_\+input}} (std\+::string)
+\begin{DoxyCompactList}\small\item\em Function to parse user input for a command. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classCLISuite_ab3e4adcd608a741b6c761d36d7983c25}{parse\+\_\+input}} (const std\+::string, const std\+::string)
+\begin{DoxyCompactList}\small\item\em Helper Function to parse input. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCLISuite_a338ee2dc95e723f965a61ad318d5abe5}{run\+\_\+command}} (const std\+::string, std\+::vector$<$ std\+::string $>$ \&)
+\begin{DoxyCompactList}\small\item\em Helper Function to display help. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCLISuite_ab93e75328db668845a00c44beaef0022}{cli\+\_\+help}} ()
+\begin{DoxyCompactList}\small\item\em Static Helper File for the \mbox{\hyperlink{classCLISuite}{CLISuite}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classCLISuite_a471c4d20bab0ade5b47e4316bec7f99d}{print\+\_\+help}} ()
+\begin{DoxyCompactList}\small\item\em Helper Function to display help. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Command Line Interface (CLI) for Engine. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classCLISuite_ab93e75328db668845a00c44beaef0022}\label{classCLISuite_ab93e75328db668845a00c44beaef0022}} 
+\index{CLISuite@{CLISuite}!cli\_help@{cli\_help}}
+\index{cli\_help@{cli\_help}!CLISuite@{CLISuite}}
+\doxysubsubsection{\texorpdfstring{cli\_help()}{cli\_help()}}
+{\footnotesize\ttfamily void CLISuite\+::cli\+\_\+help (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Static Helper File for the \mbox{\hyperlink{classCLISuite}{CLISuite}}. 
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000013}{Todo}}]Static Helper File for the \mbox{\hyperlink{classCLISuite}{CLISuite}} \end{DoxyRefDesc}
+\mbox{\Hypertarget{classCLISuite_ab3e4adcd608a741b6c761d36d7983c25}\label{classCLISuite_ab3e4adcd608a741b6c761d36d7983c25}} 
+\index{CLISuite@{CLISuite}!parse\_input@{parse\_input}}
+\index{parse\_input@{parse\_input}!CLISuite@{CLISuite}}
+\doxysubsubsection{\texorpdfstring{parse\_input()}{parse\_input()}}
+{\footnotesize\ttfamily bool CLISuite\+::parse\+\_\+input (\begin{DoxyParamCaption}\item[{const std\+::string}]{input,  }\item[{const std\+::string}]{criteria }\end{DoxyParamCaption})}
+
+
+
+Helper Function to parse input. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em input} & -\/ String to be searched through \\
+\hline
+\mbox{\texttt{ in}}  & {\em criteria} & -\/ String being searched for \\
+\hline
+\end{DoxyParams}
+Establish Variables\mbox{\Hypertarget{classCLISuite_a1838a2ee343b787752ad746981afceba}\label{classCLISuite_a1838a2ee343b787752ad746981afceba}} 
+\index{CLISuite@{CLISuite}!parse\_user\_input@{parse\_user\_input}}
+\index{parse\_user\_input@{parse\_user\_input}!CLISuite@{CLISuite}}
+\doxysubsubsection{\texorpdfstring{parse\_user\_input()}{parse\_user\_input()}}
+{\footnotesize\ttfamily void CLISuite\+::parse\+\_\+user\+\_\+input (\begin{DoxyParamCaption}\item[{std\+::string}]{input }\end{DoxyParamCaption})}
+
+
+
+Function to parse user input for a command. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em input} & -\/ Command string from the command line\\
+\hline
+\end{DoxyParams}
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000014}{Todo}}]Function to parse user input for a command \end{DoxyRefDesc}
+\mbox{\Hypertarget{classCLISuite_a471c4d20bab0ade5b47e4316bec7f99d}\label{classCLISuite_a471c4d20bab0ade5b47e4316bec7f99d}} 
+\index{CLISuite@{CLISuite}!print\_help@{print\_help}}
+\index{print\_help@{print\_help}!CLISuite@{CLISuite}}
+\doxysubsubsection{\texorpdfstring{print\_help()}{print\_help()}}
+{\footnotesize\ttfamily void CLISuite\+::print\+\_\+help (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Helper Function to display help. 
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000011}{Todo}}]Helper Function to display help \end{DoxyRefDesc}
+Establish \mbox{\hyperlink{classLogger}{Logger}} Object
+
+Get File Name
+
+Display Help\mbox{\Hypertarget{classCLISuite_a338ee2dc95e723f965a61ad318d5abe5}\label{classCLISuite_a338ee2dc95e723f965a61ad318d5abe5}} 
+\index{CLISuite@{CLISuite}!run\_command@{run\_command}}
+\index{run\_command@{run\_command}!CLISuite@{CLISuite}}
+\doxysubsubsection{\texorpdfstring{run\_command()}{run\_command()}}
+{\footnotesize\ttfamily void CLISuite\+::run\+\_\+command (\begin{DoxyParamCaption}\item[{const std\+::string}]{input,  }\item[{std\+::vector$<$ std\+::string $>$ \&}]{cmdline }\end{DoxyParamCaption})}
+
+
+
+Helper Function to display help. 
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000012}{Todo}}]Run Engine Commands \end{DoxyRefDesc}
+Help Info
+
+Exit Shell
+
+Reload Config Options
+
+Generate Name
+
+Chain Command
+
+Run Time
+
+Change Prompt
+
+Unimplemented Command
+
+Unimplemented Command
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+clisuite/clisuite.\+h\item 
+clisuite/clisuite.\+cpp\end{DoxyCompactItemize}

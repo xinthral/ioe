@@ -1,0 +1,140 @@
+\hypertarget{classAudioDriver}{}\doxysection{Audio\+Driver Class Reference}
+\label{classAudioDriver}\index{AudioDriver@{AudioDriver}}
+
+
+\mbox{\hyperlink{classAudioDriver}{Audio\+Driver}} handles audio filtering, sampling and otherwise manipulating sound.  
+
+
+
+
+{\ttfamily \#include $<$audio.\+cpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classAudioDriver_ae798102c5dbdfda16f840bc5b5356773}{Audio\+Driver}} ()
+\begin{DoxyCompactList}\small\item\em Default Constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classAudioDriver_ade62e1cf952ce44ba83845881d51222d}{read\+Wav\+Data}} (const std\+::string \&)
+\begin{DoxyCompactList}\small\item\em Injest Wav File. \end{DoxyCompactList}\item 
+std\+::vector$<$ short $>$ \mbox{\hyperlink{classAudioDriver_a3c8edef49b538e1aae3956dd5adcd6e9}{get\+Audio\+Data}} ()
+\begin{DoxyCompactList}\small\item\em Return audio data. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classAudioDriver_a97e9f92b66a7cacc0a7f9338a15f33b9}{get\+Sample\+Rate}} ()
+\begin{DoxyCompactList}\small\item\em Return sample rate. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classAudioDriver_a3a0c6b2b803ac03eb58c32476c1eee68}{get\+Num\+Channels}} ()
+\begin{DoxyCompactList}\small\item\em Return channel count. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classAudioDriver_a4082b312c829c2e9d3cc787118a44ec1}{$\sim$\+Audio\+Driver}} ()
+\begin{DoxyCompactList}\small\item\em Default Deconstructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classAudioDriver_aa315a38f46f988284942af3c4ef84e82}\label{classAudioDriver_aa315a38f46f988284942af3c4ef84e82}} 
+\mbox{\hyperlink{classConfigManager}{Config\+Manager}} $\ast$ \mbox{\hyperlink{classAudioDriver_aa315a38f46f988284942af3c4ef84e82}{cnf}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classConfigManager}{Config\+Manager}} Instantiation. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classAudioDriver_a5f0ede3d99e5f6581f80c83f46e323ce}\label{classAudioDriver_a5f0ede3d99e5f6581f80c83f46e323ce}} 
+\mbox{\hyperlink{classLogger}{Logger}} $\ast$ \mbox{\hyperlink{classAudioDriver_a5f0ede3d99e5f6581f80c83f46e323ce}{log}}
+\begin{DoxyCompactList}\small\item\em Logging Handler Instantiation. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classAudioDriver_a56451b740cc47bf286f7497e37cb029d}\label{classAudioDriver_a56451b740cc47bf286f7497e37cb029d}} 
+char \mbox{\hyperlink{classAudioDriver_a56451b740cc47bf286f7497e37cb029d}{buf}} \mbox{[}1024\mbox{]}
+\begin{DoxyCompactList}\small\item\em Buffer Value for \mbox{\hyperlink{classLogger}{Logger}} outputs. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classAudioDriver}{Audio\+Driver}} handles audio filtering, sampling and otherwise manipulating sound. 
+
+needs desc 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classAudioDriver_ae798102c5dbdfda16f840bc5b5356773}\label{classAudioDriver_ae798102c5dbdfda16f840bc5b5356773}} 
+\index{AudioDriver@{AudioDriver}!AudioDriver@{AudioDriver}}
+\index{AudioDriver@{AudioDriver}!AudioDriver@{AudioDriver}}
+\doxysubsubsection{\texorpdfstring{AudioDriver()}{AudioDriver()}}
+{\footnotesize\ttfamily Audio\+Driver\+::\+Audio\+Driver (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Default Constructor. 
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000015}{Todo}}]Default Constructor \end{DoxyRefDesc}
+\mbox{\Hypertarget{classAudioDriver_a4082b312c829c2e9d3cc787118a44ec1}\label{classAudioDriver_a4082b312c829c2e9d3cc787118a44ec1}} 
+\index{AudioDriver@{AudioDriver}!````~AudioDriver@{$\sim$AudioDriver}}
+\index{````~AudioDriver@{$\sim$AudioDriver}!AudioDriver@{AudioDriver}}
+\doxysubsubsection{\texorpdfstring{$\sim$AudioDriver()}{~AudioDriver()}}
+{\footnotesize\ttfamily Audio\+Driver\+::$\sim$\+Audio\+Driver (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Default Deconstructor. 
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000020}{Todo}}]Default Deconstructor \end{DoxyRefDesc}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classAudioDriver_a3c8edef49b538e1aae3956dd5adcd6e9}\label{classAudioDriver_a3c8edef49b538e1aae3956dd5adcd6e9}} 
+\index{AudioDriver@{AudioDriver}!getAudioData@{getAudioData}}
+\index{getAudioData@{getAudioData}!AudioDriver@{AudioDriver}}
+\doxysubsubsection{\texorpdfstring{getAudioData()}{getAudioData()}}
+{\footnotesize\ttfamily std\+::vector$<$ short $>$ Audio\+Driver\+::get\+Audio\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Return audio data. 
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000017}{Todo}}]Return audio data \end{DoxyRefDesc}
+\mbox{\Hypertarget{classAudioDriver_a3a0c6b2b803ac03eb58c32476c1eee68}\label{classAudioDriver_a3a0c6b2b803ac03eb58c32476c1eee68}} 
+\index{AudioDriver@{AudioDriver}!getNumChannels@{getNumChannels}}
+\index{getNumChannels@{getNumChannels}!AudioDriver@{AudioDriver}}
+\doxysubsubsection{\texorpdfstring{getNumChannels()}{getNumChannels()}}
+{\footnotesize\ttfamily int Audio\+Driver\+::get\+Num\+Channels (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Return channel count. 
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000019}{Todo}}]Return channel count \end{DoxyRefDesc}
+\mbox{\Hypertarget{classAudioDriver_a97e9f92b66a7cacc0a7f9338a15f33b9}\label{classAudioDriver_a97e9f92b66a7cacc0a7f9338a15f33b9}} 
+\index{AudioDriver@{AudioDriver}!getSampleRate@{getSampleRate}}
+\index{getSampleRate@{getSampleRate}!AudioDriver@{AudioDriver}}
+\doxysubsubsection{\texorpdfstring{getSampleRate()}{getSampleRate()}}
+{\footnotesize\ttfamily int Audio\+Driver\+::get\+Sample\+Rate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Return sample rate. 
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000018}{Todo}}]Return sample rate \end{DoxyRefDesc}
+\mbox{\Hypertarget{classAudioDriver_ade62e1cf952ce44ba83845881d51222d}\label{classAudioDriver_ade62e1cf952ce44ba83845881d51222d}} 
+\index{AudioDriver@{AudioDriver}!readWavData@{readWavData}}
+\index{readWavData@{readWavData}!AudioDriver@{AudioDriver}}
+\doxysubsubsection{\texorpdfstring{readWavData()}{readWavData()}}
+{\footnotesize\ttfamily void Audio\+Driver\+::read\+Wav\+Data (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})}
+
+
+
+Injest Wav File. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em filename} & -\/ Name of Wav File in the Samples Directory\\
+\hline
+\end{DoxyParams}
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000016}{Todo}}]Injest Wav File \end{DoxyRefDesc}
+//////// Should be Error
+
+Read WAV header
+
+//////// Should be Error
+
+//////// Should be Error
+
+Read audio data
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+core/audio.\+h\item 
+core/audio.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,164 @@
+\hypertarget{classCombat}{}\doxysection{Combat Class Reference}
+\label{classCombat}\index{Combat@{Combat}}
+
+
+Handle the interactive logic for \mbox{\hyperlink{classCombat}{Combat}}.  
+
+
+
+
+{\ttfamily \#include $<$combat.\+cpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classCombat_a4c2dfed2f9da749ae341de25c7427f73}{Combat}} ()
+\begin{DoxyCompactList}\small\item\em Default Constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classCombat_aa7b3964edefcd58d229b375107a98702}{Combat}} (\mbox{\hyperlink{classToon}{Toon}} $\ast$, \mbox{\hyperlink{classToon}{Toon}} $\ast$)
+\begin{DoxyCompactList}\small\item\em EvE Constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classCombat_afbd0f8e6233078d3a242d2c05290fccf}{Combat}} (\mbox{\hyperlink{classPlayer}{Player}} $\ast$, \mbox{\hyperlink{classToon}{Toon}} $\ast$)
+\begin{DoxyCompactList}\small\item\em PvE Constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classCombat_a9f1bc476daf6485592fe5e5b9b0d99d6}{Combat}} (\mbox{\hyperlink{classPlayer}{Player}} $\ast$, \mbox{\hyperlink{classPlayer}{Player}} $\ast$)
+\begin{DoxyCompactList}\small\item\em PvP Constructor. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classCombat_a0e853de1ea12d9af4817e6c4e5f35c60}\label{classCombat_a0e853de1ea12d9af4817e6c4e5f35c60}} 
+bool {\bfseries in\+Combat} ()
+\item 
+void \mbox{\hyperlink{classCombat_a3520c5303e230995cfabe595947d8c0e}{cycle\+\_\+combat}} ()
+\begin{DoxyCompactList}\small\item\em Initiates \mbox{\hyperlink{classCombat}{Combat}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCombat_a3ff055c53b37f0b24f491b34efa9f3ca}{injest\+\_\+combatants}} (\mbox{\hyperlink{classActor}{Actor}} $\ast$, \mbox{\hyperlink{classActor}{Actor}} $\ast$)
+\begin{DoxyCompactList}\small\item\em Intakes Combatants. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCombat_a9f4f4c7c54bc3ded8ebcfab4fc36abdf}{\+\_\+help}} ()
+\begin{DoxyCompactList}\small\item\em Helper Hook used in CLI Help System. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classCombat_a044df77ec24b76ca8b1cc3dde0de5049}{$\sim$\+Combat}} ()
+\begin{DoxyCompactList}\small\item\em Default Deconstructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Handle the interactive logic for \mbox{\hyperlink{classCombat}{Combat}}. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classCombat_a4c2dfed2f9da749ae341de25c7427f73}\label{classCombat_a4c2dfed2f9da749ae341de25c7427f73}} 
+\index{Combat@{Combat}!Combat@{Combat}}
+\index{Combat@{Combat}!Combat@{Combat}}
+\doxysubsubsection{\texorpdfstring{Combat()}{Combat()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily Combat\+::\+Combat (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Default Constructor. 
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000049}{Todo}}]Default Constructor \end{DoxyRefDesc}
+Establish Singletons\mbox{\Hypertarget{classCombat_aa7b3964edefcd58d229b375107a98702}\label{classCombat_aa7b3964edefcd58d229b375107a98702}} 
+\index{Combat@{Combat}!Combat@{Combat}}
+\index{Combat@{Combat}!Combat@{Combat}}
+\doxysubsubsection{\texorpdfstring{Combat()}{Combat()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily Combat\+::\+Combat (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classToon}{Toon}} $\ast$}]{combatant1,  }\item[{\mbox{\hyperlink{classToon}{Toon}} $\ast$}]{combatant2 }\end{DoxyParamCaption})}
+
+
+
+EvE Constructor. 
+
+This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000050}{Todo}}]EvE Constructor \end{DoxyRefDesc}
+Check Health State
+
+Check \mbox{\hyperlink{classCombat}{Combat}} State
+
+Set \mbox{\hyperlink{classCombat}{Combat}} State\mbox{\Hypertarget{classCombat_afbd0f8e6233078d3a242d2c05290fccf}\label{classCombat_afbd0f8e6233078d3a242d2c05290fccf}} 
+\index{Combat@{Combat}!Combat@{Combat}}
+\index{Combat@{Combat}!Combat@{Combat}}
+\doxysubsubsection{\texorpdfstring{Combat()}{Combat()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily Combat\+::\+Combat (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classPlayer}{Player}} $\ast$}]{combatant1,  }\item[{\mbox{\hyperlink{classToon}{Toon}} $\ast$}]{combatant2 }\end{DoxyParamCaption})}
+
+
+
+PvE Constructor. 
+
+This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000051}{Todo}}]PvE Constructor \end{DoxyRefDesc}
+Check Health State
+
+Check \mbox{\hyperlink{classCombat}{Combat}} State
+
+Set \mbox{\hyperlink{classCombat}{Combat}} State\mbox{\Hypertarget{classCombat_a9f1bc476daf6485592fe5e5b9b0d99d6}\label{classCombat_a9f1bc476daf6485592fe5e5b9b0d99d6}} 
+\index{Combat@{Combat}!Combat@{Combat}}
+\index{Combat@{Combat}!Combat@{Combat}}
+\doxysubsubsection{\texorpdfstring{Combat()}{Combat()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily Combat\+::\+Combat (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classPlayer}{Player}} $\ast$}]{combatant1,  }\item[{\mbox{\hyperlink{classPlayer}{Player}} $\ast$}]{combatant2 }\end{DoxyParamCaption})}
+
+
+
+PvP Constructor. 
+
+This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts.
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000052}{Todo}}]PvP Constructor \end{DoxyRefDesc}
+Check Health State
+
+Check \mbox{\hyperlink{classCombat}{Combat}} State
+
+Set \mbox{\hyperlink{classCombat}{Combat}} State\mbox{\Hypertarget{classCombat_a044df77ec24b76ca8b1cc3dde0de5049}\label{classCombat_a044df77ec24b76ca8b1cc3dde0de5049}} 
+\index{Combat@{Combat}!````~Combat@{$\sim$Combat}}
+\index{````~Combat@{$\sim$Combat}!Combat@{Combat}}
+\doxysubsubsection{\texorpdfstring{$\sim$Combat()}{~Combat()}}
+{\footnotesize\ttfamily Combat\+::$\sim$\+Combat (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Default Deconstructor. 
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000056}{Todo}}]Default Deconstructor \end{DoxyRefDesc}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classCombat_a9f4f4c7c54bc3ded8ebcfab4fc36abdf}\label{classCombat_a9f4f4c7c54bc3ded8ebcfab4fc36abdf}} 
+\index{Combat@{Combat}!\_help@{\_help}}
+\index{\_help@{\_help}!Combat@{Combat}}
+\doxysubsubsection{\texorpdfstring{\_help()}{\_help()}}
+{\footnotesize\ttfamily void Combat\+::\+\_\+help (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Helper Hook used in CLI Help System. 
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000055}{Todo}}]Helper Hook used in CLI Help System \end{DoxyRefDesc}
+\mbox{\Hypertarget{classCombat_a3520c5303e230995cfabe595947d8c0e}\label{classCombat_a3520c5303e230995cfabe595947d8c0e}} 
+\index{Combat@{Combat}!cycle\_combat@{cycle\_combat}}
+\index{cycle\_combat@{cycle\_combat}!Combat@{Combat}}
+\doxysubsubsection{\texorpdfstring{cycle\_combat()}{cycle\_combat()}}
+{\footnotesize\ttfamily void Combat\+::cycle\+\_\+combat (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Initiates \mbox{\hyperlink{classCombat}{Combat}}. 
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000054}{Todo}}]Initiates \mbox{\hyperlink{classCombat}{Combat}} \end{DoxyRefDesc}
+Seed and Generate Random Number
+
+Temporary \mbox{\hyperlink{classCombat}{Combat}} Logic\mbox{\Hypertarget{classCombat_a3ff055c53b37f0b24f491b34efa9f3ca}\label{classCombat_a3ff055c53b37f0b24f491b34efa9f3ca}} 
+\index{Combat@{Combat}!injest\_combatants@{injest\_combatants}}
+\index{injest\_combatants@{injest\_combatants}!Combat@{Combat}}
+\doxysubsubsection{\texorpdfstring{injest\_combatants()}{injest\_combatants()}}
+{\footnotesize\ttfamily void Combat\+::injest\+\_\+combatants (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classActor}{Actor}} $\ast$}]{combatant1,  }\item[{\mbox{\hyperlink{classActor}{Actor}} $\ast$}]{combatant2 }\end{DoxyParamCaption})}
+
+
+
+Intakes Combatants. 
+
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000053}{Todo}}]Intakes Combatants \end{DoxyRefDesc}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+core/combat.\+h\item 
+core/combat.\+cpp\end{DoxyCompactItemize}
