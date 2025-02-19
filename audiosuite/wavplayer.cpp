@@ -48,7 +48,7 @@ void WavPlayer::playwav(const std::string& inFile) {
   sprintf(command, "%s", cnf->raw_config("VLCPATHW").c_str());
   sprintf(cmdline, "%s --qt-start-minimized --play-and-exit %s", command, inFile.c_str());
 #else
-  sprintf(command, "%s", cnf->raw_config("VLCPATHL").c_str());
+  sprintf(command, "%s", "/usr/bin/vlc");
   sprintf(cmdline, "%s --play-and-exit --audiofile-wav %s", command, inFile.c_str());
 #endif
 

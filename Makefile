@@ -48,7 +48,6 @@ CORESRC := $(patsubst $(CORE)/%.cpp, $(CORE)/%.o, $(wildcard $(CORE)/*.cpp))
 
 AUDI := audiosuite
 AUDISRC := $(patsubst $(AUDI)/%.cpp, $(AUDI)/%.o, $(wildcard $(AUDI)/*.cpp))
-AUDISRC += $(CORE)/audio.o $(CORE)/logger.o $(CORE)/config.o $(CORE)/utilz.o
 
 CLIS := clisuite
 CLISSRC := $(patsubst $(CLIS)/%.cpp, $(CLIS)/%.o, $(wildcard $(CLIS)/*.cpp))
@@ -61,6 +60,8 @@ HELPSRC := $(patsubst $(HELP)/%.cpp, $(HELP)/%.o, $(wildcard $(HELP)/*.cpp))
 TEST := testsuite
 TESTSRC := $(patsubst $(TEST)/%.cpp, $(TEST)/%.o, $(wildcard $(TEST)/*.cpp))
 
+AUDISRC += $(CORE)/audio.o $(CORE)/logger.o $(CORE)/config.o $(CORE)/utilz.o
+CORESRC += $(TEST)/profiler.o
 MODULES := $(CORE) $(AUDI) $(CLIS) $(HELP) $(TEST)
 SOURCES := $(CORESRC) $(CLISSRC) $(AUDISRC) $(HELPSRC) $(TESTSRC)
 
