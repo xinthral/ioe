@@ -6,10 +6,10 @@ Currently the project is in preAlpha development, meaning that the idea has not 
 
 | Version | Supported          |
 | ------- | ------------------ |
-| 0.1.6   | :white_check_mark: |
-| 0.0.x   | :x:                |
-| 0.0.8   | :white_check_mark: |
-| < 4.0   | :x:                |
+|   0.1.8 | :white_check_mark: |
+|   0.0.x | :x:                |
+|   0.2.x | :bangbang:         |
+| < 0.2.0 | :x:                |
 
 ## Reporting a Vulnerability
 
