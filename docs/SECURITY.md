@@ -8,7 +8,7 @@ Currently the project is in preAlpha development, meaning that the idea has not 
 | ------- | ------------------ |
 | < 0.2.0 | :x:                |
 |   0.2.0 | :white_check_mark: |
-|   0.2.x | :new_moon:         |
+|   0.2.x | :dart:             |
 
 ## Reporting a Vulnerability
 
