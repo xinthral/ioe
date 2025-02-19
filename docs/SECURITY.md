@@ -10,6 +10,7 @@ Currently the project is in preAlpha development, meaning that the idea has not 
 |   0.2.0 | :white_check_mark: |
 |   0.2.x | :dart:             |
 
+
 ## Reporting a Vulnerability
 
 Vulnerabilities are a natural process in development, they are the piece of the puzzle that is often overlooked or allowed to linger for far too long. The best guard against the chaos is a strong community of like-minded individuals who want to see the success of the project. Should you find a vulnerability or an inconsistency that could lead to one; please send all correspondence to xinthral@yahoo.com or on the discussion board once the project gets closer to production.
