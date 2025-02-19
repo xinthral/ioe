@@ -15,10 +15,10 @@ std::mutex ConfigManager::_mutex;
  * @todo    Protected Constructor 
 */
 ConfigManager::ConfigManager() {
+
   log = Logger::GetInstance();
   log->named_log(__FILE__, "ConfigManager Established.");
   load_config(false); 
-  this->_debug = this->debugEnabled();
 }
 
 /*!
@@ -48,7 +48,9 @@ bool ConfigManager::debugEnabled() {
 /*!
  * @todo    Helper Function: Attack 
 */
-int ConfigManager::get_attack() { return atoi(this->raw_config("ATK").c_str()); }
+std::string ConfigManager::raw_config(const std::string& option) {
+  return this->settings[option];
+}
 
 /*!
  * @todo    Return the list of authorized commands for the CLI Suite

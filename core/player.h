@@ -47,15 +47,6 @@ public:
   // */
   // int receive_damage(int);
 
-  // /*!
-  //  * @override
-  //  * @brief   Calculates and adjust damage received
-  //  *          including multiplier and reducers
-  //  * @param[in] damage - Amount of incoming damage
-  //  * @returns Final Damage Value
-  // */
-  // int receive_damage(int);
-
   /*!
    * @brief   Helper Hook used in CLI Help System
   */

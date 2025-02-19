@@ -44,7 +44,6 @@ bool xClock::getPendingWorkState() {
  * @todo    Singleton Constructor
 */
 void xClock::doCycleWork() {
-  if (this->cnf->debugEnabled()) { PROFILE_FUNCTION(); }
   bool pendingBattles = true;
   log->raw_log("Clock Cycle Work!");
   do {

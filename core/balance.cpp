@@ -58,7 +58,6 @@ BalanceController* BalanceController::GetInstance() {
  * @note    y = δ^(χ/[π^π])
 */
 double BalanceController::scalar(int level) {
-  if (this->cnf->debugEnabled()) { PROFILE_FUNCTION(); }
   double x = level * 1.0;
   return pow(base, (x / pow(M_PI, M_PI)));
 }

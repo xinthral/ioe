@@ -38,7 +38,6 @@ void print_help() {
   sprintf(buf, "\t[%d] - Test Stage Module", ++idx); log->raw_log(buf);
   sprintf(buf, "\t[%d] - Test Toon Module", ++idx); log->raw_log(buf);
   sprintf(buf, "\t[%d] - Test Utilz Module", ++idx); log->raw_log(buf);
-  sprintf(buf, "\t[%d] - Test Weapon Module", ++idx); log->raw_log(buf);
   log->raw_log("\n");
   exit(0);
 }
@@ -148,11 +147,6 @@ void TestSuite::CaseUtilz() { TestUtilz* tu = new TestUtilz(); }
  * @todo    Initiates the Test for the Utilz Module
 */
 void TestSuite::CaseWeapon() { TestWeapon* tw = new TestWeapon(); }
-
-/*!
- * @todo    Default Deconstructor
-*/
-TestSuite::~TestSuite() { }
 
 /*!
  * @brief   Module Entry Point
