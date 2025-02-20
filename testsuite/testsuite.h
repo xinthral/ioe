@@ -20,13 +20,14 @@
 #include "stagecase.h"
 #include "tooncase.h"
 #include "utilzcase.h"
+#include "weaponcase.h"
 
 /*!
  * @class   TestSuite testsuite.h testsuite.cpp
  * @brief   Command Line Tool (CLI) for the TestSuite
  * @details Test Suite is meant to be a collection of unit testing
- *          with the idea of reaching 100% coverage of testing, 
- *          while providing a command line utility for reference 
+ *          with the idea of reaching 100% coverage of testing,
+ *          while providing a command line utility for reference
  *          when developing or debugging.
 */
 class TestSuite {
@@ -48,7 +49,7 @@ public:
   void CaseActor();
 
   /*!
-   * @brief   Initiates the Test for the Actor Module
+   * @brief   Initiates the Test for the Audio Module
   */
   void CaseAudio();
 
@@ -88,12 +89,12 @@ public:
   void CaseItem();
 
   /*!
-   * @brief   Initiates the Test for the LeaderBoard Module 
+   * @brief   Initiates the Test for the LeaderBoard Module
   */
   void CaseLeader();
 
   /*!
-   * @brief   Initiates the Test for the Lexicon Module 
+   * @brief   Initiates the Test for the Lexicon Module
   */
   void CaseLexicon();
 
@@ -118,9 +119,14 @@ public:
   void CaseUtilz();
 
   /*!
-   * @brief   Default Deconstructor
+   * @brief   Initiates the Test for the Weapon Module
   */
-  ~TestSuite();
+  void CaseWeapon();
+
+  // /*!
+  //  * @brief   Default Deconstructor
+  // */
+  // ~TestSuite();
 };
 
 #endif // TESTER_H //

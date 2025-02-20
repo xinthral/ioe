@@ -1,26 +1,28 @@
 #include "battle.h"
 
 /*!
- * @def     __FILENAME__ 
+ * @def     __FILENAME__
  * @brief   Translate Filename to reusable macro
 */
 #define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
 
 //! Singleton Instance
 Battle* Battle::_singleton = NULL;
-//! Lock Mutex 
+//! Lock Mutex
 std::mutex Battle::_mutex;
 
-/*! 
+/*!
  * @brief   Default Constructor
 */
 Battle::Battle() {
+  cnf = ConfigManager::GetInstance();
   log = Logger::GetInstance();
+  if (cnf->debugEnabled()) { PROFILE_FUNCTION(); }
   cycleCompletionTracker = 10;
   cycleDelay = 500;
 }
 
-/*! 
+/*!
  * @todo    Player v Team Constructor
 */
 Battle* Battle::GetInstance() {
@@ -39,12 +41,12 @@ void Battle::doCycleWork(bool &isPendingWork) {
   if (!this->combat->inCombat()) { isPendingWork = false; this->combat = NULL; }
 }
 
-void Battle::startEVE(Toon *t1, Toon *t2) { 
+void Battle::startEVE(Toon *t1, Toon *t2) {
   this->combat = new Combat(t1, t2);
 }
 
-void Battle::startPVE(Player *player, Toon *t) { 
-  this->combat = new Combat(player, t); 
+void Battle::startPVE(Player *player, Toon *t) {
+  this->combat = new Combat(player, t);
 }
 
 void Battle::startPVP(Player *player1, Player *player2) {
@@ -64,7 +66,7 @@ void Battle::_help() {
   this->log->named_log(__FILENAME__, helpline);
 }
 
-/*! 
+/*!
  * @todo    Default Deconstructor
 */
 Battle::~Battle() {}

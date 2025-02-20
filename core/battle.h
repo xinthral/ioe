@@ -3,21 +3,22 @@
 
 #include <mutex>
 #include "combat.h"
+#include "config.h"
 #include "player.h"
 #include "toon.h"
 
-/*! 
+/*!
  * @class   Battle battle.h battle.cpp
  * @brief   Interweaving Combat events
 */
 class Battle {
 protected:
 private:
-  /*! 
+  /*!
    * @brief   Singleton Constructor
   */
   Battle();
-
+  ConfigManager*    cnf;
   Combat*           combat;                 //!< Combat Handler
   Logger*           log;                    //!< Logging Handler Instantiation
   static Battle*    _singleton;             //!< Singleton Instance
@@ -33,7 +34,7 @@ public:
   void operator = (const Battle&) = delete;
 
   /*!
-   * @brief   Singleton Constructor 
+   * @brief   Singleton Constructor
   */
   static Battle* GetInstance();
 
@@ -51,7 +52,7 @@ public:
   */
   void _help();
 
-  /*! 
+  /*!
    * @brief   Default Deconstructor
   */
   ~Battle();

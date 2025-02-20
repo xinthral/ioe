@@ -1,15 +1,17 @@
-#ifndef CONFIG_H
-#define CONFIG_H
+#ifndef XCONFIG_H
+#define XCONFIG_H
 
 #include <fstream>
 #include <iostream>
 #include <mutex>
 #include <regex>
 #include <string>
+// #include <stdexcept>
 #include <unordered_map>
 #include <vector>
 #include "logger.h"
 #include "utilz.h"
+#include "../testsuite/profiler.h"
 
 //! External Varables
 extern std::string _CNF_;
@@ -19,7 +21,7 @@ extern std::string _CNF_;
  * @brief   ConfigManager manages configuration loading and updating throughout the engine.
  * @details In order to handle the number of customizable options for the engine, a config
  *          file system has been implemented. This class will manage the configuration file
- *          and return it's content to the engine. 
+ *          and return it's content to the engine.
  * @note    values can be reloaded without having to restart the engine.
 */
 class ConfigManager {
@@ -35,10 +37,11 @@ private:
   std::unordered_map<
     std::string, std::string
   > settings;                                     //!< Lookup Map for Settings by Key,Value
-  std::string             delim = "=";            //!< Delimer seperating Key and Value
   static ConfigManager*   _singleton;             //!< Singleton Instance
   static std::mutex       _mutex;                 //!< Lock Mutex
-  char                   buf[1024];               //!< Buffer Value for Logger outputs
+  std::string             delim = "=";            //!< Delimer seperating Key and Value
+  char                    buf[1024];              //!< Buffer Value for Logger outputs
+  bool                    _debug;                 //!< Display debugger information and profiling data
 
 public:
   ConfigManager(ConfigManager&) = delete;         //!< Singletons should not be cloneable
@@ -47,66 +50,44 @@ public:
   /*!
    * @brief Singleton Constructor
   */
-  static ConfigManager* GetInstance();              
-
-  /*!
-   * @brief   Reads in Config File and Parses Options
-   * @param[in] _debug - Debugging Option
-   * @return  Confirmation that all values were loaded
-  */
-  bool load_config(bool);
-
-  /*!
-   * @brief   Reload Settings
-   * @details Forces a reload of the injested settings list,
-   *          and outputs the configs to the logs.
-  */
-  void reload_state();
+  static ConfigManager* GetInstance();
 
   /*!
    * @brief   Injest Setting into struct, and return struct size.
    * @param[in] option - The Key value for lookup
    * @param[in] value  - The data value associated with the key
-   * @return  Returns current config queue size 
+   * @return  Returns current config queue size
   */
   size_t add_setting(const std::string&,const std::string&);
 
   /*!
-   * @brief   Remove Setting from injested list
-   * @param[in] option - The name of the Configuration Option 
-   * @return  Current Size of Settings List
+   * @brief   Helper Function: Debug Details
+   * @return  Return on debugging state
   */
-  size_t rem_setting(const std::string&);
+  bool debugEnabled();
 
   /*!
-   * @brief   Return the Value of a Configuration Option 
-   * @param[in] option - The name of the Configuration Option
-   * @return  The value related to input key
+   * @brief   Helper Function: Attack
+   * @return  Return base attack value
   */
-  std::string raw_config(const std::string&);
+  int get_attack();
 
   /*!
-   * @brief   Return the list of authorized commands for the 
+   * @brief   Return the list of authorized commands for the
    *          CLI Suite
    * @param[out] option - A string array to recieve the commands
   */
   void get_authorizedCommands(std::vector<std::string>&);
 
   /*!
-   * @brief   Helper Function: Attack 
-   * @return  Return base attack value 
-  */
-  int get_attack();
-
-  /*!
    * @brief   Helper Function: Base Scalar
-   * @return  Return base scalar value 
+   * @return  Return base scalar value
   */
   int get_base();
 
   /*!
-   * @brief   Helper Function: Defense 
-   * @return  Return base defense value 
+   * @brief   Helper Function: Defense
+   * @return  Return base defense value
   */
   int get_defense();
 
@@ -117,20 +98,20 @@ public:
   int get_difficulty();
 
   /*!
-   * @brief   Helper Function: Flux 
-   * @return  Return base flux value 
+   * @brief   Helper Function: Flux
+   * @return  Return base flux value
   */
   int get_flux();
 
   /*!
    * @brief   Helper Function: Health
-   * @return  Return base health value 
+   * @return  Return base health value
   */
   int get_health();
 
   /*!
-   * @brief   Helper Function: Settings 
-   * @return  Return size of settings vector 
+   * @brief   Helper Function: Settings
+   * @return  Return size of settings vector
   */
   size_t get_settingsSize();
 
@@ -139,6 +120,36 @@ public:
    * @return  Return game version
   */
   std::string get_version();
+
+  /*!
+   * @brief   Reads in Config File and Parses Options
+   * @param[in] _debug - Debugging Option
+   * @return  Confirmation that all values were loaded
+  */
+  bool load_config(bool);
+
+  /*!
+   * @brief   Return the Value of a Configuration Option
+   * @param[in] option - The name of the Configuration Option
+   * @return  The value related to input key
+  */
+  std::string raw_config(const std::string&);
+
+  /*!
+   * @brief   Reload Settings
+   * @details Forces a reload of the injested settings list,
+   *          and outputs the configs to the logs.
+  */
+  void reload_state();
+
+  /*!
+   * @brief   Remove Setting from injested list
+   * @param[in] option - The name of the Configuration Option
+   * @return  Current Size of Settings List
+  */
+  size_t rem_setting(const std::string&);
+
+  bool toggleDebug();
 
   /*!
    * @brief   Helper Hook used in CLI Help System
@@ -151,4 +162,4 @@ public:
   ~ConfigManager();
 };
 
-#endif // CONFIG_H //
+#endif // XCONFIG_H //

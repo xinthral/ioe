@@ -1,6 +1,10 @@
 #ifndef ITEM_H
-#define ITEM_H 
+#define ITEM_H
+#define LD_MAX_LEN 1024
+#define SD_MAX_LEN 255
 
+#include <stdexcept>
+#include <type_traits>
 #include "logger.h"
 
 enum ItemType {
@@ -29,8 +33,8 @@ enum ItemRarity {
 */
 class Item {
 protected:
-private:
   Logger*    log;                   //!< Logging Handler Instantiation
+private:
   char       buf[1024];             //!< Buffer Value for Logger outputs
   char       label[100];            //!< The name of an item
   char       short_descriptor[255]; //!< The way an item would be describe in a sentence
@@ -40,10 +44,10 @@ private:
 
 public:
   /*!
-   * @brief   Default Constructor 
+   * @brief   Default Constructor
   */
   Item();
-  Item(const char[]); 
+  Item(const char[]);
 
   char * get_label();
   ItemRarity get_rarity();
@@ -56,9 +60,8 @@ public:
    * @brief   Helper Hook used in CLI Help System
   */
   void _help();
-
   /*!
-   * @brief   Default Constructor 
+   * @brief   Default Constructor
   */
   ~Item();
 };
