@@ -13,6 +13,7 @@
 #include "../core/ciphers.h"
 #include "../core/combat.h"
 #include "../core/config.h"
+#include "../core/equipment.h"
 #include "../core/item.h"
 #include "../core/leader.h"
 #include "../core/lexicon.h"
@@ -21,6 +22,7 @@
 #include "../core/stage.h"
 #include "../core/toon.h"
 #include "../core/utilz.h"
+#include "../core/weapon.h"
 
 //! Compiler/Linter hint
 #define assertm(exp, msg) assert(((void)msg, exp))

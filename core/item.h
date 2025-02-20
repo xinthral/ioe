@@ -44,10 +44,10 @@ private:
 
 public:
   /*!
-   * @brief   Default Constructor
+   * @brief   Default Constructor 
   */
   Item();
-  Item(const char[]);
+  Item(const char[]); 
 
   char * get_label();
   ItemRarity get_rarity();
@@ -61,7 +61,7 @@ public:
   */
   void _help();
   /*!
-   * @brief   Default Constructor
+   * @brief   Default Constructor 
   */
   ~Item();
 };

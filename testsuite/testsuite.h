@@ -123,10 +123,10 @@ public:
   */
   void CaseWeapon();
 
-  // /*!
-  //  * @brief   Default Deconstructor
-  // */
-  // ~TestSuite();
+  /*!
+   * @brief   Default Deconstructor
+  */
+  ~TestSuite();
 };
 
 #endif // TESTER_H //
