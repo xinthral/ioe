@@ -56,7 +56,6 @@ int main(int argc, char const *argv[]) {
       return 0; 
     }
     input += argv[1];
-    input += ".wav"; 
   } else { input += "game-over.wav"; }
   player->playwav(input);
   sampler->sampleFile(input);

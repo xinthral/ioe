@@ -15,7 +15,6 @@ std::mutex ConfigManager::_mutex;
  * @todo    Protected Constructor
 */
 ConfigManager::ConfigManager() {
-
   log = Logger::GetInstance();
   log->named_log(__FILE__, "ConfigManager Established.");
   load_config(false);
@@ -93,7 +92,7 @@ size_t ConfigManager::get_settingsSize() { return this->settings.size(); }
 /*!
  * @todo    Helper Function: Version
 */
-std::string ConfigManager::get_version() { return this->raw_config("VERSION"); }
+std::string ConfigManager::get_version() { return this->raw_config("VERSION").c_str(); }
 
 /*!
  * @todo    Reads in Config File and Parses Options

@@ -137,7 +137,7 @@ void print_help() {
   sprintf(buf, "\t [%d] - Config details", i++); log->raw_log(buf);
   sprintf(buf, "\t [%d] - HelpSuit details", i++); log->raw_log(buf);
   sprintf(buf, "\t [%d] - Item details", i++); log->raw_log(buf);
-  sprintf(buf, "\t [%d] - Lexicon details", i++); log->raw_log(buf);
+  sprintf(buf, "\t[%d] - Lexicon details", i++); log->raw_log(buf);
   sprintf(buf, "\t[%d] - Player details", i++); log->raw_log(buf);
   sprintf(buf, "\t[%d] - StageManager details", i++); log->raw_log(buf);
   sprintf(buf, "\t[%d] - Toon details", i++); log->raw_log(buf);

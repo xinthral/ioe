@@ -43,6 +43,9 @@ CXXFLAGS = $(CXFLAGS) -Wall -pedantic -O3
 # SHELL := /bin/bash
 
 # Build targets
+ENGINE := engine
+ENGINESRC := $(patsubst $(ENGINE)/%.cpp, $(ENGINE)/%.o, $(wildcard $(ENGINE)/*.cpp))
+
 CORE := core
 CORESRC := $(patsubst $(CORE)/%.cpp, $(CORE)/%.o, $(wildcard $(CORE)/*.cpp))
 
@@ -96,10 +99,14 @@ $(AUDI): $(AUDISRC) core/audio.o
 	$(CC) $(CXFLAGS) -I/usr/include/python3.11 $^ -o $@.exe
 
 # Compile Engine
-$(CORE): $(CORESRC) 
+$(CORE): $(CORESRC)
 
 # Compile CLISuite
 $(CLIS): $(CORESRC) $(CLISSRC)
+	$(CC) $(CXFLAGS) $^ -o $@.exe
+
+# Compile Engine API
+$(ENGINE): $(CORESRC) $(ENGINESRC)
 	$(CC) $(CXFLAGS) $^ -o $@.exe
 
 # Compile HelpSuite
@@ -117,12 +124,12 @@ $(DOCS): docs/conf.dox
 %.o: %.cpp %.h
 	$(CC) $(CXFLAGS) -c $< -o $@
 
-
 # $(RRM) $(foreach d, $(MODULES),$d\\*.o $d\\*.so $d\\*.wasm) 2>&1 >/dev/null
 clean:
 	$(MAKE) cleanaudio
 	$(MAKE)	cleancli
 	$(MAKE) cleancore
+	$(MAKE) cleanengine
 	$(MAKE) cleanhelp
 	$(MAKE) cleantest
 
@@ -137,6 +144,9 @@ cleanbin:
 
 cleancli:
 	$(RRM) $(CLIS)$(SEPR)*.o
+
+cleanengine:
+	$(RRM) $(ENGINE)$(SEPR)*.o
 
 cleancore:
 	$(RRM) $(CORE)$(SEPR)*.o
@@ -158,4 +168,4 @@ cleanall:
 	$(MAKE) clean
 	$(MAKE) cleanbin
 
-.PHONY: all audiosuite core helpsuite testsuite build clean cleanbin cleanaudio cleancore cleandoc cleanhelp cleantest cleanall
+.PHONY: all audiosuite core engine helpsuite testsuite build clean cleanbin cleanaudio cleancore cleandoc cleanhelp cleantest cleanall
