@@ -72,26 +72,26 @@ void CLISuite::run_command(const std::string input, std::vector<std::string>& cm
     case 2:   //! Reload Config Options
       this->cnf->reload_state();
       break;
-    case 3:   //! Generate Name 
+    case 3:   //! Generate Name
       value = atoi(cmdline[1].c_str());
       for (int i = 0; i < value; i++) {
         tmp = lex->generateName(1);
-        printf("%s", tmp.c_str()); 
+        printf("%s", tmp.c_str());
       }
-      printf("\n"); 
+      printf("\n");
       break;
-    case 4:   //! Chain Command 
+    case 4:   //! Chain Command
       cmdline.erase(cmdline.begin());
       for (std::string c : cmdline) { printf("_ : %s\n", c.c_str()); }
       break;
     case 5:   //! Run Time
       this->displayRunTime();
       break;
-    case 6:   //! Change Prompt 
+    case 6:   //! Change Prompt
       this->setPrompt(cmdline[1]);
       break;
-    case 7:   //! Unimplemented Command 
-    case 8:   //! Unimplemented Command 
+    case 7:   //! **New Command
+    case 8:   //! Unimplemented Command
     default:
       sprintf(this->buf, "Unimplemented Command: %s", input.c_str());
       log->named_log(__FILENAME__, this->buf);

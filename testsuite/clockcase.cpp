@@ -37,7 +37,7 @@ void TestClock::doCycleWork() {
 
   // Run Test
   this->clock->doCycleWork();
-  assertm(false == this->clock->getPendingWorkState(), "Clock Completed Cycle while work still pending.");
+  record(false == this->clock->getPendingWorkState(), "Clock Completed Cycle while work still pending.");
   sprintf(buf, "%s [%s] %s", msgHead, "cycle state", msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);
 }

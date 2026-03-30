@@ -33,7 +33,7 @@ void TestItem::itemrarity() {
   ItemRarity junk = ItemRarity::JUNK;
   Item* check = new Item("TestItem");
   check->set_rarity(junk);
-  assertm(check->get_rarity() == junk, "Item rarity does not match creation type");
+  record(check->get_rarity() == junk, "Item rarity does not match creation type");
   sprintf(buf, "%s [%s] %s", msgHead, "item rarity", msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);
 }
@@ -43,7 +43,7 @@ void TestItem::rarity_invalidation() {
   ItemRarity junk = static_cast<ItemRarity>(-2);
   Item* check = new Item("TestItem");
   check->set_rarity(junk);
-  assertm(check->get_rarity() != junk, "Item rarity should not allow negatives");
+  record(check->get_rarity() != junk, "Item rarity should not allow negatives");
   sprintf(buf, "%s [%s] %s", msgHead, "item rarity invalidation", msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);
 }
@@ -53,7 +53,7 @@ void TestItem::itemtype() {
   ItemType ring = ItemType::RING;
   Item* check = new Item("TestItem");
   check->set_type(ring);
-  assertm(check->get_type() == ring, "Item Type does not match creation type");
+  record(check->get_type() == ring, "Item Type does not match creation type");
   sprintf(buf, "%s [%s] %s", msgHead, "item type", msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);
 }
@@ -63,7 +63,7 @@ void TestItem::type_invalidation() {
   ItemType ring = static_cast<ItemType>(-1);
   Item* check = new Item("TestItem");
   check->set_type(ring);
-  assertm(check->get_type() != ring, "Item Type should not allow negatives");
+  record(check->get_type() != ring, "Item Type should not allow negatives");
   sprintf(buf, "%s [%s] %s", msgHead, "item type invalidation", msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);
 }

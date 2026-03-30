@@ -43,15 +43,14 @@ CXXFLAGS = $(CXFLAGS) -Wall -pedantic -O3
 # SHELL := /bin/bash
 
 # Build targets
-ENGINE := engine
-ENGINESRC := $(patsubst $(ENGINE)/%.cpp, $(ENGINE)/%.o, $(wildcard $(ENGINE)/*.cpp))
+ENGN := engine
+ENGNSRC := $(patsubst $(ENGN)/%.cpp, $(ENGN)/%.o, $(wildcard $(ENGN)/*.cpp))
 
 CORE := core
 CORESRC := $(patsubst $(CORE)/%.cpp, $(CORE)/%.o, $(wildcard $(CORE)/*.cpp))
 
 AUDI := audiosuite
 AUDISRC := $(patsubst $(AUDI)/%.cpp, $(AUDI)/%.o, $(wildcard $(AUDI)/*.cpp))
-AUDISRC += $(CORE)/audio.o $(CORE)/logger.o $(CORE)/config.o $(CORE)/utilz.o
 
 CLIS := clisuite
 CLISSRC := $(patsubst $(CLIS)/%.cpp, $(CLIS)/%.o, $(wildcard $(CLIS)/*.cpp))
@@ -66,8 +65,8 @@ TESTSRC := $(patsubst $(TEST)/%.cpp, $(TEST)/%.o, $(wildcard $(TEST)/*.cpp))
 
 AUDISRC += $(CORE)/audio.o $(CORE)/logger.o $(CORE)/config.o $(CORE)/utilz.o
 CORESRC += $(TEST)/profiler.o
-MODULES := $(CORE) $(AUDI) $(CLIS) $(HELP) $(TEST)
-SOURCES := $(CORESRC) $(CLISSRC) $(AUDISRC) $(HELPSRC) $(TESTSRC)
+MODULES := $(CORE) $(AUDI) $(CLIS) $(HELP) $(TEST) $(ENGN)
+SOURCES := $(CORESRC) $(CLISSRC) $(AUDISRC) $(HELPSRC) $(TESTSRC) $(ENGNSRC)
 
 # GNU Make Compilation Macros: 
 # https://stackoverflow.com/questions/3220277/what-do-the-makefile-symbols-and-mean#3220288
@@ -82,6 +81,7 @@ info:
 	@echo "Usage: make <str:option>"
 	@echo "  build      - Builds the entire project into object files"
 	@echo "  core       - Builds the core engine into object files"
+	@echo "  engine     - Builds the api engine into object files"
 	@echo "  audiosuite - Compiles the audio engine into a binary"
 	@echo "  clisuite   - Compiles the core engine and the command line tool"
 	@echo "  helpsuite  - Compiles the help command line tool (developer details)"
@@ -106,7 +106,7 @@ $(CLIS): $(CORESRC) $(CLISSRC)
 	$(CC) $(CXFLAGS) $^ -o $@.exe
 
 # Compile Engine API
-$(ENGINE): $(CORESRC) $(ENGINESRC)
+$(ENGN): $(CORESRC) $(ENGNSRC)
 	$(CC) $(CXFLAGS) $^ -o $@.exe
 
 # Compile HelpSuite
@@ -146,7 +146,7 @@ cleancli:
 	$(RRM) $(CLIS)$(SEPR)*.o
 
 cleanengine:
-	$(RRM) $(ENGINE)$(SEPR)*.o
+	$(RRM) $(ENGN)$(SEPR)*.o
 
 cleancore:
 	$(RRM) $(CORE)$(SEPR)*.o
@@ -157,7 +157,7 @@ cleanhelp:
 cleantest:
 	$(RRM) $(TEST)$(SEPR)*.o
 
-cleandoc:
+cleandocs:
 ifeq ($(OS), Windows_NT)
 	@powershell -ExecutionPolicy Bypass -File .\docs\docCleanup.ps1 
 else
@@ -168,4 +168,4 @@ cleanall:
 	$(MAKE) clean
 	$(MAKE) cleanbin
 
-.PHONY: all audiosuite core engine helpsuite testsuite build clean cleanbin cleanaudio cleancore cleandoc cleanhelp cleantest cleanall
+.PHONY: all audiosuite core engine helpsuite testsuite build clean cleanbin cleanaudio cleancore cleandocs cleanhelp cleantest cleanall

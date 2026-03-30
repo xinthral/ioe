@@ -29,7 +29,7 @@
 
 /*!
  * @class   BaseCase basecase.h basecase.cpp
- * @brief   Base Testing Case for TestSuite Module  
+ * @brief   Base Testing Case for TestSuite Module
 */
 class BaseCase {
 protected:
@@ -40,11 +40,13 @@ protected:
   char                msgHead[32];  //!< Unified prefix for test
   char                msgNote[64];  //!< Unified buffer for test
   char                msgTail[32];  //!< Unified suffix for test
+  int                 _passed;      //!< Count of passing assertions
+  int                 _failed;      //!< Count of failing assertions
 
 private:
 public:
   /*!
-   * @brief   Default Constructor 
+   * @brief   Default Constructor
   */
   BaseCase();
 
@@ -55,7 +57,14 @@ public:
   BaseCase(const char*);
 
   /*!
-   * @brief   Default Deconstructor 
+   * @brief   Check a condition, log result, and tally pass/fail without aborting
+   * @param[in] condition - Expression to evaluate
+   * @param[in] msg       - Failure message logged when condition is false
+  */
+  void record(bool condition, const char* msg);
+
+  /*!
+   * @brief   Default Deconstructor
   */
   ~BaseCase();
 };

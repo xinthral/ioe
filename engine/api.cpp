@@ -20,10 +20,11 @@ void APIEngine::print_help() {
   log->raw_log("\nOptions:");
   log->raw_log("\t-h, --help        Show Help Message");
   log->raw_log("\t-v, --version     Show Version Number");
-#ifndef __linux__
-  log->raw_log("[Note]: Must be ran on linux\n");
+#ifdef __linux__
+  log->raw_log("[Note]: Linux Specific Instructions\n");
+#elifdef __WIN32
+  log->raw_log("[Note]: Windows Specific Instructions\n");
 #endif
-
 }
 
 
@@ -42,11 +43,23 @@ void APIEngine::print_version() {
   log->raw_log(buf);
 }
 
+
+void APIEngine::process_instructions(int argc, char** argv) {
+
+  //! Iterate over command-line arguments
+  for (int i = 1; i < argc; i++) {
+    printf("Instruction #%d: %s\n", i, argv[i]);
+  }
+
+  //! Add More here
+  
+}
+
+
 int main(int argc, char** argv) {
   //! Conditional Check
   if (argc < 1) { APIEngine::print_help(); return 0; }
   
-#ifndef __WIN32
   //! Establish CLI Parameters
   int opt;
   static struct option long_options[] = {
@@ -59,13 +72,10 @@ int main(int argc, char** argv) {
     switch (opt) {
       case 'h':
         APIEngine::print_help();
-        return 0;
       case 'v':
         APIEngine::print_version();
-        return 0;
       case '?':
-        APIEngine::print_help();
-        return 1;
+        APIEngine::print_help(); return 1;
     }
   }
 
@@ -76,8 +86,6 @@ int main(int argc, char** argv) {
     return 1;
   }
 
-#elif __linux__
-  APIEngine::print_help();
+  APIEngine::process_instructions(argc, argv);
   return 0;
-#endif
 }

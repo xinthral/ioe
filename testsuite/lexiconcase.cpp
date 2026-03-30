@@ -31,7 +31,7 @@ void TestLexicon::test_all() {
 void TestLexicon::generateName(int len) {
   PROFILE_FUNCTION();
   std::string response = lex->generateName(len);
-  assertm(response.size() >= (2*len), "Name Responded with Insufficient Length");
+  record(response.size() >= (2*len), "Name Responded with Insufficient Length");
   sprintf(buf, "%s [%s] %s (%s)", msgHead, "name generation", msgTail, response.c_str());
   BaseCase::log->named_log(__FILENAME__, buf);
 }
@@ -42,7 +42,7 @@ void TestLexicon::generateName(int len) {
 void TestLexicon::lexigraphChangeSize() {
   PROFILE_FUNCTION();
   lex->setLexigraph("1234567890ABCDEFGHIJKLMNOQRSTUVWXYZ");
-  assertm(35 == lex->getLexigraphSize(), "New Lexigraph has mismatched Size");
+  record(35 == lex->getLexigraphSize(), "New Lexigraph has mismatched Size");
   sprintf(buf, "%s [%s] %s (%d)", msgHead, "changing lexigraph", msgTail, lex->getLexigraphSize());
   BaseCase::log->named_log(__FILENAME__, buf);
 }

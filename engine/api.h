@@ -33,9 +33,9 @@ private:
 public:
   APIEngine();
   Player create_player();
-  void parse_instruction();
   static void print_help();
   static void print_version();
+  static void process_instructions(int,char**);
 };
 
 #endif // XAPI_H //

@@ -2,6 +2,7 @@
 *.secret
 *.o
 *.exe
+CLAUDE.md
 
 # Avoid CopyWrite by not uploading files
 mixkit-*.wav

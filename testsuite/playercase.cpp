@@ -31,10 +31,10 @@ void TestPlayer::test_all() {
 void TestPlayer::test_isAlive() {
   PROFILE_FUNCTION();
   bool isAlive = dummy->isAlive();
-  assertm(isAlive == true, "Is Not Alive");
+  record(isAlive == true, "Is Not Alive");
   dummy->set_health_dead();
   isAlive = dummy->isAlive();
-  assertm(isAlive == false, "Has Risen from the Dead");
+  record(isAlive == false, "Has Risen from the Dead");
   sprintf(this->msgNote, "[Alive] Value");
   sprintf(buf, "%s %s %s", msgHead, msgNote, msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);

@@ -48,7 +48,7 @@ void xClock::doCycleWork() {
   log->raw_log("Clock Cycle Work!");
   do {
     battle->doCycleWork(pendingBattles);
-    isPendingWork = pendingBattles || false;
+    isPendingWork = pendingBattles;
   } while (isPendingWork);
 }
 

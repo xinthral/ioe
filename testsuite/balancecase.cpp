@@ -7,7 +7,7 @@
 #define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
 
 /*!
- * @todo    Default Constructor
+ * @brief    Default Constructor
 */
 TestBalance::TestBalance() : BaseCase(__FILENAME__) {
   BaseCase::log->named_log(__FILENAME__, "Testing the BalanceController!");
@@ -20,7 +20,7 @@ TestBalance::TestBalance() : BaseCase(__FILENAME__) {
 }
 
 /*!
- * @todo    Validate the entire Balance Module
+ * @brief    Validate the entire Balance Module
 */
 void TestBalance::test_all() { 
   this->def_atk_ratio();      //!< Test Atk/Def Ration
@@ -28,7 +28,7 @@ void TestBalance::test_all() {
 }
 
 /*!
- * @todo    Validate Scaling factors against attack and defense
+ * @brief    Validate Scaling factors against attack and defense
 */
 void TestBalance::def_atk_ratio() { 
   PROFILE_FUNCTION();
@@ -36,24 +36,24 @@ void TestBalance::def_atk_ratio() {
   double numerator = this->baseAtk * bal->scalar(100);
   double denominator = this->baseDef * bal->scalar(100);
   double posRatio = numerator / denominator;
-  assert(preRatio == posRatio);
+  record(preRatio == posRatio, "Attack/Defense ratio changed after scaling");
   sprintf(buf, "%s [DAF: %.4f] (Defense/Attack Ratio) %s", msgHead, posRatio, msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);
 }
 
 /*!
- * @todo    Validate that the appropriate difficulty level is being assigned. 
+ * @brief    Validate that the appropriate difficulty level is being assigned. 
 */
 void TestBalance::difficulty_level() {
   PROFILE_FUNCTION();
   std::string dif  = cnf->raw_config("DIF");
   std::string diff = bal->get_difficulty_str();
-  assert(dif.compare(diff));
+  record(dif.compare(diff) == 0, "Difficulty level mismatch");
   sprintf(buf, "%s [Difficulty] %s", msgHead, msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);
 }
 
 /*!
- * @todo    Default Deconstructor
+ * @brief    Default Deconstructor
 */
 TestBalance::~TestBalance() { }

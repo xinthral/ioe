@@ -46,7 +46,7 @@ void TestBattle::level1_eve() {
 
   sprintf(buf, "T1 :: T2 :: [ %d ] : [ %d ]", toon1->get_health(), toon2->get_health());
   BaseCase::log->timed_log(buf);
-  assertm(toon1->get_healthstate() == 4 || toon2->get_healthstate() == 4, "Combat ended while health remained.\n");
+  record(toon1->get_healthstate() == 4 || toon2->get_healthstate() == 4, "Combat ended while health remained.\n");
   sprintf(buf, "%s [%s] %s", msgHead, "Level1 EVE", msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);
 }
@@ -67,7 +67,7 @@ void TestBattle::level1_pve() {
 
   sprintf(buf, "P1 :: T1 :: [ %d ] : [ %d ]", player1->get_health(), toon1->get_health());
   BaseCase::log->timed_log(buf);
-  assertm(player1->get_healthstate() == 4 || toon1->get_healthstate() == 4, "Combat ended while health remained.\n");
+  record(player1->get_healthstate() == 4 || toon1->get_healthstate() == 4, "Combat ended while health remained.\n");
   sprintf(buf, "%s [%s] %s", msgHead, "Level1 PVE", msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);
 }
@@ -88,7 +88,7 @@ void TestBattle::level1_pvp() {
 
   sprintf(buf, "P1 :: P2 :: [ %d ] : [ %d ]", player1->get_health(), player2->get_health());
   BaseCase::log->timed_log(buf);
-  assertm(player1->get_healthstate() == 4 || player2->get_healthstate() == 4, "Combat ended while health remained.\n");
+  record(player1->get_healthstate() == 4 || player2->get_healthstate() == 4, "Combat ended while health remained.\n");
   sprintf(buf, "%s [%s] %s", msgHead, "Level1 PVP", msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);
 }

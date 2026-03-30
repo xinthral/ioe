@@ -68,7 +68,7 @@ void TestActors::base_attack() {
   PROFILE_FUNCTION();
   int cnf_atk = cnf->get_attack();
   dummy = new Actor();
-  assertm(cnf_atk == dummy->get_baseAttack(), "Actor Attack Mismatch");
+  record(cnf_atk == dummy->get_baseAttack(), "Actor Attack Mismatch");
   sprintf(buf, "%s %s %s", msgHead, "Base [Attack] Value", msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);
 }
@@ -80,7 +80,7 @@ void TestActors::base_defense() {
   PROFILE_FUNCTION();
   int cnf_def = cnf->get_defense();
   dummy = new Actor();
-  assertm(cnf_def == dummy->get_baseDefense(), "Actor Defense Mismatch");
+  record(cnf_def == dummy->get_baseDefense(), "Actor Defense Mismatch");
   sprintf(buf, "%s %s %s", msgHead, "Base [Defense] Value", msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);
 }
@@ -92,7 +92,7 @@ void TestActors::base_flux() {
   PROFILE_FUNCTION();
   int cnf_flx = cnf->get_flux();
   dummy = new Actor();
-  assertm(cnf_flx == dummy->get_baseFlux(), "Actor Flux Mismatch");
+  record(cnf_flx == dummy->get_baseFlux(), "Actor Flux Mismatch");
   sprintf(buf, "%s %s %s", msgHead, "Base [Flux] Value", msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);
 }
@@ -104,7 +104,7 @@ void TestActors::base_health() {
   PROFILE_FUNCTION();
   int cnf_hlt = cnf->get_health();
   dummy = new Actor();
-  assertm(cnf_hlt == dummy->get_baseHealth(), this->msgNote);
+  record(cnf_hlt == dummy->get_baseHealth(), this->msgNote);
   sprintf(buf, "%s %s %s", msgHead, "Base [Health] Value", msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);
 }
@@ -116,7 +116,7 @@ void TestActors::combatstate_idle() {
   PROFILE_FUNCTION();
   dummy = new Actor();
   dummy->set_combat_idle();
-  assertm(IDLE == dummy->get_combatstate(), this->msgNote);
+  record(IDLE == dummy->get_combatstate(), this->msgNote);
   sprintf(buf, "%s %s %s", msgHead, "[Idle] Combatstate", msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);
 }
@@ -128,7 +128,7 @@ void TestActors::combatstate_patrol() {
   PROFILE_FUNCTION();
   dummy = new Actor();
   dummy->set_combat_patrol();
-  assertm(PATROL == dummy->get_combatstate(), this->msgNote);
+  record(PATROL == dummy->get_combatstate(), this->msgNote);
   sprintf(buf, "%s %s %s", msgHead, "[Patrol] Combatstate", msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);
 }
@@ -140,7 +140,7 @@ void TestActors::combatstate_fight() {
   PROFILE_FUNCTION();
   dummy = new Actor();
   dummy->set_combat_fight();
-  assertm(FIGHT == dummy->get_combatstate(), this->msgNote);
+  record(FIGHT == dummy->get_combatstate(), this->msgNote);
   sprintf(buf, "%s %s %s", msgHead, "[Fight] Combatstate", msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);
 }
@@ -152,7 +152,7 @@ void TestActors::combatstate_flee() {
   PROFILE_FUNCTION();
   dummy = new Actor();
   dummy->set_combat_flee();
-  assertm(FLEE == dummy->get_combatstate(), this->msgNote);
+  record(FLEE == dummy->get_combatstate(), this->msgNote);
   sprintf(buf, "%s %s %s", msgHead, "[Flee] Combatstate", msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);
 }
@@ -164,7 +164,7 @@ void TestActors::combatstate_follow() {
   PROFILE_FUNCTION();
   dummy = new Actor();
   dummy->set_combat_follow();
-  assertm(FOLLOW == dummy->get_combatstate(), this->msgNote);
+  record(FOLLOW == dummy->get_combatstate(), this->msgNote);
   sprintf(buf, "%s %s %s", msgHead, "[Follow] Combatstate", msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);
 }
@@ -176,7 +176,7 @@ void TestActors::healthstate_healthy() {
   PROFILE_FUNCTION();
   dummy = new Actor();
   dummy->set_health_healthy();
-  assertm(HEALTHY == dummy->get_healthstate(), this->msgNote);
+  record(HEALTHY == dummy->get_healthstate(), this->msgNote);
   sprintf(buf, "%s %s %s", msgHead, "[Healthy] Healthstate", msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);
 }
@@ -188,7 +188,7 @@ void TestActors::healthstate_hurting() {
   PROFILE_FUNCTION();
   dummy = new Actor();
   dummy->set_health_hurting();
-  assertm(HURTING == dummy->get_healthstate(), this->msgNote);
+  record(HURTING == dummy->get_healthstate(), this->msgNote);
   sprintf(buf, "%s %s %s", msgHead, "[Hurting] Healthstate", msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);
 }
@@ -200,7 +200,7 @@ void TestActors::healthstate_critical() {
   PROFILE_FUNCTION();
   dummy = new Actor();
   dummy->set_health_critical();
-  assertm(CRITICAL == dummy->get_healthstate(), this->msgNote);
+  record(CRITICAL == dummy->get_healthstate(), this->msgNote);
   sprintf(buf, "%s %s %s", msgHead, "[Critical] Healthstate", msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);
 }
@@ -212,7 +212,7 @@ void TestActors::healthstate_sick() {
   PROFILE_FUNCTION();
   dummy = new Actor();
   dummy->set_health_sick();
-  assertm(SICK == dummy->get_healthstate(), this->msgNote);
+  record(SICK == dummy->get_healthstate(), this->msgNote);
   sprintf(buf, "%s %s %s", msgHead, "[Sick] Healthstate", msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);
 }
@@ -224,7 +224,7 @@ void TestActors::healthstate_dead() {
   PROFILE_FUNCTION();
   dummy = new Actor();
   dummy->set_health_dead();
-  assertm(DEAD == dummy->get_healthstate(), this->msgNote);
+  record(DEAD == dummy->get_healthstate(), this->msgNote);
   sprintf(buf, "%s %s %s", msgHead, "[Dead] Healthstate", msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);
 }
@@ -233,7 +233,7 @@ void TestActors::starting_health() {
   PROFILE_FUNCTION();
   dummy = new Actor();
   // assertm(32 == dummy->get_health(), "Actor failed to initialize");
-  assertm(cnf->get_health() == dummy->get_health(), "Actor failed to initialize");
+  record(cnf->get_health() == dummy->get_health(), "Actor failed to initialize");
   sprintf(buf, "%s [%s] %s", msgHead, "Initial Health", msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);
 }

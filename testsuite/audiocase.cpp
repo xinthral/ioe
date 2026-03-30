@@ -29,7 +29,7 @@ void TestAudio::test_all() {
 void TestAudio::wavSampling() {
   audio = new AudioDriver();
   audio->readWavData("./audiosuite/samples/game-over.wav");
-  assertm(audio->getSampleRate() == 44100, "Audio Wav SampleRate Mismatch");
+  record(audio->getSampleRate() == 44100, "Audio Wav SampleRate Mismatch");
   sprintf(buf, "%s %s %s", msgHead, "[44100] Sample Rate", msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);
 }

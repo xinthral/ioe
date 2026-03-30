@@ -38,6 +38,7 @@ void print_help() {
   sprintf(buf, "\t[%d] - Test Stage Module", ++idx); log->raw_log(buf);
   sprintf(buf, "\t[%d] - Test Toon Module", ++idx); log->raw_log(buf);
   sprintf(buf, "\t[%d] - Test Utilz Module", ++idx); log->raw_log(buf);
+  sprintf(buf, "\t[%d] - Test Weapons in the Items Module", ++idx); log->raw_log(buf);
   log->raw_log("\n");
   exit(0);
 }
@@ -65,82 +66,88 @@ void TestSuite::TestAll() {
   this->CaseStage();
   this->CaseToon();
   this->CaseUtilz();
+  this->CaseWeapon();
 }
 
 /*!
  * @todo    Initiates the Test for the Actor Module
 */
-void TestSuite::CaseActor() { TestActors* ta = new TestActors(); }
+void TestSuite::CaseActor() { TestActors ta; }
 
 /*!
  * @todo    Initiates the Test for the Actor Module
 */
-void TestSuite::CaseAudio() { TestAudio* ta = new TestAudio(); }
+void TestSuite::CaseAudio() { TestAudio ta; }
 
 /*!
  * @todo    Initiates the Test for the BalanceController Module
 */
-void TestSuite::CaseBalance() { TestBalance* tb = new TestBalance(); }
+void TestSuite::CaseBalance() { TestBalance tb; }
 
 /*!
  * @todo    Initiates the Test for the BalanceController Module
 */
-void TestSuite::CaseBattle() { TestBattle* tb = new TestBattle(); }
+void TestSuite::CaseBattle() { TestBattle tb; }
 
 /*!
  * @todo    Initiates the Test for the Engine Clock
 */
-void TestSuite::CaseClock() { TestClock* tc = new TestClock(); }
+void TestSuite::CaseClock() { TestClock tc; }
 
 /*!
  * @todo    Initiates the Test for the Ciphers Module
 */
-void TestSuite::CaseCiphers() { TestCiphers* tc = new TestCiphers(); }
+void TestSuite::CaseCiphers() { TestCiphers tc; }
 
 /*!
  * @todo    Initiates the Test for the Combat Module
 */
-void TestSuite::CaseCombat() { TestCombat* tc = new TestCombat(); }
+void TestSuite::CaseCombat() { TestCombat tc; }
 
 /*!
  * @todo    Initiates the Test for the ConfigManager Module
 */
-void TestSuite::CaseConfig() { TestConfig* tc = new TestConfig(); }
+void TestSuite::CaseConfig() { TestConfig tc; }
 
 /*!
  * @todo    Initiates the Test for the Item Module
 */
-void TestSuite::CaseItem() { TestItem* ti = new TestItem(); }
+void TestSuite::CaseItem() { TestItem ti; }
 
 /*!
  * @todo    Initiates the Test for the LeaderBoard Module 
 */
-void TestSuite::CaseLeader() { TestLeader* tl = new TestLeader(); }
+void TestSuite::CaseLeader() { TestLeader tl; }
 
 /*!
  * @todo    Initiates the Test for the Lexicon Module 
 */
-void TestSuite::CaseLexicon() { TestLexicon* tl = new TestLexicon(); }
+void TestSuite::CaseLexicon() { TestLexicon tl; }
 
 /*!
  * @todo    Initiates the Test for the Player Module
 */
-void TestSuite::CasePlayer() { TestPlayer* tp = new TestPlayer(); }
+void TestSuite::CasePlayer() { TestPlayer tp; }
 
 /*!
  * @todo    Initiates the Test for the StageManager Module
 */
-void TestSuite::CaseStage() { TestStage* tg = new TestStage(); }
+void TestSuite::CaseStage() { TestStage tg; }
 
 /*!
  * @todo    Initiates the Test for the Toon Module
 */
-void TestSuite::CaseToon() { TestToon* tt = new TestToon(); }
+void TestSuite::CaseToon() { TestToon tt; }
 
 /*!
  * @todo    Initiates the Test for the Utilz Module
 */
-void TestSuite::CaseUtilz() { TestUtilz* tu = new TestUtilz(); }
+void TestSuite::CaseUtilz() { TestUtilz tu; }
+
+/*!
+ * @todo    Initiates the Test for the Weapos Component of the Items Module
+*/
+void TestSuite::CaseWeapon() { TestWeapon tw; }
 
 /*!
  * @todo    Default Deconstructor
@@ -158,10 +165,10 @@ int main(int argc, char const *argv[]) {
   TestSuite ts = TestSuite();
   Logger* log = Logger::GetInstance();
   std::vector<std::thread> threadList;
-  char buf[64];
+  char buf[128];
   int choice = 0;
   choice = atoi(argv[1]);
-  std::thread cact, caud, cbal, cbat, cclo, ccip, ccom, ccon, cite, clea, clex, cpla, csta, ctoo, cuti;
+  std::thread cact, caud, cbal, cbat, cclo, ccip, ccom, ccon, cite, clea, clex, cpla, csta, ctoo, cuti, cwea;
   
   switch (choice) {
     case -1:
@@ -196,6 +203,8 @@ int main(int argc, char const *argv[]) {
       threadList.emplace_back(std::move(ctoo));
       cuti = std::thread(&TestSuite::CaseUtilz, &ts);
       threadList.emplace_back(std::move(cuti));
+      cuti = std::thread(&TestSuite::CaseUtilz, &ts);
+      threadList.emplace_back(std::move(cwea));
       for (auto& t : threadList) { t.join(); }
       break;
     case 0: 
@@ -262,6 +271,9 @@ int main(int argc, char const *argv[]) {
       sprintf(buf, "Utilz TestCase Completed...");
       ts.CaseUtilz();
       break;
+    case 16:
+      sprintf(buf, "Weapon TestCase Completed...");
+      ts.CaseWeapon();
     default:
       sprintf(buf, "\nWarn :: Unknown Test, please review the list and try again.\n");
   }

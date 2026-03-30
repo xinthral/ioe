@@ -23,7 +23,7 @@ Battle::Battle() {
 }
 
 /*!
- * @todo    Player v Team Constructor
+ * @brief   Player v Team Constructor
 */
 Battle* Battle::GetInstance() {
   //! Acquire Instance Mutex
@@ -33,11 +33,21 @@ Battle* Battle::GetInstance() {
   return _singleton;
 }
 
+
+/*!
+ * @brief   Perform combat in a consistant, controlled cycle
+*/
 void Battle::doCycleWork(bool &isPendingWork) {
   // this->log->named_log(__FILENAME__, "Battle Cycle Work");
-  if (this->combat) { this->combat->cycleCombat(); }
-  // if (cycleCompletionTracker--<1) { isPendingWork = false; this->combat = NULL; }
-  if (!this->combat->inCombat()) { isPendingWork = false; this->combat = NULL; }
+  if (this->combat) { 
+    this->combat->cycleCombat();
+    if (!this->combat->inCombat()) { 
+      isPendingWork = false; 
+      this->combat = NULL; 
+    }
+  } else {
+    isPendingWork = false;
+  }
 }
 
 void Battle::startEVE(Toon *t1, Toon *t2) {

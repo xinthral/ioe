@@ -23,9 +23,9 @@ void TestWeapon::test_weapon_type() {
   ItemType sword = ItemType::SWORD;
   Weapon * wep = new Weapon();
   wep->set_type(staff);
-  assertm(wep->get_type() == staff, "Weapon type mismatch!\n");
+  record(wep->get_type() == staff, "Weapon type mismatch!\n");
   wep->set_type(sword);
-  assertm(wep->get_type() == sword, "Weapon retype mismatch!\n");
+  record(wep->get_type() == sword, "Weapon retype mismatch!\n");
   sprintf(buf, "%s [%s] %s", msgHead, "weapon type check", msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);
 }

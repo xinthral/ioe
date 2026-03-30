@@ -13,6 +13,8 @@ BaseCase::BaseCase() {
   this->bal = BalanceController::GetInstance();   //!< Instantiated BalanceController Object
   this->cnf = ConfigManager::GetInstance();       //!< Instantiated ConfigManager Object
   this->log = Logger::GetInstance();              //!< Instantiated Logger Object
+  this->_passed = 0;
+  this->_failed = 0;
 }
 
 /*!
@@ -23,6 +25,22 @@ BaseCase::BaseCase(const char * casename) : BaseCase() {
 }
 
 /*!
- * @todo    Default Deconstructor 
+ * @todo    Check a condition and tally pass/fail
 */
-BaseCase::~BaseCase() { }
+void BaseCase::record(bool condition, const char* msg) {
+  if (condition) {
+    _passed++;
+  } else {
+    _failed++;
+    this->log->named_log("FAIL", msg);
+  }
+}
+
+/*!
+ * @todo    Default Deconstructor
+*/
+BaseCase::~BaseCase() {
+  char buf[64];
+  sprintf(buf, "Passed: %d | Failed: %d", _passed, _failed);
+  this->log->named_log("Results", buf);
+}

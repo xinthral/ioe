@@ -33,7 +33,7 @@ void TestToon::test_toonCreation() {
   PROFILE_FUNCTION();
   Toon* toon = new Toon();
   char* name = (char*)"Toon_#-1";
-  assert( strcmp(name, toon->get_name().c_str()) == 0 );
+  record(strcmp(name, toon->get_name().c_str()) == 0, "Toon default name mismatch");
   sprintf(this->msgNote, "instantiation");
   sprintf(buf, "%s [%s] %s", msgHead, msgNote, msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);
@@ -46,7 +46,7 @@ void TestToon::test_toonCreation_id() {
   PROFILE_FUNCTION();
   Toon* toon = new Toon(3);
   char* name = (char*)"Toon_#3";
-  assert( strcmp(name, toon->get_name().c_str()) == 0 );
+  record(strcmp(name, toon->get_name().c_str()) == 0, "Toon id name mismatch");
   sprintf(this->msgNote, "id instantiation");
   sprintf(buf, "%s [%s] %s", msgHead, msgNote, msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);
@@ -59,7 +59,7 @@ void TestToon::test_toonCreation_name() {
   PROFILE_FUNCTION();
   Toon* toon = new Toon("Maji");
   char* name = (char*)"Maji";
-  assert( strcmp(name, toon->get_name().c_str()) == 0 );
+  record(strcmp(name, toon->get_name().c_str()) == 0, "Toon name instantiation mismatch");
   sprintf(this->msgNote, "name instantiation");
   sprintf(buf, "%s [%s] %s", msgHead, msgNote, msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);
@@ -72,7 +72,7 @@ void TestToon::test_toonCreation_both() {
   PROFILE_FUNCTION();
   Toon* toon = new Toon(4, "Jesse");
   char* name = (char*)"Jesse";
-  assert( strcmp(name, toon->get_name().c_str()) == 0 );
+  record(strcmp(name, toon->get_name().c_str()) == 0, "Toon both instantiation mismatch");
   sprintf(this->msgNote, "both instantiation");
   sprintf(buf, "%s [%s] %s", msgHead, msgNote, msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);

@@ -105,7 +105,8 @@ std::unordered_map<std::string, int> _CMDMAP = {
   {"name",    3},
   {"chain",   4},
 	{"runtime", 5},
-  {"prompt",  6}
+  {"prompt",  6},
+  {"new",     7},
 };
 
 #endif // XENGINE_H //
