@@ -27,6 +27,7 @@ void AudioMixer::print_help() {
   log->raw_log(buf);
   log->raw_log("  [-h]        - displays help details");
   log->raw_log("  [filename]  - Name of WAV file");
+  log->raw_log("Supported Formats:  .wav   .mp3   .flac");
   log->raw_log("\n");
 }
 
@@ -46,7 +47,7 @@ int main(int argc, char const *argv[]) {
   // Logger* _log = Logger::GetInstance();
   AudioMixer* audio = new AudioMixer();
   WavSampler* sampler = new WavSampler();
-  WavPlayer* player = new WavPlayer();
+  AudioPlayer* player = new AudioPlayer();
 
   std::string input = "./audiosuite/samples/";
   if (argc < 2) { audio->print_help(); return 0; }
@@ -57,7 +58,7 @@ int main(int argc, char const *argv[]) {
     }
     input += argv[1];
   } else { input += "game-over.wav"; }
-  player->playwav(input);
+  player->play(input);
   sampler->sampleFile(input);
   return 0;
 }

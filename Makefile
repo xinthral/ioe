@@ -65,6 +65,7 @@ TESTSRC := $(patsubst $(TEST)/%.cpp, $(TEST)/%.o, $(wildcard $(TEST)/*.cpp))
 
 AUDISRC += $(CORE)/audio.o $(CORE)/logger.o $(CORE)/config.o $(CORE)/utilz.o
 CORESRC += $(TEST)/profiler.o
+AUDIDRV := $(AUDI)/wavdriver.o $(AUDI)/mp3driver.o $(AUDI)/flacdriver.o
 MODULES := $(CORE) $(AUDI) $(CLIS) $(HELP) $(TEST) $(ENGN)
 SOURCES := $(CORESRC) $(CLISSRC) $(AUDISRC) $(HELPSRC) $(TESTSRC) $(ENGNSRC)
 
@@ -95,8 +96,8 @@ all: $(MODULES)
 build: $(SOURCES)
 
 # Compile Audio
-$(AUDI): $(AUDISRC) core/audio.o
-	$(CC) $(CXFLAGS) -I/usr/include/python3.11 $^ -o $@.exe
+$(AUDI): $(AUDISRC)
+	$(CC) $(CXFLAGS) $^ -o $@.exe
 
 # Compile Engine
 $(CORE): $(CORESRC)
@@ -114,7 +115,7 @@ $(HELP): $(CORESRC) $(HELPSRC)
 	$(CC) $(CXFLAGS) $^ -o $@.exe
 
 # Compile TestSuite
-$(TEST): $(CORESRC) $(TESTSRC)
+$(TEST): $(CORESRC) $(TESTSRC) $(AUDIDRV)
 	$(CC) $(CXFLAGS) $^ -o $@.exe
 
 # Compile Documents 
@@ -168,4 +169,4 @@ cleanall:
 	$(MAKE) clean
 	$(MAKE) cleanbin
 
-.PHONY: all audiosuite core engine helpsuite testsuite build clean cleanbin cleanaudio cleancore cleandocs cleanhelp cleantest cleanall
+.PHONY: all info audiosuite clisuite core engine helpsuite testsuite build clean cleanbin cleanaudio cleancore cleandocs cleanhelp cleantest cleanall

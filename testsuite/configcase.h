@@ -12,9 +12,6 @@ class TestConfig : public BaseCase {
 protected:
 private:
   char buf[128];          //! Buffer Value for Logger outputs
-  char msgHead[32];       //! Logging Output Formatting, leading
-  char msgNote[256];      //! Buffer Value for Results outputs
-  char msgTail[32];       //! Logging Output Formatting, trailing
 public:
   /*!
    * @brief   Default Constructor

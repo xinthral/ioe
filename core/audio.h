@@ -1,74 +1,66 @@
 #ifndef XAUDIO_H
 #define XAUDIO_H
 
-#include <cstring>
-#include <fstream>
+#include <string>
 #include <vector>
-#include "config.h"
 #include "logger.h"
 
 /*!
  * @class   AudioDriver audio.h audio.cpp
- * @brief   AudioDriver handles audio filtering, sampling and 
- *          otherwise manipulating sound.
- * @details needs desc
+ * @brief   Abstract base class for format-specific audio drivers.
+ * @details Provides a common interface for reading and querying decoded PCM
+ *          audio data regardless of source format (WAV, MP3, FLAC, etc.).
 */
 class AudioDriver {
 protected:
-  ConfigManager* cnf;           //!< ConfigManager Instantiation
-  Logger*        log;           //!< Logging Handler Instantiation
-  char           buf[1024];     //!< Buffer Value for Logger outputs
-private:
-  struct WavHeader {
-    char chunkId[4];
-    uint32_t chunkSize;
-    char format[4];
-    char subchunk1Id[4];
-    uint32_t subchunk1Size;
-    uint16_t audioFormat;
-    uint16_t numChannels;
-    uint32_t sampleRate;
-    uint32_t byteRate;
-    uint16_t blockAlign;
-    uint16_t bitsPerSample;
-    char subchunk2Id[4];
-    uint32_t subchunk2Size;
-  };                            //!< Struct to hold wav metadata
-  WavHeader header;             //!< Wav Struct instantiation
-  std::vector<short> audioData; //!< Array of audio data
-public:
+  Logger* log;      //!< Logging Handler
+  char    buf[1024]; //!< Buffer for Logger outputs
+
   /*!
-   * @brief   Default Constructor
+   * @brief   Protected constructor — use a concrete derived class
   */
   AudioDriver();
 
-  /*!
-   * @brief   Injest Wav File
-   * @param[in] filename - Name of Wav File in the Samples Directory
-  */
-  void readWavData(const std::string&);
+public:
+  //! Non-copyable
+  AudioDriver(AudioDriver&) = delete;
+  void operator=(const AudioDriver&) = delete;
 
   /*!
-   * @brief   Return audio data
+   * @brief   Decode audio from file into PCM samples
+   * @param[in] filename - Path to the audio file
   */
-  std::vector<short> getAudioData();
+  virtual void readAudioData(const std::string& filename) = 0;
 
   /*!
-   * @brief   Return sample rate 
+   * @brief   Return decoded PCM samples as signed 16-bit integers
   */
-  int getSampleRate();
+  virtual std::vector<short> getAudioData() = 0;
 
   /*!
-   * @brief   Return channel count 
+   * @brief   Return sample rate in Hz
   */
-  int getNumChannels();
+  virtual int getSampleRate() = 0;
 
-  void _help();
+  /*!
+   * @brief   Return number of audio channels
+  */
+  virtual int getNumChannels() = 0;
+
+  /*!
+   * @brief   Return bit depth of the source file
+  */
+  virtual int getBitsPerSample() = 0;
+
+  /*!
+   * @brief   Helper Hook used in CLI Help System
+  */
+  virtual void _help();
 
   /*!
    * @brief   Default Deconstructor
   */
-  ~AudioDriver();
+  virtual ~AudioDriver();
 };
 
 #endif // XAUDIO_H //

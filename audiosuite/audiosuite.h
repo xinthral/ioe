@@ -8,7 +8,7 @@
 #include "../core/utilz.h"
 #include "../testsuite/profiler.h"
 #include "wavsampling.h"
-#include "wavplayer.h"
+#include "audioplayer.h"
 
 /*!
  * @class   AudioMixer audiosuite.cpp audiosuite.h

@@ -2,84 +2,29 @@
 #include "audio.h"
 
 /*!
- * @def     __FILENAME__ 
+ * @def     __FILENAME__
  * @brief   Translate Filename to reusable macro
 */
 #define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
 
 /*!
- * @todo    Default Constructor
+ * @brief   Protected Constructor
 */
 AudioDriver::AudioDriver() {
   log = Logger::GetInstance();
 }
 
 /*!
- * @todo    Injest Wav File
+ * @brief   Helper Hook used in CLI Help System
 */
-void AudioDriver::readWavData(const std::string& filename) {
-  std::ifstream file(filename, std::ios::binary);
-
-  if (!file.is_open()) {
-    sprintf(buf, "Failed to open WAV file: %s", filename.c_str());
-    //!//////// Should be Error
-    log->named_log(__FILENAME__, buf);
-    return;
-  }
-
-  //! Read WAV header
-  file.read(reinterpret_cast<char*>(&header), sizeof(header));
-
-  if (file.gcount() != sizeof(header)) {
-    sprintf(buf, "Error reading WAV header.");
-    //!//////// Should be Error
-    log->named_log(__FILENAME__, buf);
-    return;
-  }
-
-  // Check if the file is a valid WAV file
-  if (std::memcmp(header.chunkId, "RIFF", 4) != 0 || std::memcmp(header.format, "WAVE", 4) != 0 || header.subchunk1Size != 16 || header.audioFormat != 1) {
-    sprintf(buf, "Invalid or unsupported WAV file.");
-    //!//////// Should be Error
-    log->named_log(__FILENAME__, buf);
-    return;
-  }
-
-  //! Read audio data
-  audioData.resize(header.subchunk2Size / sizeof(short));
-  file.read(reinterpret_cast<char*>(audioData.data()), header.subchunk2Size);
-
-}
-
-/*!
- * @todo    Return audio data
-*/
-std::vector<short> AudioDriver::getAudioData() {
-  return audioData;
-}
-
-/*!
- * @todo    Return sample rate 
-*/
-int AudioDriver::getSampleRate() {
-  return header.sampleRate;
-}
-
-/*!
- * @todo    Return channel count 
-*/
-int AudioDriver::getNumChannels() {
-  return header.numChannels;
-}
-
 void AudioDriver::_help() {
   std::string helpline = "\nAudioDriver Help File"
-  "\n\nThis is a singleton object (https://www.geeksforgeeks.org/implementation-of-singleton-class-in-cpp/)"
-  "\n";
-  this->log->named_log(__FILENAME__, helpline);
+  "\n\nBase class for format-specific audio drivers (WAV, MP3, FLAC)."
+  "\nUse a concrete driver or AudioPlayer to load and play audio files.\n";
+  log->named_log(__FILENAME__, helpline);
 }
 
 /*!
- * @todo    Default Deconstructor
+ * @brief   Default Deconstructor
 */
 AudioDriver::~AudioDriver() { }
