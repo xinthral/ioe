@@ -4,6 +4,7 @@
 #include <chrono>
 #include <iostream>
 #include <string.h>
+#include <unordered_map>
 #include <vector>
 #include "../core/actor.h"
 #include "../core/audio.h"
@@ -26,12 +27,12 @@
 class CLISuite {
 protected:
 private:
-	ConfigManager *cnf;                     //!< Establish ConfigManager Object
-	Lexicon *lex;                           //!< Establish Lexicon Object
-  Player *p1, *p2;
-  Toon *t1, *t2;
-  Combat *combat;
-  Logger *log;
+  ConfigManager *cnf;   //!< Establish ConfigManager Object
+  Lexicon       *lex;   //!< Establish Lexicon Object
+  Battle        *battle;//!< Establish Battle Object
+  Logger        *log;   //!< Establish Logger Object
+  Player *p1, *p2;      //!< Player slots
+  Toon   *t1, *t2;      //!< Toon slots
 
   std::vector<std::string> history;
   std::chrono::time_point<std::chrono::steady_clock> start_time;
@@ -65,17 +66,14 @@ public:
   void displayRunTime();
 
   /*!
-  * @brief   Function to parse user input for a command 
-  * @param[in] input - Command string from the command line
+   * @brief   Parse and dispatch a raw input string from the REPL loop.
+   * @details Splits the input into tokens using Utilz::StringToArray. The first
+   *          token is matched against the authorized command list from ConfigManager.
+   *          If a match is found, the full token list is forwarded to run_command
+   *          for dispatch. Unrecognized commands and blank lines are silently ignored.
+   * @param[in] input - Raw string from std::getline
   */
   void parse_user_input(std::string);
-
-  /*!
-   * @brief   Helper Function to parse input
-   * @param[in] input - String to be searched through
-   * @param[in] criteria - String being searched for
-  */
-  bool parse_input(const std::string, const std::string);
 
   /*!
    * @brief   Helper Function to display help
@@ -88,25 +86,47 @@ public:
   static void print_help();
 
   /*!
-   * @brief   Static Helper File for the CLISuite
+   * @brief   Print help for all commands, or a single command if one is given.
+   * @details Usage: help [command]
+   *          With no argument, lists every authorized command with a one-line description.
+   *          With an argument, prints the description for that command only.
+   * @param[in] cmdline - Token list from the REPL (cmdline[1] is the optional command name)
   */
-  void cli_help();
+  void cli_help(std::vector<std::string>&);
+
+  /*!
+   * @brief   Spawn a Player or Toon into the session
+   * @details Usage: spawn <player|toon> [name]
+  */
+  void cmd_spawn(std::vector<std::string>&);
+
+  /*!
+   * @brief   Start a combat session between spawned actors
+   * @details Usage: fight <pve|pvp|eve>
+  */
+  void cmd_fight(std::vector<std::string>&);
+
+  /*!
+   * @brief   Advance combat by one cycle and print actor status
+  */
+  void cmd_step();
+
+  /*!
+   * @brief   Print the current state of all spawned actors
+  */
+  void cmd_status();
+
+  /*!
+   * @brief   Delete all spawned actors and clear combat state
+  */
+  void cmd_reset();
+
   ~CLISuite();
 };
 
 /*!
- * @brief   Map
+ * @brief   Command dispatch map — defined in clisuite.cpp
 */
-std::unordered_map<std::string, int> _CMDMAP = {
-  {"help",    0},
-	{"quit",    1},
-  {"exit",    1},
-  {"reload",  2},
-  {"name",    3},
-  {"chain",   4},
-	{"runtime", 5},
-  {"prompt",  6},
-  {"new",     7},
-};
+extern std::unordered_map<std::string, int> _CMDMAP;
 
 #endif // XENGINE_H //
