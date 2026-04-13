@@ -44,7 +44,7 @@ public:
   /*!
    * @brief   Helper Function to display help
   */
-  CLISuite();
+  CLISuite(bool);
 
   std::string getPrompt();
   void setPrompt(std::string);

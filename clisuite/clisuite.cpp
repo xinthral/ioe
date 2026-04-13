@@ -25,8 +25,8 @@ std::unordered_map<std::string, int> _CMDMAP = {
   {"reset",   11},
 };
 
-CLISuite::CLISuite() {
-  this->cnf    = ConfigManager::GetInstance();
+CLISuite::CLISuite(bool debug) {
+  this->cnf    = ConfigManager::GetInstance(debug);
   this->lex    = new Lexicon();
   this->log    = Logger::GetInstance();
   this->battle = Battle::GetInstance();
@@ -87,7 +87,7 @@ void CLISuite::run_command(const std::string input, std::vector<std::string>& cm
       vshContinue = false;
       break;
     case 2:   //! Reload Config Options
-      this->cnf->reload_state();
+      this->cnf->reload_state(true);
       break;
     case 3:   //! Generate Name
       if (cmdline.size() < 2) { log->named_log(__FILENAME__, "Usage: name <count>"); break; }
@@ -299,7 +299,7 @@ int main(int argc, const char *argv[]) {
   if (strcmp(argv[1], "-h") == 0) { CLISuite::print_help(); return 0; }
 
   //! Declare Variables
-  CLISuite* cli = new CLISuite();
+  CLISuite* cli;
   Logger* log = Logger::GetInstance();                 //!< Establish Logger Object
   size_t found;
   std::string prompt = ">";
@@ -308,12 +308,14 @@ int main(int argc, const char *argv[]) {
 
   //! Input Switch Case
   char _input = argv[1][0];
+  log->named_log(__FILENAME__, "Engine Firing up...");
+  vshContinue = true;
   switch (_input) {
     case '0': 
-      return 0;
+      cli = new CLISuite(false);
+      break;
     case '1':
-      log->named_log(__FILENAME__, "Engine Firing up...");
-      vshContinue = true;
+      cli = new CLISuite(true);
       break;
     default: 
       CLISuite::print_help();
@@ -322,7 +324,7 @@ int main(int argc, const char *argv[]) {
 
   //! Interactive Shell
   /* ********************************** */
-  while (vshContinue == true) {
+  while (vshContinue == true && cli != nullptr) {
     printf("%s ", cli->getPrompt().c_str());        //! Display Message Prompt
     std::getline(std::cin, rawInput);               //! Get User Input
     cli->parse_user_input(rawInput);                //! Parse User Input

@@ -29,7 +29,7 @@ protected:
   /*!
    * @brief Protected Constructor
   */
-  ConfigManager();
+  ConfigManager(bool);
 
 private:
   Logger*                 log;                    //!< Logging Handler Instantiation
@@ -50,7 +50,7 @@ public:
   /*!
    * @brief Singleton Constructor
   */
-  static ConfigManager* GetInstance();
+  static ConfigManager* GetInstance(bool = false);
 
   /*!
    * @brief   Injest Setting into struct, and return struct size.
@@ -126,7 +126,7 @@ public:
    * @param[in] _debug - Debugging Option
    * @return  Confirmation that all values were loaded
   */
-  bool load_config(bool);
+  bool load_config(bool = false);
 
   /*!
    * @brief   Return the Value of a Configuration Option
@@ -140,7 +140,7 @@ public:
    * @details Forces a reload of the injested settings list,
    *          and outputs the configs to the logs.
   */
-  void reload_state();
+  void reload_state(bool = false);
 
   /*!
    * @brief   Remove Setting from injested list

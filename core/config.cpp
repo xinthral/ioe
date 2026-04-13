@@ -14,20 +14,21 @@ std::mutex ConfigManager::_mutex;
 /*!
  * @todo    Protected Constructor
 */
-ConfigManager::ConfigManager() {
+ConfigManager::ConfigManager(bool debug) {
   log = Logger::GetInstance();
   log->named_log(__FILE__, "ConfigManager Established.");
-  load_config(false);
+  load_config(debug);
+  _debug = debug;
 }
 
 /*!
  * @todo    Singleton Constructor
 */
-ConfigManager* ConfigManager::GetInstance() {
+ConfigManager* ConfigManager::GetInstance(bool debug) {
   // Acquire Instance Mutex
   std::lock_guard<std::mutex> lock(_mutex);
   // If singleton already exists, return instance
-  if (_singleton == NULL) { _singleton = new ConfigManager(); }
+  if (_singleton == NULL) { _singleton = new ConfigManager(debug); }
   return _singleton;
 }
 
@@ -97,7 +98,7 @@ std::string ConfigManager::get_version() { return this->raw_config("VERSION").c_
 /*!
  * @todo    Reads in Config File and Parses Options
 */
-bool ConfigManager::load_config(bool debugg) {
+bool ConfigManager::load_config(bool debug) {
   char buf[64];
   std::size_t pos;                            //! Positional Pointer for delimeter
   std::string row;                            //! Temporary File Row Storage
@@ -108,7 +109,7 @@ bool ConfigManager::load_config(bool debugg) {
   conf.open("docs/engine.ini");               //! Open INI file for reading
   while (std::getline(conf, row)) {
     // DEBUG Line
-    if (debugg || _debug) {
+    if (_debug && debug) {
       sprintf(buf, "%s", row.c_str());
       log->named_log(__FILENAME__, buf);
     }
@@ -135,7 +136,7 @@ std::string ConfigManager::raw_config(const std::string& option) {
 /*!
  * @todo    Reload Settings
 */
-void ConfigManager::reload_state() { this->load_config(true); }
+void ConfigManager::reload_state(bool debug) { this->load_config(debug); }
 
 /*!
  * @todo    Remove Setting from injested list
