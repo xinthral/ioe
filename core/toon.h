@@ -8,9 +8,6 @@
  * @brief   Toon class is for all non-player characters  
 */
 class Toon : public Actor {
-protected:
-    std::string name;
-    char buf[128];
 public:
   /*!
    * @brief   Default Constructor

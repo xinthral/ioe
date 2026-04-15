@@ -31,7 +31,6 @@ Player::Player(std::string name, int level) {
  * @todo    Default Constructor
 */
 Player::Player() : Player("Player1", 1) {
-  log = Logger::GetInstance();
   sprintf(buf, "%s Level %d Player initiated.", "Player1", level);
   log->named_log(__FILENAME__, buf);
 }
@@ -39,7 +38,7 @@ Player::Player() : Player("Player1", 1) {
 /*!
  * @todo    Level Intialized Constructor
 */
-Player::Player(int level) : Player("Player" + level, level) {}
+Player::Player(int level) : Player("Player" + std::to_string(level), level) {}
 
 // /*!
 //  * @note    

@@ -1,8 +1,22 @@
 #ifndef XEQUIPMENT_H
 #define XEQUIPMENT_H
 
+#include <unordered_map>
 #include "item.h"
 #include "logger.h"
+
+/*!
+ * @struct  EquipmentProfile
+ * @brief   Default stat multipliers for each ItemType
+*/
+struct EquipmentProfile {
+  float damage_multiplier;
+  float damage_mitigation;
+  float flux_multiplier;
+  float flux_mitigation;
+  float health_multiplier;
+  float health_mitigation;
+};
 
 class Equipment : public Item {
 private:
@@ -14,8 +28,12 @@ private:
   float health_mitigation;     //!< Accumulative Health Variable mitigation for debuffs
 
 public:
+  //! Default stat profiles per ItemType
+  static const std::unordered_map<int, EquipmentProfile> _PROFILES;
+
   Equipment();
-  Equipment(const char *);
+  Equipment(const char*);
+  Equipment(const char*, ItemType);
   /*!
    * @brief   Get the damage multiplier of the equipment.
    * @details This function returns the damage multiplier of the equipment.

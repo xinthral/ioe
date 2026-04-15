@@ -13,6 +13,7 @@ enum ItemType {
   SHIELD,
   STAFF,
   SWORD,
+  BACKPACK,
 };
 
 enum ItemRarity {
@@ -34,13 +35,13 @@ enum ItemRarity {
 class Item {
 protected:
   Logger*    log;                   //!< Logging Handler Instantiation
-private:
   char       buf[1024];             //!< Buffer Value for Logger outputs
   char       label[100];            //!< The name of an item
   char       short_descriptor[255]; //!< The way an item would be describe in a sentence
   char       long_descriptor[1024]; //!< Details description of item or history
   ItemRarity _rarity;               //!< Rarity of Item
   ItemType   _type;                 //!< Type of Item
+  float      weight;                //!< Weight of Item
 
 public:
   /*!
@@ -49,21 +50,23 @@ public:
   Item();
   Item(const char[]); 
 
-  char * get_label();
+  char*      get_label();
+  float      get_weight();
+  void       set_weight(float);
   ItemRarity get_rarity();
-  ItemType get_type();
-  void set_rarity(ItemRarity);
-  void set_label(const char*);
-  void set_type(ItemType);
+  ItemType   get_type();
+  void       set_rarity(ItemRarity);
+  void       set_label(const char*);
+  void       set_type(ItemType);
 
   /*!
    * @brief   Helper Hook used in CLI Help System
   */
-  void _help();
+  virtual void _help();
   /*!
-   * @brief   Default Constructor 
+   * @brief   Default Deconstructor
   */
-  ~Item();
+  virtual ~Item();
 };
 
 #endif  // ITEM_H //

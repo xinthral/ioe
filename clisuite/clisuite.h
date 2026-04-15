@@ -8,11 +8,13 @@
 #include <vector>
 #include "../core/actor.h"
 #include "../core/audio.h"
+#include "../core/backpack.h"
 #include "../core/balance.h"
 #include "../core/battle.h"
 #include "../core/ciphers.h"
 #include "../core/combat.h"
 #include "../core/config.h"
+#include "../core/equipment.h"
 #include "../core/lexicon.h"
 #include "../core/logger.h"
 #include "../core/player.h"
@@ -31,8 +33,9 @@ private:
   Lexicon       *lex;   //!< Establish Lexicon Object
   Battle        *battle;//!< Establish Battle Object
   Logger        *log;   //!< Establish Logger Object
-  Player *p1, *p2;      //!< Player slots
-  Toon   *t1, *t2;      //!< Toon slots
+  Player *p1, *p2;             //!< Player slots
+  Toon   *t1, *t2;             //!< Toon slots
+  std::vector<Item*> inventory; //!< Session item inventory
 
   std::vector<std::string> history;
   std::chrono::time_point<std::chrono::steady_clock> start_time;
@@ -120,6 +123,17 @@ public:
    * @brief   Delete all spawned actors and clear combat state
   */
   void cmd_reset();
+
+  /*!
+   * @brief   Create an item and add it to the session inventory
+   * @details Usage: create <sword|shield|staff|ring|relic|backpack> [name]
+  */
+  void cmd_create(std::vector<std::string>&);
+
+  /*!
+   * @brief   List all items in the session inventory
+  */
+  void cmd_inventory();
 
   ~CLISuite();
 };

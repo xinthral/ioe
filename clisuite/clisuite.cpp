@@ -22,7 +22,9 @@ std::unordered_map<std::string, int> _CMDMAP = {
   {"fight",   8},
   {"step",    9},
   {"status",  10},
-  {"reset",   11},
+  {"reset",     11},
+  {"create",    12},
+  {"inventory", 13},
 };
 
 CLISuite::CLISuite(bool debug) {
@@ -124,6 +126,12 @@ void CLISuite::run_command(const std::string input, std::vector<std::string>& cm
     case 11:  //! Reset Combat State
       cmd_reset();
       break;
+    case 12:  //! Create Item
+      cmd_create(cmdline);
+      break;
+    case 13:  //! List Inventory
+      cmd_inventory();
+      break;
     default:
       sprintf(this->buf, "Unimplemented Command: %s", input.c_str());
       log->named_log(__FILENAME__, this->buf);
@@ -133,22 +141,46 @@ void CLISuite::run_command(const std::string input, std::vector<std::string>& cm
 }
 
 static const std::unordered_map<std::string, std::string> _HELPMAP = {
-  {"help",    "help [command]          - show this list, or describe a command"},
-  {"quit",    "quit                    - exit the CLI shell"},
-  {"exit",    "exit                    - exit the CLI shell"},
-  {"reload",  "reload                  - reload engine.ini config from disk"},
-  {"name",    "name <count>            - generate <count> random names"},
-  {"chain",   "chain <a> [b] ...       - echo a sequence of tokens"},
-  {"runtime", "runtime                 - print elapsed session time"},
-  {"prompt",  "prompt <symbol>         - change the shell prompt symbol"},
-  {"spawn",   "spawn <player|toon> [name] - create an actor in the next free slot"},
-  {"fight",   "fight <pve|pvp|eve>     - start combat between spawned actors"},
-  {"step",    "step                    - advance combat one cycle and show status"},
-  {"status",  "status                  - print health and state of all spawned actors"},
-  {"reset",   "reset                   - delete all actors and clear combat state"},
+  {"help",      "help [command]             - show this list, or describe a command"},
+  {"quit",      "quit                       - exit the CLI shell"},
+  {"exit",      "exit                       - exit the CLI shell"},
+  {"reload",    "reload                     - reload engine.ini config from disk"},
+  {"name",      "name <count>               - generate <count> random names"},
+  {"chain",     "chain <a> [b] ...          - echo a sequence of tokens"},
+  {"runtime",   "runtime                    - print elapsed session time"},
+  {"prompt",    "prompt <symbol>            - change the shell prompt symbol"},
+  {"spawn",     "spawn <player|toon> [name] - create an actor in the next free slot"},
+  {"fight",     "fight <pve|pvp|eve>        - start combat between spawned actors"},
+  {"step",      "step                       - advance combat one cycle and show status"},
+  {"status",    "status                     - print health and state of all spawned actors"},
+  {"reset",     "reset                      - delete all actors and clear combat state"},
+  {"create",    "create <type> [name]       - create an item and add it to inventory\n"
+                "  Types: sword, shield, staff, ring, relic, backpack\n"
+                "  Run 'help create <type>' for details on a specific type"},
+  {"inventory", "inventory                  - list all items in the session inventory"},
+};
+
+static const std::unordered_map<std::string, std::string> _CREATEHELP = {
+  {"sword",    "sword    — melee weapon.  Boosts damage_multiplier (x1.5)"},
+  {"shield",   "shield   — defensive gear. Boosts damage_mitigation (x1.5)"},
+  {"staff",    "staff    — arcane focus.  Boosts flux_multiplier (x1.5)"},
+  {"ring",     "ring     — accessory.     Boosts damage and flux (x1.2 each)"},
+  {"relic",    "relic    — ancient item.  Boosts health_multiplier (x1.5)"},
+  {"backpack", "backpack — wearable container. Neutral stats. Can hold any item.\n"
+               "           Future: stored item weights halved while worn"},
 };
 
 void CLISuite::cli_help(std::vector<std::string>& cmdline) {
+  if (cmdline.size() >= 3 && cmdline[1] == "create") {
+    auto it = _CREATEHELP.find(cmdline[2]);
+    if (it != _CREATEHELP.end()) {
+      printf("%s\n", it->second.c_str());
+    } else {
+      sprintf(this->buf, "Unknown create type: %s", cmdline[2].c_str());
+      log->named_log(__FILENAME__, this->buf);
+    }
+    return;
+  }
   if (cmdline.size() >= 2) {
     auto it = _HELPMAP.find(cmdline[1]);
     if (it != _HELPMAP.end()) {
@@ -180,28 +212,6 @@ void CLISuite::parse_user_input(std::string input) {
   if (std::find(cmds.begin(), cmds.end(), token) != cmds.end()) { this->run_command(token, cmdline); }
 }
 
-static const char* combatStateStr(CombatState s) {
-  switch(s) {
-    case IDLE:   return "IDLE";
-    case PATROL: return "PATROL";
-    case FIGHT:  return "FIGHT";
-    case FLEE:   return "FLEE";
-    case HIDE:   return "HIDE";
-    case FOLLOW: return "FOLLOW";
-    default:     return "UNKNOWN";
-  }
-}
-
-static const char* healthStateStr(HealthState s) {
-  switch(s) {
-    case HEALTHY:  return "HEALTHY";
-    case HURTING:  return "HURTING";
-    case CRITICAL: return "CRITICAL";
-    case SICK:     return "SICK";
-    case DEAD:     return "DEAD";
-    default:       return "UNKNOWN";
-  }
-}
 
 void CLISuite::cmd_spawn(std::vector<std::string>& cmdline) {
   if (cmdline.size() < 2) {
@@ -275,6 +285,54 @@ void CLISuite::cmd_status() {
   if (t2) printActor("T2", t2);
 }
 
+static const std::unordered_map<std::string, ItemType> _TYPEMAP = {
+  {"relic",   RELIC},
+  {"ring",    RING},
+  {"shield",  SHIELD},
+  {"staff",   STAFF},
+  {"sword",   SWORD},
+  {"backpack",BACKPACK},
+};
+
+void CLISuite::cmd_create(std::vector<std::string>& cmdline) {
+  if (cmdline.size() < 2) {
+    log->named_log(__FILENAME__, "Usage: create <sword|shield|staff|ring|relic|backpack> [name]");
+    return;
+  }
+  const std::string& typeStr = cmdline[1];
+  auto it = _TYPEMAP.find(typeStr);
+  if (it == _TYPEMAP.end()) {
+    sprintf(buf, "Unknown item type: %s", typeStr.c_str());
+    log->named_log(__FILENAME__, buf);
+    return;
+  }
+  ItemType type = it->second;
+  std::string name = (cmdline.size() >= 3) ? cmdline[2] : lex->generateName(1);
+
+  Item* item = nullptr;
+  if (type == BACKPACK) {
+    item = new Backpack(name.c_str());
+  } else {
+    item = new Equipment(name.c_str(), type);
+  }
+  inventory.push_back(item);
+  sprintf(buf, "Created %s: %s (inventory: %zu)", typeStr.c_str(), name.c_str(), inventory.size());
+  log->named_log(__FILENAME__, buf);
+}
+
+void CLISuite::cmd_inventory() {
+  if (inventory.empty()) {
+    log->named_log(__FILENAME__, "Inventory is empty. Use: create <type> [name]");
+    return;
+  }
+  sprintf(buf, "Inventory (%zu items):", inventory.size());
+  log->named_log(__FILENAME__, buf);
+  for (size_t i = 0; i < inventory.size(); i++) {
+    sprintf(buf, "  [%zu] %s", i, inventory[i]->get_label());
+    log->named_log(__FILENAME__, buf);
+  }
+}
+
 void CLISuite::cmd_reset() {
   delete p1; p1 = nullptr;
   delete p2; p2 = nullptr;
@@ -286,6 +344,7 @@ void CLISuite::cmd_reset() {
 CLISuite::~CLISuite() {
   delete p1; delete p2;
   delete t1; delete t2;
+  for (Item* i : inventory) { delete i; }
   this->displayRunTime();
   this->displayCommandHistory();
 }

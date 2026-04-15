@@ -12,9 +12,6 @@
  *          virtual avatar within the engine.
 */
 class Player : public Actor {
-private:
-  Logger* log;                          //!< Log Manager Instantiation
-
 public:
   /*!
    * @brief   Default Constructor

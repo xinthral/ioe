@@ -6,8 +6,55 @@
 */
 #define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
 
-Equipment::Equipment(const char *itemType) : Item(itemType) {}
-Equipment::Equipment() {}
+const std::unordered_map<int, EquipmentProfile> Equipment::_PROFILES = {
+  { RELIC,   { 1.0f, 1.0f, 1.0f, 1.0f, 1.5f, 1.0f } },
+  { RING,    { 1.2f, 1.0f, 1.2f, 1.0f, 1.0f, 1.0f } },
+  { SHIELD,  { 1.0f, 1.5f, 1.0f, 1.0f, 1.0f, 1.0f } },
+  { STAFF,   { 1.0f, 1.0f, 1.5f, 1.0f, 1.0f, 1.0f } },
+  { SWORD,   { 1.5f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f } },
+  { BACKPACK,{ 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f } },
+};
+
+static void applyProfile(Equipment* e, ItemType type) {
+  auto it = Equipment::_PROFILES.find(static_cast<int>(type));
+  if (it == Equipment::_PROFILES.end()) return;
+  const EquipmentProfile& p = it->second;
+  e->set_damage_multiplier(p.damage_multiplier);
+  e->set_damage_mitigation(p.damage_mitigation);
+  e->set_flux_multiplier(p.flux_multiplier);
+  e->set_flux_mitigation(p.flux_mitigation);
+  e->set_health_multiplier(p.health_multiplier);
+  e->set_health_mitigation(p.health_mitigation);
+}
+
+Equipment::Equipment() : Item() {
+  damage_multiplier  = 0.0f;
+  damage_mitigation  = 0.0f;
+  flux_multiplier    = 0.0f;
+  flux_mitigation    = 0.0f;
+  health_multiplier  = 0.0f;
+  health_mitigation  = 0.0f;
+}
+
+Equipment::Equipment(const char* itemName) : Item(itemName) {
+  damage_multiplier  = 0.0f;
+  damage_mitigation  = 0.0f;
+  flux_multiplier    = 0.0f;
+  flux_mitigation    = 0.0f;
+  health_multiplier  = 0.0f;
+  health_mitigation  = 0.0f;
+}
+
+Equipment::Equipment(const char* itemName, ItemType type) : Item(itemName) {
+  damage_multiplier  = 0.0f;
+  damage_mitigation  = 0.0f;
+  flux_multiplier    = 0.0f;
+  flux_mitigation    = 0.0f;
+  health_multiplier  = 0.0f;
+  health_mitigation  = 0.0f;
+  set_type(type);
+  applyProfile(this, type);
+}
 
 /*!
  * @note FIXME: Add Development notes

@@ -2,11 +2,13 @@
 #define ACTOR_H
 
 #include <string>
+#include <vector>
 #include "config.h"
+#include "equipment.h"
 #include "utilz.h"
 
 //! Actor Combat States
-enum CombatState { 
+enum CombatState {
   IDLE,
   PATROL,
   FIGHT,
@@ -16,8 +18,20 @@ enum CombatState {
 };
 extern enum CombatState combatState;
 
+static inline const char* combatStateStr(CombatState s) {
+  switch(s) {
+    case IDLE:   return "IDLE";
+    case PATROL: return "PATROL";
+    case FIGHT:  return "FIGHT";
+    case FLEE:   return "FLEE";
+    case HIDE:   return "HIDE";
+    case FOLLOW: return "FOLLOW";
+    default:     return "UNKNOWN";
+  }
+}
+
 //! Actor Health States
-enum HealthState { 
+enum HealthState {
   HEALTHY,
   HURTING,
   CRITICAL,
@@ -25,6 +39,17 @@ enum HealthState {
   DEAD
 };
 extern enum HealthState healthState;
+
+static inline const char* healthStateStr(HealthState s) {
+  switch(s) {
+    case HEALTHY:  return "HEALTHY";
+    case HURTING:  return "HURTING";
+    case CRITICAL: return "CRITICAL";
+    case SICK:     return "SICK";
+    case DEAD:     return "DEAD";
+    default:       return "UNKNOWN";
+  }
+}
 
 /*!
  * @class   Actor actor.h actor.cpp
@@ -48,6 +73,7 @@ protected:
   int baseFlux;             //!< Flux Value
   int flux;                 //!< Flux Value    (@override)
   char buf[256];            //!< Buffer Value for Logger outputs
+  std::vector<Equipment*> equipped; //!< Currently equipped items
 
 private:
 public:
@@ -167,7 +193,7 @@ public:
    *          including multipliers and reducers
    * @returns Final Damage Value
   */
-  int output_damage();
+  virtual int output_damage();
 
   /*!
    * @brief   Set Combat State to Idling
@@ -210,7 +236,7 @@ public:
    *          including multiplier and reducers
    * @returns Final Damage Value
   */
-  int receive_damage(int);
+  virtual int receive_damage(int);
 
   /*!
    * @brief   Set Health State to Healthy
@@ -238,14 +264,37 @@ public:
   void set_health_dead();
 
   /*!
+   * @brief   Equip an item onto this actor.
+   * @details Rejects if: slot is full (16 items), an item of the same ItemType
+   *          is already equipped, or the item is UNIQUE and one is already worn.
+   * @param[in] item - Pointer to the Equipment to equip
+   * @returns true if equipped successfully, false if rejected
+  */
+  bool equip(Equipment*);
+
+  /*!
+   * @brief   Unequip the item occupying the given type slot.
+   * @details Reverses the item's multipliers from the actor's stats.
+   * @param[in] type - The ItemType slot to clear
+   * @returns true if an item was removed, false if the slot was empty
+  */
+  bool unequip(ItemType);
+
+  /*!
+   * @brief   Return all currently equipped items.
+   * @returns Const reference to the equipped item vector
+  */
+  const std::vector<Equipment*>& get_equipped() const;
+
+  /*!
    * @brief   Helper Hook used in CLI Help System
   */
   void _help();
 
   /*!
-   * @brief   Default Deconstructor 
+   * @brief   Default Deconstructor
   */
-  ~Actor();
+  virtual ~Actor();
 };
 
 #endif // ACTOR_H //

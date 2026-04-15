@@ -226,6 +226,69 @@ void Actor::set_health_dead() {
 }
 
 /*!
+ * @note    Equip an item onto this actor
+*/
+bool Actor::equip(Equipment* item) {
+  if (equipped.size() >= 16) {
+    log->named_log(__FILENAME__, "Cannot equip: inventory full (16 items).");
+    return false;
+  }
+  ItemType  inType   = item->get_type();
+  ItemRarity inRarity = item->get_rarity();
+  for (Equipment* e : equipped) {
+    if (e->get_type() == inType) {
+      sprintf(buf, "Cannot equip: a %s is already equipped.", item->get_label());
+      log->named_log(__FILENAME__, buf);
+      return false;
+    }
+    if (inRarity == UNIQUE && e->get_rarity() == UNIQUE) {
+      log->named_log(__FILENAME__, "Cannot equip: a UNIQUE item is already equipped.");
+      return false;
+    }
+  }
+  if (item->get_damage_multiplier()  > 0.0f) attack  = static_cast<int>(attack  * item->get_damage_multiplier());
+  if (item->get_damage_mitigation()  > 0.0f) defense = static_cast<int>(defense * item->get_damage_mitigation());
+  if (item->get_health_multiplier()  > 0.0f) health  = static_cast<int>(health  * item->get_health_multiplier());
+  if (item->get_flux_multiplier()    > 0.0f) flux    = static_cast<int>(flux    * item->get_flux_multiplier());
+  equipped.push_back(item);
+  sprintf(buf, "Equipped: %s", item->get_label());
+  log->named_log(__FILENAME__, buf);
+  return true;
+}
+
+/*!
+ * @note    Unequip the item in the given type slot
+*/
+bool Actor::unequip(ItemType type) {
+  for (auto it = equipped.begin(); it != equipped.end(); ++it) {
+    Equipment* e = *it;
+    if (e->get_type() == type) {
+      float dm = e->get_damage_multiplier();
+      float dd = e->get_damage_mitigation();
+      float hm = e->get_health_multiplier();
+      float fm = e->get_flux_multiplier();
+      if (dm > 0.0f) attack  = static_cast<int>(attack  / dm);
+      if (dd > 0.0f) defense = static_cast<int>(defense / dd);
+      if (hm > 0.0f) health  = static_cast<int>(health  / hm);
+      if (fm > 0.0f) flux    = static_cast<int>(flux    / fm);
+      sprintf(buf, "Unequipped: %s", e->get_label());
+      log->named_log(__FILENAME__, buf);
+      equipped.erase(it);
+      return true;
+    }
+  }
+  log->named_log(__FILENAME__, "Cannot unequip: no item in that slot.");
+  return false;
+}
+
+/*!
+ * @note    Return all currently equipped items
+*/
+const std::vector<Equipment*>& Actor::get_equipped() const {
+  return equipped;
+}
+
+/*!
  * @note    Helper Hook used in CLI Help System
 */
 void Actor::_help() {
