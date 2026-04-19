@@ -6,7 +6,10 @@
 */
 #define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
 
-TestWeapon::TestWeapon() : BaseCase(__FILENAME__) {
+TestWeapon::TestWeapon() : TestWeapon(0) {}
+
+TestWeapon::TestWeapon(int granularity) : BaseCase(__FILENAME__) {
+  set_granularity(granularity);
   BaseCase::log->named_log(__FILENAME__, "Testing the Weapon Functionality!");
   sprintf(this->msgHead, "Tested");
   sprintf(this->msgTail, "for Weapons!");

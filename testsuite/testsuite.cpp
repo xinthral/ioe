@@ -21,7 +21,6 @@ void print_help() {
     " a quality-of-life option for hunting down all my stupid." \
     " This can be used in conjuction with the HelpSuite in order to"\
     " maximize the benefit of the CLI Debugging Suite.\n");
-  sprintf(buf, "\t[%d] - Threaded Test of Full Suite", idx); log->raw_log(buf);
   sprintf(buf, "\t [%d] - Default Test to rule them all", ++idx); log->raw_log(buf);
   sprintf(buf, "\t [%d] - Test Actor Module",            ++idx); log->raw_log(buf);
   sprintf(buf, "\t [%d] - Test Audio Module",            ++idx); log->raw_log(buf);
@@ -46,117 +45,143 @@ void print_help() {
 }
 
 /*!
- * @todo    Default Constructor
+ * @brief   Default Constructor
 */
 TestSuite::TestSuite() {
   log = Logger::GetInstance();
 }
 
 void TestSuite::TestAll() {
-  this->CaseActor();
-  this->CaseAudio();
-  this->CaseBackpack();
-  this->CaseBalance();
-  this->CaseBattle();
-  this->CaseClock();
-  this->CaseCiphers();
-  this->CaseCombat();
-  this->CaseConfig();
-  this->CaseEquipment();
-  this->CaseItem();
-  this->CaseLeader();
-  this->CaseLexicon();
-  this->CasePlayer();
-  this->CaseStage();
-  this->CaseToon();
-  this->CaseUtilz();
-  this->CaseWeapon();
+  this->CaseActor(0);
+  this->CaseAudio(0);
+  this->CaseBackpack(0);
+  this->CaseBalance(0);
+  this->CaseBattle(0);
+  this->CaseClock(0);
+  this->CaseCiphers(0);
+  this->CaseCombat(0);
+  this->CaseConfig(0);
+  this->CaseEquipment(0);
+  this->CaseItem(0);
+  this->CaseLeader(0);
+  this->CaseLexicon(0);
+  this->CasePlayer(0);
+  this->CaseStage(0);
+  this->CaseToon(0);
+  this->CaseUtilz(0);
+  this->CaseWeapon(0);
 }
 
 /*!
- * @todo    Initiates the Test for the Actor Module
+ * @brief    Initiates the Test for the Actor Module
+ * @param[in] level  Profiling granularity passed to TestActors
 */
-void TestSuite::CaseActor()     { TestActors    ta; }
-void TestSuite::CaseBackpack()  { TestBackpack  tb; }
-void TestSuite::CaseEquipment() { TestEquipment te; }
+void TestSuite::CaseActor(int level) { TestActors ta(level); }
 
 /*!
- * @todo    Initiates the Test for the Actor Module
+ * @brief    Initiates the Test for the Audio Module
+ * @param[in] level  Profiling granularity passed to TestAudio
 */
-void TestSuite::CaseAudio() { TestAudio ta; }
+void TestSuite::CaseAudio(int level) { TestAudio ta(level); }
 
 /*!
- * @todo    Initiates the Test for the BalanceController Module
+ * @brief    Initiates the Test for the Backpack Module
+ * @param[in] level  Profiling granularity passed to TestBackpack
 */
-void TestSuite::CaseBalance() { TestBalance tb; }
+void TestSuite::CaseBackpack(int level)  { TestBackpack  tb(level); }
 
 /*!
- * @todo    Initiates the Test for the BalanceController Module
+ * @brief    Initiates the Test for the BalanceController Module
+ * @param[in] level  Profiling granularity passed to TestBalance
 */
-void TestSuite::CaseBattle() { TestBattle tb; }
+void TestSuite::CaseBalance(int level) { TestBalance tb(level); }
 
 /*!
- * @todo    Initiates the Test for the Engine Clock
+ * @brief    Initiates the Test for the BattleManager Module
+ * @param[in] level  Profiling granularity passed to TestBattle
 */
-void TestSuite::CaseClock() { TestClock tc; }
+void TestSuite::CaseBattle(int level) { TestBattle tb(level); }
 
 /*!
- * @todo    Initiates the Test for the Ciphers Module
+ * @brief    Initiates the Test for the Ciphers Module
+ * @param[in] level  Profiling granularity passed to TestCiphers
 */
-void TestSuite::CaseCiphers() { TestCiphers tc; }
+void TestSuite::CaseCiphers(int level) { TestCiphers tc(level); }
 
 /*!
- * @todo    Initiates the Test for the Combat Module
+ * @brief    Initiates the Test for the Engine Clock
+ * @param[in] level  Profiling granularity passed to TestClock
 */
-void TestSuite::CaseCombat() { TestCombat tc; }
+void TestSuite::CaseClock(int level) { TestClock tc(level); }
 
 /*!
- * @todo    Initiates the Test for the ConfigManager Module
+ * @brief    Initiates the Test for the Combat Module
+ * @param[in] level  Profiling granularity passed to TestCombat
 */
-void TestSuite::CaseConfig() { TestConfig tc; }
+void TestSuite::CaseCombat(int level) { TestCombat tc(level); }
 
 /*!
- * @todo    Initiates the Test for the Item Module
+ * @brief    Initiates the Test for the ConfigManager Module
+ * @param[in] level  Profiling granularity passed to TestConfig
 */
-void TestSuite::CaseItem() { TestItem ti; }
+void TestSuite::CaseConfig(int level) { TestConfig tc(level); }
 
 /*!
- * @todo    Initiates the Test for the LeaderBoard Module 
+ * @brief    Initiates the Test for the Equipment Module
+ * @param[in] level  Profiling granularity passed to TestEquipment
 */
-void TestSuite::CaseLeader() { TestLeader tl; }
+void TestSuite::CaseEquipment(int level) { TestEquipment te(level); }
 
 /*!
- * @todo    Initiates the Test for the Lexicon Module 
+ * @brief    Initiates the Test for the Item Module
+ * @param[in] level  Profiling granularity passed to TestItem
 */
-void TestSuite::CaseLexicon() { TestLexicon tl; }
+void TestSuite::CaseItem(int level) { TestItem ti(level); }
 
 /*!
- * @todo    Initiates the Test for the Player Module
+ * @brief    Initiates the Test for the LeaderBoard Module
+ * @param[in] level  Profiling granularity passed to TestLeader
 */
-void TestSuite::CasePlayer() { TestPlayer tp; }
+void TestSuite::CaseLeader(int level) { TestLeader tl(level); }
 
 /*!
- * @todo    Initiates the Test for the StageManager Module
+ * @brief    Initiates the Test for the Lexicon Module
+ * @param[in] level  Profiling granularity passed to TestLexicon
 */
-void TestSuite::CaseStage() { TestStage tg; }
+void TestSuite::CaseLexicon(int level) { TestLexicon tl(level); }
 
 /*!
- * @todo    Initiates the Test for the Toon Module
+ * @brief    Initiates the Test for the Player Module
+ * @param[in] level  Profiling granularity passed to TestPlayer
 */
-void TestSuite::CaseToon() { TestToon tt; }
+void TestSuite::CasePlayer(int level) { TestPlayer tp(level); }
 
 /*!
- * @todo    Initiates the Test for the Utilz Module
+ * @brief    Initiates the Test for the StageManager Module
+ * @param[in] level  Profiling granularity passed to TestStage
 */
-void TestSuite::CaseUtilz() { TestUtilz tu; }
+void TestSuite::CaseStage(int level) { TestStage tg(level); }
 
 /*!
- * @todo    Initiates the Test for the Weapos Component of the Items Module
+ * @brief    Initiates the Test for the Toon Module
+ * @param[in] level  Profiling granularity passed to TestToon
 */
-void TestSuite::CaseWeapon() { TestWeapon tw; }
+void TestSuite::CaseToon(int level) { TestToon tt(level); }
 
 /*!
- * @todo    Default Deconstructor
+ * @brief    Initiates the Test for the Utilz Module
+ * @param[in] level  Profiling granularity passed to TestUtilz
+*/
+void TestSuite::CaseUtilz(int level) { TestUtilz tu(level); }
+
+/*!
+ * @brief    Initiates the Test for the Weapon Module
+ * @param[in] level  Profiling granularity passed to TestWeapon
+*/
+void TestSuite::CaseWeapon(int level) { TestWeapon tw(level); }
+
+/*!
+ * @brief   Default Deconstructor
 */
 TestSuite::~TestSuite() { }
 
@@ -177,64 +202,28 @@ int main(int argc, char const *argv[]) {
   std::thread cact, caud, cbac, cbal, cbat, cclo, ccip, ccom, ccon, cequ, cite, clea, clex, cpla, csta, ctoo, cuti, cwea;
   
   switch (choice) {
-    case -1:
-      sprintf(buf, "All TestCases' Completed...");
-      cact = std::thread(&TestSuite::CaseActor, &ts);
-      threadList.emplace_back(std::move(cact));
-      caud = std::thread(&TestSuite::CaseAudio, &ts);
-      threadList.emplace_back(std::move(caud));
-      cbal = std::thread(&TestSuite::CaseBalance, &ts);
-      threadList.emplace_back(std::move(cbal));
-      cbat = std::thread(&TestSuite::CaseBattle, &ts);
-      threadList.emplace_back(std::move(cbat));
-      cclo = std::thread(&TestSuite::CaseClock, &ts);
-      threadList.emplace_back(std::move(cclo));
-      ccip = std::thread(&TestSuite::CaseCiphers, &ts);
-      threadList.emplace_back(std::move(ccip));
-      ccom = std::thread(&TestSuite::CaseCombat, &ts);
-      threadList.emplace_back(std::move(ccom));
-      ccon = std::thread(&TestSuite::CaseConfig, &ts);
-      threadList.emplace_back(std::move(ccon));
-      cite = std::thread(&TestSuite::CaseItem, &ts);
-      threadList.emplace_back(std::move(cite));
-      clea = std::thread(&TestSuite::CaseLeader, &ts);
-      threadList.emplace_back(std::move(clea));
-      clex = std::thread(&TestSuite::CaseLexicon, &ts);
-      threadList.emplace_back(std::move(clex));
-      cpla = std::thread(&TestSuite::CasePlayer, &ts);
-      threadList.emplace_back(std::move(cpla));
-      csta = std::thread(&TestSuite::CaseStage, &ts);
-      threadList.emplace_back(std::move(csta));
-      ctoo = std::thread(&TestSuite::CaseToon, &ts);
-      threadList.emplace_back(std::move(ctoo));
-      cuti = std::thread(&TestSuite::CaseUtilz, &ts);
-      threadList.emplace_back(std::move(cuti));
-      cuti = std::thread(&TestSuite::CaseUtilz, &ts);
-      threadList.emplace_back(std::move(cwea));
-      for (auto& t : threadList) { t.join(); }
-      break;
     case 0: 
       sprintf(buf, "All TestCases' Completed...");
       ts.TestAll();
       break;
-    case 1:  sprintf(buf, "Actor TestCase Completed...");     ts.CaseActor();     break;
-    case 2:  sprintf(buf, "Audio TestCase Completed...");     ts.CaseAudio();     break;
-    case 3:  sprintf(buf, "Backpack TestCase Completed...");  ts.CaseBackpack();  break;
-    case 4:  sprintf(buf, "Balance TestCase Completed...");   ts.CaseBalance();   break;
-    case 5:  sprintf(buf, "Battle TestCase Completed...");    ts.CaseBattle();    break;
-    case 6:  sprintf(buf, "Clock TestCase Completed...");     ts.CaseClock();     break;
-    case 7:  sprintf(buf, "Ciphers TestCase Completed...");   ts.CaseCiphers();   break;
-    case 8:  sprintf(buf, "Combat TestCase Completed...");    ts.CaseCombat();    break;
-    case 9:  sprintf(buf, "Config TestCase Completed...");    ts.CaseConfig();    break;
-    case 10: sprintf(buf, "Equipment TestCase Completed..."); ts.CaseEquipment(); break;
-    case 11: sprintf(buf, "Item TestCase Completed...");      ts.CaseItem();      break;
-    case 12: sprintf(buf, "Leader TestCase Completed...");    ts.CaseLeader();    break;
-    case 13: sprintf(buf, "Lexicon TestCase Completed...");   ts.CaseLexicon();   break;
-    case 14: sprintf(buf, "Player TestCase Completed...");    ts.CasePlayer();    break;
-    case 15: sprintf(buf, "Stage TestCase Completed...");     ts.CaseStage();     break;
-    case 16: sprintf(buf, "Toon TestCase Completed...");      ts.CaseToon();      break;
-    case 17: sprintf(buf, "Utilz TestCase Completed...");     ts.CaseUtilz();     break;
-    case 18: sprintf(buf, "Weapon TestCase Completed...");    ts.CaseWeapon();
+    case 1:  sprintf(buf, "Actor TestCase Completed...");     ts.CaseActor(1);     break;
+    case 2:  sprintf(buf, "Audio TestCase Completed...");     ts.CaseAudio(1);     break;
+    case 3:  sprintf(buf, "Backpack TestCase Completed...");  ts.CaseBackpack(1);  break;
+    case 4:  sprintf(buf, "Balance TestCase Completed...");   ts.CaseBalance(1);   break;
+    case 5:  sprintf(buf, "Battle TestCase Completed...");    ts.CaseBattle(1);    break;
+    case 6:  sprintf(buf, "Clock TestCase Completed...");     ts.CaseClock(1);     break;
+    case 7:  sprintf(buf, "Ciphers TestCase Completed...");   ts.CaseCiphers(1);   break;
+    case 8:  sprintf(buf, "Combat TestCase Completed...");    ts.CaseCombat(1);    break;
+    case 9:  sprintf(buf, "Config TestCase Completed...");    ts.CaseConfig(1);    break;
+    case 10: sprintf(buf, "Equipment TestCase Completed..."); ts.CaseEquipment(1); break;
+    case 11: sprintf(buf, "Item TestCase Completed...");      ts.CaseItem(1);      break;
+    case 12: sprintf(buf, "Leader TestCase Completed...");    ts.CaseLeader(1);    break;
+    case 13: sprintf(buf, "Lexicon TestCase Completed...");   ts.CaseLexicon(1);   break;
+    case 14: sprintf(buf, "Player TestCase Completed...");    ts.CasePlayer(1);    break;
+    case 15: sprintf(buf, "Stage TestCase Completed...");     ts.CaseStage(1);     break;
+    case 16: sprintf(buf, "Toon TestCase Completed...");      ts.CaseToon(1);      break;
+    case 17: sprintf(buf, "Utilz TestCase Completed...");     ts.CaseUtilz(1);     break;
+    case 18: sprintf(buf, "Weapon TestCase Completed...");    ts.CaseWeapon(1);    break;
     default:
       sprintf(buf, "\nWarn :: Unknown Test, please review the list and try again.\n");
   }

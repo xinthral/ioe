@@ -10,13 +10,19 @@
 */
 class TestBackpack : public BaseCase {
 private:
-  Backpack* _pack;
+  Backpack* _pack;  //!< Placeholder for backpack object
 
 public:
   /*!
    * @brief   Default Constructor
   */
   TestBackpack();
+
+  /*!
+   * @brief   Overloaded Constructor — sets profiling granularity before running tests
+   * @param[in] granularity  Level of profiling detail (0 = named only, 1 = per-method + named)
+  */
+  TestBackpack(int granularity);
 
   /*!
    * @brief   Run full set of tests on module

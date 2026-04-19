@@ -23,6 +23,12 @@ public:
   TestAudio();
 
   /*!
+   * @brief   Overloaded Constructor — sets profiling granularity before running tests
+   * @param[in] granularity  Level of profiling detail (0 = named only, 1 = per-method + named)
+  */
+  TestAudio(int granularity);
+
+  /*!
    * @brief   Run full set of tests on all audio modules
   */
   void test_all();
@@ -69,7 +75,7 @@ public:
 
   /*!
    * @brief   Validate FlacDriver loads a file and returns non-empty data
-   * @note    Disabled — no FLAC samples in audiosuite/samples/
+   * @note    Disabled - no FLAC samples in audiosuite/samples/
   */
   void test_flac_loads();
 

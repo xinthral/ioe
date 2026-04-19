@@ -13,18 +13,24 @@ class TestBattle : public BaseCase {
 protected:
 private:
   Battle* battle;
-	Player* player1;
-	Player* player2;
-	Toon* toon1;
-	Toon* toon2;
-	Toon* toon3;
-	Toon* toon4;
+  Player* player1;
+  Player* player2;
+  Toon* toon1;
+  Toon* toon2;
+  Toon* toon3;
+  Toon* toon4;
 
 public:
   /*!
    * @brief   Default Constructor
   */
   TestBattle();
+
+  /*!
+   * @brief   Overloaded Constructor — sets profiling granularity before running tests
+   * @param[in] granularity  Level of profiling detail (0 = named only, 1 = per-method + named)
+  */
+  TestBattle(int granularity);
 
   /*!
    * @brief   Run full set of test on module 

@@ -139,7 +139,7 @@ public:
 };
 
 /*!
- * @brief   Command dispatch map — defined in clisuite.cpp
+ * @brief   Command dispatch map - defined in clisuite.cpp
 */
 extern std::unordered_map<std::string, int> _CMDMAP;
 

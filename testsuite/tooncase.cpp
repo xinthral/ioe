@@ -6,7 +6,10 @@
 */
 #define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
 
-TestToon::TestToon() : BaseCase(__FILENAME__) {
+TestToon::TestToon() : TestToon(0) {}
+
+TestToon::TestToon(int granularity) : BaseCase(__FILENAME__) {
+  set_granularity(granularity);
   BaseCase::log->named_log(__FILENAME__, "Testing Toons!");
   sprintf(this->msgHead, "Tested Toon");
   sprintf(this->msgTail, "successfully.");
@@ -26,6 +29,9 @@ void TestToon::test_all() {
 }
 
 void TestToon::test_toonCreation() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("Actor_Instantiation");
   delete dummy;
   dummy = new Toon();
@@ -35,6 +41,9 @@ void TestToon::test_toonCreation() {
 }
 
 void TestToon::test_toonCreation_id() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("Actor_Instantiation");
   delete dummy;
   dummy = new Toon(3);
@@ -44,6 +53,9 @@ void TestToon::test_toonCreation_id() {
 }
 
 void TestToon::test_toonCreation_name() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("Actor_Instantiation");
   delete dummy;
   dummy = new Toon("Maji");
@@ -53,6 +65,9 @@ void TestToon::test_toonCreation_name() {
 }
 
 void TestToon::test_toonCreation_both() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("Actor_Instantiation");
   delete dummy;
   dummy = new Toon(4, "Jesse");
@@ -63,6 +78,9 @@ void TestToon::test_toonCreation_both() {
 }
 
 void TestToon::test_isAlive() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("Actor_HealthState");
   delete dummy;
   dummy = new Toon("AliveToon");
@@ -72,6 +90,9 @@ void TestToon::test_isAlive() {
 }
 
 void TestToon::test_isAlive_dead() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("Actor_HealthState");
   delete dummy;
   dummy = new Toon("DeadToon");
@@ -83,6 +104,9 @@ void TestToon::test_isAlive_dead() {
 }
 
 void TestToon::test_initial_combatstate() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("Actor_CombatState");
   delete dummy;
   dummy = new Toon();
@@ -92,6 +116,9 @@ void TestToon::test_initial_combatstate() {
 }
 
 void TestToon::test_initial_healthstate() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("Actor_HealthState");
   delete dummy;
   dummy = new Toon();

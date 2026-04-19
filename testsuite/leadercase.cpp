@@ -9,7 +9,10 @@
 /*!
  * @todo    Default Constructor
 */
-TestLeader::TestLeader() : BaseCase(__FILENAME__) {
+TestLeader::TestLeader() : TestLeader(0) {}
+
+TestLeader::TestLeader(int granularity) : BaseCase(__FILENAME__) {
+  set_granularity(granularity);
   BaseCase::log->named_log(__FILENAME__, "Testing the LeaderBoard!");
 }
 

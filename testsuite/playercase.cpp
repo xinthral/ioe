@@ -6,7 +6,10 @@
 */
 #define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
 
-TestPlayer::TestPlayer() : BaseCase(__FILENAME__) {
+TestPlayer::TestPlayer() : TestPlayer(0) {}
+
+TestPlayer::TestPlayer(int granularity) : BaseCase(__FILENAME__) {
+  set_granularity(granularity);
   BaseCase::log->named_log(__FILENAME__, "Testing Players!");
   sprintf(this->msgHead, "Tested");
   sprintf(this->msgTail, "for Players!");
@@ -24,6 +27,9 @@ void TestPlayer::test_all() {
 }
 
 void TestPlayer::test_isAlive() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("Actor_HealthState");
   delete dummy;
   dummy = new Player("TestPlayer", 1);
@@ -35,6 +41,9 @@ void TestPlayer::test_isAlive() {
 }
 
 void TestPlayer::test_isFighting() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("Actor_CombatState");
   delete dummy;
   dummy = new Player("TestPlayer", 1);
@@ -48,6 +57,9 @@ void TestPlayer::test_isFighting() {
 }
 
 void TestPlayer::test_name() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("Actor_Instantiation");
   delete dummy;
   dummy = new Player("Xinthral", 1);
@@ -57,6 +69,9 @@ void TestPlayer::test_name() {
 }
 
 void TestPlayer::test_level() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("Actor_Instantiation");
   delete dummy;
   dummy = new Player("LevelTest", 5);
@@ -66,6 +81,9 @@ void TestPlayer::test_level() {
 }
 
 void TestPlayer::test_initial_combatstate() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("Actor_CombatState");
   delete dummy;
   dummy = new Player("TestPlayer", 1);
@@ -75,6 +93,9 @@ void TestPlayer::test_initial_combatstate() {
 }
 
 void TestPlayer::test_initial_healthstate() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("Actor_HealthState");
   delete dummy;
   dummy = new Player("TestPlayer", 1);

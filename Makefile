@@ -169,4 +169,4 @@ cleanall:
 	$(MAKE) clean
 	$(MAKE) cleanbin
 
-.PHONY: all info audiosuite clisuite core engine helpsuite testsuite build clean cleanbin cleanaudio cleancore cleandocs cleanhelp cleantest cleanall
+.PHONY: all info audiosuite clisuite core docs engine helpsuite testsuite build clean cleanbin cleanaudio cleancore cleandocs cleanhelp cleantest cleanall

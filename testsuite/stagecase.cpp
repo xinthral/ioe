@@ -9,7 +9,10 @@
 /*!
  * @todo    Default Constructor
 */
-TestStage::TestStage() : BaseCase(__FILENAME__) {
+TestStage::TestStage() : TestStage(0) {}
+
+TestStage::TestStage(int granularity) : BaseCase(__FILENAME__) {
+  set_granularity(granularity);
   BaseCase::log->named_log(__FILENAME__, "Testing the StageManager!");
   this->test_all();
 }

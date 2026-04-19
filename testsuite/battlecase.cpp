@@ -9,7 +9,10 @@
 /*!
  * @todo    Default Constructor
 */
-TestBattle::TestBattle() : BaseCase(__FILENAME__) {
+TestBattle::TestBattle() : TestBattle(0) {}
+
+TestBattle::TestBattle(int granularity) : BaseCase(__FILENAME__) {
+  set_granularity(granularity);
   BaseCase::log->named_log(__FILENAME__, "Testing the BattleManager!");
 	this->battle = Battle::GetInstance();
 	sprintf(this->msgHead, "BattleManager");
@@ -34,6 +37,9 @@ void TestBattle::test_all() {
  * @todo    EVE Combat test on level 1 combatants
 */
 void TestBattle::level1_eve() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("EvE_Combat");
   bool pendingWork = true;
   this->toon1 = new Toon("Toon1");
@@ -55,6 +61,9 @@ void TestBattle::level1_eve() {
  * @todo    PVE Combat test on level 1 combatants
 */
 void TestBattle::level1_pve() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("PvE_Combat");
   bool pendingWork = true;
   this->player1 = new Player();
@@ -76,6 +85,9 @@ void TestBattle::level1_pve() {
  * @todo    PVP Combat test on level 1 combatants
 */
 void TestBattle::level1_pvp() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("PvP_Combat");
   bool pendingWork = true;
   this->player1 = new Player("Player1", 1);
@@ -97,6 +109,9 @@ void TestBattle::level1_pvp() {
  * @todo    PVP Combat test on level 80 combatants
 */
 void TestBattle::level80_eve() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("EvE_Combat");
   bool pendingWork = true;
   this->toon1 = new Toon("Toon1", 80);
@@ -115,6 +130,9 @@ void TestBattle::level80_eve() {
  * @todo    PVP Combat test on level 80 combatants
 */
 void TestBattle::level80_pve() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("PvE_Combat");
   bool pendingWork = true;
   this->toon1 = new Toon("Toon1", 80);
@@ -133,6 +151,9 @@ void TestBattle::level80_pve() {
  * @todo    PVP Combat test on level 80 combatants
 */
 void TestBattle::level80_pvp() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("PvP_Combat");
   bool pendingWork = true;
   this->player1 = new Player("PLAYER1", 80);

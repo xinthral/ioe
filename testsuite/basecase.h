@@ -42,6 +42,8 @@ protected:
   char                msgTail[32];  //!< Unified suffix for test
   int                 _passed;      //!< Count of passing assertions
   int                 _failed;      //!< Count of failing assertions
+  int                 _granularity; //!< The level of detail from test
+
 
 private:
 public:
@@ -62,6 +64,12 @@ public:
    * @param[in] msg       - Failure message logged when condition is false
   */
   void record(bool condition, const char* msg);
+
+  /*!
+   * @brief   Set level of detail for testcases, for more granular evaluations.
+   * @param[in] level     - Level of detail
+  */
+  int set_granularity(int);
 
   /*!
    * @brief   Default Deconstructor

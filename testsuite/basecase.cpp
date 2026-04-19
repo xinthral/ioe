@@ -15,6 +15,7 @@ BaseCase::BaseCase() {
   this->log = Logger::GetInstance();              //!< Instantiated Logger Object
   this->_passed = 0;
   this->_failed = 0;
+  this->_granularity = 0;
 }
 
 /*!
@@ -34,6 +35,11 @@ void BaseCase::record(bool condition, const char* msg) {
     _failed++;
     this->log->named_log("FAIL", msg);
   }
+}
+
+int BaseCase::set_granularity(int level) {
+  this->_granularity = level;
+  return this->_granularity;
 }
 
 /*!

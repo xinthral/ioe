@@ -161,13 +161,13 @@ static const std::unordered_map<std::string, std::string> _HELPMAP = {
 };
 
 static const std::unordered_map<std::string, std::string> _CREATEHELP = {
-  {"sword",    "sword    — melee weapon.  Boosts damage_multiplier (x1.5)"},
-  {"shield",   "shield   — defensive gear. Boosts damage_mitigation (x1.5)"},
-  {"staff",    "staff    — arcane focus.  Boosts flux_multiplier (x1.5)"},
-  {"ring",     "ring     — accessory.     Boosts damage and flux (x1.2 each)"},
-  {"relic",    "relic    — ancient item.  Boosts health_multiplier (x1.5)"},
-  {"backpack", "backpack — wearable container. Neutral stats. Can hold any item.\n"
-               "           Future: stored item weights halved while worn"},
+  {"sword",    "sword                       - melee weapon.  Boosts damage_multiplier (x1.5)"},
+  {"shield",   "shield                      - defensive gear. Boosts damage_mitigation (x1.5)"},
+  {"staff",    "staff                       - arcane focus.  Boosts flux_multiplier (x1.5)"},
+  {"ring",     "ring                        - accessory.     Boosts damage and flux (x1.2 each)"},
+  {"relic",    "relic                       - ancient item.  Boosts health_multiplier (x1.5)"},
+  {"backpack", "backpack                    - wearable container. Neutral stats. Can hold any item.\n"
+               "                              Future: stored item weights halved while worn"},
 };
 
 void CLISuite::cli_help(std::vector<std::string>& cmdline) {
@@ -230,7 +230,7 @@ void CLISuite::cmd_spawn(std::vector<std::string>& cmdline) {
     else if (!t2) { t2 = new Toon(name); sprintf(buf, "Spawned Toon 2: %s", name.c_str()); }
     else          { sprintf(buf, "Both toon slots occupied. Use reset to clear."); }
   } else {
-    sprintf(buf, "Unknown type: %s — use player or toon.", type.c_str());
+    sprintf(buf, "Unknown type: %s - use player or toon.", type.c_str());
   }
   log->named_log(__FILENAME__, buf);
 }
@@ -243,19 +243,19 @@ void CLISuite::cmd_fight(std::vector<std::string>& cmdline) {
   const std::string& mode = cmdline[1];
 
   if (mode == "pve") {
-    if (!p1 || !t1) { log->named_log(__FILENAME__, "fight pve requires p1 and t1 — use spawn"); return; }
+    if (!p1 || !t1) { log->named_log(__FILENAME__, "fight pve requires p1 and t1 - use spawn"); return; }
     battle->startPVE(p1, t1);
     log->named_log(__FILENAME__, "PvE combat started. Use step to advance.");
   } else if (mode == "pvp") {
-    if (!p1 || !p2) { log->named_log(__FILENAME__, "fight pvp requires p1 and p2 — use spawn"); return; }
+    if (!p1 || !p2) { log->named_log(__FILENAME__, "fight pvp requires p1 and p2 - use spawn"); return; }
     battle->startPVP(p1, p2);
     log->named_log(__FILENAME__, "PvP combat started. Use step to advance.");
   } else if (mode == "eve") {
-    if (!t1 || !t2) { log->named_log(__FILENAME__, "fight eve requires t1 and t2 — use spawn"); return; }
+    if (!t1 || !t2) { log->named_log(__FILENAME__, "fight eve requires t1 and t2 - use spawn"); return; }
     battle->startEVE(t1, t2);
     log->named_log(__FILENAME__, "EvE combat started. Use step to advance.");
   } else {
-    sprintf(buf, "Unknown mode: %s — use pve, pvp, or eve.", mode.c_str());
+    sprintf(buf, "Unknown mode: %s - use pve, pvp, or eve.", mode.c_str());
     log->named_log(__FILENAME__, buf);
   }
 }

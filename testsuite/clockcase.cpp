@@ -9,7 +9,10 @@
 /*!
  * @todo    Default Constructor
 */
-TestClock::TestClock() : BaseCase(__FILENAME__) {
+TestClock::TestClock() : TestClock(0) {}
+
+TestClock::TestClock(int granularity) : BaseCase(__FILENAME__) {
+  set_granularity(granularity);
   BaseCase::log->named_log(__FILENAME__, "Testing the Clock!");
   sprintf(this->msgHead, "Clock");
   sprintf(this->msgTail, "has been tested.");

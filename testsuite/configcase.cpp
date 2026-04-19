@@ -9,7 +9,10 @@
 /*!
  * @todo    Default Constructor
 */
-TestConfig::TestConfig() : BaseCase(__FILENAME__) {
+TestConfig::TestConfig() : TestConfig(0) {}
+
+TestConfig::TestConfig(int granularity) : BaseCase(__FILENAME__) {
+  set_granularity(granularity);
   BaseCase::log->named_log(__FILENAME__, "Testing the ConfigManager!");
   sprintf(msgHead, "Tested");
   sprintf(msgTail, "for the ConfigManager!");

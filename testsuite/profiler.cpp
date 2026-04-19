@@ -91,7 +91,7 @@ Profiler::Profiler(const std::string& functionName) :
     if (std::regex_search(functionName, m, rgx1)) {
       functionName_ = std::regex_replace(m.str(), rgx2, "");
     } else {
-      functionName_ = functionName; // semantic key via PROFILE_NAMED — use as-is
+      functionName_ = functionName; // semantic key via PROFILE_NAMED - use as-is
     }
 }
 

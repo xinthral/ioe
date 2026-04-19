@@ -9,7 +9,10 @@
 /*!
  * @todo    Default Constructor
 */
-TestActors::TestActors() : BaseCase(__FILENAME__) {
+TestActors::TestActors() : TestActors(0) {}
+
+TestActors::TestActors(int granularity) : BaseCase(__FILENAME__) {
+  set_granularity(granularity);
   BaseCase::log->named_log(__FILENAME__, "Testing Actor's!");
   sprintf(this->msgHead, "Tested");
   sprintf(this->msgTail, "for Actors!");
@@ -66,6 +69,9 @@ void TestActors::test_healthstate() {
  * @todo    Validate Initial Condition: Attack Value
 */
 void TestActors::base_attack() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("Actor_BaseStats");
   int cnf_atk = cnf->get_attack();
   dummy = new Actor();
@@ -78,6 +84,9 @@ void TestActors::base_attack() {
  * @todo    Validate Initial Condition: Defense Value
 */
 void TestActors::base_defense() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("Actor_BaseStats");
   int cnf_def = cnf->get_defense();
   dummy = new Actor();
@@ -90,6 +99,9 @@ void TestActors::base_defense() {
  * @todo    Validate Initial Condition: Flux Value
 */
 void TestActors::base_flux() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("Actor_BaseStats");
   int cnf_flx = cnf->get_flux();
   dummy = new Actor();
@@ -102,6 +114,9 @@ void TestActors::base_flux() {
  * @todo    Validate Initial Condition: Health Value
 */
 void TestActors::base_health() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("Actor_BaseStats");
   int cnf_hlt = cnf->get_health();
   dummy = new Actor();
@@ -114,6 +129,9 @@ void TestActors::base_health() {
  * @todo    Validate Initial Condition: Combat Idle
 */
 void TestActors::combatstate_idle() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("Actor_CombatState");
   dummy = new Actor();
   dummy->set_combat_idle();
@@ -126,6 +144,9 @@ void TestActors::combatstate_idle() {
  * @todo    Validate Initial Condition: Combat Patrol
 */
 void TestActors::combatstate_patrol() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("Actor_CombatState");
   dummy = new Actor();
   dummy->set_combat_patrol();
@@ -138,6 +159,9 @@ void TestActors::combatstate_patrol() {
  * @todo    Validate Initial Condition: Combat Fight
 */
 void TestActors::combatstate_fight() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("Actor_CombatState");
   dummy = new Actor();
   dummy->set_combat_fight();
@@ -150,6 +174,9 @@ void TestActors::combatstate_fight() {
  * @todo    Validate Initial Condition: Combat Flee
 */
 void TestActors::combatstate_flee() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("Actor_CombatState");
   dummy = new Actor();
   dummy->set_combat_flee();
@@ -162,6 +189,9 @@ void TestActors::combatstate_flee() {
  * @todo    Validate Initial Condition: Combat Follow
 */
 void TestActors::combatstate_follow() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("Actor_CombatState");
   dummy = new Actor();
   dummy->set_combat_follow();
@@ -174,6 +204,9 @@ void TestActors::combatstate_follow() {
  * @todo    Validate Initial Condition: Health Healthy
 */
 void TestActors::healthstate_healthy() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("Actor_HealthState");
   dummy = new Actor();
   dummy->set_health_healthy();
@@ -186,6 +219,9 @@ void TestActors::healthstate_healthy() {
  * @todo    Validate Initial Condition: Health Hurting
 */
 void TestActors::healthstate_hurting() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("Actor_HealthState");
   dummy = new Actor();
   dummy->set_health_hurting();
@@ -198,6 +234,9 @@ void TestActors::healthstate_hurting() {
  * @todo    Validate Initial Condition: Health Critical 
 */
 void TestActors::healthstate_critical() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("Actor_HealthState");
   dummy = new Actor();
   dummy->set_health_critical();
@@ -210,6 +249,9 @@ void TestActors::healthstate_critical() {
  * @todo    Validate Initial Condition: Health Sick 
 */
 void TestActors::healthstate_sick() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("Actor_HealthState");
   dummy = new Actor();
   dummy->set_health_sick();
@@ -222,6 +264,9 @@ void TestActors::healthstate_sick() {
  * @todo    Validate Initial Condition: Health Dead 
 */
 void TestActors::healthstate_dead() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("Actor_HealthState");
   dummy = new Actor();
   dummy->set_health_dead();
@@ -231,6 +276,9 @@ void TestActors::healthstate_dead() {
 }
 
 void TestActors::starting_health() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("Actor_BaseStats");
   dummy = new Actor();
   // assertm(32 == dummy->get_health(), "Actor failed to initialize");
@@ -250,6 +298,9 @@ void TestActors::test_equip() {
 }
 
 void TestActors::equip_applies_stats() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("Actor_EquipSystem");
   dummy = new Actor();
   int base_attack = dummy->get_attack();
@@ -261,6 +312,9 @@ void TestActors::equip_applies_stats() {
 }
 
 void TestActors::equip_rejects_duplicate_type() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("Actor_EquipSystem");
   dummy = new Actor();
   Equipment* sword1 = new Equipment("Sword1", SWORD);
@@ -274,6 +328,9 @@ void TestActors::equip_rejects_duplicate_type() {
 }
 
 void TestActors::equip_rejects_second_unique() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("Actor_EquipSystem");
   dummy = new Actor();
   Equipment* u1 = new Equipment("UniqueA", RELIC);
@@ -289,6 +346,9 @@ void TestActors::equip_rejects_second_unique() {
 }
 
 void TestActors::unequip_reverses_stats() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("Actor_EquipSystem");
   dummy = new Actor();
   int base_attack = dummy->get_attack();
@@ -302,6 +362,9 @@ void TestActors::unequip_reverses_stats() {
 }
 
 void TestActors::equip_get_equipped_count() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("Actor_EquipSystem");
   dummy = new Actor();
   dummy->equip(new Equipment("Sword",  SWORD));

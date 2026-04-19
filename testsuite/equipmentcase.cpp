@@ -6,7 +6,10 @@
 */
 #define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
 
-TestEquipment::TestEquipment() : BaseCase(__FILENAME__) {
+TestEquipment::TestEquipment() : TestEquipment(0) {}
+
+TestEquipment::TestEquipment(int granularity) : BaseCase(__FILENAME__) {
+  set_granularity(granularity);
   BaseCase::log->named_log(__FILENAME__, "Testing Equipment!");
   sprintf(this->msgHead, "Tested");
   sprintf(this->msgTail, "for Equipment!");
@@ -27,6 +30,9 @@ void TestEquipment::test_all() {
 }
 
 void TestEquipment::test_default_multipliers() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("Equipment_Multipliers");
   delete _equip;
   _equip = new Equipment();
@@ -41,6 +47,9 @@ void TestEquipment::test_default_multipliers() {
 }
 
 void TestEquipment::test_label() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("Item_Label");
   delete _equip;
   _equip = new Equipment("Excalibur", SWORD);
@@ -50,6 +59,9 @@ void TestEquipment::test_label() {
 }
 
 void TestEquipment::test_multiplier_validation() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("Equipment_Multipliers");
   delete _equip;
   _equip = new Equipment();
@@ -64,6 +76,9 @@ void TestEquipment::test_multiplier_validation() {
 }
 
 void TestEquipment::test_profile_sword() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("Equipment_Profiles");
   delete _equip;
   _equip = new Equipment("Sword", SWORD);
@@ -74,6 +89,9 @@ void TestEquipment::test_profile_sword() {
 }
 
 void TestEquipment::test_profile_shield() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("Equipment_Profiles");
   delete _equip;
   _equip = new Equipment("Shield", SHIELD);
@@ -84,6 +102,9 @@ void TestEquipment::test_profile_shield() {
 }
 
 void TestEquipment::test_profile_staff() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("Equipment_Profiles");
   delete _equip;
   _equip = new Equipment("Staff", STAFF);
@@ -94,6 +115,9 @@ void TestEquipment::test_profile_staff() {
 }
 
 void TestEquipment::test_profile_ring() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("Equipment_Profiles");
   delete _equip;
   _equip = new Equipment("Ring", RING);
@@ -104,6 +128,9 @@ void TestEquipment::test_profile_ring() {
 }
 
 void TestEquipment::test_profile_relic() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("Equipment_Profiles");
   delete _equip;
   _equip = new Equipment("Relic", RELIC);
@@ -114,6 +141,9 @@ void TestEquipment::test_profile_relic() {
 }
 
 void TestEquipment::test_profile_backpack() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("Equipment_Profiles");
   delete _equip;
   _equip = new Equipment("Backpack", BACKPACK);

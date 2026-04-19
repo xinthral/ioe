@@ -6,7 +6,10 @@
 */
 #define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
 
-TestItem::TestItem() : BaseCase(__FILENAME__) {
+TestItem::TestItem() : TestItem(0) {}
+
+TestItem::TestItem(int granularity) : BaseCase(__FILENAME__) {
+  set_granularity(granularity);
   BaseCase::log->named_log(__FILENAME__, "Testing Base Items!");
   sprintf(this->msgHead, "Tested");
   sprintf(this->msgTail, "feature!");
@@ -26,6 +29,9 @@ void TestItem::test_all() {
 }
 
 void TestItem::test_label() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("Item_Label");
   delete _item;
   _item = new Item("Potion");
@@ -35,10 +41,13 @@ void TestItem::test_label() {
 }
 
 void TestItem::test_label_overflow() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("Item_Label");
   delete _item;
   _item = new Item("LegalName");
-  // 101-char string — exceeds the 100-char label buffer
+  // 101-char string - exceeds the 100-char label buffer
   const char* overflow = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
   _item->set_label(overflow);
   record(strcmp(_item->get_label(), overflow) != 0, "set_label should reject strings >= 100 chars");
@@ -47,6 +56,9 @@ void TestItem::test_label_overflow() {
 }
 
 void TestItem::itemrarity() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("Item_Rarity");
   delete _item;
   _item = new Item("RarityTest");
@@ -59,6 +71,9 @@ void TestItem::itemrarity() {
 }
 
 void TestItem::rarity_invalidation() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("Item_Rarity");
   delete _item;
   _item = new Item("RarityInvalid");
@@ -70,6 +85,9 @@ void TestItem::rarity_invalidation() {
 }
 
 void TestItem::itemtype() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("Item_Type");
   delete _item;
   _item = new Item("TypeTest");
@@ -82,6 +100,9 @@ void TestItem::itemtype() {
 }
 
 void TestItem::type_invalidation() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("Item_Type");
   delete _item;
   _item = new Item("TypeInvalid");
@@ -93,6 +114,9 @@ void TestItem::type_invalidation() {
 }
 
 void TestItem::test_backpack_type() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("Item_Type");
   delete _item;
   _item = new Item("BackpackTest");

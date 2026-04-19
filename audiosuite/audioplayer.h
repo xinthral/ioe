@@ -7,7 +7,7 @@
 
 /*!
  * @class   AudioPlayer audioplayer.h audioplayer.cpp
- * @brief   Format-agnostic audio player — plays WAV, MP3, and FLAC via VLC
+ * @brief   Format-agnostic audio player - plays WAV, MP3, and FLAC via VLC
 */
 class AudioPlayer {
 protected:

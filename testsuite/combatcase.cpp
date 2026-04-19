@@ -6,7 +6,10 @@
 */
 #define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
 
-TestCombat::TestCombat() : BaseCase(__FILENAME__) {
+TestCombat::TestCombat() : TestCombat(0) {}
+
+TestCombat::TestCombat(int granularity) : BaseCase(__FILENAME__) {
+  set_granularity(granularity);
   BaseCase::log->named_log(__FILENAME__, "Testing Combat!");
   sprintf(this->msgHead, "Tested");
   sprintf(this->msgTail, "for Combat!");
@@ -23,6 +26,9 @@ void TestCombat::test_all() {
 }
 
 void TestCombat::EVECombat() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("EvE_Combat");
   delete _toon1; delete _toon2; delete _combat;
   _toon1  = new Toon("EvE_T1");
@@ -38,6 +44,9 @@ void TestCombat::EVECombat() {
 }
 
 void TestCombat::PVECombat() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("PvE_Combat");
   delete _player1; delete _toon1; delete _combat;
   _player1 = new Player("PvE_P1", 1);
@@ -53,6 +62,9 @@ void TestCombat::PVECombat() {
 }
 
 void TestCombat::PVPCombat() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("PvP_Combat");
   delete _player1; delete _player2; delete _combat;
   _player1 = new Player("PvP_P1", 1);

@@ -35,104 +35,124 @@
 class TestSuite {
 protected:
   Logger* log;
-private:
 public:
   /*!
    * @brief   Default Constructor
   */
   TestSuite();
 
+  /*!
+   * @brief   Run all test cases with full profiling granularity
+  */
   void TestAll();
 
   /*!
    * @brief   Initiates the Test for the Actor Module
+   * @param[in] level  Profiling granularity (0 = named groups only, 1 = per-method + named)
   */
-  void CaseActor();
+  void CaseActor(int level=0);
 
   /*!
    * @brief   Initiates the Test for the Audio Module
+   * @param[in] level  Profiling granularity (0 = named groups only, 1 = per-method + named)
   */
-  void CaseAudio();
+  void CaseAudio(int level=0);
 
   /*!
    * @brief   Initiates the Test for the Backpack Module
+   * @param[in] level  Profiling granularity (0 = named groups only, 1 = per-method + named)
   */
-  void CaseBackpack();
+  void CaseBackpack(int level=0);
 
   /*!
    * @brief   Initiates the Test for the Equipment Module
+   * @param[in] level  Profiling granularity (0 = named groups only, 1 = per-method + named)
   */
-  void CaseEquipment();
+  void CaseEquipment(int level=0);
 
   /*!
    * @brief   Initiates the Test for the BalanceController Module
+   * @param[in] level  Profiling granularity (0 = named groups only, 1 = per-method + named)
   */
-  void CaseBalance();
+  void CaseBalance(int level=0);
 
   /*!
    * @brief   Initiates the Test for the BattleManager Module
+   * @param[in] level  Profiling granularity (0 = named groups only, 1 = per-method + named)
   */
-  void CaseBattle();
+  void CaseBattle(int level=0);
 
   /*!
    * @brief   Initiates the Test for the Engine's Clock
+   * @param[in] level  Profiling granularity (0 = named groups only, 1 = per-method + named)
   */
-  void CaseClock();
+  void CaseClock(int level=0);
 
   /*!
    * @brief   Initiates the Test for the Ciphers Module
+   * @param[in] level  Profiling granularity (0 = named groups only, 1 = per-method + named)
   */
-  void CaseCiphers();
+  void CaseCiphers(int level=0);
 
   /*!
    * @brief   Initiates the Test for the Combat Module
+   * @param[in] level  Profiling granularity (0 = named groups only, 1 = per-method + named)
   */
-  void CaseCombat();
+  void CaseCombat(int level=0);
 
   /*!
    * @brief   Initiates the Test for the ConfigManager Module
+   * @param[in] level  Profiling granularity (0 = named groups only, 1 = per-method + named)
   */
-  void CaseConfig();
+  void CaseConfig(int level=0);
 
   /*!
    * @brief   Initiates the Test for the Item Module
+   * @param[in] level  Profiling granularity (0 = named groups only, 1 = per-method + named)
   */
-  void CaseItem();
+  void CaseItem(int level=0);
 
   /*!
    * @brief   Initiates the Test for the LeaderBoard Module
+   * @param[in] level  Profiling granularity (0 = named groups only, 1 = per-method + named)
   */
-  void CaseLeader();
+  void CaseLeader(int level=0);
 
   /*!
    * @brief   Initiates the Test for the Lexicon Module
+   * @param[in] level  Profiling granularity (0 = named groups only, 1 = per-method + named)
   */
-  void CaseLexicon();
+  void CaseLexicon(int level=0);
 
   /*!
    * @brief   Initiates the Test for the Player Module
+   * @param[in] level  Profiling granularity (0 = named groups only, 1 = per-method + named)
   */
-  void CasePlayer();
+  void CasePlayer(int level=0);
 
   /*!
    * @brief   Initiates the Test for the StageManager Module
+   * @param[in] level  Profiling granularity (0 = named groups only, 1 = per-method + named)
   */
-  void CaseStage();
+  void CaseStage(int level=0);
 
   /*!
    * @brief   Initiates the Test for the Toon Module
+   * @param[in] level  Profiling granularity (0 = named groups only, 1 = per-method + named)
   */
-  void CaseToon();
+  void CaseToon(int level=0);
 
   /*!
    * @brief   Initiates the Test for the Utilz Module
+   * @param[in] level  Profiling granularity (0 = named groups only, 1 = per-method + named)
   */
-  void CaseUtilz();
+  void CaseUtilz(int level=0);
 
   /*!
    * @brief   Initiates the Test for the Weapon Module
+   * @param[in] level  Profiling granularity (0 = named groups only, 1 = per-method + named)
   */
-  void CaseWeapon();
+  void CaseWeapon(int level=0);
 
   /*!
    * @brief   Default Deconstructor

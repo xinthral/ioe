@@ -9,7 +9,10 @@
 /*!
  * @todo    Default Constructor
 */
-TestCiphers::TestCiphers() : BaseCase(__FILENAME__) {
+TestCiphers::TestCiphers() : TestCiphers(0) {}
+
+TestCiphers::TestCiphers(int granularity) : BaseCase(__FILENAME__) {
+  set_granularity(granularity);
   BaseCase::log->named_log(__FILENAME__, "Testing the Ciphers!");
   sprintf(this->msgHead, "Tested");
   sprintf(this->msgTail, "in the cipher suite!");

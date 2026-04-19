@@ -76,7 +76,7 @@ void WavSampler::plotFrequencyChart(const std::vector<short>& data, int sampleRa
     }
     log->raw_log("Converting samples to milliseconds");
 
-    // Write data with time progression — X = sample index converted to ms, Y = amplitude
+    // Write data with time progression - X = sample index converted to ms, Y = amplitude
     for (size_t i = 0; i < data.size(); ++i) {
         outFile << (i * 1000.0 / sampleRate) << " " << data[i] << std::endl;
     }

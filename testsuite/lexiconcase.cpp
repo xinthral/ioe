@@ -9,7 +9,10 @@
 /*!
  * @todo    Default Constructor
 */
-TestLexicon::TestLexicon() : BaseCase(__FILENAME__) {
+TestLexicon::TestLexicon() : TestLexicon(0) {}
+
+TestLexicon::TestLexicon(int granularity) : BaseCase(__FILENAME__) {
+  set_granularity(granularity);
   BaseCase::log->named_log(__FILENAME__, "Testing the Lexicon!");
   sprintf(this->msgHead, "Tested");
   sprintf(this->msgTail, "from the Lexicon!");

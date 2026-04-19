@@ -72,7 +72,7 @@ void Item::_help() {
   helpline += "\n\tItemType values: RELIC, RING, SHIELD, STAFF, SWORD, BACKPACK";
   helpline += "\n\tItemRarity values: JUNK, COMMON, UNCOMMON, RARE, EPIC, LEGENDARY, UNIQUE";
   helpline += "\n\t  Note: only one UNIQUE item may be equipped to an Actor at a time.";
-  helpline += "\n\tweight field — default 0.0f. Future: halved when stored in a worn Backpack.";
+  helpline += "\n\tweight field - default 0.0f. Future: halved when stored in a worn Backpack.";
   helpline += "\n";
   log->named_log(__FILENAME__, helpline);
 }

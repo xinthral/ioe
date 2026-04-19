@@ -6,7 +6,10 @@
 */
 #define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
 
-TestBackpack::TestBackpack() : BaseCase(__FILENAME__) {
+TestBackpack::TestBackpack() : TestBackpack(0) {}
+
+TestBackpack::TestBackpack(int granularity) : BaseCase(__FILENAME__) {
+  set_granularity(granularity);
   BaseCase::log->named_log(__FILENAME__, "Testing Backpack!");
   sprintf(this->msgHead, "Tested");
   sprintf(this->msgTail, "for Backpack!");
@@ -25,6 +28,9 @@ void TestBackpack::test_all() {
 }
 
 void TestBackpack::test_label() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("Item_Label");
   delete _pack;
   _pack = new Backpack("MyPack");
@@ -34,6 +40,9 @@ void TestBackpack::test_label() {
 }
 
 void TestBackpack::test_type() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("Item_Type");
   delete _pack;
   _pack = new Backpack();
@@ -43,6 +52,9 @@ void TestBackpack::test_type() {
 }
 
 void TestBackpack::test_add_item() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("Backpack_Inventory");
   delete _pack;
   _pack = new Backpack();
@@ -55,6 +67,9 @@ void TestBackpack::test_add_item() {
 }
 
 void TestBackpack::test_add_null() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("Backpack_Inventory");
   delete _pack;
   _pack = new Backpack();
@@ -66,6 +81,9 @@ void TestBackpack::test_add_null() {
 }
 
 void TestBackpack::test_remove_item() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("Backpack_Inventory");
   delete _pack;
   _pack = new Backpack();
@@ -79,6 +97,9 @@ void TestBackpack::test_remove_item() {
 }
 
 void TestBackpack::test_remove_nonexistent() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("Backpack_Inventory");
   delete _pack;
   _pack = new Backpack();
@@ -89,6 +110,9 @@ void TestBackpack::test_remove_nonexistent() {
 }
 
 void TestBackpack::test_get_items() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("Backpack_Inventory");
   delete _pack;
   _pack = new Backpack();

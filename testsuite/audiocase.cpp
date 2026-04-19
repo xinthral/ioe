@@ -9,7 +9,10 @@
 /*!
  * @brief   Default Constructor
 */
-TestAudio::TestAudio() : BaseCase(__FILENAME__) {
+TestAudio::TestAudio() : TestAudio(0) {}
+
+TestAudio::TestAudio(int granularity) : BaseCase(__FILENAME__) {
+  set_granularity(granularity);
   BaseCase::log->named_log(__FILENAME__, "Testing Audio Drivers!");
   sprintf(this->msgHead, "Tested");
   sprintf(this->msgTail, "for Audio!");
@@ -122,7 +125,7 @@ void TestAudio::test_mp3_bitdepth() {
 
 /*!
  * @brief   Validate FlacDriver loads a file and returns non-empty data
- * @note    Disabled — no FLAC samples in audiosuite/samples/
+ * @note    Disabled - no FLAC samples in audiosuite/samples/
 */
 void TestAudio::test_flac_loads() {
   PROFILE_FUNCTION();

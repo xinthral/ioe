@@ -9,7 +9,10 @@
 /*!
  * @todo    Default Constructor
 */
-TestUtilz::TestUtilz() : BaseCase(__FILENAME__) {
+TestUtilz::TestUtilz() : TestUtilz(0) {}
+
+TestUtilz::TestUtilz(int granularity) : BaseCase(__FILENAME__) {
+  set_granularity(granularity);
   BaseCase::log->named_log(__FILENAME__, "Testing the Utilz Functionality!");
   sprintf(this->msgHead, "Tested");
   sprintf(this->msgTail, "for Actors!");

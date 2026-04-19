@@ -9,7 +9,10 @@
 /*!
  * @brief    Default Constructor
 */
-TestBalance::TestBalance() : BaseCase(__FILENAME__) {
+TestBalance::TestBalance() : TestBalance(0) {}
+
+TestBalance::TestBalance(int granularity) : BaseCase(__FILENAME__) {
+  set_granularity(granularity);
   BaseCase::log->named_log(__FILENAME__, "Testing the BalanceController!");
   sprintf(this->msgHead, "Tested");
   sprintf(this->msgTail, "at scale for Balance!");
@@ -32,6 +35,9 @@ void TestBalance::test_all() {
  * @brief    Validate Scaling factors against attack and defense
 */
 void TestBalance::def_atk_ratio() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("Balance");
   double preRatio = (this->baseAtk * 1.0) / this->baseDef;
   double numerator = this->baseAtk * bal->scalar(100);
@@ -46,6 +52,9 @@ void TestBalance::def_atk_ratio() {
  * @brief    Validate that the appropriate difficulty level is being assigned. 
 */
 void TestBalance::difficulty_level() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("Balance");
   std::string dif  = cnf->raw_config("DIF");
   std::string diff = bal->get_difficulty_str();
@@ -58,6 +67,9 @@ void TestBalance::difficulty_level() {
  * @brief    Validate difficulty value falls within the valid range [1, 5]
 */
 void TestBalance::difficulty_range() {
+  if (this->_granularity >= 1) {
+    PROFILE_FUNCTION();
+  }
   PROFILE_NAMED("Balance");
   int dif = atoi(cnf->raw_config("DIF").c_str());
   record(dif >= 1 && dif <= 5, "Difficulty value out of valid range [1, 5]");
