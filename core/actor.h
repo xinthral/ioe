@@ -1,6 +1,7 @@
 #ifndef ACTOR_H
 #define ACTOR_H
 
+// #include <stdexcept>
 #include <string>
 #include <vector>
 #include "config.h"
@@ -57,8 +58,11 @@ static inline const char* healthStateStr(HealthState s) {
 */
 class Actor {
 protected:
-  ConfigManager* cnf;       //!< ConfigManager Instantiation
   Logger* log;              //!< Logging Handler Instantiation
+  char buf[256];            //!< Buffer Value for Logger outputs
+
+private:
+  ConfigManager* cnf;       //!< ConfigManager Instantiation
   CombatState aiState;      //!< Current AI CombatState
   HealthState condition;    //!< Current Health State
   std::string name;         //!< Name of Actor
@@ -75,7 +79,6 @@ protected:
   char buf[256];            //!< Buffer Value for Logger outputs
   std::vector<Equipment*> equipped; //!< Currently equipped items
 
-private:
 public:
   /*!
    * @brief   Default Constructor 
@@ -89,50 +92,49 @@ public:
   */
   Actor(std::string);
 
-  /*!
-   * @brief   Conditional Combat Check 
-   * @details Confirm if Actor is currently fighting
-   * @returns Boolean answer 
-  */
-  bool isFighting();
-
-  /*!
-   * @brief   Conditional Health Check 
-   * @details Confirm if Actor is not dead
-   * @returns Boolean answer 
-  */
-  bool isAlive();
+  int get_attack();
 
   /*!
    * @brief   Return Attack Attribute
    * @returns Base Attack Value 
   */
   int get_baseAttack();
-  int get_attack();
-  void set_attack(int);
 
   /*!
    * @brief   Return Defense Attribute
    * @returns Base Defense Value 
   */
   int get_baseDefense();
-  int get_defense();
-  void set_defense(int);
 
   /*!
    * @brief   Return Flux Attribute
    * @returns Flux Value
   */
   int get_baseFlux();
-  int get_flux();
 
   /*!
    * @brief   Return Health Attribute
    * @returns Base Health Value 
   */
   int get_baseHealth();
+
+  /*!
+   * @brief   Return Combat State 
+   * @returns Current Combat State of the character.
+  */
+  CombatState get_combatstate();
+
+  int get_defense();
+
+  int get_flux();
+
   int get_health();
-  void set_health(int);
+
+  /*!
+   * @brief   Return Health State
+   * @returns Current Health State of the character.
+  */
+  HealthState get_healthstate();
 
   /*!
    * @brief   Return ID Attribute
@@ -149,38 +151,34 @@ public:
   std::string get_name();
 
   /*!
-   * @brief   ReAssign Actor Flux Value
-   * @details Set Flux Attribute 
-   * @param[in] flux - New Flux Value
+   * @brief   Conditional Health Check 
+   * @details Confirm if Actor is not dead
+   * @returns Boolean answer 
   */
-  void set_flux(int);
+  bool isAlive();
 
   /*!
-   * @brief   ReAssign Actor ID number
-   * @details Set ID Attribute
-   * @param[in] id - Identity Reference Number
+   * @brief   Conditional Combat Check 
+   * @details Confirm if Actor is currently fighting
+   * @returns Boolean answer 
   */
-  void set_id(int);
+  bool isFighting();
 
   /*!
-   * @brief   ReAssign Actor Level number
-   * @details Set Level Attribute
-   * @param[in] level - New Level Value
+   * @brief   Calculates Current Damage Output
+   *          including multipliers and reducers
+   * @returns Final Damage Value
   */
-  void set_level(int);
+  int output_damage();
 
   /*!
-   * @brief   ReAssign Actor Name
-   * @details Set Name Attribute
-   * @param[in] name - New Name Value
+   * @brief   Calculates and adjust damage received
+   *          including multiplier and reducers
+   * @returns Final Damage Value
   */
-  void set_name(std::string);
+  int receive_damage(int);
 
-  /*!
-   * @brief   Return Combat State 
-   * @returns Current Combat State of the character.
-  */
-  CombatState get_combatstate();
+  void set_attack(int);
 
   /*!
    * @brief   ReAssign Combat State
@@ -220,11 +218,16 @@ public:
   */
   void set_combat_follow();
 
+  void set_defense(int);
+
   /*!
-   * @brief   Return Health State
-   * @returns Current Health State of the character.
+   * @brief   ReAssign Actor Flux Value
+   * @details Set Flux Attribute 
+   * @param[in] flux - New Flux Value
   */
-  HealthState get_healthstate();
+  void set_flux(int);
+
+  void set_health(int);
 
   /*!
    * @brief   ReAssign Health State

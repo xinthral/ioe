@@ -155,6 +155,11 @@ public:
   void CaseWeapon(int level=0);
 
   /*!
+   * @brief   Initiates the Test for the Weapon Module
+  */
+  void CaseWeapon();
+
+  /*!
    * @brief   Default Deconstructor
   */
   ~TestSuite();

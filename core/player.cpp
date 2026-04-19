@@ -10,6 +10,7 @@
  * @todo    Constructor Initializor
 */
 Player::Player(std::string name, int level) {
+  log = Logger::GetInstance();
   // Get the current time
   auto currentTime = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
 
@@ -25,6 +26,9 @@ Player::Player(std::string name, int level) {
   this->set_attack(level * this->get_baseAttack());
   this->set_defense(level * this->get_baseDefense());
   this->set_health(level * this->get_baseHealth());
+  
+  sprintf(buf, "%s Level %d Player initiated.", name.c_str(), this->get_level());
+  log->named_log(__FILENAME__, buf);
 }
 
 /*!

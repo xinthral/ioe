@@ -14,6 +14,7 @@ SEPR := /
 
 # Windows Variants
 ifeq ($(OS), Windows_NT)
+CC := c++
 DOXYGEN := doxygen.exe
 RM := del
 RRM := del /S /Q /f
@@ -104,16 +105,18 @@ $(AUDI): $(AUDISRC)
 $(CORE): $(CORESRC)
 
 # Compile CLISuite
-$(CLIS): $(CORESRC) $(CLISSRC)
-	$(CC) $(CXFLAGS) $^ -o $@.exe
+$(CLIS).exe: $(CORESRC) $(CLISSRC)
+	$(CC) $(CXFLAGS) $^ -o $@
+$(CLIS): $(CLIS).exe
 
 # Compile Engine API
 $(ENGN): $(CORESRC) $(ENGNSRC)
 	$(CC) $(CXFLAGS) $^ -o $@.exe
 
 # Compile HelpSuite
-$(HELP): $(CORESRC) $(HELPSRC)
-	$(CC) $(CXFLAGS) $^ -o $@.exe
+$(HELP).exe: $(CORESRC) $(HELPSRC)
+	$(CC) $(CXFLAGS) $^ -o $@
+$(HELP): $(HELP).exe
 
 # Compile TestSuite
 $(TEST): $(CORESRC) $(TESTSRC) $(AUDIDRV)
@@ -123,10 +126,11 @@ $(TEST): $(CORESRC) $(TESTSRC) $(AUDIDRV)
 $(DOCS): docs/conf.dox
 	$(DOXYGEN) $<
 
+# Dynamically Compile any object file requested
 %.o: %.cpp %.h
 	$(CC) $(CXFLAGS) -c $< -o $@
 
-# $(RRM) $(foreach d, $(MODULES),$d\\*.o $d\\*.so $d\\*.wasm) 2>&1 >/dev/null
+# Clean up Object Files
 clean:
 	$(MAKE) cleanaudio
 	$(MAKE)	cleancli
@@ -135,12 +139,14 @@ clean:
 	$(MAKE) cleanhelp
 	$(MAKE) cleantest
 
+# Clean up audiosuite and graph data
 cleanaudio:
 	$(RRM) $(AUDI)$(SEPR)*.o
 	$(RM) $(DOCS)$(SEPR)out$(SEPR)*.txt
 	$(RM) $(DOCS)$(SEPR)out$(SEPR)*.png
 	$(RM) $(DOCS)$(SEPR)out$(SEPR)*.gp
 
+# Clean up binary files
 cleanbin:
 	$(RM) *.exe
 

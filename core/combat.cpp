@@ -16,12 +16,15 @@ Combat::Combat() {
   log = Logger::GetInstance();
   log->named_log(__FILENAME__, "Combat has been initiated!");
   std::srand(std::time(NULL));
+  if (this->cnf->debugEnabled()) { PROFILE_FUNCTION(); }
+
 }
 
 /*!
  * @todo    EvE Constructor
 */
 Combat::Combat(Toon* combatant1, Toon* combatant2) : Combat() { 
+  if (this->cnf->debugEnabled()) { PROFILE_FUNCTION(); }
   if (!validFighters(combatant1, combatant2)) { exit(-1); }
   this->matchup = Condition::EvE;
   injestCombatants(combatant1, combatant2);
@@ -31,6 +34,7 @@ Combat::Combat(Toon* combatant1, Toon* combatant2) : Combat() {
  * @todo    PvE Constructor
 */
 Combat::Combat(Player* combatant1, Toon* combatant2) : Combat() { 
+  if (this->cnf->debugEnabled()) { PROFILE_FUNCTION(); }
   if (!validFighters(combatant1, combatant2)) { exit(-1); }
   this->matchup = Condition::PvE; 
   injestCombatants(combatant1, combatant2);
@@ -40,6 +44,7 @@ Combat::Combat(Player* combatant1, Toon* combatant2) : Combat() {
  * @todo    PvP Constructor
 */
 Combat::Combat(Player* combatant1, Player* combatant2) : Combat() { 
+  if (this->cnf->debugEnabled()) { PROFILE_FUNCTION(); }
   if (!validFighters(combatant1, combatant2)) { exit(-1); }
   this->matchup = Condition::PvP; 
   injestCombatants(combatant1, combatant2);
@@ -64,6 +69,7 @@ bool Combat::validFighters(Actor* combatant1, Actor* combatant2) {
  * @todo    Initiates Combat
 */
 void Combat::cycleCombat() {
+  if (this->cnf->debugEnabled()) { PROFILE_FUNCTION(); }
   //! Seed and Generate Random Number
   int r, s, x, y;
 
@@ -103,6 +109,7 @@ void Combat::cycleCombat() {
  * @todo    Intakes Combatants
 */
 void Combat::injestCombatants(Actor* combatant1, Actor* combatant2) {
+  if (this->cnf->debugEnabled()) { PROFILE_FUNCTION(); }
   // Establish Combat Type
   switch (this->matchup) {
     case Condition::EvE: {
