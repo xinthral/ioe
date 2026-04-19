@@ -99,7 +99,6 @@ std::string ConfigManager::get_version() { return this->raw_config("VERSION").c_
  * @todo    Reads in Config File and Parses Options
 */
 bool ConfigManager::load_config(bool debug) {
-  char buf[64];
   std::size_t pos;                            //! Positional Pointer for delimeter
   std::string row;                            //! Temporary File Row Storage
   std::string opt;                            //! Settings Option
@@ -110,8 +109,7 @@ bool ConfigManager::load_config(bool debug) {
   while (std::getline(conf, row)) {
     // DEBUG Line
     if (_debug && debug) {
-      sprintf(buf, "%s", row.c_str());
-      log->named_log(__FILENAME__, buf);
+      log->named_log(__FILENAME__, row.c_str());
     }
     pos = row.find(delim);                    //! Locate Position of Delimiter
     if (pos != std::string::npos){

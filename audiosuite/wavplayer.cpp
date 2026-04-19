@@ -1,5 +1,10 @@
 #include "wavplayer.h"
-#include <cstdlib>
+#if defined(_WIN32)
+#include <windows.h>
+#else
+#include <sys/wait.h>
+#include <unistd.h>
+#endif
 
 /*!
  * @def     __FILENAME__ 
@@ -42,22 +47,34 @@ WavPlayer::WavPlayer() {
  *          specifically designed for audio playback.
 */
 void WavPlayer::playwav(const std::string& inFile) {
-  // Build the aplay command
-  char command[64], cmdline[128];
+  int result = -1;
 #if defined(_WIN32)
-  sprintf(command, "%s", cnf->raw_config("VLCPATHW").c_str());
-  sprintf(cmdline, "%s --qt-start-minimized --play-and-exit %s", command, inFile.c_str());
+  std::string vlcPath = cnf->raw_config("VLCPATHW");
+  std::string args = vlcPath + " --qt-start-minimized --play-and-exit \"" + inFile + "\"";
+  STARTUPINFOA si{}; si.cb = sizeof(si);
+  PROCESS_INFORMATION pi{};
+  DWORD exitCode = 1;
+  if (CreateProcessA(vlcPath.c_str(), args.data(), nullptr, nullptr, FALSE, 0, nullptr, nullptr, &si, &pi)) {
+    WaitForSingleObject(pi.hProcess, INFINITE);
+    GetExitCodeProcess(pi.hProcess, &exitCode);
+    CloseHandle(pi.hProcess); CloseHandle(pi.hThread);
+    result = (exitCode == 0) ? 0 : -1;
+  }
 #else
-  sprintf(command, "%s", cnf->raw_config("VLCPATHL").c_str());
-  sprintf(cmdline, "%s --play-and-exit --audiofile-wav %s", command, inFile.c_str());
+  std::string vlcPath = cnf->raw_config("VLCPATHL");
+  pid_t pid = fork();
+  if (pid == 0) {
+    const char* args[] = { vlcPath.c_str(), "--play-and-exit", "--audiofile-wav", inFile.c_str(), nullptr };
+    execvp(vlcPath.c_str(), const_cast<char* const*>(args));
+    _exit(1);
+  } else if (pid > 0) {
+    int status;
+    waitpid(pid, &status, 0);
+    result = (WIFEXITED(status) && WEXITSTATUS(status) == 0) ? 0 : -1;
+  }
 #endif
-
-  // Call aplay using the system command
-  int result = std::system(cmdline);
-
-  // Check the result
-  if (result == 0) { sprintf(buf, "WavFile executed successfully."); } 
-  else { sprintf(buf, "Error executing WavFile: %s.", cmdline); }
+  if (result == 0) { snprintf(buf, sizeof(buf), "WavFile executed successfully."); }
+  else             { snprintf(buf, sizeof(buf), "Error executing WavFile: %s.", inFile.c_str()); }
   log->named_log(__FILENAME__, buf);
 }
 
