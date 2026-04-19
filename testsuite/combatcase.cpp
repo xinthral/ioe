@@ -1,66 +1,74 @@
 #include "combatcase.h"
 
 /*!
- * @def     __FILENAME__ 
+ * @def     __FILENAME__
  * @brief   Translate Filename to reusable macro
 */
 #define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
 
-/*! 
- * @todo    Default Constructor
-*/
 TestCombat::TestCombat() : BaseCase(__FILENAME__) {
   BaseCase::log->named_log(__FILENAME__, "Testing Combat!");
-  _idx = 0;
+  sprintf(this->msgHead, "Tested");
+  sprintf(this->msgTail, "for Combat!");
+  _player1 = _player2 = nullptr;
+  _toon1   = _toon2   = nullptr;
+  _combat  = nullptr;
   this->test_all();
 }
 
-/*! 
- * @todo    Validate the entire Combat Module
-*/
 void TestCombat::test_all() {
   this->EVECombat();
   this->PVECombat();
   this->PVPCombat();
 }
 
-/*! 
- * @todo    Evironment Vs Environment Combat
-*/
 void TestCombat::EVECombat() {
-  PROFILE_FUNCTION();
-  Toon* _toon1 = new Toon(++_idx);
-  Toon* _toon2 = new Toon(++_idx);
-  Combat* cc = new Combat(_toon1, _toon2);
-  cc->cycleCombat();
-  log->named_log(__FILENAME__, "EvE Combat Tested!");
+  PROFILE_NAMED("EvE_Combat");
+  delete _toon1; delete _toon2; delete _combat;
+  _toon1  = new Toon("EvE_T1");
+  _toon2  = new Toon("EvE_T2");
+  _combat = new Combat(_toon1, _toon2);
+  _combat->cycleCombat();
+  record(_toon1->get_healthstate() == DEAD || _toon2->get_healthstate() == DEAD,
+         "EvE combat ended without a DEAD combatant");
+  record(!_toon1->isAlive() || !_toon2->isAlive(),
+         "EvE combat ended while both combatants still alive");
+  sprintf(buf, "%s [%s] %s", msgHead, "EvE combat", msgTail);
+  BaseCase::log->named_log(__FILENAME__, buf);
 }
 
-/*! 
- * @todo    Player Vs Environment Combat
-*/
 void TestCombat::PVECombat() {
-  PROFILE_FUNCTION();
-  Player* _player = new Player("Player", ++_idx);
-  Toon* _toon = new Toon(++_idx);
-  Combat* cc = new Combat(_player, _toon);
-  cc->cycleCombat();
-  log->named_log(__FILENAME__, "PvE Combat Tested!");
+  PROFILE_NAMED("PvE_Combat");
+  delete _player1; delete _toon1; delete _combat;
+  _player1 = new Player("PvE_P1", 1);
+  _toon1   = new Toon("PvE_T1");
+  _combat  = new Combat(_player1, _toon1);
+  _combat->cycleCombat();
+  record(_player1->get_healthstate() == DEAD || _toon1->get_healthstate() == DEAD,
+         "PvE combat ended without a DEAD combatant");
+  record(!_player1->isAlive() || !_toon1->isAlive(),
+         "PvE combat ended while both combatants still alive");
+  sprintf(buf, "%s [%s] %s", msgHead, "PvE combat", msgTail);
+  BaseCase::log->named_log(__FILENAME__, buf);
 }
 
-/*! 
- * @todo    Player Vs Player Combat
-*/
 void TestCombat::PVPCombat() {
-  PROFILE_FUNCTION();
-  Player* _player1 = new Player("Max", ++_idx);
-  Player* _player2 = new Player("Min", ++_idx);
-  Combat* cc = new Combat(_player1, _player2);
-  cc->cycleCombat();
-  log->named_log(__FILENAME__, "PvP Combat Tested!");
+  PROFILE_NAMED("PvP_Combat");
+  delete _player1; delete _player2; delete _combat;
+  _player1 = new Player("PvP_P1", 1);
+  _player2 = new Player("PvP_P2", 1);
+  _combat  = new Combat(_player1, _player2);
+  _combat->cycleCombat();
+  record(_player1->get_healthstate() == DEAD || _player2->get_healthstate() == DEAD,
+         "PvP combat ended without a DEAD combatant");
+  record(!_player1->isAlive() || !_player2->isAlive(),
+         "PvP combat ended while both combatants still alive");
+  sprintf(buf, "%s [%s] %s", msgHead, "PvP combat", msgTail);
+  BaseCase::log->named_log(__FILENAME__, buf);
 }
 
-/*! 
- * @todo    Default Deconstructor
-*/
-TestCombat::~TestCombat() {}
+TestCombat::~TestCombat() {
+  delete _player1; delete _player2;
+  delete _toon1;   delete _toon2;
+  delete _combat;
+}

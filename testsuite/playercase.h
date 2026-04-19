@@ -1,41 +1,61 @@
-#ifndef TESTPLAYER_H 
+#ifndef TESTPLAYER_H
 #define TESTPLAYER_H
 
 #include "basecase.h"
 #include "../core/player.h"
 
 /*!
- * @class   TestPlayer testplayer.cpp testplayer.h
- * @brief   Test Case for testing Player objects
+ * @class   TestPlayer playercase.h playercase.cpp
+ * @brief   Tests for the Player module
 */
-class TestPlayer: public BaseCase {
-protected:
+class TestPlayer : public BaseCase {
 private:
-  Player* dummy;    //!< Placeholder Player Object
+  Player* dummy; //!< Reusable Player object across tests
+
 public:
-/*!
- * @brief   Default Constructor
-*/
+  /*!
+   * @brief   Default Constructor
+  */
   TestPlayer();
 
-/*!
- * @brief   Run full set of test on module 
-*/
+  /*!
+   * @brief   Run full set of tests on module
+  */
   void test_all();
 
-/*!
- * @brief   Test if Player Alive State holds
-*/
+  /*!
+   * @brief   Validate isAlive returns true when healthy, false when dead
+  */
   void test_isAlive();
 
-/*!
- * @brief   Test if Player Combat State holds
-*/
+  /*!
+   * @brief   Validate isFighting reflects CombatState correctly
+  */
   void test_isFighting();
 
-/*!
- * @brief   Default Deconstructor
-*/
+  /*!
+   * @brief   Validate name is stored correctly on construction
+  */
+  void test_name();
+
+  /*!
+   * @brief   Validate level is stored correctly on construction
+  */
+  void test_level();
+
+  /*!
+   * @brief   Validate initial CombatState is IDLE
+  */
+  void test_initial_combatstate();
+
+  /*!
+   * @brief   Validate initial HealthState is HEALTHY
+  */
+  void test_initial_healthstate();
+
+  /*!
+   * @brief   Default Deconstructor
+  */
   ~TestPlayer();
 };
 

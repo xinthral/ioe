@@ -6,12 +6,14 @@
 #include <thread>
 #include "actorcase.h"
 #include "audiocase.h"
+#include "backpackcase.h"
 #include "balancecase.h"
 #include "battlecase.h"
 #include "clockcase.h"
 #include "cipherscase.h"
 #include "combatcase.h"
 #include "configcase.h"
+#include "equipmentcase.h"
 #include "itemcase.h"
 #include "leadercase.h"
 #include "lexiconcase.h"
@@ -51,6 +53,16 @@ public:
    * @brief   Initiates the Test for the Audio Module
   */
   void CaseAudio();
+
+  /*!
+   * @brief   Initiates the Test for the Backpack Module
+  */
+  void CaseBackpack();
+
+  /*!
+   * @brief   Initiates the Test for the Equipment Module
+  */
+  void CaseEquipment();
 
   /*!
    * @brief   Initiates the Test for the BalanceController Module

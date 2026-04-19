@@ -1,53 +1,86 @@
 #include "playercase.h"
 
 /*!
- * @def     __FILENAME__ 
+ * @def     __FILENAME__
  * @brief   Translate Filename to reusable macro
 */
 #define __FILENAME__ (__builtin_strrchr(__FILE__, '/') ? __builtin_strrchr(__FILE__, '/') + 1 : __FILE__)
 
-/*!
- * @todo    Default Constructor
-*/
 TestPlayer::TestPlayer() : BaseCase(__FILENAME__) {
-  BaseCase::log->named_log(__FILENAME__, "Testing Player's!");
-  this->dummy = new Player("TestPlayer", 1);
+  BaseCase::log->named_log(__FILENAME__, "Testing Players!");
   sprintf(this->msgHead, "Tested");
   sprintf(this->msgTail, "for Players!");
+  dummy = new Player("TestPlayer", 1);
   this->test_all();
 }
 
-/*!
- * @todo    Run full set of test on module 
-*/
 void TestPlayer::test_all() {
   test_isAlive();
-  // test_isFighting();
+  test_isFighting();
+  test_name();
+  test_level();
+  test_initial_combatstate();
+  test_initial_healthstate();
 }
 
-/*!
- * @todo    Test if Player Alive State holds
-*/
 void TestPlayer::test_isAlive() {
-  PROFILE_FUNCTION();
-  bool isAlive = dummy->isAlive();
-  record(isAlive == true, "Is Not Alive");
+  PROFILE_NAMED("Actor_HealthState");
+  delete dummy;
+  dummy = new Player("TestPlayer", 1);
+  record(dummy->isAlive() == true, "Fresh Player should report isAlive true");
   dummy->set_health_dead();
-  isAlive = dummy->isAlive();
-  record(isAlive == false, "Has Risen from the Dead");
-  sprintf(this->msgNote, "[Alive] Value");
-  sprintf(buf, "%s %s %s", msgHead, msgNote, msgTail);
+  record(dummy->isAlive() == false, "Player after set_health_dead should report isAlive false");
+  sprintf(buf, "%s [%s] %s", msgHead, "isAlive", msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);
 }
 
-/*!
- * @todo    Test if Player Combat State holds
-*/
 void TestPlayer::test_isFighting() {
-  PROFILE_FUNCTION();
+  PROFILE_NAMED("Actor_CombatState");
+  delete dummy;
+  dummy = new Player("TestPlayer", 1);
+  record(dummy->isFighting() == false, "Fresh Player should not be fighting");
+  dummy->set_combat_fight();
+  record(dummy->isFighting() == true, "Player should be fighting after set_combat_fight");
+  dummy->set_combat_idle();
+  record(dummy->isFighting() == false, "Player should not be fighting after set_combat_idle");
+  sprintf(buf, "%s [%s] %s", msgHead, "isFighting", msgTail);
+  BaseCase::log->named_log(__FILENAME__, buf);
 }
 
-/*!
- * @todo    Default Deconstructor
-*/
-TestPlayer::~TestPlayer() { }
+void TestPlayer::test_name() {
+  PROFILE_NAMED("Actor_Instantiation");
+  delete dummy;
+  dummy = new Player("Xinthral", 1);
+  record(dummy->get_name() == "Xinthral", "Player name mismatch on construction");
+  sprintf(buf, "%s [%s] %s", msgHead, "name", msgTail);
+  BaseCase::log->named_log(__FILENAME__, buf);
+}
+
+void TestPlayer::test_level() {
+  PROFILE_NAMED("Actor_Instantiation");
+  delete dummy;
+  dummy = new Player("LevelTest", 5);
+  record(dummy->get_level() == 5, "Player level mismatch on construction");
+  sprintf(buf, "%s [%s] %s", msgHead, "level", msgTail);
+  BaseCase::log->named_log(__FILENAME__, buf);
+}
+
+void TestPlayer::test_initial_combatstate() {
+  PROFILE_NAMED("Actor_CombatState");
+  delete dummy;
+  dummy = new Player("TestPlayer", 1);
+  record(dummy->get_combatstate() == IDLE, "Player initial CombatState should be IDLE");
+  sprintf(buf, "%s [%s] %s", msgHead, "initial CombatState", msgTail);
+  BaseCase::log->named_log(__FILENAME__, buf);
+}
+
+void TestPlayer::test_initial_healthstate() {
+  PROFILE_NAMED("Actor_HealthState");
+  delete dummy;
+  dummy = new Player("TestPlayer", 1);
+  record(dummy->get_healthstate() == HEALTHY, "Player initial HealthState should be HEALTHY");
+  sprintf(buf, "%s [%s] %s", msgHead, "initial HealthState", msgTail);
+  BaseCase::log->named_log(__FILENAME__, buf);
+}
+
+TestPlayer::~TestPlayer() { delete dummy; }

@@ -23,14 +23,20 @@ HelpSuite::HelpSuite(bool _debug) : HelpSuite() { }
 /*!
  * @todo    FIXME: Needs desc
 */
-void HelpSuite::HelpAll() { 
+void HelpSuite::HelpAll() {
   this->_help();
   this->ActorHelp();
+  this->BackpackHelp();
   this->BalanceHelp();
   this->BattleHelp();
+  this->CipherHelp();
   this->ClockHelp();
   this->CombatHelp();
+  this->ConfigHelp();
+  this->EquipmentHelp();
   this->ItemHelp();
+  this->LeaderHelp();
+  this->LexiconHelp();
   this->PlayerHelp();
   this->StageHelp();
   this->ToonHelp();
@@ -40,7 +46,10 @@ void HelpSuite::HelpAll() {
 /*!
  * @todo    FIXME: Needs desc
 */
-void HelpSuite::ActorHelp() { HelpActor* ha = new HelpActor(); }
+void HelpSuite::ActorHelp()     { HelpActor*     ha = new HelpActor();     }
+void HelpSuite::BackpackHelp()  { HelpBackpack*  hb = new HelpBackpack();  }
+void HelpSuite::EquipmentHelp() { HelpEquipment* he = new HelpEquipment(); }
+void HelpSuite::LeaderHelp()    { HelpLeader*    hl = new HelpLeader();    }
 
 /*!
  * @todo    FIXME: Needs desc
@@ -127,16 +136,19 @@ void print_help() {
     " a quality-of-life option for hunting down all my stupid." \
     " This can be used in conjuction with the TestSuite in order to"\
     " maximize the benefit of the CLI Debugging Suite.\n");
-  sprintf(buf, "\t [%d] - Default Help to rule them all", i++); log->raw_log(buf);
+  sprintf(buf, "\t [%d] - Default Help (all modules)", i++); log->raw_log(buf);
   sprintf(buf, "\t [%d] - Actor details", i++); log->raw_log(buf);
+  sprintf(buf, "\t [%d] - Backpack details", i++); log->raw_log(buf);
   sprintf(buf, "\t [%d] - BalanceController details", i++); log->raw_log(buf);
   sprintf(buf, "\t [%d] - Battle details", i++); log->raw_log(buf);
   sprintf(buf, "\t [%d] - Cipher details", i++); log->raw_log(buf);
   sprintf(buf, "\t [%d] - Clock details", i++); log->raw_log(buf);
   sprintf(buf, "\t [%d] - Combat details", i++); log->raw_log(buf);
   sprintf(buf, "\t [%d] - Config details", i++); log->raw_log(buf);
-  sprintf(buf, "\t [%d] - HelpSuit details", i++); log->raw_log(buf);
-  sprintf(buf, "\t [%d] - Item details", i++); log->raw_log(buf);
+  sprintf(buf, "\t [%d] - Equipment details", i++); log->raw_log(buf);
+  sprintf(buf, "\t[%d] - HelpSuite details", i++); log->raw_log(buf);
+  sprintf(buf, "\t[%d] - Item details", i++); log->raw_log(buf);
+  sprintf(buf, "\t[%d] - Leader details", i++); log->raw_log(buf);
   sprintf(buf, "\t[%d] - Lexicon details", i++); log->raw_log(buf);
   sprintf(buf, "\t[%d] - Player details", i++); log->raw_log(buf);
   sprintf(buf, "\t[%d] - StageManager details", i++); log->raw_log(buf);
@@ -154,48 +166,23 @@ int main(int argc, char const *argv[]) {
   Logger* log = Logger::GetInstance();
   int idx = atoi(argv[1]);
   switch(idx) {
-    case 1: //! Display Actor Help Details
-      hs.ActorHelp();
-      break;
-    case 2: //! Display Balance Help Details
-      hs.BalanceHelp();
-      break;
-    case 3: //! Display Battle Help Details
-      hs.BattleHelp();
-      break;
-    case 4: //! Display Cipher Help Details
-      hs.CipherHelp();
-      break;
-    case 5: //! Display Clock Help Details
-      hs.ClockHelp();
-      break;
-    case 6: //! Display Combat Help Details
-      hs.CombatHelp();
-      break;
-    case 7: //! Display Combat Help Details
-      hs.ConfigHelp();
-      break;
-    case 8: //! Display HelpSuite Helper Details
-      hs._help();
-      break;
-    case 9: //! Display Item Help Details
-      hs.ItemHelp();
-      break;
-    case 10: //! Display Lexicon Help Details
-      hs.LexiconHelp();
-      break;
-    case 11: //! Display Player Help Details
-      hs.PlayerHelp();
-      break;
-    case 12: //! Display Stage Help Details
-      hs.StageHelp();
-      break;
-    case 13: //! Display Toon Help Details
-      hs.ToonHelp();
-      break;
-    case 14: //! Display Utilz Help Details
-      hs.UtilzHelp();
-      break;
+    case 1:  hs.ActorHelp();     break;
+    case 2:  hs.BackpackHelp();  break;
+    case 3:  hs.BalanceHelp();   break;
+    case 4:  hs.BattleHelp();    break;
+    case 5:  hs.CipherHelp();    break;
+    case 6:  hs.ClockHelp();     break;
+    case 7:  hs.CombatHelp();    break;
+    case 8:  hs.ConfigHelp();    break;
+    case 9:  hs.EquipmentHelp(); break;
+    case 10: hs._help();         break;
+    case 11: hs.ItemHelp();      break;
+    case 12: hs.LeaderHelp();    break;
+    case 13: hs.LexiconHelp();   break;
+    case 14: hs.PlayerHelp();    break;
+    case 15: hs.StageHelp();     break;
+    case 16: hs.ToonHelp();      break;
+    case 17: hs.UtilzHelp();     break;
     default:
       log->named_log(__FILENAME__, "Displaying full HelpSuite");
       hs.HelpAll();

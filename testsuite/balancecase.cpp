@@ -22,16 +22,17 @@ TestBalance::TestBalance() : BaseCase(__FILENAME__) {
 /*!
  * @brief    Validate the entire Balance Module
 */
-void TestBalance::test_all() { 
-  this->def_atk_ratio();      //!< Test Atk/Def Ration
+void TestBalance::test_all() {
+  this->def_atk_ratio();      //!< Test Atk/Def Ratio
   this->difficulty_level();   //!< Test Difficulty Level
+  this->difficulty_range();   //!< Test Difficulty Range
 }
 
 /*!
  * @brief    Validate Scaling factors against attack and defense
 */
-void TestBalance::def_atk_ratio() { 
-  PROFILE_FUNCTION();
+void TestBalance::def_atk_ratio() {
+  PROFILE_NAMED("Balance");
   double preRatio = (this->baseAtk * 1.0) / this->baseDef;
   double numerator = this->baseAtk * bal->scalar(100);
   double denominator = this->baseDef * bal->scalar(100);
@@ -45,11 +46,22 @@ void TestBalance::def_atk_ratio() {
  * @brief    Validate that the appropriate difficulty level is being assigned. 
 */
 void TestBalance::difficulty_level() {
-  PROFILE_FUNCTION();
+  PROFILE_NAMED("Balance");
   std::string dif  = cnf->raw_config("DIF");
   std::string diff = bal->get_difficulty_str();
   record(dif.compare(diff) == 0, "Difficulty level mismatch");
   sprintf(buf, "%s [Difficulty] %s", msgHead, msgTail);
+  BaseCase::log->named_log(__FILENAME__, buf);
+}
+
+/*!
+ * @brief    Validate difficulty value falls within the valid range [1, 5]
+*/
+void TestBalance::difficulty_range() {
+  PROFILE_NAMED("Balance");
+  int dif = atoi(cnf->raw_config("DIF").c_str());
+  record(dif >= 1 && dif <= 5, "Difficulty value out of valid range [1, 5]");
+  sprintf(buf, "%s [Difficulty Range: %d] %s", msgHead, dif, msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);
 }
 

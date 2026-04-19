@@ -160,9 +160,24 @@ bool Equipment::validate_multiplier(float modifier) {
 }
 
 void Equipment::_help() {
-  std::string helpline = "\nEquipment Help Line"
-  "\n\tA base class for all wearable items."
-  "\n";
+  std::string helpline = "\nEquipment Help Line";
+  helpline += "\n\tWearable item base class. Extends Item, equippable onto Actors.";
+  helpline += "\n\tStat multipliers (all default 0.0f — unset):";
+  helpline += "\n\t  damage_multiplier  — scales Actor attack on equip";
+  helpline += "\n\t  damage_mitigation  — scales Actor defense on equip";
+  helpline += "\n\t  flux_multiplier    — scales Actor flux on equip";
+  helpline += "\n\t  flux_mitigation    — scales Actor flux mitigation on equip";
+  helpline += "\n\t  health_multiplier  — scales Actor health on equip";
+  helpline += "\n\t  health_mitigation  — scales Actor health mitigation on equip";
+  helpline += "\n\tDefault profiles per ItemType (applied via Equipment(name, ItemType)):";
+  helpline += "\n\t  SWORD    — damage_multiplier x1.5";
+  helpline += "\n\t  SHIELD   — damage_mitigation x1.5";
+  helpline += "\n\t  STAFF    — flux_multiplier x1.5";
+  helpline += "\n\t  RING     — damage_multiplier x1.2, flux_multiplier x1.2";
+  helpline += "\n\t  RELIC    — health_multiplier x1.5";
+  helpline += "\n\t  BACKPACK — neutral (use Backpack subclass for container behavior)";
+  helpline += "\n\tValidation: multipliers are clamped to [0.0, 2.0].";
+  helpline += "\n";
   this->log->named_log(__FILENAME__, helpline);
 }
 

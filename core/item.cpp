@@ -64,9 +64,16 @@ void Item::set_type(ItemType itemType) {
 /*!
  * @todo    Helper Hook used in CLI Help System
 */
-void Item::_help() { 
-  std::string helpline = "\nItem Helpline!"
-  "\n";
+void Item::_help() {
+  std::string helpline = "\nItem Helpline!";
+  helpline += "\n\tBase class for all items in the engine.";
+  helpline += "\n\tSubclasses: Equipment, Backpack (and future: potions, scrolls, keys).";
+  helpline += "\n\tKey members: label, weight, _rarity, _type.";
+  helpline += "\n\tItemType values: RELIC, RING, SHIELD, STAFF, SWORD, BACKPACK";
+  helpline += "\n\tItemRarity values: JUNK, COMMON, UNCOMMON, RARE, EPIC, LEGENDARY, UNIQUE";
+  helpline += "\n\t  Note: only one UNIQUE item may be equipped to an Actor at a time.";
+  helpline += "\n\tweight field — default 0.0f. Future: halved when stored in a worn Backpack.";
+  helpline += "\n";
   log->named_log(__FILENAME__, helpline);
 }
 

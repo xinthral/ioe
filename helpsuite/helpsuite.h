@@ -19,12 +19,14 @@
 #include "../core/toon.h"
 #include "../core/utilz.h"
 #include "actorhelp.h"
+#include "backpackhelp.h"
 #include "balancehelp.h"
 #include "battlehelp.h"
 #include "cipherhelp.h"
 #include "clockhelp.h"
 #include "combathelp.h"
 #include "confighelp.h"
+#include "equipmenthelp.h"
 #include "itemhelp.h"
 #include "leaderhelp.h"
 #include "lexiconhelp.h"
@@ -60,12 +62,14 @@ public:
   HelpSuite(bool);
   void HelpAll();
   void ActorHelp();
-  void BattleHelp();
+  void BackpackHelp();
   void BalanceHelp();
+  void BattleHelp();
   void CipherHelp();
   void ClockHelp();
   void CombatHelp();
   void ConfigHelp();
+  void EquipmentHelp();
   void ItemHelp();
   void LeaderHelp();
   void LexiconHelp();

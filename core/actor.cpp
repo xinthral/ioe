@@ -293,8 +293,19 @@ const std::vector<Equipment*>& Actor::get_equipped() const {
 */
 void Actor::_help() {
   std::string helpline = "\nActor HelpLine!\n";
-  helpline += "\n\tThis is the base class for all Actor's in the scene. NPC's, Players, and all";
-  helpline += "\nspecialty mobs are derived from this class";
+  helpline += "\n\tBase class for all entities in the scene — Player and Toon both inherit from Actor.";
+  helpline += "\n\tKey members: name, level, health, attack, defense, flux.";
+  helpline += "\n\tState enums:";
+  helpline += "\n\t  CombatState — IDLE, PATROL, FIGHT, FLEE, HIDE, FOLLOW";
+  helpline += "\n\t  HealthState — HEALTHY, HURTING, CRITICAL, SICK, DEAD";
+  helpline += "\n\tVirtual methods (override in subclasses):";
+  helpline += "\n\t  output_damage()   — calculates final damage output";
+  helpline += "\n\t  receive_damage()  — calculates and applies incoming damage";
+  helpline += "\n\tEquipment system:";
+  helpline += "\n\t  equip(Equipment*) — applies item multipliers to stats (max 16 items,";
+  helpline += "\n\t                      one per ItemType, one UNIQUE rarity item)";
+  helpline += "\n\t  unequip(ItemType) — reverses multipliers and removes item from slot";
+  helpline += "\n\t  get_equipped()    — returns const ref to equipped item vector";
   helpline += "\n";
   log->named_log(__FILENAME__, helpline);
 }

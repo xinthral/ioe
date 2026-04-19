@@ -34,7 +34,7 @@ void TestBattle::test_all() {
  * @todo    EVE Combat test on level 1 combatants
 */
 void TestBattle::level1_eve() {
-  PROFILE_FUNCTION();
+  PROFILE_NAMED("EvE_Combat");
   bool pendingWork = true;
   this->toon1 = new Toon("Toon1");
   this->toon2 = new Toon("Toon2");
@@ -46,7 +46,7 @@ void TestBattle::level1_eve() {
 
   sprintf(buf, "T1 :: T2 :: [ %d ] : [ %d ]", toon1->get_health(), toon2->get_health());
   BaseCase::log->timed_log(buf);
-  record(toon1->get_healthstate() == 4 || toon2->get_healthstate() == 4, "Combat ended while health remained.\n");
+  record(toon1->get_healthstate() == DEAD || toon2->get_healthstate() == DEAD, "Combat ended while health remained.\n");
   sprintf(buf, "%s [%s] %s", msgHead, "Level1 EVE", msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);
 }
@@ -55,7 +55,7 @@ void TestBattle::level1_eve() {
  * @todo    PVE Combat test on level 1 combatants
 */
 void TestBattle::level1_pve() {
-  PROFILE_FUNCTION();
+  PROFILE_NAMED("PvE_Combat");
   bool pendingWork = true;
   this->player1 = new Player();
   this->toon1 = new Toon("Toon1");
@@ -67,7 +67,7 @@ void TestBattle::level1_pve() {
 
   sprintf(buf, "P1 :: T1 :: [ %d ] : [ %d ]", player1->get_health(), toon1->get_health());
   BaseCase::log->timed_log(buf);
-  record(player1->get_healthstate() == 4 || toon1->get_healthstate() == 4, "Combat ended while health remained.\n");
+  record(player1->get_healthstate() == DEAD || toon1->get_healthstate() == DEAD, "Combat ended while health remained.\n");
   sprintf(buf, "%s [%s] %s", msgHead, "Level1 PVE", msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);
 }
@@ -76,7 +76,7 @@ void TestBattle::level1_pve() {
  * @todo    PVP Combat test on level 1 combatants
 */
 void TestBattle::level1_pvp() {
-  PROFILE_FUNCTION();
+  PROFILE_NAMED("PvP_Combat");
   bool pendingWork = true;
   this->player1 = new Player("Player1", 1);
   this->player2 = new Player("Player2", 1);
@@ -88,7 +88,7 @@ void TestBattle::level1_pvp() {
 
   sprintf(buf, "P1 :: P2 :: [ %d ] : [ %d ]", player1->get_health(), player2->get_health());
   BaseCase::log->timed_log(buf);
-  record(player1->get_healthstate() == 4 || player2->get_healthstate() == 4, "Combat ended while health remained.\n");
+  record(player1->get_healthstate() == DEAD || player2->get_healthstate() == DEAD, "Combat ended while health remained.\n");
   sprintf(buf, "%s [%s] %s", msgHead, "Level1 PVP", msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);
 }
@@ -97,7 +97,7 @@ void TestBattle::level1_pvp() {
  * @todo    PVP Combat test on level 80 combatants
 */
 void TestBattle::level80_eve() {
-  PROFILE_FUNCTION();
+  PROFILE_NAMED("EvE_Combat");
   bool pendingWork = true;
   this->toon1 = new Toon("Toon1", 80);
   this->toon2 = new Toon("Toon2", 80);
@@ -115,7 +115,7 @@ void TestBattle::level80_eve() {
  * @todo    PVP Combat test on level 80 combatants
 */
 void TestBattle::level80_pve() {
-  PROFILE_FUNCTION();
+  PROFILE_NAMED("PvE_Combat");
   bool pendingWork = true;
   this->toon1 = new Toon("Toon1", 80);
   this->player1 = new Player("Player1", 80);
@@ -133,7 +133,7 @@ void TestBattle::level80_pve() {
  * @todo    PVP Combat test on level 80 combatants
 */
 void TestBattle::level80_pvp() {
-  PROFILE_FUNCTION();
+  PROFILE_NAMED("PvP_Combat");
   bool pendingWork = true;
   this->player1 = new Player("PLAYER1", 80);
   this->player2 = new Player("PLAYER2", 80);

@@ -3,6 +3,7 @@
 
 #include "basecase.h"
 #include "../core/actor.h"
+#include "../core/equipment.h"
 
 /*! 
  * @class   TestActors actorcase.h actorcase.cpp
@@ -128,6 +129,36 @@ public:
    * @note    Are actors states getting set properly?
   */
   void starting_health();
+
+  /*!
+   * @brief   Run full set of tests on equip/unequip system
+  */
+  void test_equip();
+
+  /*!
+   * @brief   Validate equipping an item applies multiplier to actor stats
+  */
+  void equip_applies_stats();
+
+  /*!
+   * @brief   Validate equipping a duplicate ItemType is rejected
+  */
+  void equip_rejects_duplicate_type();
+
+  /*!
+   * @brief   Validate equipping a second UNIQUE item is rejected
+  */
+  void equip_rejects_second_unique();
+
+  /*!
+   * @brief   Validate unequip reverses stat changes and removes the item
+  */
+  void unequip_reverses_stats();
+
+  /*!
+   * @brief   Validate get_equipped returns the correct item count
+  */
+  void equip_get_equipped_count();
 
   /*!
    * @brief   Default Deconstructor

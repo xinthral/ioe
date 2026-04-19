@@ -5,39 +5,43 @@
 
 /*!
  * @class   TestCombat combatcase.h combatcase.cpp
- * @brief   Test Class for Combat interactions
+ * @brief   Tests for Combat interactions (EvE, PvE, PvP)
 */
 class TestCombat : public BaseCase {
-protected:
 private:
-  int _idx;
+  Player* _player1; //!< Reusable Player slot
+  Player* _player2; //!< Reusable Player slot
+  Toon*   _toon1;   //!< Reusable Toon slot
+  Toon*   _toon2;   //!< Reusable Toon slot
+  Combat* _combat;  //!< Reusable Combat object
+
 public:
-  /*! 
+  /*!
    * @brief   Default Constructor
   */
   TestCombat();
 
-  /*! 
-   * @brief   Default Constructor
+  /*!
+   * @brief   Run full set of tests on module
   */
   void test_all();
 
-  /*! 
-   * @brief   Evironment Vs Environment Combat
+  /*!
+   * @brief   Validate Environment vs Environment combat ends with one combatant dead
   */
   void EVECombat();
 
-  /*! 
-   * @brief   Player Vs Environment Combat
+  /*!
+   * @brief   Validate Player vs Environment combat ends with one combatant dead
   */
   void PVECombat();
 
-  /*! 
-   * @brief   Player Vs Player Combat
+  /*!
+   * @brief   Validate Player vs Player combat ends with one combatant dead
   */
   void PVPCombat();
 
-  /*! 
+  /*!
    * @brief   Default Deconstructor
   */
   ~TestCombat();

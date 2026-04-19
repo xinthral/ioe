@@ -123,8 +123,22 @@ public:
   ~Profiler();
 };
 
-// Macros to simplify usage
+/*!
+ * @def   PROFILE_FUNCTION
+ * @brief Profile the current function, keyed by method name only (class prefix stripped).
+ *        Calls to the same method name from different test classes accumulate into one entry.
+*/
 #define PROFILE_FUNCTION() Profiler profiler(__PRETTY_FUNCTION__)
+
+/*!
+ * @def   PROFILE_NAMED
+ * @brief Profile with an explicit semantic key.
+ *        Use this when multiple differently-named methods test the same concept and you
+ *        want their timing and call counts aggregated under one label.
+ * @example PROFILE_NAMED("EvE_Combat")
+*/
+#define PROFILE_NAMED(name) Profiler profiler(name)
+
 #define PROFILE_FUNCTION_MEMORY() MemoryTracker memoryTracker;
 
 #endif // PROFILER_H //
