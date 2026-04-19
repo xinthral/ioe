@@ -82,6 +82,7 @@ info:
 	@echo "Usage: make <str:option>"
 	@echo "  build      - Builds the entire project into object files"
 	@echo "  core       - Builds the core engine into object files"
+	@echo "  docs       - Builds the html documents for this project"
 	@echo "  engine     - Builds the api engine into object files"
 	@echo "  audiosuite - Compiles the audio engine into a binary"
 	@echo "  clisuite   - Compiles the core engine and the command line tool"

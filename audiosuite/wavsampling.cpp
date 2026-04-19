@@ -1,4 +1,8 @@
 #include "wavsampling.h"
+#if defined(__linux__)
+#include <sys/wait.h>
+#include <unistd.h>
+#endif
 
 /*!
  * @def     __FILENAME__ 
@@ -67,6 +71,7 @@ void WavSampler::sampleFile(const std::string& filename) {
   }
 }
 
+#if defined(__linux__)
 void WavSampler::plotFrequencyChart(const std::vector<short>& data, int sampleRate) {
     std::string filename = "docs/out/data.txt";
     std::ofstream outFile(filename);
@@ -102,13 +107,20 @@ void WavSampler::plotFrequencyChart(const std::vector<short>& data, int sampleRa
     // BarChart
     scriptFile << "plot '" << filename << "' using 1:2 with points title 'Data Points' pt 7 ps 0.3 lc rgb 'blue'\n";
     scriptFile.close();
-    log->raw_log("Preparing to plot");
 
-    // Run gnuplot
-    std::string cmdline = "gnuplot " + scriptFilename;
-    system(cmdline.c_str());
+    // Run gnuplot — use execvp to avoid shell interpretation
+    log->raw_log("Preparing to plot");
+    pid_t pid = fork();
+    if (pid == 0) {
+      const char* args[] = { "gnuplot", scriptFilename.c_str(), nullptr };
+      execvp("gnuplot", const_cast<char* const*>(args));
+      _exit(1);
+    } else if (pid > 0) {
+      waitpid(pid, nullptr, 0);
+    }
     log->raw_log("Plot saved as docs/out/amplitude_chart.png");
 }
+#endif // defined(__linux__)
 
 /*! @todo    Default Deconstructor */
 WavSampler::~WavSampler() { 

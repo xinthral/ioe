@@ -30,7 +30,9 @@ void TestCombat::EVECombat() {
     PROFILE_FUNCTION();
   }
   PROFILE_NAMED("EvE_Combat");
-  delete _toon1; delete _toon2; delete _combat;
+  delete _toon1;  _toon1  = nullptr;
+  delete _toon2;  _toon2  = nullptr;
+  delete _combat; _combat = nullptr;
   _toon1  = new Toon("EvE_T1");
   _toon2  = new Toon("EvE_T2");
   _combat = new Combat(_toon1, _toon2);
@@ -48,7 +50,9 @@ void TestCombat::PVECombat() {
     PROFILE_FUNCTION();
   }
   PROFILE_NAMED("PvE_Combat");
-  delete _player1; delete _toon1; delete _combat;
+  delete _player1; _player1 = nullptr;
+  delete _toon1;   _toon1   = nullptr;
+  delete _combat;  _combat  = nullptr;
   _player1 = new Player("PvE_P1", 1);
   _toon1   = new Toon("PvE_T1");
   _combat  = new Combat(_player1, _toon1);
@@ -66,7 +70,9 @@ void TestCombat::PVPCombat() {
     PROFILE_FUNCTION();
   }
   PROFILE_NAMED("PvP_Combat");
-  delete _player1; delete _player2; delete _combat;
+  delete _player1; _player1 = nullptr;
+  delete _player2; _player2 = nullptr;
+  delete _combat;  _combat  = nullptr;
   _player1 = new Player("PvP_P1", 1);
   _player2 = new Player("PvP_P2", 1);
   _combat  = new Combat(_player1, _player2);

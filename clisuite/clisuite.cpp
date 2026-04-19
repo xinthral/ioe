@@ -50,14 +50,14 @@ void CLISuite::displayCommandHistory() {
   this->log->named_log(__FILENAME__, "Command History Summation:");
   int lead = 12;
   for (auto s : this->history) {
-    sprintf(this->buf, "\t[\t%-*s]", lead, s.c_str());
+    snprintf(this->buf, sizeof(this->buf), "\t[\t%-*s]", lead, s.c_str());
     this->log->named_log(__FILENAME__, this->buf);
   }
 }
 
 void CLISuite::displayRunTime() {
   std::chrono::duration<double> time_d = (std::chrono::steady_clock::now() - this->start_time);
-  sprintf(this->buf, "Experiment Duration: %.02fmin", (time_d / 60.00)); 
+  snprintf(this->buf, sizeof(this->buf), "Experiment Duration: %.02fmin", (time_d / 60.00));
   this->log->named_log(__FILENAME__, buf);
 }
 
@@ -70,7 +70,7 @@ void CLISuite::print_help() {
 
   //! Display Help 
   char buf[128];
-  sprintf(buf, "\nUsage: %s.exe [bool|debug]", fileName.c_str()); 
+  snprintf(buf, sizeof(buf), "\nUsage: %s.exe [bool|debug]", fileName.c_str());
   log->raw_log(buf);
   log->raw_log("\tdebug - Debugging Flag\n");
 }
@@ -133,7 +133,7 @@ void CLISuite::run_command(const std::string input, std::vector<std::string>& cm
       cmd_inventory();
       break;
     default:
-      sprintf(this->buf, "Unimplemented Command: %s", input.c_str());
+      snprintf(this->buf, sizeof(this->buf), "Unimplemented Command: %s", input.c_str());
       log->named_log(__FILENAME__, this->buf);
       break;
   }
@@ -176,7 +176,7 @@ void CLISuite::cli_help(std::vector<std::string>& cmdline) {
     if (it != _CREATEHELP.end()) {
       printf("%s\n", it->second.c_str());
     } else {
-      sprintf(this->buf, "Unknown create type: %s", cmdline[2].c_str());
+      snprintf(this->buf, sizeof(this->buf), "Unknown create type: %s", cmdline[2].c_str());
       log->named_log(__FILENAME__, this->buf);
     }
     return;
@@ -186,7 +186,7 @@ void CLISuite::cli_help(std::vector<std::string>& cmdline) {
     if (it != _HELPMAP.end()) {
       printf("%s\n", it->second.c_str());
     } else {
-      sprintf(this->buf, "Unknown command: %s", cmdline[1].c_str());
+      snprintf(this->buf, sizeof(this->buf), "Unknown command: %s", cmdline[1].c_str());
       log->named_log(__FILENAME__, this->buf);
     }
     return;
@@ -222,15 +222,15 @@ void CLISuite::cmd_spawn(std::vector<std::string>& cmdline) {
   std::string name = (cmdline.size() >= 3) ? cmdline[2] : lex->generateName(1);
 
   if (type == "player") {
-    if      (!p1) { p1 = new Player(name, 1); sprintf(buf, "Spawned Player 1: %s", name.c_str()); }
-    else if (!p2) { p2 = new Player(name, 2); sprintf(buf, "Spawned Player 2: %s", name.c_str()); }
-    else          { sprintf(buf, "Both player slots occupied. Use reset to clear."); }
+    if      (!p1) { p1 = new Player(name, 1); snprintf(buf, sizeof(buf), "Spawned Player 1: %s", name.c_str()); }
+    else if (!p2) { p2 = new Player(name, 2); snprintf(buf, sizeof(buf), "Spawned Player 2: %s", name.c_str()); }
+    else          { snprintf(buf, sizeof(buf), "Both player slots occupied. Use reset to clear."); }
   } else if (type == "toon") {
-    if      (!t1) { t1 = new Toon(name); sprintf(buf, "Spawned Toon 1: %s", name.c_str()); }
-    else if (!t2) { t2 = new Toon(name); sprintf(buf, "Spawned Toon 2: %s", name.c_str()); }
-    else          { sprintf(buf, "Both toon slots occupied. Use reset to clear."); }
+    if      (!t1) { t1 = new Toon(name); snprintf(buf, sizeof(buf), "Spawned Toon 1: %s", name.c_str()); }
+    else if (!t2) { t2 = new Toon(name); snprintf(buf, sizeof(buf), "Spawned Toon 2: %s", name.c_str()); }
+    else          { snprintf(buf, sizeof(buf), "Both toon slots occupied. Use reset to clear."); }
   } else {
-    sprintf(buf, "Unknown type: %s - use player or toon.", type.c_str());
+    snprintf(buf, sizeof(buf), "Unknown type: %s - use player or toon.", type.c_str());
   }
   log->named_log(__FILENAME__, buf);
 }
@@ -255,7 +255,7 @@ void CLISuite::cmd_fight(std::vector<std::string>& cmdline) {
     battle->startEVE(t1, t2);
     log->named_log(__FILENAME__, "EvE combat started. Use step to advance.");
   } else {
-    sprintf(buf, "Unknown mode: %s - use pve, pvp, or eve.", mode.c_str());
+    snprintf(buf, sizeof(buf), "Unknown mode: %s - use pve, pvp, or eve.", mode.c_str());
     log->named_log(__FILENAME__, buf);
   }
 }
@@ -273,7 +273,7 @@ void CLISuite::cmd_status() {
     return;
   }
   auto printActor = [&](const char* slot, Actor* a) {
-    sprintf(buf, "[%s] %-16s | HP: %3d | %-8s | %s",
+    snprintf(buf, sizeof(buf), "[%s] %-16s | HP: %3d | %-8s | %s",
       slot, a->get_name().c_str(), a->get_health(),
       healthStateStr(a->get_healthstate()),
       combatStateStr(a->get_combatstate()));
@@ -302,7 +302,7 @@ void CLISuite::cmd_create(std::vector<std::string>& cmdline) {
   const std::string& typeStr = cmdline[1];
   auto it = _TYPEMAP.find(typeStr);
   if (it == _TYPEMAP.end()) {
-    sprintf(buf, "Unknown item type: %s", typeStr.c_str());
+    snprintf(buf, sizeof(buf), "Unknown item type: %s", typeStr.c_str());
     log->named_log(__FILENAME__, buf);
     return;
   }
@@ -316,7 +316,7 @@ void CLISuite::cmd_create(std::vector<std::string>& cmdline) {
     item = new Equipment(name.c_str(), type);
   }
   inventory.push_back(item);
-  sprintf(buf, "Created %s: %s (inventory: %zu)", typeStr.c_str(), name.c_str(), inventory.size());
+  snprintf(buf, sizeof(buf), "Created %s: %s (inventory: %zu)", typeStr.c_str(), name.c_str(), inventory.size());
   log->named_log(__FILENAME__, buf);
 }
 
@@ -325,10 +325,10 @@ void CLISuite::cmd_inventory() {
     log->named_log(__FILENAME__, "Inventory is empty. Use: create <type> [name]");
     return;
   }
-  sprintf(buf, "Inventory (%zu items):", inventory.size());
+  snprintf(buf, sizeof(buf), "Inventory (%zu items):", inventory.size());
   log->named_log(__FILENAME__, buf);
   for (size_t i = 0; i < inventory.size(); i++) {
-    sprintf(buf, "  [%zu] %s", i, inventory[i]->get_label());
+    snprintf(buf, sizeof(buf), "  [%zu] %s", i, inventory[i]->get_label());
     log->named_log(__FILENAME__, buf);
   }
 }
