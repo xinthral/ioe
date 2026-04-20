@@ -183,7 +183,7 @@ void TestSuite::CaseWeapon(int level) { TestWeapon tw(level); }
 /*!
  * @brief   Default Deconstructor
 */
-TestSuite::~TestSuite() { }
+void TestSuite::CaseWeapon() { TestWeapon* tw = new TestWeapon(); }
 
 /*!
  * @brief   Module Entry Point

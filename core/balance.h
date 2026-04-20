@@ -7,7 +7,6 @@
 #include <stdio.h>
 #include "config.h"
 #include "logger.h"
-#include "../testsuite/profiler.h"
 
 enum Hardness { Vasy, Easy, Norm, Hard, Vard };
 

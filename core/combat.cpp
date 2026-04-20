@@ -16,12 +16,15 @@ Combat::Combat() {
   log = Logger::GetInstance();
   log->named_log(__FILENAME__, "Combat has been initiated!");
   std::srand(std::time(NULL));
+  if (this->cnf->debugEnabled()) { PROFILE_FUNCTION(); }
+
 }
 
 /*!
  * @todo    EvE Constructor
 */
 Combat::Combat(Toon* combatant1, Toon* combatant2) : Combat() { 
+  if (this->cnf->debugEnabled()) { PROFILE_FUNCTION(); }
   if (!validFighters(combatant1, combatant2)) { exit(-1); }
   this->matchup = Condition::EvE;
   injestCombatants(combatant1, combatant2);
@@ -31,6 +34,7 @@ Combat::Combat(Toon* combatant1, Toon* combatant2) : Combat() {
  * @todo    PvE Constructor
 */
 Combat::Combat(Player* combatant1, Toon* combatant2) : Combat() { 
+  if (this->cnf->debugEnabled()) { PROFILE_FUNCTION(); }
   if (!validFighters(combatant1, combatant2)) { exit(-1); }
   this->matchup = Condition::PvE; 
   injestCombatants(combatant1, combatant2);
@@ -40,6 +44,7 @@ Combat::Combat(Player* combatant1, Toon* combatant2) : Combat() {
  * @todo    PvP Constructor
 */
 Combat::Combat(Player* combatant1, Player* combatant2) : Combat() { 
+  if (this->cnf->debugEnabled()) { PROFILE_FUNCTION(); }
   if (!validFighters(combatant1, combatant2)) { exit(-1); }
   this->matchup = Condition::PvP; 
   injestCombatants(combatant1, combatant2);
@@ -64,11 +69,12 @@ bool Combat::validFighters(Actor* combatant1, Actor* combatant2) {
  * @todo    Initiates Combat
 */
 void Combat::cycleCombat() {
+  if (this->cnf->debugEnabled()) { PROFILE_FUNCTION(); }
   //! Seed and Generate Random Number
   int r, s, x, y;
 
   //! Temporary Combat Logic
-  if (this->combatant1->isAlive() && this->combatant2->isAlive()) {
+  if (this->combatant1->isAlive()) {
     // Store Initial State Values
     r = this->combatant1->get_health();
     s = this->combatant2->get_health();
@@ -77,20 +83,28 @@ void Combat::cycleCombat() {
     x = rand() % this->combatant1->output_damage() + 1;
     x = this->combatant2->receive_damage(x);
     sprintf(buf, "%s hits %s for %d<->%d.",
-      this->combatant1->get_name().c_str(), this->combatant2->get_name().c_str(), x, s
+      this->combatant1->get_name().c_str(),
+      this->combatant2->get_name().c_str(),
+      x,
+      s
     );
     log->named_log(__FILENAME__, buf);
     if (this->combatant2->get_health() < 1) { this->combatant2->set_health_dead(); }
-
+  }
+  if (this->combatant2->isAlive()) {
     // Combatant 2 Turn
     y = rand() % this->combatant2->output_damage() + 1;
-    y = this->combatant1->receive_damage(y); 
-    sprintf(buf, "%s hits %s for %d<->%d!", 
-      this->combatant2->get_name().c_str(), this->combatant1->get_name().c_str(), y, r
+    y = this->combatant1->receive_damage(y);
+    sprintf(buf, "%s hits %s for %d<->%d!",
+      this->combatant2->get_name().c_str(),
+      this->combatant1->get_name().c_str(),
+      y,
+      r
     );
     log->named_log(__FILENAME__, buf);
     if (this->combatant1->get_health() < 1) { this->combatant1->set_health_dead(); }
-  } else {
+  }
+  if ( ! this->combatant1->isAlive() || ! this->combatant2->isAlive() ) {
     // Winner Winner, chicken dinner!
     sprintf(buf, "Combat Ended, [%s] Won!", this->combatant1->isAlive() ?
       this->combatant1->get_name().c_str() : this->combatant2->get_name().c_str()
@@ -103,6 +117,7 @@ void Combat::cycleCombat() {
  * @todo    Intakes Combatants
 */
 void Combat::injestCombatants(Actor* combatant1, Actor* combatant2) {
+  if (this->cnf->debugEnabled()) { PROFILE_FUNCTION(); }
   // Establish Combat Type
   switch (this->matchup) {
     case Condition::EvE: {

@@ -12,6 +12,7 @@
 BaseCase::BaseCase() {
   this->bal = BalanceController::GetInstance();   //!< Instantiated BalanceController Object
   this->cnf = ConfigManager::GetInstance();       //!< Instantiated ConfigManager Object
+  this->cnf->toggleDebug();
   this->log = Logger::GetInstance();              //!< Instantiated Logger Object
   this->_passed = 0;
   this->_failed = 0;

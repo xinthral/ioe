@@ -40,9 +40,16 @@ size_t ConfigManager::add_setting(const std::string& option, const std::string& 
   return this->settings.size();
 }
 
-bool ConfigManager::debugEnabled() {
+bool ConfigManager::debugEnabled() { 
   std::string dbgr = this->raw_config("DEBUG").c_str();
   return dbgr == "true" || dbgr == "True" ? true : false;
+}
+
+/*!
+ * @todo    Helper Function: Attack 
+*/
+std::string ConfigManager::raw_config(const std::string& option) {
+  return this->settings[option];
 }
 
 /*!
@@ -99,7 +106,6 @@ std::string ConfigManager::get_version() { return this->raw_config("VERSION").c_
  * @todo    Reads in Config File and Parses Options
 */
 bool ConfigManager::load_config(bool debug) {
-  char buf[64];
   std::size_t pos;                            //! Positional Pointer for delimeter
   std::string row;                            //! Temporary File Row Storage
   std::string opt;                            //! Settings Option
@@ -110,8 +116,7 @@ bool ConfigManager::load_config(bool debug) {
   while (std::getline(conf, row)) {
     // DEBUG Line
     if (_debug && debug) {
-      sprintf(buf, "%s", row.c_str());
-      log->named_log(__FILENAME__, buf);
+      log->named_log(__FILENAME__, row.c_str());
     }
     pos = row.find(delim);                    //! Locate Position of Delimiter
     if (pos != std::string::npos){
@@ -137,6 +142,64 @@ std::string ConfigManager::raw_config(const std::string& option) {
  * @todo    Reload Settings
 */
 void ConfigManager::reload_state(bool debug) { this->load_config(debug); }
+
+/*!
+ * @todo    Remove Setting from injested list
+*/
+size_t ConfigManager::rem_setting(const std::string& option) {
+  this->settings.erase(option);
+  return this->settings.size();
+}
+
+bool ConfigManager::toggleDebug() {
+  if (this->_debug) {
+    this->_debug = false;
+  } else { this->_debug = true; }
+  return this->_debug;
+}
+
+/*!
+ * @todo    Reads in Config File and Parses Options
+*/
+bool ConfigManager::load_config(bool debugg) {
+  char buf[64];
+  std::size_t pos;                            //! Positional Pointer for delimeter
+  std::string row;                            //! Temporary File Row Storage
+  std::string opt;                            //! Settings Option
+  std::string val;                            //! Settings Value
+  std::size_t qsize = 0;                      //! Current Size of Queue
+  int cnt = 0;
+  conf.open("docs/engine.ini");               //! Open INI file for reading
+  while (std::getline(conf, row)) {
+    // DEBUG Line
+    if (debugg || _debug) { 
+      sprintf(buf, "%s", row.c_str()); 
+      log->named_log(__FILENAME__, buf);
+    }
+    pos = row.find(delim);                    //! Locate Position of Delimiter
+    if (pos != std::string::npos){
+      opt = row.substr(0, pos);               //! Grab Option Name
+      Utilz::Strip(opt);
+      val = row.substr(pos+2, row.size()-1);  //! Grab Option Value
+      qsize = this->add_setting(opt, val);    //! Load Setting
+      cnt++;                                  //! Increment Settings counter
+    }
+  }
+  conf.close();                               //! Close INI file descriptor
+  return cnt == qsize;
+}
+
+/*!
+ * @todo    Return the Value of a Configuration Option 
+*/
+std::string ConfigManager::raw_config(const std::string& option) {
+  return this->settings[option];
+}
+
+/*!
+ * @todo    Reload Settings
+*/
+void ConfigManager::reload_state() { this->load_config(true); }
 
 /*!
  * @todo    Remove Setting from injested list
