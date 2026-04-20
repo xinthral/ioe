@@ -9,7 +9,10 @@
 
 /*!
  * @class   Battle battle.h battle.cpp
- * @brief   Interweaving Combat events
+ * @brief   Singleton battlefield manager that orchestrates turn-based Combat sessions
+ * @details Owns a single active Combat instance at a time. Callers start a session
+ *          with startEVE / startPVE / startPVP, then drive it forward by calling
+ *          doCycleWork() in a loop until isPendingWork is set to false.
 */
 class Battle {
 protected:
@@ -39,13 +42,34 @@ public:
   static Battle* GetInstance();
 
   /*!
-   * @brief   Handles Cycle Actions
+   * @brief   Advance the active combat session by one cycle
+   * @details Calls cycleCombat() on the current Combat instance. Sets isPendingWork
+   *          to false and releases the Combat object when inCombat() returns false,
+   *          signalling that a winner has been decided.
+   * @param[out] isPendingWork  Set to false when combat concludes; unchanged otherwise
   */
-  void doCycleWork(bool&);
+  void doCycleWork(bool& isPendingWork);
 
-  void startEVE(Toon*,Toon*);
-  void startPVE(Player*,Toon*);
-  void startPVP(Player*,Player*);
+  /*!
+   * @brief   Initialise an NPC vs NPC combat session
+   * @param[in] t1  First Toon combatant
+   * @param[in] t2  Second Toon combatant
+  */
+  void startEVE(Toon* t1, Toon* t2);
+
+  /*!
+   * @brief   Initialise a Player vs NPC combat session
+   * @param[in] player  Player combatant
+   * @param[in] t       Toon combatant
+  */
+  void startPVE(Player* player, Toon* t);
+
+  /*!
+   * @brief   Initialise a Player vs Player combat session
+   * @param[in] player1  First Player combatant
+   * @param[in] player2  Second Player combatant
+  */
+  void startPVP(Player* player1, Player* player2);
 
   /*!
    * @brief   Helper Hook used in CLI Help System
