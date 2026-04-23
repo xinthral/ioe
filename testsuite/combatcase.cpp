@@ -23,6 +23,7 @@ void TestCombat::test_all() {
   this->EVECombat();
   this->PVECombat();
   this->PVPCombat();
+  this->test_damage_tracking();
 }
 
 void TestCombat::EVECombat() {
@@ -82,6 +83,31 @@ void TestCombat::PVPCombat() {
   record(!_player1->isAlive() || !_player2->isAlive(),
          "PvP combat ended while both combatants still alive");
   sprintf(buf, "%s [%s] %s", msgHead, "PvP combat", msgTail);
+  BaseCase::log->named_log(__FILENAME__, buf);
+}
+
+void TestCombat::test_damage_tracking() {
+  if (this->_granularity >= 1) { PROFILE_FUNCTION(); }
+  PROFILE_NAMED("EvE_Combat");
+
+  delete _toon1;  _toon1  = nullptr;
+  delete _toon2;  _toon2  = nullptr;
+  delete _combat; _combat = nullptr;
+  _toon1  = new Toon("Track_T1");
+  _toon2  = new Toon("Track_T2");
+  _combat = new Combat(_toon1, _toon2);
+  while (_combat->inCombat()) { _combat->cycleCombat(); }
+
+  // Combatant1 always gets at least one turn, so peak and total must both be > 0
+  record(_combat->get_peak1()  > 0, "peak damage for combatant1 was not recorded");
+  record(_combat->get_total1() > 0, "total damage for combatant1 was not recorded");
+  // Total must be at least as large as the single peak hit
+  record(_combat->get_total1() >= _combat->get_peak1(),
+         "combatant1 total damage is less than peak — tracking error");
+  record(_combat->get_total2() >= _combat->get_peak2(),
+         "combatant2 total damage is less than peak — tracking error");
+
+  sprintf(buf, "%s [%s] %s", msgHead, "damage tracking", msgTail);
   BaseCase::log->named_log(__FILENAME__, buf);
 }
 

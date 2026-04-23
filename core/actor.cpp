@@ -27,7 +27,8 @@ Actor::Actor() {
       std::chrono::system_clock::now().time_since_epoch()
     ).count() % 100
   );
-  this->name = "Actor_" + cnvt;
+  this->name      = "Actor_" + cnvt;
+  this->_strategy = new BalancedStyle();
 }
 
 /*!
@@ -289,6 +290,19 @@ const std::vector<Equipment*>& Actor::get_equipped() const {
 }
 
 /*!
+ * @brief   Replace the actor's combat strategy, taking ownership of the new pointer
+*/
+void Actor::set_strategy(CombatStrategy* s) {
+  delete _strategy;
+  _strategy = s;
+}
+
+/*!
+ * @brief   Return the actor's current combat strategy
+*/
+CombatStrategy* Actor::get_strategy() const { return _strategy; }
+
+/*!
  * @note    Helper Hook used in CLI Help System
 */
 void Actor::_help() {
@@ -311,6 +325,6 @@ void Actor::_help() {
 }
 
 /*!
- * @note    Default Deconstructor 
+ * @note    Default Deconstructor
 */
-Actor::~Actor() {}
+Actor::~Actor() { delete _strategy; }

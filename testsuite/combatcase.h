@@ -48,6 +48,11 @@ public:
   void PVPCombat();
 
   /*!
+   * @brief   Validate that peak and total damage tracking fields are populated after combat
+  */
+  void test_damage_tracking();
+
+  /*!
    * @brief   Default Deconstructor
   */
   ~TestCombat();

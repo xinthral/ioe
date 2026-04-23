@@ -20,6 +20,7 @@
 #include "playercase.h"
 #include "profiler.h"
 #include "stagecase.h"
+#include "strategycase.h"
 #include "tooncase.h"
 #include "utilzcase.h"
 #include "weaponcase.h"
@@ -135,6 +136,12 @@ public:
    * @param[in] level  Profiling granularity (0 = named groups only, 1 = per-method + named)
   */
   void CaseStage(int level=0);
+
+  /*!
+   * @brief   Initiates the Test for the CombatStrategy Module
+   * @param[in] level  Profiling granularity (0 = named groups only, 1 = per-method + named)
+  */
+  void CaseStrategy(int level=0);
 
   /*!
    * @brief   Initiates the Test for the Toon Module

@@ -5,6 +5,7 @@
 #include <vector>
 #include "config.h"
 #include "equipment.h"
+#include "strategy.h"
 #include "utilz.h"
 
 //! Actor Combat States
@@ -74,6 +75,7 @@ protected:
   int flux;                 //!< Flux Value    (@override)
   char buf[256];            //!< Buffer Value for Logger outputs
   std::vector<Equipment*> equipped; //!< Currently equipped items
+  CombatStrategy* _strategy;        //!< Modular combat behaviour (owned by Actor)
 
 private:
 public:
@@ -285,6 +287,19 @@ public:
    * @returns Const reference to the equipped item vector
   */
   const std::vector<Equipment*>& get_equipped() const;
+
+  /*!
+   * @brief   Replace the actor's combat strategy
+   * @details Takes ownership of the provided pointer and deletes the previous strategy.
+   *          Use make_strategy(StyleType) to construct the desired style.
+   * @param[in] s  Heap-allocated CombatStrategy to adopt
+  */
+  void set_strategy(CombatStrategy* s);
+
+  /*!
+   * @brief   Return the actor's current combat strategy
+  */
+  CombatStrategy* get_strategy() const;
 
   /*!
    * @brief   Helper Hook used in CLI Help System

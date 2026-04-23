@@ -4,6 +4,7 @@
 #include <mutex>
 #include "combat.h"
 #include "config.h"
+#include "leader.h"
 #include "player.h"
 #include "toon.h"
 
@@ -23,11 +24,20 @@ private:
   Battle();
   ConfigManager*    cnf;
   Combat*           combat;                 //!< Combat Handler
+  LeaderBoard*      lb;                     //!< LeaderBoard for stat recording
   Logger*           log;                    //!< Logging Handler Instantiation
   static Battle*    _singleton;             //!< Singleton Instance
   static std::mutex _mutex;                 //!< Lock Mutex
   int               cycleCompletionTracker;
   int               cycleDelay;             //!< Delay between battle operations
+  Actor*            _c1;                    //!< Combatant1 reference for post-combat reporting
+  Actor*            _c2;                    //!< Combatant2 reference for post-combat reporting
+  Condition         _matchup;               //!< Active matchup type for stat categorisation
+
+  /*!
+   * @brief   Submit combat statistics to the LeaderBoard after a session concludes
+  */
+  void record_stats();
 
 public:
   //! Singletons should not be cloneable

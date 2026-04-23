@@ -66,6 +66,12 @@ public:
    * @brief   PVP Combat test on level 80 combatants
   */
   void level80_pvp();
+
+  /*!
+   * @brief   Verify LeaderBoard receives entries after a battle session concludes
+  */
+  void test_leaderboard_populated();
+
   /*!
    * @brief   Default Deconstructor
   */

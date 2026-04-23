@@ -33,6 +33,7 @@ private:
   Lexicon       *lex;   //!< Establish Lexicon Object
   Battle        *battle;//!< Establish Battle Object
   Logger        *log;   //!< Establish Logger Object
+  LeaderBoard   *lb;    //!< Establish LeaderBoard Object
   Player *p1, *p2;             //!< Player slots
   Toon   *t1, *t2;             //!< Toon slots
   std::vector<Item*> inventory; //!< Session item inventory
@@ -99,7 +100,8 @@ public:
 
   /*!
    * @brief   Spawn a Player or Toon into the session
-   * @details Usage: spawn <player|toon> [name]
+   * @details Usage: spawn <player|toon> [name] [style]
+   *          Styles: balanced, aggressive, defensive, berserker, cowardly
   */
   void cmd_spawn(std::vector<std::string>&);
 
@@ -134,6 +136,18 @@ public:
    * @brief   List all items in the session inventory
   */
   void cmd_inventory();
+
+  /*!
+   * @brief   Display the LeaderBoard across all stat sections
+  */
+  void cmd_leaderboard();
+
+  /*!
+   * @brief   Swap the combat strategy on a spawned actor
+   * @details Usage: strategy <p1|p2|t1|t2> <style>
+   *          Styles: balanced, aggressive, defensive, berserker, cowardly
+  */
+  void cmd_strategy(std::vector<std::string>&);
 
   ~CLISuite();
 };

@@ -35,6 +35,11 @@ private:
   Actor*              combatant1;
   Actor*              combatant2;
   char                buf[256];
+  int                 _peak1;       //!< Largest single hit dealt by combatant1
+  int                 _peak2;       //!< Largest single hit dealt by combatant2
+  int                 _total1;      //!< Total damage dealt by combatant1
+  int                 _total2;      //!< Total damage dealt by combatant2
+  std::time_t         _burst_start; //!< Timestamp when this combat began
 
 public:
   /*!
@@ -114,6 +119,14 @@ public:
    * @brief   Intakes Combatants
   */
   void injestCombatants(Actor*,Actor*);
+
+  Actor*      get_combatant1() const { return combatant1; }   //!< Combatant1 pointer for post-combat reporting
+  Actor*      get_combatant2() const { return combatant2; }   //!< Combatant2 pointer for post-combat reporting
+  int         get_peak1()     const { return _peak1; }        //!< Peak single-hit damage from combatant1
+  int         get_peak2()     const { return _peak2; }        //!< Peak single-hit damage from combatant2
+  int         get_total1()    const { return _total1; }       //!< Total damage dealt by combatant1
+  int         get_total2()    const { return _total2; }       //!< Total damage dealt by combatant2
+  std::time_t get_burst_start() const { return _burst_start; } //!< Timestamp when combat began
 
   /*!
    * @brief   Helper Hook used in CLI Help System

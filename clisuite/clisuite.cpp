@@ -23,8 +23,10 @@ std::unordered_map<std::string, int> _CMDMAP = {
   {"step",    9},
   {"status",  10},
   {"reset",     11},
-  {"create",    12},
-  {"inventory", 13},
+  {"create",      12},
+  {"inventory",   13},
+  {"leaderboard", 14},
+  {"strategy",    15},
 };
 
 CLISuite::CLISuite(bool debug) {
@@ -32,6 +34,7 @@ CLISuite::CLISuite(bool debug) {
   this->lex    = new Lexicon();
   this->log    = Logger::GetInstance();
   this->battle = Battle::GetInstance();
+  this->lb     = LeaderBoard::GetInstance();
   this->p1 = this->p2 = nullptr;
   this->t1 = this->t2 = nullptr;
   this->start_time = std::chrono::steady_clock::now();
@@ -132,6 +135,12 @@ void CLISuite::run_command(const std::string input, std::vector<std::string>& cm
     case 13:  //! List Inventory
       cmd_inventory();
       break;
+    case 14:  //! Display LeaderBoard
+      cmd_leaderboard();
+      break;
+    case 15:  //! Swap strategy on an actor
+      cmd_strategy(cmdline);
+      break;
     default:
       snprintf(this->buf, sizeof(this->buf), "Unimplemented Command: %s", input.c_str());
       log->named_log(__FILENAME__, this->buf);
@@ -149,7 +158,8 @@ static const std::unordered_map<std::string, std::string> _HELPMAP = {
   {"chain",     "chain <a> [b] ...          - echo a sequence of tokens"},
   {"runtime",   "runtime                    - print elapsed session time"},
   {"prompt",    "prompt <symbol>            - change the shell prompt symbol"},
-  {"spawn",     "spawn <player|toon> [name] - create an actor in the next free slot"},
+  {"spawn",     "spawn <player|toon> [name] [style] - create an actor in the next free slot\n"
+                "  Styles: balanced (default), aggressive, defensive, berserker, cowardly"},
   {"fight",     "fight <pve|pvp|eve>        - start combat between spawned actors"},
   {"step",      "step                       - advance combat one cycle and show status"},
   {"status",    "status                     - print health and state of all spawned actors"},
@@ -157,7 +167,10 @@ static const std::unordered_map<std::string, std::string> _HELPMAP = {
   {"create",    "create <type> [name]       - create an item and add it to inventory\n"
                 "  Types: sword, shield, staff, ring, relic, backpack\n"
                 "  Run 'help create <type>' for details on a specific type"},
-  {"inventory", "inventory                  - list all items in the session inventory"},
+  {"inventory",   "inventory                  - list all items in the session inventory"},
+  {"leaderboard", "leaderboard                - display all leaderboard stat sections"},
+  {"strategy",    "strategy <p1|p2|t1|t2> <style> - swap an actor's combat strategy\n"
+                  "  Styles: balanced, aggressive, defensive, berserker, cowardly"},
 };
 
 static const std::unordered_map<std::string, std::string> _CREATEHELP = {
@@ -213,22 +226,47 @@ void CLISuite::parse_user_input(std::string input) {
 }
 
 
+static StyleType parse_style(const std::string& s) {
+  if (s == "aggressive") return StyleType::AGGRESSIVE;
+  if (s == "defensive")  return StyleType::DEFENSIVE;
+  if (s == "berserker")  return StyleType::BERSERKER;
+  if (s == "cowardly")   return StyleType::COWARDLY;
+  return StyleType::BALANCED;
+}
+
 void CLISuite::cmd_spawn(std::vector<std::string>& cmdline) {
   if (cmdline.size() < 2) {
-    log->named_log(__FILENAME__, "Usage: spawn <player|toon> [name]");
+    log->named_log(__FILENAME__, "Usage: spawn <player|toon> [name] [style]");
     return;
   }
-  const std::string& type = cmdline[1];
-  std::string name = (cmdline.size() >= 3) ? cmdline[2] : lex->generateName(1);
+  const std::string& type  = cmdline[1];
+  std::string name          = (cmdline.size() >= 3) ? cmdline[2] : lex->generateName(1);
+  StyleType   style         = (cmdline.size() >= 4) ? parse_style(cmdline[3]) : StyleType::BALANCED;
 
   if (type == "player") {
-    if      (!p1) { p1 = new Player(name, 1); snprintf(buf, sizeof(buf), "Spawned Player 1: %s", name.c_str()); }
-    else if (!p2) { p2 = new Player(name, 2); snprintf(buf, sizeof(buf), "Spawned Player 2: %s", name.c_str()); }
-    else          { snprintf(buf, sizeof(buf), "Both player slots occupied. Use reset to clear."); }
+    if (!p1) {
+      p1 = new Player(name, 1);
+      p1->set_strategy(make_strategy(style));
+      snprintf(buf, sizeof(buf), "Spawned Player 1: %s [%s]", name.c_str(), p1->get_strategy()->get_name());
+    } else if (!p2) {
+      p2 = new Player(name, 2);
+      p2->set_strategy(make_strategy(style));
+      snprintf(buf, sizeof(buf), "Spawned Player 2: %s [%s]", name.c_str(), p2->get_strategy()->get_name());
+    } else {
+      snprintf(buf, sizeof(buf), "Both player slots occupied. Use reset to clear.");
+    }
   } else if (type == "toon") {
-    if      (!t1) { t1 = new Toon(name); snprintf(buf, sizeof(buf), "Spawned Toon 1: %s", name.c_str()); }
-    else if (!t2) { t2 = new Toon(name); snprintf(buf, sizeof(buf), "Spawned Toon 2: %s", name.c_str()); }
-    else          { snprintf(buf, sizeof(buf), "Both toon slots occupied. Use reset to clear."); }
+    if (!t1) {
+      t1 = new Toon(name);
+      t1->set_strategy(make_strategy(style));
+      snprintf(buf, sizeof(buf), "Spawned Toon 1: %s [%s]", name.c_str(), t1->get_strategy()->get_name());
+    } else if (!t2) {
+      t2 = new Toon(name);
+      t2->set_strategy(make_strategy(style));
+      snprintf(buf, sizeof(buf), "Spawned Toon 2: %s [%s]", name.c_str(), t2->get_strategy()->get_name());
+    } else {
+      snprintf(buf, sizeof(buf), "Both toon slots occupied. Use reset to clear.");
+    }
   } else {
     snprintf(buf, sizeof(buf), "Unknown type: %s - use player or toon.", type.c_str());
   }
@@ -273,10 +311,11 @@ void CLISuite::cmd_status() {
     return;
   }
   auto printActor = [&](const char* slot, Actor* a) {
-    snprintf(buf, sizeof(buf), "[%s] %-16s | HP: %3d | %-8s | %s",
+    snprintf(buf, sizeof(buf), "[%s] %-16s | HP: %3d | %-8s | %-8s | %s",
       slot, a->get_name().c_str(), a->get_health(),
       healthStateStr(a->get_healthstate()),
-      combatStateStr(a->get_combatstate()));
+      combatStateStr(a->get_combatstate()),
+      a->get_strategy()->get_name());
     log->named_log(__FILENAME__, buf);
   };
   if (p1) printActor("P1", p1);
@@ -331,6 +370,35 @@ void CLISuite::cmd_inventory() {
     snprintf(buf, sizeof(buf), "  [%zu] %s", i, inventory[i]->get_label());
     log->named_log(__FILENAME__, buf);
   }
+}
+
+void CLISuite::cmd_leaderboard() {
+  lb->display();
+}
+
+void CLISuite::cmd_strategy(std::vector<std::string>& cmdline) {
+  if (cmdline.size() < 3) {
+    log->named_log(__FILENAME__, "Usage: strategy <p1|p2|t1|t2> <style>");
+    return;
+  }
+  const std::string& slot  = cmdline[1];
+  StyleType          style = parse_style(cmdline[2]);
+
+  Actor* target = nullptr;
+  if      (slot == "p1" && p1) target = p1;
+  else if (slot == "p2" && p2) target = p2;
+  else if (slot == "t1" && t1) target = t1;
+  else if (slot == "t2" && t2) target = t2;
+
+  if (!target) {
+    snprintf(buf, sizeof(buf), "No actor in slot %s — use spawn first.", slot.c_str());
+    log->named_log(__FILENAME__, buf);
+    return;
+  }
+  target->set_strategy(make_strategy(style));
+  snprintf(buf, sizeof(buf), "%s strategy set to [%s].",
+    target->get_name().c_str(), target->get_strategy()->get_name());
+  log->named_log(__FILENAME__, buf);
 }
 
 void CLISuite::cmd_reset() {

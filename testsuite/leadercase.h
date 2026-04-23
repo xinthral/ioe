@@ -5,10 +5,9 @@
 
 /*!
  * @class   TestLeader leadercase.cpp leadercase.h
- * @brief   Test for the LeaderBoard
+ * @brief   Tests for the LeaderBoard singleton
 */
 class TestLeader : public BaseCase {
-protected:
 private:
 public:
   /*!
@@ -23,9 +22,24 @@ public:
   TestLeader(int granularity);
 
   /*!
-   * @brief   Run full set of test on module 
+   * @brief   Run full set of tests on module
   */
   void test_all();
+
+  /*!
+   * @brief   Verify entries are stored in descending order and trimmed to 10
+  */
+  void test_ordering_and_trim();
+
+  /*!
+   * @brief   Verify all eight record_* methods accept submissions without error
+  */
+  void test_all_sections();
+
+  /*!
+   * @brief   Verify display() runs without error on a populated board
+  */
+  void test_display();
 
   /*!
    * @brief   Default Deconstructor

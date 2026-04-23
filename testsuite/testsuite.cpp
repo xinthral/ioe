@@ -37,6 +37,7 @@ void print_help() {
   sprintf(buf, "\t[%d] - Test Lexicon Module",           ++idx); log->raw_log(buf);
   sprintf(buf, "\t[%d] - Test Player Module",            ++idx); log->raw_log(buf);
   sprintf(buf, "\t[%d] - Test Stage Module",             ++idx); log->raw_log(buf);
+  sprintf(buf, "\t[%d] - Test Strategy Module",          ++idx); log->raw_log(buf);
   sprintf(buf, "\t[%d] - Test Toon Module",              ++idx); log->raw_log(buf);
   sprintf(buf, "\t[%d] - Test Utilz Module",             ++idx); log->raw_log(buf);
   sprintf(buf, "\t[%d] - Test Weapon Module",            ++idx); log->raw_log(buf);
@@ -67,6 +68,7 @@ void TestSuite::TestAll() {
   this->CaseLexicon(0);
   this->CasePlayer(0);
   this->CaseStage(0);
+  this->CaseStrategy(0);
   this->CaseToon(0);
   this->CaseUtilz(0);
   this->CaseWeapon(0);
@@ -163,6 +165,12 @@ void TestSuite::CasePlayer(int level) { TestPlayer tp(level); }
 void TestSuite::CaseStage(int level) { TestStage tg(level); }
 
 /*!
+ * @brief    Initiates the Test for the CombatStrategy Module
+ * @param[in] level  Profiling granularity passed to TestStrategy
+*/
+void TestSuite::CaseStrategy(int level) { TestStrategy ts(level); }
+
+/*!
  * @brief    Initiates the Test for the Toon Module
  * @param[in] level  Profiling granularity passed to TestToon
 */
@@ -221,9 +229,10 @@ int main(int argc, char const *argv[]) {
     case 13: sprintf(buf, "Lexicon TestCase Completed...");   ts.CaseLexicon(1);   break;
     case 14: sprintf(buf, "Player TestCase Completed...");    ts.CasePlayer(1);    break;
     case 15: sprintf(buf, "Stage TestCase Completed...");     ts.CaseStage(1);     break;
-    case 16: sprintf(buf, "Toon TestCase Completed...");      ts.CaseToon(1);      break;
-    case 17: sprintf(buf, "Utilz TestCase Completed...");     ts.CaseUtilz(1);     break;
-    case 18: sprintf(buf, "Weapon TestCase Completed...");    ts.CaseWeapon(1);    break;
+    case 16: sprintf(buf, "Strategy TestCase Completed...");  ts.CaseStrategy(1);  break;
+    case 17: sprintf(buf, "Toon TestCase Completed...");      ts.CaseToon(1);      break;
+    case 18: sprintf(buf, "Utilz TestCase Completed...");     ts.CaseUtilz(1);     break;
+    case 19: sprintf(buf, "Weapon TestCase Completed...");    ts.CaseWeapon(1);    break;
     default:
       sprintf(buf, "\nWarn :: Unknown Test, please review the list and try again.\n");
   }
