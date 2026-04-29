@@ -39,6 +39,9 @@ CXFLAGS = $(CFLAGS) -std=c++20
 # Extra Compiler Options
 CXXFLAGS = $(CXFLAGS) -Wall -pedantic -O3
 
+# Engine-specific flags — relaxed for vendored single-headers (httplib.h, json.hpp)
+EFLAGS = $(CXFLAGS) -Wno-deprecated-declarations -Wno-shadow -Wno-unused-parameter
+
 # Set GNU Shell
 # SHELL := /bin/bash
 
@@ -80,14 +83,17 @@ info:
 	@echo "##################################################################"
 	@echo "Build Information for the Isles of Eris engine"
 	@echo "Usage: make <str:option>"
-	@echo "  build      - Builds the entire project into object files"
-	@echo "  core       - Builds the core engine into object files"
-	@echo "  docs       - Builds the html documents for this project"
-	@echo "  engine     - Builds the api engine into object files"
-	@echo "  audiosuite - Compiles the audio engine into a binary"
-	@echo "  clisuite   - Compiles the core engine and the command line tool"
-	@echo "  helpsuite  - Compiles the help command line tool (developer details)"
-	@echo "  testsuite  - Compiles the test command line tool"
+	@echo "  build      - Compile all object files without linking"
+	@echo "  core       - Compile core engine object files only"
+	@echo "  docs       - Generate Doxygen HTML documentation"
+	@echo "  engine     - Build world server HTTP API  -> engine.exe"
+	@echo "  serve      - Build and run world server on port 8081"
+	@echo "  audiosuite - Build audio tools            -> audiosuite.exe"
+	@echo "  clisuite   - Build interactive REPL       -> clisuite.exe"
+	@echo "  helpsuite  - Build developer help CLI     -> helpsuite.exe"
+	@echo "  testsuite  - Build test runner            -> testsuite.exe"
+	@echo "  clean      - Remove all .o object files"
+	@echo "  cleanall   - Remove .o files and .exe binaries"
 	@echo "##################################################################"
 
 # Compile Full porgram (order matters)
@@ -107,9 +113,13 @@ $(CORE): $(CORESRC)
 $(CLIS): $(CORESRC) $(CLISSRC)
 	$(CC) $(CXFLAGS) $^ -o $@.exe
 
-# Compile Engine API
+# Compile World Server (links Winsock on Windows)
 $(ENGN): $(CORESRC) $(ENGNSRC)
-	$(CC) $(CXFLAGS) $^ -o $@.exe
+	$(CC) $(EFLAGS) $^ -o $@.exe -lws2_32
+
+# Run World Server on default port
+serve: $(ENGN)
+	./$(ENGN).exe 8081
 
 # Compile HelpSuite
 $(HELP): $(CORESRC) $(HELPSRC)
@@ -122,6 +132,10 @@ $(TEST): $(CORESRC) $(TESTSRC) $(AUDIDRV)
 # Compile Documents 
 $(DOCS): docs/conf.dox
 	$(DOXYGEN) $<
+
+# Engine objects use relaxed flags — vendored headers (httplib.h, json.hpp) generate noise under -Wall
+$(ENGN)/%.o: $(ENGN)/%.cpp $(ENGN)/%.h
+	$(CC) $(EFLAGS) -c $< -o $@
 
 %.o: %.cpp %.h
 	$(CC) $(CXFLAGS) -c $< -o $@
@@ -170,4 +184,4 @@ cleanall:
 	$(MAKE) clean
 	$(MAKE) cleanbin
 
-.PHONY: all info audiosuite clisuite core docs engine helpsuite testsuite build clean cleanbin cleanaudio cleancore cleandocs cleanhelp cleantest cleanall
+.PHONY: all info audiosuite clisuite core docs engine serve helpsuite testsuite build clean cleanbin cleanaudio cleancore cleandocs cleanhelp cleantest cleanall
